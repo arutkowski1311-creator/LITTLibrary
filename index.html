@@ -503,6 +503,7 @@ function renderList(){
       <td><span class="star ${STARS.has(it.id)?'on':''}" data-star="${esc(it.id)}">★</span></td>`;
     const det=document.createElement("tr");det.className="detail";det.style.display="none";
     det.innerHTML=`<td colspan="7"><dl>
+      ${rw("Published",[fmtDate(it.date),it.venue].filter(Boolean).join(" · "))}
       ${rw("Citation",it.citation)}${it.url?rw("Source",`<a href="${esc(it.url)}" target="_blank">${esc(it.url)}</a>`,1):""}
       ${rw("Indications",(it.indications||[]).map(indName).join(" · "))}
       ${rw("Strategies",(it.strategies||[]).map(stratName).join(" · "))}

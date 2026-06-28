@@ -52,10 +52,27 @@ Domains:
 5. **Adjacent & competitive therapies + imaging** — radiosurgery, proton therapy, TTFields,
    immunotherapy, targeted/cellular/viral therapy, AI-assisted planning, intraoperative MRI,
    functional imaging — as they affect LITT positioning, sequencing, and referral.
+6. **Ecosystem, policy & lay-press signals** — reputable general/business/trade outlets
+   (NYT, WSJ, Washington Post, Reuters, AP, Bloomberg, CNN, BBC, NPR, The Economist, STAT,
+   Endpoints, Fierce Biotech/Healthcare, MedTech Dive, Becker's) plus CMS/payer coverage and
+   funding/M&A/policy news that shape the *whole* world of brain tumors and epilepsy and could
+   influence LITT adoption, referral, reimbursement, or perception. Per the spec's lay-source
+   guardrails: surface the signal, then trace to and cite the **primary source**; never let a
+   headline launder an unverified clinical figure.
 
-Also check, scoped to the window: **prioritized journals** and **prioritized conferences**
-named in the spec (SNO, AANS, CNS, AES, ASCO, ASTRO, ESMO, AACR, RSNA, ISMRM, SMR) and
-**ClinicalTrials.gov** for pivotal trial status changes.
+Cast a wide net — search **scholarly indexes** (PubMed/MEDLINE, Europe PMC, Google Scholar,
+Semantic Scholar, medRxiv/bioRxiv), **all relevant journals** (not only the prioritized list),
+**prioritized conferences** (SNO, AANS, CNS, AES, ASCO, ASTRO, ESMO, AACR, RSNA, ISMRM, SMR),
+and **ClinicalTrials.gov / WHO ICTRP** for pivotal trial status changes. Leave no respected
+journal, registry, or outlet unchecked.
+
+**Cover every indication.** Map across all 12 indications in `taxonomy.indications`, not just
+the well-populated ones. The current corpus is thin on `corpus_callosotomy`, `meningioma`,
+`newly_lgg`, and `recurrent_lgg` — actively seek developments for these and for any adjacent
+topic that could bear on LITT use, so the baseline is genuinely comprehensive.
+
+**Every finding must be dated.** Capture an ISO `date` (`YYYY-MM-DD`) or at minimum the
+publication **year**; an item with no establishable date is not admissible (see spec).
 
 ## Step 2 — Appraise, map & score (two axes)
 
