@@ -141,21 +141,59 @@ Gene therapy · Cellular therapy
 
 ## Sources
 
+Look in **every** credible corner — leave no journal, database, registry, or
+respected outlet unchecked. The goal is a *robust, exhaustive baseline*: if a
+development could plausibly influence LITT or the fields it depends on, it should
+be found here, not missed.
+
 Search across:
 
-- Peer-reviewed journals
-- ClinicalTrials.gov
-- FDA
-- NIH
+- Peer-reviewed journals (all relevant titles, not only the prioritized list)
+- Scholarly aggregators & indexes — PubMed / MEDLINE, Europe PMC, Google Scholar,
+  Semantic Scholar, medRxiv / bioRxiv preprints
+- ClinicalTrials.gov (and WHO ICTRP, EudraCT) for trial status changes
+- FDA (510(k), PMA, De Novo, recalls, safety communications)
+- NIH / NCI
+- CMS & payer coverage decisions (NCDs, LCDs, MACs)
 - Professional society guidelines
 - Major scientific meetings
 - Institutional press releases
-- High-quality medical news
+- High-quality medical/trade news
 - Regulatory communications
 - Conference abstracts
 - Published consensus statements
 - Practice guidelines
 - Position statements
+
+### Reputable General, Business & Lay News
+
+The application of LITT is highly dependent on what is happening across the *whole*
+world of brain tumors and epilepsy — funding, policy, major institutional moves,
+high-profile cases, and shifts in public/clinical perception that primary literature
+captures late or not at all. Monitor reputable general-interest and business outlets
+for these signals:
+
+*The New York Times · The Wall Street Journal · The Washington Post · Reuters ·
+Associated Press · Bloomberg · CNN · BBC · NPR · The Economist · STAT News ·
+Endpoints News · Fierce Biotech / Fierce Healthcare · MedTech Dive · Becker's*
+
+Guardrails for lay/news sources:
+
+- Use them to **surface signals and context** (deals, funding, regulatory moves,
+  policy, sentiment) — not as the evidentiary basis for a clinical claim.
+- Always **trace back to the primary source** (the trial, filing, guideline, or
+  peer-reviewed paper) and cite that as the authority; the news item is corroborating
+  context, flagged `partial` until the primary source is confirmed.
+- **Never** let a news headline launder an unverified clinical figure into a
+  confident claim. Carry `verified` / `partial` / `unverified` provenance through.
+
+### Mandatory: every finding is dated
+
+Every finding **must** carry a `date` (ISO `YYYY-MM-DD`, or at minimum the
+publication **year**). The year of publication must always be apparent — it drives
+recency, surveillance windows, and trend analysis. If only a year is known, record
+`YYYY-01-01` and note the imprecision; if no date can be established at all, the item
+is **not admissible** to the library.
 
 ### Prioritized Journals
 
