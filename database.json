@@ -1,0 +1,3200 @@
+{
+  "engine": "Clinical Intelligence Engine for Neuro-Oncology, Epilepsy, and LITT",
+  "specVersion": "1.0",
+  "schemaVersion": 2,
+  "generatedBy": "/clinical-scan",
+  "lastUpdated": "2026-06-27",
+  "taxonomy": {
+    "indications": {
+      "newly_gbm": "Newly diagnosed glioblastoma",
+      "recurrent_gbm": "Recurrent glioblastoma",
+      "newly_lgg": "Newly diagnosed lower-grade glioma",
+      "recurrent_lgg": "Recurrent lower-grade glioma",
+      "brain_met": "Brain metastasis",
+      "radiation_necrosis": "Radiation necrosis",
+      "meningioma": "Meningioma",
+      "other_tumor": "Other intracranial tumor",
+      "mtle": "Mesial temporal lobe epilepsy",
+      "hypothalamic_hamartoma": "Hypothalamic hamartoma",
+      "focal_epilepsy": "Focal epilepsy",
+      "corpus_callosotomy": "Corpus callosotomy"
+    },
+    "strategies": {
+      "litt_immuno_combo": "LITT + systemic / immunotherapy (BBB disruption)",
+      "diagnose_and_ablate": "Same-session biopsy + LITT",
+      "deep_eloquent_access": "Minimally invasive access to deep/eloquent lesions vs craniotomy",
+      "radiation_necrosis_salvage": "LITT for radiation necrosis after SRS",
+      "srs_recurrence_salvage": "LITT for radioresistant recurrence after SRS",
+      "epilepsy_ablation": "SLAH / MTLE / HH / focal epilepsy ablation",
+      "comparative_effectiveness": "LITT vs craniotomy / SRS head-to-head",
+      "molecular_selection": "Molecular markers driving treatment sequencing",
+      "imaging_selection": "Imaging / AI for patient selection & response",
+      "robotics_workflow": "Robotics / navigation / iMRI workflow integration",
+      "reimbursement_access": "Coverage, coding, market access",
+      "competitive_platform": "Competing device / platform moves"
+    },
+    "businessLevers": [
+      "utilization",
+      "referral",
+      "reimbursement",
+      "competitive",
+      "pipeline",
+      "messaging"
+    ],
+    "timeHorizons": [
+      "now",
+      "<=12mo",
+      "2-5yr"
+    ]
+  },
+  "scoring": {
+    "clinicalImpactScore": "Axis 1 — integer 1-5 stars: impact to the clinical discipline",
+    "littBusinessImpact": "Axis 2 — integer 0-10: magnitude of effect on the LITT business",
+    "littBusinessDirection": "tailwind (strengthens LITT) | headwind (weakens/displaces) | neutral",
+    "verified": "verified | partial | unverified — provenance of the key figures"
+  },
+  "runs": [
+    {
+      "date": "2026-06-26",
+      "mode": "baseline",
+      "window": "2024-06-26 to 2026-06-26",
+      "found": 48,
+      "added": 31,
+      "updated": 0,
+      "skipped": 0,
+      "note": "Initial 24-month baseline. Dedicated neuro-oncology and epilepsy research agents were unreliable; neuro-oncology coverage drawn from the LITT-specific and adjacent-therapy scans, epilepsy coverage backfilled with targeted in-window searches."
+    },
+    {
+      "date": "2026-06-27",
+      "mode": "surveillance",
+      "window": "2026-04-27 to 2026-06-27",
+      "found": 12,
+      "added": 10,
+      "updated": 2,
+      "skipped": 0,
+      "note": "Trailing-2-month delta, one day after the 24-month baseline. Five web-enabled domain agents ran in parallel (neuro-oncology, LITT-specific, epilepsy, regulatory/device, adjacent/imaging). LITT-specific and epilepsy domains returned NO verifiable in-window items (near-misses documented: BBB-permeability paper 2026-04-13 and RNS post-approval 2026-04-24 both fell just before the window). All deltas cluster at ASCO 2026 (May 29-Jun 2) plus a Jun 18 Novocure readout and discrete device/regulatory items. Concurrent prior intra-day passes created duplicate event records and an inconsistent run log; this run reconciles to a single deduplicated state (3 event-twins merged, keeping the richer record). Primary publisher/press pages were proxy-blocked (403); every in-window date was corroborated across multiple independent search sources, with single-source numerics flagged partial."
+    },
+    {
+      "date": "2026-06-27",
+      "mode": "baseline-backfill",
+      "window": "2020-01-01 to 2026-06-27",
+      "found": 17,
+      "added": 17,
+      "updated": 0,
+      "skipped": 0,
+      "note": "Curated landmark backfill extending the library to 2020 using verified references (LAANTERN registry, society guidelines/position statements, BBB-permeability mechanism, MTLE durability, REMASTer RCT, RN/combination evidence). Reliable citation-level provenance; not an exhaustive bibliography."
+    }
+  ],
+  "items": [
+    {
+      "id": "litt-pembrolizumab-recurrent-hga-natcomms-2026",
+      "dedupKey": "10.1038/s41467-026-69522-w",
+      "domain": "litt",
+      "title": "LITT + adjuvant pembrolizumab in recurrent high-grade astrocytoma (randomized Ph1/2b)",
+      "citation": "LITT and adjuvant pembrolizumab in recurrent high-grade astrocytoma. Nat Commun. 2026. NCT02311582 (WashU).",
+      "url": "https://www.nature.com/articles/s41467-026-69522-w",
+      "date": "2026-02-26",
+      "venue": "Nature Communications",
+      "studyDesign": "Phase 1 dose-escalation + randomized Phase 2b (LITT+pembro vs non-LITT surgery+pembro)",
+      "population": "Recurrent high-grade astrocytoma (incl. IDH-wildtype)",
+      "sampleSize": "9 (Ph1) + 39 per-protocol (Ph2b; LITT+PEM 33, control 6)",
+      "endpoints": "Safety/RP2D (Ph1); OS, PFS (Ph2b)",
+      "results": "Median OS 11.8 vs 5.2 mo; 18-mo survival 42% vs 0%; median PFS 4.5 vs 1.6 mo; IDH-wt OS 11.1 vs 4.8 mo; no DLTs",
+      "significance": "Formal p-values UNVERIFIED; very small/imbalanced control arm",
+      "limitations": "Tiny control arm (n=6); single-institution lead-in; not a definitive Phase 3",
+      "evidenceStrength": "Randomized Ph2b, small; promising not definitive",
+      "clinicalBottomLine": "First randomized signal that LITT-mediated BBB disruption can potentiate checkpoint blockade with a meaningful survival difference.",
+      "whyMatters": "Flagship mechanism-of-action asset for LITT; Monteris publicized it.",
+      "indications": [
+        "recurrent_gbm",
+        "recurrent_lgg"
+      ],
+      "strategies": [
+        "litt_immuno_combo",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 10,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "referral",
+        "messaging",
+        "pipeline"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "strengthens — positions LITT as an immunotherapy enabler, not just cytoreduction",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing",
+        "Product",
+        "Exec"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-vs-open-dre-meta-jns-2025",
+      "dedupKey": "thejns.org/view/journals/j-neurosurg/144/1/article-p35.xml",
+      "domain": "epilepsy",
+      "title": "LITT vs open resective surgery for drug-resistant epilepsy — meta-analysis (3,873 patients)",
+      "citation": "Comparative assessment of LITT and open resective surgery for drug-resistant epilepsy: meta-analysis of 3873 patients. J Neurosurg. 2025;144(1):35.",
+      "url": "https://thejns.org/view/journals/j-neurosurg/144/1/article-p35.xml",
+      "date": "2025-01-01",
+      "venue": "Journal of Neurosurgery",
+      "studyDesign": "Systematic review + meta-analysis",
+      "population": "Drug-resistant epilepsy (LITT vs open resection)",
+      "sampleSize": "3,873 patients pooled",
+      "endpoints": "Seizure freedom, complications",
+      "results": "Seizure freedom 52.5% (LITT) vs 67.1% (open resection)",
+      "significance": "Pooled, heterogeneous source studies",
+      "limitations": "Non-randomized inputs; selection bias; efficacy gap favors open surgery",
+      "evidenceStrength": "Large meta-analysis of mostly observational data",
+      "clinicalBottomLine": "LITT trades modestly lower seizure-freedom for a markedly less invasive profile — the central honest trade-off in epilepsy ablation.",
+      "whyMatters": "Double-edged: must be positioned on morbidity/recovery, not seizure-freedom superiority.",
+      "indications": [
+        "mtle",
+        "focal_epilepsy",
+        "hypothalamic_hamartoma"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 8,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "referral",
+        "messaging",
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "neutral — quantifies LITT's lower seizure-freedom vs open surgery; offset by morbidity advantage",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-hgg-meta-neurosurgfocus-2025",
+      "dedupKey": "thejns.org/focus/journals/neurosurg-focus/59/2/article-pE10.xml",
+      "domain": "litt",
+      "title": "LITT for high-grade glioma — systematic review, meta-analysis & meta-regression",
+      "citation": "LITT for high-grade glioma: systematic review, meta-analysis and meta-regression. Neurosurg Focus. 2025;59(2):E10.",
+      "url": "https://thejns.org/focus/view/journals/neurosurg-focus/59/2/article-pE10.xml",
+      "date": "2025-08-01",
+      "venue": "Neurosurgical Focus",
+      "studyDesign": "Systematic review + meta-analysis + meta-regression",
+      "population": "High-grade glioma",
+      "sampleSize": "Pooled study/patient counts UNVERIFIED",
+      "endpoints": "OS, PFS, complications; predictors",
+      "results": "Concludes LITT effective with acceptable safety; pooled estimates UNVERIFIED",
+      "significance": "Heterogeneous, largely non-comparative inputs",
+      "limitations": "Low-tier primary data; calls for randomized validation",
+      "evidenceStrength": "Meta-analysis of observational data",
+      "clinicalBottomLine": "Best current synthesis-level evidence for LITT in HGG, tempered by source quality.",
+      "whyMatters": "Supports utilization messaging for HGG with explicit evidence caveats.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "deep_eloquent_access",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "strengthens — favorable pooled conclusion for LITT in HGG",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-brainmets-imaging-guidelines-neurooncology-2026",
+      "dedupKey": "pubmed.ncbi.nlm.nih.gov/42218818",
+      "domain": "litt",
+      "title": "LITT for brain metastases — imaging guidelines for trials & practice (RANO-BM adapted)",
+      "citation": "LITT for Brain Metastases: Imaging Guidelines for Clinical Trials and Practice. Neuro-Oncology. 2026. PMID 42218818.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42218818/",
+      "date": "2026-01-01",
+      "venue": "Neuro-Oncology",
+      "studyDesign": "Consensus guideline / expert recommendation",
+      "population": "LITT-treated brain metastases",
+      "sampleSize": "n/a (consensus)",
+      "endpoints": "Standardized response/progression criteria",
+      "results": "Dual-baseline RANO-BM-adapted criteria; standardized post-LITT imaging; warns early (<3-4 mo) changes are unreliable",
+      "significance": "Consensus, not outcomes data",
+      "limitations": "Expert opinion; adoption pending",
+      "evidenceStrength": "Consensus guideline",
+      "clinicalBottomLine": "Standardizes how LITT-treated metastases are measured — infrastructure for credible comparative trials.",
+      "whyMatters": "Enables rigorous LITT trials and defensible response assessment.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "imaging_selection",
+        "srs_recurrence_salvage"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "High",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "strengthens — builds trial/response-assessment infrastructure around LITT",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "lasar-beam-litt-vs-surgery-rerad-nct07053033",
+      "dedupKey": "clinicaltrials.gov/study/NCT07053033",
+      "domain": "litt",
+      "title": "LaSAR BeaM — randomized trial: LITT vs surgery + adjuvant reirradiation (recurrent brain mets)",
+      "citation": "LaSAR BeaM. NCT07053033, MD Anderson (2025-0377).",
+      "url": "https://clinicaltrials.gov/study/NCT07053033",
+      "date": "2026-01-01",
+      "venue": "ClinicalTrials.gov",
+      "studyDesign": "Prospective comparative (randomized vs surgery) trial — recruiting",
+      "population": "Previously irradiated recurrent brain metastases",
+      "sampleSize": "Accruing; primary completion est. Dec 2026",
+      "endpoints": "TBD; primary completion 2026",
+      "results": "No data yet (just opened)",
+      "significance": "n/a",
+      "limitations": "No results yet",
+      "evidenceStrength": "Registered RCT, pending",
+      "clinicalBottomLine": "One of very few prospective comparative LITT trials in metastases — key Level-I pipeline item.",
+      "whyMatters": "High strategic value for future comparative-effectiveness positioning.",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "comparative_effectiveness",
+        "srs_recurrence_salvage"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 8,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "strengthens (if positive) — head-to-head vs surgery + reRT",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Exec",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-brainmets-multicenter-tiantan-nct07132203",
+      "dedupKey": "clinicaltrials.gov/study/NCT07132203",
+      "domain": "litt",
+      "title": "Multicenter MR-guided LITT for brain metastases (Beijing Tiantan)",
+      "citation": "Multicenter trial of MR-guided LITT for brain metastases. NCT07132203 (Beijing Tiantan).",
+      "url": "https://clinicaltrials.gov/study/NCT07132203",
+      "date": "2025-06-11",
+      "venue": "ClinicalTrials.gov",
+      "studyDesign": "Multicenter prospective (randomization UNVERIFIED)",
+      "population": "Brain metastases",
+      "sampleSize": "Completed June 2025; results pending",
+      "endpoints": "Safety and efficacy",
+      "results": "Registry status only; no peer-reviewed outcomes yet",
+      "significance": "n/a",
+      "limitations": "No published outcomes located",
+      "evidenceStrength": "Completed multicenter trial, awaiting readout",
+      "clinicalBottomLine": "A completed multicenter metastases LITT trial whose results are pending.",
+      "whyMatters": "Watch for readout — potential to strengthen the metastasis evidence base.",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "neutral — pending readout",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-vs-craniotomy-deepseated-2025",
+      "dedupKey": "pmc.ncbi.nlm.nih.gov/articles/PMC12130115",
+      "domain": "litt",
+      "title": "LITT vs craniotomy — comparative safety/effectiveness for deep-seated lesions (+ cost-effectiveness)",
+      "citation": "LITTability cohort (PMC12130115, 2025) + LITT cost-effectiveness preprint (medRxiv 2025.10.26.25338812).",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12130115/",
+      "date": "2025-01-01",
+      "venue": "PMC / medRxiv (preprint)",
+      "studyDesign": "Real-world applicability cohort + cost-effectiveness review",
+      "population": "Deep-seated intracranial lesions",
+      "sampleSize": "Mixed cohorts (figures partly UNVERIFIED)",
+      "endpoints": "Extent of resection, complications, cost/QALY",
+      "results": "LITT EOR ~85.4% vs craniotomy ~77%; ~10% absolute reduction in major complications; complications minimized at <=15 cm3; incremental survival ~3.07 mo at ~$2,445/mo",
+      "significance": "Non-randomized; cost item is a non-peer-reviewed preprint",
+      "limitations": "Selection bias; preprint cost data",
+      "evidenceStrength": "Observational + preprint",
+      "clinicalBottomLine": "LITT offers a favorable safety profile for difficult-to-access lesions, plausibly cost-favorable.",
+      "whyMatters": "Core minimally-invasive / deep-seated value proposition with access & cost angles.",
+      "indications": [
+        "recurrent_gbm",
+        "other_tumor",
+        "brain_met"
+      ],
+      "strategies": [
+        "deep_eloquent_access",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "reimbursement",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — supports the deep-seated, minimally invasive case vs open surgery",
+      "whoShouldKnow": [
+        "Sales",
+        "Marketing",
+        "Medical Affairs",
+        "Market Access"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-idhwt-recurrent-gbm-scandinavian-2026",
+      "dedupKey": "10.1007/s00701-026-06771-0",
+      "domain": "litt",
+      "title": "LITT for IDH-wildtype recurrent GBM — Scandinavian two-center cohort",
+      "citation": "LITT for IDH-wildtype recurrent GBM: a two-center cohort. Acta Neurochir. 2026.",
+      "url": "https://link.springer.com/article/10.1007/s00701-026-06771-0",
+      "date": "2026-01-01",
+      "venue": "Acta Neurochirurgica",
+      "studyDesign": "Retrospective two-center cohort",
+      "population": "IDH-wildtype recurrent GBM",
+      "sampleSize": "30 consecutive (2019-2024)",
+      "endpoints": "OS/PFS, safety",
+      "results": "Survival figures UNVERIFIED (full text blocked)",
+      "significance": "Small, retrospective, no comparator",
+      "limitations": "Underpowered",
+      "evidenceStrength": "Small retrospective cohort",
+      "clinicalBottomLine": "Adds independent European real-world experience in molecularly defined recurrent GBM.",
+      "whyMatters": "Incremental real-world support for recurrent GBM utilization.",
+      "indications": [
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "deep_eloquent_access"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens (mildly) — independent cohort",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-hybrid-resection-gbm-2025",
+      "dedupKey": "pubmed.ncbi.nlm.nih.gov/40552902",
+      "domain": "litt",
+      "title": "Hybrid open resection + LITT for newly diagnosed & recurrent GBM (staged)",
+      "citation": "Hybrid therapy integrating open resection with LITT for GBM. PMID 40552902 (2025).",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40552902/",
+      "date": "2025-06-01",
+      "venue": "PubMed-indexed case series",
+      "studyDesign": "Illustrative case series",
+      "population": "Newly diagnosed & recurrent GBM, multifocal",
+      "sampleSize": "Very small (n~2 staged)",
+      "endpoints": "Feasibility/safety",
+      "results": "No intraoperative/ablation complications; stable exams; no new deficits",
+      "significance": "Anecdotal",
+      "limitations": "n~2; no survival/comparative data",
+      "evidenceStrength": "Case series (lower tier)",
+      "clinicalBottomLine": "Combining craniotomy and LITT for multifocal GBM is technically feasible.",
+      "whyMatters": "Expands LITT use-cases; far too small to change practice.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "deep_eloquent_access"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens (mildly) — novel hybrid use-case",
+      "whoShouldKnow": [
+        "Product",
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-radiation-necrosis-isrs-recommendations-2025",
+      "dedupKey": "redjournal-isrs-radiation-necrosis-recommendations",
+      "domain": "litt",
+      "title": "Radiation necrosis after SRS — ISRS systematic review & recommendations (LITT vs bevacizumab/surgery)",
+      "citation": "ISRS systematic review & recommendations on symptomatic brain radiation necrosis after SRS. Int J Radiat Oncol Biol Phys.",
+      "url": "https://www.redjournal.org/article/S0360-3016(23)07647-2/fulltext",
+      "date": "2025-01-01",
+      "venue": "Int. J. Radiation Oncology Biology Physics (Red Journal)",
+      "studyDesign": "Systematic review + society recommendations",
+      "population": "Symptomatic radiation necrosis after SRS",
+      "sampleSize": "n/a (review)",
+      "endpoints": "Symptom/radiologic control",
+      "results": "High control with bevacizumab, surgery, or LITT — all from low-level, non-comparative evidence",
+      "significance": "No head-to-head RCTs; base article may predate window (cite 2025 derivative discussion)",
+      "limitations": "No universal RN grading; evidence-limited",
+      "evidenceStrength": "Society recommendation on low-tier evidence",
+      "clinicalBottomLine": "LITT is endorsed as a reasonable RN option, without superiority evidence.",
+      "whyMatters": "Radiation necrosis is one of LITT's clearest differentiated indications.",
+      "indications": [
+        "radiation_necrosis",
+        "brain_met"
+      ],
+      "strategies": [
+        "radiation_necrosis_salvage"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — society-level positioning for RN, evidence-limited",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "slah-learning-curve-failures-epilepsia-2025",
+      "dedupKey": "10.1111/epi.18188",
+      "domain": "epilepsy",
+      "title": "SLAH single-center learning curve & framework to manage failures",
+      "citation": "Raghu et al. A single-center learning curve for stereotactic laser amygdalohippocampotomy and a surgical framework to manage failures. Epilepsia. 2025. PMID 39704262.",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/epi.18188",
+      "date": "2025-01-01",
+      "venue": "Epilepsia",
+      "studyDesign": "Single-center retrospective + framework",
+      "population": "MTLE undergoing SLAH (and failure salvage)",
+      "sampleSize": "Single-center series",
+      "endpoints": "Seizure freedom, salvage outcomes",
+      "results": "After failed SLAH: 46% seizure-free with repeat SLAH, 63% with ATL at 1 yr",
+      "significance": "Single-center, retrospective",
+      "limitations": "Learning-curve & selection effects",
+      "evidenceStrength": "Single-center cohort",
+      "clinicalBottomLine": "Operator experience and a structured failure pathway materially affect SLAH outcomes.",
+      "whyMatters": "Training/technique is a lever on LITT epilepsy outcomes — actionable for proctoring & messaging.",
+      "indications": [
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — links training to outcomes; supports proctoring programs",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Training"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "slah-vs-hsatl-neuropsych-epilepsia-2025",
+      "dedupKey": "10.1111/epi.18388",
+      "domain": "epilepsy",
+      "title": "Neuropsychological outcomes: hippocampus-sparing ATL vs SLAH in dominant-hemisphere TLE",
+      "citation": "George et al. Neuropsychological outcomes of hippocampus-sparing anterior temporal lobectomy vs stereotactic laser amygdalohippocampectomy in language-dominant TLE. Epilepsia. 2025. PMID 40183790.",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/epi.18388",
+      "date": "2025-01-01",
+      "venue": "Epilepsia",
+      "studyDesign": "Comparative cohort (neuropsychological)",
+      "population": "Language-dominant temporal lobe epilepsy",
+      "sampleSize": "Comparative cohort",
+      "endpoints": "Seizure & neuropsychological outcomes",
+      "results": "SLAH comparable seizure outcomes to HSATL; superior verbal memory retention; fewer neuropsych sequelae than standard ATL",
+      "significance": "Non-randomized",
+      "limitations": "Selection bias; single-center",
+      "evidenceStrength": "Comparative cohort",
+      "clinicalBottomLine": "SLAH preserves cognition (verbal memory) better than open resection at comparable seizure control in dominant-hemisphere TLE.",
+      "whyMatters": "Cognitive sparing is a primary LITT selling point in dominant-hemisphere MTLE referrals.",
+      "indications": [
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — cognitive-preservation advantage vs open resection",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-pediatric-mtle-2025",
+      "dedupKey": "pubmed.ncbi.nlm.nih.gov/39887192",
+      "domain": "epilepsy",
+      "title": "LITT for mesial temporal lobe epilepsy in children",
+      "citation": "LITT for the treatment of mesial temporal lobe epilepsy in children. 2025. PMID 39887192.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39887192/",
+      "date": "2025-01-01",
+      "venue": "PubMed-indexed (pediatric)",
+      "studyDesign": "Retrospective cohort",
+      "population": "Pediatric MTLE",
+      "sampleSize": "Pediatric cohort",
+      "endpoints": "Seizure-free outcome",
+      "results": "Safe/effective; more favorable seizure-freedom with hippocampal atrophy than nonlesional MTLE",
+      "significance": "Retrospective",
+      "limitations": "Single-cohort; selection",
+      "evidenceStrength": "Pediatric retrospective cohort",
+      "clinicalBottomLine": "LITT is effective in pediatric MTLE, with imaging (hippocampal atrophy) predicting better outcomes.",
+      "whyMatters": "Extends LITT into pediatric MTLE and supports imaging-based selection.",
+      "indications": [
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "referral"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — pediatric MTLE evidence + selection criteria",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-pediatric-dre-ipd-meta-aan-2024",
+      "dedupKey": "10.1212/WNL.0000000000208266",
+      "domain": "epilepsy",
+      "title": "MRI-guided laser ablation for pediatric drug-resistant epilepsy — systematic review & IPD meta-analysis",
+      "citation": "MRI-guided laser ablation therapy for pediatric drug-resistant epilepsy: systematic review and IPD meta-analysis. Neurology (AAN 2024) P3-8.006.",
+      "url": "https://www.neurology.org/doi/10.1212/WNL.0000000000208266",
+      "date": "2024-04-01",
+      "venue": "Neurology (AAN abstract)",
+      "studyDesign": "Systematic review + individual-participant-data meta-analysis",
+      "population": "Pediatric drug-resistant epilepsy",
+      "sampleSize": "Pooled IPD",
+      "endpoints": "Seizure freedom",
+      "results": "Supports MRgLITT as a minimally invasive alternative to open resection in pediatric DRE",
+      "significance": "Abstract-level; observational inputs",
+      "limitations": "Conference abstract; heterogeneity",
+      "evidenceStrength": "IPD meta-analysis (abstract)",
+      "clinicalBottomLine": "Pooled pediatric data support LITT as a minimally invasive option across DRE etiologies.",
+      "whyMatters": "Broadens pediatric epilepsy evidence across focal/HH/MTLE.",
+      "indications": [
+        "focal_epilepsy",
+        "mtle",
+        "hypothalamic_hamartoma"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "referral"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — pediatric pooled evidence",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-adult-epilepsy-singlecenter-actaneurochir-2025",
+      "dedupKey": "10.1007/s00701-025-06429-3",
+      "domain": "epilepsy",
+      "title": "MRI-guided LITT in epilepsy — indications, technique, outcome (adult single-center)",
+      "citation": "MRI-guided LITT in epilepsy: indications, technique and outcome in an adult population. Acta Neurochir. 2025.",
+      "url": "https://link.springer.com/article/10.1007/s00701-025-06429-3",
+      "date": "2025-01-01",
+      "venue": "Acta Neurochirurgica",
+      "studyDesign": "Single-center retrospective",
+      "population": "Adult drug-resistant epilepsy (mixed etiologies incl. HH, FCD)",
+      "sampleSize": "28 patients (incl. 7 hypothalamic hamartoma)",
+      "endpoints": "Seizure outcome, complications",
+      "results": "Supports LITT efficacy in well-localized lesions; QoL gains in seizure worry & social functioning",
+      "significance": "Single-center, retrospective",
+      "limitations": "Small; mixed pathology",
+      "evidenceStrength": "Single-center cohort",
+      "clinicalBottomLine": "Real-world adult epilepsy series reinforcing LITT for well-localized targets incl. hypothalamic hamartoma.",
+      "whyMatters": "Adds HH and focal coverage with QoL signal.",
+      "indications": [
+        "mtle",
+        "focal_epilepsy",
+        "hypothalamic_hamartoma"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens (mildly) — real-world adult series",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-pediatric-reoperation-failed-ablation-jnspeds-2025",
+      "dedupKey": "thejns.org/pediatrics/journals/j-neurosurg-pediatr/35/4/article-p369.xml",
+      "domain": "epilepsy",
+      "title": "Reoperation after failed laser ablation for epilepsy in pediatric patients (multicenter)",
+      "citation": "Outcomes of reoperation following failed laser ablation surgery for epilepsy in pediatric patients. J Neurosurg Pediatr. 2025;35(4):369.",
+      "url": "https://thejns.org/pediatrics/view/journals/j-neurosurg-pediatr/35/4/article-p369.xml",
+      "date": "2025-04-01",
+      "venue": "Journal of Neurosurgery: Pediatrics",
+      "studyDesign": "Multicenter retrospective",
+      "population": "Pediatric epilepsy after failed LITT",
+      "sampleSize": "Subset of 10 undergoing second LITT",
+      "endpoints": "Seizure freedom after reoperation",
+      "results": "5/10 seizure-free after a second LITT",
+      "significance": "Small subset; retrospective",
+      "limitations": "Small numbers",
+      "evidenceStrength": "Multicenter retrospective",
+      "clinicalBottomLine": "Repeat LITT can salvage seizure control after an initial failure.",
+      "whyMatters": "Supports durability/repeatability of laser ablation — addresses a common physician objection.",
+      "indications": [
+        "focal_epilepsy",
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — repeatability counters durability objections",
+      "whoShouldKnow": [
+        "Sales",
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "vorasidenib-indigo-fda-2024",
+      "dedupKey": "fda-vorasidenib-voranigo-2024",
+      "domain": "neuro-oncology",
+      "title": "Vorasidenib (Voranigo) FDA approval for IDH-mutant grade 2 glioma (INDIGO)",
+      "citation": "FDA approval of vorasidenib; INDIGO phase 3 (Mellinghoff et al., NEJM 2023); FDA Approval Summary, Clin Cancer Res. 2025;31(21):4412.",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-vorasidenib-grade-2-astrocytoma-or-oligodendroglioma-susceptible-idh1-or-idh2-mutation",
+      "date": "2024-08-06",
+      "venue": "FDA / NEJM / Clin Cancer Res",
+      "studyDesign": "Phase 3 RCT (INDIGO) + regulatory approval",
+      "population": "Residual/recurrent grade 2 IDH-mutant glioma post-surgery",
+      "sampleSize": "331",
+      "endpoints": "PFS (primary), time to next intervention",
+      "results": "PFS 27.7 vs 11.1 mo; HR 0.39 (95% CI 0.27-0.56; p<0.001); TTNI HR ~0.26. ASCO 2026 extended follow-up: median PFS now 44.1 mo; only 23.8% required next intervention; cognition/QoL stable.",
+      "significance": "Highly significant (p<0.001)",
+      "limitations": "Grade 2 only; surrogate endpoints; OS immature",
+      "evidenceStrength": "Level I (RCT) + FDA approval",
+      "clinicalBottomLine": "An oral targeted therapy that defers radiation/chemo in low-grade IDH-mutant glioma — practice-changing.",
+      "whyMatters": "Shifts grade 2 IDH-mutant management toward drug-first, but raises the value of early molecular tissue (biopsy ± LITT cytoreduction).",
+      "indications": [
+        "newly_lgg",
+        "recurrent_lgg"
+      ],
+      "strategies": [
+        "molecular_selection",
+        "diagnose_and_ablate"
+      ],
+      "clinicalImpactScore": 5,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "referral",
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "weakens (mildly) — drug-first sequencing can defer ablation in grade 2 IDH-mutant glioma",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "updated",
+      "changeNote": "ASCO 2026-05-31 extended follow-up (+21.3 mo data): median PFS deepened to 44.1 mo, TTNI not reached — durable benefit confirmed (figures partial, secondary-source)."
+    },
+    {
+      "id": "metis-ttfields-after-srs-nsclc-2025",
+      "dedupKey": "10.1016/redjournal-metis-2025",
+      "domain": "adjacent",
+      "title": "METIS phase 3 — TTFields after SRS for NSCLC brain metastases",
+      "citation": "METIS trial (Novocure), final results; ASTRO 2025; Int J Radiat Oncol Biol Phys.",
+      "url": "https://www.redjournal.org/article/S0360-3016(25)06217-0/fulltext",
+      "date": "2025-09-29",
+      "venue": "Int. J. Radiation Oncology Biology Physics (Red Journal)",
+      "studyDesign": "Phase 3 randomized",
+      "population": "1-10 newly diagnosed NSCLC brain metastases post-SRS",
+      "sampleSize": "298",
+      "endpoints": "Time to intracranial progression",
+      "results": "Met primary endpoint; intracranial progression 46.9% vs 59.4% (12 mo), 53.6% vs 65.2% (24 mo); no neurocognitive/QoL decline",
+      "significance": "Met primary endpoint (not OS)",
+      "limitations": "Composite endpoint; device adherence; NSCLC-specific",
+      "evidenceStrength": "Level I (RCT)",
+      "clinicalBottomLine": "TTFields is now an evidence-backed non-invasive maintenance adjunct after SRS for NSCLC brain mets.",
+      "whyMatters": "Competes for the same post-SRS patients LITT might otherwise see; positions LITT later (salvage).",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "referral"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "weakens — strengthens a non-invasive post-SRS pathway competing with LITT",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "srs-expanding-indications-natrevclinonc-2025",
+      "dedupKey": "10.1038/s41571-025-01013-1",
+      "domain": "adjacent",
+      "title": "SRS for brain metastases — expanding indications (authoritative synthesis)",
+      "citation": "Mansouri, Ozair, Bhanja, et al. Nat Rev Clin Oncol. 2025;22(5):327-347.",
+      "url": "https://www.nature.com/articles/s41571-025-01013-1",
+      "date": "2025-05-01",
+      "venue": "Nature Reviews Clinical Oncology",
+      "studyDesign": "Expert review / practice-recommendation",
+      "population": "Brain metastases",
+      "sampleSize": "n/a (review)",
+      "endpoints": "n/a",
+      "results": "Endorses fractionated & preoperative SRS to reduce radiation necrosis & LMD; supports SRS in polymetastatic disease and with checkpoint/targeted therapy",
+      "significance": "Narrative review; partly ahead of level-1 evidence",
+      "limitations": "Expert opinion",
+      "evidenceStrength": "Authoritative review",
+      "clinicalBottomLine": "SRS indications are broadening, with explicit strategies to reduce radiation necrosis.",
+      "whyMatters": "Lower-necrosis SRS and broader SRS use erode two LITT strongholds (RN and deep/small lesions).",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "weakens — fewer lesions fall through to surgery/LITT; lower-necrosis SRS narrows the RN niche",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Exec",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "preop-vs-postop-srs-nrg-bn012-2025",
+      "dedupKey": "clinicaltrials.gov/study/NCT04474925",
+      "domain": "adjacent",
+      "title": "Preoperative vs postoperative SRS — NRG-BN012 (accruing) + phase 1 data",
+      "citation": "NRG-BN012 (phase 3, accruing); supporting phase 1, Adv Radiat Oncol. 2025.",
+      "url": "https://clinicaltrials.gov/study/NCT04474925",
+      "date": "2025-01-01",
+      "venue": "ClinicalTrials.gov / Advances in Radiation Oncology",
+      "studyDesign": "Phase 3 RCT (accruing) + phase 1",
+      "population": "Resectable brain metastases",
+      "sampleSize": "Phase 3 accruing",
+      "endpoints": "Radiation necrosis, leptomeningeal disease",
+      "results": "Phase 1: preop SRS reduced nodular LMD (7.4% vs 27.1%, p=0.002)",
+      "significance": "Phase 1 small; phase 3 pending",
+      "limitations": "Status change, not readout",
+      "evidenceStrength": "RCT in progress",
+      "clinicalBottomLine": "Preoperative SRS is gaining traction as a lower-toxicity sequencing strategy.",
+      "whyMatters": "If preop SRS lowers radiation necrosis, it erodes a downstream LITT indication — trial to watch.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "weakens (potential) — could reduce future radiation-necrosis volume",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Exec"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "pet-brainmets-guideline-eanm-eano-rano-snmmi-2025",
+      "dedupKey": "pmc.ncbi.nlm.nih.gov/articles/PMC11928372",
+      "domain": "adjacent",
+      "title": "Joint EANM/EANO/RANO/SNMMI PET imaging of brain metastases — practice guideline v1.0",
+      "citation": "Joint EANM/EANO/RANO/SNMMI practice guideline. Eur J Nucl Med Mol Imaging. 2025.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11928372/",
+      "date": "2025-01-07",
+      "venue": "Eur. J. Nuclear Medicine and Molecular Imaging",
+      "studyDesign": "Joint practice guideline",
+      "population": "Brain metastases (recurrence vs treatment effect)",
+      "sampleSize": "n/a",
+      "endpoints": "Standardized PET acquisition/interpretation",
+      "results": "Positions amino-acid/FDG PET to resolve recurrence-vs-radiation-necrosis where MRI cannot",
+      "significance": "Consensus, not outcomes data",
+      "limitations": "Tracer availability varies",
+      "evidenceStrength": "Multi-society guideline",
+      "clinicalBottomLine": "PET is now formally positioned to adjudicate post-radiation ambiguity in brain mets.",
+      "whyMatters": "Double-edged: better non-invasive discrimination may reduce diagnostic LITT, but sharpens selection of true recurrence where LITT fits.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "High",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "neutral — changes imaging-driven selection in both directions",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "icv-bivalent-cart-recurrent-gbm-natmed-2025",
+      "dedupKey": "10.1038/s41591-025-03745-0",
+      "domain": "adjacent",
+      "title": "Intracerebroventricular bivalent (EGFR + IL-13Rα2) CAR-T in recurrent GBM — phase 1",
+      "citation": "O'Rourke lab (Penn). Nat Med. 2025; presented ASCO 2025.",
+      "url": "https://www.nature.com/articles/s41591-025-03745-0",
+      "date": "2025-06-01",
+      "venue": "Nature Medicine",
+      "studyDesign": "Phase 1",
+      "population": "Recurrent GBM",
+      "sampleSize": "~18 (indexed)",
+      "endpoints": "Safety; tumor growth",
+      "results": "Tumor growth slowed in ~62%; acceptable intraventricular safety (numbers approximate, full text blocked)",
+      "significance": "Phase 1, small, short follow-up; responses transient",
+      "limitations": "No survival endpoint",
+      "evidenceStrength": "Phase 1 (early)",
+      "clinicalBottomLine": "Promising but early; not yet practice-changing.",
+      "whyMatters": "Future systemic competitor / potential combination partner for the recurrent-GBM space LITT serves.",
+      "indications": [
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "weakens (long-horizon) — maturing recurrent-GBM systemic pipeline; possible future combo",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "ttfields-tmz-pembro-gbm-2thetop-2025",
+      "dedupKey": "cancernetwork-2thetop-keynote-d58",
+      "domain": "adjacent",
+      "title": "TTFields + temozolomide + pembrolizumab in newly diagnosed GBM (2-THE-TOP; EF-41/KEYNOTE-D58 phase 3)",
+      "citation": "2-THE-TOP phase 2; EF-41/KEYNOTE-D58 phase 3 (ongoing).",
+      "url": "https://www.cancernetwork.com/view/ttfields-plus-temozolomide-pembrolizumab-controls-tumors-in-glioblastoma",
+      "date": "2025-01-01",
+      "venue": "Conference coverage / phase 3 ongoing",
+      "studyDesign": "Phase 2 (single-arm/historical) + ongoing phase 3",
+      "population": "Newly diagnosed GBM",
+      "sampleSize": "Phase 2 small",
+      "endpoints": "PFS, OS",
+      "results": "Phase 2: mPFS 12 vs 5.8 mo; mOS 24.8 vs 14.6 mo (historical comparator — interpret cautiously)",
+      "significance": "Non-randomized comparator; awaiting phase 3",
+      "limitations": "Small, non-randomized",
+      "evidenceStrength": "Phase 2 signal",
+      "clinicalBottomLine": "Reinforces TTFields as the entrenched non-invasive adjunct in upfront GBM.",
+      "whyMatters": "TTFields increasingly owns the device-adjunct narrative in newly diagnosed GBM.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "weakens (share-of-voice) — competing non-invasive adjunct in upfront GBM",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "visualase-v2-fda-clearance-2025",
+      "dedupKey": "news.medtronic.com/visualase-v2-510k-2025",
+      "domain": "regulatory",
+      "title": "Medtronic Visualase V2 MRI-guided laser ablation system — FDA 510(k) clearance",
+      "citation": "Medtronic press release; corroborated by MassDevice, MD+DI.",
+      "url": "https://news.medtronic.com/Medtronic-receives-FDA-510-k-clearance-for-Visualase-TM-V2-MRI-Guided-Laser-Ablation-System",
+      "date": "2025-06-04",
+      "venue": "FDA 510(k) / Medtronic",
+      "studyDesign": "Regulatory clearance",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "Next-gen LITT platform: redesigned software, capital upgrades; emphasizes submillimetric resolution + automated phase-drift correction (thermometry). Same indications (epilepsy, tumors, RN).",
+      "significance": "Regulatory/marketing claim, not clinical outcome",
+      "limitations": "No new clinical data",
+      "evidenceStrength": "Clearance (corroborated)",
+      "clinicalBottomLine": "The primary LITT competitor refreshed its platform with a thermometry-accuracy differentiation story.",
+      "whyMatters": "Resets Medtronic's selling cycle; raises the thermometry/automation bar NeuroBlate must answer.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 9,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "weakens — direct #1 competitor platform refresh",
+      "whoShouldKnow": [
+        "Exec",
+        "Product",
+        "Sales",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "clearpoint-prism-1.5t-fda-clearance-2025",
+      "dedupKey": "ir.clearpointneuro.com/prism-1.5t-2025",
+      "domain": "regulatory",
+      "title": "ClearPoint Prism Neuro Laser Therapy System — 1.5T MRI compatibility (FDA 510(k))",
+      "citation": "ClearPoint Neuro / CLS press release; corroborated by StockTitan, Cision.",
+      "url": "https://ir.clearpointneuro.com/news-events/press-releases/detail/1135/clearpoint-neuro-announces-fda-clearance-expanding",
+      "date": "2025-09-04",
+      "venue": "FDA 510(k) / ClearPoint Neuro",
+      "studyDesign": "Regulatory clearance (label expansion)",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "Prism (1064nm) cleared for 1.5T MRI guidance (previously 3.0T-only); company cites ~60% US / >70% global 1.5T installed base — roughly doubling addressable market",
+      "significance": "Regulatory claim",
+      "limitations": "Adoption pending",
+      "evidenceStrength": "Clearance (corroborated)",
+      "clinicalBottomLine": "A third LITT entrant just unlocked the majority of MRI suites it was previously boxed out of.",
+      "whyMatters": "Makes Prism a credible NeuroBlate alternative at any 1.5T site — meaningfully expands competition.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 8,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "weakens — doubles a competitor's addressable installed base",
+      "whoShouldKnow": [
+        "Exec",
+        "Product",
+        "Sales",
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "monteris-series-e-2026",
+      "dedupKey": "prnewswire-monteris-series-e-28m",
+      "domain": "regulatory",
+      "title": "Monteris Medical — $28M Series E growth equity",
+      "citation": "Monteris Medical press release; corroborated by PitchBook.",
+      "url": "https://www.prnewswire.com/news-releases/monteris-medical-secures-28-million-in-growth-equity-to-accelerate-revenue-and-innovation-in-minimally-invasive-neurosurgery-302711794.html",
+      "date": "2026-03-01",
+      "venue": "Monteris Medical (PR)",
+      "studyDesign": "Corporate financing",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "$28M Series E (InnovaHealth, Birchview; new: OSF Ventures, CU Healthcare Innovation Fund) to accelerate revenue & innovation. Not an acquisition.",
+      "significance": "Exact date UNVERIFIED (proxy blocked)",
+      "limitations": "Date approximate",
+      "evidenceStrength": "Corroborated PR",
+      "clinicalBottomLine": "Monteris raised growth capital to scale NeuroBlate revenue and innovation.",
+      "whyMatters": "Own-company capital context against scaled rivals.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "mtle"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "Low",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — internal capital to fund roadmap",
+      "whoShouldKnow": [
+        "Exec",
+        "Product"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "medtronic-stealth-axis-cranial-2026",
+      "dedupKey": "news.medtronic.com/stealth-axis-cranial-ent-2026",
+      "domain": "regulatory",
+      "title": "Medtronic Stealth AXiS — FDA clearance for cranial & ENT (robotics + navigation)",
+      "citation": "Medtronic press release; corroborated by Medical Device Network, MassDevice.",
+      "url": "https://news.medtronic.com/2026-03-27-Medtronic-Receives-FDA-Clearance-for-Stealth-AXiS-TM-Surgical-System-for-Cranial-and-ENT-Procedures",
+      "date": "2026-03-27",
+      "venue": "FDA 510(k) / Medtronic",
+      "studyDesign": "Regulatory clearance (indication expansion)",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "Integrated planning + navigation + robotics cleared for cranial/ENT (built on Mazor + StealthStation) EU CE Mark obtained 2026-04-28 (spine + cranial).",
+      "significance": "Regulatory",
+      "limitations": "No clinical outcomes",
+      "evidenceStrength": "Clearance (corroborated)",
+      "clinicalBottomLine": "Medtronic can now offer a bundled robot + navigation + LITT cranial suite from a single vendor.",
+      "whyMatters": "Ecosystem bundling Monteris (single-product specialist) cannot match alone.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "robotics_workflow"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "Moderate",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "weakens — enables bundled cranial robotics+LITT offering",
+      "whoShouldKnow": [
+        "Exec",
+        "Product",
+        "Sales"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "updated",
+      "changeNote": "In-window CE Mark (EU), 2026-04-28: Stealth AXiS authorized for spine + cranial in Europe — geographic expansion of the navigation+robotics platform, distinct from the 2026-03-27 US cranial/ENT clearance. Verified via Medtronic newsroom URL slug + MassDevice / Ortho Spine News."
+    },
+    {
+      "id": "clearpoint-cranial-ecosystem-2025-2026",
+      "dedupKey": "clearpoint-cranial-ecosystem-drill-nav-robot",
+      "domain": "regulatory",
+      "title": "ClearPoint cranial ecosystem buildout — MR drill, Navigation v3.0, robotic prototype",
+      "citation": "ClearPoint Neuro press releases (Velocity Alpha drill 510(k); Navigation Software v3.0; robotic neuro-navigation prototype, CNS 2025).",
+      "url": "https://www.stocktitan.net/news/CLPT/clear-point-neuro-announces-fda-clearance-of-the-velocity-alpha-r-mr-gav9jd3q3h58.html",
+      "date": "2026-04-22",
+      "venue": "FDA 510(k) / ClearPoint Neuro",
+      "studyDesign": "Regulatory clearances + prototype",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "Velocity Alpha MR high-speed drill cleared (Apr 2026); Navigation Software v3.0 (cleared late 2024, full release 2H 2025); KUKA-based robotic neuro-navigation prototype shown Oct 2025 (not yet FDA-submitted)",
+      "significance": "Mix of cleared + prototype",
+      "limitations": "Robotics not yet submitted",
+      "evidenceStrength": "Clearances (corroborated) + prototype",
+      "clinicalBottomLine": "ClearPoint is assembling an all-in-one cranial procedural ecosystem around its Prism LITT system.",
+      "whyMatters": "Medium-term competitive threat — a LITT rival adding drill, navigation, and (future) robotics.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "robotics_workflow"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "Moderate",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "weakens — deepens a LITT competitor's cranial ecosystem",
+      "whoShouldKnow": [
+        "Exec",
+        "Product",
+        "Sales"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "neuroquant-brain-tumor-ai-2025",
+      "dedupKey": "prnewswire-cortechs-neuroquant-brain-tumor-2025",
+      "domain": "regulatory",
+      "title": "Cortechs.ai NeuroQuant Brain Tumor — FDA-cleared AI segmentation expanded to mets & meningiomas",
+      "citation": "Cortechs.ai press release; Applied Radiology coverage.",
+      "url": "https://www.prnewswire.com/news-releases/cortechsai-announce-next-gen-neuroquant-brain-tumor-ai-driven-metastasis--meningioma-segmentation-302516471.html",
+      "date": "2025-07-30",
+      "venue": "FDA-cleared software / Cortechs.ai",
+      "studyDesign": "Commercial clearance (expansion)",
+      "population": "Brain tumors (gliomas, mets, meningiomas)",
+      "sampleSize": "Vendor-reported",
+      "endpoints": "Automated volumetric segmentation",
+      "results": "Adds automated volumetrics for brain metastases and meningiomas; imports into RT/neurosurgical planning",
+      "significance": "Vendor data; outcome benefit unproven",
+      "limitations": "Reader-assist, not autonomous; no RCT",
+      "evidenceStrength": "Cleared software",
+      "clinicalBottomLine": "Volumetric AI longitudinal tracking is becoming routine across tumor types.",
+      "whyMatters": "Better selection + objective post-LITT response surveillance; favors earlier, smaller-lesion intervention.",
+      "indications": [
+        "brain_met",
+        "meningioma",
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "High",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "neutral-to-strengthens — aids candidate ID and post-ablation surveillance",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "litt-reimbursement-landscape-2025",
+      "dedupKey": "litt-reimbursement-cpt-61736-61737",
+      "domain": "regulatory",
+      "title": "LITT reimbursement landscape — commercial policies evolving; no national coverage decision",
+      "citation": "Multiple payer policies (Premera, Cigna, Blue Cross NC, etc.); CPT 61736/61737; Medtronic 2025 coding guide.",
+      "url": "https://www.bluecrossnc.com/providers/policies-guidelines-codes/commercial/surgery/updates/mri-guided-laser-interstitial-thermal-therapy-for-neurological-indications",
+      "date": "2025-01-01",
+      "venue": "Commercial payer policies / CMS coding",
+      "studyDesign": "Coverage landscape review",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "No national NCD and generally no Medicare LCD specific to LITT. Commercial coverage increasingly favorable for epilepsy and tumors/RN, but some payers still label certain neurological LITT indications investigational. CPT 61736/61737 remain the intracranial codes.",
+      "significance": "Landscape, not a single decision",
+      "limitations": "Fragmented; some 'investigational' labels persist",
+      "evidenceStrength": "Policy synthesis",
+      "clinicalBottomLine": "Coverage fragmentation and absence of national clarity remain a category-wide access barrier.",
+      "whyMatters": "Shared headwind affecting all LITT vendors; AAN/AES guidelines do not yet address LITT.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "mtle",
+        "focal_epilepsy",
+        "hypothalamic_hamartoma"
+      ],
+      "strategies": [
+        "reimbursement_access"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "reimbursement",
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "neutral — category-wide access barrier, not LITT-vendor-specific",
+      "whoShouldKnow": [
+        "Market Access",
+        "Medical Affairs",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "robotic-imri-biopsy-litt-workflow-2025",
+      "dedupKey": "10.1007/s00701-025-06705-2",
+      "domain": "litt",
+      "title": "Sequential robot-assisted stereotactic biopsy + LITT workflow (technique)",
+      "citation": "How I do it: sequential robot-assisted stereotactic biopsy and LITT. Acta Neurochir. 2025.",
+      "url": "https://link.springer.com/article/10.1007/s00701-025-06705-2",
+      "date": "2025-01-01",
+      "venue": "Acta Neurochirurgica",
+      "studyDesign": "Technical note / operative technique",
+      "population": "Intracranial lesions (same-session biopsy + ablate)",
+      "sampleSize": "n/a (technique)",
+      "endpoints": "Thermometry accuracy preservation",
+      "results": "Limiting to two biopsy specimens reduces air/hemorrhage that degrade MR thermometry, preserving ablation accuracy",
+      "significance": "Technical note, not comparative outcomes",
+      "limitations": "Lower-tier; no outcomes",
+      "evidenceStrength": "Technical note",
+      "clinicalBottomLine": "Same-session robotic biopsy + LITT is operationally maturing.",
+      "whyMatters": "Supports the 'diagnose-and-ablate' value proposition and robotics/iMRI integration.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "other_tumor"
+      ],
+      "strategies": [
+        "diagnose_and_ablate",
+        "robotics_workflow"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "strengthens — reinforces diagnose-and-ablate + robotics integration",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-26",
+      "lastUpdatedRun": "2026-06-26",
+      "status": "carried",
+      "changeNote": ""
+    },
+    {
+      "id": "neo-tactics-neoadjuvant-fsrt-resection-brainmets-asco-2026",
+      "dedupKey": "10.1200/jco.2026.44.16_suppl.2003",
+      "domain": "adjacent",
+      "title": "NEO-TACTICS phase 2 — neoadjuvant fractionated SRT then resection for brain metastases",
+      "citation": "Mitsuya K, et al. NEO-TACTICS: neoadjuvant fractionated stereotactic radiotherapy followed by resection for brain metastases (multicenter single-arm phase II). J Clin Oncol 44, 2026 (suppl 16), abstr 2003; ASCO 2026.",
+      "url": "https://ascopubs.org/doi/10.1200/JCO.2026.44.16_suppl.2003",
+      "date": "2026-05-30",
+      "venue": "ASCO 2026 Annual Meeting (oral, abstr 2003)",
+      "studyDesign": "Multicenter (14 centers) single-arm phase II",
+      "population": "Resectable brain metastasis 2-5 cm (one index lesion +/- <=3 non-index <2 cm)",
+      "sampleSize": "55 evaluable",
+      "endpoints": "Local recurrence; intracranial PFS; leptomeningeal dissemination; radiation necrosis; cognition",
+      "results": "Local recurrence 4.3% (6 mo), 16.4% (12 mo); intracranial PFS 72.5% (6 mo), 64.4% (12 mo); zero leptomeningeal dissemination; low radiation-necrosis rate; favorable cognitive preservation.",
+      "significance": "Single-arm, no randomized comparator; hypothesis-supporting",
+      "limitations": "Single-arm phase II, N=55, no control; requires phase 3 confirmation",
+      "evidenceStrength": "Single-arm phase II",
+      "clinicalBottomLine": "Pre-op fractionated SRS before resection gave excellent local control with essentially no leptomeningeal spread and low necrosis — reinforcing preoperative SRS for resectable mets.",
+      "whyMatters": "Consolidates the surgery+SRS paradigm and, by minimizing radiation necrosis, may shrink a downstream LITT (RN ablation) indication.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "weakens (mildly) — advances preop-SRS, lowering future radiation-necrosis volume",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Exec"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "neovax-neoantigen-vaccine-pembro-gbm-asco-2026",
+      "dedupKey": "10.1200/jco.2026.44.16_suppl.2006",
+      "domain": "neuro-oncology",
+      "title": "NeoVax personalized neoantigen vaccine + pembrolizumab in newly diagnosed GBM (phase 1)",
+      "citation": "Reardon DA, Wu CJ, et al. A personalized neoantigen vaccine to reprogram the immune landscape of glioblastoma (NeoVax + pembrolizumab). J Clin Oncol 44, 2026 (suppl 16), abstr 2006; ASCO 2026 (Dana-Farber).",
+      "url": "https://ascopubs.org/doi/10.1200/JCO.2026.44.16_suppl.2006",
+      "date": "2026-05-30",
+      "venue": "ASCO 2026 Annual Meeting (CNS oral, abstr 2006)",
+      "studyDesign": "Single-arm phase 1 (4 cohorts by MGMT status and pembrolizumab timing) vs propensity-matched historical controls",
+      "population": "Newly diagnosed glioblastoma; dexamethasone avoided",
+      "sampleSize": "39 enrolled, 37 initiated regimen",
+      "endpoints": "Feasibility/safety; immunogenicity (neoantigen-specific T-cell response, intratumoral trafficking); exploratory OS vs matched controls",
+      "results": "Neoantigen-specific T cells with intracranial trafficking, persisting >1 yr in some; median OS 36.9 mo (MGMT-methylated) and 19.0 mo (unmethylated) vs matched historical 25.3 and 16.7 mo; pembrolizumab before vaccine priming linked to longer OS.",
+      "significance": "Encouraging but hypothesis-generating; not randomized",
+      "limitations": "Phase 1, N=39, historical/propensity controls, small MGMT subgroups, selection bias (fit, dex-avoidant patients)",
+      "evidenceStrength": "Phase 1 (early)",
+      "clinicalBottomLine": "Personalized neoantigen vaccine + pembrolizumab is feasible, immunogenic, and shows a provocative survival signal in newly diagnosed GBM — promising but not practice-changing without randomized confirmation.",
+      "whyMatters": "Immunotherapy momentum in GBM; LITT-induced transient BBB disruption is being explored to enhance such therapies — a potential future synergy rather than a competitor.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "neutral — systemic GBM immunotherapy; possible future LITT combination partner",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "clearpoint-q1-2026-earnings",
+      "dedupKey": "clearpoint-neuro-q1-2026-results-2026-05-13",
+      "domain": "regulatory",
+      "title": "ClearPoint Neuro Q1 2026 financial results",
+      "citation": "ClearPoint Neuro, Inc. First Quarter 2026 Results. Press release / Form 8-K (Exhibit 99.1), 13 May 2026.",
+      "url": "https://www.stocktitan.net/news/CLPT/clear-point-neuro-reports-first-quarter-2026-ikpfdd0o41q8.html",
+      "date": "2026-05-13",
+      "venue": "ClearPoint Neuro (PR / SEC 8-K)",
+      "studyDesign": "Quarterly earnings",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "Revenue $12.1M (+43% reported; ~16% organic; 25% organic device growth) incl. $2.3M IRRAflow; gross margin 64%; cash $35.6M; >175 active global centers; operating loss ~$8.5M, net loss ~$9.6M; FY2026 guidance reaffirmed $52-56M; >60 biopharma partners.",
+      "significance": "Corporate financial disclosure, not clinical",
+      "limitations": "No new LITT-specific clearance/coverage this quarter; primary pages 403-blocked, corroborated across aggregators + SEC EDGAR",
+      "evidenceStrength": "Corroborated PR / SEC filing",
+      "clinicalBottomLine": "n/a (financial).",
+      "whyMatters": "Confirms a well-capitalized, growing direct competitor (Prism LITT sits in this ecosystem); widening losses are not materially competitive.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "Low",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "neutral — competitor financial signal; no in-quarter LITT clearance/coverage",
+      "whoShouldKnow": [
+        "Exec",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": "",
+      "id": "roads-cs131-tiles-vs-srt-brainmets-asco2026",
+      "dedupKey": "asco2026-lba2000-roads-gammatile",
+      "domain": "adjacent",
+      "title": "ROADS phase 3 — Cs-131 tile brachytherapy (GammaTile) vs post-op SRT for resected brain metastases",
+      "citation": "ROADS, ASCO 2026 LBA2000 (GT Medical Technologies).",
+      "url": "https://ascopost.com/news/june-2026/implanted-cesium-131-tiles-improve-local-control-and-survival-in-patients-with-resected-brain-metastases/",
+      "date": "2026-05-30",
+      "venue": "ASCO 2026 Annual Meeting (LBA2000)",
+      "studyDesign": "Multicenter randomized phase 3 (enrolled 2021-2025)",
+      "population": "Newly diagnosed operable brain metastases, 2-7 cm, requiring resection",
+      "sampleSize": "204 across 32 US centers (103 tiles vs 101 SRT); one outlet cited 230 (discrepancy)",
+      "endpoints": "Surgical bed recurrence (SBR), overall survival",
+      "results": "1-yr SBR ~12% (SRT) -> ~1% (tiles); composite recurrence/death HR 0.42 (p=0.0024); OS HR ~0.59; median OS 42.5 vs 17.6 mo; 2-yr OS 61.7% vs 35.7%; no excess necrosis",
+      "significance": "Met primary endpoints; key HRs significant",
+      "limitations": "Open-label; OS partly attributed to earlier systemic-therapy resumption; company-sponsored; no peer-reviewed manuscript yet; sample-size discrepancy",
+      "evidenceStrength": "Randomized phase 3 (abstract)",
+      "clinicalBottomLine": "Intraoperative Cs-131 tiles sharply cut surgical-bed recurrence and improved survival vs post-op SRT in resected brain mets.",
+      "whyMatters": "A competing local therapy for resected brain mets — reshapes the local-therapy landscape LITT plays in (different, operable subset).",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "referral"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "weakens (mildly) — alternative local therapy for resected mets; different patient subset than typical LITT",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "partial"
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": "",
+      "id": "ttfields-trident-ef32-negative-2026",
+      "dedupKey": "novocure-trident-ef32-topline-2026",
+      "domain": "adjacent",
+      "title": "TTFields TRIDENT (EF-32) phase 3 — earlier TTFields in newly diagnosed GBM misses primary endpoint",
+      "citation": "Novocure topline press release; full data accepted for ASTRO 2026.",
+      "url": "https://investor.novocure.com/news-releases/news-release-details/novocure-announces-topline-data-phase-3-trident-trial-evaluating",
+      "date": "2026-06-18",
+      "venue": "Novocure corporate topline (BusinessWire)",
+      "studyDesign": "Phase 3 randomized (Early Start vs Maintenance Start)",
+      "population": "Newly diagnosed glioblastoma",
+      "sampleSize": "981",
+      "endpoints": "Overall survival (ITT)",
+      "results": "Median OS 17.7 (Early Start) vs 17.5 mo (Maintenance Start); HR 0.953; p=0.519 — primary OS endpoint NOT met; durable survival both arms; no new safety signals. ~981 randomized.",
+      "significance": "Negative for the early-start hypothesis",
+      "limitations": "Topline corporate disclosure; no peer review; figures cross-sourced (publisher fetch blocked)",
+      "evidenceStrength": "Phase 3 (topline)",
+      "clinicalBottomLine": "Starting TTFields earlier adds no OS benefit in newly diagnosed GBM; TTFields standard-of-care unchanged.",
+      "whyMatters": "A competitor's incremental optimization failed — no new pressure on LITT's niche; mild relief.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "neutral-to-strengthens — competing non-invasive adjunct fails to expand upfront",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "verified": "verified"
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": "",
+      "id": "nccn-csf-liquid-biopsy-biopsy-infeasible-hgg-2026",
+      "dedupKey": "nccn-cns-v2.2026-csf-genomic-profiling",
+      "domain": "adjacent",
+      "title": "NCCN CNS Cancers v2.2026 — CSF liquid biopsy recommended for biopsy-infeasible HGG/GBM",
+      "citation": "NCCN CNS Cancers Guidelines v2.2026 (announced via Belay Diagnostics).",
+      "url": "https://www.prnewswire.com/news-releases/belay-announces-update-to-nccn-guidelines-to-recommend-csf-based-genomic-profiling-in-biopsy-infeasible-high-grade-gliomas-302803204.html",
+      "date": "2026-06-17",
+      "venue": "NCCN Clinical Practice Guidelines (CNS)",
+      "studyDesign": "Guideline update",
+      "population": "High-grade glioma/GBM where surgical biopsy is infeasible",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "CSF-based molecular profiling now recommended for biopsy-infeasible HGG/GBM, expanding non-surgical molecular-diagnosis pathway",
+      "significance": "Guideline endorsement; assay-validation stats not independently verified",
+      "limitations": "Commercial-sponsor announcement; impact depends on assay availability/reimbursement",
+      "evidenceStrength": "Guideline update",
+      "clinicalBottomLine": "Inoperable HGG/GBM patients can now get a guideline-endorsed molecular diagnosis from CSF without tissue.",
+      "whyMatters": "Erodes the diagnostic rationale for intervening in inoperable lesions — a subset overlapping LITT (diagnose-and-ablate) referrals.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "other_tumor"
+      ],
+      "strategies": [
+        "molecular_selection",
+        "diagnose_and_ablate"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "referral"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "weakens (mildly) — non-surgical molecular dx reduces a diagnostic reason to intervene in inoperable lesions",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "partial"
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": "",
+      "id": "jcog1703-macs-carmustine-wafer-negative-asco2026",
+      "dedupKey": "asco2026-2001-jcog1703-macs",
+      "domain": "neuro-oncology",
+      "title": "JCOG1703 (MACS) phase 3 — carmustine wafers add no survival benefit in resected GBM (negative)",
+      "citation": "JCOG1703 MACS, ASCO 2026 abstract #2001; J Clin Oncol 2026;44(16_suppl):2001.",
+      "url": "https://clin.larvol.com/abstract-detail/ASCO%202026/81906547",
+      "date": "2026-05-31",
+      "venue": "ASCO 2026 Annual Meeting (#2001)",
+      "studyDesign": "Randomized phase 3, 38 institutions",
+      "population": "Newly diagnosed GBM with >=90% resection",
+      "sampleSize": "multicenter (n UNVERIFIED)",
+      "endpoints": "Overall survival (primary); PFS, safety",
+      "results": "Carmustine (Gliadel) wafers did NOT improve OS or PFS vs standard chemoradiotherapy + TMZ; exact figures UNVERIFIED",
+      "significance": "Negative trial",
+      "limitations": "Efficacy figures unverifiable (abstract page blocked); abstract-level",
+      "evidenceStrength": "Phase 3 (abstract)",
+      "clinicalBottomLine": "Adding carmustine wafers to modern standard of care does not extend survival in resected GBM.",
+      "whyMatters": "A competing local intracavitary therapy fails — mild support for alternative local strategies.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "neutral-to-strengthens — competing local therapy (carmustine wafers) shows no benefit",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial"
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": "",
+      "id": "zeta-surgical-navigation-510k-2026",
+      "dedupKey": "fda-k253663-zeta-navigation",
+      "domain": "regulatory",
+      "title": "Zeta Surgical — FDA 510(k) for Zeta Navigation System + navigated instruments (K253663)",
+      "citation": "Zeta Surgical PR; Practical Neurology; NeuroNews. FDA K253663.",
+      "url": "https://www.prnewswire.com/news-releases/zeta-surgical-receives-fda-510k-clearance-expanding-access-to-brain-tumor-biopsies-hydrocephalus-and-trigeminal-neuralgia-302760338.html",
+      "date": "2026-05-01",
+      "venue": "FDA 510(k) / Zeta Surgical",
+      "studyDesign": "Device clearance (Class II stereotaxic instrument, product code HAW)",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "Computer-vision/AI real-time navigation + navigated instruments (Stylet, Bolt) for brain biopsy, catheter/shunt placement, trigeminal rhizotomy; low-footprint (no large robot/frame)",
+      "significance": "New clearance adding navigated instrument set (distinct from prior 2023/2024 nav clearances)",
+      "limitations": "Navigation/biopsy only — does not ablate",
+      "evidenceStrength": "FDA clearance (3 sources)",
+      "clinicalBottomLine": "A low-cost AI navigation + instrument stack cleared for the trajectory/biopsy workflows that feed LITT candidate pathways.",
+      "whyMatters": "Indirect: could expand the diagnosed-lesion funnel (favorable) or entrench non-ablative navigated workflows in centers lacking LITT capital.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "other_tumor"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "diagnose_and_ablate"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "Moderate",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "neutral — adjacent navigation/biopsy competitor to Monteris/ClearPoint nav ecosystems",
+      "whoShouldKnow": [
+        "Product",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "verified"
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": "",
+      "id": "clearpoint-focused-ultrasound-partnership-2026",
+      "dedupKey": "clearpoint-fus-sungkyunkwan-2026",
+      "domain": "regulatory",
+      "title": "ClearPoint Neuro — 10-year focused-ultrasound development partnership (Sungkyunkwan Univ.)",
+      "citation": "ClearPoint Neuro PR; corroborated by StockTitan, BioSpace.",
+      "url": "https://www.biospace.com/press-releases/clearpoint-neuro-enters-into-10-year-focused-ultrasound-development-partnership-with-sungkyunkwan-university-south-korea-further-expanding-our-drug-delivery-ecosystem-and-global-footprint",
+      "date": "2026-05-27",
+      "venue": "ClearPoint Neuro (PR)",
+      "studyDesign": "Strategic R&D partnership + preclinical proof-of-concept",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "10-yr FUS development deal; preclinical IV large-molecule delivery across BBB via ClearPoint FUS prototype integrated with its navigation/robotics; targets OR use outside MRI suite",
+      "significance": "Preclinical; adjacent (FUS/drug delivery, not thermal ablation)",
+      "limitations": "Preclinical; multi-year horizon",
+      "evidenceStrength": "Corroborated PR",
+      "clinicalBottomLine": "A LITT competitor is expanding into FUS-enabled BBB opening and drug delivery.",
+      "whyMatters": "Long-horizon platform-encroachment signal — broadens ClearPoint's neuro platform adjoining LITT workflows.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "weakens (long-horizon) — competitor platform expansion into FUS/drug delivery",
+      "whoShouldKnow": [
+        "Exec",
+        "Product"
+      ],
+      "verified": "verified"
+    },
+    {
+      "id": "lucicebtide-st101-gbm-asco-2026",
+      "dedupKey": "sapience-lucicebtide-st101-asco-2026-05-21",
+      "domain": "neuro-oncology",
+      "title": "Lucicebtide (ST101) + chemoradiation in newly diagnosed GBM — Phase 2 window-of-opportunity update (ASCO 2026)",
+      "citation": "Sapience Therapeutics press release, 2026-05-21; poster, CNS Tumors, ASCO 2026 Annual Meeting (Jun 1, 2026). C/EBPβ antagonist.",
+      "url": "https://www.prnewswire.com/news-releases/sapience-therapeutics-provides-positive-data-update-from-phase-2-trial-of-lucicebtide-plus-soc-in-patients-with-glioblastoma-at-the-2026-american-society-of-clinical-oncology-asco-annual-meeting-302779105.html",
+      "date": "2026-05-21",
+      "venue": "ASCO 2026 (poster, CNS Tumors) / company PR",
+      "studyDesign": "Single-arm Phase 2 window-of-opportunity (no randomized control)",
+      "population": "Newly diagnosed glioblastoma",
+      "sampleSize": "9 (efficacy cohort)",
+      "endpoints": "PFS, OS, pharmacodynamics, safety",
+      "results": "Projected median PFS ~28.4 mo; median OS not reached with 6/9 patients alive at update (long-term follow-up); favorable safety. No randomized comparator.",
+      "significance": "No formal statistics; tiny single-arm cohort — hypothesis-generating only",
+      "limitations": "n=9, single-arm, no control, company-reported PR; figures not peer-reviewed; projections rather than mature events",
+      "evidenceStrength": "Phase 2, very small single-arm (low)",
+      "clinicalBottomLine": "An early single-arm signal for a C/EBPβ antagonist added to chemoradiation in newly diagnosed GBM — too small to change practice, worth watching.",
+      "whyMatters": "Adds to the crowded newly diagnosed GBM systemic-therapy pipeline; no direct LITT bearing, but informs the GBM treatment-landscape conversation.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 1,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "neutral — systemic-therapy pipeline asset, no direct effect on LITT",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "utilization",
+        "reimbursement",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "laantern-brain-tumor-registry-kim-2020",
+      "dedupKey": "kim-2020-laantern-neurosurgery",
+      "domain": "litt",
+      "title": "LAANTERN prospective multicenter brain-tumor LITT registry — outcomes & QoL",
+      "citation": "Kim AH et al. Neurosurgery. 2020;87(3):E338-E346.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32421821/",
+      "date": "2020-09-01",
+      "venue": "Neurosurgery",
+      "studyDesign": "Prospective multicenter registry",
+      "population": "Intracranial tumors treated with LITT",
+      "sampleSize": "Multicenter registry cohort",
+      "endpoints": "Hospitalization, discharge disposition, 12-mo outcomes, QoL",
+      "results": "Short hospitalization, high discharge-to-home, 12-mo outcomes with preserved quality of life",
+      "significance": "Registry (non-comparative)",
+      "limitations": "No randomized comparator",
+      "evidenceStrength": "Prospective registry",
+      "clinicalBottomLine": "Foundational real-world registry underpinning LITT utilization across brain tumors.",
+      "whyMatters": "Core LAANTERN evidence behind utilization, referral, and reimbursement messaging.",
+      "indications": [
+        "recurrent_gbm",
+        "newly_gbm",
+        "brain_met",
+        "other_tumor"
+      ],
+      "strategies": [
+        "deep_eloquent_access"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — anchor registry for the LITT value proposition",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Market Access"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "messaging",
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "laantern-safety-rennert-2020",
+      "dedupKey": "rennert-2020-laantern-safety",
+      "domain": "litt",
+      "title": "LAANTERN multicenter safety analysis of LITT",
+      "citation": "Rennert RC et al. Neurosurgery. 2020;86(4):538-547.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31149709/",
+      "date": "2020-04-01",
+      "venue": "Neurosurgery",
+      "studyDesign": "Prospective multicenter safety analysis",
+      "population": "LITT (tumor + epilepsy)",
+      "sampleSize": "Multicenter cohort",
+      "endpoints": "Length of stay, ICU use, peri-procedural complications",
+      "results": "Short stays, limited ICU use, low peri-procedural complication rate across centers",
+      "significance": "Registry safety data",
+      "limitations": "Non-comparative",
+      "evidenceStrength": "Prospective registry",
+      "clinicalBottomLine": "Establishes LITT's minimally invasive safety profile across centers.",
+      "whyMatters": "Safety backbone for the minimally invasive positioning.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "other_tumor"
+      ],
+      "strategies": [
+        "deep_eloquent_access"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — multicenter safety profile",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "laantern-idhwt-gbm-degroot-2022",
+      "dedupKey": "degroot-2022-laantern-gbm",
+      "domain": "litt",
+      "title": "LAANTERN IDH-wildtype glioblastoma survival cohort",
+      "citation": "de Groot JF et al. Neuro-Oncol Adv. 2022;4(1):vdac040.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35415605/",
+      "date": "2022-04-01",
+      "venue": "Neuro-Oncology Advances",
+      "studyDesign": "Prospective registry cohort",
+      "population": "IDH-wildtype glioblastoma (newly dx + recurrent)",
+      "sampleSize": "LAANTERN GBM subset",
+      "endpoints": "Overall survival",
+      "results": "Survival in selected newly diagnosed and recurrent patients within range of published resection series",
+      "significance": "Registry (non-comparative)",
+      "limitations": "Selection; no RCT comparator",
+      "evidenceStrength": "Prospective registry",
+      "clinicalBottomLine": "LITT survival in selected GBM is in the range of resection series.",
+      "whyMatters": "Supports GBM utilization where resection is unsafe/undesirable.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "deep_eloquent_access",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — GBM survival in range of resection series",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "newly-gbm-ablation-extent-kaisman-2023",
+      "dedupKey": "kaisman-elbaz-2023-gbm-extent",
+      "domain": "litt",
+      "title": "Extent of ablation & chemoradiation completion drive outcomes in newly diagnosed GBM",
+      "citation": "Kaisman-Elbaz T et al. Neurosurgery. 2023;93(2):427-435.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36808113/",
+      "date": "2023-08-01",
+      "venue": "Neurosurgery",
+      "studyDesign": "Single-institution cohort",
+      "population": "Newly diagnosed GBM",
+      "sampleSize": "Single-institution series",
+      "endpoints": "PFS, OS vs ablation extent",
+      "results": "Greater extent of ablation + completion of chemoradiation tracked with longer PFS and OS",
+      "significance": "Observational",
+      "limitations": "Single-institution; selection",
+      "evidenceStrength": "Retrospective cohort",
+      "clinicalBottomLine": "Technical execution (complete ablation) matters for GBM outcomes.",
+      "whyMatters": "Supports training/technique messaging and complete-ablation value.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "deep_eloquent_access"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — execution-outcome link",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "radiation-necrosis-biopsy-ablation-chan-2023",
+      "dedupKey": "chan-2023-radiation-necrosis",
+      "domain": "litt",
+      "title": "Biopsy-proven radiation necrosis after SRS: tissue diagnosis paired with LITT",
+      "citation": "Chan M et al. Neuro-Oncol Adv. 2023;5(1):vdad031.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37051331/",
+      "date": "2023-04-01",
+      "venue": "Neuro-Oncology Advances",
+      "studyDesign": "Multicenter analysis",
+      "population": "Biopsy-proven radiation necrosis after SRS",
+      "sampleSize": "Multicenter cohort",
+      "endpoints": "Steroid reduction, morbidity",
+      "results": "Rapid steroid reduction with low morbidity when biopsy paired with ablation",
+      "significance": "Observational",
+      "limitations": "Non-comparative",
+      "evidenceStrength": "Multicenter cohort",
+      "clinicalBottomLine": "LITT plus biopsy is an effective option for refractory radiation necrosis.",
+      "whyMatters": "Anchors the radiation-necrosis and diagnose-and-ablate niches.",
+      "indications": [
+        "radiation_necrosis",
+        "brain_met"
+      ],
+      "strategies": [
+        "radiation_necrosis_salvage",
+        "diagnose_and_ablate"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — RN salvage with tissue diagnosis",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "utilization",
+        "referral"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "dre-multicenter-1yr-landazuri-2020",
+      "dedupKey": "landazuri-2020-dre-epilepsyres",
+      "domain": "epilepsy",
+      "title": "Prospective multicenter LITT for drug-resistant epilepsy — 1-year outcomes",
+      "citation": "Landazuri P et al. Epilepsy Res. 2020;167:106473.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32890917/",
+      "date": "2020-11-01",
+      "venue": "Epilepsy Research",
+      "studyDesign": "Prospective multicenter cohort",
+      "population": "Drug-resistant epilepsy",
+      "sampleSize": "Multicenter cohort",
+      "endpoints": "1-yr seizure freedom, QoL, LOS",
+      "results": "Meaningful 1-yr seizure freedom, QoL gains, short hospitalization",
+      "significance": "Prospective cohort",
+      "limitations": "No randomized comparator",
+      "evidenceStrength": "Prospective multicenter",
+      "clinicalBottomLine": "Foundational prospective evidence for LITT in drug-resistant epilepsy.",
+      "whyMatters": "Backbone epilepsy-ablation evidence across foci.",
+      "indications": [
+        "mtle",
+        "focal_epilepsy",
+        "hypothalamic_hamartoma"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — prospective DRE evidence",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "bbb-permeability-preclinical-salehi-2020",
+      "dedupKey": "salehi-2020-bbb-permeability",
+      "domain": "litt",
+      "title": "LITT enhances blood-brain & blood-tumor barrier permeability (mechanism)",
+      "citation": "Salehi A et al. Neuro-Oncol Adv. 2020;2(1):vdaa071.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32666051/",
+      "date": "2020-07-01",
+      "venue": "Neuro-Oncology Advances",
+      "studyDesign": "Preclinical mechanistic",
+      "population": "Preclinical models",
+      "sampleSize": "Preclinical",
+      "endpoints": "BBB/BTB permeability",
+      "results": "LITT transiently increases BBB/BTB permeability — mechanistic basis for pairing ablation with systemic therapy",
+      "significance": "Preclinical",
+      "limitations": "Preclinical",
+      "evidenceStrength": "Preclinical mechanistic",
+      "clinicalBottomLine": "Mechanistic foundation for the LITT + systemic/immunotherapy thesis.",
+      "whyMatters": "Underpins the litt_immuno_combo strategy that 2026 trials now test clinically.",
+      "indications": [
+        "recurrent_gbm",
+        "newly_gbm"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — mechanism behind combination strategy",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "litt-pembro-casereport-hwang-2022",
+      "dedupKey": "hwang-2022-litt-pembro-case",
+      "domain": "litt",
+      "title": "Prolonged response with LITT + pembrolizumab in recurrent IDH-wildtype GBM (case)",
+      "citation": "Hwang H et al. CNS Oncol. 2022;11(2):CNS81.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35603818/",
+      "date": "2022-06-01",
+      "venue": "CNS Oncology",
+      "studyDesign": "Case report",
+      "population": "Recurrent IDH-wildtype GBM",
+      "sampleSize": "n=1",
+      "endpoints": "Response/durability",
+      "results": "Prolonged response; seeds the LITT+checkpoint combination concept",
+      "significance": "Anecdotal",
+      "limitations": "Single case",
+      "evidenceStrength": "Case report",
+      "clinicalBottomLine": "Early clinical signal that seeded the LITT + immunotherapy combination.",
+      "whyMatters": "Historical seed of the combo strategy now in randomized testing.",
+      "indications": [
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens (historical) — combination concept origin",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "litt-immune-response-chandar-2023",
+      "dedupKey": "chandar-2023-immune-response",
+      "domain": "litt",
+      "title": "Local anti-tumor immune response after LITT (in-situ vaccination rationale)",
+      "citation": "Chandar JS et al. J Immunother. 2023;46(9):351-354.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37667486/",
+      "date": "2023-11-01",
+      "venue": "Journal of Immunotherapy",
+      "studyDesign": "Longitudinal profiling + review",
+      "population": "LITT-treated patients",
+      "sampleSize": "Small",
+      "endpoints": "Immune profiling",
+      "results": "Describes a local anti-tumor immune response after LITT supporting an in-situ-vaccination rationale",
+      "significance": "Hypothesis-generating",
+      "limitations": "Small; descriptive",
+      "evidenceStrength": "Translational",
+      "clinicalBottomLine": "Immune-profiling support for LITT as an immunotherapy primer.",
+      "whyMatters": "Reinforces the litt_immuno_combo mechanism narrative.",
+      "indications": [
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — immunologic rationale",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "remaster-rct-registered-2022",
+      "dedupKey": "clinicaltrials.gov/study/NCT05124912",
+      "domain": "litt",
+      "title": "REMASTer — randomized post-market trial of early LITT for brain-met progression after SRS",
+      "citation": "REMASTer randomized controlled trial. NCT05124912 (Laxton, Wake Forest).",
+      "url": "https://clinicaltrials.gov/study/NCT05124912",
+      "date": "2022-01-01",
+      "venue": "ClinicalTrials.gov",
+      "studyDesign": "Randomized post-market multicenter trial (in progress)",
+      "population": "Radiographic progression of brain metastases after SRS",
+      "sampleSize": "Accruing",
+      "endpoints": "Anticipated Level I local-control/OS",
+      "results": "In progress — anticipated source of Level I LITT evidence",
+      "significance": "Pending",
+      "limitations": "No results yet",
+      "evidenceStrength": "Registered RCT",
+      "clinicalBottomLine": "The pivotal RCT that could give LITT Level I evidence in brain mets.",
+      "whyMatters": "Highest-value pipeline item for comparative-effectiveness positioning.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "comparative_effectiveness",
+        "srs_recurrence_salvage"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens (if positive) — Level I evidence",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Exec"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "referral",
+        "reimbursement",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "aans-cns-position-statement-2021",
+      "dedupKey": "aans-cns-2021-position-statement",
+      "domain": "litt",
+      "title": "AANS-CNS Joint Section on Tumors — position statement endorsing MR-guided LITT",
+      "citation": "AANS-CNS Joint Section on Tumors. Position Statement. 2021.",
+      "url": "",
+      "date": "2021-01-01",
+      "venue": "AANS-CNS Joint Section on Tumors",
+      "studyDesign": "Society position statement",
+      "population": "Adult CNS tumors & radiation necrosis",
+      "sampleSize": "n/a",
+      "endpoints": "n/a",
+      "results": "Endorses MR-guided LITT as an option for adult CNS tumors and radiation necrosis, especially lesions unsuitable for/inaccessible to resection",
+      "significance": "Society endorsement",
+      "limitations": "Position statement",
+      "evidenceStrength": "Society position statement",
+      "clinicalBottomLine": "Society-level endorsement of LITT for inaccessible CNS tumors and RN.",
+      "whyMatters": "Guideline/position support for referral and access.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "other_tumor"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — society endorsement",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Market Access",
+        "Sales"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "litt-icb-nsclc-mets-haskell-2024",
+      "dedupKey": "haskell-mendoza-2024-litt-icb",
+      "domain": "litt",
+      "title": "LITT + immune checkpoint blockade in progressive NSCLC brain metastases",
+      "citation": "Haskell-Mendoza AP et al. Neuro-Oncol Adv. 2024;6(1):vdae207.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39737355/",
+      "date": "2024-09-01",
+      "venue": "Neuro-Oncology Advances",
+      "studyDesign": "Single-center series",
+      "population": "Progressive NSCLC brain metastases",
+      "sampleSize": "Single-center",
+      "endpoints": "Local control, steroid use",
+      "results": "High local control and rapid steroid discontinuation with LITT + checkpoint blockade",
+      "significance": "Observational",
+      "limitations": "Single-center; small",
+      "evidenceStrength": "Retrospective series",
+      "clinicalBottomLine": "Clinical support for combining LITT with immunotherapy in brain mets.",
+      "whyMatters": "Extends the combo thesis to brain metastases.",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — combo in brain mets",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "referral",
+        "messaging",
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "mtle-2yr-landazuri-2025",
+      "dedupKey": "landazuri-2025-mtle-jamaneurol",
+      "domain": "epilepsy",
+      "title": "Prospective multicenter MTLE LITT — durable 2-year Engel I seizure freedom (n=145)",
+      "citation": "Landazuri P et al. JAMA Neurol. 2025;82(9):915-924.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40531501/",
+      "date": "2025-09-01",
+      "venue": "JAMA Neurology",
+      "studyDesign": "Prospective multicenter study",
+      "population": "Mesial temporal lobe epilepsy",
+      "sampleSize": "145",
+      "endpoints": "2-yr Engel I seizure freedom; severe AE rate",
+      "results": "Durable 2-year Engel I seizure freedom with a low severe-adverse-event rate",
+      "significance": "Prospective",
+      "limitations": "Single-arm (no randomized comparator)",
+      "evidenceStrength": "Prospective multicenter",
+      "clinicalBottomLine": "Strongest prospective MTLE durability evidence for LITT to date.",
+      "whyMatters": "Major epilepsy-ablation tailwind — durable seizure freedom with low harm.",
+      "indications": [
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 7,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — durable MTLE outcomes",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "bbb-permeability-sustained-nielsen-2025",
+      "dedupKey": "nielsen-2025-bbb-sustained",
+      "domain": "litt",
+      "title": "Post-LITT perilesional barrier permeability sustained ≥4 weeks (prospective)",
+      "citation": "Nielsen SH et al. Neuro-Oncol Adv. 2025;7(1):vdaf148.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40078229/",
+      "date": "2025-01-01",
+      "venue": "Neuro-Oncology Advances",
+      "studyDesign": "Prospective",
+      "population": "Tumor and non-tumor patients",
+      "sampleSize": "Prospective cohort",
+      "endpoints": "Duration of perilesional permeability",
+      "results": "Post-LITT barrier permeability increase sustained for at least 4 weeks",
+      "significance": "Prospective",
+      "limitations": "Small",
+      "evidenceStrength": "Prospective",
+      "clinicalBottomLine": "Defines a multi-week therapeutic window after LITT for systemic drug delivery.",
+      "whyMatters": "Quantifies the dosing window central to the combo strategy.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — defines combination dosing window",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "litt-brainmets-after-srs-review-almeida-2025",
+      "dedupKey": "almeida-2025-prisma-brainmets",
+      "domain": "litt",
+      "title": "LITT for recurrent brain metastases after SRS — PRISMA systematic review",
+      "citation": "Almeida T et al. Expert Rev Neurother. 2025;25(4):465-475.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39991830/",
+      "date": "2025-04-01",
+      "venue": "Expert Review of Neurotherapeutics",
+      "studyDesign": "PRISMA systematic review",
+      "population": "Recurrent brain metastases after SRS",
+      "sampleSize": "Pooled",
+      "endpoints": "Survival; effect of adjuvant systemic therapy",
+      "results": "Better survival when adjuvant systemic therapy followed ablation",
+      "significance": "Systematic review",
+      "limitations": "Heterogeneous source studies",
+      "evidenceStrength": "Systematic review",
+      "clinicalBottomLine": "LITT after SRS pairs well with subsequent systemic therapy.",
+      "whyMatters": "Supports SRS-recurrence salvage + sequencing with systemic therapy.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "srs_recurrence_salvage",
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — SRS-recurrence salvage evidence",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "referral",
+        "reimbursement",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "cns-aans-litt-guideline-huntoon-2025",
+      "dedupKey": "huntoon-2025-cns-guideline",
+      "domain": "litt",
+      "title": "CNS/AANS evidence-based guideline update — LITT for imaging progression after SRS",
+      "citation": "Huntoon K et al. Neurosurgery. 2025;96(6):1172-1177.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39636120/",
+      "date": "2025-06-01",
+      "venue": "Neurosurgery (CNS/AANS guideline)",
+      "studyDesign": "Evidence-based guideline update",
+      "population": "Imaging progression after SRS",
+      "sampleSize": "n/a",
+      "endpoints": "Recommendations",
+      "results": "LITT may be considered equivalent to craniotomy for tumor progression and to medical management for radiation necrosis (Level III), individualized; reflected in NCCN",
+      "significance": "Guideline (Level III)",
+      "limitations": "Level III evidence base",
+      "evidenceStrength": "Society guideline",
+      "clinicalBottomLine": "Guideline-level positioning of LITT for post-SRS imaging progression and RN.",
+      "whyMatters": "Fills the guideline-endorsement gap; supports referral and access.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis",
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "comparative_effectiveness",
+        "radiation_necrosis_salvage"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 8,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens — guideline endorsement reflected in NCCN",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Market Access",
+        "Sales",
+        "Exec"
+      ]
+    },
+    {
+      "firstSeenRun": "2026-06-27",
+      "lastUpdatedRun": "2026-06-27",
+      "status": "carried",
+      "changeNote": "",
+      "verified": "verified",
+      "businessLevers": [
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "id": "neoadj-adj-pembro-litt-suryadevara-2026",
+      "dedupKey": "suryadevara-2026-neoadj-pembro-litt",
+      "domain": "litt",
+      "title": "Neoadjuvant + adjuvant pembrolizumab with LITT in recurrent high-grade glioma (series)",
+      "citation": "Suryadevara CM et al. J Clin Neurosci. 2026;145:111823.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40592100/",
+      "date": "2026-03-01",
+      "venue": "Journal of Clinical Neuroscience",
+      "studyDesign": "Small series",
+      "population": "Recurrent high-grade glioma",
+      "sampleSize": "Small",
+      "endpoints": "Feasibility/safety",
+      "results": "Feasible and safe; one author discloses Monteris consulting",
+      "significance": "Observational",
+      "limitations": "Small; disclosure noted",
+      "evidenceStrength": "Small series",
+      "clinicalBottomLine": "Adds feasibility support for peri-operative immunotherapy with LITT.",
+      "whyMatters": "Complements the randomized LITT+pembrolizumab combo evidence.",
+      "indications": [
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "competitiveImpact": "strengthens (mildly) — combo feasibility",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ]
+    }
+  ]
+}
