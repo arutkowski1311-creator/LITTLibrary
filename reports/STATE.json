@@ -1,0 +1,43 @@
+{
+  "engine": "Clinical Intelligence Engine for Neuro-Oncology, Epilepsy, and LITT",
+  "specVersion": "1.0",
+  "baselineDate": "2026-06-26",
+  "baselineStartDate": "2020-01-01",
+  "lastRunDate": "2026-06-27",
+  "lastMode": "baseline-backfill",
+  "baselineWindowMonths": null,
+  "surveillanceWindowMonths": 2,
+  "history": [
+    {
+      "date": "2026-06-26",
+      "mode": "baseline",
+      "window": "2024-06-26 to 2026-06-26",
+      "found": 48,
+      "added": 31,
+      "updated": 0,
+      "skipped": 0,
+      "reportPath": "reports/2026-06-26-baseline.md"
+    },
+    {
+      "date": "2026-06-27",
+      "mode": "surveillance",
+      "window": "2026-04-27 to 2026-06-27",
+      "found": 12,
+      "added": 10,
+      "updated": 2,
+      "skipped": 0,
+      "reportPath": "reports/2026-06-27-surveillance.md",
+      "note": "Reconciled run: deduplicated concurrent intra-day passes (merged 3 event-twins) into a single authoritative surveillance record. Database 31 -> 41 items. LITT-specific and epilepsy domains had no verifiable in-window items."
+    },
+    {
+      "date": "2026-06-27",
+      "mode": "baseline-backfill",
+      "window": "2020-01-01 to 2026-06-27",
+      "found": 17,
+      "added": 17,
+      "updated": 0,
+      "skipped": 0,
+      "note": "Curated landmark backfill extending the library to 2020 from verified references (LAANTERN registry, AANS-CNS/CNS guidelines, BBB-permeability mechanism, MTLE durability, REMASTer RCT, RN & combination evidence). Database 41 -> 58 items. Reliable citation-level provenance; not an exhaustive bibliography."
+    }
+  ]
+}
