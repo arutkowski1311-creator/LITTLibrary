@@ -2,7 +2,7 @@
   "engine": "Clinical Intelligence Engine for Neuro-Oncology, Epilepsy, and LITT",
   "specVersion": "1.0",
   "baselineDate": "2026-06-26",
-  "baselineStartDate": "2020-01-01",
+  "baselineStartDate": "2015-01-01",
   "lastRunDate": "2026-06-27",
   "lastMode": "baseline-backfill",
   "baselineWindowMonths": null,
