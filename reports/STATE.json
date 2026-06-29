@@ -4,10 +4,31 @@
   "baselineDate": "2026-06-29",
   "baselineStartDate": "2015-01-01",
   "lastRunDate": "2026-06-29",
-  "lastMode": "baseline",
+  "lastMode": "surveillance",
   "baselineWindowMonths": null,
   "surveillanceWindowMonths": 2,
   "history": [
+    {
+      "date": "2026-06-29",
+      "mode": "surveillance",
+      "window": "2026-04-29 to 2026-06-29",
+      "found": 20,
+      "added": 8,
+      "updated": 0,
+      "skipped": 12,
+      "reportPath": "reports/2026-06-29-surveillance.md",
+      "note": "Trailing-2-month deltas. Clinical/peer-reviewed sweep found little genuinely new in-window (headline 2026 LITT items date Feb-Apr 2026, just before window, already in corpus). New items were ecosystem/competitive (GT Medical $100M Series E, NeuroOne OneRF, Medtronic Neuroscience leadership change, uniQure/ClearPoint AMT-130 FDA path) and selection-imaging/systemic (Pixclara 18F-FET NDA, RAD101 Phase 2b, zongertinib NEJM CNS data, INDIGO extended follow-up). Database 136 -> 144."
+    },
+    {
+      "date": "2026-06-29",
+      "mode": "verification",
+      "window": "provenance pass on the 29 partial items",
+      "found": 29,
+      "added": 0,
+      "updated": 29,
+      "skipped": 0,
+      "note": "Re-checked every partial item against primary sources via 3 fact-check agents. 23 upgraded to verified, 5 remain partial, 1 flagged unverified (LITT-vs-craniotomy-deep-seated-2025, no citable source). Corrected dates/DOIs on ~12 items; fixed AI/Raman sample size 500+ -> 278; softened CNS-2019-guideline LITT framing. Verified flags overall: 107->135 verified, 29->8 partial, +1 unverified."
+    },
     {
       "date": "2026-06-29",
       "mode": "baseline",
