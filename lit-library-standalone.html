@@ -98,6 +98,7 @@
 
   /* What's new */
   .feed{display:flex;flex-direction:column}
+  .feed-wide{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));column-gap:30px;align-items:start}
   .feed .row{display:flex;gap:12px;padding:11px 4px;border-bottom:1px solid rgba(30,58,95,.5);cursor:pointer;align-items:flex-start}
   .feed .row:last-child{border-bottom:none}
   .feed .row:hover{background:rgba(43,212,255,.04)}
@@ -216,9 +217,9 @@
 
     <!-- DASHBOARD VIEW -->
     <section id="view-dashboard">
-      <div class="grid" style="grid-template-columns:1.55fr 1.15fr .95fr">
-        <!-- overview + hero -->
-        <div class="card" style="grid-row:span 2">
+      <!-- OVERVIEW (full width) -->
+      <div class="grid" style="grid-template-columns:1fr">
+        <div class="card">
           <h2>Clinical Intelligence Overview</h2>
           <div class="metrics" id="metrics"></div>
           <div class="hero">
@@ -234,31 +235,38 @@
           </div>
         </div>
 
-        <!-- what's new -->
+      </div>
+
+      <!-- WHAT'S NEW (full width) -->
+      <div class="grid" style="grid-template-columns:1fr;margin-top:16px">
         <div class="card">
           <h2>What's New <span class="more" data-go="literature">View all →</span></h2>
-          <div class="feed" id="feed"></div>
+          <div class="feed feed-wide" id="feed"></div>
         </div>
+      </div>
 
-        <!-- indication focus -->
+      <!-- KEY ANALYTICS -->
+      <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:16px">
         <div class="card clickable" data-go="indications">
           <h2>Indication Focus <span class="more" data-go="indications">View all →</span></h2>
           <div class="donutwrap"><div id="indDonut"></div><div class="legend" id="indLegend" style="flex:1"></div></div>
         </div>
-      </div>
-
-      <div class="grid" style="grid-template-columns:1.3fr .9fr 1.25fr 1.05fr;margin-top:16px">
-        <div class="card clickable" data-go="literature"><h2>Literature Trending <span class="more" data-go="literature">All →</span></h2><div id="trend"></div></div>
-        <div class="card clickable" data-go="literature"><h2>Top Journals <span class="more" data-go="literature">All →</span></h2><div class="ranklist" id="journals"></div></div>
         <div class="card clickable" data-go="trials"><h2>Trials at a Glance <span class="more" data-go="trials">All →</span></h2>
           <div class="donutwrap"><div id="trialDonut"></div><div class="legend" id="trialLegend" style="flex:1"></div></div></div>
-        <div class="card"><h2>Saved Searches</h2><div class="chips" id="saved"></div></div>
+        <div class="card clickable" data-go="literature"><h2>Top Journals <span class="more" data-go="literature">All →</span></h2><div class="ranklist" id="journals"></div></div>
+        <div class="card clickable" data-go="meetings"><h2>Upcoming Events <span class="more" data-go="meetings">All →</span></h2><div class="feed" id="events"></div></div>
       </div>
 
-      <div class="grid" style="grid-template-columns:1.1fr 1fr 1fr;margin-top:16px">
+      <!-- LITERATURE TRENDING (full width, bottom) -->
+      <div class="grid" style="grid-template-columns:1fr;margin-top:16px">
+        <div class="card clickable" data-go="literature"><h2>Literature Trending <span class="more" data-go="literature">All →</span></h2><div id="trend"></div></div>
+      </div>
+
+      <!-- UTILITY -->
+      <div class="grid" style="grid-template-columns:1.2fr 1fr 1fr;margin-top:16px">
         <div class="card quote"><div class="q">"The goal of LITT is not just to treat the tumor, but to preserve what matters."
           <small>— Clinical Intelligence Hub</small></div></div>
-        <div class="card clickable" data-go="meetings"><h2>Upcoming Events <span class="more" data-go="meetings">All →</span></h2><div class="feed" id="events"></div></div>
+        <div class="card"><h2>Saved Searches</h2><div class="chips" id="saved"></div></div>
         <div class="card"><h2>Quick Links</h2><div class="chips" id="quick"></div></div>
       </div>
     </section>
