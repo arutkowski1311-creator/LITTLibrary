@@ -248,7 +248,7 @@
       </div>
 
       <!-- KEY ANALYTICS -->
-      <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:16px">
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:16px">
         <div class="card clickable" data-go="indications">
           <h2>Indication Focus <span class="more" data-go="indications">View all →</span></h2>
           <div class="donutwrap"><div id="indDonut"></div><div class="legend" id="indLegend" style="flex:1"></div></div>
@@ -256,18 +256,15 @@
         <div class="card clickable" data-go="trials"><h2>Trials at a Glance <span class="more" data-go="trials">All →</span></h2>
           <div class="donutwrap"><div id="trialDonut"></div><div class="legend" id="trialLegend" style="flex:1"></div></div></div>
         <div class="card clickable" data-go="literature"><h2>Top Journals <span class="more" data-go="literature">All →</span></h2><div class="ranklist" id="journals"></div></div>
-        <div class="card clickable" data-go="meetings"><h2>Upcoming Events <span class="more" data-go="meetings">All →</span></h2><div class="feed" id="events"></div></div>
       </div>
 
-      <!-- LITERATURE TRENDING (full width, bottom) -->
+      <!-- UPCOMING EVENTS (full width, bottom) -->
       <div class="grid" style="grid-template-columns:1fr;margin-top:16px">
-        <div class="card clickable" data-go="literature"><h2>Literature Trending <span class="more" data-go="literature">All →</span></h2><div id="trend"></div></div>
+        <div class="card"><h2>Upcoming Events <span class="more" data-go="meetings">All →</span></h2><div class="feed feed-wide" id="events"></div></div>
       </div>
 
       <!-- UTILITY -->
-      <div class="grid" style="grid-template-columns:1.2fr 1fr 1fr;margin-top:16px">
-        <div class="card quote"><div class="q">"The goal of LITT is not just to treat the tumor, but to preserve what matters."
-          <small>— Clinical Intelligence Hub</small></div></div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px">
         <div class="card"><h2>Saved Searches</h2><div class="chips" id="saved"></div></div>
         <div class="card"><h2>Quick Links</h2><div class="chips" id="quick"></div></div>
       </div>
@@ -8270,14 +8267,14 @@ const NAV=[
   ["reimbursement","Reimbursement","$"],["expert","Expert Insights","☻"],["meetings","Meetings & Events","▦"],["mylib","My Library","★"]
 ].filter(n=>!(PHYSICIAN&&(n[0]==="reimbursement"||n[0]==="expert")));
 const EVENTS=[
-  ["SNO","Society for Neuro-Oncology Annual Meeting","Nov · USA"],
-  ["AANS","AANS Annual Scientific Meeting","Apr–May · USA"],
-  ["CNS","Congress of Neurological Surgeons","Sep–Oct · USA"],
-  ["AES","American Epilepsy Society Annual Meeting","Dec · USA"],
-  ["ASCO","ASCO Annual Meeting","May–Jun · Chicago"],
-  ["ASTRO","ASTRO Annual Meeting","Sep–Oct · USA"],
-  ["ESMO","ESMO Congress","Oct · Europe"],
-  ["RSNA","RSNA Annual Meeting","Nov–Dec · Chicago"]
+  ["SNO","Society for Neuro-Oncology Annual Meeting","Nov · USA","https://www.soc-neuro-onc.org/annual-meeting/"],
+  ["AANS","AANS Annual Scientific Meeting","Apr–May · USA","https://www.aans.org/annual-scientific-meeting/"],
+  ["CNS","Congress of Neurological Surgeons Annual Meeting","Sep–Oct · USA","https://www.cns.org/meetings/annual-meeting"],
+  ["AES","American Epilepsy Society Annual Meeting","Dec · USA","https://www.aesnet.org/annual-meeting"],
+  ["ASCO","ASCO Annual Meeting","May–Jun · Chicago","https://conferences.asco.org/am/attend"],
+  ["ASTRO","ASTRO Annual Meeting","Sep–Oct · USA","https://www.astro.org/annual-meeting"],
+  ["ESMO","ESMO Congress","Oct · Europe","https://www.esmo.org/meetings"],
+  ["RSNA","RSNA Annual Meeting","Nov–Dec · Chicago","https://www.rsna.org/annual-meeting"]
 ];
 const SAVED=[["LITT + Immunotherapy","litt_immuno_combo","strategy"],["Recurrent GBM","recurrent_gbm","indication"],
   ["MRI Thermometry","thermometry","text"],["Mesial Temporal Lobe Epilepsy","mtle","indication"],
@@ -8377,12 +8374,7 @@ function renderDashboard(){
   $("#indLegend").innerHTML=bd.map(d=>`<div class="li"><span class="sw" style="background:${d.color}"></span>${d.label}
     <span class="pct">${bt?Math.round(d.value/bt*100):0}%</span></div>`).join("");
 
-  // literature trending (monthly, by domain)
-  const months=[...new Set(items.map(i=>(i.date||"").slice(0,7)).filter(Boolean))].sort();
-  const recent=months.slice(-10);
-  const domSeries=[["litt",C.green,"LITT"],["neuro-oncology",C.blue,"Neuro-onc"],["epilepsy",C.purple,"Epilepsy"],["adjacent",C.teal,"Adjacent"]]
-    .map(d=>({name:d[2],color:d[1],points:recent.map(m=>items.filter(i=>i.domain===d[0]&&(i.date||"").slice(0,7)<=m).length)}));
-  $("#trend").innerHTML=lineChart(domSeries,recent.map(m=>m.slice(2).replace("-","/")));
+  // (Literature Trending removed)
 
   // top journals
   const jc={};items.forEach(it=>{let v=(it.venue||"").split(" (")[0].split(" / ")[0].trim();
@@ -8400,8 +8392,9 @@ function renderDashboard(){
   // saved searches
   $("#saved").innerHTML=SAVED.map(s=>{const n=countSaved(s);return `<span class="chip" data-saved='${esc(JSON.stringify(s))}'>${esc(s[0])}<span class="n">${n}</span></span>`;}).join("");
   // events + quick
-  $("#events").innerHTML=EVENTS.slice(0,5).map(e=>`<div class="row"><div class="ic">▦</div>
-    <div><div class="ti">${esc(e[1])}</div><div class="cat" style="color:var(--muted)">${esc(e[2])}</div></div></div>`).join("");
+  $("#events").innerHTML=EVENTS.map(e=>`<a class="row" href="${esc(e[3]||"#")}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+    <div class="ic">▦</div><div><div class="ti">${esc(e[1])} <span style="color:var(--cyan);font-size:11px">↗</span></div>
+    <div class="cat" style="color:var(--muted)">${esc(e[2])}</div></div></a>`).join("");
   $("#quick").innerHTML=QUICK.map(q=>`<a class="chip" href="${esc(q[1])}" target="_blank">${esc(q[0])}</a>`).join("");
 
   $("#feed").querySelectorAll(".row").forEach(r=>r.onclick=()=>{const id=r.dataset.id;openInList(it=>it.id===id,"Literature","");});
@@ -8499,8 +8492,10 @@ function renderIndications(){
   $("#indGrid").querySelectorAll("[data-ind]").forEach(e=>e.onclick=()=>{const k=e.dataset.ind;openInList(it=>(it.indications||[]).includes(k),indName(k),"All findings mapped to this indication.");});
 }
 function renderMeetings(){
-  $("#evGrid").innerHTML=EVENTS.map(e=>`<div class="card"><h2 style="margin-bottom:6px">${esc(e[0])}</h2>
-    <div class="ti" style="font-size:14px">${esc(e[1])}</div><div style="color:var(--muted);margin-top:6px">${esc(e[2])}</div></div>`).join("");
+  $("#evGrid").innerHTML=EVENTS.map(e=>`<a class="card" href="${esc(e[3]||"#")}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block">
+    <h2 style="margin-bottom:6px">${esc(e[0])} <span style="color:var(--cyan);font-size:11px">↗</span></h2>
+    <div class="ti" style="font-size:14px">${esc(e[1])}</div><div style="color:var(--muted);margin-top:6px">${esc(e[2])}</div>
+    <div style="color:var(--cyan);font-size:12px;margin-top:10px;word-break:break-all">Visit event site →</div></a>`).join("");
 }
 
 // ---- ROUTER ----
