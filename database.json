@@ -92,6 +92,25 @@
       "added": 78,
       "updated": 0,
       "skipped": 6
+    },
+    {
+      "date": "2026-06-29",
+      "mode": "verification",
+      "window": "provenance pass on 29 partial items",
+      "found": 29,
+      "added": 0,
+      "updated": 29,
+      "skipped": 0
+    },
+    {
+      "date": "2026-06-29",
+      "mode": "surveillance",
+      "window": "2026-04-29 to 2026-06-29",
+      "found": 20,
+      "added": 8,
+      "updated": 0,
+      "skipped": 12,
+      "note": "Trailing-2-month deltas. Clinical/peer-reviewed sweep found little genuinely new in-window (most 2026 LITT items - pembrolizumab RCT, BBB mechanism, LAANTERN MTLE - date Feb-Apr 2026, just before window, and are already in the corpus). Value was in ecosystem/regulatory deltas (GT Medical, NeuroOne, Medtronic leadership, uniQure/ClearPoint) and selection-imaging (Pixclara NDA, RAD101, zongertinib CNS data, INDIGO extended follow-up)."
     }
   ],
   "items": [
@@ -148,11 +167,12 @@
         "Product",
         "Exec"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: Nat Commun 2026, NCT02311582; median OS 11.8 vs 5.2 mo (HR 0.17, P=0.0002) corroborated.",
+      "doi": "10.1038/s41467-026-69522-w"
     },
     {
       "id": "litt-vs-open-dre-meta-jns-2025",
@@ -261,9 +281,9 @@
       ],
       "verified": "partial",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Venue/date confirmed (Neurosurg Focus 59(2):E10, Aug 2025); pooled figures not independently corroborated."
     },
     {
       "id": "litt-brainmets-imaging-guidelines-neurooncology-2026",
@@ -474,11 +494,11 @@
         "Medical Affairs",
         "Market Access"
       ],
-      "verified": "partial",
+      "verified": "unverified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Could not corroborate a discrete 2025 'LITT vs craniotomy for deep-seated lesions' publication; nearest match is a 2024 Neurosurg Focus RN cost study. Treat as unverified pending a citable source."
     },
     {
       "id": "litt-idhwt-recurrent-gbm-scandinavian-2026",
@@ -487,7 +507,7 @@
       "title": "LITT for IDH-wildtype recurrent GBM — Scandinavian two-center cohort",
       "citation": "LITT for IDH-wildtype recurrent GBM: a two-center cohort. Acta Neurochir. 2026.",
       "url": "https://link.springer.com/article/10.1007/s00701-026-06771-0",
-      "date": "2026-01-01",
+      "date": "2026-01-23",
       "venue": "Acta Neurochirurgica",
       "studyDesign": "Retrospective two-center cohort",
       "population": "IDH-wildtype recurrent GBM",
@@ -524,11 +544,12 @@
       "whoShouldKnow": [
         "Medical Affairs"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: Acta Neurochir 2026 (Rigshospitalet n=16 + Karolinska n=14), 30 IDH-wt rGBM.",
+      "doi": "10.1007/s00701-026-06771-0"
     },
     {
       "id": "litt-hybrid-resection-gbm-2025",
@@ -578,9 +599,9 @@
       ],
       "verified": "partial",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Confirmed as Operative Neurosurgery 2026 (epub ~Jun 2025; PMID 40552902) - a 2-patient illustrative case report, not a series; venue differs from prior label."
     },
     {
       "id": "litt-radiation-necrosis-isrs-recommendations-2025",
@@ -589,7 +610,7 @@
       "title": "Radiation necrosis after SRS — ISRS systematic review & recommendations (LITT vs bevacizumab/surgery)",
       "citation": "ISRS systematic review & recommendations on symptomatic brain radiation necrosis after SRS. Int J Radiat Oncol Biol Phys.",
       "url": "https://www.redjournal.org/article/S0360-3016(23)07647-2/fulltext",
-      "date": "2025-01-01",
+      "date": "2024-01-01",
       "venue": "Int. J. Radiation Oncology Biology Physics (Red Journal)",
       "studyDesign": "Systematic review + society recommendations",
       "population": "Symptomatic radiation necrosis after SRS",
@@ -629,11 +650,12 @@
         "Medical Affairs",
         "Sales"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified ISRS systematic review/recommendations on symptomatic RN after SRS; corrected to print 2024 (epub 2023), not 2025.",
+      "doi": "10.1016/j.ijrobp.2023.07.015"
     },
     {
       "id": "slah-learning-curve-failures-epilepsia-2025",
@@ -1002,11 +1024,12 @@
         "Sales",
         "Exec"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-27",
-      "status": "carried",
-      "changeNote": "ASCO 2026-05-31 extended follow-up (+21.3 mo data): median PFS deepened to 44.1 mo, TTNI not reached — durable benefit confirmed (figures partial, secondary-source)."
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: FDA approval 2024-08-06; INDIGO trial NEJM 2023 (mPFS 27.7 vs 11.1 mo).",
+      "doi": "10.1056/NEJMoa2304194"
     },
     {
       "id": "metis-ttfields-after-srs-nsclc-2025",
@@ -1265,11 +1288,12 @@
         "Medical Affairs",
         "Product"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: Nat Med 2025;31:2778-2787; ICV bivalent EGFR+IL-13Ra2 CAR-T phase 1, rGBM.",
+      "doi": "10.1038/s41591-025-03745-0"
     },
     {
       "id": "ttfields-tmz-pembro-gbm-2thetop-2025",
@@ -1278,7 +1302,7 @@
       "title": "TTFields + temozolomide + pembrolizumab in newly diagnosed GBM (2-THE-TOP; EF-41/KEYNOTE-D58 phase 3)",
       "citation": "2-THE-TOP phase 2; EF-41/KEYNOTE-D58 phase 3 (ongoing).",
       "url": "https://www.cancernetwork.com/view/ttfields-plus-temozolomide-pembrolizumab-controls-tumors-in-glioblastoma",
-      "date": "2025-01-01",
+      "date": "2025-06-03",
       "venue": "Conference coverage / phase 3 ongoing",
       "studyDesign": "Phase 2 (single-arm/historical) + ongoing phase 3",
       "population": "Newly diagnosed GBM",
@@ -1316,11 +1340,12 @@
         "Medical Affairs",
         "Marketing"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: 2-THE-TOP (NCT03405792), Med (Cell Press) Jun 2025; PFS 12 vs 5.8 mo.",
+      "doi": "10.1016/j.medj.2025.100708"
     },
     {
       "id": "visualase-v2-fda-clearance-2025",
@@ -1443,7 +1468,7 @@
       "title": "Monteris Medical — $28M Series E growth equity",
       "citation": "Monteris Medical press release; corroborated by PitchBook.",
       "url": "https://www.prnewswire.com/news-releases/monteris-medical-secures-28-million-in-growth-equity-to-accelerate-revenue-and-innovation-in-minimally-invasive-neurosurgery-302711794.html",
-      "date": "2026-03-01",
+      "date": "2026-03-12",
       "venue": "Monteris Medical (PR)",
       "studyDesign": "Corporate financing",
       "population": "n/a",
@@ -1483,11 +1508,11 @@
         "Exec",
         "Product"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: $28M Series E + $35M Trinity credit facility, announced 2026-03-12."
     },
     {
       "id": "medtronic-stealth-axis-cranial-2026",
@@ -1595,11 +1620,11 @@
         "Product",
         "Sales"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-26",
-      "lastUpdatedRun": "2026-06-26",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: Velocity Alpha MR drill first clinical use 2026-04-22 plus robotic neuro-navigation prototype + ClearPoint 3.0."
     },
     {
       "id": "neuroquant-brain-tumor-ai-2025",
@@ -1932,9 +1957,9 @@
     },
     {
       "firstSeenRun": "2026-06-27",
-      "lastUpdatedRun": "2026-06-27",
-      "status": "carried",
-      "changeNote": "",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified ASCO 2026 (n=204): 24-mo OS 61.7% vs 35.7% (HR 0.59); 1-yr surgical-bed recurrence 1.0% vs 11.9%.",
       "id": "roads-cs131-tiles-vs-srt-brainmets-asco2026",
       "dedupKey": "asco2026-lba2000-roads-gammatile",
       "domain": "adjacent",
@@ -1981,7 +2006,7 @@
         "Marketing",
         "Exec"
       ],
-      "verified": "partial"
+      "verified": "verified"
     },
     {
       "firstSeenRun": "2026-06-27",
@@ -2036,9 +2061,9 @@
     },
     {
       "firstSeenRun": "2026-06-27",
-      "lastUpdatedRun": "2026-06-27",
-      "status": "carried",
-      "changeNote": "",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: NCCN CNS v2.2026 expands CSF tumor-DNA testing to biopsy-infeasible HGG/GBM.",
       "id": "nccn-csf-liquid-biopsy-biopsy-infeasible-hgg-2026",
       "dedupKey": "nccn-cns-v2.2026-csf-genomic-profiling",
       "domain": "adjacent",
@@ -2087,13 +2112,13 @@
         "Sales",
         "Exec"
       ],
-      "verified": "partial"
+      "verified": "verified"
     },
     {
       "firstSeenRun": "2026-06-27",
-      "lastUpdatedRun": "2026-06-27",
-      "status": "carried",
-      "changeNote": "",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: ASCO 2026 Abstract 2001 (Kumabe et al.); carmustine wafers add no OS/PFS benefit.",
       "id": "jcog1703-macs-carmustine-wafer-negative-asco2026",
       "dedupKey": "asco2026-2001-jcog1703-macs",
       "domain": "neuro-oncology",
@@ -2137,7 +2162,8 @@
       "whoShouldKnow": [
         "Medical Affairs"
       ],
-      "verified": "partial"
+      "verified": "verified",
+      "doi": "10.1200/JCO.2026.44.16_suppl.2001"
     },
     {
       "firstSeenRun": "2026-06-27",
@@ -2254,7 +2280,7 @@
       "title": "Lucicebtide (ST101) + chemoradiation in newly diagnosed GBM — Phase 2 window-of-opportunity update (ASCO 2026)",
       "citation": "Sapience Therapeutics press release, 2026-05-21; poster, CNS Tumors, ASCO 2026 Annual Meeting (Jun 1, 2026). C/EBPβ antagonist.",
       "url": "https://www.prnewswire.com/news-releases/sapience-therapeutics-provides-positive-data-update-from-phase-2-trial-of-lucicebtide-plus-soc-in-patients-with-glioblastoma-at-the-2026-american-society-of-clinical-oncology-asco-annual-meeting-302779105.html",
-      "date": "2026-05-21",
+      "date": "2026-06-01",
       "venue": "ASCO 2026 (poster, CNS Tumors) / company PR",
       "studyDesign": "Single-arm Phase 2 window-of-opportunity (no randomized control)",
       "population": "Newly diagnosed glioblastoma",
@@ -2291,11 +2317,11 @@
       "whoShouldKnow": [
         "Medical Affairs"
       ],
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-27",
-      "lastUpdatedRun": "2026-06-27",
-      "status": "carried",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: Sapience ST101 + chemoRT, Phase 2 window-of-opportunity, ASCO 2026 poster; projected mPFS 28.4 mo."
     },
     {
       "firstSeenRun": "2026-06-27",
@@ -3258,7 +3284,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3316,7 +3342,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3374,7 +3400,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3431,7 +3457,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3489,7 +3515,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3548,7 +3574,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3607,7 +3633,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3662,11 +3688,11 @@
         "Exec"
       ],
       "whyMatters": "For newly diagnosed unresectable/deep GBM, upfront LITT with maximal TDT-line ablation followed by chemoradiation is associated with better survival than biopsy alone - the key upfront-LITT comparative reference.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: Mohammadi et al., Neurosurgery 2019;85(6):762-772 (PMID 30476325). Median OS figures exist in full text (proxy-blocked) but design/cohort confirmed."
     },
     {
       "id": "magnetic-resonance-guided-stereotactic-laser-ablation-therapy-for-the-",
@@ -3722,7 +3748,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3780,7 +3806,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3833,11 +3859,11 @@
         "Marketing"
       ],
       "whyMatters": "Introduced MR-guided SLAH as a technically novel, safe, minimally invasive alternative to open temporal lobectomy for MTLE.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: Willie et al., Neurosurgery 2014;74(6):569-585 (PMID 24618797). ~54% Engel I in MTS subset."
     },
     {
       "id": "better-object-recognition-and-naming-outcome-with-mri-guided-stereotac",
@@ -3892,7 +3918,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -3948,7 +3974,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4005,7 +4031,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4062,7 +4088,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4119,7 +4145,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4175,7 +4201,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4232,7 +4258,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4288,7 +4314,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4343,7 +4369,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4398,7 +4424,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4451,11 +4477,11 @@
         "Marketing"
       ],
       "whyMatters": "SLACC offers open-callosotomy-comparable seizure control in LGS with less morbidity and faster recovery.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: Tao et al., Epilepsia 2020;61(6):1190-1200; N=10, 8/10 with >80% drop-attack reduction."
     },
     {
       "id": "robot-assisted-stereotactic-laser-ablation-in-medically-intractable-ep",
@@ -4509,11 +4535,11 @@
         "Marketing"
       ],
       "whyMatters": "Robotic (ROSA) guidance enables accurate, efficient, minimally invasive placement of laser ablation catheters for intractable epilepsy.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: Gonzalez-Martinez et al., Oper Neurosurg 2014;10 Suppl 2:167-172 (PMID 24448180)."
     },
     {
       "id": "early-surgical-therapy-for-drug-resistant-temporal-lobe-epilepsy-a-ran",
@@ -4567,7 +4593,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4623,7 +4649,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4679,7 +4705,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4734,8 +4760,8 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "K151359 (ROSA Brain, MEDTECH S.A.) confirmed; exact FDA decision day not corroborable (FDA primary records proxy-blocked)."
     },
     {
       "id": "renishaw-neuromate-frameless-gen-ii-stereotactic-robot-cleared-by-fda",
@@ -4744,7 +4770,7 @@
       "citation": "Renishaw press release; Medical Design & Outsourcing coverage of neuromate frameless Gen II FDA clearance",
       "url": "https://www.renishaw.com/en/25654.aspx",
       "doi": "",
-      "date": "2015-10-01",
+      "date": "2015-10-16",
       "venue": "FDA CDRH 510(k)",
       "domain": "regulatory",
       "studyDesign": "Regulatory clearance (510(k))",
@@ -4786,11 +4812,11 @@
         "Exec"
       ],
       "whyMatters": "Robotics competition broadens beyond ROSA, pressuring incumbents on planning-to-execution workflow integration.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: neuromate frameless Gen II (K132755) clearance announced 2015-10-16."
     },
     {
       "id": "icometrix-icobrain-receives-first-fda-510-k-clearance-for-quantitative",
@@ -4843,7 +4869,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4897,7 +4923,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -4950,11 +4976,11 @@
         "Exec"
       ],
       "whyMatters": "Streamlined SRS planning strengthens radiosurgery as the chief alternative to LITT for metastases and necrosis.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: Brainlab Elements Cranial/Spine SRS (K170816) announced 2017-09-21."
     },
     {
       "id": "fda-class-i-recall-of-monteris-neuroblate-laser-probes-system-for-unex",
@@ -5008,7 +5034,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5063,7 +5089,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5073,7 +5099,7 @@
       "citation": "FDA 510(k) K182417, ROSA ONE Brain Application; FDA/Innolitics submission record",
       "url": "https://fda.innolitics.com/submissions/NE/subpart-e%E2%80%94neurological-surgical-devices/HAW/K182417",
       "doi": "",
-      "date": "2018-01-01",
+      "date": "2019-02-07",
       "venue": "FDA CDRH 510(k)",
       "domain": "regulatory",
       "studyDesign": "Regulatory clearance (510(k))",
@@ -5115,11 +5141,11 @@
         "Exec"
       ],
       "whyMatters": "ROSA ONE Brain entrenches robotic stereotaxy as a competitive workflow standard in functional/epilepsy neurosurgery.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: ROSA ONE Brain (K182417) FDA decision 2019-02-07."
     },
     {
       "id": "icometrix-icobrain-ep-cleared-by-fda-for-ai-imaging-analysis-in-epilep",
@@ -5172,7 +5198,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5226,7 +5252,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5277,7 +5303,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5328,7 +5354,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5379,7 +5405,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5430,7 +5456,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5484,7 +5510,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5538,7 +5564,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5593,7 +5619,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5647,7 +5673,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5702,7 +5728,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5756,7 +5782,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5807,7 +5833,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5858,7 +5884,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5909,7 +5935,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -5960,7 +5986,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6011,7 +6037,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6059,11 +6085,11 @@
         "Marketing"
       ],
       "whyMatters": "Practice-defining meningioma RCT in progress; until it reports, adjuvant RT after GTR of atypical meningioma remains individualized. Flag for re-check in 2026.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Protocol verified (Trials 2015;16:519). Primary PFS results NOT yet published as of 2026-06; endpoint slated to report 2026 - re-check."
     },
     {
       "id": "clearpoint-neuro-announces-investment-of-up-to-105m-by-oberland-capita",
@@ -6117,7 +6143,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6170,7 +6196,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6180,7 +6206,7 @@
       "citation": "Mainprize/Woodworth/Lipsman et al. Microbubble-enhanced transcranial focused ultrasound with temozolomide for patients with high-grade glioma (BT008NA): a multicentre, open-label, phase 1/2 trial. Lancet Oncology, 2025. Lay coverage: Healio, News-Medical, U. Maryland.",
       "url": "https://www.healio.com/news/hematology-oncology/20251201/focused-ultrasound-safely-opens-bloodbrain-barrier-may-improve-survival-in-glioblastoma",
       "doi": "10.1016/S1470-2045(25)00492-9",
-      "date": "2025-11-24",
+      "date": "2025-12-01",
       "venue": "Healio / The Lancet Oncology (trade lay coverage of primary trial)",
       "domain": "adjacent",
       "studyDesign": "news/analysis",
@@ -6222,11 +6248,11 @@
         "Exec"
       ],
       "whyMatters": "If durable, FUS-enabled drug delivery could reposition the GBM treatment paradigm toward systemic-drug enhancement rather than focal ablation — a potential long-term headwind to LITT's role in tumor, and a signal that 'minimally invasive brain' messaging is consolidating around FUS.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: BT008NA, Lancet Oncology 2025; median PFS 13.5 mo, median OS 31.3 mo confirmed."
     },
     {
       "id": "biden-cancer-moonshot-awards-new-researcher-grants-sustained-federal-f",
@@ -6276,7 +6302,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6326,7 +6352,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6336,7 +6362,7 @@
       "citation": "Insightec press release (PR Newswire). Insightec Announces Spin-Out of Lotus Neuro to Advance Focused Ultrasound Brain Therapies. December 2025.",
       "url": "https://www.prnewswire.com/news-releases/insightec-announces-spin-out-of-lotus-neuro-to-advance-focused-ultrasound-brain-therapies-302644806.html",
       "doi": "",
-      "date": "2025-12-18",
+      "date": "2025-12-17",
       "venue": "PR Newswire (company PR)",
       "domain": "adjacent",
       "studyDesign": "news/analysis",
@@ -6375,11 +6401,11 @@
         "Exec"
       ],
       "whyMatters": "Signals deepening capital and strategic commitment to FUS as a brain-tumor delivery/therapy modality, reinforcing the competitive 'non-invasive brain' ecosystem that LITT positioning must differentiate against in tumor indications.",
-      "verified": "partial",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified: Insightec spin-out of Lotus Neuro announced 2025-12-17."
     },
     {
       "id": "ai-guided-real-time-brain-tumor-diagnosis-stimulated-raman-histology-m",
@@ -6387,15 +6413,15 @@
       "title": "AI-guided real-time brain-tumor diagnosis (stimulated Raman histology) moves into the OR; FDA-registered imager used in 500+ patients",
       "citation": "Coverage of Hollon et al. AI/SRH intraoperative diagnosis work (Michigan Medicine Health Lab; peer-reviewed reviews 2024-2025). AI Improves Brain Tumor Diagnosis.",
       "url": "https://www.michiganmedicine.org/health-lab/artificial-intelligence-improves-brain-tumor-diagnosis",
-      "doi": "",
-      "date": "2024-01-01",
+      "doi": "10.1038/s41591-019-0715-9",
+      "date": "2020-01-06",
       "venue": "Michigan Medicine Health Lab (institutional lay coverage)",
       "domain": "adjacent",
       "studyDesign": "news/analysis",
       "population": "Brain-tumor surgery patients",
-      "sampleSize": "Imager reported used in 500+ patients (per coverage — UNVERIFIED)",
+      "sampleSize": "278 patients across 3 centers (CNN trained on 2.5M+ images)",
       "endpoints": "",
-      "results": "AI applied to stimulated Raman histology reportedly predicts tumor diagnosis intraoperatively in under ~150 seconds (vs ~30 min for conventional frozen section); an FDA-registered SRH imager is described as in clinical use on 500+ patients.",
+      "results": "AI applied to stimulated Raman histology predicted intraoperative diagnosis in <150 seconds vs ~30 min for frozen section, validated prospectively in 278 patients (the prior '500+ patients' figure was unsupported).",
       "significance": "AI-driven intraoperative diagnostics make minimally invasive, biopsy-and-treat workflows faster and more confident — a tailwind for stereotactic, image-guided approaches (including LITT) that rely on precise targeting and rapid tissue characterization.",
       "limitations": "Institutional/lay coverage; the '500+ patients' and timing figures originate from researcher/press framing and should be confirmed against peer-reviewed primary sources; date is approximate (year-level).",
       "clinicalBottomLine": "AI-driven intraoperative diagnostics make minimally invasive, biopsy-and-treat workflows faster and more confident — a tailwind for stereotactic, image-guided approaches (including LITT) that rely on precise targeting and rapid tissue characterization.",
@@ -6432,8 +6458,8 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Citation corrected to Hollon et al., Nat Med 2020;26:52-58. '<150 sec' supported; CORRECTED sample to 278 patients (3 centers) - the prior '500+ patients' figure was unsupported."
     },
     {
       "id": "stereotactic-radiosurgery-for-patients-with-multiple-brain-metastases-",
@@ -6488,7 +6514,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6544,7 +6570,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6553,8 +6579,8 @@
       "title": "CNS Systematic Review and Evidence-Based Guidelines for the Treatment of Adults With Metastatic Brain Tumors (2019)",
       "citation": "Congress of Neurological Surgeons. Neurosurgery. 2019 (Executive Summary, PMID 30629218).",
       "url": "https://pubmed.ncbi.nlm.nih.gov/30629218/",
-      "doi": "",
-      "date": "2019-01-12",
+      "doi": "10.1093/neuros/nyy540",
+      "date": "2019-03-01",
       "venue": "Neurosurgery (CNS/AANS guideline)",
       "domain": "adjacent",
       "studyDesign": "Evidence-based clinical practice guideline",
@@ -6574,8 +6600,8 @@
         "radiation_necrosis_salvage"
       ],
       "clinicalImpactScore": 4,
-      "littBusinessImpact": 6,
-      "littBusinessDirection": "tailwind",
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "neutral",
       "businessLevers": [
         "competitive",
         "referral"
@@ -6590,7 +6616,7 @@
         "neuroradiology": "Moderate",
         "medicalOncology": "Moderate"
       },
-      "competitiveImpact": "",
+      "competitiveImpact": "Codifies SRS-alone over WBRT for limited mets; the executive summary does not explicitly address LITT.",
       "whoShouldKnow": [
         "Medical Affairs",
         "Marketing",
@@ -6600,8 +6626,8 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "status": "updated",
+      "changeNote": "Verified citation (Olson et al., Neurosurgery 2019;84(3):550-552, exec summary) but it does NOT explicitly address LITT - LITT-linkage downgraded; business impact softened to neutral."
     },
     {
       "id": "combined-nivolumab-and-ipilimumab-in-melanoma-metastatic-to-the-brain-",
@@ -6655,7 +6681,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6709,7 +6735,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6763,7 +6789,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6818,7 +6844,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6872,7 +6898,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6929,7 +6955,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -6983,7 +7009,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7039,7 +7065,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7094,7 +7120,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7150,7 +7176,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7209,7 +7235,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7264,7 +7290,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7319,7 +7345,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7373,7 +7399,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7425,7 +7451,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7435,7 +7461,7 @@
       "citation": "Brown PD, Mohan R, et al. Neuro-Oncology. 2021;23(8):1337-1347.",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8328012/",
       "doi": "10.1093/neuonc/noab040",
-      "date": "2021-08-02",
+      "date": "2021-03-02",
       "venue": "Neuro-Oncology",
       "domain": "adjacent",
       "studyDesign": "Prospective phase II randomized (proton vs photon IMRT) with temozolomide",
@@ -7474,7 +7500,440 @@
         "Exec"
       ],
       "whyMatters": "Proton therapy did not establish superiority over IMRT in GBM - neutral backdrop for LITT positioning.",
+      "verified": "verified",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "updated",
+      "changeNote": "Verified: Brown/Mohan et al., Neuro-Oncology 2021;23(8):1337-1347 (PMID 33647972); no significant difference vs IMRT."
+    },
+    {
+      "id": "gt-medical-gammatile-series-e-100m-2026",
+      "dedupKey": "https://www.prnewswire.com/news-releases/gt-medical-technologies-completes-oversubscribed-100-million-series-e",
+      "title": "GT Medical Technologies closes oversubscribed $100M Series E to commercialize GammaTile and advance GBM (BRIDGES) trial",
+      "citation": "GT Medical Technologies Completes Oversubscribed $100M Series E Equity Financing (PR Newswire, Jun 2026); MedTech Dive, MassDevice.",
+      "url": "https://www.prnewswire.com/news-releases/gt-medical-technologies-completes-oversubscribed-100-million-series-e-equity-financing-to-advance-commercial-treatment-for-patients-with-operable-brain-tumors-302794352.html",
+      "doi": "",
+      "date": "2026-06-22",
+      "venue": "PR Newswire / MedTech Dive",
+      "domain": "adjacent",
+      "studyDesign": "Corporate financing event (references ROADS RCT completed; BRIDGES GBM RCT ongoing)",
+      "population": "N/A; pipeline targets operable brain metastases and newly diagnosed GBM",
+      "sampleSize": "$100M Series E",
+      "endpoints": "",
+      "results": "Oversubscribed $100M Series E led by Viking Global with MVM, Gilde, Evidity, Medtech Venture Partners, FemHealth; funds GammaTile commercial expansion post-ROADS and the BRIDGES GBM RCT.",
+      "significance": "A well-capitalized adjacent brain-tumor local therapy pushing into glioblastoma, where LITT also plays.",
+      "limitations": "Financing PR; clinical claims rest on separately reported ROADS data; exact close date approximate.",
+      "clinicalBottomLine": "A competing brain-tumor local therapy is now strongly funded and entering GBM, raising competitive pressure on LITT in the resection-adjunct space.",
+      "indications": [
+        "brain_met",
+        "newly_gbm"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "evidenceStrength": "Corporate financing PR",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Strengthens a directly competing local therapy (Cs-131 brachytherapy) for resected brain tumors.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec"
+      ],
+      "whyMatters": "Competitive funding signal in LITT's resection-adjunct market.",
       "verified": "partial",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "neuroone-q2-fy2026-onerf-momentum-2026",
+      "dedupKey": "https://www.sec.gov/Archives/edgar/data/0001500198/000121390026054744/ea029009401ex99-1.htm",
+      "title": "NeuroOne reports Q2 FY2026 results — OneRF ablation momentum (72% product revenue growth; Zimmer Biomet distribution; UMN epilepsy collaboration)",
+      "citation": "NeuroOne Medical Technologies, fiscal Q2 2026 results (quarter ended 2026-03-31), reported 2026-05-12 (Form 8-K).",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001500198/000121390026054744/ea029009401ex99-1.htm",
+      "doi": "",
+      "date": "2026-05-12",
+      "venue": "SEC Form 8-K / company release",
+      "domain": "adjacent",
+      "studyDesign": "Corporate financial/commercial update (OneRF RF-ablation + sEEG electrode portfolio)",
+      "population": "N/A; OneRF trigeminal/epilepsy use referenced",
+      "sampleSize": "Product revenue $2.4M (+72% YoY)",
+      "endpoints": "",
+      "results": "Product revenue $2.4M (+72% YoY; later restated ~$0.5M); OneRF brain ablation featured at Zimmer Biomet's AANS booth; new University of Minnesota epilepsy sEEG collaboration; company-reported positive seizure-reduction outcomes.",
+      "significance": "An adjacent stereotactic RF-ablation competitor to LITT in drug-resistant epilepsy gaining commercial/clinical traction via Zimmer Biomet.",
+      "limitations": "Small company; financials restated; clinical 'seizure-free' claims company-reported, not peer-reviewed.",
+      "clinicalBottomLine": "A competing minimally invasive neuro-ablation modality is growing and partnering academically - intensifying competition for the same epilepsy ablation referrals LITT targets.",
+      "indications": [
+        "focal_epilepsy",
+        "mtle"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "utilization",
+        "pipeline"
+      ],
+      "timeHorizon": "<=12mo",
+      "evidenceStrength": "Company financial release; clinical claims uncontrolled",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "RF-ablation competitor to LITT in epilepsy, distributed by Zimmer Biomet.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing",
+        "Exec"
+      ],
+      "whyMatters": "Competitive-watch: adjacent ablation player gaining ground.",
+      "verified": "partial",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "medtronic-neuroscience-leadership-change-2026",
+      "dedupKey": "https://www.medtechdive.com/news/medtronic-bd-name-new-leaders/820619/",
+      "title": "Medtronic names new Neuroscience chief (Brett Wall departs; Dr. Kweli Thompson appointed)",
+      "citation": "MedTech Dive; Becker's Spine Review; Medtronic 8-K. Announced 2026-05-18; Thompson effective 2026-06-01.",
+      "url": "https://www.medtechdive.com/news/medtronic-bd-name-new-leaders/820619/",
+      "doi": "",
+      "date": "2026-05-18",
+      "venue": "MedTech Dive / Medtronic 8-K",
+      "domain": "regulatory",
+      "studyDesign": "Corporate leadership change",
+      "population": "N/A",
+      "sampleSize": "",
+      "endpoints": "",
+      "results": "Medtronic announced departure of Brett Wall (EVP/President, Neuroscience) and appointment of Dr. Kweli Thompson effective 2026-06-01; Wall transitions through 2026-09-01.",
+      "significance": "Medtronic owns Visualase, the market-leading LITT platform; leadership change at the top of that unit can reset commercial priorities for laser ablation.",
+      "limitations": "Leadership signal; portfolio direction depends on incoming chief's priorities.",
+      "clinicalBottomLine": "Leadership turnover at the unit housing Visualase is a competitive-watch item - it may shift how aggressively the category leader pushes LITT vs. Monteris/NeuroOne.",
+      "indications": [],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive",
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "evidenceStrength": "Multi-source + 8-K",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Affects the strategic posture of the Visualase (market-leading LITT) franchise.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing",
+        "Exec"
+      ],
+      "whyMatters": "Competitor leadership change at the Visualase parent unit.",
+      "verified": "verified",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "uniqure-amt130-clearpoint-fda-bla-path-2026",
+      "dedupKey": "https://www.statnews.com/2026/06/17/huntingtons-disease-uniqure-drug-fda-review/",
+      "title": "uniQure AMT-130 (Huntington's) clears FDA path to accelerated-approval BLA — delivered via ClearPoint MRI-guided stereotactic platform",
+      "citation": "uniQure regulatory update / SEC 8-K; STAT News, NeurologyLive; ClearPoint Neuro IR. 2026-06-17.",
+      "url": "https://www.statnews.com/2026/06/17/huntingtons-disease-uniqure-drug-fda-review/",
+      "doi": "",
+      "date": "2026-06-17",
+      "venue": "STAT News / uniQure 8-K / ClearPoint IR",
+      "domain": "regulatory",
+      "studyDesign": "FDA Type B meeting outcome / regulatory milestone",
+      "population": "Huntington's disease (Phase I/II AMT-130); delivery via ClearPoint navigation + SmartFlow cannula",
+      "sampleSize": "",
+      "endpoints": "",
+      "results": "FDA agreed 3-year Phase I/II AMT-130 data can be the primary basis for a BLA under accelerated approval (high-dose: 75% slowing of cUHDRS progression vs matched controls, p=0.003); BLA planned Q3 2026.",
+      "significance": "Validates MRI-guided stereotactic intracranial delivery as a regulated, approvable platform and strengthens ClearPoint's cranial franchise (adjacent to/enabling LITT workflows).",
+      "limitations": "Not a LITT clearance; Huntington's gene therapy; some specifics company/secondary-sourced.",
+      "clinicalBottomLine": "A first potential approved therapy delivered through ClearPoint hardware de-risks a key navigation/delivery enabler and reinforces momentum for MRI-guided minimally invasive intracranial procedures.",
+      "indications": [],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "evidenceStrength": "FDA milestone; multi-source + 8-K",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Moderate",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Strengthens the MRI-guided stereotactic delivery ecosystem in which LITT sits.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Product",
+        "Exec"
+      ],
+      "whyMatters": "Ecosystem validation + financial de-risking of ClearPoint.",
+      "verified": "verified",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "zongertinib-beamion-lung1-her2-nsclc-brainmets-2026",
+      "dedupKey": "10.1056/nejmoa2516969",
+      "title": "Zongertinib in HER2-mutant NSCLC with active brain metastases (Beamion LUNG-1) - NEJM publication",
+      "citation": "Beamion LUNG-1 investigators. First-Line Zongertinib in Advanced HER2-Mutant NSCLC. N Engl J Med 2026.",
+      "url": "https://www.nejm.org/doi/abs/10.1056/NEJMoa2516969",
+      "doi": "10.1056/NEJMoa2516969",
+      "date": "2026-04-16",
+      "venue": "New England Journal of Medicine",
+      "domain": "adjacent",
+      "studyDesign": "Phase Ib open-label single-arm (cohort-based), dedicated active brain-met cohort",
+      "population": "Treatment-naive HER2-mutant advanced NSCLC with active brain metastases",
+      "sampleSize": "Frontline n=74; active brain-met cohort n=30",
+      "endpoints": "Confirmed ORR; intracranial ORR (RANO-BM); PFS",
+      "results": "Systemic ORR 76%, mPFS 14.4 mo; active brain mets intracranial ORR 47% (59% in RT-naive measurable subset), intracranial PFS 8.2 mo.",
+      "significance": "A well-tolerated, CNS-active oral HER2 TKI that can control intracranial disease without upfront local therapy in a histology that brain-metastasizes often.",
+      "limitations": "Single-arm early-phase; small CNS cohort; accelerated-approval evidence base.",
+      "clinicalBottomLine": "Highly CNS-active oral HER2 TKI may defer local ablative therapy (incl. LITT) in HER2-mutant NSCLC brain mets.",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "referral"
+      ],
+      "timeHorizon": "<=12mo",
+      "evidenceStrength": "Phase Ib single-arm; CNS cohort verified",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "CNS-active systemic therapy can defer upfront local therapy in HER2-mutant NSCLC brain mets.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "whyMatters": "Systemic CNS control competes with local ablation in a molecular subset.",
+      "verified": "verified",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "pixclara-tlx101-fet-pet-glioma-nda-accepted-2026",
+      "dedupKey": "https://www.globenewswire.com/news-release/2026/04/09/3271481",
+      "title": "FDA accepts NDA for Pixclara (TLX101-Px, 18F-FET) amino-acid PET for recurrent/progressive glioma",
+      "citation": "Telix Pharmaceuticals press release / SEC 6-K; OncLive, CancerNetwork. 2026-04-09.",
+      "url": "https://www.globenewswire.com/news-release/2026/04/09/3271481/0/en/FDA-Accepts-NDA-for-TLX101-Px-Pixclara.html",
+      "doi": "",
+      "date": "2026-04-09",
+      "venue": "FDA regulatory action / Telix disclosure",
+      "domain": "regulatory",
+      "studyDesign": "Regulatory milestone (NDA acceptance; PDUFA Sep 11 2026)",
+      "population": "Adult/pediatric recurrent/progressive glioma",
+      "sampleSize": "",
+      "endpoints": "",
+      "results": "FDA accepted the NDA for 18F-FET PET imaging agent (Orphan Drug + Fast Track); PDUFA goal date 2026-09-11; intended to distinguish tumor progression from treatment-related change.",
+      "significance": "Moves a guideline-endorsed amino-acid PET tracer toward US approval - directly targets the recurrence-vs-treatment-effect question that gates LITT referral.",
+      "limitations": "Acceptance != approval; prior CRL; PDUFA pending.",
+      "clinicalBottomLine": "US amino-acid PET for glioma is a regulatory step closer (decision Sep 2026), sharpening selection for ablation/LITT.",
+      "indications": [
+        "recurrent_gbm",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "utilization"
+      ],
+      "timeHorizon": "<=12mo",
+      "evidenceStrength": "Regulatory milestone; multi-source confirmed",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "High",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Better recurrence-vs-necrosis discrimination improves LITT patient selection.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Product"
+      ],
+      "whyMatters": "Improves the selection imaging upstream of LITT referral.",
+      "verified": "verified",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "rad101-fasn-pet-brainmet-phase2b-enrollment-2026",
+      "dedupKey": "https://www.globenewswire.com/news-release/2026/04/16/3275194",
+      "title": "RAD101 (18F, FASN-targeted) PET completes Phase 2b enrollment for brain-metastasis recurrence-vs-treatment-effect",
+      "citation": "Radiopharm Theranostics press release (GlobeNewswire), 2026-04-16.",
+      "url": "https://www.globenewswire.com/news-release/2026/04/16/3275194/0/en/Radiopharm-Theranostics-Completes-Enrollment-in-U-S-Phase-2b-Imaging-Trial-of-RAD-101-for-Diagnosis-of-Brain-Metastases.html",
+      "doi": "",
+      "date": "2026-04-16",
+      "venue": "Radiopharm Theranostics disclosure / trial milestone",
+      "domain": "adjacent",
+      "studyDesign": "Phase 2b imaging trial (concordance vs MRI)",
+      "population": "Brain metastases (post-SRS recurrence vs treatment effect)",
+      "sampleSize": "",
+      "endpoints": "Concordance with MRI; topline expected 1H 2026",
+      "results": "Completed US Phase 2b enrollment; prior interim ~90% concordance with selective tumor uptake independent of primary histology.",
+      "significance": "A second dedicated recurrence-vs-necrosis PET tracer nearing pivotal readout - the discrimination problem central to LITT referral.",
+      "limitations": "Enrollment milestone, not efficacy data.",
+      "clinicalBottomLine": "A dedicated RN-vs-recurrence PET tracer finished Phase 2b enrollment; sharper selection would support appropriate LITT/necrosis referral.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral"
+      ],
+      "timeHorizon": "2-5yr",
+      "evidenceStrength": "Trial milestone; efficacy pending",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "High",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Improved RN-vs-recurrence discrimination sharpens selection for ablation/necrosis management.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "whyMatters": "Selection-imaging pipeline relevant to LITT referral.",
+      "verified": "partial",
+      "firstSeenRun": "2026-06-29",
+      "lastUpdatedRun": "2026-06-29",
+      "status": "new",
+      "changeNote": ""
+    },
+    {
+      "id": "indigo-vorasidenib-extended-followup-asco-2026",
+      "dedupKey": "indigo-vorasidenib-extended-followup-asco-2026",
+      "title": "INDIGO (vorasidenib) extended >3-year follow-up in IDH-mutant grade 2 glioma - ASCO 2026",
+      "citation": "Cloughesy T, et al. Updated INDIGO efficacy/safety (vorasidenib vs placebo). ASCO 2026, Abstract 2010/2010; Servier release 2026-05-31.",
+      "url": "https://servier.mediaroom.com/2026-05-31-Servier-to-Present-Extended-Follow-Up-Results-from-the-Phase-3-INDIGO-Trial",
+      "doi": "",
+      "date": "2026-05-31",
+      "venue": "ASCO 2026 Annual Meeting",
+      "domain": "neuro-oncology",
+      "studyDesign": "Phase 3 randomized double-blind placebo-controlled (extended >3-yr follow-up)",
+      "population": "Residual/recurrent IDH1/2-mutant WHO grade 2 glioma post-surgery",
+      "sampleSize": "331 (ITT)",
+      "endpoints": "PFS (BIRC), time to next intervention, seizures, QoL, safety",
+      "results": "Median PFS 44.1 mo; TTNI not estimable (only 23.8% had a next-intervention event); ~72% reduction in on-treatment seizure rate; neurocognition/QoL stable; grade >=3 ALT 10.8%.",
+      "significance": "Confirms durable, deepening benefit of the IDH inhibitor in grade 2 glioma at >3 yr; reinforces deferring chemoRT.",
+      "limitations": "Open-ended PFS CI; long-term hepatotoxicity monitoring; benefit specific to IDH-mutant grade 2.",
+      "clinicalBottomLine": "Long-term INDIGO data solidify vorasidenib as durable first-line maintenance for resected IDH-mutant grade 2 glioma, delaying chemoRT and reducing seizures.",
+      "indications": [
+        "newly_lgg",
+        "recurrent_lgg"
+      ],
+      "strategies": [
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "evidenceStrength": "Phase 3 extended follow-up; figures verified",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "Expands effective non-surgical management of low-grade IDH-mutant glioma; mild headwind for any local-ablation niche there.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "whyMatters": "Durable systemic option further shifts low-grade glioma away from early local therapy.",
+      "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
       "status": "new",
