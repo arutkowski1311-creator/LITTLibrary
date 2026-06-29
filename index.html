@@ -145,6 +145,8 @@
   .tailwind{color:var(--green)}.headwind{color:var(--danger)}.neutral{color:var(--muted)}
   body.physician .biz-only{display:none!important}
   body.physician #view-list thead th:nth-child(5),body.physician #view-list tbody td:nth-child(5){display:none}
+  body.physician .internal-only{display:none!important}
+  body.physician .util-grid{grid-template-columns:1fr!important}
   .pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-size:11px;color:var(--ink2);margin:1px}
   .new{color:var(--green);font-weight:700;font-size:11px}.upd{color:var(--yellow);font-weight:700;font-size:11px}
   .detail td{background:rgba(43,212,255,.03)}
@@ -264,9 +266,9 @@
       </div>
 
       <!-- UTILITY -->
-      <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px">
+      <div class="grid util-grid" style="grid-template-columns:1fr 1fr;margin-top:16px">
         <div class="card"><h2>Saved Searches</h2><div class="chips" id="saved"></div></div>
-        <div class="card"><h2>Quick Links</h2><div class="chips" id="quick"></div></div>
+        <div class="card internal-only"><h2>Quick Links</h2><div class="chips" id="quick"></div></div>
       </div>
     </section>
 
@@ -313,9 +315,16 @@ const C={cyan:"#2AD4FF",blue:"#3B82F6",purple:"#7B5CFF",teal:"#14B8A6",green:"#1
 const PHYSICIAN=(typeof window!=="undefined"&&window.__PHYSICIAN__===true)||/physician/i.test(location.pathname);
 if(PHYSICIAN){
   document.body.classList.add("physician");
-  document.title="LITT Library — Clinical Evidence";
-  var _sub=document.querySelector(".sub"); if(_sub)_sub.textContent="Clinical Evidence Library";
-  var _fs=document.querySelector("#f-sort"); if(_fs){var _o=_fs.querySelector('option[value="littBusinessImpact"]'); if(_o)_o.remove(); _fs.value="clinicalImpactScore";}
+  document.title="Clinical Evidence Library — Neuro-Oncology & Epilepsy";
+  var _q=function(s){return document.querySelector(s);};
+  var _h1=_q("h1"); if(_h1)_h1.textContent="EVIDENCE LIBRARY";
+  var _sub=_q(".sub"); if(_sub)_sub.textContent="Neuro-Oncology · Epilepsy · Neurosurgery";
+  var _ov=_q("#view-dashboard .card h2"); if(_ov)_ov.textContent="Evidence Overview";
+  var _tag=_q(".hero .copy .tag"); if(_tag)_tag.textContent="About this library";
+  var _big=_q(".hero .copy .big"); if(_big)_big.innerHTML="<span>Curated clinical evidence.</span>";
+  var _p=_q(".hero .copy p"); if(_p)_p.textContent="A continuously updated library of trials, guidelines, regulatory actions, and key studies across neuro-oncology, epilepsy, and minimally invasive neurosurgery — each graded for clinical impact, with limitations and verification noted.";
+  var _fs=_q("#f-sort"); if(_fs){var _o=_fs.querySelector('option[value="littBusinessImpact"]'); if(_o)_o.remove(); _fs.value="clinicalImpactScore";}
+  var _m=_q("#metrics"); if(_m&&_m.parentNode){var _n=document.createElement("div"); _n.className="viewsub"; _n.style.cssText="font-size:11px;margin:12px 0 0"; _n.textContent="Evidence summaries for clinical reference — graded for clinical impact, with limitations and verification noted. Not medical advice."; _m.parentNode.insertBefore(_n,_m.nextSibling);}
 }
 const SPECIALTIES=["neurosurgery","neuroOncology","epileptology","radiationOncology","neuroradiology","medicalOncology"];
 const NAV=[
@@ -335,7 +344,8 @@ const EVENTS=[
 ];
 const SAVED=[["LITT + Immunotherapy","litt_immuno_combo","strategy"],["Recurrent GBM","recurrent_gbm","indication"],
   ["MRI Thermometry","thermometry","text"],["Mesial Temporal Lobe Epilepsy","mtle","indication"],
-  ["Radiation Necrosis","radiation_necrosis","indication"],["Competitive / Devices","competitive_platform","strategy"]];
+  ["Radiation Necrosis","radiation_necrosis","indication"],["Competitive / Devices","competitive_platform","strategy"]]
+  .filter(s=>!(PHYSICIAN&&/competitive/i.test(s[0])));
 const QUICK=[["Engine Spec","docs/clinical-intelligence-engine.md"],["Baseline Report","reports/2026-06-29-baseline.md"],
   ["Latest Surveillance","reports/2026-06-29-surveillance.md"],["Raw Database","database.json"],
   (PHYSICIAN?["Full / Strategy View","index.html"]:["Physician View","physician.html"])];
@@ -402,8 +412,8 @@ function renderDashboard(){
   const trials=items.filter(isTrial).length, guides=items.filter(isGuideline).length;
   const practice=items.filter(i=>(+i.clinicalImpactScore||0)>=4).length;
   $("#metrics").innerHTML=[
-    ["New this run",newish,"Publications & updates","new"],["Trial updates",trials,"Tracked trials","trials"],
-    ["Guideline changes",guides,"Guidelines / consensus","guidelines"],["Practice impact",practice,"★★★★+ items","impact"]
+    [PHYSICIAN?"Recently added":"New this run",newish,"Publications & updates","new"],["Trial updates",trials,"Tracked trials","trials"],
+    [PHYSICIAN?"Guideline updates":"Guideline changes",guides,"Guidelines / consensus","guidelines"],[PHYSICIAN?"High clinical impact":"Practice impact",practice,"★★★★+ items","impact"]
   ].map(m=>`<div class="metric" data-act="${m[3]}" title="Open ${m[0]}"><div class="k">${m[0]}</div><div class="v">${m[1]}</div><div class="u">${m[2]}</div></div>`).join("");
   $("#metrics").querySelectorAll(".metric").forEach(el=>el.onclick=()=>{const a=el.dataset.act;
     if(a==="trials")go("trials");else if(a==="guidelines")go("guidelines");
@@ -468,7 +478,7 @@ function applySaved(s){openInList(savedPred(s),s[0]+" — saved search","");}
 // ---- LIST VIEW ----
 function openInList(pred,title,sub){listFilter=pred;listTitle=title;go("literature",true);$("#listTitle").textContent=title;$("#listSub").textContent=sub||"";renderList();}
 function setListFor(view){
-  const map={literature:[null,"Literature","Every tracked finding, scored on two axes and mapped to indications."],
+  const map={literature:[null,"Literature",PHYSICIAN?"Every tracked finding, graded for clinical impact and mapped to indication.":"Every tracked finding, scored on two axes and mapped to indications."],
     guidelines:[isGuideline,"Clinical Guidelines","Guidelines, consensus statements, and position papers."],
     trials:[isTrial,"Trials & Studies","Randomized, prospective, registry, and pivotal trials."],
     technology:[isTech,"Technology","Devices, platforms, imaging/AI, robotics, and regulatory moves."],
@@ -576,6 +586,7 @@ function buildNav(){
 window.addEventListener("hashchange",()=>{const v=location.hash.slice(1);if(v&&NAV.some(n=>n[0]===v))go(v);});
 function hydrate(d){
   DATA=d||{items:[]};TAX=DATA.taxonomy||{indications:{},strategies:{}};
+  if(PHYSICIAN&&DATA.items)DATA=Object.assign({},DATA,{items:DATA.items.filter(it=>(+it.clinicalImpactScore||0)>=2)});
   $("#lastUpd").textContent=DATA.lastUpdated||"—";
   // populate filters
   const inds=[...new Set((DATA.items||[]).flatMap(i=>i.indications||[]))].sort((a,b)=>indName(a).localeCompare(indName(b)));
