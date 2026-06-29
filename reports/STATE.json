@@ -1,13 +1,24 @@
 {
   "engine": "Clinical Intelligence Engine for Neuro-Oncology, Epilepsy, and LITT",
   "specVersion": "1.0",
-  "baselineDate": "2026-06-26",
-  "baselineStartDate": "2020-01-01",
-  "lastRunDate": "2026-06-27",
-  "lastMode": "baseline-backfill",
+  "baselineDate": "2026-06-29",
+  "baselineStartDate": "2015-01-01",
+  "lastRunDate": "2026-06-29",
+  "lastMode": "baseline",
   "baselineWindowMonths": null,
   "surveillanceWindowMonths": 2,
   "history": [
+    {
+      "date": "2026-06-29",
+      "mode": "baseline",
+      "window": "2015-01-01 to 2026-06-29",
+      "found": 84,
+      "added": 78,
+      "updated": 0,
+      "skipped": 6,
+      "reportPath": "reports/2026-06-29-baseline.md",
+      "note": "Deep historical rebuild extending baselineStartDate to 2015. Six web-enabled domain agents (neuro-oncology, LITT, epilepsy, regulatory, adjacent/competitive, ecosystem/lay-press) fanned out across journals, registries, regulators, conferences, and reputable general/business press. Filled the empty 2015-2019 window and the thin indications: corpus_callosotomy 0->3, meningioma 1->5, lower-grade glioma. Added the first lay-press/policy and MR-guided focused-ultrasound competitor signals. Database 58 -> 136 items; every item dated. Provenance: 107 verified / 29 partial; publisher/PubMed full-text fetches were proxy-blocked (403), so figures rest on cross-checked search metadata and some are flagged UNVERIFIED rather than laundered."
+    },
     {
       "date": "2026-06-26",
       "mode": "baseline",
