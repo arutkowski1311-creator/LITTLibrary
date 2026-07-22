@@ -338,8 +338,8 @@ EVIDENCE = [
     # pathway, title, cite, finding, supports, strength, tags, new
     ("Epilepsy / MTLE", "Interstitial Thermal Therapy in Mesial Temporal Lobe Epilepsy",
      "Landazuri P et al. JAMA Neurology 2025;82(9):915-924",
-     "2-yr Engel I ~58.4%; durable seizure freedom; severe AE ~2.1%; >1/3 reduced/stopped ASMs. Largest prospective MTLE LITT cohort (145 pts, 15 sites).",
-     "The flagship modern MTLE paper — a well-tolerated, durable, minimally invasive surgical option that may get more DRE patients to accept surgery earlier.",
+     "Largest prospective MTLE LITT cohort (145 pts, 15 sites). 2-yr Engel I ~58.4% / ILAE 1-2 57.2%; durable. vs a historical control, Engel I at 12 mo 60.6% (LITT) vs 8% (medical management), OR 18.5 (95% CI 5.6-59.5). Severe AE ~2.1%; >1/3 reduced/stopped ASMs.",
+     "The flagship modern MTLE paper — durable seizure freedom comparable to open surgery and dramatically better than continued medication. The single strongest counter to under-referral.",
      "Prospective multicenter", ["epilepsy"], True),
     ("Epilepsy / MTLE", "Effects of Surgical Targeting in LITT for MTLE (234 patients)",
      "Wu C et al. Epilepsia 2019;60(6):1171-1183",
