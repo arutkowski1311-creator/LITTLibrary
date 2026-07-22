@@ -142,8 +142,10 @@
       <a data-v="competitive"><span class="ic">⚑</span> Competitive</a>
       <a data-v="evidence"><span class="ic">▦</span> Evidence <span class="ct" id="ctEv">—</span></a>
       <a data-v="playbook"><span class="ic">◆</span> Playbook</a>
+      <a data-v="library"><span class="ic">✦</span> LITT Library <span class="ct" id="ctLib">—</span></a>
       <a data-v="method"><span class="ic">ƒ</span> Methodology</a>
     </nav>
+    <a class="btn" href="index.html" target="_blank" rel="noopener" style="text-decoration:none">↗ Full LITT Library dashboard</a>
     <div class="foot">
       <b>Monteris NeuroBlate</b> · confidential<br>
       Claims + field intelligence.<br>Directional targeting signal — not clinical or forecast use.
@@ -176,6 +178,7 @@ async function boot(){
     if(!data){ const r=await fetch('physician-profiles.json'); data=await r.json(); }
     DB=data; document.getElementById('ctAll').textContent=fmt(DB.providers.length);
     document.getElementById('ctEv').textContent=(DB.evidence||[]).length;
+    document.getElementById('ctLib').textContent=(DB.library||[]).length;
     buildAll(); route('overview');
   }catch(e){ document.getElementById('main').innerHTML=
     '<div class="loading">Could not load <b>physician-profiles.json</b>.<br>Open the standalone file, or serve this page over http.<br><br><span class="muted">'+esc(e.message)+'</span></div>'; }
@@ -191,8 +194,8 @@ function route(v){
 
 function buildAll(){
   const m=document.getElementById('main');
-  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewPlaybook(),viewMethod()].join('');
-  wireExplorer();
+  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewPlaybook(),viewLibrary(),viewMethod()].join('');
+  wireExplorer(); wireLibrary();
 }
 
 /* ---------- overview ---------- */
@@ -395,6 +398,7 @@ function openProfile(idx){
     ${refhtml}
     ${playForProfile(p)}
     ${evidenceForProfile(p)}
+    ${libraryForProfile(p)}
     ${p.medscout?`<div class="dsection"><a class="pill on" href="${esc(p.medscout)}" target="_blank" rel="noopener">Open Medscout profile ↗</a></div>`:''}`;
   scrim.classList.add('on');drawer.classList.add('on');
 }
@@ -541,6 +545,65 @@ function viewPlaybook(){
     <p class="hsub">The four growth levers, each mapped to the cohort it targets in this tool and the marketing, clinical, market-access and program tools to carry. Every physician profile auto-recommends the play for that clinician.</p>
     <div class="acctgrid" style="grid-template-columns:repeat(auto-fill,minmax(360px,1fr))">${gl.map(l=>leverBlock(l)).join('')}</div>
     <div class="note" style="margin-top:12px">${esc(DB.growthLeversNote||'')}</div></section>`;
+}
+
+/* ---------- LITT Library (live clinical intelligence) ---------- */
+function stars(n){return '★★★★★☆☆☆☆☆'.slice(5-(n||0),10-(n||0));}
+function dirBadge(d){const c=d==='tailwind'?'#1ED760':d==='headwind'?'#EF4444':'#64748B';
+  return `<span class="tag" style="${tagStyle(c)}">${d==='tailwind'?'▲ tailwind':d==='headwind'?'▼ headwind':'– neutral'}</span>`;}
+function libCard(e){
+  const inds=(e.indications||[]).slice(0,4).map(i=>`<span class="chip">${esc(i)}</span>`).join('');
+  return `<div class="acct" style="padding:14px 16px">
+    <div class="top"><div class="an" style="font-size:13.5px;line-height:1.3">${esc(e.title)}</div>
+      <span style="color:var(--yellow);font-size:12px;white-space:nowrap" title="Clinical impact ${e.clinicalImpact}/5">${stars(e.clinicalImpact)}</span></div>
+    <div class="asys" style="margin-top:3px">${esc(e.citation||e.venue)} · ${esc((e.date||'').slice(0,7))}</div>
+    <div class="chips" style="margin-top:7px">${dirBadge(e.direction)}${inds}</div>
+    ${e.bottomLine?`<div class="desc" style="margin:9px 0 0">${esc(e.bottomLine)}</div>`:''}
+    ${e.url?`<div style="margin-top:8px"><a class="chip" style="border-color:var(--cyan);color:var(--cyan)" href="${esc(e.url)}" target="_blank" rel="noopener">Source ↗</a></div>`:''}</div>`;
+}
+let libSort='date';
+function viewLibrary(){
+  const lm=DB.libraryMeta||{};
+  return `<section class="view" id="view-library"><div class="crumbs">LITT Library · live clinical intelligence</div>
+    <h1 class="h">LITT Library</h1>
+    <p class="hsub">The same living clinical-intelligence database (${lm.count||0} findings, ${(lm.dateRange||['',''])[0].slice(0,4)}–${(lm.dateRange||['',''])[1].slice(0,4)}) that powers the main LITT Library dashboard — filtered here to the disease pathways in this tool. Each finding is scored on clinical impact (★) and its effect on the LITT business (▲ tailwind / ▼ headwind). <a href="index.html" target="_blank" rel="noopener" style="color:var(--cyan)">Open the full dashboard ↗</a></p>
+    <div class="controls">
+      <input type="search" id="lq" placeholder="Search findings…">
+      <select id="lPath"><option value="">All pathways</option><option value="epilepsy">Epilepsy</option><option value="onc">Oncology</option></select>
+      <select id="lDir"><option value="">Any direction</option><option value="tailwind">Tailwind</option><option value="headwind">Headwind</option><option value="neutral">Neutral</option></select>
+      <span class="pill ${libSort==='date'?'on':''}" onclick="setLibSort('date')">Most recent</span>
+      <span class="pill ${libSort==='impact'?'on':''}" onclick="setLibSort('impact')">Top clinical impact</span>
+    </div>
+    <div class="count" id="lcount"></div>
+    <div class="acctgrid" id="libgrid"></div></section>`;
+}
+function setLibSort(s){libSort=s;document.querySelectorAll('#view-library .pill').forEach(p=>p.classList.toggle('on',p.textContent.includes(s==='date'?'recent':'impact')));renderLibrary();}
+function wireLibrary(){['lq','lPath','lDir'].forEach(id=>{const el=document.getElementById(id);el&&el.addEventListener('input',renderLibrary);});renderLibrary();}
+function renderLibrary(){
+  const lib=DB.library||[]; const q=(document.getElementById('lq')?.value||'').toLowerCase();
+  const pw=document.getElementById('lPath')?.value||'', dr=document.getElementById('lDir')?.value||'';
+  let rows=lib.filter(e=>{
+    if(pw&&!(e.pathways||[]).includes(pw))return false;
+    if(dr&&e.direction!==dr)return false;
+    if(q){const h=(e.title+' '+e.citation+' '+(e.indications||[]).join(' ')+' '+e.bottomLine).toLowerCase();if(!h.includes(q))return false;}
+    return true;});
+  rows.sort((a,b)=>libSort==='impact'?(b.clinicalImpact-a.clinicalImpact)||(b.date>a.date?1:-1):(b.date>a.date?1:b.date<a.date?-1:0));
+  const cap=rows.slice(0,120);
+  document.getElementById('libgrid').innerHTML=cap.map(libCard).join('');
+  document.getElementById('lcount').innerHTML=`Showing <b>${cap.length}</b> of <b>${rows.length}</b> findings`+(rows.length>120?' (top 120)':'');
+}
+function libraryForProfile(p){
+  const lib=DB.library||[]; if(!lib.length)return '';
+  const match=lib.filter(e=>(e.pathways||[]).includes(p.pathway))
+    .sort((a,b)=>(b.clinicalImpact-a.clinicalImpact)||(b.date>a.date?1:-1)).slice(0,3);
+  if(!match.length)return '';
+  const items=match.map(e=>`<div style="padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.06)">
+    <div style="font-size:12px;color:var(--ink);font-weight:600">${esc(e.title)} <span style="color:var(--yellow)">${stars(e.clinicalImpact)}</span></div>
+    <div style="font-size:11px;color:var(--muted);margin-top:1px">${esc((e.date||'').slice(0,7))} · ${dirBadge(e.direction).replace(/<[^>]+>/g,'').trim()}</div>
+    ${e.bottomLine?`<div style="font-size:11.5px;color:var(--ink2);margin-top:3px">${esc(e.bottomLine)}</div>`:''}
+    ${e.url?` <a style="font-size:11px;color:var(--cyan)" href="${esc(e.url)}" target="_blank" rel="noopener">Source ↗</a>`:''}</div>`).join('');
+  return `<div class="dsection"><h3>From the LITT Library — ${p.pathway==='epilepsy'?'epilepsy':'oncology'} intel</h3>${items}
+    <div class="note">Top-impact findings from the live clinical-intelligence database for this pathway. Open <b>LITT Library</b> for all ${lib.length}.</div></div>`;
 }
 
 /* ---------- methodology ---------- */

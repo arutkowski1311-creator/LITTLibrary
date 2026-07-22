@@ -219,5 +219,22 @@ for r in range(5,end+1):
     ws.row_dimensions[r].height=150
 ws.cell(row=end+2,column=1,value=d["growthLeversNote"]).font=SUB
 
+# ---------------- LITT Library (from database.json) ----------------
+lib=d.get("library",[])
+if lib:
+    ws=wb.create_sheet("LITT Library"); ws.sheet_view.showGridLines=False
+    lm=d.get("libraryMeta",{})
+    ws.cell(row=1,column=1,value=f"LITT Library — live clinical intelligence ({lm.get('count',len(lib))} findings, "
+        f"{(lm.get('dateRange',['',''])[0] or '')[:4]}–{(lm.get('dateRange',['',''])[1] or '')[:4]})").font=Font(bold=True,color=BLUE,size=12)
+    ws.cell(row=2,column=1,value="The same database that powers the main LITT Library dashboard, filtered to this tool's pathways.").font=SUB
+    LHDR2=["Date","Title","Citation","Pathway","Indications","Clinical impact (1-5)","Business impact (0-10)","Direction","Bottom line","Source"]
+    lrows2=[[e.get("date",""),e.get("title",""),e.get("citation","")," / ".join(e.get("pathways",[])),
+        ", ".join(e.get("indications",[])),e.get("clinicalImpact",0),e.get("businessImpact",0),
+        e.get("direction",""),e.get("bottomLine",""),e.get("url","")]
+        for e in sorted(lib,key=lambda x:x.get("date",""),reverse=True)]
+    end=write_table(ws,LHDR2,lrows2,start=4,color=NAVY)
+    for i,w in enumerate([11,40,32,14,28,14,14,12,50,20],1): ws.column_dimensions[get_column_letter(i)].width=w
+    ws.auto_filter.ref=f"A4:{get_column_letter(len(LHDR2))}{end}"
+
 wb.save("LITT_Physician_Profiles.xlsx")
 print("saved LITT_Physician_Profiles.xlsx  tabs:",wb.sheetnames)

@@ -110,6 +110,23 @@ A COI-style composite used to rank the Explorer:
 `untapped ×1 + LITT performed ×3 + epilepsy craniotomy ×0.6 + tumor craniotomy ×0.6`, plus a bonus for
 field-confirmed / plan-named clinicians.
 
+## LITT Library integration
+
+The tool taps into the repo's living clinical-intelligence database (`database.json`, 144 findings,
+2012–2026 — the same source that powers `index.html`). At build time each finding is tagged to a
+pathway (epilepsy vs. oncology) from its indications and embedded into `physician-profiles.json`. It
+surfaces in two places:
+
+- a browsable **LITT Library** view (filter by pathway/direction, sort by recency or clinical impact),
+  with each finding scored on clinical impact (★1–5) and LITT business direction (▲ tailwind / ▼
+  headwind), and
+- a **"From the LITT Library"** section on each physician profile — the top-impact findings for that
+  clinician's pathway.
+
+A sidebar link opens the full LITT Library dashboard (`index.html`). Rebuilding the physician dataset
+(`build_data.py`) automatically re-reads `database.json`, so refreshing the clinical library refreshes
+the physician tool too.
+
 ## Caveats
 
 - Claims data (Medscout) **undercounts** academic-center volume and **cannot identify the laser platform**.

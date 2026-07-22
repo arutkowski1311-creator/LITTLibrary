@@ -195,6 +195,38 @@ def score(p):
     return round(s,1)
 for p in providers: p["oppScore"]=score(p)
 
+# ---------- tap into the LITT Library (database.json) ----------
+EPI_IND={"mtle","hypothalamic_hamartoma","focal_epilepsy","corpus_callosotomy"}
+def load_library():
+    for path in ("database.json","/home/user/LITTLibrary/database.json","../../database.json"):
+        try:
+            L=json.load(open(path)); break
+        except Exception: L=None
+    if not L: return [], {}
+    indmap=L.get("taxonomy",{}).get("indications",{})
+    out=[]
+    for it in L.get("items",[]):
+        inds=it.get("indications",[]) or []
+        pw=[]
+        if any(i in EPI_IND for i in inds): pw.append("epilepsy")
+        if any(i not in EPI_IND for i in inds): pw.append("onc")
+        out.append(dict(
+            id=it.get("id"), title=it.get("title",""), citation=it.get("citation",""),
+            date=it.get("date",""), url=it.get("url",""), venue=it.get("venue",""),
+            studyDesign=it.get("studyDesign",""), evidenceStrength=it.get("evidenceStrength",""),
+            indications=[indmap.get(i,i) for i in inds], indKeys=inds,
+            clinicalImpact=it.get("clinicalImpactScore",0),
+            businessImpact=it.get("littBusinessImpact",0),
+            direction=it.get("littBusinessDirection","neutral"),
+            bottomLine=it.get("clinicalBottomLine",""), whyMatters=it.get("whyMatters",""),
+            status=it.get("status",""), pathways=pw,
+        ))
+    out.sort(key=lambda x:(x["date"], x["clinicalImpact"]), reverse=True)
+    meta=dict(count=len(out), engine=L.get("engine",""), lastUpdated=L.get("lastUpdated",""),
+              dateRange=[min((x["date"] for x in out),default=""),max((x["date"] for x in out),default="")])
+    return out, meta
+LIBRARY, LIBMETA = load_library()
+
 # ---------- assemble output ----------
 def cohort_counts(lst):
     c=defaultdict(int)
@@ -221,6 +253,7 @@ out = dict(
     evidence=[dict(pathway=p,title=t,cite=c,finding=f,supports=s,strength=st,tags=tg,new=nw)
               for (p,t,c,f,s,st,tg,nw) in AI.EVIDENCE],
     growthLevers=AI.GROWTH_LEVERS, growthLeversNote=AI.GROWTH_LEVERS_NOTE,
+    library=LIBRARY, libraryMeta=LIBMETA,
     platforms=dict(neuroblate=AI.NEUROBLATE, visualase=AI.VISUALASE, clearpoint=AI.CLEARPOINT, unverified=AI.UNVERIFIED),
 )
 
