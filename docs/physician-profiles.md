@@ -70,6 +70,24 @@ on the Excel `Model — Editable` tab.
 patients → 1,163 × 5% ≈ **58 addressable LITT candidates/yr**. If they have referred ~0, that is 58
 untapped — the "there have to be candidates out there" math, quantified.
 
+## Evidence library
+
+A curated set of clinical papers grouped by disease pathway (epilepsy/MTLE, GBM/HGG, brain
+metastases, radiation necrosis, meningioma, tumor-wide, safety) — the "evidence to carry." Each
+physician profile auto-surfaces the papers matching its dominant pathway (epilepsy vs. oncology).
+Sourced from the NeuroBlate/LAANTERN literature and the Monteris clinical briefs; five are recent
+additions, flagged **NEW**:
+
+- **LITT + adjuvant pembrolizumab in recurrent high-grade astrocytoma** — Campian *et al.*, *Nature
+  Communications* 2026 (Phase 1/randomized Phase 2b; >3× improved OS; LITT–immunotherapy synergy).
+- **LITT + SRT for recurrent brain metastases** — Grabowski *et al.*, *Neuro-Oncol Adv* 2022 (FFLP
+  29.8 vs 7.5 vs 3.7 months).
+- **LITT for new & recurrent meningioma** — Chiang *et al.*, *J Neurosurg* 2024 (new indication;
+  61.4% 1-yr local control at ≥91% ablation).
+- **LITT + early intervention post-SRS** — Sankey *et al.*, *Neurosurgery* 2022 (steroid cessation,
+  RN vs recurrence biopsy).
+- **MTLE durability** — Landazuri *et al.*, *JAMA Neurology* 2025 (2-yr Engel I ~58%).
+
 ## Opportunity score
 
 A COI-style composite used to rank the Explorer:

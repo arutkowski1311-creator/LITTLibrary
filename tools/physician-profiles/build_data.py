@@ -156,7 +156,13 @@ for r in data:
     eloquent_tumors=round(tum*ELOQUENT_RATE)
     addressable_total=epi_addr+onc_addr
     untapped=max(0, addressable_total-litt)
+    # dominant pathway for "evidence to carry"
+    if cohort=="LITT-Naïve Craniotomy Surgeon":
+        pathway="onc" if rec["tumor_cranio"]>=rec["epi_cranio"] else "epilepsy"
+    else:
+        pathway="epilepsy" if epi_addr>=onc_addr else "onc"
     rec.update(
+        pathway=pathway,
         cohort=cohort, platform=platform, planRole=planRole,
         account=(acct["name"] if acct else rec.get("prospectAccount","")),
         accountAcr=(acct["acronym"] if acct else ""),
@@ -212,6 +218,8 @@ out = dict(
     leakage=[dict(account=a,claims=c,ours=o,gap=g,play=p,platform=pl) for (a,c,o,g,p,pl) in AI.COMPETITIVE_LEAKAGE],
     prospects=[dict(account=a,user=u,litt=l,epilepsy=e,seeg=s,necrosis_pool=n,platform=pl) for (a,u,l,e,s,n,pl) in AI.PROSPECTS],
     topTargets=[dict(name=n,affiliation=af,motion=mo,litt=l,epi=e,tumor=t,coi=c) for (n,af,mo,l,e,t,c) in AI.TOP_USER_TARGETS],
+    evidence=[dict(pathway=p,title=t,cite=c,finding=f,supports=s,strength=st,tags=tg,new=nw)
+              for (p,t,c,f,s,st,tg,nw) in AI.EVIDENCE],
     platforms=dict(neuroblate=AI.NEUROBLATE, visualase=AI.VISUALASE, clearpoint=AI.CLEARPOINT, unverified=AI.UNVERIFIED),
 )
 

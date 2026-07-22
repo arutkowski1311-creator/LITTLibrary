@@ -140,6 +140,7 @@
       <a data-v="accounts"><span class="ic">▤</span> Accounts <span class="ct">18</span></a>
       <a data-v="referral"><span class="ic">⇄</span> Referral Network</a>
       <a data-v="competitive"><span class="ic">⚑</span> Competitive</a>
+      <a data-v="evidence"><span class="ic">▦</span> Evidence <span class="ct" id="ctEv">—</span></a>
       <a data-v="method"><span class="ic">ƒ</span> Methodology</a>
     </nav>
     <div class="foot">
@@ -173,6 +174,7 @@ async function boot(){
     let data = window.__EMBED__ || null;
     if(!data){ const r=await fetch('physician-profiles.json'); data=await r.json(); }
     DB=data; document.getElementById('ctAll').textContent=fmt(DB.providers.length);
+    document.getElementById('ctEv').textContent=(DB.evidence||[]).length;
     buildAll(); route('overview');
   }catch(e){ document.getElementById('main').innerHTML=
     '<div class="loading">Could not load <b>physician-profiles.json</b>.<br>Open the standalone file, or serve this page over http.<br><br><span class="muted">'+esc(e.message)+'</span></div>'; }
@@ -188,7 +190,7 @@ function route(v){
 
 function buildAll(){
   const m=document.getElementById('main');
-  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewMethod()].join('');
+  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewMethod()].join('');
   wireExplorer();
 }
 
@@ -390,8 +392,22 @@ function openProfile(idx){
       <div class="note">Triangulation: 25–40% of epilepsy is drug-resistant and only ~4% of eligible get surgery today; up to 49% of tumors are eloquent/deep. The ${(DB.meta.addressable_fraction*100)|0}% blended addressable rate matches the Territory Plan's reservoir sizing.</div>
     </div>
     ${refhtml}
+    ${evidenceForProfile(p)}
     ${p.medscout?`<div class="dsection"><a class="pill on" href="${esc(p.medscout)}" target="_blank" rel="noopener">Open Medscout profile ↗</a></div>`:''}`;
   scrim.classList.add('on');drawer.classList.add('on');
+}
+
+function evidenceForProfile(p){
+  const ev=(DB.evidence||[]).filter(e=>e.tags.includes(p.pathway));
+  if(!ev.length)return '';
+  ev.sort((a,b)=>(b.new?1:0)-(a.new?1:0));
+  const items=ev.slice(0,4).map(e=>`<div style="padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.06)">
+    <div style="font-size:12px;color:var(--ink);font-weight:600">${esc(e.title)} ${e.new?'<span class="tag" style="'+tagStyle('#1ED760')+'">NEW</span>':''}</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:1px">${esc(e.cite)}</div>
+    <div style="font-size:11.5px;color:var(--ink2);margin-top:3px">${esc(e.finding)}</div></div>`).join('');
+  const lead=p.pathway==='epilepsy'?'Epilepsy / DRE pathway':'Oncology pathway (tumor · mets · necrosis · GBM)';
+  return `<div class="dsection"><h3>Evidence to carry — ${esc(lead)}</h3>${items}
+    <div class="note">Auto-selected from the Evidence Library by this clinician's dominant opportunity. Open <b>Evidence</b> for the full set.</div></div>`;
 }
 
 /* ---------- accounts ---------- */
@@ -454,6 +470,27 @@ function viewCompetitive(){
     <div class="card" style="margin-top:15px"><h2>Top user targets — Composite Opportunity Index</h2>
       <div class="tblwrap"><table><thead><tr><th>Surgeon</th><th>Affiliation</th><th>Motion</th><th class="num">LITT</th><th class="num">Epilepsy</th><th class="num">Tumor</th><th class="num">COI</th></tr></thead><tbody>${tt}</tbody></table></div></div>
   </section>`;
+}
+
+/* ---------- evidence library ---------- */
+function evCard(e){
+  return `<div class="acct" style="padding:14px 16px">
+    <div class="top"><div class="an" style="font-size:13.5px;line-height:1.3">${esc(e.title)}</div>
+      ${e.new?`<span class="tag" style="${tagStyle('#1ED760')}">NEW</span>`:''}</div>
+    <div class="asys" style="margin-top:3px">${esc(e.cite)}</div>
+    <div class="desc" style="margin:9px 0 7px">${esc(e.finding)}</div>
+    <div style="font-size:11.5px;color:var(--ink2)"><b style="color:var(--cyan)">Carry it when:</b> ${esc(e.supports)}</div>
+    <div class="chips" style="margin-top:8px"><span class="chip">${esc(e.strength)}</span></div></div>`;
+}
+function viewEvidence(){
+  const ev=DB.evidence||[];
+  const paths=[...new Set(ev.map(e=>e.pathway))];
+  const blocks=paths.map(p=>`<h4 class="blk">${esc(p)}</h4>
+    <div class="acctgrid">${ev.filter(e=>e.pathway===p).map(evCard).join('')}</div>`).join('');
+  return `<section class="view" id="view-evidence"><div class="crumbs">Evidence to carry</div>
+    <h1 class="h">Evidence Library</h1>
+    <p class="hsub">The clinical evidence behind each disease pathway — what each paper found and when to lead with it. <span style="color:var(--green)">NEW</span> marks the latest additions (LITT+SRT for mets, LITT+pembrolizumab RCT, meningioma, post-SRS necrosis). Registry/cohort evidence unless noted; not superiority claims over open surgery.</p>
+    ${blocks}</section>`;
 }
 
 /* ---------- methodology ---------- */
