@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baseball Multi-Cam Tracker — Prototype</title>
+<style>
+  :root{
+    --bg:#0f1216; --panel:#171c22; --panel2:#1e252d; --line:#2a333d;
+    --ink:#e7edf3; --dim:#93a1b0; --accent:#4c9be8; --good:#3fbf7f;
+    --warn:#e8a24c; --hot:#e8564c;
+    --soft:#4c9be8; --medium:#3fbf7f; --hard:#e8a24c; --scorched:#e8564c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+       background:var(--bg);color:var(--ink)}
+  header{padding:12px 18px;border-bottom:1px solid var(--line);
+    display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--panel)}
+  header h1{font-size:16px;margin:0;font-weight:650}
+  header .tag{color:var(--dim);font-size:12px}
+  .wrap{display:grid;grid-template-columns:1fr 340px;gap:14px;padding:14px}
+  @media(max-width:1000px){.wrap{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .card h2{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim)}
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .cam{background:#000;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
+  .cam video{width:100%;display:block;aspect-ratio:16/9;background:#000}
+  .cam .lbl{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.6);
+    padding:2px 7px;border-radius:5px;font-size:11px}
+  .cam .cfg{padding:6px;display:flex;gap:6px;align-items:center;background:var(--panel2)}
+  .cam .cfg input[type=text]{flex:1;min-width:0}
+  .cam .cfg .off{font-size:11px;color:var(--dim);white-space:nowrap}
+  input,select,button{font:inherit;color:var(--ink)}
+  input[type=text],input[type=number],select{
+    background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+  button{background:var(--panel2);border:1px solid var(--line);border-radius:6px;
+    padding:7px 10px;cursor:pointer}
+  button:hover{border-color:var(--accent)}
+  button.pri{background:var(--accent);border-color:var(--accent);color:#04101d;font-weight:650}
+  button.on{background:var(--good);border-color:var(--good);color:#04140c;font-weight:650}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+  .transport{display:flex;gap:8px;align-items:center;margin-top:8px}
+  .transport input[type=range]{flex:1}
+  label.mini{font-size:11px;color:var(--dim);display:block;margin-bottom:3px}
+  .hard-btns button{flex:1}
+  .hard-btns .soft.sel{background:var(--soft);color:#04101d}
+  .hard-btns .medium.sel{background:var(--medium);color:#04140c}
+  .hard-btns .hard.sel{background:var(--hard);color:#1a1000}
+  .hard-btns .scorched.sel{background:var(--scorched);color:#1a0000}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:20px;
+    padding:3px 10px;font-size:12px}
+  .chip.sel{border-color:var(--accent);background:#14324f}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+  .muted{color:var(--dim)}
+  .kbd{font-size:11px;color:var(--dim);background:var(--panel2);border:1px solid var(--line);
+    border-radius:4px;padding:0 5px}
+  #spray{width:100%;height:auto;background:#0c1a10;border-radius:8px;border:1px solid var(--line)}
+  #spray polygon{fill:#14301c;stroke:#0c1a10;stroke-width:1.5;cursor:pointer;transition:fill .1s}
+  #spray polygon:hover{fill:#1d4429}
+  #spray polygon.sel{fill:var(--accent)}
+  #spray text{fill:#8fb59c;font-size:11px;pointer-events:none;text-anchor:middle}
+  .flex{display:flex;gap:8px}
+  .grow{flex:1}
+  details summary{cursor:pointer;color:var(--dim);font-size:12px;margin-top:6px}
+  .foot{padding:0 18px 24px;color:var(--dim);font-size:12px}
+  .pill{font-size:10px;padding:1px 6px;border-radius:10px;border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚾ Multi-Cam Tracker</h1>
+  <span class="tag">Phase-0 prototype — proves the tag → store → query loop. Load local clips or an HLS/MP4 URL per angle.</span>
+</header>
+
+<div class="wrap">
+  <!-- LEFT: cameras + game setup -->
+  <div>
+    <div class="card">
+      <h2>Cameras (2–4 angles)</h2>
+      <div class="grid4" id="cams"></div>
+      <div class="transport">
+        <button id="playAll" class="pri">▶ Play all</button>
+        <button id="pauseAll">⏸ Pause</button>
+        <input type="range" id="scrub" min="0" max="100" value="0" step="0.1">
+        <span class="muted" id="tpos">0.0s</span>
+      </div>
+      <div class="muted" style="font-size:11.5px;margin-top:6px">
+        Each angle has a <b>sync offset</b> — nudge until a clap/flash lines up across all feeds (see DESIGN §4). One scrub bar drives every camera.
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>Game &amp; roster</h2>
+      <div class="row">
+        <input type="text" id="teamName" placeholder="Team name" style="width:160px">
+        <input type="text" id="season" placeholder="Season (2026)" style="width:110px">
+        <input type="text" id="oppName" placeholder="Opponent" style="width:150px">
+      </div>
+      <div class="row">
+        <input type="text" id="pName" placeholder="Player name" style="width:150px">
+        <input type="text" id="pNum" placeholder="#" style="width:52px">
+        <input type="text" id="pPos" placeholder="Pos" style="width:64px">
+        <select id="pBats"><option value="">Bats</option><option>R</option><option>L</option><option>S</option></select>
+        <button id="addPlayer">+ Add</button>
+      </div>
+      <table id="roster"><thead><tr><th>#</th><th>Player</th><th>Pos</th><th>B</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <!-- RIGHT: tagging + data -->
+  <div>
+    <div class="card">
+      <h2>Tag the play</h2>
+      <div class="row">
+        <div class="grow">
+          <label class="mini">Batter</label>
+          <select id="batter" class="grow" style="width:100%"></select>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="mini" style="width:100%">Pitch <span class="kbd">P</span></span>
+        <select id="pitchType" style="width:100px">
+          <option value="FB">FB</option><option value="CB">CB</option>
+          <option value="SL">SL</option><option value="CH">CH</option>
+          <option value="CT">CT</option><option value="SP">SP</option>
+        </select>
+        <input type="number" id="velo" placeholder="mph" style="width:70px">
+        <select id="pitchResult">
+          <option value="ball">ball</option><option value="called">called K</option>
+          <option value="swinging">swing K</option><option value="foul">foul</option>
+          <option value="in_play" selected>in play</option>
+        </select>
+      </div>
+
+      <div id="battedPanel">
+        <label class="mini">Spray direction — click the field</label>
+        <svg id="spray" viewBox="0 0 300 220"></svg>
+
+        <label class="mini" style="margin-top:8px">Hardness <span class="kbd">1–4</span></label>
+        <div class="row hard-btns">
+          <button class="soft"     data-h="soft">soft</button>
+          <button class="medium"   data-h="medium">medium</button>
+          <button class="hard"     data-h="hard">hard</button>
+          <button class="scorched" data-h="scorched">scorched</button>
+        </div>
+
+        <label class="mini">Launch</label>
+        <div class="row">
+          <button class="chip" data-l="ground">ground</button>
+          <button class="chip" data-l="line">line drive</button>
+          <button class="chip" data-l="fly">fly</button>
+          <button class="chip" data-l="popup">popup</button>
+        </div>
+
+        <label class="mini">Result</label>
+        <select id="bbResult" style="width:100%">
+          <option value="out">out</option><option value="single">single</option>
+          <option value="double">double</option><option value="triple">triple</option>
+          <option value="hr">home run</option><option value="error">error</option>
+        </select>
+      </div>
+
+      <div class="row" style="margin-top:12px">
+        <button id="saveTag" class="pri grow">✓ Save play (Enter)</button>
+      </div>
+      <div class="muted" style="font-size:11px">Auto-stamps the master clock (<span id="stamp">0.0s</span>) &amp; links to the batter.</div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>Logged plays &amp; query</h2>
+      <div class="row">
+        <select id="qHard"><option value="">any hardness</option><option>soft</option><option>medium</option><option>hard</option><option>scorched</option></select>
+        <select id="qZone"><option value="">any zone</option><option>LF</option><option>LCF</option><option>CF</option><option>RCF</option><option>RF</option><option>IF_pull</option><option>IF_mid</option><option>IF_oppo</option></select>
+      </div>
+      <table id="plays"><thead><tr><th>t</th><th>batter</th><th>hit</th><th>result</th></tr></thead><tbody></tbody></table>
+      <div class="row" style="margin-top:10px">
+        <button id="exportBtn" class="grow">⬇ Export JSON</button>
+        <button id="importBtn" class="grow">⬆ Import</button>
+        <input type="file" id="importFile" accept="application/json" hidden>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  Prototype scope: local playback + assisted tagging + localStorage, all client-side. The real tool (DESIGN §6, Phase 1)
+  swaps local files for MediaMTX/WebRTC live ingest and localStorage for Postgres — the tag schema stays identical.
+</div>
+
+<script>
+// ---------- state ----------
+const LS = 'bbtracker.v1';
+const state = load() || { meta:{}, players:[], plays:[], cams:[
+  {label:'CF',url:'',off:0},{label:'High home',url:'',off:0},
+  {label:'1B dugout',url:'',off:0},{label:'3B dugout',url:'',off:0}
+]};
+let draft = { hardness:null, launch:null, spray:null };
+const vids = [];
+
+function load(){ try{ return JSON.parse(localStorage.getItem(LS)); }catch{ return null; } }
+function save(){ localStorage.setItem(LS, JSON.stringify(state)); }
+
+// ---------- cameras ----------
+const camWrap = document.getElementById('cams');
+state.cams.forEach((c,i)=>{
+  const el = document.createElement('div'); el.className='cam';
+  el.innerHTML = `
+    <span class="lbl">${c.label}</span>
+    <video playsinline muted></video>
+    <div class="cfg">
+      <input type="file" accept="video/*" title="local clip">
+      <input type="text" placeholder="or HLS/MP4 URL" value="${c.url||''}">
+      <span class="off">off <input type="number" value="${c.off}" style="width:56px"> ms</span>
+    </div>`;
+  camWrap.appendChild(el);
+  const v = el.querySelector('video'); vids.push(v);
+  el.querySelector('input[type=file]').onchange = e=>{
+    const f = e.target.files[0]; if(f) v.src = URL.createObjectURL(f);
+  };
+  const urlIn = el.querySelector('input[type=text]');
+  urlIn.onchange = ()=>{ c.url=urlIn.value; save(); loadUrl(v,urlIn.value); };
+  if(c.url) loadUrl(v,c.url);
+  el.querySelector('input[type=number]').onchange = e=>{ c.off=+e.target.value; save(); };
+});
+function loadUrl(v,url){
+  if(!url) return;
+  if(url.endsWith('.m3u8') && v.canPlayType('application/vnd.apple.mpegurl')){ v.src=url; }
+  else { v.src=url; } // native HLS (Safari) or plain mp4/webm; prod uses hls.js/WebRTC
+}
+
+// ---------- transport (master clock drives all cams w/ per-cam offset) ----------
+const scrub = document.getElementById('scrub');
+function masterT(){ const base = vids.find(v=>v.readyState>0); return base? base.currentTime:0; }
+function applyAll(t){ vids.forEach((v,i)=>{ if(v.readyState>0){ v.currentTime = Math.max(0, t + state.cams[i].off/1000); } }); }
+document.getElementById('playAll').onclick = ()=> vids.forEach(v=>v.play().catch(()=>{}));
+document.getElementById('pauseAll').onclick = ()=> vids.forEach(v=>v.pause());
+scrub.oninput = ()=>{ const dur = Math.max(...vids.map(v=>v.duration||0),1); applyAll(scrub.value/100*dur); };
+setInterval(()=>{
+  const dur = Math.max(...vids.map(v=>v.duration||0),1);
+  const t = masterT(); scrub.value = t/dur*100;
+  document.getElementById('tpos').textContent = t.toFixed(1)+'s';
+  document.getElementById('stamp').textContent = t.toFixed(1)+'s';
+}, 250);
+
+// ---------- roster ----------
+function renderRoster(){
+  const tb = document.querySelector('#roster tbody'); tb.innerHTML='';
+  const bat = document.getElementById('batter'); bat.innerHTML='';
+  state.players.forEach(p=>{
+    tb.insertAdjacentHTML('beforeend', `<tr><td>${p.num||''}</td><td>${p.name}</td><td>${p.pos||''}</td><td>${p.bats||''}</td></tr>`);
+    bat.insertAdjacentHTML('beforeend', `<option value="${p.name}">${p.num?('#'+p.num+' '):''}${p.name}</option>`);
+  });
+}
+document.getElementById('addPlayer').onclick = ()=>{
+  const name = pName.value.trim(); if(!name) return;
+  state.players.push({name, num:pNum.value.trim(), pos:pPos.value.trim(), bats:pBats.value});
+  pName.value=pNum.value=pPos.value=''; save(); renderRoster();
+};
+teamName.value=state.meta.team||''; season.value=state.meta.season||''; oppName.value=state.meta.opp||'';
+[teamName,season,oppName].forEach(el=> el.onchange=()=>{ state.meta={team:teamName.value,season:season.value,opp:oppName.value}; save(); });
+
+// ---------- spray field ----------
+const spray = document.getElementById('spray');
+// home plate at bottom-center; 5 outfield wedges + 3 infield slices
+spray.innerHTML='';
+const W=300,Hh=220, hx=150, hy=200; // home plate
+const wedges = [
+  {id:'LF',  a0:-70,a1:-42},{id:'LCF',a0:-42,a1:-14},{id:'CF',a0:-14,a1:14},
+  {id:'RCF',a0:14,a1:42},{id:'RF',a0:42,a1:70}
+];
+function polar(deg,r){ const rad=(deg-90)*Math.PI/180; return [hx+r*Math.cos(rad), hy+r*Math.sin(rad)]; }
+wedges.forEach(w=>{
+  const rIn=55, rOut=175;
+  const [a,b]=polar(w.a0,rOut),[c,d]=polar(w.a1,rOut),[e,f]=polar(w.a1,rIn),[g,h]=polar(w.a0,rIn);
+  const p=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  p.setAttribute('points',`${a},${b} ${c},${d} ${e},${f} ${g},${h}`);
+  p.dataset.zone=w.id; spray.appendChild(p);
+  const [lx,ly]=polar((w.a0+w.a1)/2,140);
+  const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+  t.setAttribute('x',lx);t.setAttribute('y',ly);t.textContent=w.id; spray.appendChild(t);
+});
+// infield arc
+['IF_pull','IF_mid','IF_oppo'].forEach((id,i)=>{
+  const a0=-30+i*20, a1=a0+20, rIn=0, rOut=55;
+  const [c,d]=polar(a1,rOut),[e,f]=polar(a0,rOut);
+  const p=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  p.setAttribute('points',`${hx},${hy} ${e},${f} ${c},${d}`);
+  p.dataset.zone=id; spray.appendChild(p);
+});
+spray.addEventListener('click',e=>{
+  if(e.target.tagName!=='polygon') return;
+  spray.querySelectorAll('polygon').forEach(x=>x.classList.remove('sel'));
+  e.target.classList.add('sel'); draft.spray=e.target.dataset.zone;
+});
+
+// ---------- hardness / launch ----------
+document.querySelectorAll('.hard-btns button').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('.hard-btns button').forEach(x=>x.classList.remove('sel'));
+  b.classList.add('sel'); draft.hardness=b.dataset.h;
+});
+document.querySelectorAll('[data-l]').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('[data-l]').forEach(x=>x.classList.remove('sel'));
+  b.classList.add('sel'); draft.launch=b.dataset.l;
+});
+
+// ---------- save play ----------
+document.getElementById('saveTag').onclick = saveTag;
+function saveTag(){
+  const inPlay = pitchResult.value==='in_play';
+  const play = {
+    t:+masterT().toFixed(1), batter:batter.value,
+    pitch:{type:pitchType.value, velo:velo.value?+velo.value:null, result:pitchResult.value},
+    batted: inPlay ? {hardness:draft.hardness, launch:draft.launch, spray:draft.spray, result:bbResult.value} : null
+  };
+  state.plays.push(play); save(); renderPlays();
+  draft={hardness:null,launch:null,spray:null};
+  spray.querySelectorAll('polygon').forEach(x=>x.classList.remove('sel'));
+  document.querySelectorAll('.hard-btns button,[data-l]').forEach(x=>x.classList.remove('sel'));
+  velo.value='';
+}
+function renderPlays(){
+  const q={h:qHard.value, z:qZone.value};
+  const tb=document.querySelector('#plays tbody'); tb.innerHTML='';
+  state.plays.filter(p=>{
+    if(!p.batted) return !q.h&&!q.z;
+    if(q.h && p.batted.hardness!==q.h) return false;
+    if(q.z && p.batted.spray!==q.z) return false;
+    return true;
+  }).slice().reverse().forEach(p=>{
+    const b=p.batted;
+    const hit = b ? `<span class="dot" style="background:var(--${b.hardness||'dim'})"></span>${b.hardness||'?'} → ${b.spray||'?'} (${b.launch||'?'})` : `<span class="muted">${p.pitch.result}</span>`;
+    tb.insertAdjacentHTML('beforeend',
+      `<tr><td class="muted">${p.t}s</td><td>${p.batter||''}</td><td>${hit}</td><td>${b?b.result:''}</td></tr>`);
+  });
+}
+qHard.onchange=renderPlays; qZone.onchange=renderPlays;
+
+// ---------- export / import ----------
+exportBtn.onclick=()=>{
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=(state.meta.team||'game')+'-tags.json'; a.click();
+};
+importBtn.onclick=()=>importFile.click();
+importFile.onchange=e=>{
+  const f=e.target.files[0]; if(!f)return; const r=new FileReader();
+  r.onload=()=>{ try{ Object.assign(state, JSON.parse(r.result)); save(); location.reload(); }catch{ alert('bad file'); } };
+  r.readAsText(f);
+};
+
+// ---------- keyboard-first ----------
+document.addEventListener('keydown',e=>{
+  if(/input|select|textarea/i.test(e.target.tagName)) return;
+  if(e.key==='Enter'){ saveTag(); }
+  if(['1','2','3','4'].includes(e.key)){
+    document.querySelector(`.hard-btns button:nth-child(${e.key})`)?.click();
+  }
+  if(e.key==='g') document.querySelector('[data-l=ground]').click();
+  if(e.key==='l') document.querySelector('[data-l=line]').click();
+  if(e.key==='f') document.querySelector('[data-l=fly]').click();
+  if(e.key==='p') document.querySelector('[data-l=popup]').click();
+});
+
+renderRoster(); renderPlays();
+</script>
+</body>
+</html>
