@@ -141,6 +141,7 @@
       <a data-v="referral"><span class="ic">⇄</span> Referral Network</a>
       <a data-v="competitive"><span class="ic">⚑</span> Competitive</a>
       <a data-v="evidence"><span class="ic">▦</span> Evidence <span class="ct" id="ctEv">—</span></a>
+      <a data-v="playbook"><span class="ic">◆</span> Playbook</a>
       <a data-v="method"><span class="ic">ƒ</span> Methodology</a>
     </nav>
     <div class="foot">
@@ -190,7 +191,7 @@ function route(v){
 
 function buildAll(){
   const m=document.getElementById('main');
-  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewMethod()].join('');
+  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewPlaybook(),viewMethod()].join('');
   wireExplorer();
 }
 
@@ -392,9 +393,27 @@ function openProfile(idx){
       <div class="note">Triangulation: 25–40% of epilepsy is drug-resistant and only ~4% of eligible get surgery today; up to 49% of tumors are eloquent/deep. The ${(DB.meta.addressable_fraction*100)|0}% blended addressable rate matches the Territory Plan's reservoir sizing.</div>
     </div>
     ${refhtml}
+    ${playForProfile(p)}
     ${evidenceForProfile(p)}
     ${p.medscout?`<div class="dsection"><a class="pill on" href="${esc(p.medscout)}" target="_blank" rel="noopener">Open Medscout profile ↗</a></div>`:''}`;
   scrim.classList.add('on');drawer.classList.add('on');
+}
+
+function playForProfile(p){
+  const l=leverForCohort(p.cohort);
+  if(!l)return '';
+  const c=LEVER_COLORS[l.key]||'#2AD4FF';
+  const top=(label,arr)=>arr&&arr.length?`<div style="margin-top:7px"><span style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">${label}: </span><span style="font-size:11.5px;color:var(--ink2)">${esc(arr.slice(0,3).join(' · '))}</span></div>`:'';
+  return `<div class="dsection"><h3>Recommended play</h3>
+    <div class="modelbox" style="background:${c}12;border-color:${c}44">
+      <div style="font-size:13.5px;font-weight:700;color:var(--ink)">${esc(l.title)}</div>
+      <div style="font-size:12px;color:var(--ink2);margin-top:2px">${esc(l.motion)}</div>
+      ${top('Bring — clinical',l.clinical)}
+      ${top('Bring — education',l.education)}
+      ${top('Programs',l.programs)}
+      ${top('Market access',l.market_access)}
+    </div>
+    <div class="note">Auto-matched from this clinician's cohort. Open <b>Playbook</b> for the full tool list per lever.</div></div>`;
 }
 
 function evidenceForProfile(p){
@@ -491,6 +510,37 @@ function viewEvidence(){
     <h1 class="h">Evidence Library</h1>
     <p class="hsub">The clinical evidence behind each disease pathway — what each paper found and when to lead with it. <span style="color:var(--green)">NEW</span> marks the latest additions (LITT+SRT for mets, LITT+pembrolizumab RCT, meningioma, post-SRS necrosis). Registry/cohort evidence unless noted; not superiority claims over open surgery.</p>
     ${blocks}</section>`;
+}
+
+/* ---------- playbook (growth levers) ---------- */
+const LEVER_COLORS={new_users:'#3B82F6',new_disease:'#14B8A6',referral:'#64748B',new_accounts:'#F59E0B'};
+function leverForCohort(cohort){
+  const gl=DB.growthLevers||[];
+  return gl.find(l=>l.cohorts.includes(cohort))||null;
+}
+function leverBlock(l,compact){
+  const c=LEVER_COLORS[l.key]||'#2AD4FF';
+  const grp=(label,arr)=>arr&&arr.length?`<div style="margin-top:9px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">${label}</div>
+     <div class="chips">${arr.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></div>`:'';
+  const nOurs=DB.providers.filter(p=>l.cohorts.includes(p.cohort)).length;
+  return `<div class="acct" style="padding:16px 18px">
+    <div class="top"><div><div class="an">${esc(l.title)}</div>
+      <div class="asys" style="margin-top:2px">${esc(l.motion)}</div></div>
+      <span class="tag" style="${tagStyle(c)}">${fmt(nOurs)} in tool</span></div>
+    <div class="chips" style="margin-top:8px">${l.cohorts.map(co=>`<span class="chip" style="border-color:${(COHORT_META[co]||{}).c||c};color:${(COHORT_META[co]||{}).c||c}">${esc(co.replace('LITT — ',''))}</span>`).join('')}</div>
+    ${grp('Account intel',l.account)}
+    ${grp('Education / awareness',l.education)}
+    ${grp('Clinical',l.clinical)}
+    ${grp('Market access',l.market_access)}
+    ${grp('Programs',l.programs)}</div>`;
+}
+function viewPlaybook(){
+  const gl=DB.growthLevers||[];
+  return `<section class="view" id="view-playbook"><div class="crumbs">Playbook · growth levers</div>
+    <h1 class="h">Growth-Lever Playbook</h1>
+    <p class="hsub">The four growth levers, each mapped to the cohort it targets in this tool and the marketing, clinical, market-access and program tools to carry. Every physician profile auto-recommends the play for that clinician.</p>
+    <div class="acctgrid" style="grid-template-columns:repeat(auto-fill,minmax(360px,1fr))">${gl.map(l=>leverBlock(l)).join('')}</div>
+    <div class="note" style="margin-top:12px">${esc(DB.growthLeversNote||'')}</div></section>`;
 }
 
 /* ---------- methodology ---------- */

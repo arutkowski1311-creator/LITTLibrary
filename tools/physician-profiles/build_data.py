@@ -220,6 +220,7 @@ out = dict(
     topTargets=[dict(name=n,affiliation=af,motion=mo,litt=l,epi=e,tumor=t,coi=c) for (n,af,mo,l,e,t,c) in AI.TOP_USER_TARGETS],
     evidence=[dict(pathway=p,title=t,cite=c,finding=f,supports=s,strength=st,tags=tg,new=nw)
               for (p,t,c,f,s,st,tg,nw) in AI.EVIDENCE],
+    growthLevers=AI.GROWTH_LEVERS, growthLeversNote=AI.GROWTH_LEVERS_NOTE,
     platforms=dict(neuroblate=AI.NEUROBLATE, visualase=AI.VISUALASE, clearpoint=AI.CLEARPOINT, unverified=AI.UNVERIFIED),
 )
 

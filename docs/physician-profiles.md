@@ -88,6 +88,22 @@ additions, flagged **NEW**:
   RN vs recurrence biopsy).
 - **MTLE durability** — Landazuri *et al.*, *JAMA Neurology* 2025 (2-yr Engel I ~58%).
 
+## Growth-lever playbook
+
+A "what to bring" layer that pairs with the "who to see." The four Monteris growth levers map onto
+the tool's cohorts, and each carries its recommended marketing, clinical, market-access and program
+tools:
+
+| Growth lever | Targets cohort | Motion |
+| --- | --- | --- |
+| **Add New Users in Existing Accounts** | LITT-naïve craniotomy surgeons; unverified LITT | Convert a second/naïve surgeon at an account we already sell |
+| **Add New Disease States in Existing Accounts** | NeuroBlate users (ours) | Grow a current user into a new indication (heat-map whitespace) |
+| **Expand Referral Networks in Existing Accounts** | Referring clinicians | Develop the referrers who feed our surgeons |
+| **New Accounts** | Competitor / prospect users | Win a prospect, competitive, or greenfield account |
+
+Each physician profile auto-recommends the play for that clinician's cohort. The full matrix is on the
+dashboard **Playbook** view and the `Playbook` tab of the Excel workbook.
+
 ## Opportunity score
 
 A COI-style composite used to rank the Explorer:

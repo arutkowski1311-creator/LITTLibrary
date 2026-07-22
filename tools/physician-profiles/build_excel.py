@@ -200,5 +200,24 @@ trows=[[t["name"],t["affiliation"],t["motion"],t["litt"],t["epi"],t["tumor"],t["
 write_table(ws,THDR,trows,start=2,color=NAVY)
 for i,w in enumerate([24,40,12,8,10,8,8],1): ws.column_dimensions[get_column_letter(i)].width=w
 
+# ---------------- Playbook (growth levers) ----------------
+ws=wb.create_sheet("Playbook"); ws.sheet_view.showGridLines=False
+ws.cell(row=1,column=1,value="Growth-Lever Playbook — who to target + what to carry").font=Font(bold=True,color=BLUE,size=12)
+ws.cell(row=2,column=1,value="Maps each Monteris growth lever to the cohort it targets in this tool and the tools to bring.").font=SUB
+GHDR=["Growth lever","Targets cohort","In tool (#)","Account intel","Education / awareness","Clinical","Market access","Programs"]
+def cohcount(cohs): return sum(1 for p in P if p["cohort"] in cohs)
+grows=[]
+for l in d["growthLevers"]:
+    grows.append([l["title"], " / ".join(c.replace("LITT — ","") for c in l["cohorts"]), cohcount(l["cohorts"]),
+        "\n".join(l["account"]), "\n".join(l["education"]), "\n".join(l["clinical"]),
+        "\n".join(l["market_access"]), "\n".join(l["programs"])])
+end=write_table(ws,GHDR,grows,start=4,color=NAVY,zebra=False)
+for i,w in enumerate([30,26,10,26,34,32,26,32],1): ws.column_dimensions[get_column_letter(i)].width=w
+for r in range(5,end+1):
+    for c in range(1,len(GHDR)+1):
+        ws.cell(row=r,column=c).alignment=Alignment(vertical="top",wrap_text=True)
+    ws.row_dimensions[r].height=150
+ws.cell(row=end+2,column=1,value=d["growthLeversNote"]).font=SUB
+
 wb.save("LITT_Physician_Profiles.xlsx")
 print("saved LITT_Physician_Profiles.xlsx  tabs:",wb.sheetnames)
