@@ -1,0 +1,96 @@
+# LITT Physician Profiles — Methodology
+
+A physician-profiling layer for the Northeast territory: every clinician who performs LITT
+on **our equipment (NeuroBlate)**, on a **competitor's** laser, or who does **tumor/epilepsy
+craniotomy without LITT** — each with system affiliation, referral network, and a triangulated
+view of realistic LITT volume.
+
+## Deliverables
+
+| File | What it is |
+| --- | --- |
+| `physician-profiles.html` | Interactive dashboard (hosted — fetches `physician-profiles.json`). |
+| `physician-profiles-standalone.html` | Same dashboard with the data embedded — double-click, no server. |
+| `physician-profiles.json` | The processed dataset (system of record for the dashboard). |
+| `LITT_Physician_Profiles.xlsx` | 11-tab workbook: cohorts, referral network, editable model, accounts, competitive. |
+
+## Sources
+
+- **Total_Docs** — Medscout claims for ~3,500 Northeast clinicians. Master identity + procedure counts.
+- **2026_Sales_Data_NE / Probes_Per_Procedure** — Monteris NeuroBlate sales; identifies our installed customers.
+- **Patient_Counts_By_Site_By_Indication** — same procedure structure rolled up by site.
+- **NeuroBlate Northeast Territory Plan** — field intelligence: confirmed users, referrers, reservoirs, platforms, business potential.
+- **ASSFN epilepsy & AANS/CNS oncology position statements + NeuroBlate/LAANTERN literature** — the disease-rate anchors.
+
+## Performing vs. referring
+
+Every procedure appears **twice** in the source. Per the data owner's rule, the **higher** value is
+the clinician's **performing** count (they did the procedure); the **lower** is their **referring**
+count (patients they sent that were treated elsewhere). Surgeons show high performing; epileptologists,
+neuro-oncologists and radiation oncologists show referring.
+
+## Cohorts
+
+| Cohort | Definition |
+| --- | --- |
+| ① **LITT — Our Equipment (NeuroBlate)** | Field-confirmed Monteris users from the territory plan. Claims LITT counts undercount academic volume, so field confirmation — not the claims number — governs membership. |
+| ② **LITT — Competitor Equipment** | Field-confirmed users on Visualase (Medtronic) / ClearPoint, plus competitive-account and prospect LITT surgeons. |
+| ③ **LITT — Unverified Platform** | A neurosurgeon whose claims show LITT, but the laser platform is not field-confirmed. Verify — could be ours or a competitor's. |
+| ④ **LITT-Naïve Craniotomy Surgeon** | Neurosurgeons with tumor and/or epilepsy craniotomy volume but zero LITT — the category-development conversion pool. |
+| **Referring Clinician** | Neurology, epilepsy, neuro-onc, rad-onc who manage/refer the disease pools that feed LITT. |
+
+A non-neurosurgeon with a LITT count in claims is treated as a referrer (the LITT is claims attribution,
+not a procedure they performed). Organization/facility rows are separated from individual clinicians.
+
+## Potential-volume model
+
+For each clinician (and each account reservoir):
+
+```
+epilepsy addressable = Intractable-epilepsy pool × addressable%
+onc addressable      = Mets / radiation-necrosis pool × addressable%
+untapped LITT / yr   = (epilepsy addressable + onc addressable) − LITT already performed   (floored at 0)
+```
+
+**Addressable % = 5%** (blended, LITT-appropriate + realistically convertible per year). This is the
+uniform rate the territory plan applies across every account reservoir; it is editable in a single cell
+on the Excel `Model — Editable` tab.
+
+### Why 5% is defensible — the triangulation
+
+- **Epilepsy.** 25–40% of epilepsy is drug-resistant (DRE); the "Intractable Epilepsy" claims count
+  already isolates that pool. Only **~4%** of eligible DRE patients receive surgery today (ASSFN position
+  statement) — the untreated majority is the runway. LITT delivers 44–78% seizure freedom at 1 year
+  (58% in the 234-patient MTLE series).
+- **Tumor.** Up to **49%** of tumors sit in or near eloquent areas, making resection difficult or
+  impossible — LITT's core indication (AANS/CNS). The Mets/RN pool feeds recurrent-metastasis and
+  radiation-necrosis LITT (NCCN 2024 includes poor surgical candidates).
+
+**Worked example** (the data owner's own framing): a neurologist with 1,163 intractable-epilepsy
+patients → 1,163 × 5% ≈ **58 addressable LITT candidates/yr**. If they have referred ~0, that is 58
+untapped — the "there have to be candidates out there" math, quantified.
+
+## Opportunity score
+
+A COI-style composite used to rank the Explorer:
+`untapped ×1 + LITT performed ×3 + epilepsy craniotomy ×0.6 + tumor craniotomy ×0.6`, plus a bonus for
+field-confirmed / plan-named clinicians.
+
+## Caveats
+
+- Claims data (Medscout) **undercounts** academic-center volume and **cannot identify the laser platform**.
+  Field intelligence overrides data where the two disagree.
+- The model is **directional targeting signal — not a revenue forecast and not for clinical
+  decision-making**.
+- Clinical outcome figures come from real-world registry/cohort evidence (LAANTERN), not randomized
+  head-to-head trials against open surgery.
+
+## Regenerating
+
+```
+python3 build_data.py     # -> physician-profiles.json  (+ console summary)
+python3 build_excel.py    # -> LITT_Physician_Profiles.xlsx
+# standalone = physician-profiles.html with the JSON injected as window.__EMBED__
+```
+The build scripts live alongside this repo's data pipeline (see the branch history for
+`build_data.py`, `build_excel.py`, and `account_intel.py`).

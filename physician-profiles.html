@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LITT Physician Profiles — Northeast Territory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#060B13; --panel:#0D1624; --panelAlt:#111827; --border:#1E3A5F;
+    --ink:#F8FAFC; --ink2:#A7B4C6; --muted:#64748B;
+    --cyan:#2AD4FF; --blue:#3B82F6; --purple:#7B5CFF; --teal:#14B8A6;
+    --green:#1ED760; --yellow:#FFC857; --danger:#EF4444; --orange:#F59E0B;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;max-width:100%;overflow-x:hidden}
+  body{background:
+      radial-gradient(1200px 600px at 70% -10%, rgba(43,212,255,.08), transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(123,92,255,.07), transparent 60%),
+      var(--bg);
+    color:var(--ink);font-family:Inter,-apple-system,system-ui,sans-serif;font-size:14px;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  .app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+  .side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:5px;
+    padding:20px 14px;border-right:1px solid var(--border);
+    background:linear-gradient(180deg, rgba(13,22,36,.9), rgba(6,11,19,.9));backdrop-filter:blur(8px)}
+  .brand{display:flex;gap:11px;align-items:center;padding:2px 8px 14px}
+  .brand .logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--cyan));
+    display:grid;place-items:center;font-weight:800;color:#04121a;box-shadow:0 0 14px rgba(43,212,255,.5)}
+  .brand h1{font-size:14px;letter-spacing:.08em;margin:0;font-weight:800;line-height:1.15}
+  .brand .sub{font-size:9.5px;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase}
+  .nav{display:flex;flex-direction:column;gap:3px;margin-top:2px}
+  .nav a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:11px;color:var(--ink2);
+    font-weight:500;font-size:13px;border:1px solid transparent;transition:.15s;cursor:pointer}
+  .nav a .ic{width:16px;text-align:center}
+  .nav a .ct{margin-left:auto;font-size:10.5px;color:var(--muted);background:rgba(255,255,255,.04);
+    border:1px solid var(--border);border-radius:999px;padding:0 7px}
+  .nav a:hover{color:var(--ink);background:rgba(43,212,255,.06);border-color:rgba(43,212,255,.18)}
+  .nav a.active{color:var(--ink);background:linear-gradient(90deg, rgba(43,212,255,.16), rgba(59,130,246,.05));
+    border-color:rgba(43,212,255,.45)}
+  .side .foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);color:var(--muted);font-size:10.5px;line-height:1.5}
+  .side .foot b{color:var(--ink2)}
+  .main{padding:20px 24px 60px;min-width:0}
+  .crumbs{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+  .h{font-size:23px;font-weight:800;letter-spacing:-.01em;margin:0 0 3px}
+  .hsub{color:var(--ink2);margin:0 0 20px;max-width:80ch}
+  .view{display:none} .view.active{display:block}
+  .grid{display:grid;gap:15px}
+  .card{background:linear-gradient(180deg, rgba(17,24,39,.7), rgba(13,22,36,.7));
+    border:1px solid var(--border);border-radius:16px;padding:16px 18px;backdrop-filter:blur(6px)}
+  .card h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin:0 0 12px;font-weight:700}
+  .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0}
+  .metric{padding:4px 18px;border-left:1px solid var(--border)}
+  .metric:first-child{border-left:none;padding-left:0}
+  .metric .k{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .metric .v{font-size:30px;font-weight:800;line-height:1.1;margin:3px 0 0;
+    background:linear-gradient(180deg,#fff,#9fd9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .metric .u{font-size:10.5px;color:var(--ink2)}
+  .row2{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}
+  @media(max-width:1050px){.row2{grid-template-columns:1fr}}
+  .legend{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+  .legend .li{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--ink2);cursor:pointer}
+  .legend .sw{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+  .legend .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .legend .pct{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+  .bar{height:9px;border-radius:6px;background:rgba(255,255,255,.05);overflow:hidden;display:flex}
+  .bar>span{height:100%}
+  .barrow{display:grid;grid-template-columns:150px 1fr 54px;gap:10px;align-items:center;margin:7px 0;font-size:12px;color:var(--ink2)}
+  .barrow .lb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .barrow .vv{text-align:right;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+  /* controls */
+  .controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:14px}
+  input[type=search],select,input[type=number]{background:var(--panelAlt);border:1px solid var(--border);color:var(--ink);
+    border-radius:10px;padding:8px 11px;font-size:12.5px;font-family:inherit;outline:none}
+  input[type=search]{min-width:230px}
+  input[type=search]:focus,select:focus{border-color:var(--cyan)}
+  .pill{padding:5px 11px;border-radius:999px;border:1px solid var(--border);font-size:11.5px;color:var(--ink2);
+    cursor:pointer;background:rgba(255,255,255,.02);white-space:nowrap}
+  .pill.on{color:var(--ink);border-color:var(--cyan);background:rgba(43,212,255,.12)}
+  /* table */
+  .tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px}
+  table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:820px}
+  thead th{position:sticky;top:0;background:#0c1a2c;color:var(--ink2);font-weight:600;text-align:left;
+    padding:9px 11px;border-bottom:1px solid var(--border);cursor:pointer;white-space:nowrap;font-size:11px;letter-spacing:.03em}
+  thead th.num{text-align:right} th .ar{color:var(--cyan);font-size:9px}
+  tbody td{padding:8px 11px;border-bottom:1px solid rgba(30,58,95,.4);color:var(--ink2);white-space:nowrap}
+  tbody td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+  tbody tr{cursor:pointer} tbody tr:hover td{background:rgba(43,212,255,.05)}
+  tbody td.nm{color:var(--ink);font-weight:600;max-width:210px;overflow:hidden;text-overflow:ellipsis}
+  .tag{display:inline-block;padding:1.5px 8px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+  .muted{color:var(--muted)} .mono{font-variant-numeric:tabular-nums}
+  .count{font-size:11.5px;color:var(--muted);margin:10px 2px}
+  /* drawer */
+  .scrim{position:fixed;inset:0;background:rgba(2,6,12,.6);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:.2s;z-index:40}
+  .scrim.on{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100vh;width:min(560px,94vw);background:linear-gradient(180deg,#0c1626,#080f1a);
+    border-left:1px solid var(--border);transform:translateX(100%);transition:.24s cubic-bezier(.4,0,.2,1);z-index:50;
+    overflow-y:auto;padding:22px 24px 60px;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+  .drawer.on{transform:translateX(0)}
+  .drawer .x{position:absolute;top:16px;right:18px;font-size:20px;color:var(--muted);cursor:pointer;line-height:1}
+  .dhead .nm{font-size:21px;font-weight:800;margin:0;padding-right:30px}
+  .dhead .spec{color:var(--ink2);font-size:12.5px;margin-top:2px}
+  .dsection{margin-top:20px}
+  .dsection h3{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin:0 0 10px;font-weight:700}
+  .kv{display:grid;grid-template-columns:130px 1fr;gap:5px 12px;font-size:12.5px}
+  .kv .k{color:var(--muted)} .kv .v{color:var(--ink)}
+  .modelbox{background:rgba(43,212,255,.05);border:1px solid rgba(43,212,255,.2);border-radius:12px;padding:14px 16px}
+  .mrow{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;font-size:13px;border-bottom:1px dashed rgba(255,255,255,.06)}
+  .mrow:last-child{border-bottom:none}
+  .mrow .ml{color:var(--ink2)} .mrow .mv{font-weight:700;font-variant-numeric:tabular-nums}
+  .mrow.tot{margin-top:4px;padding-top:10px;border-top:1px solid var(--border)}
+  .mrow.tot .ml{color:var(--ink);font-weight:700} .mrow.tot .mv{font-size:22px;color:var(--cyan)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .chip{font-size:11px;padding:3px 9px;border-radius:8px;border:1px solid var(--border);color:var(--ink2);background:rgba(255,255,255,.02)}
+  .acctgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+  .acct{border:1px solid var(--border);border-radius:14px;padding:15px 16px;background:linear-gradient(180deg,rgba(17,24,39,.6),rgba(13,22,36,.6))}
+  .acct .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .acct .an{font-size:15px;font-weight:700}
+  .acct .asys{font-size:11px;color:var(--muted)}
+  .acct .desc{font-size:11.5px;color:var(--ink2);margin:9px 0;line-height:1.45}
+  .acct .res{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px}
+  .acct .res .rr{font-size:11px;color:var(--ink2);display:flex;justify-content:space-between;gap:6px;
+    padding:4px 7px;background:rgba(255,255,255,.03);border-radius:7px}
+  .acct .res .rr b{color:var(--cyan)}
+  .loading{padding:60px;text-align:center;color:var(--muted)}
+  .note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .toggle{margin-left:auto;display:flex;gap:6px}
+  h4.blk{font-size:12px;color:var(--ink);margin:18px 0 8px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="logo">L</div>
+      <div><h1>PHYSICIAN<br>PROFILES</h1><div class="sub">LITT · Northeast</div></div></div>
+    <nav class="nav" id="nav">
+      <a data-v="overview" class="active"><span class="ic">◎</span> Overview</a>
+      <a data-v="explorer"><span class="ic">⌕</span> Physician Explorer <span class="ct" id="ctAll">—</span></a>
+      <a data-v="accounts"><span class="ic">▤</span> Accounts <span class="ct">18</span></a>
+      <a data-v="referral"><span class="ic">⇄</span> Referral Network</a>
+      <a data-v="competitive"><span class="ic">⚑</span> Competitive</a>
+      <a data-v="method"><span class="ic">ƒ</span> Methodology</a>
+    </nav>
+    <div class="foot">
+      <b>Monteris NeuroBlate</b> · confidential<br>
+      Claims + field intelligence.<br>Directional targeting signal — not clinical or forecast use.
+    </div>
+  </aside>
+  <main class="main" id="main"><div class="loading">Loading physician data…</div></main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer"></div>
+
+<script>
+const PLAT_COLORS={neuroblate:'#14B8A6',competitor:'#F59E0B',unverified:'#7B5CFF','naive':'#3B82F6',referrer:'#64748B'};
+const COHORT_META={
+ 'LITT — Our Equipment (NeuroBlate)':{c:'#14B8A6',s:'Our LITT customers'},
+ 'LITT — Competitor Equipment':{c:'#F59E0B',s:'Competitor / prospect users'},
+ 'LITT — Unverified Platform':{c:'#7B5CFF',s:'LITT performed, platform unknown'},
+ 'LITT-Naïve Craniotomy Surgeon':{c:'#3B82F6',s:'Conversion pool'},
+ 'Referring Clinician':{c:'#64748B',s:'Feeds the funnel'}
+};
+const fmt=n=>(n||0).toLocaleString();
+const tagStyle=c=>`background:${c}22;color:${c};border:1px solid ${c}55`;
+let DB=null, filtered=[], sortKey='oppScore', sortDir=-1, RENDER_CAP=400;
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+
+async function boot(){
+  try{
+    let data = window.__EMBED__ || null;
+    if(!data){ const r=await fetch('physician-profiles.json'); data=await r.json(); }
+    DB=data; document.getElementById('ctAll').textContent=fmt(DB.providers.length);
+    buildAll(); route('overview');
+  }catch(e){ document.getElementById('main').innerHTML=
+    '<div class="loading">Could not load <b>physician-profiles.json</b>.<br>Open the standalone file, or serve this page over http.<br><br><span class="muted">'+esc(e.message)+'</span></div>'; }
+}
+
+/* ---------- routing ---------- */
+document.getElementById('nav').addEventListener('click',e=>{const a=e.target.closest('a');if(a)route(a.dataset.v);});
+function route(v){
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active',a.dataset.v===v));
+  document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+v));
+  window.scrollTo(0,0);
+}
+
+function buildAll(){
+  const m=document.getElementById('main');
+  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewMethod()].join('');
+  wireExplorer();
+}
+
+/* ---------- overview ---------- */
+function viewOverview(){
+  const T=DB.territory, M=DB.meta, cc=DB.cohortCounts;
+  const totalUnt=DB.providers.reduce((a,p)=>a+p.model.untapped_litt_yr,0);
+  const nbUsers=DB.providers.filter(p=>p.cohort.startsWith('LITT — Our')).length;
+  const compUsers=DB.providers.filter(p=>p.cohort.startsWith('LITT — Competitor')).length;
+  const unv=DB.providers.filter(p=>p.cohort.startsWith('LITT — Unverified')).length;
+  const naive=cc['LITT-Naïve Craniotomy Surgeon']||0;
+  // cohort donut data
+  const order=['LITT — Our Equipment (NeuroBlate)','LITT — Competitor Equipment','LITT — Unverified Platform','LITT-Naïve Craniotomy Surgeon','Referring Clinician'];
+  const tot=DB.providers.length;
+  let seg='',leg='',acc=0;
+  order.forEach(k=>{const v=DB.providers.filter(p=>p.cohort===k).length;if(!v)return;const pct=v/tot*100;
+    seg+=`<span style="width:${pct}%;background:${COHORT_META[k].c}"></span>`;
+    leg+=`<div class="li" onclick="jumpCohort('${esc(k)}')"><span class="sw" style="background:${COHORT_META[k].c}"></span>
+      <span class="nm">${esc(k)}</span><span class="pct">${fmt(v)}</span></div>`;});
+  // leakage bars
+  const lk=DB.leakage.slice().sort((a,b)=>b.gap-a.gap);
+  const mx=Math.max(...lk.map(x=>x.claims));
+  const lkrows=lk.map(x=>`<div class="barrow"><span class="lb">${esc(x.account)}</span>
+     <span class="bar"><span style="width:${x.ours/mx*100}%;background:var(--teal)"></span>
+     <span style="width:${x.gap/mx*100}%;background:var(--orange)"></span></span>
+     <span class="vv">${x.gap}</span></div>`).join('');
+  return `<section class="view active" id="view-overview">
+    <div class="crumbs">Northeast Territory · ${esc(M.region)}</div>
+    <h1 class="h">LITT Physician Profiles</h1>
+    <p class="hsub">Every clinician who performs LITT on our equipment, on a competitor's, or who does tumor/epilepsy craniotomy without LITT — with their system affiliation, referral network, and a triangulated view of realistic LITT volume.</p>
+    <div class="card"><div class="metrics">
+      <div class="metric"><div class="k">Clinicians profiled</div><div class="v">${fmt(DB.providers.length)}</div><div class="u">across ${fmt(DB.facilities.length)} facilities</div></div>
+      <div class="metric"><div class="k">NeuroBlate users</div><div class="v">${nbUsers}</div><div class="u">field-confirmed (ours)</div></div>
+      <div class="metric"><div class="k">Competitor + unverified</div><div class="v">${compUsers+unv}</div><div class="u">${compUsers} competitor · ${unv} verify</div></div>
+      <div class="metric"><div class="k">LITT-naïve surgeons</div><div class="v">${naive}</div><div class="u">conversion pool</div></div>
+      <div class="metric"><div class="k">Untapped LITT / yr</div><div class="v">${fmt(totalUnt)}</div><div class="u">addressable @ ${(M.addressable_fraction*100)|0}%</div></div>
+    </div></div>
+    <div class="row2" style="margin-top:15px">
+      <div class="card"><h2>Physician universe by cohort</h2>
+        <div class="bar" style="height:13px;margin-bottom:14px">${seg}</div>
+        <div class="legend">${leg}</div>
+        <div class="note">Click a cohort to open it in the Explorer.</div></div>
+      <div class="card"><h2>Territory at a glance</h2>
+        <div class="kv" style="grid-template-columns:1fr auto;gap:9px 12px;font-size:13px">
+          <div class="k muted">NeuroBlate cases (3-yr)</div><div class="v mono">${T.cases_ours_3yr}</div>
+          <div class="k muted">Competitor LITT cases (3-yr)</div><div class="v mono">${T.cases_competitor_3yr}</div>
+          <div class="k muted">Category penetration</div><div class="v mono">${(T.category_penetration*100).toFixed(1)}%</div>
+          <div class="k muted">Candidate universe / yr</div><div class="v mono">~${fmt(T.candidate_universe_yr)}</div>
+          <div class="k muted">Avg revenue / case</div><div class="v mono">$${fmt(T.avg_rev_per_case)}</div>
+          <div class="k muted">2026 quota · YTD</div><div class="v mono">${T.cases_ytd_2026} / ${T.quota_2026}</div>
+        </div>
+        <div class="note">Only ${(T.category_penetration*100).toFixed(1)}% of eligible patients are treated — the gap between the disease pools and delivered LITT is the whole opportunity.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:15px"><h2>Competitive leakage — LITT volume that isn't ours <span style="float:right;font-weight:500;text-transform:none;letter-spacing:0"><span style="color:var(--teal)">■</span> ours &nbsp; <span style="color:var(--orange)">■</span> gap</span></h2>
+      ${lkrows}
+      <div class="note">357 LITT cases over three years are competitors'; 197 are ours. A claims-LITT account with no matching NeuroBlate revenue = a competitor doing the work.</div></div>
+  </section>`;
+}
+function jumpCohort(k){route('explorer');document.getElementById('fCohort').value=k;applyFilters();}
+
+/* ---------- explorer ---------- */
+function viewExplorer(){
+  const specs=[...new Set(DB.providers.map(p=>p.specialty).filter(Boolean))].sort();
+  const states=[...new Set(DB.providers.map(p=>p.state).filter(Boolean))].sort();
+  const opt=(arr,ph)=>`<option value="">${ph}</option>`+arr.map(s=>`<option>${esc(s)}</option>`).join('');
+  const cohortOpts=`<option value="">All cohorts</option>`+Object.keys(COHORT_META).map(c=>`<option>${esc(c)}</option>`).join('');
+  return `<section class="view" id="view-explorer">
+    <div class="crumbs">Explorer</div><h1 class="h">Physician Explorer</h1>
+    <p class="hsub">Filter, sort, and click any clinician for their full profile: affiliation, performing vs. referring volumes, and the potential-volume model.</p>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search name, system, NPI…">
+      <select id="fCohort">${cohortOpts}</select>
+      <select id="fSpec">${opt(specs,'All specialties')}</select>
+      <select id="fState">${opt(states,'All states')}</select>
+      <label class="pill" style="cursor:default">Min untapped/yr
+        <input type="number" id="fMin" value="0" min="0" style="width:64px;margin-left:6px;padding:3px 6px"></label>
+      <span class="pill" id="pMapped" onclick="toggleMapped()">Plan-named only</span>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="tblwrap"><table id="tbl"><thead><tr>
+      ${th('name','Clinician')}${th('specialty','Specialty')}${th('cohort','Cohort')}
+      ${th('account','Account / System')}${th('litt_perf','LITT',1)}
+      ${th('intractable','Intractable',1)}${th('untapped','Untapped/yr',1)}${th('oppScore','Score',1)}
+    </tr></thead><tbody id="tbody"></tbody></table></div>
+  </section>`;
+}
+function th(k,label,num){return `<th data-k="${k}" class="${num?'num':''}">${label} <span class="ar" id="ar-${k}"></span></th>`;}
+
+let onlyMapped=false;
+function toggleMapped(){onlyMapped=!onlyMapped;document.getElementById('pMapped').classList.toggle('on',onlyMapped);applyFilters();}
+
+function wireExplorer(){
+  ['q','fCohort','fSpec','fState','fMin'].forEach(id=>{
+    const el=document.getElementById(id);el&&el.addEventListener('input',applyFilters);});
+  document.querySelectorAll('#tbl thead th').forEach(t=>t.addEventListener('click',()=>{
+    const k=t.dataset.k; if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=(k==='name'||k==='specialty'||k==='cohort'||k==='account')?1:-1;}
+    renderRows();}));
+  applyFilters();
+}
+function val(p,k){
+  if(k==='untapped')return p.model.untapped_litt_yr;
+  if(k==='intractable')return p.model.intractable_pool;
+  if(k==='account')return p.account||p.system||'';
+  return p[k];
+}
+function applyFilters(){
+  const q=(document.getElementById('q').value||'').toLowerCase();
+  const co=document.getElementById('fCohort').value, sp=document.getElementById('fSpec').value,
+        st=document.getElementById('fState').value, mn=+document.getElementById('fMin').value||0;
+  filtered=DB.providers.filter(p=>{
+    if(co&&p.cohort!==co)return false;
+    if(sp&&p.specialty!==sp)return false;
+    if(st&&p.state!==st)return false;
+    if(p.model.untapped_litt_yr<mn)return false;
+    if(onlyMapped&&(p.planRole==='—'||!p.planRole))return false;
+    if(q){const hay=(p.name+' '+(p.system||'')+' '+(p.account||'')+' '+(p.npi||'')+' '+(p.specialty||'')).toLowerCase();
+      if(!hay.includes(q))return false;}
+    return true;});
+  renderRows();
+}
+function renderRows(){
+  filtered.sort((a,b)=>{let x=val(a,sortKey),y=val(b,sortKey);
+    if(typeof x==='string'){x=x.toLowerCase();y=(y||'').toLowerCase();return x<y?-sortDir:x>y?sortDir:0;}
+    return ((x||0)-(y||0))*sortDir;});
+  document.querySelectorAll('.ar').forEach(a=>a.textContent='');
+  const ar=document.getElementById('ar-'+sortKey); if(ar)ar.textContent=sortDir<0?'▼':'▲';
+  const rows=filtered.slice(0,RENDER_CAP);
+  const tb=document.getElementById('tbody');
+  tb.innerHTML=rows.map((p,i)=>{const cm=COHORT_META[p.cohort]||{c:'#64748B'};
+    return `<tr onclick="openProfile(${DB.providers.indexOf(p)})">
+      <td class="nm">${esc(p.name)}${p.planRole&&p.planRole!=='—'?' <span style="color:var(--cyan)">•</span>':''}</td>
+      <td>${esc((p.specialty||'').replace(/^.*> /,''))||'<span class=muted>—</span>'}</td>
+      <td><span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort.replace('LITT — ','').replace(' Craniotomy Surgeon','').replace(' Equipment',''))}</span></td>
+      <td>${esc(p.account||p.system||'—')}</td>
+      <td class="num">${p.litt_perf||'<span class=muted>0</span>'}</td>
+      <td class="num">${fmt(p.model.intractable_pool)}</td>
+      <td class="num" style="color:${p.model.untapped_litt_yr>=10?'var(--cyan)':'var(--ink)'}">${fmt(p.model.untapped_litt_yr)}</td>
+      <td class="num">${p.oppScore}</td></tr>`;}).join('');
+  document.getElementById('count').innerHTML=`Showing <b>${fmt(rows.length)}</b> of <b>${fmt(filtered.length)}</b> clinicians`+
+    (filtered.length>RENDER_CAP?` (top ${RENDER_CAP} by ${sortKey}) — refine filters to see more`:'')+
+    ` &nbsp;·&nbsp; <span class="muted">• = named in territory plan</span>`;
+}
+
+/* ---------- profile drawer ---------- */
+const scrim=document.getElementById('scrim'),drawer=document.getElementById('drawer');
+scrim.addEventListener('click',closeProfile);
+function closeProfile(){scrim.classList.remove('on');drawer.classList.remove('on');}
+function openProfile(idx){
+  const p=DB.providers[idx],m=p.model,cm=COHORT_META[p.cohort]||{c:'#64748B'};
+  const acct=DB.accounts.find(a=>a.name===p.account);
+  const spec=(p.specialty||'—');
+  // performing vs referring bars
+  const vols=[['LITT',p.litt_perf,p.litt_ref],['Epilepsy craniotomy',p.epi_cranio,p.epi_cranio_ref],
+    ['Tumor craniotomy',p.tumor_cranio,p.tumor_cranio_ref],['Mets / RN',p.mets_rn,p.mets_rn_ref],
+    ['SEEG',p.seeg,0],['SRS',p.srs,0]];
+  const mxv=Math.max(1,...vols.flatMap(v=>[v[1],v[2]]));
+  const volhtml=vols.filter(v=>v[1]||v[2]).map(v=>`<div class="barrow" style="grid-template-columns:120px 1fr auto">
+    <span class="lb">${v[0]}</span>
+    <span class="bar" style="background:transparent"><span style="width:${v[1]/mxv*100}%;background:var(--teal)"></span></span>
+    <span class="vv">${v[1]}${v[2]?` <span class="muted" style="font-weight:400">/ ${v[2]} ref</span>`:''}</span></div>`).join('')
+    ||'<div class="note">No procedure volume in claims.</div>';
+  // referral context from account
+  let refhtml='';
+  if(acct){
+    const er=(acct.epilepsy_referrers||[]).slice(0,3).map(r=>`<span class="chip">${esc(r[0])} · ${r[1]} intractable</span>`).join('');
+    const nr=(acct.necrosis_referrers||[]).slice(0,3).map(r=>`<span class="chip">${esc(r[0])} · ${r[1]} SRS</span>`).join('');
+    if(er||nr) refhtml=`<div class="dsection"><h3>Referral network at ${esc(acct.name)}</h3>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Epilepsy pathway (intractable pool)</div><div class="chips">${er||'<span class=muted>—</span>'}</div>
+      <div style="font-size:11px;color:var(--muted);margin:10px 0 4px">Necrosis pathway (SRS feeders)</div><div class="chips">${nr||'<span class=muted>—</span>'}</div></div>`;
+  }
+  drawer.innerHTML=`<div class="x" onclick="closeProfile()">✕</div>
+    <div class="dhead"><h2 class="nm">${esc(p.name)}</h2><div class="spec">${esc(spec)}</div>
+      <div class="chips" style="margin-top:9px">
+        <span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort)}</span>
+        ${p.planRole&&p.planRole!=='—'?`<span class="chip" style="border-color:var(--cyan);color:var(--cyan)">${esc(p.planRole)}</span>`:''}
+        ${p.claimsUndercount?`<span class="chip" style="border-color:var(--yellow);color:var(--yellow)">claims undercount</span>`:''}
+      </div></div>
+    <div class="dsection"><h3>Affiliation</h3><div class="kv">
+      <div class="k">Platform</div><div class="v">${esc(p.platform||'—')}</div>
+      <div class="k">Account</div><div class="v">${esc(p.account||'—')}</div>
+      <div class="k">System</div><div class="v">${esc(p.system||'—')}</div>
+      <div class="k">State</div><div class="v">${esc(p.state||'—')}</div>
+      ${p.npi?`<div class="k">NPI</div><div class="v mono">${esc(p.npi)}</div>`:''}
+      ${p.email?`<div class="k">Email</div><div class="v">${esc(p.email)}</div>`:''}
+      ${p.phone?`<div class="k">Phone</div><div class="v">${esc(p.phone)}</div>`:''}
+    </div></div>
+    <div class="dsection"><h3>Volumes — performing <span class="muted" style="text-transform:none;letter-spacing:0">(bars) vs referring</span></h3>${volhtml}</div>
+    <div class="dsection"><h3>Potential-volume model</h3>
+      <div class="modelbox">
+        <div class="mrow"><span class="ml">Intractable-epilepsy pool (DRE)</span><span class="mv">${fmt(m.intractable_pool)}</span></div>
+        <div class="mrow"><span class="ml">→ epilepsy addressable @ ${(DB.meta.addressable_fraction*100)|0}%</span><span class="mv">${fmt(m.epi_addressable)}</span></div>
+        <div class="mrow"><span class="ml">Mets / radiation-necrosis pool</span><span class="mv">${fmt(m.mets_rn_pool)}</span></div>
+        <div class="mrow"><span class="ml">→ onc addressable @ ${(DB.meta.addressable_fraction*100)|0}%</span><span class="mv">${fmt(m.onc_addressable)}</span></div>
+        <div class="mrow"><span class="ml">− LITT already performed</span><span class="mv">${fmt(m.litt_done)}</span></div>
+        <div class="mrow tot"><span class="ml">Untapped LITT / yr</span><span class="mv">${fmt(m.untapped_litt_yr)}</span></div>
+      </div>
+      ${m.eloquent_tumors?`<div class="note">Also carries ${m.tumor_cranio_pool} tumor craniotomies; ~${m.eloquent_tumors} (49%) are in/near eloquent areas — LITT's difficult-resection indication.</div>`:''}
+      <div class="note">Triangulation: 25–40% of epilepsy is drug-resistant and only ~4% of eligible get surgery today; up to 49% of tumors are eloquent/deep. The ${(DB.meta.addressable_fraction*100)|0}% blended addressable rate matches the Territory Plan's reservoir sizing.</div>
+    </div>
+    ${refhtml}
+    ${p.medscout?`<div class="dsection"><a class="pill on" href="${esc(p.medscout)}" target="_blank" rel="noopener">Open Medscout profile ↗</a></div>`:''}`;
+  scrim.classList.add('on');drawer.classList.add('on');
+}
+
+/* ---------- accounts ---------- */
+function viewAccounts(){
+  const cards=DB.accounts.map(a=>{
+    const res=Object.entries(a.reservoirs||{}).map(([k,v])=>`<div class="rr"><span>${esc(k)}</span><b>${v[0]}/${fmt(v[1])}</b></div>`).join('')
+      ||'<div class="note" style="grid-column:1/-1">Reservoirs not captured in claims.</div>';
+    const surg=(a.surgeons||[]).map(s=>`${esc(s[0])}${s[1]?` (${s[1]})`:''}`).join(' · ')||'—';
+    const plat=a.platform.map(p=>{const on=p.includes('ours');return `<span class="chip" style="${on?'border-color:var(--teal);color:var(--teal)':''}">${esc(p.split(' (')[0])}</span>`;}).join('');
+    const bp=a.business_potential_yr?`$${fmt(a.business_potential_yr)}/yr · +${a.incremental_cases} cases · ${a.win}`:a.win;
+    return `<div class="acct"><div class="top"><div><div class="an">${esc(a.name)}</div><div class="asys">${esc(a.system)}</div></div>
+      <span class="tag" style="${tagStyle(a.class==='Competitive'?'#F59E0B':a.class==='Contested'?'#7B5CFF':'#14B8A6')}">${esc(a.class)}</span></div>
+      <div class="chips" style="margin-top:8px">${plat}<span class="chip">${esc(a.posture)}</span></div>
+      <div class="desc">${esc(a.situation)}</div>
+      <div class="kv" style="font-size:11.5px"><div class="k">Surgeons</div><div class="v">${surg}</div>
+        <div class="k">Opportunity</div><div class="v">${esc(bp)}</div></div>
+      <div class="res">${res}</div></div>`;}).join('');
+  return `<section class="view" id="view-accounts"><div class="crumbs">Accounts</div>
+    <h1 class="h">Accounts</h1><p class="hsub">The 18 accounts in the operating plan — platform, posture, surgeons, and the addressable reservoirs (addressable / raw pool) behind each.</p>
+    <div class="acctgrid">${cards}</div></section>`;
+}
+
+/* ---------- referral network ---------- */
+function viewReferral(){
+  const refs=DB.providers.filter(p=>p.model.intractable_pool>=20||p.model.mets_rn_pool>=20||p.model.srs_pool>=20)
+    .sort((a,b)=>b.model.untapped_litt_yr-a.model.untapped_litt_yr).slice(0,120);
+  const rows=refs.map(p=>`<tr onclick="openProfile(${DB.providers.indexOf(p)})">
+    <td class="nm">${esc(p.name)}</td><td>${esc((p.specialty||'').replace(/^.*> /,'')||'—')}</td>
+    <td>${esc(p.account||p.system||'—')}</td>
+    <td class="num">${fmt(p.model.intractable_pool)}</td><td class="num">${fmt(p.model.srs_pool)}</td>
+    <td class="num">${fmt(p.model.mets_rn_pool)}</td>
+    <td class="num" style="color:var(--cyan)">${fmt(p.model.untapped_litt_yr)}</td></tr>`).join('');
+  return `<section class="view" id="view-referral"><div class="crumbs">Referral network · grow the feed</div>
+    <h1 class="h">Referral Network</h1>
+    <p class="hsub">The clinicians whose disease pools feed LITT — epileptologists sitting on intractable-epilepsy panels, rad-onc driving SRS/necrosis. This is the "2,000 epilepsy patients, one LITT referral" pool, ranked by untapped addressable candidates per year.</p>
+    <div class="tblwrap"><table><thead><tr>
+      <th>Referrer</th><th>Specialty</th><th>Account / System</th>
+      <th class="num">Intractable epi</th><th class="num">SRS pool</th><th class="num">Mets/RN</th><th class="num">Untapped/yr</th>
+    </tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="note">Top 120 by untapped potential. Addressable = pool × ${(DB.meta.addressable_fraction*100)|0}%. Click any name for the full profile.</div></section>`;
+}
+
+/* ---------- competitive ---------- */
+function viewCompetitive(){
+  const lk=DB.leakage.map(x=>`<tr><td class="nm">${esc(x.account)}</td><td class="num">${x.claims}</td>
+    <td class="num">${x.ours}</td><td class="num" style="color:var(--orange)">${x.gap}</td>
+    <td>${esc(x.play)}</td><td>${esc(x.platform.split(' (')[0])}</td></tr>`).join('');
+  const pr=DB.prospects.map(x=>`<tr><td class="nm">${esc(x.account)}</td><td>${esc(x.user)}</td>
+    <td class="num">${x.litt}</td><td class="num">${x.epilepsy}</td><td class="num">${x.seeg}</td>
+    <td class="num">${fmt(x.necrosis_pool)}</td><td>${esc(x.platform.split(' (')[0])}</td></tr>`).join('');
+  const tt=DB.topTargets.map(x=>`<tr><td class="nm">${esc(x.name)}</td><td>${esc(x.affiliation)}</td>
+    <td><span class="tag" style="${tagStyle(x.motion==='Convert'?'#3B82F6':'#14B8A6')}">${esc(x.motion)}</span></td>
+    <td class="num">${x.litt}</td><td class="num">${x.epi}</td><td class="num">${x.tumor}</td><td class="num" style="color:var(--cyan)">${x.coi}</td></tr>`).join('');
+  return `<section class="view" id="view-competitive"><div class="crumbs">Competitive</div>
+    <h1 class="h">Competitive Landscape</h1><p class="hsub">Where the laser volume goes, the programs outside our base, and the ranked user targets.</p>
+    <div class="card"><h2>Competitive leakage — claims LITT not ours (3-yr)</h2>
+      <div class="tblwrap"><table><thead><tr><th>Account</th><th class="num">Claims LITT</th><th class="num">Ours</th><th class="num">Gap</th><th>Play</th><th>Platform</th></tr></thead><tbody>${lk}</tbody></table></div></div>
+    <div class="card" style="margin-top:15px"><h2>Prospects & landscape — outside the installed base</h2>
+      <div class="tblwrap"><table><thead><tr><th>Account</th><th>LITT user</th><th class="num">LITT</th><th class="num">Epilepsy</th><th class="num">sEEG</th><th class="num">Necrosis pool</th><th>Platform</th></tr></thead><tbody>${pr}</tbody></table></div></div>
+    <div class="card" style="margin-top:15px"><h2>Top user targets — Composite Opportunity Index</h2>
+      <div class="tblwrap"><table><thead><tr><th>Surgeon</th><th>Affiliation</th><th>Motion</th><th class="num">LITT</th><th class="num">Epilepsy</th><th class="num">Tumor</th><th class="num">COI</th></tr></thead><tbody>${tt}</tbody></table></div></div>
+  </section>`;
+}
+
+/* ---------- methodology ---------- */
+function viewMethod(){
+  const M=DB.meta;
+  return `<section class="view" id="view-method"><div class="crumbs">Methodology</div>
+    <h1 class="h">Methodology</h1>
+    <p class="hsub">How the cohorts, the referral network, and the potential-volume model are built — and what to trust.</p>
+    <div class="row2"><div class="card"><h2>Cohorts</h2>
+      <div class="kv" style="grid-template-columns:1fr;gap:12px">
+        <div><b style="color:var(--teal)">① LITT — Our Equipment (NeuroBlate)</b><br><span class="note">Field-confirmed Monteris users from the territory plan. Claims LITT counts undercount academic volume, so field confirmation — not the claims number — governs membership.</span></div>
+        <div><b style="color:var(--orange)">② LITT — Competitor Equipment</b><br><span class="note">Field-confirmed users on Visualase (Medtronic) or ClearPoint, plus competitive-account and prospect LITT surgeons.</span></div>
+        <div><b style="color:var(--purple)">③ LITT — Unverified Platform</b><br><span class="note">Claims show LITT performed but the platform isn't field-confirmed. Claims cannot identify the laser — verify in field.</span></div>
+        <div><b style="color:var(--blue)">④ LITT-Naïve Craniotomy Surgeon</b><br><span class="note">Neurosurgeons with tumor/epilepsy craniotomy volume but zero LITT — the conversion pool.</span></div>
+        <div><b style="color:var(--muted)">Referring Clinician</b><br><span class="note">Neurology, epilepsy, neuro-onc, rad-onc who manage/refer the disease pools that feed LITT.</span></div>
+      </div></div>
+      <div class="card"><h2>Performing vs referring</h2>
+        <p class="note">Each procedure appears twice in the source data. The <b>higher</b> value is the clinician's <b>performing</b> count (they did it); the <b>lower</b> is their <b>referring</b> count (patients they sent that were treated elsewhere). Surgeons show high performing; epileptologists and oncologists show referring.</p>
+        <h2 style="margin-top:18px">The potential-volume model</h2>
+        <div class="modelbox">
+          <div class="mrow"><span class="ml">Epilepsy addressable</span><span class="mv">Intractable pool × ${(M.addressable_fraction*100)|0}%</span></div>
+          <div class="mrow"><span class="ml">Onc addressable</span><span class="mv">Mets/RN pool × ${(M.addressable_fraction*100)|0}%</span></div>
+          <div class="mrow tot"><span class="ml">Untapped / yr</span><span class="mv" style="font-size:15px">− LITT done</span></div>
+        </div>
+      </div></div>
+    <div class="card" style="margin-top:15px"><h2>Triangulation & disease anchors</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        <div><b>Epilepsy</b><div class="note">25–40% of epilepsy is drug-resistant (DRE); the "Intractable Epilepsy" claims count already isolates that pool. Only ~4% of eligible DRE patients receive surgery today (ASSFN position statement) — the untreated majority is the runway. LITT: 44–78% seizure-free at 1yr; 58% in the 234-patient MTLE series.</div></div>
+        <div><b>Tumor</b><div class="note">Up to 49% of tumors sit in/near eloquent areas, making resection difficult or impossible — LITT's core indication (AANS/CNS). Mets/RN pool feeds recurrent-metastasis and radiation-necrosis LITT (NCCN 2024 includes poor surgical candidates).</div></div>
+        <div><b>Addressable rate</b><div class="note">${(M.addressable_fraction*100)|0}% of each raw disease pool per year — the blended LITT-appropriate + realistically-convertible rate the territory plan applies uniformly across every account reservoir. Editable in the Excel workbook (Model tab).</div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:15px"><h2>Sources & caveats</h2>
+      <p class="note"><b>Sources:</b> ${esc(M.source)}.<br><br>
+      <b>Caveats:</b> Claims data (Medscout) undercounts academic-center volume and cannot identify the laser platform; field intelligence overrides data where they disagree. The model is directional targeting signal — not a revenue forecast and not for clinical decision-making. Clinical outcome figures are from real-world registry/cohort evidence (LAANTERN), not randomized head-to-head trials.</p>
+    </div>
+  </section>`;
+}
+
+boot();
+</script>
+</body>
+</html>

@@ -12,6 +12,21 @@ Two front-ends read the same `database.json`:
 | **Full / strategy** (clinical + LITT business impact) | `index.html` → `…github.io/LITTLibrary/` | `lit-library-standalone.html` |
 | **Physician-facing** (clinical only, business impact removed) | `physician.html` → `…github.io/LITTLibrary/physician.html` | `physician-standalone.html` |
 
+### Physician Profiles (territory / sales)
+
+A separate profiling layer maps every clinician who performs LITT on **our equipment (NeuroBlate)**,
+on a **competitor's** laser, or who does **tumor/epilepsy craniotomy without LITT** — each with system
+affiliation, referral network, and a triangulated potential-volume model.
+
+| Deliverable | File |
+| --- | --- |
+| Interactive dashboard (hosted) | `physician-profiles.html` → `…github.io/LITTLibrary/physician-profiles.html` |
+| Interactive dashboard (offline) | `physician-profiles-standalone.html` |
+| Processed dataset | `physician-profiles.json` |
+| Targeting workbook (11 tabs) | `LITT_Physician_Profiles.xlsx` |
+| Methodology & model | `docs/physician-profiles.md` |
+| Reproducible build scripts | `tools/physician-profiles/` |
+
 - **Hosted:** Settings → Pages → Deploy from a branch → `main` / `/(root)`, then open the URLs above.
 - **Offline:** download the relevant `*-standalone.html` and double-click (data embedded, no internet).
 - A **Physician View / Full View** toggle is in each dashboard's Quick Links.
