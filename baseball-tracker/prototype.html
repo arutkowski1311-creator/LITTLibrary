@@ -121,6 +121,26 @@
         </div>
       </div>
 
+      <label class="mini">Situation (stamped on every event → powers splits)</label>
+      <div class="row" style="gap:6px">
+        <span class="mini" style="margin:0">Outs</span>
+        <select id="outs"><option>0</option><option>1</option><option>2</option></select>
+        <span class="mini" style="margin:0">Count</span>
+        <select id="balls"><option>0</option><option>1</option><option>2</option><option>3</option></select>
+        <span class="mini" style="margin:0">-</span>
+        <select id="strikes"><option>0</option><option>1</option><option>2</option></select>
+        <span class="mini" style="margin:0">Score</span>
+        <input type="number" id="scoreBat" value="0" style="width:46px" title="batting team">
+        <input type="number" id="scorePit" value="0" style="width:46px" title="pitching team">
+      </div>
+      <div class="row" style="gap:6px">
+        <span class="mini" style="margin:0">On base</span>
+        <button class="chip" id="b1" data-base="1">1B</button>
+        <button class="chip" id="b2" data-base="2">2B</button>
+        <button class="chip" id="b3" data-base="3">3B</button>
+        <span class="muted" style="font-size:11px" id="risp"></span>
+      </div>
+
       <div class="row">
         <span class="mini" style="width:100%">Pitch <span class="kbd">P</span></span>
         <select id="pitchType" style="width:100px">
@@ -154,13 +174,36 @@
           <button class="chip" data-l="line">line drive</button>
           <button class="chip" data-l="fly">fly</button>
           <button class="chip" data-l="popup">popup</button>
+          <button class="chip" data-l="blooper">blooper</button>
+        </div>
+
+        <div class="row">
+          <div class="grow">
+            <label class="mini">Depth</label>
+            <select id="depth" style="width:100%">
+              <option value="infield">infield</option><option value="shallow">shallow</option>
+              <option value="medium" selected>medium</option><option value="deep">deep</option><option value="wall">wall</option>
+            </select>
+          </div>
+          <div class="grow">
+            <label class="mini">Fielder</label>
+            <select id="fielder" style="width:100%">
+              <option value="">—</option><option>P</option><option>C</option><option>1B</option><option>2B</option>
+              <option>3B</option><option>SS</option><option>LF</option><option>CF</option><option>RF</option>
+            </select>
+          </div>
+          <div>
+            <label class="mini">Caught</label>
+            <button class="chip" id="caught" data-on="0" style="width:56px">no</button>
+          </div>
         </div>
 
         <label class="mini">Result</label>
         <select id="bbResult" style="width:100%">
-          <option value="out">out</option><option value="single">single</option>
-          <option value="double">double</option><option value="triple">triple</option>
-          <option value="hr">home run</option><option value="error">error</option>
+          <option value="single">single</option><option value="double">double</option>
+          <option value="triple">triple</option><option value="hr">home run</option>
+          <option value="flyout">flyout</option><option value="lineout">lineout</option>
+          <option value="groundout">groundout</option><option value="error">error</option>
         </select>
       </div>
 
@@ -168,6 +211,12 @@
         <button id="saveTag" class="pri grow">✓ Save play (Enter)</button>
       </div>
       <div class="muted" style="font-size:11px">Auto-stamps the master clock (<span id="stamp">0.0s</span>) &amp; links to the batter.</div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>Box score (derived live)</h2>
+      <table id="box"><thead><tr><th>Batter</th><th>AB</th><th>H</th><th>RBI</th><th>Hard%</th><th>HH-out</th></tr></thead><tbody></tbody></table>
+      <div class="muted" style="font-size:11px;margin-top:6px">Every column is computed from the logged plays — nothing here is entered by hand. This is the projection your app's scoreboard/box score subscribes to.</div>
     </div>
 
     <div class="card" style="margin-top:14px">
@@ -307,20 +356,57 @@ document.querySelectorAll('[data-l]').forEach(b=> b.onclick=()=>{
   b.classList.add('sel'); draft.launch=b.dataset.l;
 });
 
+// ---------- base-state toggles ----------
+const bases={1:false,2:false,3:false};
+document.querySelectorAll('[data-base]').forEach(b=> b.onclick=()=>{
+  const n=b.dataset.base; bases[n]=!bases[n]; b.classList.toggle('sel',bases[n]);
+  risp.textContent = (bases[2]||bases[3])?'RISP':'';
+});
+const caughtBtn=document.getElementById('caught');
+caughtBtn.onclick=()=>{ const on=caughtBtn.dataset.on==='1'; caughtBtn.dataset.on=on?'0':'1';
+  caughtBtn.textContent=on?'no':'yes'; caughtBtn.classList.toggle('sel',!on); };
+
 // ---------- save play ----------
 document.getElementById('saveTag').onclick = saveTag;
 function saveTag(){
   const inPlay = pitchResult.value==='in_play';
   const play = {
     t:+masterT().toFixed(1), batter:batter.value,
+    state:{ outs:+outs.value, count:balls.value+'-'+strikes.value,
+            runners:{'1B':bases[1],'2B':bases[2],'3B':bases[3]},
+            score:scoreBat.value+'-'+scorePit.value },
     pitch:{type:pitchType.value, velo:velo.value?+velo.value:null, result:pitchResult.value},
-    batted: inPlay ? {hardness:draft.hardness, launch:draft.launch, spray:draft.spray, result:bbResult.value} : null
+    batted: inPlay ? {hardness:draft.hardness, launch:draft.launch, spray:draft.spray,
+            depth:depth.value, fielder:fielder.value, caught:caughtBtn.dataset.on==='1',
+            result:bbResult.value} : null
   };
-  state.plays.push(play); save(); renderPlays();
+  state.plays.push(play); save(); renderPlays(); renderBox();
   draft={hardness:null,launch:null,spray:null};
   spray.querySelectorAll('polygon').forEach(x=>x.classList.remove('sel'));
   document.querySelectorAll('.hard-btns button,[data-l]').forEach(x=>x.classList.remove('sel'));
+  caughtBtn.dataset.on='0'; caughtBtn.textContent='no'; caughtBtn.classList.remove('sel');
   velo.value='';
+}
+
+// ---------- derived box score (pure function of the play log) ----------
+const HITS=['single','double','triple','hr'];
+function renderBox(){
+  const tb=document.querySelector('#box tbody'); tb.innerHTML='';
+  const by={};
+  state.plays.forEach(p=>{
+    if(!p.batter) return;
+    const s = by[p.batter] || (by[p.batter]={AB:0,H:0,RBI:0,bip:0,hard:0,hhout:0});
+    const b=p.batted; if(!b) return;
+    s.AB++; s.bip++;
+    if(HITS.includes(b.result)) s.H++;
+    if(['hard','scorched'].includes(b.hardness)){ s.hard++; if(b.caught) s.hhout++; }
+    // RBI/score not entered in this quick prototype; left as extension point
+  });
+  Object.entries(by).forEach(([name,s])=>{
+    const hp = s.bip? Math.round(100*s.hard/s.bip)+'%':'—';
+    tb.insertAdjacentHTML('beforeend',
+      `<tr><td>${name}</td><td>${s.AB}</td><td>${s.H}</td><td>${s.RBI}</td><td>${hp}</td><td>${s.hhout||''}</td></tr>`);
+  });
 }
 function renderPlays(){
   const q={h:qHard.value, z:qZone.value};
@@ -365,7 +451,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='p') document.querySelector('[data-l=popup]').click();
 });
 
-renderRoster(); renderPlays();
+renderRoster(); renderPlays(); renderBox();
 </script>
 </body>
 </html>

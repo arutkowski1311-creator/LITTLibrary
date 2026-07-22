@@ -1,0 +1,68 @@
+{
+  "_comment": "Your exact scenario, decomposed. Player 'Jordan Rivera' goes 3-for-4. Each batted ball carries full contact detail AND the base/out/score state it happened in. The box-score line and every situational split at the bottom are DERIVED from these four events, not entered by hand.",
+
+  "game": { "id": 101, "date": "2026-07-22", "home": "River Hawks", "away": "Coastal Prep" },
+  "player": { "id": 7, "name": "Jordan Rivera", "team": "River Hawks", "jersey": "24", "bats": "R", "pos": "CF" },
+
+  "plate_appearances": [
+    {
+      "pa": 1, "inning": 1, "half": "bottom",
+      "state_before": { "outs": 0, "count": "1-1", "runners": { "1B": true, "2B": true, "3B": false }, "score": "0-0" },
+      "pitch": { "seq": 3, "type": "FB", "velo_mph": 88, "location_zone": "5", "result": "in_play" },
+      "batted_ball": {
+        "hardness": "scorched", "launch": "line", "spray_zone": "CF", "depth": "medium",
+        "fielder": null, "caught": false, "result": "single", "rbi": 1, "runs_scored": 1
+      },
+      "plain_english": "Scorched line drive to center, 2 on — single, drives in a run."
+    },
+    {
+      "pa": 2, "inning": 3, "half": "bottom",
+      "state_before": { "outs": 0, "count": "0-0", "runners": { "1B": false, "2B": false, "3B": false }, "score": "1-0" },
+      "pitch": { "seq": 1, "type": "SL", "velo_mph": 79, "location_zone": "9", "result": "in_play" },
+      "batted_ball": {
+        "hardness": "soft", "launch": "blooper", "spray_zone": "LCF", "depth": "shallow",
+        "fielder": "SS", "caught": false, "result": "single", "rbi": 0, "runs_scored": 0,
+        "note": "landed just beyond the shortstop"
+      },
+      "plain_english": "Shallow blooper that dropped in beyond short, nobody on, no outs — cheap single."
+    },
+    {
+      "pa": 3, "inning": 5, "half": "bottom",
+      "state_before": { "outs": 1, "count": "2-1", "runners": { "1B": true, "2B": true, "3B": false }, "score": "3-1" },
+      "pitch": { "seq": 4, "type": "FB", "velo_mph": 90, "location_zone": "6", "result": "in_play" },
+      "batted_ball": {
+        "hardness": "scorched", "launch": "line", "spray_zone": "CF", "depth": "deep",
+        "fielder": null, "caught": false, "result": "double", "rbi": 2, "runs_scored": 2
+      },
+      "plain_english": "Second scorched liner to center, 2 on — splits the gap for a 2-RBI double."
+    },
+    {
+      "pa": 4, "inning": 7, "half": "bottom",
+      "state_before": { "outs": 2, "count": "1-2", "runners": { "1B": true, "2B": true, "3B": true }, "score": "6-2" },
+      "pitch": { "seq": 4, "type": "CH", "velo_mph": 81, "location_zone": "4", "result": "in_play" },
+      "batted_ball": {
+        "hardness": "scorched", "launch": "line", "spray_zone": "RF", "depth": "medium",
+        "fielder": "RF", "caught": true, "result": "flyout", "rbi": 0, "runs_scored": 0,
+        "note": "hit_hard_out — crushed it, right at the right fielder"
+      },
+      "plain_english": "Rocket to right, bases loaded, 2 out — the right fielder caught it. A hard-hit OUT (bad luck, tracked as such)."
+    }
+  ],
+
+  "derived_box_line": {
+    "AB": 4, "H": 3, "2B": 1, "3B": 0, "HR": 0, "R": 1, "RBI": 3, "BB": 0, "K": 0,
+    "AVG": ".750", "SLG": "1.000"
+  },
+
+  "derived_situational": {
+    "hard_hit_pct": "0.75  (3 of 4 balls in play were hard/scorched)",
+    "hard_hit_outs": "1  (the RF rocket — not reflected in AVG, but real quality)",
+    "with_runners_on": "2-for-3, 3 RBI, all hard contact",
+    "risp": "2-for-2 including the 2-RBI double",
+    "bases_loaded": "0-for-1 but scorched (hard-hit out)",
+    "spray_tendency": "3 of 4 to CF/RF — pulling nothing, driving the ball middle-away",
+    "contact_by_pitch_type": { "FB": "2-for-2, both scorched", "SL": "1-for-1 (soft)", "CH": "0-for-1 (scorched out)" }
+  },
+
+  "_note": "Every number in derived_box_line and derived_situational is a pure function of plate_appearances. Add a new split (e.g. 'vs 90+ mph fastballs') and it computes from the same four events — no recapture."
+}

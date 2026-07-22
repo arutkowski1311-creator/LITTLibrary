@@ -51,6 +51,9 @@ CREATE TABLE at_bat (
     result      TEXT               -- 'single','strikeout','walk','out',...
 );
 
+-- Every pitch/batted_ball carries the FULL game state at that instant, so
+-- every situational split (RISP, bases loaded, by count, by outs) is just a
+-- GROUP BY over this data. The state is stamped on the event, never recomputed.
 CREATE TABLE pitch (
     id             INTEGER PRIMARY KEY,
     at_bat_id      INTEGER NOT NULL REFERENCES at_bat(id),
@@ -59,6 +62,15 @@ CREATE TABLE pitch (
     velo_mph       REAL,           -- nullable; filled if known/estimated
     location_zone  TEXT,           -- '1'..'9' strike zone + 'chase'
     result         TEXT,           -- 'ball','called','swinging','foul','in_play'
+    -- game state AT THE PITCH (context that powers pitcher + batter splits):
+    outs_before    INTEGER,        -- 0,1,2
+    balls          INTEGER,
+    strikes        INTEGER,
+    on_1b          INTEGER DEFAULT 0,  -- 0/1 occupied
+    on_2b          INTEGER DEFAULT 0,
+    on_3b          INTEGER DEFAULT 0,
+    score_bat      INTEGER,        -- batting team runs
+    score_pit      INTEGER,        -- pitching team runs
     game_ms        INTEGER         -- master-clock timestamp of the pitch
 );
 
@@ -66,12 +78,18 @@ CREATE TABLE batted_ball (
     id           INTEGER PRIMARY KEY,
     pitch_id     INTEGER NOT NULL REFERENCES pitch(id),
     batter_id    INTEGER NOT NULL REFERENCES player(id),
+    -- contact detail, captured on EVERY ball in play including outs:
     hardness     TEXT,             -- 'soft','medium','hard','scorched'
-    launch       TEXT,             -- 'ground','line','fly','popup'
+    launch       TEXT,             -- 'ground','line','fly','popup','blooper'
     spray_zone   TEXT,             -- 'LF','LCF','CF','RCF','RF','IF_pull','IF_mid','IF_oppo'
+    depth        TEXT,             -- 'infield','shallow','medium','deep','wall'
+    fielder      TEXT,             -- position that fielded it: 'SS','RF',...
+    caught       INTEGER DEFAULT 0,-- 1 = caught on the fly (hard-hit OUT signal)
     pull_oppo    TEXT,             -- 'pull','center','oppo'
     exit_velo_est REAL,            -- nullable; from CV/TrackMan later
-    result       TEXT,             -- 'single','double','triple','hr','out','error'
+    result       TEXT,             -- 'single','double','triple','hr','flyout','groundout','lineout','error'
+    rbi          INTEGER DEFAULT 0,
+    runs_scored  INTEGER DEFAULT 0,
     game_ms      INTEGER
 );
 
@@ -86,9 +104,12 @@ CREATE TABLE event (
     notes        TEXT
 );
 
--- Example query: every hard-hit ball to right field by a given player this season.
---
--- SELECT g.played_on, p.name, bb.hardness, bb.spray_zone, bb.result
+-- ---------------------------------------------------------------------------
+-- Derived stats are all GROUP BY over the event log. A few examples:
+-- ---------------------------------------------------------------------------
+
+-- 1) Every hard-hit ball to right-center by a player this season:
+-- SELECT g.played_on, bb.hardness, bb.spray_zone, bb.depth, bb.result
 -- FROM batted_ball bb
 -- JOIN player p ON p.id = bb.batter_id
 -- JOIN pitch  pi ON pi.id = bb.pitch_id
@@ -98,3 +119,30 @@ CREATE TABLE event (
 --   AND bb.hardness IN ('hard','scorched')
 --   AND bb.spray_zone IN ('RF','RCF')
 -- ORDER BY g.played_on;
+
+-- 2) Hard-hit OUTS (the "crushed it right at someone" / bad-luck signal):
+-- SELECT p.name, COUNT(*) AS hard_hit_outs
+-- FROM batted_ball bb JOIN player p ON p.id = bb.batter_id
+-- WHERE bb.hardness IN ('hard','scorched') AND bb.caught = 1
+-- GROUP BY p.name ORDER BY hard_hit_outs DESC;
+
+-- 3) Contact quality with runners in scoring position:
+-- SELECT p.name,
+--        SUM(bb.hardness IN ('hard','scorched')) AS hard,
+--        COUNT(*) AS balls_in_play
+-- FROM batted_ball bb
+-- JOIN pitch pi ON pi.id = bb.pitch_id
+-- JOIN player p ON p.id = bb.batter_id
+-- WHERE (pi.on_2b = 1 OR pi.on_3b = 1)          -- RISP
+-- GROUP BY p.name;
+
+-- 4) Pitcher: hard-contact allowed by count leverage:
+-- SELECT pit.name,
+--        (pi.strikes = 2) AS two_strike,
+--        SUM(bb.hardness IN ('hard','scorched')) AS hard_allowed,
+--        COUNT(*) AS bip
+-- FROM batted_ball bb
+-- JOIN pitch  pi ON pi.id = bb.pitch_id
+-- JOIN at_bat ab ON ab.id = pi.at_bat_id
+-- JOIN player pit ON pit.id = ab.pitcher_id
+-- GROUP BY pit.name, two_strike;
