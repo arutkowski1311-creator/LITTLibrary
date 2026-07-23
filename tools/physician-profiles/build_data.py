@@ -74,6 +74,13 @@ for a in AI.ACCOUNTS:
     for t in a["user_targets"]:
         plan_targets.setdefault(norm(t), a)
 
+# confirmed referrers: physicians the territory plan logs as having SENT cases to our surgeons
+confirmed_ref = defaultdict(list)
+for a in AI.ACCOUNTS:
+    for (nm,ind,cases) in a["referrers"]:
+        confirmed_ref[norm(nm)].append(dict(account=a["name"], accountAcr=a["acronym"],
+                                             indication=ind, cases=cases))
+
 # competitor users from prospects/leakage (outside installed base)
 for (acct,user,litt,epi,seeg,pool,plat) in AI.PROSPECTS:
     if user and user!="— none —":
@@ -156,6 +163,14 @@ for r in data:
     eloquent_tumors=round(tum*ELOQUENT_RATE)
     addressable_total=epi_addr+onc_addr
     untapped=max(0, addressable_total-litt)
+    # confirmed referrer — proven to have sent cases to our surgeons
+    cr = confirmed_ref.get(nm)
+    if cr:
+        rec["confirmedReferrals"]=cr
+        rec["confirmedCases"]=sum(x["cases"] for x in cr)
+        if cohort in ("Other / Low-signal","Referring Clinician"):
+            cohort="Referring Clinician"
+
     # dominant pathway for "evidence to carry"
     if cohort=="LITT-Naïve Craniotomy Surgeon":
         pathway="onc" if rec["tumor_cranio"]>=rec["epi_cranio"] else "epilepsy"
@@ -192,6 +207,7 @@ def score(p):
     s = m["untapped_litt_yr"]*1.0 + p["litt_perf"]*3.0 + p["epi_cranio"]*0.6 + p["tumor_cranio"]*0.6
     if p["planRole"].startswith("NeuroBlate"): s+=15
     if p["planRole"].startswith("Named"): s+=8
+    if p.get("confirmedReferrals"): s+=10+3*p.get("confirmedCases",0)
     return round(s,1)
 for p in providers: p["oppScore"]=score(p)
 
@@ -258,8 +274,9 @@ out = dict(
 )
 
 # drop true no-signal rows from the profile set (kept in the source count)
-low = [p for p in providers if p["cohort"]=="Other / Low-signal"]
-out["providers"] = [p for p in providers if p["cohort"]!="Other / Low-signal"]
+low = [p for p in providers if p["cohort"]=="Other / Low-signal" and not p.get("confirmedReferrals")]
+lowset=set(id(x) for x in low)
+out["providers"] = [p for p in providers if id(p) not in lowset]
 out["meta"]["excluded_low_signal"] = len(low)
 # strip empty-string keys to shrink payload
 for p in out["providers"]+out["facilities"]:

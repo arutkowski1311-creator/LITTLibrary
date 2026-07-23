@@ -127,9 +127,45 @@
   .note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
   .toggle{margin-left:auto;display:flex;gap:6px}
   h4.blk{font-size:12px;color:var(--ink);margin:18px 0 8px;font-weight:700}
+  .chip.clik{cursor:pointer;transition:.12s}
+  .chip.clik:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(43,212,255,.08)}
+  .platbar{margin-top:10px;padding:9px 13px;border-radius:11px;font-size:12.5px;line-height:1.4}
+  .platbar b{font-size:13px}
+  .confirmed{color:var(--green);font-weight:700}
+  /* mobile top bar */
+  .mtop{display:none}
+  @media(max-width:820px){
+    .mtop{display:flex;position:sticky;top:0;z-index:30;align-items:center;justify-content:space-between;
+      padding:11px 15px;background:rgba(8,15,26,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+    .mtop .mb{display:flex;align-items:center;gap:9px;font-weight:800;font-size:13.5px;letter-spacing:.04em}
+    .mtop .mb .lg{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--cyan));
+      display:grid;place-items:center;color:#04121a;font-weight:800}
+    .mham{background:rgba(43,212,255,.1);border:1px solid var(--border);color:var(--ink);font-size:17px;
+      border-radius:10px;padding:5px 13px;cursor:pointer;line-height:1}
+    .app{grid-template-columns:1fr}
+    .side{position:fixed;left:0;top:0;height:100vh;width:250px;z-index:60;transform:translateX(-100%);
+      box-shadow:24px 0 60px rgba(0,0,0,.55)}
+    .side.open{transform:translateX(0)}
+    .main{padding:14px 14px 70px}
+    .h{font-size:20px}
+    .metrics{grid-template-columns:1fr 1fr;gap:4px 0}
+    .metric{padding:8px 12px;border-left:none}
+    .metric .v{font-size:26px}
+    .row2{grid-template-columns:1fr}
+    .drawer{width:100vw;padding:20px 16px 70px}
+    .controls{gap:7px}
+    input[type=search]{min-width:0;width:100%}
+    select{flex:1;min-width:120px}
+    .acctgrid{grid-template-columns:1fr}
+    table{min-width:600px}
+  }
 </style>
 </head>
 <body>
+<div class="mtop">
+  <div class="mb"><span class="lg">L</span> Physician Profiles</div>
+  <button class="mham" id="mham" aria-label="Menu">☰ Menu</button>
+</div>
 <div class="app">
   <aside class="side">
     <div class="brand"><div class="logo">L</div>
@@ -179,23 +215,42 @@ async function boot(){
     DB=data; document.getElementById('ctAll').textContent=fmt(DB.providers.length);
     document.getElementById('ctEv').textContent=(DB.evidence||[]).length;
     document.getElementById('ctLib').textContent=(DB.library||[]).length;
-    buildAll(); route('overview');
+    buildNameIdx(); buildAll(); route('overview');
   }catch(e){ document.getElementById('main').innerHTML=
     '<div class="loading">Could not load <b>physician-profiles.json</b>.<br>Open the standalone file, or serve this page over http.<br><br><span class="muted">'+esc(e.message)+'</span></div>'; }
 }
 
 /* ---------- routing ---------- */
-document.getElementById('nav').addEventListener('click',e=>{const a=e.target.closest('a');if(a)route(a.dataset.v);});
+const sideEl=document.querySelector('.side');
+function closeMenu(){sideEl.classList.remove('open');if(!drawer.classList.contains('on'))scrim.classList.remove('on');}
+document.getElementById('mham').addEventListener('click',()=>{
+  const open=!sideEl.classList.contains('open');
+  sideEl.classList.toggle('open',open);scrim.classList.toggle('on',open);
+});
+document.getElementById('nav').addEventListener('click',e=>{const a=e.target.closest('a');if(a){route(a.dataset.v);closeMenu();}});
 function route(v){
   document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active',a.dataset.v===v));
   document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+v));
   window.scrollTo(0,0);
 }
 
+/* ---------- name lookup (clickable referrers) ---------- */
+const NAME_IDX={};
+function normName(n){n=String(n||'').replace(/^dr\.?\s+/i,'').replace(/[.,]/g,' ');
+  const t=n.toLowerCase().split(/\s+/).filter(x=>x&&!['jr','sr','ii','iii','iv','md','do','phd'].includes(x));
+  return t.length>=2?t[0]+' '+t[t.length-1]:t.join(' ');}
+function buildNameIdx(){DB.providers.forEach((p,i)=>{const k=normName(p.name);if(!(k in NAME_IDX))NAME_IDX[k]=i;});}
+function nameIdx(name){const i=NAME_IDX[normName(name)];return i==null?-1:i;}
+function openByName(name){const i=nameIdx(name);if(i>=0)openProfile(i);}
+function refChip(name,label){
+  const ok=nameIdx(name)>=0, safe=String(name).replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  return `<span class="chip${ok?' clik':''}"${ok?` onclick="openByName('${safe}')"`:''}>${esc(label)}${ok?' ›':''}</span>`;
+}
+
 function buildAll(){
   const m=document.getElementById('main');
   m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewPlaybook(),viewLibrary(),viewMethod()].join('');
-  wireExplorer(); wireLibrary();
+  wireExplorer(); wireLibrary(); renderReferral();
 }
 
 /* ---------- overview ---------- */
@@ -341,8 +396,8 @@ function renderRows(){
 
 /* ---------- profile drawer ---------- */
 const scrim=document.getElementById('scrim'),drawer=document.getElementById('drawer');
-scrim.addEventListener('click',closeProfile);
-function closeProfile(){scrim.classList.remove('on');drawer.classList.remove('on');}
+scrim.addEventListener('click',()=>{closeProfile();sideEl.classList.remove('open');});
+function closeProfile(){drawer.classList.remove('on');if(!sideEl.classList.contains('open'))scrim.classList.remove('on');}
 function openProfile(idx){
   const p=DB.providers[idx],m=p.model,cm=COHORT_META[p.cohort]||{c:'#64748B'};
   const acct=DB.accounts.find(a=>a.name===p.account);
@@ -360,18 +415,41 @@ function openProfile(idx){
   // referral context from account
   let refhtml='';
   if(acct){
-    const er=(acct.epilepsy_referrers||[]).slice(0,3).map(r=>`<span class="chip">${esc(r[0])} · ${r[1]} intractable</span>`).join('');
-    const nr=(acct.necrosis_referrers||[]).slice(0,3).map(r=>`<span class="chip">${esc(r[0])} · ${r[1]} SRS</span>`).join('');
-    if(er||nr) refhtml=`<div class="dsection"><h3>Referral network at ${esc(acct.name)}</h3>
-      <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Epilepsy pathway (intractable pool)</div><div class="chips">${er||'<span class=muted>—</span>'}</div>
-      <div style="font-size:11px;color:var(--muted);margin:10px 0 4px">Necrosis pathway (SRS feeders)</div><div class="chips">${nr||'<span class=muted>—</span>'}</div></div>`;
+    const conf=(acct.referrers||[]);
+    const confhtml=conf.length?`<div style="font-size:11px;color:var(--green);margin-bottom:4px">✓ Confirmed — sent cases to our surgeons</div>
+      <div class="chips">${conf.map(r=>refChip(r[0],`${r[0]} · ${r[1]} · ${r[2]} case${r[2]>1?'s':''}`)).join('')}</div>`:'';
+    const er=(acct.epilepsy_referrers||[]).slice(0,4).map(r=>refChip(r[0],`${r[0]} · ${r[1]} intractable`)).join('');
+    const nr=(acct.necrosis_referrers||[]).slice(0,4).map(r=>refChip(r[0],`${r[0]} · ${r[1]} SRS`)).join('');
+    if(er||nr||confhtml) refhtml=`<div class="dsection"><h3>Referral network at ${esc(acct.name)}</h3>
+      ${confhtml}
+      <div style="font-size:11px;color:var(--muted);margin:10px 0 4px">Epilepsy pathway (intractable pool)</div><div class="chips">${er||'<span class=muted>—</span>'}</div>
+      <div style="font-size:11px;color:var(--muted);margin:10px 0 4px">Necrosis pathway (SRS feeders)</div><div class="chips">${nr||'<span class=muted>—</span>'}</div>
+      <div class="note">Tap a name to open that physician's profile.</div></div>`;
   }
+  // confirmed referrals BY this clinician (they sent us cases)
+  let selfConf='';
+  if(p.confirmedReferrals&&p.confirmedReferrals.length){
+    const rows=p.confirmedReferrals.map(r=>`<div class="mrow"><span class="ml">${esc(r.account)} · ${esc(r.indication)}</span><span class="mv confirmed">${r.cases} case${r.cases>1?'s':''}</span></div>`).join('');
+    selfConf=`<div class="dsection"><h3>✓ Confirmed referrals — this clinician sent us cases</h3>
+      <div class="modelbox" style="background:rgba(30,215,96,.06);border-color:rgba(30,215,96,.3)">${rows}
+      <div class="mrow tot"><span class="ml">Total to our surgeons</span><span class="mv" style="color:var(--green)">${p.confirmedCases}</span></div></div>
+      <div class="note">Logged in the territory plan as an active referrer into our LITT program — a warm, proven relationship.</div></div>`;
+  }
+  const platColor=(p.platform||'').startsWith('NeuroBlate')?'var(--teal)':
+    ((p.platform||'').includes('Visualase')||(p.platform||'').includes('ClearPoint')||(p.cohort||'').includes('Competitor'))?'var(--orange)':
+    (p.platform&&p.platform!=='—')?'var(--purple)':'var(--muted)';
+  const platMain=(p.platform&&p.platform!=='—')?p.platform:(p.litt_perf>0?'LITT platform not confirmed':'No LITT performed');
   drawer.innerHTML=`<div class="x" onclick="closeProfile()">✕</div>
     <div class="dhead"><h2 class="nm">${esc(p.name)}</h2><div class="spec">${esc(spec)}</div>
       <div class="chips" style="margin-top:9px">
         <span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort)}</span>
         ${p.planRole&&p.planRole!=='—'?`<span class="chip" style="border-color:var(--cyan);color:var(--cyan)">${esc(p.planRole)}</span>`:''}
+        ${p.confirmedReferrals?`<span class="tag" style="${tagStyle('#1ED760')}">✓ Sent us ${p.confirmedCases} case${p.confirmedCases>1?'s':''}</span>`:''}
         ${p.claimsUndercount?`<span class="chip" style="border-color:var(--yellow);color:var(--yellow)">claims undercount</span>`:''}
+      </div>
+      <div class="platbar" style="background:${platColor}14;border:1px solid ${platColor}55">
+        <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">LITT platform</span><br>
+        <b style="color:${platColor}">${esc(platMain)}</b>${p.litt_perf?` · ${p.litt_perf} LITT case${p.litt_perf>1?'s':''} in claims`:''}${p.claimsUndercount?' · claims undercount likely':''}
       </div></div>
     <div class="dsection"><h3>Affiliation</h3><div class="kv">
       <div class="k">Platform</div><div class="v">${esc(p.platform||'—')}</div>
@@ -395,6 +473,7 @@ function openProfile(idx){
       ${m.eloquent_tumors?`<div class="note">Also carries ${m.tumor_cranio_pool} tumor craniotomies; ~${m.eloquent_tumors} (49%) are in/near eloquent areas — LITT's difficult-resection indication.</div>`:''}
       <div class="note">Triangulation: 25–40% of epilepsy is drug-resistant and only ~4% of eligible get surgery today; up to 49% of tumors are eloquent/deep. The ${(DB.meta.addressable_fraction*100)|0}% blended addressable rate matches the Territory Plan's reservoir sizing.</div>
     </div>
+    ${selfConf}
     ${refhtml}
     ${playForProfile(p)}
     ${evidenceForProfile(p)}
@@ -447,6 +526,8 @@ function viewAccounts(){
       <div class="desc">${esc(a.situation)}</div>
       <div class="kv" style="font-size:11.5px"><div class="k">Surgeons</div><div class="v">${surg}</div>
         <div class="k">Opportunity</div><div class="v">${esc(bp)}</div></div>
+      ${(a.referrers||[]).length?`<div style="margin-top:9px"><div style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:5px">✓ Confirmed referrers — sent us cases</div>
+        <div class="chips">${a.referrers.map(r=>refChip(r[0],`${r[0]} · ${r[2]}`)).join('')}</div></div>`:''}
       <div class="res">${res}</div></div>`;}).join('');
   return `<section class="view" id="view-accounts"><div class="crumbs">Accounts</div>
     <h1 class="h">Accounts</h1><p class="hsub">The 18 accounts in the operating plan — platform, posture, surgeons, and the addressable reservoirs (addressable / raw pool) behind each.</p>
@@ -454,23 +535,35 @@ function viewAccounts(){
 }
 
 /* ---------- referral network ---------- */
-function viewReferral(){
-  const refs=DB.providers.filter(p=>p.model.intractable_pool>=20||p.model.mets_rn_pool>=20||p.model.srs_pool>=20)
-    .sort((a,b)=>b.model.untapped_litt_yr-a.model.untapped_litt_yr).slice(0,120);
-  const rows=refs.map(p=>`<tr onclick="openProfile(${DB.providers.indexOf(p)})">
-    <td class="nm">${esc(p.name)}</td><td>${esc((p.specialty||'').replace(/^.*> /,'')||'—')}</td>
+let refConfirmedOnly=false;
+function toggleRefConf(){refConfirmedOnly=!refConfirmedOnly;document.getElementById('pRefConf').classList.toggle('on',refConfirmedOnly);renderReferral();}
+function renderReferral(){
+  let refs=DB.providers.filter(p=>p.confirmedReferrals||p.model.intractable_pool>=20||p.model.mets_rn_pool>=20||p.model.srs_pool>=20);
+  if(refConfirmedOnly)refs=refs.filter(p=>p.confirmedReferrals);
+  refs.sort((a,b)=>(b.confirmedCases||0)-(a.confirmedCases||0)||b.model.untapped_litt_yr-a.model.untapped_litt_yr);
+  const rows=refs.slice(0,160).map(p=>{const ci=DB.providers.indexOf(p);
+    const badge=p.confirmedReferrals?` <span class="tag" style="${tagStyle('#1ED760')}">✓ ${p.confirmedCases} to ${esc(p.confirmedReferrals[0].accountAcr||'us')}</span>`:'';
+    return `<tr onclick="openProfile(${ci})">
+    <td class="nm">${esc(p.name)}${badge}</td><td>${esc((p.specialty||'').replace(/^.*> /,'')||'—')}</td>
     <td>${esc(p.account||p.system||'—')}</td>
     <td class="num">${fmt(p.model.intractable_pool)}</td><td class="num">${fmt(p.model.srs_pool)}</td>
     <td class="num">${fmt(p.model.mets_rn_pool)}</td>
-    <td class="num" style="color:var(--cyan)">${fmt(p.model.untapped_litt_yr)}</td></tr>`).join('');
+    <td class="num" style="color:var(--cyan)">${fmt(p.model.untapped_litt_yr)}</td></tr>`;}).join('');
+  document.getElementById('refbody').innerHTML=rows;
+  document.getElementById('refcount').innerHTML=`Showing <b>${Math.min(refs.length,160)}</b> of <b>${refs.length}</b>${refConfirmedOnly?' confirmed':''} referrers`;
+}
+function viewReferral(){
+  const nconf=DB.providers.filter(p=>p.confirmedReferrals).length;
   return `<section class="view" id="view-referral"><div class="crumbs">Referral network · grow the feed</div>
     <h1 class="h">Referral Network</h1>
-    <p class="hsub">The clinicians whose disease pools feed LITT — epileptologists sitting on intractable-epilepsy panels, rad-onc driving SRS/necrosis. This is the "2,000 epilepsy patients, one LITT referral" pool, ranked by untapped addressable candidates per year.</p>
+    <p class="hsub">The clinicians whose disease pools feed LITT — epileptologists on intractable-epilepsy panels, rad-onc driving SRS/necrosis. <span class="confirmed">✓ green = confirmed</span> to have already sent cases to our surgeons (${nconf} known). Click any name for the full profile.</p>
+    <div class="controls"><span class="pill" id="pRefConf" onclick="toggleRefConf()">✓ Confirmed senders only (${nconf})</span></div>
+    <div class="count" id="refcount"></div>
     <div class="tblwrap"><table><thead><tr>
       <th>Referrer</th><th>Specialty</th><th>Account / System</th>
       <th class="num">Intractable epi</th><th class="num">SRS pool</th><th class="num">Mets/RN</th><th class="num">Untapped/yr</th>
-    </tr></thead><tbody>${rows}</tbody></table></div>
-    <div class="note">Top 120 by untapped potential. Addressable = pool × ${(DB.meta.addressable_fraction*100)|0}%. Click any name for the full profile.</div></section>`;
+    </tr></thead><tbody id="refbody"></tbody></table></div>
+    <div class="note">Confirmed senders first, then by untapped potential. Addressable = pool × ${(DB.meta.addressable_fraction*100)|0}%.</div></section>`;
 }
 
 /* ---------- competitive ---------- */
