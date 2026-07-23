@@ -201,13 +201,38 @@ for p in providers:
     if k not in by_npi or sig(p)>sig(by_npi[k]): by_npi[k]=p
 providers=list(by_npi.values())+noid
 
+# ---------- attach research/citation profiles ----------
+def normName(n):
+    n=re.sub(r'^(dr\.?\s+)','',str(n).strip(),flags=re.I); n=re.sub(r'[.,]',' ',n)
+    t=[x for x in n.lower().split() if x and x not in SUFFIX]
+    return (t[0]+" "+t[-1]) if len(t)>=2 else " ".join(t)
+def load_research():
+    idx={}
+    for path in ("research_raw.jsonl","tools/physician-profiles/research_raw.jsonl",
+                 "/home/user/LITTLibrary/tools/physician-profiles/research_raw.jsonl"):
+        try:
+            for line in open(path):
+                line=line.strip()
+                if not line: continue
+                r=json.loads(line); idx[normName(r["name"])]=r
+            if idx: break
+        except FileNotFoundError: continue
+    return idx
+RESEARCH=load_research()
+n_research=0
+for p in providers:
+    r=RESEARCH.get(normName(p["name"]))
+    if r: p["research"]=r; n_research+=1
+
 # ---------- opportunity score (COI-style) ----------
+GRADE_BOOST={"A":14,"B":7,"C":2,"D":0}
 def score(p):
     m=p["model"]
     s = m["untapped_litt_yr"]*1.0 + p["litt_perf"]*3.0 + p["epi_cranio"]*0.6 + p["tumor_cranio"]*0.6
     if p["planRole"].startswith("NeuroBlate"): s+=15
     if p["planRole"].startswith("Named"): s+=8
     if p.get("confirmedReferrals"): s+=10+3*p.get("confirmedCases",0)
+    if p.get("research"): s+=GRADE_BOOST.get(p["research"]["litt_relevance"]["grade"],0)
     return round(s,1)
 for p in providers: p["oppScore"]=score(p)
 
@@ -270,6 +295,8 @@ out = dict(
               for (p,t,c,f,s,st,tg,nw) in AI.EVIDENCE],
     growthLevers=AI.GROWTH_LEVERS, growthLeversNote=AI.GROWTH_LEVERS_NOTE,
     library=LIBRARY, libraryMeta=LIBMETA,
+    researchMeta=dict(count=n_research, generated="2026-07-23",
+        note="Research profiles compiled from public web sources (Google Scholar, institutional pages, journal/PubMed listings, ResearchGate) via automated search. LITT-relevance grade A-D is an editorial rubric: A=direct LITT/ablation or SEEG-guided epilepsy ablation research; B=convertible epilepsy/stereotactic/neuro-onc surgery; C=limited; D=little/none. Verify against primary sources before acting."),
     platforms=dict(neuroblate=AI.NEUROBLATE, visualase=AI.VISUALASE, clearpoint=AI.CLEARPOINT, unverified=AI.UNVERIFIED),
 )
 

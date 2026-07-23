@@ -132,6 +132,12 @@
   .platbar{margin-top:10px;padding:9px 13px;border-radius:11px;font-size:12.5px;line-height:1.4}
   .platbar b{font-size:13px}
   .confirmed{color:var(--green);font-weight:700}
+  .gradeBadge{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;font-weight:800;font-size:12px}
+  .sig{font-size:10.5px;padding:2px 8px;border-radius:7px;border:1px solid var(--border);color:var(--muted)}
+  .sig.on{color:#04121a;background:var(--teal);border-color:var(--teal);font-weight:700}
+  .paper{padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+  .paper:last-child{border-bottom:none}
+  .kolchip{border-color:var(--yellow)!important;color:var(--yellow)!important}
   /* mobile top bar */
   .mtop{display:none}
   @media(max-width:820px){
@@ -177,6 +183,7 @@
       <a data-v="referral"><span class="ic">⇄</span> Referral Network</a>
       <a data-v="competitive"><span class="ic">⚑</span> Competitive</a>
       <a data-v="evidence"><span class="ic">▦</span> Evidence <span class="ct" id="ctEv">—</span></a>
+      <a data-v="research"><span class="ic">🔬</span> Research Focus <span class="ct" id="ctRes">—</span></a>
       <a data-v="playbook"><span class="ic">◆</span> Playbook</a>
       <a data-v="library"><span class="ic">✦</span> LITT Library <span class="ct" id="ctLib">—</span></a>
       <a data-v="method"><span class="ic">ƒ</span> Methodology</a>
@@ -215,6 +222,7 @@ async function boot(){
     DB=data; document.getElementById('ctAll').textContent=fmt(DB.providers.length);
     document.getElementById('ctEv').textContent=(DB.evidence||[]).length;
     document.getElementById('ctLib').textContent=(DB.library||[]).length;
+    document.getElementById('ctRes').textContent=(DB.researchMeta||{}).count||0;
     buildNameIdx(); buildAll(); route('overview');
   }catch(e){ document.getElementById('main').innerHTML=
     '<div class="loading">Could not load <b>physician-profiles.json</b>.<br>Open the standalone file, or serve this page over http.<br><br><span class="muted">'+esc(e.message)+'</span></div>'; }
@@ -249,7 +257,7 @@ function refChip(name,label){
 
 function buildAll(){
   const m=document.getElementById('main');
-  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewPlaybook(),viewLibrary(),viewMethod()].join('');
+  m.innerHTML=[viewOverview(),viewExplorer(),viewAccounts(),viewReferral(),viewCompetitive(),viewEvidence(),viewResearch(),viewPlaybook(),viewLibrary(),viewMethod()].join('');
   wireExplorer(); wireLibrary(); renderReferral();
 }
 
@@ -328,6 +336,7 @@ function viewExplorer(){
       <label class="pill" style="cursor:default">Min untapped/yr
         <input type="number" id="fMin" value="0" min="0" style="width:64px;margin-left:6px;padding:3px 6px"></label>
       <span class="pill" id="pMapped" onclick="toggleMapped()">Plan-named only</span>
+      <span class="pill" id="pRes" onclick="toggleRes()">🔬 Research-graded only</span>
     </div>
     <div class="count" id="count"></div>
     <div class="tblwrap"><table id="tbl"><thead><tr>
@@ -339,8 +348,9 @@ function viewExplorer(){
 }
 function th(k,label,num){return `<th data-k="${k}" class="${num?'num':''}">${label} <span class="ar" id="ar-${k}"></span></th>`;}
 
-let onlyMapped=false;
+let onlyMapped=false, onlyRes=false;
 function toggleMapped(){onlyMapped=!onlyMapped;document.getElementById('pMapped').classList.toggle('on',onlyMapped);applyFilters();}
+function toggleRes(){onlyRes=!onlyRes;document.getElementById('pRes').classList.toggle('on',onlyRes);applyFilters();}
 
 function wireExplorer(){
   ['q','fCohort','fSpec','fState','fMin'].forEach(id=>{
@@ -366,6 +376,7 @@ function applyFilters(){
     if(st&&p.state!==st)return false;
     if(p.model.untapped_litt_yr<mn)return false;
     if(onlyMapped&&(p.planRole==='—'||!p.planRole))return false;
+    if(onlyRes&&!p.research)return false;
     if(q){const hay=(p.name+' '+(p.system||'')+' '+(p.account||'')+' '+(p.npi||'')+' '+(p.specialty||'')).toLowerCase();
       if(!hay.includes(q))return false;}
     return true;});
@@ -381,7 +392,7 @@ function renderRows(){
   const tb=document.getElementById('tbody');
   tb.innerHTML=rows.map((p,i)=>{const cm=COHORT_META[p.cohort]||{c:'#64748B'};
     return `<tr onclick="openProfile(${DB.providers.indexOf(p)})">
-      <td class="nm">${esc(p.name)}${p.planRole&&p.planRole!=='—'?' <span style="color:var(--cyan)">•</span>':''}</td>
+      <td class="nm">${esc(p.name)}${p.planRole&&p.planRole!=='—'?' <span style="color:var(--cyan)">•</span>':''}${p.research?` <span class="gradeBadge" style="width:16px;height:16px;font-size:9.5px;background:${GRADE_C[p.research.litt_relevance.grade]}22;color:${GRADE_C[p.research.litt_relevance.grade]};border:1px solid ${GRADE_C[p.research.litt_relevance.grade]}">${p.research.litt_relevance.grade}</span>`:''}</td>
       <td>${esc((p.specialty||'').replace(/^.*> /,''))||'<span class=muted>—</span>'}</td>
       <td><span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort.replace('LITT — ','').replace(' Craniotomy Surgeon','').replace(' Equipment',''))}</span></td>
       <td>${esc(p.account||p.system||'—')}</td>
@@ -473,6 +484,7 @@ function openProfile(idx){
       ${m.eloquent_tumors?`<div class="note">Also carries ${m.tumor_cranio_pool} tumor craniotomies; ~${m.eloquent_tumors} (49%) are in/near eloquent areas — LITT's difficult-resection indication.</div>`:''}
       <div class="note">Triangulation: 25–40% of epilepsy is drug-resistant and only ~4% of eligible get surgery today; up to 49% of tumors are eloquent/deep. The ${(DB.meta.addressable_fraction*100)|0}% blended addressable rate matches the Territory Plan's reservoir sizing.</div>
     </div>
+    ${researchForProfile(p)}
     ${selfConf}
     ${refhtml}
     ${playForProfile(p)}
@@ -697,6 +709,63 @@ function libraryForProfile(p){
     ${e.url?` <a style="font-size:11px;color:var(--cyan)" href="${esc(e.url)}" target="_blank" rel="noopener">Source ↗</a>`:''}</div>`).join('');
   return `<div class="dsection"><h3>From the LITT Library — ${p.pathway==='epilepsy'?'epilepsy':'oncology'} intel</h3>${items}
     <div class="note">Top-impact findings from the live clinical-intelligence database for this pathway. Open <b>LITT Library</b> for all ${lib.length}.</div></div>`;
+}
+
+/* ---------- research & citation network ---------- */
+const GRADE_C={A:'#1ED760',B:'#3B82F6',C:'#FFC857',D:'#64748B'};
+const SIG_LABEL={seeg:'SEEG',litt:'LITT',epilepsy_surgery:'Epilepsy surgery',glioma:'Glioma',brain_mets:'Brain mets',radiation_necrosis:'Radiation necrosis',stereotactic_functional:'Stereotactic/functional',mr_thermometry:'MR thermometry',immunotherapy_bbb:'Immuno/BBB',dbs_neuromod:'DBS/neuromod'};
+function gradeBadge(g){return `<span class="gradeBadge" style="background:${GRADE_C[g]}22;color:${GRADE_C[g]};border:1px solid ${GRADE_C[g]}">${g}</span>`;}
+function researchForProfile(p){
+  const r=p.research; if(!r)return '';
+  const g=r.litt_relevance||{};
+  const sigs=Object.keys(SIG_LABEL).map(k=>`<span class="sig ${r.signals&&r.signals[k]?'on':''}">${SIG_LABEL[k]}</span>`).join(' ');
+  const papers=(r.key_papers||[]).map(pp=>`<div class="paper"><div style="font-size:12px;color:var(--ink)">${esc(pp.title)}${pp.year?` <span class="muted">(${pp.year})</span>`:''}</div>${pp.topic?`<div style="font-size:11px;color:var(--muted)">${esc(pp.topic)}</div>`:''}</div>`).join('');
+  const collab=(r.collaborators||[]).map(c=>{
+    const kol=c.litt_kol;const clickable=nameIdx(c.name)>=0;
+    return `<div style="padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.05);font-size:12px">
+      <span class="${clickable?'chip clik':''}" ${clickable?`onclick="openByName('${String(c.name).replace(/'/g,"\\'")}')"`:''} style="${kol?'color:var(--yellow);font-weight:700':'color:var(--ink);font-weight:600'}">${esc(c.name)}${kol?' ★ LITT KOL':''}${clickable?' ›':''}</span>
+      ${c.note?`<div style="font-size:11px;color:var(--muted);margin-top:1px">${esc(c.note)}</div>`:''}</div>`;}).join('');
+  const kols=(r.kol_connections||[]).map(k=>`<span class="chip kolchip">${esc(k)}</span>`).join('');
+  const src=(r.sources||[]).slice(0,5).map((u,i)=>`<a class="chip clik" href="${esc(u)}" target="_blank" rel="noopener">src ${i+1} ↗</a>`).join('');
+  const conf=r.confidence?`<span class="chip" style="border-color:${r.confidence==='high'?'var(--green)':r.confidence==='medium'?'var(--yellow)':'var(--muted)'}">match: ${esc(r.confidence)}</span>`:'';
+  return `<div class="dsection"><h3>🔬 Research & citation network</h3>
+    <div class="modelbox" style="background:${GRADE_C[g.grade]||'#64748B'}0e;border-color:${GRADE_C[g.grade]||'#64748B'}55">
+      <div style="display:flex;align-items:center;gap:10px">${gradeBadge(g.grade||'D')}
+        <div><div style="font-weight:800;font-size:13px">LITT-relevance grade ${esc(g.grade||'—')} · ${g.score||0}/100</div>
+        <div style="font-size:11px;color:var(--muted)">${r.matched?'identified':'not confidently identified'}</div></div>
+        <div style="margin-left:auto">${conf}</div></div>
+      ${r.identity?`<div style="font-size:12px;color:var(--ink2);margin-top:8px">${esc(r.identity)}</div>`:''}
+      <div style="font-size:11.5px;color:var(--ink2);margin-top:8px"><b style="color:${GRADE_C[g.grade]||'#fff'}">Why this grade:</b> ${esc(g.rationale||'')}</div>
+    </div>
+    <div style="margin-top:10px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">LITT-adjacency signals</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px">${sigs}</div></div>
+    ${r.themes&&r.themes.length?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Research themes</div><div class="chips">${r.themes.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></div>`:''}
+    ${papers?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Key papers</div>${papers}</div>`:''}
+    ${collab?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Collaboration network <span class="muted" style="text-transform:none;letter-spacing:0">— ★ = LITT KOL; tap a name in our territory to open them</span></div>${collab}</div>`:''}
+    ${kols?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">LITT-KOL connections</div><div class="chips">${kols}</div></div>`:''}
+    ${(r.scholar_url||r.profile_url||src)?`<div style="margin-top:12px" class="chips">${r.scholar_url?`<a class="chip clik" href="${esc(r.scholar_url)}" target="_blank" rel="noopener">Google Scholar ↗</a>`:''}${r.profile_url?`<a class="chip clik" href="${esc(r.profile_url)}" target="_blank" rel="noopener">Profile ↗</a>`:''}${src}</div>`:''}
+    <div class="note">${esc((DB.researchMeta||{}).note||'')}</div></div>`;
+}
+function viewResearch(){
+  const rp=DB.providers.filter(p=>p.research).sort((a,b)=>b.research.litt_relevance.score-a.research.litt_relevance.score);
+  const rows=rp.map(p=>{const r=p.research,g=r.litt_relevance;const ci=DB.providers.indexOf(p);
+    const sigOn=Object.keys(SIG_LABEL).filter(k=>r.signals&&r.signals[k]).slice(0,5).map(k=>`<span class="sig on">${SIG_LABEL[k]}</span>`).join(' ');
+    const kols=(r.kol_connections||[]).length;
+    return `<div class="acct" style="padding:14px 16px;cursor:pointer" onclick="openProfile(${ci})">
+      <div class="top"><div style="display:flex;gap:10px;align-items:center">${gradeBadge(g.grade)}
+        <div><div class="an" style="font-size:14px">${esc(p.name)}</div>
+        <div class="asys">${esc((p.account||p.system||''))} · ${esc(p.cohort.replace('LITT — ',''))}</div></div></div>
+        <div class="muted" style="font-size:11px;text-align:right">score ${g.score}<br>${kols} KOL link${kols!==1?'s':''}</div></div>
+      <div style="font-size:11.5px;color:var(--ink2);margin:8px 0">${esc(r.identity||'')}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px">${sigOn}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px">${esc((g.rationale||'').slice(0,150))}${(g.rationale||'').length>150?'…':''}</div></div>`;}).join('');
+  const nA=rp.filter(p=>p.research.litt_relevance.grade==='A').length;
+  const nB=rp.filter(p=>p.research.litt_relevance.grade==='B').length;
+  return `<section class="view" id="view-research"><div class="crumbs">Research focus · citation-network grading</div>
+    <h1 class="h">Research Focus</h1>
+    <p class="hsub">A deep dive into each LITT target's scholarly work — graded on how close their research sits to LITT (A = direct LITT/ablation or SEEG-guided epilepsy ablation; B = convertible epilepsy/stereotactic/neuro-onc surgery) — and mapping who they publish with, flagging connections to LITT KOLs. ${rp.length} targets researched · <span class="confirmed">${nA} Grade A</span> · <span style="color:var(--blue)">${nB} Grade B</span>. Tap any card for the full network.</p>
+    <div class="acctgrid">${rows}</div>
+    <div class="note" style="margin-top:12px">${esc((DB.researchMeta||{}).note||'')}</div></section>`;
 }
 
 /* ---------- methodology ---------- */

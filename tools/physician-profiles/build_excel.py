@@ -236,5 +236,30 @@ if lib:
     for i,w in enumerate([11,40,32,14,28,14,14,12,50,20],1): ws.column_dimensions[get_column_letter(i)].width=w
     ws.auto_filter.ref=f"A4:{get_column_letter(len(LHDR2))}{end}"
 
+# ---------------- Research Focus ----------------
+resp=[p for p in P if p.get("research")]
+if resp:
+    ws=wb.create_sheet("Research Focus"); ws.sheet_view.showGridLines=False
+    ws.cell(row=1,column=1,value="Research Focus — LITT-relevance grading & citation network").font=Font(bold=True,color=BLUE,size=12)
+    ws.cell(row=2,column=1,value=(d.get("researchMeta",{}).get("note",""))).font=SUB
+    RSHDR=["Grade","Score","Name","Cohort","Account","Research identity","LITT-adjacency signals",
+           "Key collaborators (★=LITT KOL)","LITT-KOL connections","Why this grade","Scholar/Profile"]
+    def sigstr(r):
+        return ", ".join(k.replace("_"," ") for k,v in (r.get("signals") or {}).items() if v)
+    resp=sorted(resp,key=lambda p:-p["research"]["litt_relevance"]["score"])
+    rsrows=[]
+    for p in resp:
+        r=p["research"]; g=r["litt_relevance"]
+        collab="; ".join(f'{c["name"]}{" ★" if c.get("litt_kol") else ""}' for c in (r.get("collaborators") or []))
+        rsrows.append([g["grade"],g["score"],p.get("name",""),p["cohort"].replace("LITT — ",""),
+            p.get("account",""),r.get("identity",""),sigstr(r),collab,", ".join(r.get("kol_connections") or []),
+            g.get("rationale",""),r.get("scholar_url") or r.get("profile_url","")])
+    end=write_table(ws,RSHDR,rsrows,start=4,color=NAVY)
+    for i,w in enumerate([7,7,22,24,20,40,30,40,28,55,26],1): ws.column_dimensions[get_column_letter(i)].width=w
+    for rr in range(5,end+1):
+        for c in (6,7,8,9,10): ws.cell(row=rr,column=c).alignment=Alignment(vertical="top",wrap_text=True)
+        ws.row_dimensions[rr].height=90
+    ws.auto_filter.ref=f"A4:{get_column_letter(len(RSHDR))}{end}"
+
 wb.save("LITT_Physician_Profiles.xlsx")
 print("saved LITT_Physician_Profiles.xlsx  tabs:",wb.sheetnames)

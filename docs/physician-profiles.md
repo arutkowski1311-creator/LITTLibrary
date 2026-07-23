@@ -104,6 +104,30 @@ tools:
 Each physician profile auto-recommends the play for that clinician's cohort. The full matrix is on the
 dashboard **Playbook** view and the `Playbook` tab of the Excel workbook.
 
+## Research focus (citation-network grading)
+
+For the LITT *performer* targets (surgeons who could adopt or grow LITT), a research deep-dive is
+compiled from public web sources (Google Scholar, institutional pages, journal/PubMed listings,
+ResearchGate) via automated web-research agents and baked into the profile. Each carries:
+
+- a **LITT-relevance grade (A–D)** — an editorial rubric: **A** = direct LITT/laser-ablation research
+  *or* SEEG-guided epilepsy ablation *or* ablation of glioma/mets/radiation-necrosis; **B** =
+  convertible epilepsy / stereotactic-functional / neuro-onc surgery with no direct LITT yet; **C** =
+  limited; **D** = little/none. (A neurosurgeon publishing on **SEEG** grades highly, because SEEG
+  localizes the epileptogenic zone that LITT then ablates.)
+- **LITT-adjacency signals** (SEEG, LITT, epilepsy surgery, glioma, brain mets, radiation necrosis,
+  stereotactic/functional, MR thermometry, immuno/BBB, DBS/neuromod),
+- **research themes** and **key papers**,
+- a **collaboration/citation network** — frequent co-authors, with **LITT-KOL** connections flagged
+  (co-authors in your territory are clickable to open their profile), and
+- source links (Scholar, institutional profile, journal pages).
+
+Grade contributes a bonus to the opportunity score (A +14, B +7). Surfaced in a dedicated **Research
+Focus** view, a grade badge in the Explorer (with a "Research-graded only" filter), the profile
+deep-dive, and a `Research Focus` tab in the Excel workbook. Research profiles live in
+`tools/physician-profiles/research_raw.jsonl` and are re-attached on every build; the initial set
+covers the top targets and is designed to extend to the full 152-surgeon target list.
+
 ## Opportunity score
 
 A COI-style composite used to rank the Explorer:
