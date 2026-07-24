@@ -88,7 +88,7 @@
   tbody td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
   tbody tr{cursor:pointer} tbody tr:hover td{background:rgba(43,212,255,.05)}
   tbody td.nm{color:var(--ink);font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis}
-  #tbl{min-width:1000px}
+  #tbl{min-width:1120px}
   .tag{display:inline-block;padding:1.5px 8px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
   .muted{color:var(--muted)} .mono{font-variant-numeric:tabular-nums}
   .count{font-size:11.5px;color:var(--muted);margin:10px 2px}
@@ -393,7 +393,7 @@ function viewExplorer(){
     </div>
     <div class="count" id="count"></div>
     <div class="tblwrap"><table id="tbl"><thead><tr>
-      ${th('name','Clinician')}${th('cohort','Cohort')}${th('account','Account')}
+      ${th('name','Clinician')}${th('cohort','Cohort')}${th('specialty','Specialty')}${th('account','Account')}
       ${th('litt_perf','LITT',1)}${th('intractable','Intractable epi',1)}${th('seegp','SEEG',1)}
       ${th('metsrn','Mets/RN',1)}${th('srsp','SRS (RN)',1)}${th('tumorp','Tumor',1)}
       ${th('untapped','Untapped/yr',1)}${th('oppScore','Score',1)}
@@ -402,6 +402,22 @@ function viewExplorer(){
   </section>`;
 }
 function th(k,label,num){return `<th data-k="${k}" class="${num?'num':''}">${label} <span class="ar" id="ar-${k}"></span></th>`;}
+const SPEC_ABBR={
+  'Neurological Surgery':'Neurosurgery',
+  'Hematology & Oncology':'Heme/Onc','Medical Oncology':'Med Onc',
+  'Radiation Oncology':'Radiation Onc','Radiation Oncology (Radiology)':'Radiation Onc',
+  'Neurology':'Neurology','Epilepsy':'Epilepsy','Vascular Neurology':'Vascular Neuro',
+  'Neurology with Special Qualifications in Child Neurology':'Child Neurology',
+  'Pediatric Hematology-Oncology':'Peds Heme/Onc','Physician Assistant':'PA',
+  'Nurse Practitioner':'NP','Family':'NP — Family','Adult Health':'NP — Adult',
+  'Surgical':'PA — Surgical','Medical':'PA — Medical'};
+function specAbbr(s){
+  if(!s||s==='—')return '—';
+  const last=s.split('>').pop().trim();
+  if(SPEC_ABBR[last])return SPEC_ABBR[last];
+  if(SPEC_ABBR[s])return SPEC_ABBR[s];
+  return last;
+}
 
 let onlyMapped=false, onlyRes=false;
 function toggleMapped(){onlyMapped=!onlyMapped;document.getElementById('pMapped').classList.toggle('on',onlyMapped);applyFilters();}
@@ -456,6 +472,7 @@ function renderRows(){
     return `<tr onclick="openProfile(${DB.providers.indexOf(p)})">
       <td class="nm">${esc(p.name)}${p.planRole&&p.planRole!=='—'?' <span style="color:var(--cyan)">•</span>':''}${p.research?` <span class="gradeBadge" style="width:16px;height:16px;font-size:9.5px;background:${GRADE_C[p.research.litt_relevance.grade]}22;color:${GRADE_C[p.research.litt_relevance.grade]};border:1px solid ${GRADE_C[p.research.litt_relevance.grade]}">${p.research.litt_relevance.grade}</span>`:''}</td>
       <td><span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort.replace('LITT — ','').replace(' Craniotomy Surgeon','').replace(' Equipment',''))}</span></td>
+      <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis;color:var(--ink2)">${esc(specAbbr(p.specialty))}</td>
       <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis">${esc(p.account||p.system||'—')}</td>
       <td class="num">${p.litt_perf||'<span class=muted>0</span>'}</td>
       <td class="num">${fmt(p.model.intractable_pool)}</td>
