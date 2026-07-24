@@ -1,24 +1,61 @@
-{"name":"Guy M Mckhann","training":"Yale MD · U Washington neurosurgery residency · epilepsy/neurophysiology fellowship (Atkinson Morley's, London)"}
-{"name":"Scott R Shepard","training":"Weill Cornell MD · UCSF neurosurgery residency · surgical neuro-oncology fellowship (MSK)"}
-{"name":"Veronica L Chiang","training":"University of Western Australia MD · Yale neurosurgery residency · Johns Hopkins + Yale stereotactic-radiosurgery fellowship"}
-{"name":"Fedor E Panov","training":"Jefferson Medical College MD · Mount Sinai neurosurgery residency · epilepsy & movement-disorders fellowship (UCSF)"}
-{"name":"Saadi Ghatan","training":"U Washington MD · U Washington/Seattle Children's neurosurgery residency · pediatric neurosurgery fellowship (Seattle Children's)"}
-{"name":"Carrie R Muh","training":"Columbia P&S MD · Emory neurosurgery residency · pediatric neurosurgery fellowship (Children's Healthcare of Atlanta)"}
-{"name":"Nelson Moss","training":"Harvard MD · NYP/Weill Cornell neurosurgery residency · neurosurgical oncology fellowship (MD Anderson)"}
-{"name":"Matthew Adamo","training":"SUNY Upstate MD · Albany Medical Center neurosurgery residency · pediatric neurosurgery fellowship"}
-{"name":"Peter A Rozman","training":"Harvard MD/PhD · NYU Grossman neurosurgery residency · stereotactic & functional fellowship (Emory)"}
-{"name":"Simon Hanft","training":"Stanford MD · Columbia neurosurgery residency · surgical neuro-oncology fellowship (University of Miami)"}
-{"name":"Cameron W Brennan","training":"Weill Cornell MD · NYP/Cornell neurosurgery residency · neurosurgical oncology fellowship (MSK) + Dana-Farber post-doc"}
-{"name":"John Rolston","training":"Emory MD/PhD (Georgia Tech/Emory) · UCSF neurosurgery residency · UCSF stereotactic-functional/epilepsy fellowship"}
-{"name":"Yosef Dastagirzada","training":"NYU MD · NYU Langone neurosurgery residency · pediatric neurosurgery fellowship (Texas Children's)"}
-{"name":"Charles B Mikell","training":"Columbia (Vagelos) MD · NYP/Columbia neurosurgery residency · functional neurosurgery fellowship (University of Louisville)"}
-{"name":"Dimitris G Placantonakis","training":"NYU MD/PhD (MSTP) · Weill Cornell/NYP & MSK neurosurgery residency · neuro-oncology / stem-cell fellowship (MSK)"}
-{"name":"Luke Tomycz","training":"University of Michigan MD · Vanderbilt neurosurgery residency (to verify) · pediatric epilepsy fellowship (Seattle Children's, Ojemann)"}
-{"name":"Rafael A Vega","training":"University of Illinois MD & Northwestern PhD · VCU neurosurgery residency · neurosurgical oncology fellowship (MD Anderson)"}
-{"name":"Scellig S Stone","training":"University of Toronto MD/PhD (neuroscience), FRCSC · Toronto neurosurgery residency · pediatric neurosurgery fellowship (Boston Children's)"}
-{"name":"Joshua P Aronson","training":"Harvard–MIT (HST) MD · MGH neurosurgery residency · functional neurosurgery fellowship (MGH)"}
-{"name":"Linton T Evans","training":"Geisel/Dartmouth MD · Dartmouth-Hitchcock neurosurgery residency · neurosurgical oncology fellowship (MD Anderson)"}
-{"name":"Shabbar F Danish","training":"UMDNJ–Robert Wood Johnson (Rutgers) MD · University of Pennsylvania neurosurgery residency · stereotactic-functional / Gamma Knife fellowship"}
-{"name":"Clark C Chen","training":"Harvard MD/PhD (genetics) · MGH neurosurgery residency · stereotactic (BIDMC) + radiosurgery (MGH) fellowships"}
-{"name":"Brett E Youngerman","training":"Columbia P&S MD · Columbia/NYP neurosurgery residency · epilepsy/movement-disorders (Columbia) + MIS/endoscopic (Weill Cornell) fellowships"}
-{"name":"Chen Wu","training":"Tufts MD · Thomas Jefferson neurosurgery residency · epilepsy & functional neurosurgery fellowship (Thomas Jefferson)"}
+{"name": "Anand I Rughani", "training": "McGill University MD (2006) \u00b7 Univ of Vermont neurosurgery residency (2012) \u00b7 Toronto Western Hospital functional neurosurgery fellowship (2013)"}
+{"name": "Ashesh D Mehta", "training": "University of Rochester BS \u00b7 Albert Einstein MD-PhD (MSTP) \u00b7 NY Presbyterian/Memorial Sloan Kettering neurosurgery residency \u00b7 NYU epilepsy surgery fellowship"}
+{"name": "Ashwini D Sharan", "training": "UMDNJ - New Jersey Medical School (MD) \u00b7 Neurosurgery residency, University of Connecticut then Thomas Jefferson University \u00b7 Fellowship in functional neurosurgery, Cleveland Clinic (also spine, with Ed Benzel)"}
+{"name": "Benjamin C Kennedy", "training": "Northwestern University BA (2003) \u00b7 Columbia University College of Physicians and Surgeons MD (2009) \u00b7 Columbia/NewYork-Presbyterian neurosurgery residency (2016) \u00b7 CHOP pediatric neurosurgery fellowship (2017)"}
+{"name": "Brandon D Liebelt", "training": "University of Texas Health Science Center at San Antonio (MD) \u00b7 Neurosurgery residency, Houston Methodist Hospital \u00b7 Cerebrovascular & skull base surgery fellowship, Barrow Neurological Institute"}
+{"name": "Brett E Youngerman", "training": "Columbia P&S MD \u00b7 Columbia/NYP neurosurgery residency \u00b7 epilepsy/movement-disorders (Columbia) + MIS/endoscopic (Weill Cornell) fellowships"}
+{"name": "Brian J Gill", "training": "MD Columbia University Vagelos College of Physicians and Surgeons \u00b7 Neurosurgery Residency Columbia/NewYork-Presbyterian \u00b7 Neurosurgical Oncology Fellowship Memorial Sloan Kettering"}
+{"name": "Cameron W Brennan", "training": "Weill Cornell MD \u00b7 NY Presbyterian (Cornell) neurosurgery residency \u00b7 Memorial Sloan Kettering neurosurgical oncology fellowship"}
+{"name": "Carrie R Muh", "training": "Columbia P&S MD \u00b7 Emory neurosurgery residency \u00b7 pediatric neurosurgery fellowship (Children's Healthcare of Atlanta)"}
+{"name": "Charles B Mikell", "training": "Columbia University Vagelos MD \u00b7 Columbia neurosurgery residency \u00b7 functional neurosurgery fellowship (University of Louisville)"}
+{"name": "Chen Wu", "training": "Tufts MD \u00b7 Thomas Jefferson neurosurgery residency \u00b7 epilepsy & functional neurosurgery fellowship (Thomas Jefferson)"}
+{"name": "Clark C Chen", "training": "Stanford University (BS) \u00b7 Columbia University (MS, epidemiology) \u00b7 Harvard Medical School (MD/PhD, genetics) \u00b7 Massachusetts General Hospital / Harvard (neurosurgery residency) \u00b7 in-folded radiosurgery & stereotactic neurosurgery fellowships"}
+{"name": "David A Chesler", "training": "Albert Einstein College of Medicine (MD) \u00b7 Neurosurgery residency, University of Maryland \u00b7 Pediatric neurosurgery fellowship, Johns Hopkins"}
+{"name": "Dimitris G Placantonakis", "training": "NYU MD/PhD (MSTP) \u00b7 Weill Cornell/NYP & MSK neurosurgery residency \u00b7 neuro-oncology / stem-cell fellowship (MSK)"}
+{"name": "Eveline Teresa Hidalgo", "training": "MD University of Bern \u00b7 Neurosurgery Residency Kantonsspital Aarau \u00b7 Pediatric Neurosurgery Fellowship NYU Grossman School of Medicine"}
+{"name": "Eyiyemisi Damisah", "training": "MD Yale School of Medicine \u00b7 Neurosurgery Residency Yale \u00b7 Functional Neurosurgery Fellowship Yale"}
+{"name": "Fedor E Panov", "training": "Jefferson Medical College MD \u00b7 Mount Sinai neurosurgery residency \u00b7 epilepsy & movement-disorders fellowship (UCSF)"}
+{"name": "Guy M Mckhann", "training": "Yale MD \u00b7 U Washington neurosurgery residency \u00b7 epilepsy/neurophysiology fellowship (Atkinson Morley's, London)"}
+{"name": "Han-Chiao I Chen", "training": "Harvard BA \u00b7 Univ of Pennsylvania MD (2007) \u00b7 Penn neurosurgery residency (2007\u20132014) \u00b7 functional/epilepsy & neural-engineering focus"}
+{"name": "Harish Babu", "training": "MBBS Calicut Medical College \u00b7 PhD Charite Berlin \u00b7 Neurosurgery Residency Cedars-Sinai \u00b7 Epilepsy/Functional Fellowship University of Toronto \u00b7 Tumor/Skull Base Fellowship Sydney"}
+{"name": "Iahn Cajigas Gonzalez", "training": "Harvard Medical School (MD) \u00b7 MIT (PhD, Electrical/Medical Engineering) \u00b7 Neurosurgery residency, University of Miami \u00b7 Fellowship in epilepsy/functional/stereotactic neurosurgery, UCSF"}
+{"name": "Jennifer A Moliterno Gunel", "training": "University of Florida (MD) \u00b7 Neurosurgery residency, Yale New Haven Hospital \u00b7 Neurosurgical oncology/brain tumor fellowship, Memorial Sloan Kettering Cancer Center"}
+{"name": "Jennifer Hong", "training": "Stanford University School of Medicine MD (2011) \u00b7 Dartmouth-Hitchcock neurosurgery residency (2018) \u00b7 Univ of Pennsylvania peripheral nerve surgery fellowship (2017) \u00b7 stereotactic & functional"}
+{"name": "John G Golfinos", "training": "Columbia College of Physicians and Surgeons (MD) \u00b7 Neurosurgery residency, Barrow Neurological Institute"}
+{"name": "John Rolston", "training": "Columbia University BA \u00b7 Emory University MD (BCI PhD work at Georgia Tech/Emory) \u00b7 UCSF neurosurgery residency & functional fellowship"}
+{"name": "Jonathan P Miller", "training": "Case Western Reserve University School of Medicine (MD) \u00b7 Case Western Reserve / University Hospitals Cleveland Medical Center (neurosurgery residency); stereotactic/functional focus"}
+{"name": "Jordan C Iordanou", "training": "SUNY Downstate (MD, PhD Biomedical Engineering) \u00b7 Neurosurgery residency, Loyola University Medical Center \u00b7 Fellowships in functional/stereotactic neurosurgery, Mount Sinai and UT Southwestern"}
+{"name": "Joshua P Aronson", "training": "MIT BS \u00b7 Harvard Medical School MD \u00b7 Massachusetts General Hospital neurosurgery residency \u00b7 MGH functional neurosurgery fellowship"}
+{"name": "Kangmin D Lee", "training": "Neurosurgical oncology fellowship, University of Cincinnati Brain Tumor Center (radiosurgery / minimally invasive tumor focus)"}
+{"name": "Kathleen E Knudson", "training": "MD Case Western Reserve University \u00b7 Neurosurgery Residency George Washington University \u00b7 Pediatric Neurosurgery Fellowship Cincinnati Children's Hospital"}
+{"name": "Kristopher T Kimmell", "training": "University of Oklahoma Health Sciences Center MD (2010) \u00b7 University of Rochester (Strong Memorial) neurosurgery residency (2017)"}
+{"name": "Linton T Evans", "training": "Geisel/Dartmouth MD \u00b7 Dartmouth-Hitchcock neurosurgery residency \u00b7 neurosurgical oncology fellowship (MD Anderson)"}
+{"name": "Luke Tomycz", "training": "University of Michigan MD \u00b7 Vanderbilt neurosurgery residency (to verify) \u00b7 pediatric epilepsy fellowship (Seattle Children's, Ojemann)"}
+{"name": "Mark A Mittler", "training": "University of Rochester School of Medicine (MD) \u00b7 Neurosurgery residency, Brown/Rhode Island Hospital \u00b7 Pediatric neurosurgery fellowship, Children's Hospital Los Angeles"}
+{"name": "Mark M Souweidane", "training": "Wayne State University (MD) \u00b7 Neurosurgery residency, NYU Medical Center \u00b7 Pediatric neurosurgery fellowship, Hospital for Sick Children, Toronto"}
+{"name": "Matthew Adamo", "training": "SUNY Upstate MD \u00b7 Albany Medical Center neurosurgery residency \u00b7 pediatric neurosurgery fellowship"}
+{"name": "Melissa A Lopresti", "training": "Neurosurgery residency, Baylor College of Medicine \u00b7 Pediatric neurosurgery fellowship, Northwestern University"}
+{"name": "Nathan E Simmons", "training": "Univ of Virginia MD (1993) \u00b7 UVA general surgery internship \u00b7 UVA neurosurgery residency (2000)"}
+{"name": "Navid Redjal", "training": "MD Harvard Medical School \u00b7 Neurosurgery Residency Massachusetts General Hospital/Harvard \u00b7 Stereotactic Proton Radiosurgery Fellowship MGH"}
+{"name": "Neil Feldstein", "training": "MD NYU School of Medicine \u00b7 Residency Baylor Affiliated Hospitals \u00b7 Pediatric Neurosurgery"}
+{"name": "Nelson Moss", "training": "Harvard MD \u00b7 NYP/Weill Cornell neurosurgery residency \u00b7 neurosurgical oncology fellowship (MD Anderson)"}
+{"name": "Omar Arnaout", "training": "Northwestern University Feinberg School of Medicine (MD) \u00b7 Neurosurgery residency, Northwestern Memorial Hospital \u00b7 Skull base surgery fellowship, Brigham & Women's Hospital / Harvard Medical School"}
+{"name": "Peter A Rozman", "training": "Harvard MD \u00b7 NYU Grossman neurosurgery residency \u00b7 stereotactic & functional fellowship (Emory)"}
+{"name": "Rafael A Vega", "training": "University of Illinois MD & Northwestern PhD \u00b7 VCU neurosurgery residency \u00b7 neurosurgical oncology fellowship (MD Anderson)"}
+{"name": "Raj K Shrivastava", "training": "Icahn School of Medicine at Mount Sinai neurosurgery residency & chief residency \u00b7 Mount Sinai complex skull base surgery fellowship"}
+{"name": "Robert E Gross", "training": "Brown University (BS, neural science) \u00b7 Albert Einstein College of Medicine (MD/PhD, molecular pharmacology) \u00b7 Albert Einstein (neurosurgery residency) \u00b7 University of Toronto (functional & stereotactic) and Yale (epilepsy surgery) fellowships"}
+{"name": "Robert M Richardson", "training": "Virginia Commonwealth University / Medical College of Virginia (MD-PhD) \u00b7 University of California San Francisco (neurosurgery residency); functional/epilepsy focus"}
+{"name": "Rohan Ramakrishna", "training": "MD University of Pennsylvania \u00b7 Neurosurgery Residency University of Washington \u00b7 Neurosurgical Oncology Fellowship MD Anderson Cancer Center"}
+{"name": "Saadi Ghatan", "training": "University of Washington MD \u00b7 U Washington/Seattle Children's neurosurgery residency \u00b7 pediatric neurosurgery fellowship (Seattle Children's)"}
+{"name": "Scellig S Stone", "training": "University of Toronto MD/PhD (neuroscience), FRCSC \u00b7 Toronto neurosurgery residency \u00b7 pediatric neurosurgery fellowship (Boston Children's)"}
+{"name": "Scott R Shepard", "training": "Weill Cornell Medical College MD \u00b7 NewYork-Presbyterian general surgery internship \u00b7 UCSF neurosurgery residency \u00b7 Memorial Sloan Kettering surgical neuro-oncology fellowship"}
+{"name": "Shabbar F Danish", "training": "UMDNJ\u2013Robert Wood Johnson (Rutgers) MD \u00b7 University of Pennsylvania neurosurgery residency \u00b7 stereotactic-functional / Gamma Knife fellowship"}
+{"name": "Shivani D Rangwala", "training": "Washington University in St. Louis (BS, biomedical engineering) \u00b7 University of Illinois Chicago (MD) \u00b7 pediatric neurosurgery, Boston Children's Hospital / Harvard Medical School"}
+{"name": "Simon Hanft", "training": "Yale BA \u00b7 Cambridge MPhil \u00b7 Stanford MD \u00b7 Columbia neurosurgery residency \u00b7 University of Miami surgical neuro-oncology fellowship"}
+{"name": "Theodore H Schwartz", "training": "Harvard Medical School (MD, magna cum laude) \u00b7 Columbia-Presbyterian / Neurological Institute of New York (neurosurgery residency & chief residency) \u00b7 Yale-New Haven (epilepsy & brain tumor fellowship)"}
+{"name": "Veronica L Chiang", "training": "University of Western Australia MD \u00b7 Yale neurosurgery residency \u00b7 Johns Hopkins + Yale stereotactic-radiosurgery fellowship"}
+{"name": "Vishad V Sukul", "training": "Rutgers New Jersey Medical School (MD) \u00b7 Temple University Hospital (neurosurgery residency) \u00b7 Vanderbilt University Medical Center (stereotactic, functional & epilepsy fellowship)"}
+{"name": "Wael F Asaad", "training": "Amherst College BA \u00b7 MIT PhD (systems neuroscience) \u00b7 Yale MD \u00b7 Massachusetts General Hospital neurosurgery residency with functional neurosurgery training"}
+{"name": "Wenya L Bi", "training": "Yale School of Medicine (MD, PhD) \u00b7 Neurosurgery residency, Brigham and Women's Hospital / Harvard \u00b7 Skull base surgery fellowship, Brigham and Women's Hospital / Dana-Farber Cancer Institute"}
+{"name": "Werner K Doyle", "training": "Columbia University Vagelos College of Physicians and Surgeons (MD) \u00b7 Neurosurgery residency, NYU"}
+{"name": "Yosef Dastagirzada", "training": "NYU School of Medicine MD (2017) \u00b7 NYU Grossman neurosurgery residency (2024) \u00b7 Texas Children's Hospital pediatric neurosurgery fellowship (2025)"}
