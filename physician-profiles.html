@@ -265,6 +265,19 @@ function refChip(name,label){
   const ok=nameIdx(name)>=0, safe=String(name).replace(/'/g,"\\'").replace(/"/g,'&quot;');
   return `<span class="chip${ok?' clik':''}"${ok?` onclick="openByName('${safe}')"`:''}>${esc(label)}${ok?' ›':''}</span>`;
 }
+// clickable person: in-territory -> open profile; otherwise -> Google Scholar author lookup
+function personLink(name,label,extraStyle,cls){
+  const i=nameIdx(name), safe=String(name).replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  const st=extraStyle||'', c='chip clik '+(cls||'');
+  if(i>=0) return `<span class="${c}" onclick="openByName('${safe}')" style="${st}">${esc(label||name)} ›</span>`;
+  const q=encodeURIComponent(String(name).replace(/★.*/,'').trim()+' neurosurgery');
+  return `<a class="${c}" href="https://scholar.google.com/scholar?q=${q}" target="_blank" rel="noopener" style="${st}">${esc(label||name)} ↗</a>`;
+}
+// paper title -> Google Scholar search for that title
+function paperTitle(pp){
+  const q=encodeURIComponent(pp.title||'');
+  return `<a href="https://scholar.google.com/scholar?q=${q}" target="_blank" rel="noopener" style="color:var(--ink)">${esc(pp.title)}</a>`;
+}
 
 function buildAll(){
   const m=document.getElementById('main');
@@ -473,6 +486,7 @@ function openProfile(idx){
   const platMain=(p.platform&&p.platform!=='—')?p.platform:(p.litt_perf>0?'LITT platform not confirmed':'No LITT performed');
   drawer.innerHTML=`<div class="x" onclick="closeProfile()">✕</div>
     <div class="dhead"><h2 class="nm">${esc(p.name)}</h2><div class="spec">${esc(spec)}</div>
+      ${p.training?`<div class="spec" style="margin-top:4px;color:var(--ink2)">🎓 ${esc(p.training)}</div>`:''}
       <div class="chips" style="margin-top:9px">
         <span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort)}</span>
         ${p.planRole&&p.planRole!=='—'?`<span class="chip" style="border-color:var(--cyan);color:var(--cyan)">${esc(p.planRole)}</span>`:''}
@@ -769,13 +783,13 @@ function researchForProfile(p){
   const r=p.research; if(!r)return '';
   const g=r.litt_relevance||{};
   const sigs=Object.keys(SIG_LABEL).map(k=>`<span class="sig ${r.signals&&r.signals[k]?'on':''}">${SIG_LABEL[k]}</span>`).join(' ');
-  const papers=(r.key_papers||[]).map(pp=>`<div class="paper"><div style="font-size:12px;color:var(--ink)">${esc(pp.title)}${pp.year?` <span class="muted">(${pp.year})</span>`:''}</div>${pp.topic?`<div style="font-size:11px;color:var(--muted)">${esc(pp.topic)}</div>`:''}</div>`).join('');
+  const papers=(r.key_papers||[]).map(pp=>`<div class="paper"><div style="font-size:12px">${paperTitle(pp)}${pp.year?` <span class="muted">(${pp.year})</span>`:''}</div>${pp.topic?`<div style="font-size:11px;color:var(--muted)">${esc(pp.topic)}</div>`:''}</div>`).join('');
   const collab=(r.collaborators||[]).map(c=>{
-    const kol=c.litt_kol;const clickable=nameIdx(c.name)>=0;
+    const kol=c.litt_kol;
     return `<div style="padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.05);font-size:12px">
-      <span class="${clickable?'chip clik':''}" ${clickable?`onclick="openByName('${String(c.name).replace(/'/g,"\\'")}')"`:''} style="${kol?'color:var(--yellow);font-weight:700':'color:var(--ink);font-weight:600'}">${esc(c.name)}${kol?' ★ LITT KOL':''}${clickable?' ›':''}</span>
+      ${personLink(c.name, c.name+(kol?' ★ LITT KOL':''), kol?'color:var(--yellow);font-weight:700':'color:var(--ink);font-weight:600')}
       ${c.note?`<div style="font-size:11px;color:var(--muted);margin-top:1px">${esc(c.note)}</div>`:''}</div>`;}).join('');
-  const kols=(r.kol_connections||[]).map(k=>`<span class="chip kolchip">${esc(k)}</span>`).join('');
+  const kols=(r.kol_connections||[]).map(k=>personLink(k,k,'','kolchip')).join('');
   const src=(r.sources||[]).slice(0,5).map((u,i)=>`<a class="chip clik" href="${esc(u)}" target="_blank" rel="noopener">src ${i+1} ↗</a>`).join('');
   const conf=r.confidence?`<span class="chip" style="border-color:${r.confidence==='high'?'var(--green)':r.confidence==='medium'?'var(--yellow)':'var(--muted)'}">match: ${esc(r.confidence)}</span>`:'';
   return `<div class="dsection"><h3>🔬 Research & citation network</h3>
@@ -791,7 +805,7 @@ function researchForProfile(p){
       <div style="display:flex;flex-wrap:wrap;gap:5px">${sigs}</div></div>
     ${r.themes&&r.themes.length?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Research themes</div><div class="chips">${r.themes.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></div>`:''}
     ${(r.recent_papers&&r.recent_papers.length)?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:4px">Recent LITT-relevant publications (2022–2026)</div>
-      ${r.recent_papers.map(pp=>`<div class="paper"><div style="font-size:12px;color:var(--ink)">${esc(pp.title)}${pp.year?` <span class="muted">· ${pp.year}${pp.journal?' · '+esc(pp.journal):''}</span>`:''}</div>${pp.topic?`<div style="font-size:11px;color:var(--cyan)">${esc(pp.topic)}</div>`:''}</div>`).join('')}
+      ${r.recent_papers.map(pp=>`<div class="paper"><div style="font-size:12px">${paperTitle(pp)}${pp.year?` <span class="muted">· ${pp.year}${pp.journal?' · '+esc(pp.journal):''}</span>`:''}</div>${pp.topic?`<div style="font-size:11px;color:var(--cyan)">${esc(pp.topic)}</div>`:''}</div>`).join('')}
       <div class="note">Web-sourced (Scholar / journal listings); verify author attribution before citing.</div></div>`:''}
     ${papers?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">${(r.recent_papers&&r.recent_papers.length)?'Landmark / earlier papers':'Key papers'}</div>${papers}</div>`:''}
     ${collab?`<div style="margin-top:12px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Collaboration network <span class="muted" style="text-transform:none;letter-spacing:0">— ★ = LITT KOL; tap a name in our territory to open them</span></div>${collab}</div>`:''}

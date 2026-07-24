@@ -167,8 +167,11 @@ ResearchGate) via automated web-research agents and baked into the profile. Each
 - **LITT-adjacency signals** (SEEG, LITT, epilepsy surgery, glioma, brain mets, radiation necrosis,
   stereotactic/functional, MR thermometry, immuno/BBB, DBS/neuromod),
 - **research themes** and **key papers**,
-- a **collaboration/citation network** — frequent co-authors, with **LITT-KOL** connections flagged
-  (co-authors in your territory are clickable to open their profile), and
+- a **collaboration/citation network** — frequent co-authors, with **LITT-KOL** connections flagged;
+  co-authors in your territory are clickable to open their profile, and out-of-territory names link to a
+  Google Scholar author lookup, so every collaborator is drillable,
+- **clickable paper titles** (recent + landmark) that open a Google Scholar search for the paper,
+- **training** in the header (medical school · residency · fellowship), web-sourced, and
 - source links (Scholar, institutional profile, journal pages).
 
 Grade contributes a bonus to the opportunity score (A +14, B +7). Surfaced in a dedicated **Research
