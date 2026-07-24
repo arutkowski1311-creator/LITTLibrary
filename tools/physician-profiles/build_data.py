@@ -224,6 +224,94 @@ for p in providers:
     r=RESEARCH.get(normName(p["name"]))
     if r: p["research"]=r; n_research+=1
 
+# ---------- indication "wheelhouse" (triangulate claims + research) ----------
+EPI_KEYS={"mtle","hh","pvnh","fcd","insular","cc","cav"}
+def wheelhouse(p):
+    m=p["model"]; R=p.get("research") or {}
+    sig=R.get("signals") or {}
+    themes=(" ".join(R.get("themes") or [])+" "+(R.get("identity") or "")+" "
+            +" ".join(kp.get("topic","") for kp in (R.get("key_papers") or []))
+            +" "+" ".join(kp.get("title","") for kp in (R.get("key_papers") or []))).lower()
+    def has(*subs): return any(s in themes for s in subs)
+    intr=m["intractable_pool"]; mets=m["mets_rn_pool"]; tum=m["tumor_cranio_pool"]; srs=m["srs_pool"]
+    epi_cr=p.get("epi_cranio",0); litt=p["litt_perf"]; seeg=p.get("seeg",0)
+    epi_or = intr>0 or epi_cr>0 or seeg>0 or sig.get("seeg") or sig.get("epilepsy_surgery")
+    onc_or = mets>0 or tum>0 or srs>0 or sig.get("glioma") or sig.get("brain_mets") or sig.get("radiation_necrosis")
+    ind={}
+    def add(key,label,pw,pts,driver):
+        if pts<=0: return
+        if key not in ind: ind[key]=[0.0,set(),label,pw]
+        ind[key][0]+=pts; ind[key][1].add(driver)
+    # ---- epilepsy: SEEG/intracranial-EEG is the funnel into deep-focus ablation ----
+    if sig.get("seeg"):
+        add("mtle","MTLE","epi",32,"research"); add("pvnh","PVNH / heterotopia","epi",22,"research")
+        add("fcd","Focal cortical dysplasia","epi",18,"research"); add("hh","Hypothalamic hamartoma","epi",12,"research")
+        add("insular","Insular epilepsy","epi",12,"research")
+    if seeg>0:
+        add("mtle","MTLE","epi",min(18,seeg*3),"practice"); add("pvnh","PVNH / heterotopia","epi",min(12,seeg*2),"practice")
+        add("fcd","Focal cortical dysplasia","epi",min(10,seeg*2),"practice")
+    if sig.get("epilepsy_surgery"): add("mtle","MTLE","epi",15,"research")
+    if sig.get("litt") and epi_or: add("mtle","MTLE","epi",18,"research")
+    if intr>0:
+        add("mtle","MTLE","epi",min(46,intr/15.0),"pool"); add("hh","Hypothalamic hamartoma","epi",min(10,intr/80.0),"pool")
+        add("pvnh","PVNH / heterotopia","epi",min(8,intr/100.0),"pool")
+    if litt>0 and epi_or: add("mtle","MTLE","epi",12,"practice")
+    if has("mesial temporal","mtle","amygdalohippocamp","temporal lobe epilep","slah"): add("mtle","MTLE","epi",30,"research")
+    if has("hypothalamic hamartoma","hamartoma"): add("hh","Hypothalamic hamartoma","epi",45,"research")
+    if has("heterotopia","periventricular","nodular"): add("pvnh","PVNH / heterotopia","epi",42,"research")
+    if has("cortical dysplasia","fcd"): add("fcd","Focal cortical dysplasia","epi",38,"research")
+    if has("insular"): add("insular","Insular epilepsy","epi",42,"research")
+    if has("callosotomy"): add("cc","Corpus callosotomy","epi",40,"research")
+    if has("cavernous"): add("cav","Cavernous malformation","epi",35,"research")
+    # ---- neuro-oncology ----
+    if mets>0: add("mets","Brain metastases","onc",min(42,mets/45.0),"pool"); add("rn","Radiation necrosis","onc",min(14,mets/120.0),"pool")
+    if srs>0: add("rn","Radiation necrosis","onc",min(26,srs/16.0),"pool"); add("mets","Brain metastases","onc",min(10,srs/40.0),"pool")
+    if sig.get("brain_mets"): add("mets","Brain metastases","onc",30,"research")
+    if sig.get("radiation_necrosis"): add("rn","Radiation necrosis","onc",34,"research")
+    if has("metasta"): add("mets","Brain metastases","onc",20,"research")
+    if has("radiation necrosis"): add("rn","Radiation necrosis","onc",26,"research")
+    elif has("necrosis"): add("rn","Radiation necrosis","onc",14,"research")
+    if tum>0: add("hgg","Glioma / HGG","onc",min(24,tum/4.0),"pool")
+    if sig.get("glioma"): add("hgg","Glioma / HGG","onc",22,"research")
+    if has("glioblastoma","gbm","high-grade glioma","malignant glioma","glioma"):
+        if has("recurrent"): add("rgbm","Recurrent GBM","onc",28,"research")
+        add("hgg","Glioma / HGG","onc",22,"research")
+    if has("lower-grade glioma","low-grade glioma","lgg","idh-mutant","idh mutant","idh wild"): add("lgg","Lower-grade glioma","onc",30,"research")
+    if litt>0 and onc_or:
+        add("mets","Brain metastases","onc",8,"practice"); add("hgg","Glioma / HGG","onc",8,"practice")
+    # build
+    def whytxt(key,drv):
+        b=[]
+        if "research" in drv: b.append("research/citation signal")
+        if "practice" in drv: b.append("performs it (claims)")
+        if "pool" in drv:
+            if key in EPI_KEYS and intr: b.append(f"{intr:,} intractable-epilepsy pool")
+            elif key=="mets" and mets: b.append(f"{mets:,} mets/RN pool")
+            elif key=="rn" and (srs or mets): b.append(f"{(srs or mets):,} SRS/necrosis feeder")
+            elif key in ("hgg","rgbm","lgg") and tum: b.append(f"{tum} tumor craniotomies")
+        return " · ".join(b)
+    out=[]
+    for k,(sc,drv,label,pw) in ind.items():
+        sc=min(100,round(sc))
+        if sc<20: continue
+        tier="Strong" if sc>=60 else "Moderate" if sc>=38 else "Emerging"
+        out.append(dict(key=k,label=label,pathway=pw,score=sc,tier=tier,drivers=sorted(drv),why=whytxt(k,drv)))
+    out.sort(key=lambda x:-x["score"]); out=out[:6]
+    arche=""
+    if out:
+        pw=out[0]["pathway"]; names=[o["label"] for o in out[:3]]
+        if pw=="epi":
+            arche="SEEG-driven epilepsy ablation" if (sig.get("seeg") or seeg>0) else "Epilepsy ablation"
+        else:
+            arche="Neuro-oncology ablation"
+        arche+=" — "+", ".join(names)
+    return dict(archetype=arche, indications=out)
+
+n_wheel=0
+for p in providers:
+    w=wheelhouse(p)
+    if w["indications"]: p["wheelhouse"]=w; n_wheel+=1
+
 # ---------- opportunity score (COI-style) ----------
 GRADE_BOOST={"A":14,"B":7,"C":2,"D":0}
 def score(p):

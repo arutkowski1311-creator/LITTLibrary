@@ -82,13 +82,17 @@ for a,b in lines:
 ws.column_dimensions["A"].width=34; ws.column_dimensions["B"].width=104
 
 # ---------------- Master + cohort tabs ----------------
-MHDR=["Name","NPI","Specialty","Role / Plan status","Cohort","Platform","Account","System / Affiliation","State",
+MHDR=["Name","NPI","Specialty","Role / Plan status","Cohort","Platform","Indication wheelhouse (triangulated)","Account","System / Affiliation","State",
       "LITT perf","LITT ref","Epilepsy cranio","Tumor cranio","Mets/RN","SRS","SEEG","Intractable epi pool",
       "Epi addressable","Onc addressable","Untapped LITT/yr","Opp. score","Email","Phone"]
+def wheelstr(p):
+    w=p.get("wheelhouse")
+    if not w: return ""
+    return w["archetype"]+" | "+"; ".join(f'{i["label"]} ({i["tier"]} {i["score"]})' for i in w["indications"])
 def prow(p):
     m=p["model"]
     return [p.get("name",""),p.get("npi",""),p.get("specialty",""),p.get("planRole","—"),
-        p.get("cohort",""),p.get("platform","—"),p.get("account",""),p.get("system",""),p.get("state",""),
+        p.get("cohort",""),p.get("platform","—"),wheelstr(p),p.get("account",""),p.get("system",""),p.get("state",""),
         p["litt_perf"],p["litt_ref"],p["epi_cranio"],p["tumor_cranio"],p["mets_rn"],p["srs"],p["seeg"],
         m["intractable_pool"],m["epi_addressable"],m["onc_addressable"],m["untapped_litt_yr"],
         p.get("oppScore",0),p.get("email",""),p.get("phone","")]
@@ -100,7 +104,7 @@ def make_sheet(title, rows, color, note=None):
         ws.cell(row=1,column=1,value=note).font=SUB; start=3
         ws.merge_cells(start_row=1,start_column=1,end_row=1,end_column=len(MHDR))
     end=write_table(ws,MHDR,rows,start=start,color=color)
-    widths=[26,11,30,26,30,20,22,34,7,9,9,12,12,9,7,7,15,13,13,15,10,26,15]
+    widths=[26,11,30,26,30,20,44,22,34,7,9,9,12,12,9,7,7,15,13,13,15,10,26,15]
     for i,w in enumerate(widths,1): ws.column_dimensions[get_column_letter(i)].width=w
     ws.auto_filter.ref=f"{get_column_letter(1)}{start}:{get_column_letter(len(MHDR))}{end}"
     return ws

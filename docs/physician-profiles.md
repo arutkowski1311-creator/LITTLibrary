@@ -104,6 +104,29 @@ tools:
 Each physician profile auto-recommends the play for that clinician's cohort. The full matrix is on the
 dashboard **Playbook** view and the `Playbook` tab of the Excel workbook.
 
+## Indication wheelhouse (triangulated)
+
+Each profile header leads with the physician's **indication wheelhouse** — the LITT indications that are
+genuinely "in their wheelhouse," triangulated from **both** their claims/patient data and their research:
+
+- **Claims signals:** intractable-epilepsy pool, SEEG volume, epilepsy craniotomies, mets/RN pool, SRS
+  (necrosis feeder), tumor craniotomies, LITT already performed.
+- **Research signals:** SEEG, LITT, epilepsy-surgery, glioma, brain-mets, radiation-necrosis flags plus
+  theme/paper keyword matching (mesial temporal, hypothalamic hamartoma, heterotopia, cortical dysplasia,
+  insular, callosotomy, glioblastoma, radiation necrosis, IDH-mutant, …).
+
+Indications scored: **MTLE, hypothalamic hamartoma, PVNH/heterotopia, focal cortical dysplasia, insular,
+corpus callosotomy, cavernous** (epilepsy); **recurrent GBM, glioma/HGG, lower-grade glioma, brain
+metastases, radiation necrosis** (oncology). Each carries a strength (Strong / Moderate / Emerging), the
+drivers (research / practice / pool), and a plain-English "why". A one-line **archetype** summarizes the
+orientation (e.g. *"SEEG-driven epilepsy ablation — MTLE, PVNH, focal cortical dysplasia"* or
+*"Neuro-oncology ablation — brain metastases, radiation necrosis, glioma/HGG"*).
+
+Key rule per the field ask: **heavy SEEG / intracranial-EEG activity (in claims or research) drives the
+deep-focus epilepsy ablation indications — MTLE, HH, PVNH, FCD, insular** — because SEEG localizes exactly
+the foci LITT ablates. Shown in the profile header, on Research Focus cards, and in the Excel `Physician
+Master` tab.
+
 ## Research focus (citation-network grading)
 
 For the LITT *performer* targets (surgeons who could adopt or grow LITT), a research deep-dive is
