@@ -9,7 +9,15 @@ from collections import defaultdict
 import account_intel as AI
 
 U = "/root/.claude/uploads/a0b180ed-326e-587f-bb74-bb43186df4d1/"
-FRAC = AI.ADDRESSABLE_FRACTION            # 0.05 blended addressable rate
+FRAC = AI.ADDRESSABLE_FRACTION            # 0.05 blended addressable rate (legacy)
+# Per-pool addressable rates (editable). Epilepsy uses ONE pool per pathway (largest);
+# oncology pools are distinct populations and add.
+R_INTR=0.05    # intractable-epilepsy panel -> MTLE/HH/PVNH/FCD/insular/CC
+R_EPICR=0.20   # open epilepsy craniotomy -> convert to LITT
+R_SEEG=0.25    # SEEG-localized foci -> ablation (strongest precursor)
+R_METS=0.05    # Mets/RN pool -> brain-metastasis + radiation-necrosis ablation
+R_SRS=0.03     # SRS pool -> post-SRS radiation necrosis needing LITT
+R_TUMOR=0.08   # tumor craniotomy -> glioma/HGG deep/difficult resection
 DRE_RATE = 0.30                           # 25-40% of epilepsy is drug-resistant (ASSFN/Monteris brief)
 ELOQUENT_RATE = 0.49                      # up to 49% of tumors in/near eloquent areas (AANS/CNS brief)
 DRE_SURGERY_TODAY = 0.04                  # only ~4% of eligible DRE patients get surgery annually
@@ -157,11 +165,17 @@ for r in data:
     else:
         cohort="Other / Low-signal"; platform="—"
 
-    # ---------- potential-volume model ----------
+    # ---------- potential-volume model (all indication pools, one per pathway) ----------
     intr=rec["intractable"]; mets=rec["mets_rn"]; tum=rec["tumor_cranio"]
-    epi_addr=round(intr*FRAC); onc_addr=round(mets*FRAC)
-    eloquent_tumors=round(tum*ELOQUENT_RATE)
+    srs=rec["srs"]; epc=rec["epi_cranio"]; sg=rec["seeg"]
+    # epilepsy: ONE pool per pathway (largest signal) to avoid double-counting the same patients
+    epi_opts={"intractable":round(intr*R_INTR),"epi_cranio":round(epc*R_EPICR),"seeg":round(sg*R_SEEG)}
+    epi_driver=max(epi_opts,key=lambda k:epi_opts[k]); epi_addr=epi_opts[epi_driver]
+    # oncology: distinct populations -> they add
+    onc_mets=round(mets*R_METS); onc_srs=round(srs*R_SRS); onc_tum=round(tum*R_TUMOR)
+    onc_addr=onc_mets+onc_srs+onc_tum
     addressable_total=epi_addr+onc_addr
+    eloquent_tumors=round(tum*ELOQUENT_RATE)
     untapped=max(0, addressable_total-litt)
     # confirmed referrer — proven to have sent cases to our surgeons
     cr = confirmed_ref.get(nm)
@@ -182,11 +196,13 @@ for r in data:
         account=(acct["name"] if acct else rec.get("prospectAccount","")),
         accountAcr=(acct["acronym"] if acct else ""),
         model=dict(
-            intractable_pool=intr, mets_rn_pool=mets, tumor_cranio_pool=tum, srs_pool=rec["srs"],
-            dre_estimate=round(intr),          # intractable codes already ≈ DRE
-            eloquent_tumors=eloquent_tumors,
-            epi_addressable=epi_addr, onc_addressable=onc_addr,
+            intractable_pool=intr, epi_cranio_pool=epc, seeg_pool=sg,
+            mets_rn_pool=mets, srs_pool=srs, tumor_cranio_pool=tum,
+            dre_estimate=round(intr), eloquent_tumors=eloquent_tumors,
+            epi_addressable=epi_addr, epi_driver=epi_driver, epi_options=epi_opts,
+            onc_mets_addr=onc_mets, onc_srs_addr=onc_srs, onc_tumor_addr=onc_tum, onc_addressable=onc_addr,
             addressable_litt_yr=addressable_total, litt_done=litt, untapped_litt_yr=untapped,
+            rates=dict(intractable=R_INTR, epi_cranio=R_EPICR, seeg=R_SEEG, mets=R_METS, srs=R_SRS, tumor=R_TUMOR),
         ),
     )
     providers.append(rec)
@@ -312,13 +328,14 @@ for p in providers:
     w=wheelhouse(p)
     if w["indications"]: p["wheelhouse"]=w; n_wheel+=1
 
-# ---------- opportunity score (COI-style) ----------
+# ---------- opportunity score: rebuilt around total untapped + strategic bonuses ----------
 GRADE_BOOST={"A":14,"B":7,"C":2,"D":0}
 def score(p):
-    m=p["model"]
-    s = m["untapped_litt_yr"]*1.0 + p["litt_perf"]*3.0 + p["epi_cranio"]*0.6 + p["tumor_cranio"]*0.6
-    if p["planRole"].startswith("NeuroBlate"): s+=15
-    if p["planRole"].startswith("Named"): s+=8
+    s = p["model"]["untapped_litt_yr"]           # total untapped market across all pools (base)
+    s += min(15, p["litt_perf"]*1.5)             # proven LITT operator can scale
+    if p["planRole"].startswith("NeuroBlate"): s+=15   # our installed customer
+    if p["planRole"].startswith("Named"): s+=8         # named plan target
+    if "Competitor" in p.get("cohort","") or "Unverified" in p.get("cohort",""): s+=6  # conversion/displacement
     if p.get("confirmedReferrals"): s+=10+3*p.get("confirmedCases",0)
     if p.get("research"): s+=GRADE_BOOST.get(p["research"]["litt_relevance"]["grade"],0)
     return round(s,1)

@@ -87,7 +87,8 @@
   tbody td{padding:8px 11px;border-bottom:1px solid rgba(30,58,95,.4);color:var(--ink2);white-space:nowrap}
   tbody td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
   tbody tr{cursor:pointer} tbody tr:hover td{background:rgba(43,212,255,.05)}
-  tbody td.nm{color:var(--ink);font-weight:600;max-width:210px;overflow:hidden;text-overflow:ellipsis}
+  tbody td.nm{color:var(--ink);font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+  #tbl{min-width:1000px}
   .tag{display:inline-block;padding:1.5px 8px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
   .muted{color:var(--muted)} .mono{font-variant-numeric:tabular-nums}
   .count{font-size:11.5px;color:var(--muted);margin:10px 2px}
@@ -350,10 +351,12 @@ function viewExplorer(){
     </div>
     <div class="count" id="count"></div>
     <div class="tblwrap"><table id="tbl"><thead><tr>
-      ${th('name','Clinician')}${th('specialty','Specialty')}${th('cohort','Cohort')}
-      ${th('account','Account / System')}${th('litt_perf','LITT',1)}
-      ${th('intractable','Intractable',1)}${th('untapped','Untapped/yr',1)}${th('oppScore','Score',1)}
+      ${th('name','Clinician')}${th('cohort','Cohort')}${th('account','Account')}
+      ${th('litt_perf','LITT',1)}${th('intractable','Intractable epi',1)}${th('seegp','SEEG',1)}
+      ${th('metsrn','Mets/RN',1)}${th('srsp','SRS (RN)',1)}${th('tumorp','Tumor',1)}
+      ${th('untapped','Untapped/yr',1)}${th('oppScore','Score',1)}
     </tr></thead><tbody id="tbody"></tbody></table></div>
+    <div class="note">Disease pools are raw patient counts from claims; <b>Untapped/yr</b> sums the addressable slice of every pool (one per pathway for epilepsy) minus LITT already done. A high pool with low LITT = an education target. Sort any column.</div>
   </section>`;
 }
 function th(k,label,num){return `<th data-k="${k}" class="${num?'num':''}">${label} <span class="ar" id="ar-${k}"></span></th>`;}
@@ -371,8 +374,13 @@ function wireExplorer(){
   applyFilters();
 }
 function val(p,k){
-  if(k==='untapped')return p.model.untapped_litt_yr;
-  if(k==='intractable')return p.model.intractable_pool;
+  const m=p.model;
+  if(k==='untapped')return m.untapped_litt_yr;
+  if(k==='intractable')return m.intractable_pool;
+  if(k==='seegp')return m.seeg_pool;
+  if(k==='metsrn')return m.mets_rn_pool;
+  if(k==='srsp')return m.srs_pool;
+  if(k==='tumorp')return m.tumor_cranio_pool;
   if(k==='account')return p.account||p.system||'';
   return p[k];
 }
@@ -403,12 +411,15 @@ function renderRows(){
   tb.innerHTML=rows.map((p,i)=>{const cm=COHORT_META[p.cohort]||{c:'#64748B'};
     return `<tr onclick="openProfile(${DB.providers.indexOf(p)})">
       <td class="nm">${esc(p.name)}${p.planRole&&p.planRole!=='—'?' <span style="color:var(--cyan)">•</span>':''}${p.research?` <span class="gradeBadge" style="width:16px;height:16px;font-size:9.5px;background:${GRADE_C[p.research.litt_relevance.grade]}22;color:${GRADE_C[p.research.litt_relevance.grade]};border:1px solid ${GRADE_C[p.research.litt_relevance.grade]}">${p.research.litt_relevance.grade}</span>`:''}</td>
-      <td>${esc((p.specialty||'').replace(/^.*> /,''))||'<span class=muted>—</span>'}</td>
       <td><span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort.replace('LITT — ','').replace(' Craniotomy Surgeon','').replace(' Equipment',''))}</span></td>
-      <td>${esc(p.account||p.system||'—')}</td>
+      <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis">${esc(p.account||p.system||'—')}</td>
       <td class="num">${p.litt_perf||'<span class=muted>0</span>'}</td>
       <td class="num">${fmt(p.model.intractable_pool)}</td>
-      <td class="num" style="color:${p.model.untapped_litt_yr>=10?'var(--cyan)':'var(--ink)'}">${fmt(p.model.untapped_litt_yr)}</td>
+      <td class="num" style="${p.model.seeg_pool?'color:#22D3EE':'color:var(--muted)'}">${fmt(p.model.seeg_pool)}</td>
+      <td class="num">${fmt(p.model.mets_rn_pool)}</td>
+      <td class="num">${fmt(p.model.srs_pool)}</td>
+      <td class="num">${fmt(p.model.tumor_cranio_pool)}</td>
+      <td class="num" style="color:${p.model.untapped_litt_yr>=10?'var(--cyan)':'var(--ink)'};font-weight:700">${fmt(p.model.untapped_litt_yr)}</td>
       <td class="num">${p.oppScore}</td></tr>`;}).join('');
   document.getElementById('count').innerHTML=`Showing <b>${fmt(rows.length)}</b> of <b>${fmt(filtered.length)}</b> clinicians`+
     (filtered.length>RENDER_CAP?` (top ${RENDER_CAP} by ${sortKey}) — refine filters to see more`:'')+
@@ -483,17 +494,9 @@ function openProfile(idx){
       ${p.phone?`<div class="k">Phone</div><div class="v">${esc(p.phone)}</div>`:''}
     </div></div>
     <div class="dsection"><h3>Volumes — performing <span class="muted" style="text-transform:none;letter-spacing:0">(bars) vs referring</span></h3>${volhtml}</div>
-    <div class="dsection"><h3>Potential-volume model</h3>
-      <div class="modelbox">
-        <div class="mrow"><span class="ml">Intractable-epilepsy pool (DRE)</span><span class="mv">${fmt(m.intractable_pool)}</span></div>
-        <div class="mrow"><span class="ml">→ epilepsy addressable @ ${(DB.meta.addressable_fraction*100)|0}%</span><span class="mv">${fmt(m.epi_addressable)}</span></div>
-        <div class="mrow"><span class="ml">Mets / radiation-necrosis pool</span><span class="mv">${fmt(m.mets_rn_pool)}</span></div>
-        <div class="mrow"><span class="ml">→ onc addressable @ ${(DB.meta.addressable_fraction*100)|0}%</span><span class="mv">${fmt(m.onc_addressable)}</span></div>
-        <div class="mrow"><span class="ml">− LITT already performed</span><span class="mv">${fmt(m.litt_done)}</span></div>
-        <div class="mrow tot"><span class="ml">Untapped LITT / yr</span><span class="mv">${fmt(m.untapped_litt_yr)}</span></div>
-      </div>
-      ${m.eloquent_tumors?`<div class="note">Also carries ${m.tumor_cranio_pool} tumor craniotomies; ~${m.eloquent_tumors} (49%) are in/near eloquent areas — LITT's difficult-resection indication.</div>`:''}
-      <div class="note">Triangulation: 25–40% of epilepsy is drug-resistant and only ~4% of eligible get surgery today; up to 49% of tumors are eloquent/deep. The ${(DB.meta.addressable_fraction*100)|0}% blended addressable rate matches the Territory Plan's reservoir sizing.</div>
+    <div class="dsection"><h3>Potential-volume model — all indication pools</h3>
+      ${poolModelHtml(m)}
+      <div class="note">Every disease pool where LITT applies, ${'×'} its addressable rate. <b>Epilepsy</b> uses the single largest pool (intractable panel, epilepsy craniotomy, or SEEG) to avoid double-counting the same patients; <b>oncology</b> pools are distinct populations and add. A big untreated pool = an education/conversion target even if untapped nets low. Rates editable in the Excel model tab.</div>
     </div>
     ${researchForProfile(p)}
     ${selfConf}
@@ -505,6 +508,28 @@ function openProfile(idx){
   scrim.classList.add('on');drawer.classList.add('on');
 }
 
+function poolModelHtml(m){
+  const r=m.rates||{intractable:.05,epi_cranio:.20,seeg:.25,mets:.05,srs:.03,tumor:.08};
+  const pct=x=>Math.round(x*100)+'%';
+  const eo=m.epi_options||{}, dr=m.epi_driver;
+  const win=k=>k===dr?'style="color:var(--cyan);font-weight:700"':'style="color:var(--muted)"';
+  const row=(lbl,pool,rate,val,extra)=>`<div class="mrow" ${extra||''}><span class="ml">${lbl} <span class="muted">${fmt(pool)} × ${pct(rate)}</span></span><span class="mv">${fmt(val)}</span></div>`;
+  return `<div class="modelbox">
+    <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#22D3EE;margin:0 0 4px">Epilepsy — largest pool wins</div>
+    <div class="mrow"><span class="ml" ${win('intractable')}>Intractable-epilepsy panel <span class="muted">${fmt(m.intractable_pool)} × ${pct(r.intractable)}</span></span><span class="mv" ${win('intractable')}>${fmt(eo.intractable||0)}</span></div>
+    <div class="mrow"><span class="ml" ${win('epi_cranio')}>Epilepsy craniotomy <span class="muted">${fmt(m.epi_cranio_pool)} × ${pct(r.epi_cranio)}</span></span><span class="mv" ${win('epi_cranio')}>${fmt(eo.epi_cranio||0)}</span></div>
+    <div class="mrow"><span class="ml" ${win('seeg')}>SEEG localization <span class="muted">${fmt(m.seeg_pool)} × ${pct(r.seeg)}</span></span><span class="mv" ${win('seeg')}>${fmt(eo.seeg||0)}</span></div>
+    <div class="mrow"><span class="ml" style="color:var(--ink)">→ epilepsy addressable <span class="muted">(${esc(dr||'—')})</span></span><span class="mv">${fmt(m.epi_addressable)}</span></div>
+    <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#F59E0B;margin:10px 0 4px">Oncology — pools add</div>
+    ${row('Mets / radiation-necrosis',m.mets_rn_pool,r.mets,m.onc_mets_addr)}
+    ${row('SRS (necrosis feeder)',m.srs_pool,r.srs,m.onc_srs_addr)}
+    ${row('Tumor craniotomy (glioma/HGG)',m.tumor_cranio_pool,r.tumor,m.onc_tumor_addr)}
+    <div class="mrow"><span class="ml" style="color:var(--ink)">→ oncology addressable</span><span class="mv">${fmt(m.onc_addressable)}</span></div>
+    <div class="mrow" style="margin-top:6px"><span class="ml">Total addressable / yr</span><span class="mv">${fmt(m.addressable_litt_yr)}</span></div>
+    <div class="mrow"><span class="ml">− LITT already performed</span><span class="mv">${fmt(m.litt_done)}</span></div>
+    <div class="mrow tot"><span class="ml">Untapped LITT / yr</span><span class="mv">${fmt(m.untapped_litt_yr)}</span></div>
+  </div>`;
+}
 function wheelHtml(p){
   const w=p.wheelhouse; if(!w||!w.indications||!w.indications.length)return '';
   const col=pw=>pw==='epi'?'#22D3EE':'#F59E0B';

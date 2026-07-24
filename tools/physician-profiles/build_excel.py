@@ -142,29 +142,36 @@ ws.auto_filter.ref=f"A3:{get_column_letter(len(RHDR))}{end}"
 
 # ---------------- Model — Editable ----------------
 ws=wb.create_sheet("Model — Editable"); ws.sheet_view.showGridLines=False
-ws["A1"]="Potential-Volume Model — Editable"; ws["A1"].font=TITLE
-ws["A2"]="Change the addressable % in B4 and every Untapped column recomputes. Top opportunities shown."; ws["A2"].font=SUB
-ws["A4"]="Addressable fraction →"; ws["A4"].font=BOLD
-ws["B4"]=META["addressable_fraction"]; ws["B4"].number_format="0%"; ws["B4"].fill=fill("FFF3CD"); ws["B4"].font=Font(bold=True,size=12)
-ws["C4"]="(blended LITT-appropriate + convertible / yr; Territory Plan uses 5%)"; ws["C4"].font=SUB
-MDHDR=["Clinician","Cohort","Account","Intractable epi pool","Mets/RN pool","Addressable = pool × frac","LITT done","Untapped LITT/yr"]
-top=sorted(P,key=lambda p:-(p["model"]["intractable_pool"]+p["model"]["mets_rn_pool"]))[:200]
-start=6
+ws["A1"]="Potential-Volume Model — Editable (all indication pools)"; ws["A1"].font=TITLE
+ws["A2"]="Change any addressable rate in B4:B9 and every Untapped value recomputes. Epilepsy = largest of its 3 pools (one per pathway); oncology pools add."; ws["A2"].font=SUB
+rates=[("Intractable-epilepsy panel","intractable"),("Epilepsy craniotomy","epi_cranio"),
+       ("SEEG localization","seeg"),("Mets / radiation-necrosis","mets"),("SRS (necrosis feeder)","srs"),
+       ("Tumor craniotomy (glioma/HGG)","tumor")]
+RATES0=P[0]["model"]["rates"] if P else {"intractable":.05,"epi_cranio":.20,"seeg":.25,"mets":.05,"srs":.03,"tumor":.08}
+for i,(lbl,key) in enumerate(rates):
+    rr=4+i
+    ws.cell(row=rr,column=1,value=lbl+" rate →").font=BOLD
+    c=ws.cell(row=rr,column=2,value=RATES0[key]); c.number_format="0%"; c.fill=fill("FFF3CD"); c.font=Font(bold=True,size=11)
+# rate cell refs
+RI,RE,RS,RM,RR2,RT="$B$4","$B$5","$B$6","$B$7","$B$8","$B$9"
+MDHDR=["Clinician","Cohort","Account","Intractable","Epi cranio","SEEG","Mets/RN","SRS","Tumor",
+       "Epilepsy addr (max)","Oncology addr (sum)","Total addr","LITT done","Untapped LITT/yr"]
+top=sorted(P,key=lambda p:-p["model"]["addressable_litt_yr"])[:250]
+start=11
 for j,h in enumerate(MDHDR,1): ws.cell(row=start,column=j,value=h)
 style_header(ws,start,len(MDHDR),BLUE)
 for i,p in enumerate(top,1):
     rr=start+i; m=p["model"]
-    ws.cell(row=rr,column=1,value=p.get("name","")).border=BORD
-    ws.cell(row=rr,column=2,value=p["cohort"]).border=BORD
-    ws.cell(row=rr,column=3,value=(p.get("account") or p.get("system",""))).border=BORD
-    ws.cell(row=rr,column=4,value=m["intractable_pool"]).border=BORD
-    ws.cell(row=rr,column=5,value=m["mets_rn_pool"]).border=BORD
-    ws.cell(row=rr,column=6,value=f"=ROUND((D{rr}+E{rr})*$B$4,0)").border=BORD
-    ws.cell(row=rr,column=7,value=p["litt_perf"]).border=BORD
-    ws.cell(row=rr,column=8,value=f"=MAX(0,F{rr}-G{rr})").border=BORD
+    def sc(col,v): ws.cell(row=rr,column=col,value=v).border=BORD
+    sc(1,p.get("name","")); sc(2,p["cohort"].replace("LITT — ","")); sc(3,p.get("account") or p.get("system",""))
+    sc(4,m["intractable_pool"]); sc(5,m["epi_cranio_pool"]); sc(6,m["seeg_pool"])
+    sc(7,m["mets_rn_pool"]); sc(8,m["srs_pool"]); sc(9,m["tumor_cranio_pool"])
+    sc(10,f"=ROUND(MAX(D{rr}*{RI},E{rr}*{RE},F{rr}*{RS}),0)")
+    sc(11,f"=ROUND(G{rr}*{RM}+H{rr}*{RR2}+I{rr}*{RT},0)")
+    sc(12,f"=J{rr}+K{rr}"); sc(13,m["litt_done"]); sc(14,f"=MAX(0,L{rr}-M{rr})")
     if i%2==0:
         for j in range(1,len(MDHDR)+1): ws.cell(row=rr,column=j).fill=fill(LT)
-for i,w in enumerate([26,30,24,16,12,22,10,15],1): ws.column_dimensions[get_column_letter(i)].width=w
+for i,w in enumerate([24,22,24,11,10,8,10,8,8,16,16,11,10,15],1): ws.column_dimensions[get_column_letter(i)].width=w
 ws.freeze_panes=ws.cell(row=start+1,column=1)
 
 # ---------------- Accounts ----------------

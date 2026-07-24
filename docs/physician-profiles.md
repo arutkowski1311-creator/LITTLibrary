@@ -42,19 +42,45 @@ neuro-oncologists and radiation oncologists show referring.
 A non-neurosurgeon with a LITT count in claims is treated as a referrer (the LITT is claims attribution,
 not a procedure they performed). Organization/facility rows are separated from individual clinicians.
 
-## Potential-volume model
+## Potential-volume model (all indication pools)
 
-For each clinician (and each account reservoir):
+Every disease pool in the claims data where LITT applies is scored, each with its own addressable rate:
+
+| Pool (claims source) | LITT indications | Rate |
+| --- | --- | --- |
+| Intractable-epilepsy panel | MTLE, HH, PVNH, FCD, insular, CC | 5% |
+| Epilepsy craniotomy | convert open epilepsy surgery → LITT | 20% |
+| SEEG localization | SEEG-localized foci → ablation | 25% |
+| Mets / radiation-necrosis (combined in source) | brain metastases + radiation necrosis | 5% |
+| SRS | post-SRS radiation necrosis → LITT | 3% |
+| Tumor craniotomy | glioma / HGG deep/difficult resection | 8% |
 
 ```
-epilepsy addressable = Intractable-epilepsy pool × addressable%
-onc addressable      = Mets / radiation-necrosis pool × addressable%
-untapped LITT / yr   = (epilepsy addressable + onc addressable) − LITT already performed   (floored at 0)
+epilepsy addressable = MAX(intractable×5%, epi-cranio×20%, SEEG×25%)   # one pool per pathway (no double-count)
+oncology addressable = mets/RN×5% + SRS×3% + tumor×8%                   # distinct populations, they add
+total addressable/yr = epilepsy addressable + oncology addressable
+untapped LITT / yr   = total addressable − LITT already performed        (floored at 0)
 ```
 
-**Addressable % = 5%** (blended, LITT-appropriate + realistically convertible per year). This is the
-uniform rate the territory plan applies across every account reservoir; it is editable in a single cell
-on the Excel `Model — Editable` tab.
+**Why one pool per pathway:** the intractable panel, epilepsy craniotomies, and SEEG cases are largely the
+*same* epilepsy patients, so summing them would triple-count; the model takes the single largest signal.
+Oncology pools are distinct populations, so they add. **Mets and RN are combined** because the source
+`Total_Docs` export ships them in one `Brain Tumor (Mets/RN)` column; the separate SRS pool is used as the
+radiation-necrosis feeder. All six rates are editable on the Excel `Model — Editable` tab (live formulas).
+
+## Opportunity score (rebuilt around untapped)
+
+```
+score = untapped LITT/yr                     # total addressable market not yet captured
+      + min(15, LITT performed × 1.5)         # proven operator can scale
+      + 15 if field-confirmed NeuroBlate user
+      + 8  if named plan target
+      + 6  if competitor / unverified LITT user   (conversion / displacement)
+      + 10 + 3×(confirmed referral cases)     if a confirmed case-sender
+      + research grade (A +14, B +7, C +2)
+```
+A big untreated pool now surfaces on its own (a high-panel referrer scores on untapped alone), and heavy
+operators no longer show zero because the expanded model counts their procedure pools.
 
 ### Why 5% is defensible — the triangulation
 
@@ -150,12 +176,6 @@ Focus** view, a grade badge in the Explorer (with a "Research-graded only" filte
 deep-dive, and a `Research Focus` tab in the Excel workbook. Research profiles live in
 `tools/physician-profiles/research_raw.jsonl` and are re-attached on every build; the initial set
 covers the top targets and is designed to extend to the full 152-surgeon target list.
-
-## Opportunity score
-
-A COI-style composite used to rank the Explorer:
-`untapped ×1 + LITT performed ×3 + epilepsy craniotomy ×0.6 + tumor craniotomy ×0.6`, plus a bonus for
-field-confirmed / plan-named clinicians.
 
 ## LITT Library integration
 
