@@ -1,0 +1,182 @@
+[
+ {
+  "institution": "Cedars-Sinai",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Children's Hospital Los Angeles",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Children's Hospital of Philadelphia",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Columbia / NewYork-Presbyterian",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Dartmouth-Hitchcock",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Emory University",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "George Washington University",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Loyola University Medical Center",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "MD Anderson Cancer Center",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Massachusetts General Hospital",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Memorial Sloan Kettering",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Stanford",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Temple University Hospital",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Thomas Jefferson University",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "UCSF",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "University of Pennsylvania",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "University of Rochester",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "University of Virginia",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "University of Washington / Seattle Children's",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Wayne State University",
+  "neuroblate": "no"
+ },
+ {
+  "institution": "Albany Medical Center",
+  "neuroblate": "unclear"
+ },
+ {
+  "institution": "Rutgers / Robert Wood Johnson / NJMS",
+  "neuroblate": "unclear"
+ },
+ {
+  "institution": "University of Cincinnati / Cincinnati Children's",
+  "neuroblate": "unclear"
+ },
+ {
+  "institution": "University of Illinois Chicago",
+  "neuroblate": "unclear"
+ },
+ {
+  "institution": "University of Maryland",
+  "neuroblate": "unclear"
+ },
+ {
+  "institution": "University of Miami",
+  "neuroblate": "unclear"
+ },
+ {
+  "institution": "Virginia Commonwealth University",
+  "neuroblate": "unclear"
+ },
+ {
+  "institution": "Barrow Neurological Institute",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Brigham and Women's Hospital",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Case Western / University Hospitals Cleveland",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Cleveland Clinic",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Hospital for Sick Children (Toronto)",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Houston Methodist",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Johns Hopkins",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Mount Sinai",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "NYU Langone / Grossman",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Northwestern",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "SUNY Upstate",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Texas Children's / Baylor",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "University of Florida",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "University of Michigan",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Vanderbilt University Medical Center",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Washington University in St. Louis",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Weill Cornell / NewYork-Presbyterian",
+  "neuroblate": "yes"
+ },
+ {
+  "institution": "Yale",
+  "neuroblate": "yes"
+ }
+]

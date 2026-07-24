@@ -102,6 +102,12 @@
   .drawer .x{position:absolute;top:16px;right:18px;font-size:20px;color:var(--muted);cursor:pointer;line-height:1}
   .dhead .nm{font-size:21px;font-weight:800;margin:0;padding-right:30px}
   .dhead .spec{color:var(--ink2);font-size:12.5px;margin-top:2px}
+  .train{margin-top:9px}
+  .trainh{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
+  .trainl{margin:0;padding-left:16px;list-style:disc}
+  .trainl li{color:var(--ink2);font-size:12px;line-height:1.5;margin:1px 0}
+  .nbtag{display:inline-block;font-size:10px;font-weight:700;color:var(--teal);background:rgba(20,184,166,.12);
+    border:1px solid rgba(20,184,166,.4);border-radius:6px;padding:0 5px;margin-left:4px;white-space:nowrap}
   .dsection{margin-top:20px}
   .dsection h3{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin:0 0 10px;font-weight:700}
   .kv{display:grid;grid-template-columns:130px 1fr;gap:5px 12px;font-size:12.5px}
@@ -223,6 +229,27 @@ const COHORT_META={
 };
 const fmt=n=>(n||0).toLocaleString();
 const tagStyle=c=>`background:${c}22;color:${c};border:1px solid ${c}55`;
+
+/* NeuroBlate (Monteris) install sites — matched against training facilities.
+   Each entry: lowercase substrings that identify the institution in a training line.
+   Curated from public NeuroBlate/Monteris case series, LAANTERN registry, and press. */
+const NB_SITES=["cleveland clinic","washington university in st","yale","barrow","vanderbilt",
+  "cornell","nyu","mount sinai","icahn","brigham","case western","sick children","hopkins",
+  "upstate","houston methodist","university of florida","texas children","baylor","northwestern","michigan"];
+function nbMatch(seg){
+  const s=seg.toLowerCase();
+  return NB_SITES.some(kw=>s.includes(kw));
+}
+function trainingHtml(t){
+  if(!t)return '';
+  const isUndergrad=s=>/\b(BA|BS|BSc|MPhil|MS|BA\)|BS\))\b/.test(s)&&!/\b(MD|PhD|MBBS|residency|fellowship|internship)\b/i.test(s);
+  const segs=t.split('·').map(x=>x.trim()).filter(seg=>seg&&!isUndergrad(seg));
+  const items=segs.map(seg=>{
+    const nb=nbMatch(seg);
+    return `<li>${esc(seg)}${nb?` <span class="nbtag" title="This institution operates a NeuroBlate system">🟢 NeuroBlate site</span>`:''}</li>`;
+  }).join('');
+  return `<div class="train"><div class="trainh">🎓 Training</div><ul class="trainl">${items}</ul></div>`;
+}
 let DB=null, filtered=[], sortKey='oppScore', sortDir=-1, RENDER_CAP=400;
 
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
@@ -491,7 +518,7 @@ function openProfile(idx){
   const platMain=(p.platform&&p.platform!=='—')?p.platform:(p.litt_perf>0?'LITT platform not confirmed':'No LITT performed');
   drawer.innerHTML=`<div class="x" onclick="closeProfile()">✕</div>
     <div class="dhead"><h2 class="nm">${esc(p.name)}</h2><div class="spec">${esc(spec)}</div>
-      ${p.training?`<div class="spec" style="margin-top:4px;color:var(--ink2)">🎓 ${esc(p.training)}</div>`:''}
+      ${trainingHtml(p.training)}
       <div class="chips" style="margin-top:9px">
         <span class="tag" style="${tagStyle(cm.c)}">${esc(p.cohort)}</span>
         ${p.planRole&&p.planRole!=='—'?`<span class="chip" style="border-color:var(--cyan);color:var(--cyan)">${esc(p.planRole)}</span>`:''}
