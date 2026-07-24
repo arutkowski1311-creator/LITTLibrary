@@ -348,6 +348,7 @@ function jumpCohort(k){route('explorer');document.getElementById('fCohort').valu
 function viewExplorer(){
   const specs=[...new Set(DB.providers.map(p=>p.specialty).filter(Boolean))].sort();
   const states=[...new Set(DB.providers.map(p=>p.state).filter(Boolean))].sort();
+  const accts=[...new Set(DB.providers.map(p=>p.account).filter(a=>a&&a!=='—'))].sort();
   const opt=(arr,ph)=>`<option value="">${ph}</option>`+arr.map(s=>`<option>${esc(s)}</option>`).join('');
   const cohortOpts=`<option value="">All cohorts</option>`+Object.keys(COHORT_META).map(c=>`<option>${esc(c)}</option>`).join('');
   return `<section class="view" id="view-explorer">
@@ -356,6 +357,7 @@ function viewExplorer(){
     <div class="controls">
       <input type="search" id="q" placeholder="Search name, system, NPI…">
       <select id="fCohort">${cohortOpts}</select>
+      <select id="fAccount">${opt(accts,'All accounts')}</select>
       <select id="fSpec">${opt(specs,'All specialties')}</select>
       <select id="fState">${opt(states,'All states')}</select>
       <label class="pill" style="cursor:default">Min untapped/yr
@@ -380,7 +382,7 @@ function toggleMapped(){onlyMapped=!onlyMapped;document.getElementById('pMapped'
 function toggleRes(){onlyRes=!onlyRes;document.getElementById('pRes').classList.toggle('on',onlyRes);applyFilters();}
 
 function wireExplorer(){
-  ['q','fCohort','fSpec','fState','fMin'].forEach(id=>{
+  ['q','fCohort','fAccount','fSpec','fState','fMin'].forEach(id=>{
     const el=document.getElementById(id);el&&el.addEventListener('input',applyFilters);});
   document.querySelectorAll('#tbl thead th').forEach(t=>t.addEventListener('click',()=>{
     const k=t.dataset.k; if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=(k==='name'||k==='specialty'||k==='cohort'||k==='account')?1:-1;}
@@ -401,9 +403,11 @@ function val(p,k){
 function applyFilters(){
   const q=(document.getElementById('q').value||'').toLowerCase();
   const co=document.getElementById('fCohort').value, sp=document.getElementById('fSpec').value,
-        st=document.getElementById('fState').value, mn=+document.getElementById('fMin').value||0;
+        st=document.getElementById('fState').value, mn=+document.getElementById('fMin').value||0,
+        ac=document.getElementById('fAccount').value;
   filtered=DB.providers.filter(p=>{
     if(co&&p.cohort!==co)return false;
+    if(ac&&p.account!==ac)return false;
     if(sp&&p.specialty!==sp)return false;
     if(st&&p.state!==st)return false;
     if(p.model.untapped_litt_yr<mn)return false;
