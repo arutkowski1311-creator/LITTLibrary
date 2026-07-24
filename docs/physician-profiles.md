@@ -190,7 +190,11 @@ surfaces in two places:
 - a **"From the LITT Library"** section on each physician profile — the top-impact findings for that
   clinician's pathway.
 
-A sidebar link opens the full LITT Library dashboard (`index.html`). Rebuilding the physician dataset
+Researched profiles also carry a **"Recent LITT-relevant publications (2022–2026)"** list — each
+physician's latest papers filtered to LITT-adjacent topics (LITT/laser ablation, SEEG, stereotactic
+radiosurgery, immunotherapy, epilepsy focus-targeting, glioma/mets/RN ablation), web-sourced and stored
+in `tools/physician-profiles/research_recent.jsonl` (merged on build). A sidebar link opens the full LITT
+Library dashboard (`index.html`). Rebuilding the physician dataset
 (`build_data.py`) automatically re-reads `database.json`, so refreshing the clinical library refreshes
 the physician tool too.
 

@@ -234,11 +234,26 @@ def load_research():
             if idx: break
         except FileNotFoundError: continue
     return idx
+def load_recent():
+    idx={}
+    for path in ("research_recent.jsonl","tools/physician-profiles/research_recent.jsonl",
+                 "/home/user/LITTLibrary/tools/physician-profiles/research_recent.jsonl"):
+        try:
+            for line in open(path):
+                line=line.strip()
+                if not line: continue
+                r=json.loads(line); idx[normName(r["name"])]=r.get("recent_papers",[])
+            if idx: break
+        except FileNotFoundError: continue
+    return idx
 RESEARCH=load_research()
-n_research=0
+RECENT=load_recent()
+n_research=0; n_recent=0
 for p in providers:
     r=RESEARCH.get(normName(p["name"]))
     if r: p["research"]=r; n_research+=1
+    rp=RECENT.get(normName(p["name"]))
+    if rp and p.get("research"): p["research"]["recent_papers"]=rp; n_recent+=1
 
 # ---------- indication "wheelhouse" (triangulate claims + research) ----------
 EPI_KEYS={"mtle","hh","pvnh","fcd","insular","cc","cav"}
