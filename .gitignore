@@ -8,3 +8,6 @@ __pycache__/
 
 tools/node_modules/
 tools/package*.json
+
+# Generated body-only fragment for the account-cards alternate build.
+tools/account-cards-alt/account-cards-artifact.html

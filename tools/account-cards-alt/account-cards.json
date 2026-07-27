@@ -1,0 +1,5223 @@
+{
+ "meta": {
+  "title": "LITT Account Report Cards \u2014 Northeast Territory",
+  "generated": "2026-07-22",
+  "note": "Data-driven sections computed from account intel + physician universe + 3-yr NeuroBlate sales. Qualitative sections (header confirmations, SWOT, strategy) are editable seeds."
+ },
+ "territory": {
+  "region_avg_case": 18300,
+  "quota_2026": 106,
+  "cases_ytd_2026": 44,
+  "candidate_universe_yr": 1490
+ },
+ "accounts": [
+  {
+   "rank": 1,
+   "name": "Columbia (NYP)",
+   "acronym": "CUMC",
+   "system": "NewYork-Presbyterian",
+   "class": "Installed",
+   "posture": "Expand, priority",
+   "platform": [
+    "NeuroBlate",
+    "Visualase"
+   ],
+   "win": "High",
+   "situation": "Fastest-growing account by revenue. McKhann runs mostly primary-tumor LITT (12 primary, 2 mets) over an enormous epilepsy, neuro-onc and referral base. McKhann is leaving for Emory; Gill is the successor. Brett Youngerman shows 2 LITT in claims not in our log (Visualase?), with an in-house Visualase rep on site.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "Visualase",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 10,
+    "crani_over_50": false,
+    "crani_volume": 38,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 83,
+    "grade": "A-",
+    "subs": {
+     "Trajectory": 25,
+     "Reservoir capture": 17,
+     "Surgeon depth": 16,
+     "Competitive position": 10,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 16000,
+     "2025": 120000,
+     "2026_ytd": 343000,
+     "2026_proj": 633000
+    },
+    "probes_by_year": {
+     "2024": 1,
+     "2025": 8,
+     "2026": 4
+    },
+    "probes_total": 13,
+    "cases_logged": 14,
+    "probes_per_case": 0.93,
+    "rev_per_case": 34214,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.87,
+    "trend": "Up",
+    "business_potential_yr": 108352,
+    "incremental_cases": 8,
+    "sku_mix": {
+     "capital": 288750,
+     "laser_probe": 128843,
+     "driver": 21411,
+     "fee": 20000,
+     "bolt": 19368,
+     "accessory": 0
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 22,
+     "pool": 434
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 4,
+     "pool": 76
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 24,
+     "pool": 487
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 0,
+     "pool": 4
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Guy McKhann",
+      "cases": 9,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Brian Gill",
+      "cases": 5,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Neil Feldstein"
+    ],
+    "naive_targets": [
+     {
+      "name": "Raymond F Sekula",
+      "npi": "1942363445",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 2,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Neil Feldstein",
+      "npi": "1588608186",
+      "cohort": "LITT \u2014 Unverified Platform",
+      "epi_cranio": 19,
+      "tumor_cranio": 0,
+      "seeg": 6,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia",
+      "kol": true
+     },
+     {
+      "name": "Jeffrey N Bruce",
+      "npi": "1659422137",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Guy McKhann",
+      "indication": "Primary",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "Maria Ordonez",
+      "indication": "Metastasis",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Peter CheiWay Pan",
+      "indication": "Primary",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Aya Haggiagi",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Samuel E Koszer",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 344
+     },
+     {
+      "name": "Shraddha Srinivasan",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 96
+     },
+     {
+      "name": "Michael Waldrop",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 217
+     },
+     {
+      "name": "Katherine D Brodie",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 206
+     },
+     {
+      "name": "Wen R Zhang",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 189
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (10 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [
+     "Competitive laser in-house (Visualase) \u2014 split platform, capital-standardization risk."
+    ],
+    "opportunities": [
+     "Intractable epilepsy: ~24 addressable of 487 pool \u2014 under-penetrated.",
+     "Mets: ~22 addressable of 434 pool \u2014 under-penetrated."
+    ],
+    "threats": [
+     "Visualase entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
+     "Competitive KOL activity around Neil Feldstein \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Raymond F Sekula",
+     "objective": "Convert Raymond F Sekula from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    },
+    {
+     "type": "Crack competitor",
+     "target": "Visualase footprint",
+     "objective": "Convert a Visualase-trained surgeon using a live in-territory reference.",
+     "tactics": [
+      "Leverage a Visualase\u2192NeuroBlate convert nearby as social proof",
+      "Contrast real-time thermal monitoring & larger single-trajectory ablation volume",
+      "Trial-in-value-analysis motion where a system is already under review"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Neil Feldstein",
+     "npi": "1588608186",
+     "grade": "A",
+     "score": 88,
+     "identity": "Director of Pediatric Neurosurgery, Columbia University / NewYork-Presbyterian (Morgan Stanley Children's Hospital), NY; pediatric epilepsy, Chiari, tumors.",
+     "facility": "Columbia Oral Maxillofacial Surgery Associates",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia",
+     "themes": [
+      "Pediatric epilepsy surgery",
+      "SEEG (stereoelectroencephalography)",
+      "MRg-LITT laser ablation for MTLE",
+      "Hemispherectomy"
+     ],
+     "rationale": "Co-author on Youngerman 2018 Epilepsia demonstrating MRg-LITT laser ablation is effective for temporal lobe epilepsy when hippocampal seizure onsets are SEEG-localized \u2014 direct SEEG-guided LITT work. Also senior co-author on Columbia's pediatric SEEG focal-epilepsy series. Runs one of the Northeast's largest pediatric epilepsy-surgery programs offering SEEG, LITT and DBS; direct co-authorship with LITT KOLs Youngerman, McKhann, and Sheth.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1588608186",
+     "scholar_url": "",
+     "profile_url": "https://www.neurosurgery.columbia.edu/profile/neil-feldstein-md",
+     "papers": [
+      {
+       "title": "Laser ablation is effective for temporal lobe epilepsy if hippocampal seizure onsets are localized by SEEG",
+       "year": 2018,
+       "area": "SEEG-guided MRg-LITT laser ablation for MTLE",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser+ablation+is+effective+for+temporal+lobe+epilepsy+if+hippocampal+seizure+onsets+are+localized+by+SEEG"
+      },
+      {
+       "title": "Safety and efficacy of SEEG in pediatric focal epilepsy: a single-center experience",
+       "year": 2018,
+       "area": "Pediatric SEEG epilepsy surgery",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Safety+and+efficacy+of+SEEG+in+pediatric+focal+epilepsy%3A+a+single-center+experience"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 2,
+   "name": "Yale New Haven",
+   "acronym": "YALE",
+   "system": "Yale New Haven Health System",
+   "class": "Installed",
+   "posture": "Defend + expand",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "Medium",
+   "situation": "Territory flagship and strongest relationship. Chiang is a disclosed Monteris consultant and the dominant necrosis author (48 mets/RN, only 2 primary, no recurrent). Epilepsy LITT program is weak through Damisah, who has high affinity for open crani. Volume limited by internal politics.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 2,
+    "crani_over_50": false,
+    "crani_volume": 9,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 85,
+    "grade": "A",
+    "subs": {
+     "Trajectory": 14,
+     "Reservoir capture": 20,
+     "Surgeon depth": 16,
+     "Competitive position": 20,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 350000,
+     "2025": 609000,
+     "2026_ytd": 1130000,
+     "2026_proj": 1270000
+    },
+    "probes_by_year": {
+     "2024": 25,
+     "2025": 30,
+     "2026": 13
+    },
+    "probes_total": 68,
+    "cases_logged": 55,
+    "probes_per_case": 1.24,
+    "rev_per_case": 37982,
+    "region_avg_case": 18300,
+    "rev_vs_region": 2.08,
+    "trend": "Flat",
+    "business_potential_yr": 141291,
+    "incremental_cases": 9,
+    "sku_mix": {
+     "laser_probe": 578477,
+     "capital": 381432,
+     "driver": 195203,
+     "bolt": 89790,
+     "accessory": 0
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 111,
+     "pool": 2211
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 1,
+     "pool": 20
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 38,
+     "pool": 755
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 0,
+     "pool": 2
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Veronica Chiang",
+      "cases": 50,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Eyiyemisi Damisah",
+      "cases": 5,
+      "kol": true,
+      "npi": "1497045264",
+      "specialty": "Neurological Surgery",
+      "seeg": 2,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia"
+     }
+    ],
+    "kols": [
+     "Eyiyemisi Damisah",
+     "Jennifer A Moliterno Gunel"
+    ],
+    "naive_targets": [
+     {
+      "name": "Jennifer A Moliterno Gunel",
+      "npi": "1205010261",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 2,
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Glioma / HGG, Brain metastases",
+      "kol": true
+     },
+     {
+      "name": "Sacit B Omay",
+      "npi": "1275704207",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Jacky T Yeung",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Sarah Goldberg",
+      "indication": "Metastasis",
+      "cases": 5,
+      "pool": null
+     },
+     {
+      "name": "Harriet Kluger",
+      "indication": "Metastasis",
+      "cases": 4,
+      "pool": null
+     },
+     {
+      "name": "Dennis Spencer",
+      "indication": "Metastasis/Primary",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "Michael Cohenuram",
+      "indication": "Metastasis",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "Aline Herlopian",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 234
+     },
+     {
+      "name": "Nicholas A Blondin",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 184
+     },
+     {
+      "name": "Lawrence J Hirsch",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 163
+     },
+     {
+      "name": "Veronica L Chiang",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 49
+     },
+     {
+      "name": "Jennifer A Moliterno Gunel",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 211
+     },
+     {
+      "name": "Michael J Grant",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 60
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (2 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [],
+    "opportunities": [
+     "Mets: ~111 addressable of 2211 pool \u2014 under-penetrated.",
+     "Intractable epilepsy: ~38 addressable of 755 pool \u2014 under-penetrated."
+    ],
+    "threats": [
+     "Competitive KOL activity around Eyiyemisi Damisah \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Jennifer A Moliterno Gunel",
+     "objective": "Convert Jennifer A Moliterno Gunel from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Eyiyemisi Damisah",
+     "npi": "1497045264",
+     "grade": "A",
+     "score": 92,
+     "identity": "Neurosurgeon, Division Chief of Epilepsy & Functional Neurosurgery and Director of Epilepsy Surgery Program at Yale School of Medicine / Yale New Haven; SEEG, laser ablation, single-neuron human recordings.",
+     "facility": "Yale Medicine",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia",
+     "themes": [
+      "Epilepsy surgery",
+      "SEEG / intracranial monitoring",
+      "Laser interstitial thermal therapy (LITT)",
+      "Stereotactic amygdalohippocampotomy (SLAH)"
+     ],
+     "rationale": "Direct LITT operator/author: senior/co-author on 'Transfrontal Approach to the Amygdala for Ablation With LITT' (Operative Neurosurgery 2023), a novel SLAH trajectory for MTLE. Runs Yale epilepsy surgery program with SEEG localization and minimally invasive ablation. Co-authorship with LITT KOLs Veronica Chiang and Dennis Spencer. Yale's epilepsy growth engine \u2014 the key to expanding our flagship account's weak epilepsy LITT line.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1497045264",
+     "scholar_url": "",
+     "profile_url": "https://medicine.yale.edu/profile/eyiyemisi-damisah/",
+     "papers": [
+      {
+       "title": "Transfrontal Approach to the Amygdala for Ablation With LITT: An Epilepsy Case Report",
+       "year": 2023,
+       "area": "LITT SLAH trajectory for MTLE",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Transfrontal+Approach+to+the+Amygdala+for+Ablation+With+LITT%3A+An+Epilepsy+Case+Report"
+      },
+      {
+       "title": "Recent advances in epilepsy surgery",
+       "year": 2023,
+       "area": "Epilepsy surgery review incl. laser ablation",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Recent+advances+in+epilepsy+surgery"
+      },
+      {
+       "title": "Human claustrum neurons encode uncertainty and prediction errors during aversive learning",
+       "year": 2026,
+       "area": "Single-neuron intracranial recordings (SEEG-adjacent)",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Human+claustrum+neurons+encode+uncertainty+and+prediction+errors+during+aversive+learning"
+      },
+      {
+       "title": "Transfrontal Approach to the Amygdala for Ablation With Laser Interstitial Thermal Therapy: An Epilepsy Case Report",
+       "year": 2023,
+       "area": "LITT amygdala ablation for epilepsy",
+       "journal": "Operative Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Transfrontal+Approach+to+the+Amygdala+for+Ablation+With+Laser+Interstitial+Thermal+Therapy%3A+An+Epilepsy+Case+Report"
+      },
+      {
+       "title": "Combined neuromodulation and resection for functional cortex epilepsy: a case series",
+       "year": 2024,
+       "area": "neuromodulation (RNS) plus resection for epilepsy",
+       "journal": "Journal of Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Combined+neuromodulation+and+resection+for+functional+cortex+epilepsy%3A+a+case+series"
+      },
+      {
+       "title": "Epilepsy surgery education and practice around the globe: An ILAE taskforce report",
+       "year": 2025,
+       "area": "epilepsy surgery",
+       "journal": "Epilepsia",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Epilepsy+surgery+education+and+practice+around+the+globe%3A+An+ILAE+taskforce+report"
+      },
+      {
+       "title": "Multitask Language Mapping to Visualize the Spatial Configuration of Polyfunctional Language Cortex",
+       "year": 2025,
+       "area": "epilepsy language/eloquent cortex mapping",
+       "journal": "Neurology",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Multitask+Language+Mapping+to+Visualize+the+Spatial+Configuration+of+Polyfunctional+Language+Cortex"
+      }
+     ]
+    },
+    {
+     "physician": "Jennifer A Moliterno Gunel",
+     "npi": "1205010261",
+     "grade": "A",
+     "score": 82,
+     "identity": "Professor & Chief of Neurosurgical Oncology at Yale; Director of the Glioma Program and Clinical Director of the Ch\u00eanevert Family Brain Tumor Center; brain-tumor genomics surgeon-scientist.",
+     "facility": "Yale Medicine",
+     "archetype": "Neuro-oncology ablation \u2014 Glioma / HGG, Brain metastases",
+     "themes": [
+      "Meningioma genomics & molecular subgrouping",
+      "Glioma/glioblastoma surgical genomics",
+      "Awake craniotomy & functional brain mapping",
+      "High-grade glioma safe maximal resection"
+     ],
+     "rationale": "Direct LITT co-authorship: co-author (Yale site) on Mohammadi et al. 'Upfront MRI-Guided Stereotactic Laser-Ablation in Newly Diagnosed Glioblastoma: A Multicenter Review' (Neurosurgery 2019), alongside LITT KOLs Chiang, Fecci, and Albert Kim. Core practice (highest-volume glioma/GBM surgeon in CT, awake mapping, meningioma) is strongly LITT-convertible, and she is embedded in the Yale LITT ecosystem (Chiang, Omay, Damisah).",
+     "medscout": "https://app.medscout.io/profiles/hcp/1205010261",
+     "scholar_url": "https://scholar.google.com/citations?user=VHJ2IusAAAAJ&hl=en",
+     "profile_url": "https://medicine.yale.edu/profile/jennifer-moliternogunel/",
+     "papers": [
+      {
+       "title": "Upfront MRI-Guided Stereotactic Laser-Ablation in Newly Diagnosed Glioblastoma: A Multicenter Review",
+       "year": 2019,
+       "area": "Direct LITT / laser ablation of newly diagnosed GBM",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Upfront+MRI-Guided+Stereotactic+Laser-Ablation+in+Newly+Diagnosed+Glioblastoma%3A+A+Multicenter+Review"
+      },
+      {
+       "title": "Genomic profiling of sporadic multiple meningiomas",
+       "year": 2022,
+       "area": "Meningioma genomics",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Genomic+profiling+of+sporadic+multiple+meningiomas"
+      },
+      {
+       "title": "Variations in genomic profiles and clinical behavior of meningioma by racial/ethnic group",
+       "year": 2024,
+       "area": "Meningioma genomic disparities",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Variations+in+genomic+profiles+and+clinical+behavior+of+meningioma+by+racial%2Fethnic+group"
+      },
+      {
+       "title": "Subgroup of meningiomas involving FOS and FOSB gene fusions",
+       "year": 2025,
+       "area": "Meningioma genomics",
+       "journal": "Nature Communications",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Subgroup+of+meningiomas+involving+FOS+and+FOSB+gene+fusions"
+      },
+      {
+       "title": "The clinical and genomic features of seizures in meningiomas",
+       "year": 2023,
+       "area": "Meningioma-associated seizures / epilepsy focus",
+       "journal": "Neuro-Oncology Advances",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=The+clinical+and+genomic+features+of+seizures+in+meningiomas"
+      },
+      {
+       "title": "Genomic profiling of sporadic multiple meningiomas",
+       "year": 2022,
+       "area": "Meningioma genomics",
+       "journal": "BMC Medical Genomics",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Genomic+profiling+of+sporadic+multiple+meningiomas"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 3,
+   "name": "Brigham & Women's",
+   "acronym": "BWH",
+   "system": "Mass General Brigham",
+   "class": "Installed",
+   "posture": "Defend, capital threat",
+   "platform": [
+    "NeuroBlate",
+    "ClearPoint"
+   ],
+   "win": "Medium",
+   "situation": "Revenue fell from $361K to $15K under a ClearPoint capital threat from the Mass General Brigham merger \u2014 Mark Richardson (MGH) is a paid ClearPoint consultant pushing system standardization. Golby is the senior tumor champion who actively defended us. Rolston knows our system but wants to align with Richardson.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "ClearPoint",
+    "mri": "",
+    "robot": "ClearPoint SmartFrame",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 18,
+    "crani_over_50": false,
+    "crani_volume": 36,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 49,
+    "grade": "C",
+    "subs": {
+     "Trajectory": 6,
+     "Reservoir capture": 2,
+     "Surgeon depth": 16,
+     "Competitive position": 10,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 361000,
+     "2025": 218000,
+     "2026_ytd": 15000,
+     "2026_proj": 234000
+    },
+    "probes_by_year": {
+     "2024": 27,
+     "2025": 16,
+     "2026": 0
+    },
+    "probes_total": 43,
+    "cases_logged": 23,
+    "probes_per_case": 1.87,
+    "rev_per_case": 25826,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.41,
+    "trend": "Down",
+    "business_potential_yr": 206176,
+    "incremental_cases": 8,
+    "sku_mix": {
+     "laser_probe": 446002,
+     "driver": 83254,
+     "bolt": 63506,
+     "accessory": 846
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 308,
+     "pool": 6166
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 1,
+     "pool": 18
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 307,
+     "pool": 6140
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 1,
+     "pool": 20
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "John Rolston",
+      "cases": 17,
+      "kol": true,
+      "npi": "1871892091",
+      "specialty": "Neurological Surgery",
+      "seeg": 9,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia"
+     },
+     {
+      "name": "Alexandra Golby",
+      "cases": 6,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "John Rolston",
+     "Omar Arnaout",
+     "Shivani D Rangwala"
+    ],
+    "naive_targets": [
+     {
+      "name": "Omar Arnaout",
+      "npi": "1528379641",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG",
+      "kol": true
+     },
+     {
+      "name": "Timothy R Smith",
+      "npi": "1356674386",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "William T Curry",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Shivani D Rangwala",
+      "npi": "1457882482",
+      "cohort": "LITT \u2014 Unverified Platform",
+      "epi_cranio": 15,
+      "tumor_cranio": 0,
+      "seeg": 2,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia",
+      "kol": true
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Steven Daniel Tobochnik",
+      "indication": "Epilepsy",
+      "cases": 4,
+      "pool": null
+     },
+     {
+      "name": "Barbara Dworetzky",
+      "indication": "Epilepsy",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "David Reardon",
+      "indication": "Epilepsy/Metastasis",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Jong Woo Lee",
+      "indication": "Epilepsy",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Masanori Takeoka",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 1163
+     },
+     {
+      "name": "Jurriaan M Peters",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 565
+     },
+     {
+      "name": "Jeffrey Bolton",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 459
+     },
+     {
+      "name": "Luke Peng",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 81
+     },
+     {
+      "name": "Itai M Pashtan",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 58
+     },
+     {
+      "name": "Monica Krishnan",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 55
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (18 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [
+     "Competitive laser in-house (ClearPoint) \u2014 split platform, capital-standardization risk."
+    ],
+    "opportunities": [
+     "Mets: ~308 addressable of 6166 pool \u2014 under-penetrated.",
+     "Intractable epilepsy: ~307 addressable of 6140 pool \u2014 under-penetrated."
+    ],
+    "threats": [
+     "ClearPoint entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
+     "Competitive KOL activity around Omar Arnaout \u2014 confirm allegiance in field.",
+     "Revenue trending down \u2014 diagnose whether clinical, capital, or relationship-driven."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Omar Arnaout",
+     "objective": "Convert Omar Arnaout from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    },
+    {
+     "type": "Crack competitor",
+     "target": "ClearPoint footprint",
+     "objective": "Displace or coexist by exploiting ClearPoint's ablation-size ceiling.",
+     "tactics": [
+      "Exploit: ClearPoint is workflow-limited on larger tumor / RN ablations \u2014 position NeuroBlate for the tumor & radiation-necrosis book",
+      "Quantify the mets/RN reservoir they cannot serve well and bring the LITT+SRT and steroid-reduction evidence",
+      "Target tumor & rad-onc referrers, not just the implanting surgeon"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "John Rolston",
+     "npi": "1871892091",
+     "grade": "A",
+     "score": 93,
+     "identity": "MD/PhD neurosurgeon, Director of Epilepsy Surgery at Brigham & Women's Hospital / Harvard (formerly Director of Epilepsy & Stereotactic/Functional Neurosurgery, University of Utah 2017-2022).",
+     "facility": "Brigham And Womens Hospital",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia",
+     "themes": [
+      "Laser interstitial thermal therapy (LITT/MRgLITT)",
+      "Mesial temporal lobe epilepsy ablation",
+      "SEEG / stereoelectroencephalography",
+      "Epilepsy surgery outcomes"
+     ],
+     "rationale": "Directly performs and publishes on LITT/laser ablation for epilepsy: sole-author 2026 commentary on the LAANTERN trial for laser ablation in MTLE, plus work on ADC-hyperintensity and neurometabolic predictors of LITT seizure outcomes. Clinical practice explicitly includes laser ablation. Deep SEEG-guided epilepsy-surgery and stereotactic/functional portfolio (DBS, RNS).",
+     "medscout": "https://app.medscout.io/profiles/hcp/1871892091",
+     "scholar_url": "https://scholar.google.com/citations?user=pBxTj0IAAAAJ&hl=en",
+     "profile_url": "https://physiciandirectory.brighamandwomens.org/details/15736/john-rolston-neurosurgery-boston",
+     "papers": [
+      {
+       "title": "Turning Up the Heat on Temporal Lobe Epilepsy: LAANTERN Helps Illuminate the Role of Laser Ablation",
+       "year": 2026,
+       "area": "LITT for MTLE (LAANTERN registry commentary)",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Turning+Up+the+Heat+on+Temporal+Lobe+Epilepsy%3A+LAANTERN+Helps+Illuminate+the+Role+of+Laser+Ablation"
+      },
+      {
+       "title": "Ablation of Apparent Diffusion Coefficient Hyperintensity Clusters in MTLE Improves Seizure Outcomes after LITT",
+       "year": 2022,
+       "area": "LITT ablation biomarker / seizure outcomes",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Ablation+of+Apparent+Diffusion+Coefficient+Hyperintensity+Clusters+in+MTLE+Improves+Seizure+Outcomes+after+LITT"
+      },
+      {
+       "title": "SEEG versus subdural electrodes for invasive monitoring in drug-resistant epilepsy: systematic review and meta-analysis",
+       "year": 2022,
+       "area": "SEEG epilepsy localization",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=SEEG+versus+subdural+electrodes+for+invasive+monitoring+in+drug-resistant+epilepsy%3A+systematic+review+and+meta-analysis"
+      },
+      {
+       "title": "Turning Up the Heat on Temporal Lobe Epilepsy: LAANTERN Helps Illuminate the Role of Laser Ablation",
+       "year": 2026,
+       "area": "LITT / laser ablation for mesial temporal lobe epilepsy (LAANTERN registry commentary)",
+       "journal": "Epilepsy Currents",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Turning+Up+the+Heat+on+Temporal+Lobe+Epilepsy%3A+LAANTERN+Helps+Illuminate+the+Role+of+Laser+Ablation"
+      },
+      {
+       "title": "Stereo-electroencephalography in the setting of a preexisting deep brain stimulation device: illustrative case",
+       "year": 2025,
+       "area": "SEEG with concurrent DBS device",
+       "journal": "Journal of Neurosurgery: Case Lessons",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Stereo-electroencephalography+in+the+setting+of+a+preexisting+deep+brain+stimulation+device%3A+illustrative+case"
+      }
+     ]
+    },
+    {
+     "physician": "Omar Arnaout",
+     "npi": "1528379641",
+     "grade": "B",
+     "score": 73,
+     "identity": "Director of Clinical Neurosurgery, Brigham & Women's Hospital; Assoc. Prof. of Neurosurgery, Harvard; neuro-oncology / minimally invasive brain tumor surgery and AI/ML.",
+     "facility": "Brigham And Womens Hospital",
+     "archetype": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG",
+     "themes": [
+      "neurosurgical oncology (glioma, brain metastases)",
+      "minimally invasive keyhole craniotomy",
+      "endoscopic brain tumor surgery",
+      "skull base & meningioma surgery"
+     ],
+     "rationale": "No direct LITT/ablation publications, but strongly convertible: high-volume glioma and brain-metastasis surgeon focused on minimally invasive/keyhole and stereotactic techniques (incl. stereotactic brachytherapy for oligometastases) at BWH, a LITT-active center. Co-authors with LITT KOLs Golby, Chiocca, and Rolston. Prime LITT-adjacent target; lack of direct ablation/RN work caps below A.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1528379641",
+     "scholar_url": "",
+     "profile_url": "https://physiciandirectory.brighamandwomens.org/details/13474/omar-arnaout-neurosurgery-boston-milford",
+     "papers": [
+      {
+       "title": "Machine Learning and Neurosurgical Outcome Prediction: A Systematic Review",
+       "year": 2018,
+       "area": "AI/ML outcome prediction",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Machine+Learning+and+Neurosurgical+Outcome+Prediction%3A+A+Systematic+Review"
+      },
+      {
+       "title": "Minimally invasive keyhole craniotomy and stereotactic brachytherapy for new brain oligometastases",
+       "year": 2025,
+       "area": "minimally invasive + stereotactic, brain mets",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Minimally+invasive+keyhole+craniotomy+and+stereotactic+brachytherapy+for+new+brain+oligometastases"
+      },
+      {
+       "title": "Minimally invasive keyhole surgery for intracranial meningioma: a large case series",
+       "year": 2022,
+       "area": "minimally invasive tumor surgery",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Minimally+invasive+keyhole+surgery+for+intracranial+meningioma%3A+a+large+case+series"
+      },
+      {
+       "title": "Leveraging machine learning for preoperative prediction of supramaximal ablation in laser interstitial thermal therapy for brain tumors",
+       "year": 2024,
+       "area": "LITT / machine learning for brain tumors",
+       "journal": "Neurosurgical Focus",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Leveraging+machine+learning+for+preoperative+prediction+of+supramaximal+ablation+in+laser+interstitial+thermal+therapy+for+brain+tumors"
+      },
+      {
+       "title": "Intraoperative brain tumor classification via laser-induced fluorescence spectroscopy and machine learning",
+       "year": 2025,
+       "area": "Brain tumor laser diagnostics / glioma",
+       "journal": "Journal of Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Intraoperative+brain+tumor+classification+via+laser-induced+fluorescence+spectroscopy+and+machine+learning"
+      },
+      {
+       "title": "The Applications of Laser Interstitial Thermal Therapy and Machine Learning in Neurosurgery: A Systematic Review",
+       "year": 2023,
+       "area": "LITT systematic review",
+       "journal": "medRxiv (preprint)",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=The+Applications+of+Laser+Interstitial+Thermal+Therapy+and+Machine+Learning+in+Neurosurgery%3A+A+Systematic+Review"
+      }
+     ]
+    },
+    {
+     "physician": "Shivani D Rangwala",
+     "npi": "1457882482",
+     "grade": "A",
+     "score": 84,
+     "identity": "Pediatric neurosurgeon, Boston Children's Hospital / Instructor in Neurosurgery, Harvard Medical School (Boston); newer faculty, USC residency + dual fellowship in pediatric cerebrovascular/endovascular and pediatric neurosurgery.",
+     "facility": "Boston Childrens Hospital",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia",
+     "themes": [
+      "pediatric epilepsy surgery",
+      "SEEG / invasive monitoring",
+      "MRI-guided laser ablation (LITT)",
+      "deep brain stimulation / neuromodulation"
+     ],
+     "rationale": "Clinical practice explicitly includes MRI-guided laser ablation (LITT) plus SEEG-guided epilepsy surgery and DBS \u2014 the core LITT-adjacent functional/epilepsy stack. Direct LITT practitioner + SEEG epilepsy = Grade A. Publication record is early-career and skews SEEG/endovascular/neuromodulation; a glioblastoma LITT meta-analysis returned in searches is a different author (H.S. Rangwala, Karachi) and excluded. Note: our records list Brigham; field confirmation of exact Boston site advised.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1457882482",
+     "scholar_url": "",
+     "profile_url": "https://www.childrenshospital.org/providers/shivani-rangwala",
+     "papers": [
+      {
+       "title": "Making a case for endovascular approaches for neural recording and stimulation",
+       "year": 2023,
+       "area": "endovascular neuromodulation / neural interface",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Making+a+case+for+endovascular+approaches+for+neural+recording+and+stimulation"
+      },
+      {
+       "title": "Stereoelectroencephalography in Pediatric Epilepsy Surgery",
+       "year": 2019,
+       "area": "SEEG invasive monitoring for epilepsy localization",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Stereoelectroencephalography+in+Pediatric+Epilepsy+Surgery"
+      },
+      {
+       "title": "Focal drug-resistant temporal lobe epilepsy associated with an ipsilateral anterior choroidal artery aneurysm: illustrative case",
+       "year": 2023,
+       "area": "drug-resistant temporal lobe epilepsy",
+       "journal": "Journal of Neurosurgery: Case Lessons",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Focal+drug-resistant+temporal+lobe+epilepsy+associated+with+an+ipsilateral+anterior+choroidal+artery+aneurysm%3A+illustrative+case"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 4,
+   "name": "Beth Israel Deaconess",
+   "acronym": "BID",
+   "system": "Beth Israel Lahey Health",
+   "class": "Contested",
+   "posture": "Re-engage + open",
+   "platform": [
+    "NeuroBlate",
+    "Visualase"
+   ],
+   "win": "Medium",
+   "situation": "Stalled tumor-only account. Vega (primary user) disengaged over MRI friction; claims show 16 LITT against the 4 logged. Josh Aronson may be using Visualase. Outside-indication research teed up (cavernous malformations with Ogilvy's endovascular team).",
+   "header": {
+    "account_type": "Contested",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "Visualase",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": false,
+    "seeg_volume": 0,
+    "crani_over_50": false,
+    "crani_volume": 10,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 41,
+    "grade": "D",
+    "subs": {
+     "Trajectory": 6,
+     "Reservoir capture": 2,
+     "Surgeon depth": 8,
+     "Competitive position": 10,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 15000,
+     "2025": 21000,
+     "2026_ytd": 39000,
+     "2026_proj": 104000
+    },
+    "probes_by_year": {
+     "2024": 2,
+     "2025": 1,
+     "2026": 1
+    },
+    "probes_total": 4,
+    "cases_logged": 4,
+    "probes_per_case": 1.0,
+    "rev_per_case": 18750,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.02,
+    "trend": "Down",
+    "business_potential_yr": 64480,
+    "incremental_cases": 4,
+    "sku_mix": {
+     "laser_probe": 42196,
+     "driver": 12705,
+     "bolt": 7147,
+     "capital": 4857,
+     "accessory": 1424
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 68,
+     "pool": 1360
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 1,
+     "pool": 10
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 27,
+     "pool": 545
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 0,
+     "pool": 7
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Rafael A Vega",
+      "cases": 4,
+      "kol": true,
+      "npi": "1962795336",
+      "specialty": "Neurological Surgery",
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Brain metastases, Radiation necrosis, Glioma / HGG"
+     }
+    ],
+    "kols": [
+     "Rafael A Vega"
+    ],
+    "naive_targets": [
+     {
+      "name": "Christopher S Ogilvy",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Ron L Alterman",
+      "npi": "1750357430",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Philipp Taussky",
+      "npi": "1982837084",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Lauren Hertan",
+      "indication": "Metastasis/Primary",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Trudy Pang",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 231
+     },
+     {
+      "name": "Niravkumar Barot",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 106
+     },
+     {
+      "name": "Volney Sheen",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 87
+     },
+     {
+      "name": "Gabriel P Simon",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 74
+     },
+     {
+      "name": "Rafael A Vega",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 36
+     },
+     {
+      "name": "Ron L Alterman",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 7
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [],
+    "weaknesses": [
+     "Single-surgeon dependency \u2014 volume collapses to zero on one departure. Develop a second adopter.",
+     "Competitive laser in-house (Visualase) \u2014 split platform, capital-standardization risk."
+    ],
+    "opportunities": [
+     "Mets: ~68 addressable of 1360 pool \u2014 under-penetrated.",
+     "Intractable epilepsy: ~27 addressable of 545 pool \u2014 under-penetrated."
+    ],
+    "threats": [
+     "Visualase entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
+     "Revenue trending down \u2014 diagnose whether clinical, capital, or relationship-driven."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Christopher S Ogilvy",
+     "objective": "Convert Christopher S Ogilvy from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    },
+    {
+     "type": "Crack competitor",
+     "target": "Visualase footprint",
+     "objective": "Convert a Visualase-trained surgeon using a live in-territory reference.",
+     "tactics": [
+      "Leverage a Visualase\u2192NeuroBlate convert nearby as social proof",
+      "Contrast real-time thermal monitoring & larger single-trajectory ablation volume",
+      "Trial-in-value-analysis motion where a system is already under review"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Rafael A Vega",
+     "npi": "1962795336",
+     "grade": "A",
+     "score": 88,
+     "identity": "Neurosurgeon-scientist, Director of Neurosurgical Oncology/Brain Tumor Center at BIDMC and Assistant Professor of Neurosurgery at Harvard; MD Anderson-trained, tumor-focused (GBM/meningioma) with hands-on LITT practice.",
+     "facility": "Beth Israel Deaconess Medical Center",
+     "archetype": "Neuro-oncology ablation \u2014 Brain metastases, Radiation necrosis, Glioma / HGG",
+     "themes": [
+      "Surgical neuro-oncology (GBM, meningioma)",
+      "LITT (brain and spine)",
+      "Spinal LITT for metastatic epidural cord compression",
+      "Brain metastases and radiation necrosis ablation"
+     ],
+     "rationale": "Directly researches and practices LITT across both target domains: co-author of the landmark MD Anderson spinal LITT series (120 cases) and follow-on spinal LITT + radiotherapy work, plus awake laser ablation of eloquent-area tumors and brain-metastasis LITT volume-threshold analysis. Tumor/GBM-focused NeuroBlate user with a laser-ablation publication record and named MD Anderson LITT KOL co-authors (Tatsui, Rao). No epilepsy/SEEG signal, but neuro-oncologic ablation footprint is strong and clearly growable.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1962795336",
+     "scholar_url": "https://scholar.google.com/citations?user=QCpnPVwAAAAJ&hl=en",
+     "profile_url": "https://research.bidmc.org/rafael-vega/about",
+     "papers": [
+      {
+       "title": "Spinal laser interstitial thermal therapy: single-center experience in the first 120 cases",
+       "year": 2020,
+       "area": "Spinal LITT for metastatic epidural spinal cord compression",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Spinal+laser+interstitial+thermal+therapy%3A+single-center+experience+in+the+first+120+cases"
+      },
+      {
+       "title": "Awake Laser Ablation for Patients With Tumors in Eloquent Brain Areas",
+       "year": 2021,
+       "area": "LITT ablation of eloquent-area brain tumors",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Awake+Laser+Ablation+for+Patients+With+Tumors+in+Eloquent+Brain+Areas"
+      },
+      {
+       "title": "Post-ablation volume threshold for brain metastasis control using LITT: a systematic review",
+       "year": 2025,
+       "area": "Brain metastasis LITT outcomes",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Post-ablation+volume+threshold+for+brain+metastasis+control+using+LITT%3A+a+systematic+review"
+      },
+      {
+       "title": "Post-ablation volume threshold for brain metastasis control using LITT: a systematic review",
+       "year": 2025,
+       "area": "LITT brain metastasis, local control",
+       "journal": "J Neurooncol",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Post-ablation+volume+threshold+for+brain+metastasis+control+using+LITT%3A+a+systematic+review"
+      },
+      {
+       "title": "LITT for high-grade glioma: a systematic review, meta-analysis, and meta-regression",
+       "year": 2025,
+       "area": "LITT high-grade glioma (authorship to verify)",
+       "journal": "Neurosurg Focus",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LITT+for+high-grade+glioma%3A+a+systematic+review%2C+meta-analysis%2C+and+meta-regression"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 5,
+   "name": "Nemours Children's (DE)",
+   "acronym": "NEM",
+   "system": "Nemours Children's Health",
+   "class": "Installing",
+   "posture": "Onboard, new (closed)",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "High",
+   "situation": "New NeuroBlate account, just closed, extending south into Delaware pediatrics. Catherine Wassef (Colorado-trained pediatric neurosurgeon, epilepsy + MIS focus) is the champion. Lily Tran leaving for Yale.",
+   "header": {
+    "account_type": "Installing",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 5,
+    "crani_over_50": false,
+    "crani_volume": 7,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 59,
+    "grade": "B-",
+    "subs": {
+     "Trajectory": 20,
+     "Reservoir capture": 8,
+     "Surgeon depth": 4,
+     "Competitive position": 20,
+     "Value capture": 7
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026_ytd": 0,
+     "2026_proj": 0
+    },
+    "probes_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026": 0
+    },
+    "probes_total": 0,
+    "cases_logged": 0,
+    "probes_per_case": null,
+    "rev_per_case": null,
+    "region_avg_case": 18300,
+    "rev_vs_region": null,
+    "trend": "New",
+    "business_potential_yr": 91635,
+    "incremental_cases": 5,
+    "sku_mix": {}
+   },
+   "reservoirs": [],
+   "universe": {
+    "performers": [
+     {
+      "name": "Catherine Wassef",
+      "cases": 0,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [],
+    "naive_targets": [
+     {
+      "name": "Joseph Piatt",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Lily H Tran",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 322
+     },
+     {
+      "name": "Andrew I Mower",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 146
+     },
+     {
+      "name": "Stephen J Falchek",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 127
+     },
+     {
+      "name": "Joseph H Piatt",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 115
+     },
+     {
+      "name": "Rosalie T Recto",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 101
+     },
+     {
+      "name": "Joanna Costa",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 91
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (5 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [],
+    "opportunities": [],
+    "threats": []
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Joseph Piatt",
+     "objective": "Convert Joseph Piatt from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": []
+  },
+  {
+   "rank": 6,
+   "name": "University of Vermont",
+   "acronym": "UVM",
+   "system": "University of Vermont Health",
+   "class": "Pipeline",
+   "posture": "Close, in progress",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "High",
+   "situation": "Active opportunity, northern New England anchor. Penar is senior neurosurgeon, Liebelt newer faculty; no LITT there yet. Landing capital and confirming a committed first user.",
+   "header": {
+    "account_type": "Pipeline",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 1,
+    "crani_over_50": false,
+    "crani_volume": 1,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 59,
+    "grade": "B-",
+    "subs": {
+     "Trajectory": 20,
+     "Reservoir capture": 8,
+     "Surgeon depth": 4,
+     "Competitive position": 20,
+     "Value capture": 7
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026_ytd": 0,
+     "2026_proj": 0
+    },
+    "probes_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026": 0
+    },
+    "probes_total": 0,
+    "cases_logged": 0,
+    "probes_per_case": null,
+    "rev_per_case": null,
+    "region_avg_case": 18300,
+    "rev_vs_region": null,
+    "trend": "New",
+    "business_potential_yr": 73308,
+    "incremental_cases": 4,
+    "sku_mix": {}
+   },
+   "reservoirs": [],
+   "universe": {
+    "performers": [
+     {
+      "name": "Paul Penar",
+      "cases": 0,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Brandon Liebelt",
+      "cases": 0,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Brandon D Liebelt"
+    ],
+    "naive_targets": [
+     {
+      "name": "Paul L Penar",
+      "npi": "1790705465",
+      "cohort": "LITT \u2014 Our Equipment (NeuroBlate)",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Brandon D Liebelt",
+      "npi": "1477872398",
+      "cohort": "LITT \u2014 Our Equipment (NeuroBlate)",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Glioma / HGG",
+      "kol": true
+     },
+     {
+      "name": "Katrina A Ducis",
+      "npi": "1629367354",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Souzana Obretenova",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 35
+     },
+     {
+      "name": "James T Boyd",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 4
+     },
+     {
+      "name": "Oluwatosin Akintola",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 1
+     },
+     {
+      "name": "Brandon D Liebelt",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 62
+     },
+     {
+      "name": "Daniel Caloras",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 28
+     },
+     {
+      "name": "Alissa A Thomas",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 21
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (1 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [],
+    "opportunities": [],
+    "threats": [
+     "Competitive KOL activity around Brandon D Liebelt \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Paul L Penar",
+     "objective": "Convert Paul L Penar from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Brandon D Liebelt",
+     "npi": "1477872398",
+     "grade": "B",
+     "score": 66,
+     "identity": "Neurosurgeon at University of Vermont Medical Center / Larner COM (Burlington VT); Barrow-trained; neurosurgical oncology (brain tumors, pituitary/skull base, immunotherapy).",
+     "facility": "University Of Vermont Medical Center",
+     "archetype": "Neuro-oncology ablation \u2014 Glioma / HGG",
+     "themes": [
+      "neurosurgical oncology",
+      "glioma / glioblastoma",
+      "brain tumor immunotherapy",
+      "pituitary / skull base surgery"
+     ],
+     "rationale": "No direct LITT/ablation or MR-thermometry work found, but strong LITT-convertible neuro-oncology signal: glioma stem-cell review, GBM case reports, and brain-tumor immunotherapy/glioma among core interests. Treats brain tumors at UVM (a new NeuroBlate account) and trained at Barrow alongside LITT KOLs (Nakaji co-authorship confirmed; Kris Smith, Nader Sanai co-institutional). Glioma + neuro-onc focus makes him a plausible LITT adopter.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1477872398",
+     "scholar_url": "",
+     "profile_url": "https://www.uvmhealth.org/medcenter/provider/brandon-d-liebelt-md",
+     "papers": [
+      {
+       "title": "Glioma Stem Cells: Signaling, Microenvironment, and Therapy",
+       "year": 2016,
+       "area": "glioma / GBM stem cell biology",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Glioma+Stem+Cells%3A+Signaling%2C+Microenvironment%2C+and+Therapy"
+      },
+      {
+       "title": "Collision tumors: glioblastoma multiforme and coexistent intraventricular subependymoma",
+       "year": 2016,
+       "area": "glioma / GBM",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Collision+tumors%3A+glioblastoma+multiforme+and+coexistent+intraventricular+subependymoma"
+      },
+      {
+       "title": "Risks and Benefits of Repeated Resection for Glioblastoma: A Single Institution Review",
+       "year": 2023,
+       "area": "Glioblastoma / glioma surgical management",
+       "journal": "World Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Risks+and+Benefits+of+Repeated+Resection+for+Glioblastoma%3A+A+Single+Institution+Review"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 7,
+   "name": "Mount Sinai",
+   "acronym": "MSSM",
+   "system": "Mount Sinai Health System",
+   "class": "Competitive",
+   "posture": "Verify \u2014 then convert",
+   "platform": [
+    "ClearPoint"
+   ],
+   "win": "Medium",
+   "situation": "Two real laser surgeons: Fedor Panov (8 LITT, 104 intractable-epilepsy patients) and Saadi Ghatan (4, chair-level). Largest untapped epilepsy pool in the plan, opened through Panov and LAANTERN. Monteris revenue on the books with zero logged cases \u2014 verify what is running.",
+   "header": {
+    "account_type": "Competitive",
+    "does_litt": true,
+    "our_system": "\u2014",
+    "competitor_system": "ClearPoint",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 180,
+    "crani_over_50": true,
+    "crani_volume": 294,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 44,
+    "grade": "C",
+    "subs": {
+     "Trajectory": 8,
+     "Reservoir capture": 8,
+     "Surgeon depth": 16,
+     "Competitive position": 5,
+     "Value capture": 7
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 30830,
+     "2025": 0,
+     "2026_ytd": 0,
+     "2026_proj": 0
+    },
+    "probes_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026": 0
+    },
+    "probes_total": 0,
+    "cases_logged": 0,
+    "probes_per_case": null,
+    "rev_per_case": null,
+    "region_avg_case": 18300,
+    "rev_vs_region": null,
+    "trend": "Competitive",
+    "business_potential_yr": 91635,
+    "incremental_cases": 5,
+    "sku_mix": {
+     "accessory": 30830
+    }
+   },
+   "reservoirs": [],
+   "universe": {
+    "performers": [
+     {
+      "name": "Fedor Panov",
+      "cases": 8,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Saadi Ghatan",
+      "cases": 4,
+      "kol": true,
+      "npi": "1285791905",
+      "specialty": "Neurological Surgery",
+      "seeg": 89,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, Corpus callosotomy, PVNH / heterotopia"
+     }
+    ],
+    "kols": [
+     "Raj K Shrivastava",
+     "Saadi Ghatan",
+     "Theodore H Schwartz"
+    ],
+    "naive_targets": [
+     {
+      "name": "Raj K Shrivastava",
+      "npi": "1184609240",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 43,
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Brain metastases",
+      "kol": true
+     },
+     {
+      "name": "Theodore H Schwartz",
+      "npi": "1811916455",
+      "cohort": "LITT \u2014 Our Equipment (NeuroBlate)",
+      "epi_cranio": 21,
+      "tumor_cranio": 0,
+      "seeg": 2,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, Glioma / HGG, PVNH / heterotopia",
+      "kol": true
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Gena R Ghearing",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 441
+     },
+     {
+      "name": "Maite D Talbott",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 312
+     },
+     {
+      "name": "Kyusang S Lee",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 188
+     },
+     {
+      "name": "John W Liang",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 84
+     },
+     {
+      "name": "Joshua B Bederson",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 58
+     },
+     {
+      "name": "Raj K Shrivastava",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 49
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (180 claims) \u2014 SEEG-localized foci convert directly to ablation targets.",
+     "High craniotomy volume (294+ tumor+epilepsy cranis) \u2014 large in-house conversion pool."
+    ],
+    "weaknesses": [
+     "Competitive laser in-house (ClearPoint) \u2014 split platform, capital-standardization risk."
+    ],
+    "opportunities": [],
+    "threats": [
+     "ClearPoint entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
+     "Competitive KOL activity around Saadi Ghatan \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Raj K Shrivastava",
+     "objective": "Convert Raj K Shrivastava from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    },
+    {
+     "type": "Crack competitor",
+     "target": "ClearPoint footprint",
+     "objective": "Displace or coexist by exploiting ClearPoint's ablation-size ceiling.",
+     "tactics": [
+      "Exploit: ClearPoint is workflow-limited on larger tumor / RN ablations \u2014 position NeuroBlate for the tumor & radiation-necrosis book",
+      "Quantify the mets/RN reservoir they cannot serve well and bring the LITT+SRT and steroid-reduction evidence",
+      "Target tumor & rad-onc referrers, not just the implanting surgeon"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Raj K Shrivastava",
+     "npi": "1184609240",
+     "grade": "B",
+     "score": 60,
+     "identity": "Professor & Vice Chair of Neurosurgery, Icahn School of Medicine at Mount Sinai; Director of the Skull Base Tumor Program, NY.",
+     "facility": "Mount Sinai Urology Associates",
+     "archetype": "Neuro-oncology ablation \u2014 Brain metastases",
+     "themes": [
+      "skull base tumors",
+      "meningioma",
+      "pituitary adenoma / endoscopic endonasal surgery",
+      "vestibular schwannoma"
+     ],
+     "rationale": "Skull base / neuro-oncology surgeon who routinely uses stereotactic navigation and has published on stereotactic radiosurgery for melanoma brain metastases (incl. SRS + immune checkpoint therapy) \u2014 convertible neuro-onc/stereotactic profile. No direct LITT, MR thermometry, SEEG, or ablation identified; primary focus is meningioma/pituitary/skull base resection. Departmental adjacency to Mount Sinai LITT/SEEG epilepsy KOLs (Ghatan, Panov) and confirmed co-authorship with chair Bederson.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1184609240",
+     "scholar_url": "https://scholar.google.com/citations?user=OLBvCZ0AAAAJ&hl=en",
+     "profile_url": "https://profiles.mountsinai.org/raj-shrivastava",
+     "papers": [
+      {
+       "title": "Stereotactic Radiosurgery for Melanoma Brain Metastases: A Comprehensive Clinical Case Series",
+       "year": 2017,
+       "area": "brain metastases / stereotactic radiosurgery",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Stereotactic+Radiosurgery+for+Melanoma+Brain+Metastases%3A+A+Comprehensive+Clinical+Case+Series"
+      },
+      {
+       "title": "Volume of Disease as a Predictor for Outcomes in Melanoma Brain Metastases Treated With SRS and Immune Checkpoint Therapy",
+       "year": 2022,
+       "area": "brain mets / SRS + immunotherapy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Volume+of+Disease+as+a+Predictor+for+Outcomes+in+Melanoma+Brain+Metastases+Treated+With+SRS+and+Immune+Checkpoint+Therapy"
+      },
+      {
+       "title": "NF2 mutations associated with resistance to radiation therapy for recurrent meningiomas",
+       "year": 2023,
+       "area": "meningioma genomics / radiation response",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=NF2+mutations+associated+with+resistance+to+radiation+therapy+for+recurrent+meningiomas"
+      }
+     ]
+    },
+    {
+     "physician": "Saadi Ghatan",
+     "npi": "1285791905",
+     "grade": "A",
+     "score": 80,
+     "identity": "Chair/Site Chair of Neurosurgery (Mount Sinai West/Morningside) and Director of Pediatric Neurosurgery, Mount Sinai Health System; epilepsy and pediatric neurosurgeon specializing in SEEG-guided epilepsy surgery and neuromodulation.",
+     "facility": "Mount Sinai West",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, Corpus callosotomy, PVNH / heterotopia",
+     "themes": [
+      "Drug-resistant epilepsy surgery",
+      "SEEG / intracranial EEG localization",
+      "SEEG-guided LITT (laser ablation) for MTLE and focal epilepsy",
+      "Responsive neurostimulation (RNS) of thalamus/neocortex"
+     ],
+     "rationale": "Chair-level epilepsy surgeon who performs SEEG-guided LITT for mesial temporal and focal epilepsy and co-publishes with LITT KOL Fedor Panov. Research core is SEEG localization and RNS/DBS neuromodulation rather than high-volume LITT authorship, but SEEG-guided epilepsy ablation plus stereotactic/functional focus and an existing (~4-case) LITT program place him solidly in grade A as a strong conversion target.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1285791905",
+     "scholar_url": "",
+     "profile_url": "https://profiles.mountsinai.org/saadi-ghatan",
+     "papers": [
+      {
+       "title": "Responsive Neurostimulation of the Thalamus for the Treatment of Refractory Epilepsy",
+       "year": 2022,
+       "area": "Thalamic RNS neuromodulation for drug-resistant epilepsy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Responsive+Neurostimulation+of+the+Thalamus+for+the+Treatment+of+Refractory+Epilepsy"
+      },
+      {
+       "title": "Robotic surgical rehearsal on patient-specific 3D-printed skull models for SEEG",
+       "year": 2018,
+       "area": "Stereotactic/robotic SEEG technique",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Robotic+surgical+rehearsal+on+patient-specific+3D-printed+skull+models+for+SEEG"
+      },
+      {
+       "title": "Treatment of medically refractory seizures with responsive neurostimulation in pediatric patients",
+       "year": 2018,
+       "area": "Pediatric RNS for refractory epilepsy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Treatment+of+medically+refractory+seizures+with+responsive+neurostimulation+in+pediatric+patients"
+      },
+      {
+       "title": "Multicenter retrospective study of sEEG-guided responsive neurostimulation for neocortical epilepsy",
+       "year": 2024,
+       "area": "SEEG-guided RNS",
+       "journal": "",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Multicenter+retrospective+study+of+sEEG-guided+responsive+neurostimulation+for+neocortical+epilepsy"
+      },
+      {
+       "title": "Language mapping with ECoG versus SEEG electrodes",
+       "year": 2024,
+       "area": "SEEG language mapping / epilepsy localization",
+       "journal": "",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Language+mapping+with+ECoG+versus+SEEG+electrodes"
+      }
+     ]
+    },
+    {
+     "physician": "Theodore H Schwartz",
+     "npi": "1811916455",
+     "grade": "A",
+     "score": 92,
+     "identity": "Neurosurgeon, Professor of Neurosurgery/Otolaryngology/Neuroscience at Weill Cornell Medicine / NewYork-Presbyterian; directs epilepsy, skull base/pituitary and surgical neuro-oncology; runs a basic-science epilepsy lab.",
+     "facility": "The Mount Sinai Hospital",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, Glioma / HGG, PVNH / heterotopia",
+     "themes": [
+      "Epilepsy surgery (SEEG-guided)",
+      "Laser interstitial thermal therapy (LITT) program",
+      "Mesial temporal lobe epilepsy ablation",
+      "Neurovascular coupling / optical imaging of seizures"
+     ],
+     "rationale": "Directs the Weill Cornell Laser Surgery Program delivering MRI-guided LITT for epilepsy and brain tumors, and is an author on LITT-for-MTLE clinical work. Strong SEEG-guided epilepsy surgery practice and glioma surgery add direct and convertible LITT signals. High-volume academic KOL; limited direct signal in brain mets/radiation necrosis keeps score below ceiling.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1811916455",
+     "scholar_url": "https://scholar.google.com/citations?user=P_QS1H0AAAAJ&hl=en",
+     "profile_url": "https://neurosurgery.weillcornell.org/node/1735",
+     "papers": [
+      {
+       "title": "Laser Interstitial Thermal Therapy for Mesial Temporal Lobe Epilepsy",
+       "year": 2016,
+       "area": "LITT for MTLE",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser+Interstitial+Thermal+Therapy+for+Mesial+Temporal+Lobe+Epilepsy"
+      },
+      {
+       "title": "Automated trajectory planning for LITT in mesial temporal lobe epilepsy",
+       "year": 2018,
+       "area": "LITT planning",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Automated+trajectory+planning+for+LITT+in+mesial+temporal+lobe+epilepsy"
+      },
+      {
+       "title": "Safety and efficacy of SEEG in pediatric focal epilepsy: single-center experience",
+       "year": 2018,
+       "area": "SEEG epilepsy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Safety+and+efficacy+of+SEEG+in+pediatric+focal+epilepsy%3A+single-center+experience"
+      },
+      {
+       "title": "Dynamic Neurovascular Coupling during Ictal Onset via In Vivo Optical Imaging",
+       "year": 2013,
+       "area": "optical imaging of epilepsy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Dynamic+Neurovascular+Coupling+during+Ictal+Onset+via+In+Vivo+Optical+Imaging"
+      },
+      {
+       "title": "Endoscopic Epilepsy Surgery: Systematic Review and Meta-Analysis",
+       "year": 2025,
+       "area": "epilepsy surgery outcomes",
+       "journal": "Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Endoscopic+Epilepsy+Surgery%3A+Systematic+Review+and+Meta-Analysis"
+      },
+      {
+       "title": "Circumscribing Laser Cuts Attenuate Seizure Propagation in a Mouse Model of Focal Epilepsy",
+       "year": 2024,
+       "area": "laser therapy for epilepsy focus",
+       "journal": "Advanced Science",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Circumscribing+Laser+Cuts+Attenuate+Seizure+Propagation+in+a+Mouse+Model+of+Focal+Epilepsy"
+      },
+      {
+       "title": "Lateral Transorbital Endoscope-Assisted Resection of Anterior Temporal Lobe Neoplasm: 2-Dimensional Operative Video",
+       "year": 2024,
+       "area": "skull base / brain tumor",
+       "journal": "Operative Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Lateral+Transorbital+Endoscope-Assisted+Resection+of+Anterior+Temporal+Lobe+Neoplasm%3A+2-Dimensional+Operative+Video"
+      },
+      {
+       "title": "Superior eyelid transorbital approaches: a modular classification system",
+       "year": 2024,
+       "area": "skull base surgery",
+       "journal": "Journal of Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Superior+eyelid+transorbital+approaches%3A+a+modular+classification+system"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 8,
+   "name": "Westchester Medical Center",
+   "acronym": "WMC",
+   "system": "WMC Health",
+   "class": "Installed",
+   "posture": "Defend + grow",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "High",
+   "situation": "Growing across Muh, Hanft and Sukul. Hanft came out of the Danish Visualase school and now runs NeuroBlate \u2014 a live conversion reference for nearby Visualase-trained surgeons. Steven Wolf drives epilepsy referrals.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 3,
+    "crani_over_50": false,
+    "crani_volume": 6,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 100,
+    "grade": "A",
+    "subs": {
+     "Trajectory": 25,
+     "Reservoir capture": 20,
+     "Surgeon depth": 20,
+     "Competitive position": 20,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 269000,
+     "2025": 133000,
+     "2026_ytd": 245000,
+     "2026_proj": 329000
+    },
+    "probes_by_year": {
+     "2024": 5,
+     "2025": 18,
+     "2026": 5
+    },
+    "probes_total": 28,
+    "cases_logged": 29,
+    "probes_per_case": 0.97,
+    "rev_per_case": 22310,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.22,
+    "trend": "Up",
+    "business_potential_yr": 84160,
+    "incremental_cases": 5,
+    "sku_mix": {
+     "laser_probe": 304202,
+     "driver": 100871,
+     "bolt": 69937,
+     "capital": 32684,
+     "accessory": 3090
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 5,
+     "pool": 96
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 0,
+     "pool": 9
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 61,
+     "pool": 1212
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 0,
+     "pool": 1
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Carrie Rebecca Muh",
+      "cases": 11,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Simon Hanft",
+      "cases": 11,
+      "kol": true,
+      "npi": "1679732960",
+      "specialty": "Neurological Surgery",
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Radiation necrosis, Brain metastases, Glioma / HGG"
+     },
+     {
+      "name": "Vishad Sukul",
+      "cases": 6,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Jared Pisapia",
+      "cases": 1,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Simon Hanft"
+    ],
+    "naive_targets": [
+     {
+      "name": "Rachana Tyagi",
+      "npi": "1437378080",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Avinash L Mohan",
+      "npi": "1134258486",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Michael E Tobias",
+      "npi": "1528234788",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Steven Wolf",
+      "indication": "Epilepsy",
+      "cases": 8,
+      "pool": null
+     },
+     {
+      "name": "Tracey Milligan",
+      "indication": "Epilepsy",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "Tatyana Gitlevich",
+      "indication": "Epilepsy/Primary",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Michael Tobias",
+      "indication": "Epilepsy",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Steven Wolf",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 716
+     },
+     {
+      "name": "Simon Hanft",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 12
+     },
+     {
+      "name": "Charles Fleischner",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 10
+     },
+     {
+      "name": "Carrie R Muh",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 7
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (3 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [],
+    "opportunities": [
+     "Intractable epilepsy: ~61 addressable of 1212 pool \u2014 under-penetrated."
+    ],
+    "threats": []
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Rachana Tyagi",
+     "objective": "Convert Rachana Tyagi from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Simon Hanft",
+     "npi": "1679732960",
+     "grade": "A",
+     "score": 93,
+     "identity": "Chief of Neurosurgical Oncology, Westchester Medical Center (WMCHealth), Valhalla NY; brain-tumor neurosurgeon trained in the Shabbar Danish/Visualase LITT school at Rutgers/RWJMS.",
+     "facility": "Westchester Medical Center",
+     "archetype": "Neuro-oncology ablation \u2014 Radiation necrosis, Brain metastases, Glioma / HGG",
+     "themes": [
+      "Laser interstitial thermal therapy (LITT)",
+      "Neurosurgical oncology / brain tumors",
+      "Glioma & glioblastoma",
+      "Brain metastases"
+     ],
+     "rationale": "Direct, repeated LITT authorship spanning the full ablation portfolio: co-authored foundational LITT reviews and technical papers with LITT KOL Shabbar Danish (Rutgers/Visualase school), covering glial tumors, metastatic lesions, radiation necrosis, and robot-assisted stereotactic laser ablation for intractable epilepsy. Now Chief of Neurosurgical Oncology at WMC running an active ablation practice \u2014 a live Visualase-to-NeuroBlate conversion reference.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1679732960",
+     "scholar_url": "https://scholar.google.com/citations?user=mEGcbLYAAAAJ&hl=en",
+     "profile_url": "https://www.wmchealth.org/physician-locator/simon-hanft-1679732960",
+     "papers": [
+      {
+       "title": "Laser-Induced Thermal Therapy in Neuro-Oncology: A Review",
+       "year": 2018,
+       "area": "LITT for glioma, metastases, radiation necrosis",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser-Induced+Thermal+Therapy+in+Neuro-Oncology%3A+A+Review"
+      },
+      {
+       "title": "Laser Interstitial Thermal Therapy: Lighting the Way to a New Treatment Option in Neurosurgery",
+       "year": 2016,
+       "area": "LITT technique/indications review",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser+Interstitial+Thermal+Therapy%3A+Lighting+the+Way+to+a+New+Treatment+Option+in+Neurosurgery"
+      },
+      {
+       "title": "Robot-assisted stereotactic laser ablation in medically intractable epilepsy",
+       "year": 2018,
+       "area": "Stereotactic laser ablation for epilepsy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Robot-assisted+stereotactic+laser+ablation+in+medically+intractable+epilepsy"
+      },
+      {
+       "title": "The LITT Fit in neuro-oncology: indications, imaging, and adjunctive therapies",
+       "year": 2024,
+       "area": "LITT neuro-oncology review (gliomas, brain metastases, radiation necrosis)",
+       "journal": "Journal of Neuro-Oncology",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=The+LITT+Fit+in+neuro-oncology%3A+indications%2C+imaging%2C+and+adjunctive+therapies"
+      },
+      {
+       "title": "Laser interstitial thermal therapy for new and recurrent meningioma: a prospective and retrospective case series",
+       "year": 2024,
+       "area": "LITT for meningioma",
+       "journal": "Journal of Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser+interstitial+thermal+therapy+for+new+and+recurrent+meningioma%3A+a+prospective+and+retrospective+case+series"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 9,
+   "name": "Boston Children's",
+   "acronym": "BCH",
+   "system": "Mass General Brigham",
+   "class": "Competitive",
+   "posture": "Verify, then pursue",
+   "platform": [
+    "Unverified \u2014 confirm in field"
+   ],
+   "win": "Long-horizon",
+   "situation": "Highest LITT volume anywhere in the territory (85 cases / 3 yr, ~28/yr, ~$518K none of it ours). Scellig Stone runs the program (66 cases). Platform unknown \u2014 effort here is blind until confirmed. NeuroBlate reportedly once installed; switched over Monteris personnel changes, not technology.",
+   "header": {
+    "account_type": "Competitive",
+    "does_litt": false,
+    "our_system": "\u2014",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 134,
+    "crani_over_50": true,
+    "crani_volume": 311,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 48,
+    "grade": "C",
+    "subs": {
+     "Trajectory": 8,
+     "Reservoir capture": 8,
+     "Surgeon depth": 20,
+     "Competitive position": 5,
+     "Value capture": 7
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026_ytd": 0,
+     "2026_proj": 0
+    },
+    "probes_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026": 0
+    },
+    "probes_total": 0,
+    "cases_logged": 0,
+    "probes_per_case": null,
+    "rev_per_case": null,
+    "region_avg_case": 18300,
+    "rev_vs_region": null,
+    "trend": "Competitive",
+    "business_potential_yr": 0,
+    "incremental_cases": 0,
+    "sku_mix": {}
+   },
+   "reservoirs": [],
+   "universe": {
+    "performers": [
+     {
+      "name": "Scellig S Stone",
+      "cases": 66,
+      "kol": true,
+      "npi": "1003252362",
+      "specialty": "Neurological Surgery",
+      "seeg": 84,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, Hypothalamic hamartoma, PVNH / heterotopia"
+     },
+     {
+      "name": "Joshua P Aronson",
+      "cases": 12,
+      "kol": true,
+      "npi": "1093970949",
+      "specialty": "Neurological Surgery",
+      "seeg": 18,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia"
+     },
+     {
+      "name": "Shiva L Kashanipour",
+      "cases": 7,
+      "kol": false,
+      "npi": "1689871600",
+      "specialty": "Physician Assistant",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Joshua P Aronson",
+     "Omar Arnaout",
+     "Scellig S Stone"
+    ],
+    "naive_targets": [
+     {
+      "name": "Omar Arnaout",
+      "npi": "1528379641",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG",
+      "kol": true
+     },
+     {
+      "name": "Timothy R Smith",
+      "npi": "1356674386",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "William T Curry",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Masanori Takeoka",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 1163
+     },
+     {
+      "name": "Steven Wolf",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 716
+     },
+     {
+      "name": "Jurriaan M Peters",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 565
+     },
+     {
+      "name": "Itai M Pashtan",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 58
+     },
+     {
+      "name": "Omar Arnaout",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 66
+     },
+     {
+      "name": "Wenya L Bi",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 63
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (134 claims) \u2014 SEEG-localized foci convert directly to ablation targets.",
+     "High craniotomy volume (311+ tumor+epilepsy cranis) \u2014 large in-house conversion pool."
+    ],
+    "weaknesses": [],
+    "opportunities": [],
+    "threats": [
+     "Competitive KOL activity around Scellig S Stone \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Omar Arnaout",
+     "objective": "Convert Omar Arnaout from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Joshua P Aronson",
+     "npi": "1093970949",
+     "grade": "A",
+     "score": 92,
+     "identity": "Director of Epilepsy Surgery & functional neurosurgeon, Beth Israel Deaconess Medical Center / Harvard Medical School, Boston MA (formerly Dartmouth-Hitchcock); MGH functional neurosurgery fellowship.",
+     "facility": "Beth Israel Deaconess Medical Center",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Focal cortical dysplasia",
+     "themes": [
+      "Laser ablation (LITT) for mesial temporal lobe epilepsy",
+      "Stereotactic laser amygdalohippocampectomy trajectory planning",
+      "SEEG / depth-electrode epilepsy localization",
+      "Responsive neurostimulation (RNS)"
+     ],
+     "rationale": "Direct, first-line LITT operator and author. Corresponding author on 'Laser ablation for mesial temporal lobe epilepsy: surgical and cognitive outcomes' (Epilepsia 2018) quantifying MTL-LITT ablation volumes vs outcomes; co-author on 'Multicenter validation of automated trajectories for selective laser amygdalohippocampectomy' (Epilepsia 2019). Clinically offers MRI-guided laser ablation for epilepsy and brain tumors. Deep SEEG/RNS/DBS functional-epilepsy portfolio.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1093970949",
+     "scholar_url": "",
+     "profile_url": "https://research.bidmc.org/joshua-aronson/publications",
+     "papers": [
+      {
+       "title": "Laser ablation for mesial temporal lobe epilepsy: surgical and cognitive outcomes with and without mesial temporal sclerosis",
+       "year": 2018,
+       "area": "MTLE LITT outcomes / ablation volumetrics",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser+ablation+for+mesial+temporal+lobe+epilepsy%3A+surgical+and+cognitive+outcomes+with+and+without+mesial+temporal+sclerosis"
+      },
+      {
+       "title": "Multicenter validation of automated trajectories for selective laser amygdalohippocampectomy",
+       "year": 2019,
+       "area": "LITT trajectory planning (multicenter)",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Multicenter+validation+of+automated+trajectories+for+selective+laser+amygdalohippocampectomy"
+      },
+      {
+       "title": "sEEG-guided responsive neurostimulation to treat neocortical epilepsy: a multicenter retrospective study",
+       "year": 2026,
+       "area": "SEEG-guided RNS neuromodulation",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sEEG-guided+responsive+neurostimulation+to+treat+neocortical+epilepsy%3A+a+multicenter+retrospective+study"
+      },
+      {
+       "title": "sEEG-guided responsive neurostimulation to treat neocortical epilepsy: a multicenter retrospective study of the efficacy and safety of depth electrode-mediated neuromodulation",
+       "year": 2026,
+       "area": "SEEG-guided RNS / neuromodulation for neocortical epilepsy",
+       "journal": "Epilepsia Open",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sEEG-guided+responsive+neurostimulation+to+treat+neocortical+epilepsy%3A+a+multicenter+retrospective+study+of+the+efficacy+and+safety+of+depth+electrode-mediated+neuromodulation"
+      },
+      {
+       "title": "Stereoelectroencephalography-guided radiofrequency thermocoagulation: diagnostic and therapeutic implications",
+       "year": 2024,
+       "area": "SEEG-guided radiofrequency thermocoagulation for drug-resistant epilepsy",
+       "journal": "Brain Sciences",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Stereoelectroencephalography-guided+radiofrequency+thermocoagulation%3A+diagnostic+and+therapeutic+implications"
+      }
+     ]
+    },
+    {
+     "physician": "Omar Arnaout",
+     "npi": "1528379641",
+     "grade": "B",
+     "score": 73,
+     "identity": "Director of Clinical Neurosurgery, Brigham & Women's Hospital; Assoc. Prof. of Neurosurgery, Harvard; neuro-oncology / minimally invasive brain tumor surgery and AI/ML.",
+     "facility": "Brigham And Womens Hospital",
+     "archetype": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG",
+     "themes": [
+      "neurosurgical oncology (glioma, brain metastases)",
+      "minimally invasive keyhole craniotomy",
+      "endoscopic brain tumor surgery",
+      "skull base & meningioma surgery"
+     ],
+     "rationale": "No direct LITT/ablation publications, but strongly convertible: high-volume glioma and brain-metastasis surgeon focused on minimally invasive/keyhole and stereotactic techniques (incl. stereotactic brachytherapy for oligometastases) at BWH, a LITT-active center. Co-authors with LITT KOLs Golby, Chiocca, and Rolston. Prime LITT-adjacent target; lack of direct ablation/RN work caps below A.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1528379641",
+     "scholar_url": "",
+     "profile_url": "https://physiciandirectory.brighamandwomens.org/details/13474/omar-arnaout-neurosurgery-boston-milford",
+     "papers": [
+      {
+       "title": "Machine Learning and Neurosurgical Outcome Prediction: A Systematic Review",
+       "year": 2018,
+       "area": "AI/ML outcome prediction",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Machine+Learning+and+Neurosurgical+Outcome+Prediction%3A+A+Systematic+Review"
+      },
+      {
+       "title": "Minimally invasive keyhole craniotomy and stereotactic brachytherapy for new brain oligometastases",
+       "year": 2025,
+       "area": "minimally invasive + stereotactic, brain mets",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Minimally+invasive+keyhole+craniotomy+and+stereotactic+brachytherapy+for+new+brain+oligometastases"
+      },
+      {
+       "title": "Minimally invasive keyhole surgery for intracranial meningioma: a large case series",
+       "year": 2022,
+       "area": "minimally invasive tumor surgery",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Minimally+invasive+keyhole+surgery+for+intracranial+meningioma%3A+a+large+case+series"
+      },
+      {
+       "title": "Leveraging machine learning for preoperative prediction of supramaximal ablation in laser interstitial thermal therapy for brain tumors",
+       "year": 2024,
+       "area": "LITT / machine learning for brain tumors",
+       "journal": "Neurosurgical Focus",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Leveraging+machine+learning+for+preoperative+prediction+of+supramaximal+ablation+in+laser+interstitial+thermal+therapy+for+brain+tumors"
+      },
+      {
+       "title": "Intraoperative brain tumor classification via laser-induced fluorescence spectroscopy and machine learning",
+       "year": 2025,
+       "area": "Brain tumor laser diagnostics / glioma",
+       "journal": "Journal of Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Intraoperative+brain+tumor+classification+via+laser-induced+fluorescence+spectroscopy+and+machine+learning"
+      },
+      {
+       "title": "The Applications of Laser Interstitial Thermal Therapy and Machine Learning in Neurosurgery: A Systematic Review",
+       "year": 2023,
+       "area": "LITT systematic review",
+       "journal": "medRxiv (preprint)",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=The+Applications+of+Laser+Interstitial+Thermal+Therapy+and+Machine+Learning+in+Neurosurgery%3A+A+Systematic+Review"
+      }
+     ]
+    },
+    {
+     "physician": "Scellig S Stone",
+     "npi": "1003252362",
+     "grade": "A",
+     "score": 92,
+     "identity": "Scellig S.D. Stone MD PhD FRCSC \u2014 pediatric functional/epilepsy neurosurgeon, Co-Director Epilepsy Center & founding DBS/movement-disorders surgical director, Boston Children's Hospital / Harvard Medical School",
+     "facility": "Brigham And Womens Hospital",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, Hypothalamic hamartoma, PVNH / heterotopia",
+     "themes": [
+      "MR-guided laser interstitial thermal therapy (LITT) in children",
+      "SEEG / robot-assisted intracranial monitoring",
+      "Hypothalamic hamartoma epilepsy ablation",
+      "Drug-resistant epilepsy surgery & outcome prediction"
+     ],
+     "rationale": "Direct, high-volume LITT investigator: first-author/co-author on robot-assisted real-time MRI-guided LITT for pediatric hypothalamic hamartoma (JNS Peds 2022), machine-learning prediction of seizure outcome after MRgLITT in children (JNS Peds 2023), and LITT for pediatric MTLE and extratemporal epilepsy. Full SEEG-to-ablation procedural pipeline plus stereotactic/functional and DBS practice. Textbook A.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1003252362",
+     "scholar_url": "https://scholar.google.ca/citations?user=9HauEfkAAAAJ&hl=en",
+     "profile_url": "https://www.childrenshospital.org/directory/scellig-s-d-stone",
+     "papers": [
+      {
+       "title": "Robot-assisted, real-time, MRI-guided laser interstitial thermal therapy for pediatric patients with hypothalamic hamartoma",
+       "year": 2022,
+       "area": "LITT / hypothalamic hamartoma ablation",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Robot-assisted%2C+real-time%2C+MRI-guided+laser+interstitial+thermal+therapy+for+pediatric+patients+with+hypothalamic+hamartoma"
+      },
+      {
+       "title": "Machine learning models for predicting seizure outcome after MR-guided laser interstitial thermal therapy in children",
+       "year": 2023,
+       "area": "LITT outcome prediction",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Machine+learning+models+for+predicting+seizure+outcome+after+MR-guided+laser+interstitial+thermal+therapy+in+children"
+      },
+      {
+       "title": "Spike propagation mapping reveals effective connectivity and predicts surgical outcome in epilepsy (Brain)",
+       "year": 2023,
+       "area": "Epilepsy connectivity / surgical outcome",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Spike+propagation+mapping+reveals+effective+connectivity+and+predicts+surgical+outcome+in+epilepsy+%28Brain%29"
+      },
+      {
+       "title": "Deep brain stimulation for medically refractory status dystonicus",
+       "year": 2023,
+       "area": "DBS / movement disorders",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Deep+brain+stimulation+for+medically+refractory+status+dystonicus"
+      },
+      {
+       "title": "Machine learning models for predicting seizure outcome after MR-guided LITT in children",
+       "year": 2024,
+       "area": "pediatric LITT outcome prediction",
+       "journal": "J Neurosurg Pediatr",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Machine+learning+models+for+predicting+seizure+outcome+after+MR-guided+LITT+in+children"
+      },
+      {
+       "title": "Using MRg-LITT corpus callosotomy to lateralize a seizure focus for staged surgery",
+       "year": 2024,
+       "area": "LITT corpus callosotomy / focus lateralization",
+       "journal": "Explor Neurosci",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Using+MRg-LITT+corpus+callosotomy+to+lateralize+a+seizure+focus+for+staged+surgery"
+      },
+      {
+       "title": "Spikes on ripples are better interictal biomarkers of epilepsy than spikes or ripples",
+       "year": 2025,
+       "area": "epilepsy focus localization",
+       "journal": "Brain Commun",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Spikes+on+ripples+are+better+interictal+biomarkers+of+epilepsy+than+spikes+or+ripples"
+      },
+      {
+       "title": "Overlap of spike and ripple propagation onset predicts surgical outcome in epilepsy",
+       "year": 2024,
+       "area": "epilepsy focus localization / outcome",
+       "journal": "Ann Clin Transl Neurol",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Overlap+of+spike+and+ripple+propagation+onset+predicts+surgical+outcome+in+epilepsy"
+      },
+      {
+       "title": "Standardized Electrode Nomenclature for Stereoelectroencephalography Applications",
+       "year": 2024,
+       "area": "SEEG methodology",
+       "journal": "J Clin Neurophysiol",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Standardized+Electrode+Nomenclature+for+Stereoelectroencephalography+Applications"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 10,
+   "name": "NYU Langone",
+   "acronym": "NYU",
+   "system": "NYU Langone Health",
+   "class": "Installed",
+   "posture": "Grow",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "High",
+   "situation": "Growing across a four-surgeon base (Rozman, Dastagirzada, Placantonakis, Hidalgo). Diffuse momentum that must concentrate in one or two drivers.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 18,
+    "crani_over_50": false,
+    "crani_volume": 47,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 86,
+    "grade": "A",
+    "subs": {
+     "Trajectory": 25,
+     "Reservoir capture": 6,
+     "Surgeon depth": 20,
+     "Competitive position": 20,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 270000,
+     "2025": 60000,
+     "2026_ytd": 111000,
+     "2026_proj": 182000
+    },
+    "probes_by_year": {
+     "2024": 1,
+     "2025": 18,
+     "2026": 3
+    },
+    "probes_total": 22,
+    "cases_logged": 21,
+    "probes_per_case": 1.05,
+    "rev_per_case": 21000,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.15,
+    "trend": "Up",
+    "business_potential_yr": 70260,
+    "incremental_cases": 4,
+    "sku_mix": {
+     "laser_probe": 255461,
+     "driver": 60023,
+     "bolt": 53371,
+     "accessory": 1990
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 125,
+     "pool": 2503
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 26,
+     "pool": 519
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 64,
+     "pool": 1271
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 1,
+     "pool": 22
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Peter Rozman",
+      "cases": 8,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Yosef Dastagirzada",
+      "cases": 7,
+      "kol": true,
+      "npi": "1184159915",
+      "specialty": "Neurological Surgery",
+      "seeg": 1,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Glioma / HGG"
+     },
+     {
+      "name": "Dimitris Placantonakis",
+      "cases": 5,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Teresa Hidalgo",
+      "cases": 1,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "John G Golfinos",
+     "Yosef Dastagirzada"
+    ],
+    "naive_targets": [
+     {
+      "name": "John G Golfinos",
+      "npi": "1356355119",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 8,
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG, Lower-grade glioma",
+      "kol": true
+     },
+     {
+      "name": "Donato Pacione",
+      "npi": "1952594426",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Dennis London",
+      "npi": "1376078238",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 1,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Cigdem Akman",
+      "indication": "Epilepsy",
+      "cases": 5,
+      "pool": null
+     },
+     {
+      "name": "Amy Jongeling",
+      "indication": "Epilepsy",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Andrew Christiana",
+      "indication": "Epilepsy",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Marissa Barbaro",
+      "indication": "Primary",
+      "cases": 2,
+      "pool": null
+     },
+     {
+      "name": "Daniel J Luciano",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 396
+     },
+     {
+      "name": "Christopher J Elder",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 221
+     },
+     {
+      "name": "Daniel Friedman",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 205
+     },
+     {
+      "name": "Amy Palermo",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 91
+     },
+     {
+      "name": "Salman Azhar",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 90
+     },
+     {
+      "name": "Marissa A Barbaro",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 80
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (18 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [],
+    "opportunities": [
+     "Mets: ~125 addressable of 2503 pool \u2014 under-penetrated.",
+     "Intractable epilepsy: ~64 addressable of 1271 pool \u2014 under-penetrated."
+    ],
+    "threats": [
+     "Competitive KOL activity around John G Golfinos \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "John G Golfinos",
+     "objective": "Convert John G Golfinos from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "John G Golfinos",
+     "npi": "1356355119",
+     "grade": "B",
+     "score": 75,
+     "identity": "Chair & Neurosurgeon-in-Chief, Dept of Neurosurgery, NYU Langone; neurosurgical oncology, skull base, glioma, vestibular schwannoma, gamma knife radiosurgery.",
+     "facility": "Nyu Langone At Trinity",
+     "archetype": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG, Lower-grade glioma",
+     "themes": [
+      "neurosurgical oncology",
+      "glioma / glioblastoma",
+      "brain metastases",
+      "vestibular schwannoma & skull base"
+     ],
+     "rationale": "High-volume neuro-oncology surgeon and department chair treating exactly the LITT target population (glioma/GBM, brain metastases) with deep stereotactic-radiosurgery/gamma-knife experience; co-directs the NYU Brain & Spine Tumor Center where LITT is used. No direct LITT/thermal-ablation authorship found. Strongly convertible neuro-onc/stereotactic profile plus direct co-authorship ties to NYU LITT researcher Placantonakis \u2014 and as chair, an account-level decision-maker.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1356355119",
+     "scholar_url": "https://scholar.google.com/citations?user=XdNdxfQAAAAJ&hl=en",
+     "profile_url": "https://nyulangone.org/doctors/1356355119/john-g-golfinos",
+     "papers": [
+      {
+       "title": "Cell Surface Notch Ligand DLL3 Is a Therapeutic Target in IDH-Mutant Glioma",
+       "year": 2021,
+       "area": "IDH-mutant glioma molecular target",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Cell+Surface+Notch+Ligand+DLL3+Is+a+Therapeutic+Target+in+IDH-Mutant+Glioma"
+      },
+      {
+       "title": "Microsurgery vs stereotactic radiosurgery for small/medium vestibular schwannomas",
+       "year": 2016,
+       "area": "vestibular schwannoma / SRS",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Microsurgery+vs+stereotactic+radiosurgery+for+small%2Fmedium+vestibular+schwannomas"
+      },
+      {
+       "title": "Gamma Knife radiosurgery for recurrent malignant gliomas after resection",
+       "year": 2018,
+       "area": "recurrent glioma / radiosurgery",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Gamma+Knife+radiosurgery+for+recurrent+malignant+gliomas+after+resection"
+      }
+     ]
+    },
+    {
+     "physician": "Yosef Dastagirzada",
+     "npi": "1184159915",
+     "grade": "A",
+     "score": 89,
+     "identity": "Assistant Professor of Neurosurgery at NYU Langone / NYU Grossman School of Medicine; pediatric neurosurgeon (epilepsy, neuro-oncology, skull base) \u2014 NYU residency then Texas Children's pediatric fellowship.",
+     "facility": "Nyu Langone At Trinity",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, PVNH / heterotopia, Glioma / HGG",
+     "themes": [
+      "Pediatric epilepsy surgery",
+      "SEEG-guided seizure localization",
+      "Laser interstitial thermal therapy (LITT)",
+      "Tuberous sclerosis / SEGA"
+     ],
+     "rationale": "Direct hands-on LITT signal: co-authored SEEG-guided laser ablation work (intraventricular SEEG + laser ablation for infantile spasm; SEEG-identified onsets in inoperable epilepsy lesions) plus stereotactic laser ablation of SEGA in tuberous sclerosis. Trained at Texas Children's (Curry/Weiner pediatric LITT program), the leading pediatric MR-guided LITT center. Combines SEEG localization, ablation, and pediatric neuro-onc.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1184159915",
+     "scholar_url": "https://scholar.google.com/citations?user=XbIPXZUAAAAJ&hl=en",
+     "profile_url": "https://nyulangone.org/doctors/1184159915/yosef-m-dastagirzada",
+     "papers": [
+      {
+       "title": "sEEG-Identified Onsets in Traditionally Inoperable Epilepsy Lesions and Associated Surgical Outcomes",
+       "year": 2026,
+       "area": "SEEG-guided epilepsy surgery/ablation in TSC, heterotopia",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sEEG-Identified+Onsets+in+Traditionally+Inoperable+Epilepsy+Lesions+and+Associated+Surgical+Outcomes"
+      },
+      {
+       "title": "Intraventricular SEEG and laser ablation for the treatment of infantile spasm: Technical note",
+       "year": 2023,
+       "area": "SEEG-guided laser (LITT) ablation, pediatric epilepsy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Intraventricular+SEEG+and+laser+ablation+for+the+treatment+of+infantile+spasm%3A+Technical+note"
+      },
+      {
+       "title": "Stereotactic laser ablation for subependymal giant cell astrocytomas: personal experience and review",
+       "year": 2020,
+       "area": "LITT for pediatric tumor (SEGA/TSC)",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Stereotactic+laser+ablation+for+subependymal+giant+cell+astrocytomas%3A+personal+experience+and+review"
+      },
+      {
+       "title": "Incidence and predictors of hemorrhage in pediatric low-grade glioma: a 15-year longitudinal analysis",
+       "year": 2024,
+       "area": "Pediatric low-grade glioma",
+       "journal": "Journal of Neurosurgery: Pediatrics",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Incidence+and+predictors+of+hemorrhage+in+pediatric+low-grade+glioma%3A+a+15-year+longitudinal+analysis"
+      },
+      {
+       "title": "Extreme Lateral Transodontoid and Extended Endonasal Transclival-Contralateral Transmaxillary Approaches for a Large Pediatric Clival-Cervical Chordoma",
+       "year": 2026,
+       "area": "Endoscopic skull base surgery (chordoma)",
+       "journal": "Operative Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Extreme+Lateral+Transodontoid+and+Extended+Endonasal+Transclival-Contralateral+Transmaxillary+Approaches+for+a+Large+Pediatric+Clival-Cervical+Chordoma"
+      },
+      {
+       "title": "Health care disparities in transsphenoidal surgery for pituitary tumors",
+       "year": 2022,
+       "area": "Skull base / pituitary surgery",
+       "journal": "Journal of Neurological Surgery Part B: Skull Base",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Health+care+disparities+in+transsphenoidal+surgery+for+pituitary+tumors"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 11,
+   "name": "Stony Brook",
+   "acronym": "SUH",
+   "system": "Stony Brook Medicine",
+   "class": "Installed",
+   "posture": "Grow + de-risk",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "Medium",
+   "situation": "Mikell drives essentially all volume (epilepsy + some tumor). Single-surgeon concentration is the risk \u2014 one departure from zero. Needs a second adopter.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 11,
+    "crani_over_50": false,
+    "crani_volume": 16,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 88,
+    "grade": "A",
+    "subs": {
+     "Trajectory": 25,
+     "Reservoir capture": 20,
+     "Surgeon depth": 8,
+     "Competitive position": 20,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 170000,
+     "2025": 82000,
+     "2026_ytd": 151000,
+     "2026_proj": 239000
+    },
+    "probes_by_year": {
+     "2024": 4,
+     "2025": 12,
+     "2026": 5
+    },
+    "probes_total": 21,
+    "cases_logged": 14,
+    "probes_per_case": 1.5,
+    "rev_per_case": 28786,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.57,
+    "trend": "Up",
+    "business_potential_yr": 88396,
+    "incremental_cases": 4,
+    "sku_mix": {
+     "laser_probe": 227577,
+     "driver": 47103,
+     "bolt": 34712,
+     "accessory": 0
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 3,
+     "pool": 68
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 0,
+     "pool": 1
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 5,
+     "pool": 100
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Charles Mikell",
+      "cases": 14,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [],
+    "naive_targets": [
+     {
+      "name": "David Chesler",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Alexander Winkler-Schwartz",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Shennan Weiss",
+      "indication": "Epilepsy",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "Agnieszka Kowalska",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Errol Orehek",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Olga Selioutski",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 81
+     },
+     {
+      "name": "Guy Schwartz",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 1
+     },
+     {
+      "name": "David A Chesler",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 36
+     },
+     {
+      "name": "Charles B Mikell",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 27
+     },
+     {
+      "name": "Cathy Coleman",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 1
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (11 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [
+     "Single-surgeon dependency \u2014 volume collapses to zero on one departure. Develop a second adopter."
+    ],
+    "opportunities": [],
+    "threats": []
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "David Chesler",
+     "objective": "Convert David Chesler from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": []
+  },
+  {
+   "rank": 12,
+   "name": "Hackensack Meridian \u2014 JFK (Edison, NJ)",
+   "acronym": "HJFK",
+   "system": "Hackensack Meridian Health",
+   "class": "Installed",
+   "posture": "System play",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "Long-horizon",
+   "situation": "Two of our users here (Milano, Shekhtman) at JFK in Edison NJ. Hackensack Meridian is a large multi-hospital system \u2014 JFK is one entry point into a much bigger footprint (Jersey Shore, Hackensack UMC). Hackensack UMC is a SEPARATE competitive target (Danish, Visualase, 33 LITT).",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": false,
+    "seeg_volume": 0,
+    "crani_over_50": false,
+    "crani_volume": 0,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 65,
+    "grade": "B",
+    "subs": {
+     "Trajectory": 6,
+     "Reservoir capture": 8,
+     "Surgeon depth": 16,
+     "Competitive position": 20,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 27000,
+     "2025": 20000,
+     "2026_ytd": 37000,
+     "2026_proj": 37000
+    },
+    "probes_by_year": {
+     "2024": 2,
+     "2025": 1,
+     "2026": 1
+    },
+    "probes_total": 4,
+    "cases_logged": 4,
+    "probes_per_case": 1.0,
+    "rev_per_case": 21000,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.15,
+    "trend": "Down",
+    "business_potential_yr": 0,
+    "incremental_cases": 0,
+    "sku_mix": {
+     "laser_probe": 46271,
+     "capital": 22944,
+     "driver": 10869,
+     "bolt": 8751,
+     "accessory": 1759
+    }
+   },
+   "reservoirs": [],
+   "universe": {
+    "performers": [
+     {
+      "name": "Vanessa Milano",
+      "cases": 3,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Eugenia Shekhtman",
+      "cases": 1,
+      "kol": false,
+      "npi": "1508000787",
+      "specialty": "Neurological Surgery",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [],
+    "naive_targets": [],
+    "referrers": [
+     {
+      "name": "Joseph Landolfi",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Palak Patel",
+      "indication": "Epilepsy",
+      "cases": 1,
+      "pool": null
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [],
+    "weaknesses": [],
+    "opportunities": [],
+    "threats": [
+     "Revenue trending down \u2014 diagnose whether clinical, capital, or relationship-driven."
+    ]
+   },
+   "strategy": [],
+   "appendix": []
+  },
+  {
+   "rank": 13,
+   "name": "Memorial Sloan Kettering",
+   "acronym": "MSK",
+   "system": "Memorial Sloan Kettering Cancer Center",
+   "class": "Installed",
+   "posture": "Protect + develop referral",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "Medium",
+   "situation": "Near-zero open neurosurgery, so this is a referral play, not surgeon conversion. Decline is upstream in neuro-onc and rad-onc. Souweidane (top pediatric neurosurgeon) WANTS TO START A PROGRAM AT CORNELL.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 2,
+    "crani_over_50": false,
+    "crani_volume": 2,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 58,
+    "grade": "B-",
+    "subs": {
+     "Trajectory": 6,
+     "Reservoir capture": 2,
+     "Surgeon depth": 20,
+     "Competitive position": 20,
+     "Value capture": 10
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 111000,
+     "2025": 22000,
+     "2026_ytd": 40000,
+     "2026_proj": 116000
+    },
+    "probes_by_year": {
+     "2024": 10,
+     "2025": 8,
+     "2026": 1
+    },
+    "probes_total": 19,
+    "cases_logged": 13,
+    "probes_per_case": 1.46,
+    "rev_per_case": 13308,
+    "region_avg_case": 18300,
+    "rev_vs_region": 0.73,
+    "trend": "Down",
+    "business_potential_yr": 75404,
+    "incremental_cases": 4,
+    "sku_mix": {
+     "laser_probe": 201733,
+     "driver": 28154,
+     "bolt": 15181,
+     "accessory": 5727
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 422,
+     "pool": 8431
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 3,
+     "pool": 64
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Mark Souweidane",
+      "cases": 7,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Nelson Moss",
+      "cases": 4,
+      "kol": true,
+      "npi": "1073830543",
+      "specialty": "Neurological Surgery",
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Radiation necrosis, Brain metastases, Glioma / HGG"
+     },
+     {
+      "name": "Cameron Brennan",
+      "cases": 2,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Cameron W Brennan",
+     "Nelson Moss"
+    ],
+    "naive_targets": [
+     {
+      "name": "Rabih Bou Nassif",
+      "npi": "1861105058",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Viviane S Tabar",
+      "npi": "1336123983",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Cameron W Brennan",
+      "npi": "1689659963",
+      "cohort": "LITT \u2014 Our Equipment (NeuroBlate)",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG",
+      "kol": true
+     },
+     {
+      "name": "Kenny Kwok Hei Yu",
+      "npi": "1467093898",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Cameron Brennan",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Craig Nolan",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "John Cuaron",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Mark Mittler",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Matthias A Karajannis",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 7
+     },
+     {
+      "name": "Catherine E Scorrano",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 4
+     },
+     {
+      "name": "Fiorella Iglesias Cardenas",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 1
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (2 claims) \u2014 SEEG-localized foci convert directly to ablation targets."
+    ],
+    "weaknesses": [],
+    "opportunities": [
+     "Mets: ~422 addressable of 8431 pool \u2014 under-penetrated."
+    ],
+    "threats": [
+     "Competitive KOL activity around Cameron W Brennan \u2014 confirm allegiance in field.",
+     "Revenue trending down \u2014 diagnose whether clinical, capital, or relationship-driven."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Rabih Bou Nassif",
+     "objective": "Convert Rabih Bou Nassif from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Cameron W Brennan",
+     "npi": "1689659963",
+     "grade": "B",
+     "score": 66,
+     "identity": "Neurosurgeon-scientist and Professor of Neurosurgery at Memorial Sloan Kettering Cancer Center (NY); brain-tumor surgeon and glioma genomics laboratory investigator.",
+     "facility": "Memorial Sloan Kettering Pediatrics Oncology",
+     "archetype": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG",
+     "themes": [
+      "Glioma/GBM genomics and molecular subtyping",
+      "TCGA glioblastoma landscape",
+      "Brain metastasis surgical management",
+      "Neurosurgical oncology"
+     ],
+     "rationale": "Established neurosurgical oncologist operating on gliomas/GBM and brain metastases at an active LITT program (MSK, where LITT is used for tumors, mets, radiation necrosis). No confirmed first/senior LITT authorship found; his own output is dominated by glioma genomics rather than thermal ablation. Surgical practice is directly LITT-convertible, and he shares an MSK brain-metastasis group with LITT KOLs Nelson Moss and Viviane Tabar.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1689659963",
+     "scholar_url": "https://scholar.google.com/citations?user=nhIH5zwAAAAJ&hl=en",
+     "profile_url": "https://www.mskcc.org/cancer-care/doctors/cameron-brennan",
+     "papers": [
+      {
+       "title": "The Somatic Genomic Landscape of Glioblastoma",
+       "year": 2013,
+       "area": "Landmark TCGA GBM molecular profiling",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=The+Somatic+Genomic+Landscape+of+Glioblastoma"
+      },
+      {
+       "title": "Integrated Genomic Analysis Identifies Clinically Relevant Subtypes of Glioblastoma",
+       "year": 2010,
+       "area": "GBM molecular subtyping",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Integrated+Genomic+Analysis+Identifies+Clinically+Relevant+Subtypes+of+Glioblastoma"
+      },
+      {
+       "title": "Integrated Multidisciplinary Brain Metastasis Care Reduces Patient Visits and Shortens Time to Adjuvant Irradiation",
+       "year": 2022,
+       "area": "Brain metastasis multidisciplinary care",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Integrated+Multidisciplinary+Brain+Metastasis+Care+Reduces+Patient+Visits+and+Shortens+Time+to+Adjuvant+Irradiation"
+      },
+      {
+       "title": "Characterization of a pathogenic subpopulation of glioma-associated macrophages linked to glioma progression",
+       "year": 2023,
+       "area": "Glioma tumor microenvironment / genomics",
+       "journal": "Clinical Cancer Research / glioma genomics",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Characterization+of+a+pathogenic+subpopulation+of+glioma-associated+macrophages+linked+to+glioma+progression"
+      }
+     ]
+    },
+    {
+     "physician": "Nelson Moss",
+     "npi": "1073830543",
+     "grade": "A",
+     "score": 93,
+     "identity": "Neurosurgical oncologist at Memorial Sloan Kettering (Dept. of Neurosurgery & Brain Metastasis Center), co-director of the Multidisciplinary Brain Metastasis Program; performs LITT for tumors and radiation necrosis.",
+     "facility": "Memorial Sloan Kettering Cancer Center",
+     "archetype": "Neuro-oncology ablation \u2014 Radiation necrosis, Brain metastases, Glioma / HGG",
+     "themes": [
+      "Brain metastasis surgery",
+      "Laser interstitial thermal therapy (LITT)",
+      "Radiation necrosis ablation",
+      "Recurrent/re-irradiated brain metastases"
+     ],
+     "rationale": "Direct, active LITT practitioner and first/senior author on multiple LITT papers for the exact target indications: LITT for biopsy-proven radiation necrosis in recurrent brain metastases, combination LITT+stereotactic radiotherapy for recurrent mets, and histologic changes after LITT for radiation necrosis. MR-guided thermal ablation is part of his named surgical armamentarium at MSK.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1073830543",
+     "scholar_url": "",
+     "profile_url": "https://www.mskcc.org/cancer-care/doctors/nelson-moss",
+     "papers": [
+      {
+       "title": "Efficacy of LITT for biopsy-proven radiation necrosis in radiographically recurrent brain metastases",
+       "year": 2023,
+       "area": "LITT for radiation necrosis",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Efficacy+of+LITT+for+biopsy-proven+radiation+necrosis+in+radiographically+recurrent+brain+metastases"
+      },
+      {
+       "title": "Combination LITT plus stereotactic radiotherapy increases time to progression for recurrent brain metastases",
+       "year": 2022,
+       "area": "LITT+SRS for brain mets",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Combination+LITT+plus+stereotactic+radiotherapy+increases+time+to+progression+for+recurrent+brain+metastases"
+      },
+      {
+       "title": "The effect of surgery on radiation necrosis in irradiated brain metastases",
+       "year": 2021,
+       "area": "Radiation necrosis surgery",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=The+effect+of+surgery+on+radiation+necrosis+in+irradiated+brain+metastases"
+      },
+      {
+       "title": "Histological changes associated with LITT for radiation necrosis: illustrative cases",
+       "year": 2022,
+       "area": "LITT pathology/radiation necrosis",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Histological+changes+associated+with+LITT+for+radiation+necrosis%3A+illustrative+cases"
+      },
+      {
+       "title": "Management outcomes for biopsy-proven radiation necrosis in brain metastases in the immune-checkpoint era",
+       "year": 2025,
+       "area": "radiation necrosis management (LITT context)",
+       "journal": "Neuro-Oncol Adv",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Management+outcomes+for+biopsy-proven+radiation+necrosis+in+brain+metastases+in+the+immune-checkpoint+era"
+      },
+      {
+       "title": "Brain metastasis recurrence vs radiation necrosis: MR perfusion & multidisciplinary consensus",
+       "year": 2025,
+       "area": "recurrence vs radiation necrosis post-SRS",
+       "journal": "J Neurooncol",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Brain+metastasis+recurrence+vs+radiation+necrosis%3A+MR+perfusion+%26+multidisciplinary+consensus"
+      },
+      {
+       "title": "LITT as a radiation-sparing approach for CNS tumors in children with cancer predisposition",
+       "year": 2024,
+       "area": "LITT radiation-sparing ablation",
+       "journal": "J Neurosurg Case Lessons",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LITT+as+a+radiation-sparing+approach+for+CNS+tumors+in+children+with+cancer+predisposition"
+      },
+      {
+       "title": "Symptomatic necrosis with antibody-drug conjugates and concurrent SRS for brain metastases",
+       "year": 2023,
+       "area": "radiation necrosis after SRS",
+       "journal": "Int J Radiat Oncol Biol Phys",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Symptomatic+necrosis+with+antibody-drug+conjugates+and+concurrent+SRS+for+brain+metastases"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 14,
+   "name": "Jersey Shore (Hackensack Meridian)",
+   "acronym": "JSUMC",
+   "system": "Hackensack Meridian Health",
+   "class": "Competitive",
+   "posture": "Convert \u2014 active",
+   "platform": [
+    "Visualase"
+   ],
+   "win": "Long-horizon",
+   "situation": "Shabbar Danish is the highest-volume laser surgeon in the Hackensack Meridian network (9 LITT here + 31 at Hackensack UMC). A Monteris system is already in value analysis at Jersey Shore awaiting a trial \u2014 an active deal, not a cold account.",
+   "header": {
+    "account_type": "Competitive",
+    "does_litt": true,
+    "our_system": "\u2014",
+    "competitor_system": "Visualase",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 46,
+    "crani_over_50": true,
+    "crani_volume": 87,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 48,
+    "grade": "C",
+    "subs": {
+     "Trajectory": 8,
+     "Reservoir capture": 8,
+     "Surgeon depth": 20,
+     "Competitive position": 5,
+     "Value capture": 7
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026_ytd": 0,
+     "2026_proj": 0
+    },
+    "probes_by_year": {
+     "2024": 0,
+     "2025": 0,
+     "2026": 0
+    },
+    "probes_total": 0,
+    "cases_logged": 0,
+    "probes_per_case": null,
+    "rev_per_case": null,
+    "region_avg_case": 18300,
+    "rev_vs_region": null,
+    "trend": "Competitive",
+    "business_potential_yr": 0,
+    "incremental_cases": 0,
+    "sku_mix": {}
+   },
+   "reservoirs": [],
+   "universe": {
+    "performers": [
+     {
+      "name": "Shabbar F Danish",
+      "cases": 9,
+      "kol": true,
+      "npi": "1881757268",
+      "specialty": "Neurological Surgery",
+      "seeg": 3,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, Radiation necrosis, Brain metastases"
+     },
+     {
+      "name": "Nitesh V Patel",
+      "cases": 2,
+      "kol": false,
+      "npi": "1326467408",
+      "specialty": "Neurological Surgery",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Aasim S Kazmi",
+      "cases": 1,
+      "kol": false,
+      "npi": "1770612111",
+      "specialty": "Neurological Surgery",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Shabbar F Danish"
+    ],
+    "naive_targets": [
+     {
+      "name": "Lawrence Daniels",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Henry Park",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 6
+     },
+     {
+      "name": "Carlos Eduardo Silva Correia",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 1
+     },
+     {
+      "name": "Carlos Eduardo Silva Correia",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 144
+     },
+     {
+      "name": "Krista K Schneider",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 100
+     },
+     {
+      "name": "Henry Park",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 93
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (46 claims) \u2014 SEEG-localized foci convert directly to ablation targets.",
+     "High craniotomy volume (87+ tumor+epilepsy cranis) \u2014 large in-house conversion pool."
+    ],
+    "weaknesses": [
+     "Competitive laser in-house (Visualase) \u2014 split platform, capital-standardization risk."
+    ],
+    "opportunities": [],
+    "threats": [
+     "Visualase entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Lawrence Daniels",
+     "objective": "Convert Lawrence Daniels from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    },
+    {
+     "type": "Crack competitor",
+     "target": "Visualase footprint",
+     "objective": "Convert a Visualase-trained surgeon using a live in-territory reference.",
+     "tactics": [
+      "Leverage a Visualase\u2192NeuroBlate convert nearby as social proof",
+      "Contrast real-time thermal monitoring & larger single-trajectory ablation volume",
+      "Trial-in-value-analysis motion where a system is already under review"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Shabbar F Danish",
+     "npi": "1881757268",
+     "grade": "A",
+     "score": 98,
+     "identity": "Neurosurgeon at Hackensack Meridian/Jersey Shore University Medical Center (formerly Rutgers-RWJMS); director of one of the highest-volume laser ablation (LITT/Visualase) programs in the US and co-editor of the reference text 'Laser Interstitial Thermal Therapy in Neurosurgery'.",
+     "facility": "Jersey Shore University Medical Center",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, Radiation necrosis, Brain metastases",
+     "themes": [
+      "MRI-guided laser interstitial thermal therapy (LITT/Visualase)",
+      "LITT for glioma and high-grade tumors",
+      "LITT for brain metastases and post-radiosurgery radiation necrosis",
+      "Laser ablation for mesial temporal lobe epilepsy"
+     ],
+     "rationale": "Marquee LITT/Visualase KOL. Co-editor of the field's principal textbook; published the largest single-center Visualase series (102 patients across tumor, epilepsy, chronic pain); direct first/senior-author work spanning glioma, brain metastases, post-SRS radiation necrosis/PEIRs, mesial temporal lobe epilepsy laser ablation, brainstem LITT, and MR-thermometry ablation-outcome modeling. The one to crack in the Hackensack Meridian network.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1881757268",
+     "scholar_url": "",
+     "profile_url": "https://www.getcare.hackensackmeridianhealth.org/provider/shabbar-f-danish/2012713",
+     "papers": [
+      {
+       "title": "MR-Guided Laser Ablation Improves Local Control for Postradiosurgery Recurrence and/or Radiation Necrosis",
+       "year": 2016,
+       "area": "LITT for radiation necrosis / post-SRS recurrence",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=MR-Guided+Laser+Ablation+Improves+Local+Control+for+Postradiosurgery+Recurrence+and%2For+Radiation+Necrosis"
+      },
+      {
+       "title": "MR-guided laser-induced thermal therapy for progressive enhancing inflammatory reactions (PEIRs) following SRS for metastatic brain disease",
+       "year": 2019,
+       "area": "LITT for brain mets / radiation necrosis",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=MR-guided+laser-induced+thermal+therapy+for+progressive+enhancing+inflammatory+reactions+%28PEIRs%29+following+SRS+for+metastatic+brain+disease"
+      },
+      {
+       "title": "Laser-Induced Thermal Therapy in Neuro-Oncology: A Review",
+       "year": 2018,
+       "area": "LITT glioma/mets/RN review",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser-Induced+Thermal+Therapy+in+Neuro-Oncology%3A+A+Review"
+      },
+      {
+       "title": "Theoretical model for laser ablation outcome predictions in brain: calibration and validation on clinical MR thermometry",
+       "year": 2017,
+       "area": "MR thermometry / ablation modeling",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Theoretical+model+for+laser+ablation+outcome+predictions+in+brain%3A+calibration+and+validation+on+clinical+MR+thermometry"
+      },
+      {
+       "title": "LITT for recurrent brain metastases following stereotactic radiosurgery: a systematic review",
+       "year": 2025,
+       "area": "LITT recurrent brain mets after SRS",
+       "journal": "Expert Rev Neurother",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LITT+for+recurrent+brain+metastases+following+stereotactic+radiosurgery%3A+a+systematic+review"
+      },
+      {
+       "title": "Recent advances in LITT for brain metastases and radiation necrosis",
+       "year": 2025,
+       "area": "LITT mets + radiation necrosis",
+       "journal": "Lasers Med Sci",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Recent+advances+in+LITT+for+brain+metastases+and+radiation+necrosis"
+      },
+      {
+       "title": "MR-guided LITT in the treatment of brain tumors and epilepsy",
+       "year": 2024,
+       "area": "MRg-LITT tumors + epilepsy",
+       "journal": "Acta Neurochir",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=MR-guided+LITT+in+the+treatment+of+brain+tumors+and+epilepsy"
+      },
+      {
+       "title": "LITT for Radionecrosis",
+       "year": 2023,
+       "area": "LITT radiation necrosis",
+       "journal": "Neurosurg Clin N Am",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LITT+for+Radionecrosis"
+      },
+      {
+       "title": "Time to steroid independence after LITT vs medical management for biopsy-proven radiation necrosis",
+       "year": 2022,
+       "area": "LITT vs steroids, radiation necrosis",
+       "journal": "Neurosurgery",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Time+to+steroid+independence+after+LITT+vs+medical+management+for+biopsy-proven+radiation+necrosis"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 15,
+   "name": "Temple University Hospital",
+   "acronym": "TUH",
+   "system": "Temple Health",
+   "class": "Installed",
+   "posture": "Grow",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "Medium",
+   "situation": "Quiet account. Scott Shepard drives volume, trending up, revenue capture 1.27x territory average (complex, valuable cases). Metastasis-weighted with little epilepsy work. Single-surgeon dependent; claims undercount (1 LITT claims vs 10 logged).",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": false,
+    "seeg_volume": 0,
+    "crani_over_50": false,
+    "crani_volume": 0,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 100,
+    "grade": "A",
+    "subs": {
+     "Trajectory": 25,
+     "Reservoir capture": 20,
+     "Surgeon depth": 20,
+     "Competitive position": 20,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 140000,
+     "2025": 33000,
+     "2026_ytd": 61000,
+     "2026_proj": 177000
+    },
+    "probes_by_year": {
+     "2024": 5,
+     "2025": 8,
+     "2026": 2
+    },
+    "probes_total": 15,
+    "cases_logged": 10,
+    "probes_per_case": 1.5,
+    "rev_per_case": 23400,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.28,
+    "trend": "Up",
+    "business_potential_yr": 116260,
+    "incremental_cases": 5,
+    "sku_mix": {
+     "laser_probe": 165253,
+     "bolt": 34553,
+     "driver": 32709,
+     "accessory": 1084
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 9,
+     "pool": 186
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 0,
+     "pool": 5
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 14,
+     "pool": 288
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 0,
+     "pool": 1
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Scott Shepard",
+      "cases": 8,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Eric Quach",
+      "cases": 1,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Willard Kasoff",
+      "cases": 1,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [],
+    "naive_targets": [
+     {
+      "name": "Kadir Erkmen",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Willard S Kasoff",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Eric T Quach",
+      "npi": "1871974469",
+      "cohort": "LITT \u2014 Our Equipment (NeuroBlate)",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Scott Shepard",
+      "indication": "Metastasis/Primary",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "Stephanie Weiss",
+      "indication": "Metastasis",
+      "cases": 3,
+      "pool": null
+     },
+     {
+      "name": "Avani Shah",
+      "indication": "Epilepsy",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Curtis Miyamoto",
+      "indication": "Primary",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Mercedes Jacobson",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 249
+     },
+     {
+      "name": "Molly C Cincotta",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 3
+     },
+     {
+      "name": "Steven W Hwang",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 10
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [],
+    "weaknesses": [],
+    "opportunities": [],
+    "threats": []
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Kadir Erkmen",
+     "objective": "Convert Kadir Erkmen from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": []
+  },
+  {
+   "rank": 16,
+   "name": "Rochester General",
+   "acronym": "ROC",
+   "system": "Rochester Regional Health",
+   "class": "Installed",
+   "posture": "Grow / verify",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "Long-horizon",
+   "situation": "Kimmell is our user, primarily tumor. Workflow is the constraint (bolt in OR, transport to GE scanner, close in recovery). Probe restock 0.75 (lowest), revenue capture 0.62x (lowest). Site-identity data issues.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 56,
+    "crani_over_50": true,
+    "crani_volume": 80,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 83,
+    "grade": "A-",
+    "subs": {
+     "Trajectory": 25,
+     "Reservoir capture": 20,
+     "Surgeon depth": 8,
+     "Competitive position": 20,
+     "Value capture": 10
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 55000,
+     "2025": 0,
+     "2026_ytd": 0,
+     "2026_proj": 0
+    },
+    "probes_by_year": {
+     "2024": 0,
+     "2025": 3,
+     "2026": 0
+    },
+    "probes_total": 3,
+    "cases_logged": 5,
+    "probes_per_case": 0.6,
+    "rev_per_case": 11000,
+    "region_avg_case": 18300,
+    "rev_vs_region": 0.6,
+    "trend": "Up",
+    "business_potential_yr": 0,
+    "incremental_cases": 0,
+    "sku_mix": {
+     "laser_probe": 31338,
+     "driver": 13972,
+     "bolt": 11941,
+     "accessory": 0
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 6,
+     "pool": 126
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Kristopher Kimmell",
+      "cases": 5,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Melissa A Lopresti"
+    ],
+    "naive_targets": [
+     {
+      "name": "Melissa A Lopresti",
+      "npi": "1184019150",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 9,
+      "tumor_cranio": 0,
+      "seeg": 7,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, Hypothalamic hamartoma, PVNH / heterotopia",
+      "kol": true
+     },
+     {
+      "name": "Vincent N Nguyen",
+      "npi": "1912394438",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Kevin A Walter",
+      "npi": "1326014770",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 1,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Patrick J Reid",
+      "npi": "1053323097",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Ben Onderdonk",
+      "indication": "Metastasis",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Jeffrey Haynes",
+      "indication": "Metastasis",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Khusraw Sabit",
+      "indication": "Metastasis",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Lon K Baratz",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 1
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (56 claims) \u2014 SEEG-localized foci convert directly to ablation targets.",
+     "High craniotomy volume (80+ tumor+epilepsy cranis) \u2014 large in-house conversion pool."
+    ],
+    "weaknesses": [
+     "Single-surgeon dependency \u2014 volume collapses to zero on one departure. Develop a second adopter."
+    ],
+    "opportunities": [],
+    "threats": [
+     "Competitive KOL activity around Melissa A Lopresti \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Melissa A Lopresti",
+     "objective": "Convert Melissa A Lopresti from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Melissa A Lopresti",
+     "npi": "1184019150",
+     "grade": "A",
+     "score": 92,
+     "identity": "Pediatric & functional neurosurgeon (Rochester Regional/URMC, NY; trained Baylor/Texas Children's under Daniel Curry) focused on epilepsy surgery, SEEG, and MR-guided laser ablation.",
+     "facility": "Strong Memorial Hospital",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, Hypothalamic hamartoma, PVNH / heterotopia",
+     "themes": [
+      "MR-guided laser interstitial thermal therapy (LITT)",
+      "hypothalamic hamartoma ablation",
+      "stereoelectroencephalography (SEEG)",
+      "pediatric epilepsy surgery"
+     ],
+     "rationale": "Direct first-hand LITT operator/author: co-authored 'Staged MR-Guided LITT for Hypothalamic Hamartoma' (Neurosurgery 2020) and MRgLITT thermodynamics/cognitive-outcome work from the Texas Children's pediatric LITT program under Daniel Curry. Also authored SEEG-guided epilepsy ablation reviews and MTLE laser ablation work. SEEG + MR thermometry + epilepsy-surgery + HH ablation all present. The best second-user candidate at Rochester.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1184019150",
+     "scholar_url": "",
+     "profile_url": "https://www.urmc.rochester.edu/people/112363886-melissa-lopresti",
+     "papers": [
+      {
+       "title": "Staged MR-Guided LITT for Hypothalamic Hamartoma: Analysis of Ablation Volumes and Morphology",
+       "year": 2020,
+       "area": "LITT ablation of hypothalamic hamartoma",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Staged+MR-Guided+LITT+for+Hypothalamic+Hamartoma%3A+Analysis+of+Ablation+Volumes+and+Morphology"
+      },
+      {
+       "title": "An update on pediatric surgical epilepsy: Part II",
+       "year": 2019,
+       "area": "Review of SEEG, laser ablation, RNS, DBS",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=An+update+on+pediatric+surgical+epilepsy%3A+Part+II"
+      },
+      {
+       "title": "Correlating thermodynamics with cognitive outcomes in MRgLITT of a pediatric hypothalamic hamartoma",
+       "year": 2021,
+       "area": "MRgLITT thermal dose vs neurocognitive outcome",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Correlating+thermodynamics+with+cognitive+outcomes+in+MRgLITT+of+a+pediatric+hypothalamic+hamartoma"
+      },
+      {
+       "title": "Laser ablation for mesial temporal lobe epilepsy: surgical and cognitive outcomes",
+       "year": 2018,
+       "area": "LITT for MTLE outcomes",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laser+ablation+for+mesial+temporal+lobe+epilepsy%3A+surgical+and+cognitive+outcomes"
+      },
+      {
+       "title": "Neurostimulation in children with drug-resistant epilepsy: strategies in subcortical targeting and systematic review of the evidence",
+       "year": 2024,
+       "area": "neurostimulation / epilepsy",
+       "journal": "Child's Nervous System",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Neurostimulation+in+children+with+drug-resistant+epilepsy%3A+strategies+in+subcortical+targeting+and+systematic+review+of+the+evidence"
+      },
+      {
+       "title": "Correlating Thermodynamics with Cognitive Outcomes in Magnetic Resonance-guided Laser Interstitial Thermal Therapy (MRgLITT) of a Pediatric Hypothalamic Hamartoma",
+       "year": 2023,
+       "area": "LITT hypothalamic hamartoma",
+       "journal": "Pediatric Neurosurgery / Stereotactic Funct Neurosurg",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Correlating+Thermodynamics+with+Cognitive+Outcomes+in+Magnetic+Resonance-guided+Laser+Interstitial+Thermal+Therapy+%28MRgLITT%29+of+a+Pediatric+Hypothalamic+Hamartoma"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 17,
+   "name": "Upstate University Hospital",
+   "acronym": "SUNY",
+   "system": "SUNY Upstate Medical University",
+   "class": "Contested",
+   "posture": "Rebuild",
+   "platform": [
+    "NeuroBlate",
+    "Visualase"
+   ],
+   "win": "Long-horizon",
+   "situation": "Lost Zulma Tovar-Spinoza (left for South Carolina); volume fell with her. Knudsen is new (first epilepsy case in March) \u2014 effectively restarting. No tumor work. Sits on ~1,073 intractable-epilepsy patients, one of the largest DRE pools in the territory. Miller carries 19 epilepsy cranis.",
+   "header": {
+    "account_type": "Contested",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "Visualase",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 23,
+    "crani_over_50": true,
+    "crani_volume": 50,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 48,
+    "grade": "C",
+    "subs": {
+     "Trajectory": 6,
+     "Reservoir capture": 1,
+     "Surgeon depth": 16,
+     "Competitive position": 10,
+     "Value capture": 15
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 0,
+     "2025": 31000,
+     "2026_ytd": 57000,
+     "2026_proj": 57000
+    },
+    "probes_by_year": {
+     "2024": 1,
+     "2025": 0,
+     "2026": 1
+    },
+    "probes_total": 2,
+    "cases_logged": 3,
+    "probes_per_case": 0.67,
+    "rev_per_case": 29333,
+    "region_avg_case": 18300,
+    "rev_vs_region": 1.6,
+    "trend": "Down",
+    "business_potential_yr": 0,
+    "incremental_cases": 0,
+    "sku_mix": {
+     "laser_probe": 22969,
+     "capital": 14711,
+     "bolt": 9047,
+     "driver": 7002,
+     "accessory": 1790
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 116,
+     "pool": 2314
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 4,
+     "pool": 78
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 54,
+     "pool": 1073
+    },
+    {
+     "indication": "Recurrent GBM",
+     "addressable": 0,
+     "pool": 9
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Zulma Tovar Spinoza",
+      "cases": 2,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     },
+     {
+      "name": "Kathleen Knudson",
+      "cases": 1,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Harish Babu"
+    ],
+    "naive_targets": [
+     {
+      "name": "Grahame Gould",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Ryan Miller",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Lawrence S Chin",
+      "npi": "1023043114",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 0,
+      "tumor_cranio": 2,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Harish Babu",
+      "npi": "1760936157",
+      "cohort": "LITT-Na\u00efve Craniotomy Surgeon",
+      "epi_cranio": 4,
+      "tumor_cranio": 0,
+      "seeg": 2,
+      "wheelhouse": "SEEG-driven epilepsy ablation \u2014 MTLE, Glioma / HGG, PVNH / heterotopia",
+      "kol": true
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Grahame Gould",
+      "indication": "Metastasis",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Katherine Gutchess",
+      "indication": "Epilepsy",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Zulma Tovar Spinoza",
+      "indication": "Epilepsy",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Shahram Izadyar",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 320
+     },
+     {
+      "name": "Xiangping Zhou",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 242
+     },
+     {
+      "name": "Carlos F Muniz",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 171
+     },
+     {
+      "name": "Timothy M Beutler",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 123
+     },
+     {
+      "name": "Harish Babu",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 119
+     },
+     {
+      "name": "Meahgan Lefevre",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 82
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (23 claims) \u2014 SEEG-localized foci convert directly to ablation targets.",
+     "High craniotomy volume (50+ tumor+epilepsy cranis) \u2014 large in-house conversion pool."
+    ],
+    "weaknesses": [
+     "Competitive laser in-house (Visualase) \u2014 split platform, capital-standardization risk."
+    ],
+    "opportunities": [
+     "Mets: ~116 addressable of 2314 pool \u2014 under-penetrated.",
+     "Intractable epilepsy: ~54 addressable of 1073 pool \u2014 under-penetrated."
+    ],
+    "threats": [
+     "Visualase entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
+     "Competitive KOL activity around Harish Babu \u2014 confirm allegiance in field.",
+     "Revenue trending down \u2014 diagnose whether clinical, capital, or relationship-driven."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Grahame Gould",
+     "objective": "Convert Grahame Gould from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    },
+    {
+     "type": "Crack competitor",
+     "target": "Visualase footprint",
+     "objective": "Convert a Visualase-trained surgeon using a live in-territory reference.",
+     "tactics": [
+      "Leverage a Visualase\u2192NeuroBlate convert nearby as social proof",
+      "Contrast real-time thermal monitoring & larger single-trajectory ablation volume",
+      "Trial-in-value-analysis motion where a system is already under review"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Harish Babu",
+     "npi": "1760936157",
+     "grade": "A",
+     "score": 84,
+     "identity": "Director of Minimally Invasive Neurosurgery & Assoc. Prof. of Neurosurgery, SUNY Upstate (Syracuse NY); dual neuro-oncology and functional/epilepsy neurosurgeon (Toronto epilepsy fellowship, Cedars-Sinai residency).",
+     "facility": "CRA MRI Crouse Physicians Office Building",
+     "archetype": "SEEG-driven epilepsy ablation \u2014 MTLE, Glioma / HGG, PVNH / heterotopia",
+     "themes": [
+      "stereotactic laser ablation (LITT) of epileptic foci and tumors",
+      "epilepsy/functional neurosurgery",
+      "adult brain tumors, skull base, gamma knife",
+      "intracranial EEG / single-neuron recording"
+     ],
+     "rationale": "Direct clinical LITT operator: Upstate's stereotactic laser ablation program treats epileptic foci and tumors and Babu is an active participant. Convergent LITT-adjacent profile \u2014 epilepsy/functional (Toronto) fellowship, intracranial EEG single-neuron work, epilepsy surgery, glioma/GBM neuro-oncology, gamma knife/stereotactic. No first-author LITT/MR-thermometry paper surfaced (keeps below 90). Departmental colleague of pediatric LITT KOL Tovar-Spinoza.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1760936157",
+     "scholar_url": "https://scholar.google.com/citations?user=v4bd1PcAAAAJ&hl=en",
+     "profile_url": "https://www.upstate.edu/neurosurgery/education/faculty-profile.php?empID=babuh",
+     "papers": [
+      {
+       "title": "Inhibition of Fibulin-3 Reduces Immunosuppressive Signaling and Increases Macrophage Activation in Glioblastoma",
+       "year": 2025,
+       "area": "glioblastoma tumor-immune microenvironment",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Inhibition+of+Fibulin-3+Reduces+Immunosuppressive+Signaling+and+Increases+Macrophage+Activation+in+Glioblastoma"
+      },
+      {
+       "title": "Regenerative human interneuron cell therapy for drug-resistant focal epilepsy \u2014 first-in-human trial (Upstate site PI)",
+       "year": 2022,
+       "area": "epilepsy surgery / cell therapy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Regenerative+human+interneuron+cell+therapy+for+drug-resistant+focal+epilepsy+%E2%80%94+first-in-human+trial+%28Upstate+site+PI%29"
+      },
+      {
+       "title": "State of the art: glioma-associated epilepsy\u2014bridging tumor biology and epileptogenesis",
+       "year": 2025,
+       "area": "glioma-associated epilepsy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=State+of+the+art%3A+glioma-associated+epilepsy%E2%80%94bridging+tumor+biology+and+epileptogenesis"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rank": 18,
+   "name": "Weill Cornell",
+   "acronym": "CORN",
+   "system": "NewYork-Presbyterian",
+   "class": "Installed",
+   "posture": "Build",
+   "platform": [
+    "NeuroBlate"
+   ],
+   "win": "Long-horizon",
+   "situation": "Quiet account with two logged cases; claims show zero LITT against our two. Real opening is external: Mark Souweidane (MSK) wants to start a program at Cornell, which would convert a dormant account into a surgeon-led build.",
+   "header": {
+    "account_type": "Installed",
+    "does_litt": true,
+    "our_system": "NeuroBlate",
+    "competitor_system": "None confirmed",
+    "mri": "",
+    "robot": "",
+    "navigation": "",
+    "does_seeg": true,
+    "seeg_volume": 45,
+    "crani_over_50": true,
+    "crani_volume": 89,
+    "service_contract": ""
+   },
+   "health": {
+    "score": 64,
+    "grade": "B-",
+    "subs": {
+     "Trajectory": 14,
+     "Reservoir capture": 4,
+     "Surgeon depth": 16,
+     "Competitive position": 20,
+     "Value capture": 10
+    }
+   },
+   "business": {
+    "net_by_year": {
+     "2024": 28000,
+     "2025": 0,
+     "2026_ytd": 0,
+     "2026_proj": 0
+    },
+    "probes_by_year": {
+     "2024": 2,
+     "2025": 1,
+     "2026": 0
+    },
+    "probes_total": 3,
+    "cases_logged": 2,
+    "probes_per_case": 1.5,
+    "rev_per_case": 14000,
+    "region_avg_case": 18300,
+    "rev_vs_region": 0.77,
+    "trend": "Flat",
+    "business_potential_yr": 0,
+    "incremental_cases": 0,
+    "sku_mix": {
+     "laser_probe": 45466,
+     "capital": 14694,
+     "bolt": 3939,
+     "driver": 3501,
+     "accessory": 3000
+    }
+   },
+   "reservoirs": [
+    {
+     "indication": "Mets",
+     "addressable": 18,
+     "pool": 350
+    },
+    {
+     "indication": "Radiation necrosis",
+     "addressable": 1,
+     "pool": 22
+    },
+    {
+     "indication": "Intractable epilepsy",
+     "addressable": 9,
+     "pool": 175
+    }
+   ],
+   "universe": {
+    "performers": [
+     {
+      "name": "Rohan Ramakrishna",
+      "cases": 1,
+      "kol": true,
+      "npi": "1144335878",
+      "specialty": "Neurological Surgery",
+      "seeg": 0,
+      "wheelhouse": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG, Radiation necrosis"
+     },
+     {
+      "name": "Theodore Schwartz",
+      "cases": 1,
+      "kol": false,
+      "npi": null,
+      "specialty": "",
+      "seeg": 0,
+      "wheelhouse": ""
+     }
+    ],
+    "kols": [
+     "Rohan Ramakrishna"
+    ],
+    "naive_targets": [
+     {
+      "name": "Justin Schwarz",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Michael Kaplitt",
+      "npi": null,
+      "cohort": "",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     },
+     {
+      "name": "Philip Stieg",
+      "npi": "1124047857",
+      "cohort": "Referring Clinician",
+      "epi_cranio": 0,
+      "tumor_cranio": 0,
+      "seeg": 0,
+      "wheelhouse": "",
+      "kol": false
+     }
+    ],
+    "referrers": [
+     {
+      "name": "Eric B. Geller",
+      "indication": "Epilepsy",
+      "cases": 1,
+      "pool": null
+     },
+     {
+      "name": "Steven Karceski",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 104
+     },
+     {
+      "name": "Padmaja Kandula",
+      "indication": "Epilepsy (DRE)",
+      "cases": null,
+      "pool": 62
+     },
+     {
+      "name": "Baoqing Li",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 4
+     },
+     {
+      "name": "Caitlin Hoffman",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 4
+     },
+     {
+      "name": "Steven Karceski",
+      "indication": "Mets / Rad-necrosis",
+      "cases": null,
+      "pool": 2
+     }
+    ]
+   },
+   "swot": {
+    "strengths": [
+     "Active SEEG program (45 claims) \u2014 SEEG-localized foci convert directly to ablation targets.",
+     "High craniotomy volume (89+ tumor+epilepsy cranis) \u2014 large in-house conversion pool."
+    ],
+    "weaknesses": [],
+    "opportunities": [],
+    "threats": [
+     "Competitive KOL activity around Rohan Ramakrishna \u2014 confirm allegiance in field."
+    ]
+   },
+   "strategy": [
+    {
+     "type": "Develop surgeon",
+     "target": "Justin Schwarz",
+     "objective": "Convert Justin Schwarz from LITT-na\u00efve to first case within 2 quarters.",
+     "tactics": [
+      "Peer-to-peer with in-account performer + a matched KOL proctor",
+      "Cadaver / sim lab on NeuroBlate workflow",
+      "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
+      "Carry the indication evidence pack matched to their wheelhouse"
+     ]
+    }
+   ],
+   "appendix": [
+    {
+     "physician": "Rohan Ramakrishna",
+     "npi": "1144335878",
+     "grade": "A",
+     "score": 83,
+     "identity": "Neurosurgical oncologist, Director of the Brain Metastases Program at Weill Cornell/NewYork-Presbyterian; Chief of Neurosurgery at NYP Brooklyn Methodist; glioma/GBM, brain metastases, awake mapping.",
+     "facility": "Visiting Nurses Of New York Home Care Home Health Agency",
+     "archetype": "Neuro-oncology ablation \u2014 Brain metastases, Glioma / HGG, Radiation necrosis",
+     "themes": [
+      "neurosurgical oncology",
+      "brain metastases surgery",
+      "glioma/GBM",
+      "GBM immunotherapy (CAPTIVE / DNX-2401 + pembrolizumab)"
+     ],
+     "rationale": "Directs the Brain Metastases Program at Weill Cornell, an institution with an active tumor/epilepsy LITT (Laser Surgery) Program. Core practice \u2014 glioma/GBM resection, brain metastasis surgery, and management of SRS-treated mets (radiation-necrosis population) \u2014 maps directly onto the primary neuro-oncologic LITT indications. Strong SRS-adjacent and BBB-bypass research. No confirmed first-author LITT/MR-thermometry paper found, so signals are largely institutional/indication-based; otherwise a textbook A-grade neuro-onc LITT target.",
+     "medscout": "https://app.medscout.io/profiles/hcp/1144335878",
+     "scholar_url": "",
+     "profile_url": "https://neurosurgery.weillcornell.org/faculty/rohan-ramakrishna-md",
+     "papers": [
+      {
+       "title": "CAPTIVE/DNX-2401 (tasadenoturev) plus pembrolizumab for recurrent glioblastoma (Nature Medicine); Ramakrishna PI",
+       "year": 2023,
+       "area": "GBM oncolytic virus + checkpoint immunotherapy",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=CAPTIVE%2FDNX-2401+%28tasadenoturev%29+plus+pembrolizumab+for+recurrent+glioblastoma+%28Nature+Medicine%29%3B+Ramakrishna+PI"
+      },
+      {
+       "title": "Therapeutic manipulation and bypass of the blood-brain barrier in glioma",
+       "year": 2025,
+       "area": "BBB bypass / glioma drug delivery (LITT is a listed BBB-disruption modality)",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Therapeutic+manipulation+and+bypass+of+the+blood-brain+barrier+in+glioma"
+      },
+      {
+       "title": "Central Nervous System Metastases: Diagnosis and Management",
+       "year": 2020,
+       "area": "brain metastases diagnosis & management",
+       "journal": "",
+       "kind": "Key",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Central+Nervous+System+Metastases%3A+Diagnosis+and+Management"
+      },
+      {
+       "title": "The LITT Fit in neuro-oncology: indications, imaging, and adjunctive therapies",
+       "year": 2024,
+       "area": "LITT indications/imaging in neuro-oncology",
+       "journal": "Journal of Neuro-Oncology",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=The+LITT+Fit+in+neuro-oncology%3A+indications%2C+imaging%2C+and+adjunctive+therapies"
+      },
+      {
+       "title": "Therapeutic manipulation and bypass of the blood-brain barrier: powerful tools in glioma treatment",
+       "year": 2025,
+       "area": "glioma BBB disruption incl. LITT-mediated",
+       "journal": "Neuro-Oncology Advances",
+       "kind": "Recent",
+       "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Therapeutic+manipulation+and+bypass+of+the+blood-brain+barrier%3A+powerful+tools+in+glioma+treatment"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
