@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Build the Account Report Card tool from account-cards.json.
+Build the Account Report Card tool (alternate build) from account-cards.json.
 
-Emits three files (mirrors the physician-profiles pattern):
+Emits three files into tools/account-cards-alt/:
   account-cards.html            — hosted; fetches account-cards.json
   account-cards-standalone.html — data embedded; double-click, no server
-  account-cards-artifact.html   — data embedded; for publishing as an Artifact
+  account-cards-artifact.html   — body-only fragment for the claude.ai artifact publish
 
 One HTML template, one data placeholder. Edit TEMPLATE below, re-run.
 """
@@ -13,7 +13,8 @@ import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-DATA = json.load(open(os.path.join(ROOT, "tools/account-cards-alt/account-cards.json")))
+OUT = "tools/account-cards-alt"
+DATA = json.load(open(os.path.join(ROOT, OUT, "account-cards.json")))
 
 TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en">
@@ -56,15 +57,19 @@ a:hover{text-decoration:underline}
 [contenteditable]{outline:none}
 [contenteditable]:hover{background:#fff8ec;box-shadow:0 0 0 1px #f0dcae inset;border-radius:3px}
 [contenteditable]:focus{background:#fff8ec;box-shadow:0 0 0 2px var(--warn) inset;border-radius:3px}
+.num[contenteditable]{font-family:var(--mono)}
+select.ed{font:inherit;font-family:var(--mono);font-size:12.5px;border:1px solid var(--rule);
+  border-radius:5px;padding:2px 4px;background:var(--sheet);color:var(--ink);width:100%;min-width:0;max-width:100%}
+select.ed:hover{border-color:var(--warn)}
 
 /* ---------- control bar ---------- */
 .bar{position:sticky;top:0;z-index:40;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
   padding:10px 16px;background:color-mix(in srgb,var(--brand) 94%,#000);color:#fff;box-shadow:var(--shadow)}
 .bar .brand{font-weight:800;letter-spacing:.02em;font-size:15px;display:flex;gap:8px;align-items:center}
 .bar .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--heat);box-shadow:0 0 0 3px rgba(217,83,30,.3)}
-.bar select{font:inherit;font-weight:600;padding:7px 10px;border-radius:7px;border:1px solid rgba(255,255,255,.25);
+.bar select#picker{font:inherit;font-weight:600;padding:7px 10px;border-radius:7px;border:1px solid rgba(255,255,255,.25);
   background:rgba(255,255,255,.12);color:#fff;min-width:230px}
-.bar select option{color:#111}
+.bar select#picker option{color:#111}
 .bar .spacer{flex:1}
 .bar button{font:inherit;font-weight:600;font-size:13px;padding:7px 12px;border-radius:7px;cursor:pointer;
   border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;display:inline-flex;gap:6px;align-items:center}
@@ -91,7 +96,6 @@ a:hover{text-decoration:underline}
 .tag.cls{color:#fff;border:none}
 .tag.win{background:var(--good-soft);color:var(--good);border-color:transparent}
 
-/* grade seal */
 .seal{flex:0 0 auto;text-align:center;width:104px}
 .seal .ring{width:96px;height:96px;margin:0 auto}
 .seal .lab{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
@@ -106,25 +110,24 @@ a:hover{text-decoration:underline}
 
 /* capability chips */
 .caps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.cap{border:1px solid var(--rule);border-radius:6px;padding:6px 8px;background:var(--sheet-2);min-height:44px}
-.cap .k{font-size:8.8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
-.cap .v{font-size:12.5px;font-weight:650;margin-top:2px;font-family:var(--mono)}
+.cap{border:1px solid var(--rule);border-radius:6px;padding:6px 8px;background:var(--sheet-2);min-height:46px;min-width:0}
+.cap .k{font-size:8.8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+.cap .v{font-size:12.5px;font-weight:650;font-family:var(--mono)}
 .cap .v.yes{color:var(--good)} .cap .v.no{color:var(--ink-3)} .cap .v.comp{color:var(--heat)}
 .cap.flag{background:var(--heat-soft);border-color:#f2c9b4}
+.cap.synergy{background:var(--good-soft);border-color:#bfe3d1}
 
 /* health + business grid */
 .grid2{display:grid;grid-template-columns:1.05fr 1fr;gap:14px}
 .panel{border:1px solid var(--rule);border-radius:8px;padding:10px 11px;background:var(--sheet)}
 .panel h3{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 7px}
 
-/* sub-score bars */
 .subs{display:flex;flex-direction:column;gap:5px}
-.subrow{display:grid;grid-template-columns:96px 1fr 26px;gap:7px;align-items:center;font-size:10.5px}
+.subrow{display:grid;grid-template-columns:96px 1fr 30px;gap:7px;align-items:center;font-size:10.5px}
 .subrow .track{display:block;height:7px;border-radius:4px;background:var(--rule-2);overflow:hidden}
 .subrow .fill{display:block;height:7px;border-radius:4px}
 .subrow .val{font-family:var(--mono);text-align:right;color:var(--ink-2)}
 
-/* kpi tiles */
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .kpi{border:1px solid var(--rule);border-radius:7px;padding:8px 9px;background:var(--sheet-2)}
 .kpi .k{font-size:8.6px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
@@ -136,7 +139,6 @@ svg{display:block;max-width:100%}
 .leg{display:flex;gap:12px;flex-wrap:wrap;font-size:10px;color:var(--ink-2);margin-top:4px}
 .leg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
 
-/* universe table */
 table.u{width:100%;border-collapse:collapse;font-size:11px}
 table.u th{text-align:left;font-size:8.8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:var(--ink-3);border-bottom:1px solid var(--rule);padding:3px 5px}
@@ -151,10 +153,14 @@ table.u tr:last-child td{border-bottom:none}
 .pop{font-family:var(--mono);color:var(--brand-2);font-weight:600}
 .uni-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .subhd{font-size:9.2px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--heat);margin:0 0 3px}
+.assess{font-family:var(--mono);font-size:8.5px;font-weight:700;padding:0 5px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em}
+.assess.strong{background:var(--good-soft);color:var(--good)}
+.assess.moderate{background:var(--warn-soft);color:var(--warn)}
+.assess.weak{background:var(--bad-soft);color:var(--bad)}
 
 /* SWOT */
 .swot{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.q{border:1px solid var(--rule);border-radius:8px;padding:9px 10px;min-height:150px}
+.q{border:1px solid var(--rule);border-radius:8px;padding:9px 10px;min-height:120px}
 .q h4{margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;display:flex;gap:7px;align-items:center}
 .q h4 .b{width:6px;height:16px;border-radius:2px}
 .q.s{background:linear-gradient(180deg,var(--good-soft),transparent)} .q.s h4{color:var(--good)} .q.s .b{background:var(--good)}
@@ -170,17 +176,29 @@ ul.pts li:hover .x{opacity:.7}
 .addpt:hover{color:var(--brand-2)}
 
 /* strategy */
-.play{border:1px solid var(--rule);border-left:3px solid var(--brand);border-radius:7px;padding:9px 11px;margin-bottom:9px;background:var(--sheet)}
+.play{position:relative;border:1px solid var(--rule);border-left:3px solid var(--brand);border-radius:7px;padding:9px 11px;margin-bottom:9px;background:var(--sheet)}
 .play.crack{border-left-color:var(--heat)}
-.play .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.play .type{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--brand)}
-.play.crack .type{color:var(--heat)}
-.play .tgt{font-family:var(--mono);font-size:11px;font-weight:650}
+.play.referral{border-left-color:var(--s4)}
+.play.defend{border-left-color:var(--brand-2)}
+.play .top{display:flex;justify-content:space-between;gap:10px;align-items:center;padding-right:66px}
+.play .type{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--brand);max-width:170px}
+.play.crack .type{color:var(--heat)} .play.referral .type{color:var(--warn)}
+.play .tgt{font-family:var(--mono);font-size:11px;font-weight:650;text-align:right}
 .play .obj{font-size:11.5px;font-weight:600;margin:5px 0 6px;line-height:1.3}
+.play .why{font-size:10.5px;color:var(--ink-2);background:var(--sheet-2);border-radius:5px;padding:5px 8px;margin:0 0 7px;line-height:1.35}
+.play .why b{color:var(--ink)}
+.play .drivers{display:flex;gap:5px;flex-wrap:wrap;margin:5px 0}
+.play .drivers .d{font-family:var(--mono);font-size:9px;background:var(--brand);color:#fff;border-radius:999px;padding:1px 7px}
 .play ul{margin:0;padding-left:16px;font-size:10.8px;line-height:1.36;display:flex;flex-direction:column;gap:3px}
 .play ul li{padding-left:2px}
+.play ul li .x{opacity:0;color:var(--ink-3);cursor:pointer;font-family:var(--mono);margin-left:6px;font-size:9px}
+.play ul li:hover .x{opacity:.7}
+.play .rm{position:absolute;top:8px;right:10px;font-family:var(--mono);font-size:9px;color:var(--bad);cursor:pointer;opacity:.7}
+.play .rm:hover{opacity:1}
+.addplay{font-size:11px;font-weight:600;color:var(--brand-2);cursor:pointer;font-family:var(--mono);
+  border:1px dashed var(--rule);border-radius:6px;padding:7px 10px;text-align:center}
+.addplay:hover{border-color:var(--brand-2);background:var(--sheet-2)}
 
-/* footer */
 .foot{position:absolute;left:0.5in;right:0.5in;bottom:0.24in;display:flex;justify-content:space-between;
   font-size:9px;color:var(--ink-3);font-family:var(--mono);border-top:1px solid var(--rule-2);padding-top:5px}
 
@@ -188,39 +206,53 @@ ul.pts li:hover .x{opacity:.7}
 .appx .entry{border:1px solid var(--rule);border-radius:9px;padding:11px 13px;margin-bottom:11px;background:var(--sheet)}
 .appx .ehd{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;border-bottom:1px solid var(--rule-2);padding-bottom:7px;margin-bottom:7px}
 .appx .ehd .nm{font-family:var(--serif);font-size:17px;font-weight:700}
-.appx .ehd .arc{font-size:10.5px;color:var(--ink-2);margin-top:1px}
-.appx .gr{flex:0 0 auto;font-family:var(--mono);font-weight:800;font-size:13px;padding:3px 9px;border-radius:6px;background:var(--brand);color:#fff}
-.appx .idy{font-size:11px;color:var(--ink-2);line-height:1.4;margin-bottom:7px}
-.appx .papers{display:flex;flex-direction:column;gap:5px}
-.appx .paper{display:grid;grid-template-columns:40px 1fr auto;gap:9px;font-size:11px;padding:4px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
-.appx .paper:last-child{border-bottom:none}
-.appx .paper .yr{font-family:var(--mono);color:var(--ink-3);font-size:10px}
-.appx .paper .ti{font-weight:550;line-height:1.3}
-.appx .paper .ar{font-size:9px;color:var(--ink-3);display:block;margin-top:1px;text-transform:uppercase;letter-spacing:.04em}
-.appx .paper .kd{font-family:var(--mono);font-size:9px;color:var(--brand-2)}
+.appx .ehd .role{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.appx .ehd .arc{font-size:10.5px;color:var(--ink-2);margin-top:2px;line-height:1.3}
+.appx .badges{display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex:0 0 auto}
+.appx .gr{font-family:var(--mono);font-weight:800;font-size:12px;padding:2px 8px;border-radius:6px;background:var(--brand);color:#fff}
+.appx .rc{font-family:var(--mono);font-size:8.5px;font-weight:700;padding:1px 6px;border-radius:999px;background:var(--good-soft);color:var(--good)}
+.appx .bio{font-size:11px;color:var(--ink-2);line-height:1.42;margin-bottom:7px}
+.appx .cand{font-size:10.5px;line-height:1.4;border-radius:6px;padding:6px 9px;margin-bottom:8px}
+.appx .cand.strong{background:var(--good-soft)} .appx .cand.moderate{background:var(--warn-soft)} .appx .cand.weak{background:var(--bad-soft)}
+.appx .cand .lab{font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:9px}
+.appx .cand.strong .lab{color:var(--good)} .appx .cand.moderate .lab{color:var(--warn)} .appx .cand.weak .lab{color:var(--bad)}
+.appx .cand .dr{display:inline-block;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,.06);border-radius:999px;padding:1px 7px;margin:3px 3px 0 0}
 .themes{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px}
 .themes span{font-size:9.5px;background:var(--sheet-2);border:1px solid var(--rule);border-radius:999px;padding:1px 7px;color:var(--ink-2)}
+.appx .papers{display:flex;flex-direction:column;gap:0}
+.appx .paper{display:grid;grid-template-columns:52px 1fr auto;gap:9px;font-size:11px;padding:5px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.appx .paper:last-child{border-bottom:none}
+.appx .paper .aff{font-family:var(--mono);font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;text-align:center;letter-spacing:.02em}
+.appx .paper .aff.h{background:var(--heat-soft);color:var(--heat)}
+.appx .paper .aff.m{background:var(--warn-soft);color:var(--warn)}
+.appx .paper .aff.l{background:var(--sheet-2);color:var(--ink-3)}
+.appx .paper .ti{font-weight:550;line-height:1.3}
+.appx .paper .mt{font-size:9px;color:var(--ink-3);display:block;margin-top:1px}
+.appx .paper .yr{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);text-align:right}
+.appx .links{margin-top:7px;font-size:10px;font-family:var(--mono);color:var(--ink-3);display:flex;gap:9px;flex-wrap:wrap}
+.appx .notes{margin-top:6px;font-size:10.5px}
+.appx .notes .lb{font-size:8.6px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 
 .editnote{max-width:8.5in;width:8.5in;font-size:11px;color:var(--ink-2);background:var(--sheet);
   border:1px solid var(--rule);border-left:3px solid var(--warn);border-radius:6px;padding:9px 12px;box-shadow:var(--shadow)}
 .editnote b{color:var(--ink)}
 
 @media (max-width:920px){ .sheet{width:100%;min-width:0;padding:20px 16px 34px} .seal{width:78px} .seal .ring{width:72px;height:72px}
-  .grid2,.uni-cols{grid-template-columns:1fr} .caps{grid-template-columns:repeat(2,1fr)} .foot{position:static;margin-top:14px}}
+  .grid2,.uni-cols{grid-template-columns:1fr} .caps{grid-template-columns:repeat(2,1fr)} .foot{position:static;margin-top:14px}
+  .editnote{width:100%}}
 
-/* ---------- print ---------- */
 @media print{
   @page{size:letter portrait;margin:0}
   html,body{background:#fff}
   body{background-image:none}
-  .bar,.editnote{display:none!important}
+  .bar,.editnote,.addpt,.addplay,.play .rm,.play ul li .x,ul.pts li .x{display:none!important}
   .wrap{padding:0;gap:0}
-  .sheet{width:8.5in;min-height:11in;box-shadow:none;border-radius:0;margin:0;page-break-after:always;
-    padding:0.5in 0.5in 0.42in}
+  .sheet{width:8.5in;min-height:11in;box-shadow:none;border-radius:0;margin:0;page-break-after:always;padding:0.5in 0.5in 0.42in}
   .sheet::before{border:none}
-  .sheet:last-child{page-break-after:auto}
+  .sheet.appx{min-height:0}
+  .appx .entry,.play,.q{break-inside:avoid}
   [contenteditable]:hover,[contenteditable]:focus{background:none;box-shadow:none}
-  .who.link{color:var(--brand-2)}
+  select.ed{border:none;background:none;-webkit-appearance:none;appearance:none;padding:0}
   a{color:var(--brand-2)}
 }
 </style>
@@ -229,7 +261,7 @@ ul.pts li:hover .x{opacity:.7}
 <div class="bar">
   <span class="brand"><span class="dot"></span>LITT Account Report Card</span>
   <select id="picker" aria-label="Choose account"></select>
-  <span class="hint" id="edithint">Click any highlighted text to edit · edits saved in this browser</span>
+  <span class="hint">Click any highlighted value to edit · numbers recompute downstream · saved in this browser</span>
   <span class="spacer"></span>
   <button id="resetBtn" title="Discard edits for this account">↺ Reset</button>
   <button id="importBtn" title="Load a saved edits file">↑ Import</button>
@@ -239,30 +271,32 @@ ul.pts li:hover .x{opacity:.7}
 </div>
 
 <div class="editnote">
-  <b>How this works.</b> Everything data-driven — sales, cases, probes/case, reservoirs, physician universe, KOL research —
-  is computed from the territory plan, the physician universe, and three years of NeuroBlate sales.
-  The <b>header confirmations</b> (MRI · robot · navigation · service contract), <b>SWOT</b>, and <b>Strategy &amp; Tactics</b>
-  are pre-seeded and fully editable — click to rewrite, use <span class="mono">+ add</span> to extend a list, hover a point to remove it.
-  <b>Print / PDF</b> gives you the two-page card (research appendix follows). Edits stay in your browser until you Export them.
+  <b>Everything is editable.</b> Data-driven sections (sales, cases, probes/case, reservoirs, physician universe, KOL research)
+  are computed from the territory plan + physician universe + three years of NeuroBlate sales. Click any highlighted value to
+  change it — <b>editing a number (sales, cases, reservoirs, surgeon volume) recomputes the KPIs, health grade and charts downstream.</b>
+  Robot and navigation are dropdowns from a capital library (ClearPoint SmartFrame is navigation, not a robot). Add or remove
+  strategy plays and SWOT points yourself. Research under each physician is sorted by how closely it ties to LITT, then by date.
+  Edits save in your browser until you Export them.
 </div>
 
 <div class="wrap" id="wrap"></div>
 
 <script id="acct-data" type="application/json">__DATA__</script>
 <script>
-const CURRENCY=n=>n==null?"—":(Math.abs(n)>=1000?"$"+(n/1000).toFixed(n>=100000?0:1)+"k":"$"+n);
+const CURRENCY=n=>n==null?"—":(Math.abs(n)>=1000?"$"+(n/1000).toFixed(Math.abs(n)>=100000?0:1)+"k":"$"+Math.round(n));
 const NUM=n=>n==null?"—":n;
 const esc=s=>(s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const clsColor={Installed:"#14425c",Contested:"#c07f00",Installing:"#0e8f5e",Pipeline:"#1f6f8b",Competitive:"#cf3b3a"};
-const gradeColor=g=>{const G=g[0];return G==="A"?"#0e8f5e":G==="B"?"#1f6f8b":G==="C"?"#c07f00":"#cf3b3a";};
-let DATA=null, IDX={}, CUR=null;
+const gradeColor=g=>{const G=(g||"")[0];return G==="A"?"#0e8f5e":G==="B"?"#1f6f8b":G==="C"?"#c07f00":"#cf3b3a";};
+let DATA=null, IDX={}, CUR=null, LIB={};
 
 /* ---------- persistence ---------- */
-const LSKEY="acctcards.edits.v1";
+const LSKEY="acctcards.alt.edits.v2";
 function loadEdits(){try{return JSON.parse(localStorage.getItem(LSKEY)||"{}")}catch(e){return {}}}
 function saveEdits(e){localStorage.setItem(LSKEY,JSON.stringify(e))}
 function editsFor(acr){const e=loadEdits();return e[acr]||{}}
 function setEdit(acr,path,val){const e=loadEdits();(e[acr]=e[acr]||{})[path]=val;saveEdits(e)}
+function dropEditsPrefix(acr,prefix){const e=loadEdits();if(e[acr])for(const k in e[acr])if(k.startsWith(prefix))delete e[acr][k];saveEdits(e)}
 function applyEdits(acct){
   const ov=editsFor(acct.acronym);
   const c=JSON.parse(JSON.stringify(acct));
@@ -274,44 +308,71 @@ function applyEdits(acct){
   return c;
 }
 
-/* ---------- charts (inline SVG) ---------- */
+/* ---------- derived recompute (so edits flow through) ---------- */
+function derive(acct){
+  const b=acct.business, rg=b.region_avg_case||18300;
+  const probesTotal=Object.values(b.probes_by_year||{}).reduce((a,x)=>a+(+x||0),0);
+  const cases=+b.cases_logged||0;
+  b.probes_total=probesTotal;
+  b.probes_per_case=cases?Math.round(probesTotal/cases*100)/100:null;
+  const n=b.net_by_year||{};
+  const totalNet=(+n["2024"]||0)+(+n["2025"]||0)+(+n["2026_ytd"]||0);
+  b.rev_per_case=cases?Math.round(totalNet/cases):null;
+  b.rev_vs_region=b.rev_per_case?Math.round(b.rev_per_case/rg*100)/100:null;
+  // health
+  const subs={};
+  const tmap={Up:25,New:20,Flat:14,Down:6,Competitive:8};
+  subs["Trajectory"]=tmap[b.trend]!=null?tmap[b.trend]:12;
+  const addr=(acct.reservoirs||[]).reduce((a,r)=>a+(+r.addressable||0),0);
+  subs["Reservoir capture"]=addr?Math.min(20,Math.round((cases/addr)*60)):8;
+  const nsurg=(acct.universe.performers||[]).filter(p=>(+p.cases||0)>0).length;
+  subs["Surgeon depth"]=nsurg===0?4:nsurg===1?8:Math.min(20,8+nsurg*4);
+  const plats=acct.platform||[];
+  const comp=plats.includes("Visualase")||plats.includes("ClearPoint");
+  subs["Competitive position"]=acct.class==="Competitive"?5:(comp?10:20);
+  const rv=b.rev_vs_region;
+  subs["Value capture"]=(rv&&rv>=1)?15:(rv?10:7);
+  const total=Object.values(subs).reduce((a,x)=>a+x,0);
+  const grade=total>=85?"A":total>=78?"A-":total>=72?"B+":total>=65?"B":total>=58?"B-":
+              total>=50?"C+":total>=42?"C":total>=32?"D":"F";
+  acct.health={score:total,grade:grade,subs:subs};
+  return acct;
+}
+
+/* ---------- charts ---------- */
 function barsSales(b){
   const yrs=[["2024",b.net_by_year["2024"],false],["2025",b.net_by_year["2025"],false],
-    ["2026 YTD",b.net_by_year["2026_ytd"],false],["2026 proj",b.net_by_year["2026_proj"],true]];
-  const vals=yrs.map(y=>y[1]||0);const max=Math.max(...vals,1);
+    ["2026 YTD",b.net_by_year["2026_ytd"],false],["2026 full-yr",b.net_by_year["2026_proj"],true]];
+  const vals=yrs.map(y=>+y[1]||0);const max=Math.max(...vals,1);
   const W=330,H=118,pad=22,bw=54,gap=(W-2-yrs.length*bw)/(yrs.length+1);
   let bars="",x=gap;
   for(const[lab,v,proj]of yrs){
-    const h=Math.max(2,(v||0)/max*(H-pad-16));const y=H-pad-h;
+    const h=Math.max(2,(+v||0)/max*(H-pad-16));const y=H-pad-h;
     bars+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${h.toFixed(1)}" rx="3"
       fill="${proj?'none':'var(--s1)'}" ${proj?'stroke="var(--s1)" stroke-width="1.5" stroke-dasharray="4 3"':''}/>`;
     bars+=`<text x="${(x+bw/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" font-size="10.5"
       font-family="var(--mono)" font-weight="700" fill="var(--ink)">${CURRENCY(v)}</text>`;
-    bars+=`<text x="${(x+bw/2).toFixed(1)}" y="${H-6}" text-anchor="middle" font-size="9.5"
-      fill="var(--ink-3)">${lab}</text>`;
+    bars+=`<text x="${(x+bw/2).toFixed(1)}" y="${H-6}" text-anchor="middle" font-size="9.5" fill="var(--ink-3)">${lab}</text>`;
     x+=bw+gap;
   }
-  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Net sales by year with projection">
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Net sales by year with full-year 2026">
     <line x1="0" y1="${H-pad}" x2="${W}" y2="${H-pad}" stroke="var(--rule)"/>${bars}</svg>`;
 }
 function barsReservoir(rs){
   if(!rs.length)return `<div style="font-size:10.5px;color:var(--ink-3);padding:8px 0">No reservoir pools mapped for this account.</div>`;
-  const max=Math.max(...rs.map(r=>r.pool),1);
+  const max=Math.max(...rs.map(r=>+r.pool||0),1);
   const W=330,rowh=26,H=rs.length*rowh+6,labW=118,barW=W-labW-46;
   let out="";
-  rs.forEach((r,i)=>{
-    const y=i*rowh+6;
-    const pw=r.pool/max*barW, aw=r.addressable/max*barW;
+  rs.forEach((r,i)=>{const y=i*rowh+6;const pw=(+r.pool||0)/max*barW, aw=(+r.addressable||0)/max*barW;
     out+=`<text x="0" y="${y+11}" font-size="10" fill="var(--ink-2)">${esc(r.indication)}</text>`;
     out+=`<rect x="${labW}" y="${y+4}" width="${pw.toFixed(1)}" height="9" rx="4" fill="var(--rule)"/>`;
     out+=`<rect x="${labW}" y="${y+4}" width="${Math.max(2,aw).toFixed(1)}" height="9" rx="4" fill="var(--s2)"/>`;
     out+=`<text x="${(labW+pw+5).toFixed(1)}" y="${y+12}" font-size="9.5" font-family="var(--mono)" fill="var(--ink-3)">${r.addressable}/${r.pool}</text>`;
   });
-  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Addressable LITT candidates vs claims pool by indication">${out}</svg>`;
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Addressable LITT candidates vs claims pool">${out}</svg>`;
 }
 function gauge(score,grade){
-  const R=42,cx=48,cy=48,C=Math.PI*R, frac=Math.max(0,Math.min(1,score/100));
-  const col=gradeColor(grade);
+  const R=42,cx=48,cy=48,C=Math.PI*R,frac=Math.max(0,Math.min(1,score/100)),col=gradeColor(grade);
   return `<svg viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Account health ${grade}">
     <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--rule)" stroke-width="7"/>
     <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${col}" stroke-width="7" stroke-linecap="round"
@@ -323,97 +384,102 @@ function gauge(score,grade){
 function subBars(subs){
   const maxes={"Trajectory":25,"Reservoir capture":20,"Surgeon depth":20,"Competitive position":20,"Value capture":15};
   let out="";
-  for(const k in subs){
-    const mx=maxes[k]||20, f=Math.max(0,Math.min(1,subs[k]/mx));
+  for(const k in subs){const mx=maxes[k]||20,f=Math.max(0,Math.min(1,subs[k]/mx));
     const col=f>=.75?"var(--good)":f>=.45?"var(--s4)":"var(--bad)";
-    out+=`<div class="subrow"><span>${esc(k)}</span><span class="track"><span class="fill" style="width:${(f*100).toFixed(0)}%;background:${col}"></span></span><span class="val">${subs[k]}/${mx}</span></div>`;
-  }
+    out+=`<div class="subrow"><span>${esc(k)}</span><span class="track"><span class="fill" style="width:${(f*100).toFixed(0)}%;background:${col}"></span></span><span class="val">${subs[k]}/${mx}</span></div>`;}
   return out;
 }
 
 /* ---------- editable helpers ---------- */
-function ed(acr,path,val,tag="span",extra=""){
-  return `<${tag} contenteditable="true" spellcheck="false" data-acr="${acr}" data-path="${path}" ${extra}>${esc(val==null?"":val)}</${tag}>`;
+function edT(acr,path,val,tag){tag=tag||"span";return `<${tag} contenteditable="true" spellcheck="false" data-acr="${acr}" data-path="${path}" data-kind="text">${esc(val==null?"":val)}</${tag}>`;}
+function edN(acr,path,val){return `<span contenteditable="true" spellcheck="false" class="num" data-acr="${acr}" data-path="${path}" data-kind="num">${val==null?"—":esc(val)}</span>`;}
+function edSel(acr,path,val,opts){
+  const cur=val==null?"":String(val);
+  const list=[""].concat((opts||[]).filter(o=>o!==""));
+  if(cur&&!list.includes(cur))list.push(cur);
+  return `<select class="ed" data-acr="${acr}" data-path="${path}" data-kind="sel">`+
+    list.map(o=>`<option ${o===cur?"selected":""} value="${esc(o)}">${o===""?"— set —":esc(o)}</option>`).join("")+`</select>`;
 }
 
 /* ---------- render ---------- */
 function render(acct0){
-  const acct=applyEdits(acct0), acr=acct.acronym, wrap=document.getElementById("wrap");
+  const acct=derive(applyEdits(acct0)), acr=acct.acronym, wrap=document.getElementById("wrap");
   const h=acct.header,b=acct.business,H=acct.health,u=acct.universe;
   const clsC=clsColor[acct.class]||"#14425c";
   const trendArrow=b.trend==="Up"?"▲":b.trend==="Down"?"▼":b.trend==="New"?"＋":"▬";
   const trendCls=b.trend==="Up"?"up":b.trend==="Down"?"down":"";
 
-  /* capability chips */
-  const yn=(v,goodTrue=true)=>v?`<span class="v ${goodTrue?'yes':'comp'}">Yes</span>`:`<span class="v no">No</span>`;
+  const compChip=h.competitor_system&&h.competitor_system!=="None confirmed";
   const chips=[
-    ["Account type",`<span class="v">${esc(h.account_type)}</span>`,false],
-    ["Doing LITT",yn(h.does_litt),false],
-    ["Our system",`<span class="v">${esc(h.our_system)}</span>`,false],
-    ["Competitor",`<span class="v ${h.competitor_system!=='None confirmed'?'comp':''}">${esc(h.competitor_system)}</span>`,h.competitor_system!=='None confirmed'],
-    ["MRI",`<span class="v">${ed(acr,"header.mri",h.mri||"—")}</span>`,false],
-    ["Robot",`<span class="v ${/rosa/i.test(h.robot)?'yes':''}">${ed(acr,"header.robot",h.robot||"—")}</span>`,/rosa/i.test(h.robot)],
-    ["Navigation",`<span class="v">${ed(acr,"header.navigation",h.navigation||"—")}</span>`,false],
-    ["SEEG program",h.does_seeg?`<span class="v yes">Yes · ${h.seeg_volume}</span>`:`<span class="v no">No</span>`,false],
-    [">50 cranis/yr",h.crani_over_50?`<span class="v yes">Yes · ${h.crani_volume}</span>`:`<span class="v no">${h.crani_volume}</span>`,false],
-    ["Service contract",`<span class="v">${ed(acr,"header.service_contract",h.service_contract||"confirm")}</span>`,false],
+    ["Account type",`<span class="v">${edSel(acr,"class",acct.class,["Installed","Contested","Installing","Pipeline","Competitive"])}</span>`,false,false],
+    ["Doing LITT",`<span class="v ${h.does_litt?'yes':'no'}">${edSel(acr,"header.does_litt",h.does_litt?"Yes":"No",["Yes","No"])}</span>`,false,false],
+    ["Our LITT system",`<span class="v">${edSel(acr,"header.our_system",h.our_system,LIB.litt)}</span>`,false,false],
+    ["Competitor",`<span class="v ${compChip?'comp':''}">${edT(acr,"header.competitor_system",h.competitor_system)}</span>`,compChip,false],
+    ["MRI",`<span class="v">${edT(acr,"header.mri",h.mri||"confirm")}</span>`,false,false],
+    ["Robot",`<span class="v ${/rosa/i.test(h.robot)?'yes':''}">${edSel(acr,"header.robot",h.robot,LIB.robots)}</span>`,false,/rosa/i.test(h.robot)],
+    ["Navigation",`<span class="v">${edSel(acr,"header.navigation",h.navigation,LIB.navigation)}</span>`,false,false],
+    ["SEEG program",h.does_seeg?`<span class="v yes">Yes · ${h.seeg_volume}</span>`:`<span class="v no">No</span>`,false,false],
+    [">50 cranis/yr",h.crani_over_50?`<span class="v yes">Yes · ${h.crani_volume}</span>`:`<span class="v no">${h.crani_volume}</span>`,false,false],
+    ["Service contract",`<span class="v">${edT(acr,"header.service_contract",h.service_contract||"confirm")}</span>`,false,false],
   ];
-  const capsHTML=chips.map(([k,v,flag])=>`<div class="cap ${flag?'flag':''}"><div class="k">${k}</div>${v}</div>`).join("");
+  const capsHTML=chips.map(([k,v,flag,syn])=>`<div class="cap ${flag?'flag':''} ${syn?'synergy':''}"><div class="k">${k}</div>${v}</div>`).join("");
 
-  /* KPI tiles */
   const kpis=[
-    ["Cases logged (3yr)",NUM(b.cases_logged),`${b.incremental_cases||0} incremental target`,""],
+    ["Cases logged (3yr)",edN(acr,"business.cases_logged",b.cases_logged),`${b.incremental_cases||0} incremental target`,""],
     ["Probes / case",b.probes_per_case==null?"—":b.probes_per_case,"trajectory multiplier",""],
     ["$ / case vs region",b.rev_vs_region==null?"—":b.rev_vs_region+"×",`region avg ${CURRENCY(b.region_avg_case)}`,b.rev_vs_region>=1?"up":b.rev_vs_region?"down":""],
-    ["2026 projection",CURRENCY(b.net_by_year["2026_proj"]),"next 12–18 mo",""],
+    ["Full-year 2026",edN(acr,"business.net_by_year.2026_proj",b.net_by_year["2026_proj"]),"projected through Dec 31",""],
     ["Annual potential",CURRENCY(b.business_potential_yr),"unrealized / yr",""],
-    ["Trend",`${trendArrow} ${esc(b.trend||"—")}`,"revenue direction",trendCls],
+    ["Trend",`${trendArrow} ${edSel(acr,"business.trend",b.trend,["Up","Flat","Down","New","Competitive"])}`,"revenue direction",trendCls],
   ];
   const kpiHTML=kpis.map(([k,v,s,c])=>`<div class="kpi"><div class="k">${k}</div><div class="v ${c}">${v}</div><div class="s">${s}</div></div>`).join("");
 
-  /* universe */
-  const perfRows=u.performers.length?u.performers.map(p=>`<tr>
-    <td class="who ${p.kol?'kol':''} ${p.npi&&hasAppendix(acct,p.name)?'link':''}" ${p.npi&&hasAppendix(acct,p.name)?`onclick="jump('${acr}','${esc(p.name)}')"`:''}>${esc(p.name)}</td>
-    <td><span class="pill">${p.cases} cases</span></td>
+  // universe tables
+  const perfRows=u.performers.length?u.performers.map((p,i)=>`<tr>
+    <td class="who ${p.kol?'kol':''} ${hasAppendix(acct,p.name)?'link':''}" ${hasAppendix(acct,p.name)?`onclick="jump('${acr}','${esc(p.name)}')"`:''}>${edT(acr,`universe.performers.${i}.name`,p.name)}</td>
+    <td><span class="pill">${edN(acr,`universe.performers.${i}.cases`,p.cases)} cases</span></td>
     <td style="font-size:10px;color:var(--ink-2)">${esc(p.wheelhouse||p.specialty||"")}</td></tr>`).join(""):`<tr><td colspan="3" style="color:var(--ink-3);font-size:10.5px">No field-confirmed performers logged.</td></tr>`;
   const naiveRows=u.naive_targets.length?u.naive_targets.map(p=>`<tr>
-    <td class="who ${p.kol?'kol':''} ${hasAppendix(acct,p.name)?'link':''}" ${hasAppendix(acct,p.name)?`onclick="jump('${acr}','${esc(p.name)}')"`:''}>${esc(p.name)}</td>
-    <td style="font-size:10px">${p.epi_cranio?`<span class="pill">${p.epi_cranio} epi</span> `:""}${p.tumor_cranio?`<span class="pill">${p.tumor_cranio} tum</span> `:""}${p.seeg?`<span class="pill">${p.seeg} SEEG</span>`:""}</td>
+    <td class="who ${p.kol?'kol':''} ${hasAppendix(acct,p.name)?'link':''}" ${hasAppendix(acct,p.name)?`onclick="jump('${acr}','${esc(p.name)}')"`:''}>${esc(p.name)}
+      ${p.assessment?`<span class="assess ${p.assessment}">${esc(p.assessment)}</span>`:""}</td>
+    <td style="font-size:10px">${p.seeg?`<span class="pill">${p.seeg} SEEG</span> `:""}${p.epi_cranio?`<span class="pill">${p.epi_cranio} epi</span> `:""}${p.tumor_cranio?`<span class="pill">${p.tumor_cranio} tum</span>`:""}</td>
     <td style="font-size:10px;color:var(--ink-2)">${esc(p.wheelhouse||"")}</td></tr>`).join(""):`<tr><td colspan="3" style="color:var(--ink-3);font-size:10.5px">Targets to be identified in field.</td></tr>`;
   const refRows=u.referrers.slice(0,9).map(r=>`<tr>
-    <td class="who">${esc(r.name)}</td>
-    <td style="font-size:10px;color:var(--ink-2)">${esc(r.indication)}</td>
+    <td class="who">${esc(r.name)}</td><td style="font-size:10px;color:var(--ink-2)">${esc(r.indication)}</td>
     <td class="pop" style="text-align:right">${r.pool!=null?r.pool+" pt":(r.cases!=null?r.cases+" ref":"")}</td></tr>`).join("");
 
-  /* SWOT */
   const swotBox=(key,cls,title)=>{
     const items=acct.swot[key]||[];
-    const lis=items.map((t,i)=>`<li>${ed(acr,`swot.${key}.${i}`,t,"span")}<span class="x" onclick="rmPoint('${acr}','${key}',${i})">✕</span></li>`).join("");
+    const lis=items.map((t,i)=>`<li>${edT(acr,`swot.${key}.${i}`,t)}<span class="x" onclick="rmPoint('${acr}','${key}',${i})">✕</span></li>`).join("");
     return `<div class="q ${cls}"><h4><span class="b"></span>${title}</h4><ul class="pts">${lis}</ul>
       <div class="addpt" onclick="addPoint('${acr}','${key}')">+ add point</div></div>`;
   };
 
-  /* strategy */
+  // strategy
+  const playClass=t=>/crack/i.test(t)?"crack":/referral/i.test(t)?"referral":/defend/i.test(t)?"defend":"";
   const playHTML=(acct.strategy||[]).map((p,pi)=>{
-    const crack=/crack/i.test(p.type);
-    const tac=(p.tactics||[]).map((t,ti)=>`<li>${ed(acr,`strategy.${pi}.tactics.${ti}`,t,"span")}</li>`).join("");
-    return `<div class="play ${crack?'crack':''}">
-      <div class="top"><span class="type">${esc(p.type)}</span><span class="tgt">→ ${ed(acr,`strategy.${pi}.target`,p.target)}</span></div>
-      <div class="obj">${ed(acr,`strategy.${pi}.objective`,p.objective)}</div>
-      <ul>${tac}</ul></div>`;
-  }).join("") || `<div style="font-size:11px;color:var(--ink-3)">Add the first play for this account.</div>`;
+    const cls=playClass(p.type);
+    const tac=(p.tactics||[]).map((t,ti)=>`<li>${edT(acr,`strategy.${pi}.tactics.${ti}`,t)}<span class="x" onclick="rmTactic('${acr}',${pi},${ti})">✕</span></li>`).join("");
+    const drivers=(p.drivers&&p.drivers.length)?`<div class="drivers">`+p.drivers.map(d=>`<span class="d">${esc(d.value)} ${esc(d.label)}</span>`).join("")+`</div>`:"";
+    const why=p.why?`<div class="why">${p.assessment?`<b>Why ${esc(p.target)} (${esc(p.assessment)} candidate):</b> `:`<b>Why:</b> `}${edT(acr,`strategy.${pi}.why`,p.why)}</div>`:"";
+    return `<div class="play ${cls}">
+      <span class="rm" onclick="rmPlay('${acr}',${pi})">✕ remove</span>
+      <div class="top"><span class="type">${edSel(acr,`strategy.${pi}.type`,p.type,LIB.play_types)}</span><span class="tgt">→ ${edT(acr,`strategy.${pi}.target`,p.target)}</span></div>
+      <div class="obj">${edT(acr,`strategy.${pi}.objective`,p.objective)}</div>
+      ${why}${drivers}
+      <ul>${tac}<li style="list-style:none;margin-left:-14px"><span class="addpt" onclick="addTactic('${acr}',${pi})">+ add tactic</span></li></ul></div>`;
+  }).join("");
 
-  /* ------- assemble sheets ------- */
   const gen=DATA.meta.generated||"";
-  const nameplate=side=>`<div class="plate">
+  const nameplate=()=>`<div class="plate">
     <div>
       <div class="eyebrow">NeuroBlate · Northeast Territory · Account #${acct.rank}</div>
-      <h1>${esc(acct.name)}</h1>
+      <h1>${edT(acr,"name",acct.name)}</h1>
       <div class="sys">${esc(acct.system)} · ${esc(acr)}</div>
       <div class="meta">
         <span class="tag cls" style="background:${clsC}">${esc(acct.class)}</span>
-        <span class="tag">${esc(acct.posture)}</span>
-        <span class="tag win">Win: ${esc(acct.win||"—")}</span>
+        <span class="tag">${edT(acr,"posture",acct.posture)}</span>
+        <span class="tag win">Win: ${edT(acr,"win",acct.win||"—")}</span>
       </div>
     </div>
     <div class="seal"><div class="ring">${gauge(H.score,H.grade)}</div><div class="lab">Account<br><b>Health</b></div></div>
@@ -421,14 +487,11 @@ function render(acct0){
 
   const page1=`<div class="sheet">
     ${nameplate()}
-    <div class="sec"><h2><span class="n">A</span> Account Snapshot</h2>
-      <div class="caps">${capsHTML}</div>
-    </div>
+    <div class="sec"><h2><span class="n">A</span> Account Snapshot</h2><div class="caps">${capsHTML}</div></div>
     <div class="sec"><h2><span class="n">B</span> Business Health</h2>
       <div class="grid2">
-        <div class="panel"><h3>Net Sales &amp; Projection</h3>${barsSales(b)}
-          <div class="leg"><span><i style="background:var(--s1)"></i>Booked</span><span><i style="background:none;border:1.5px dashed var(--s1)"></i>Projected</span></div>
-        </div>
+        <div class="panel"><h3>Net Sales &amp; Full-Year 2026</h3>${barsSales(b)}
+          <div class="leg"><span><i style="background:var(--s1)"></i>Booked</span><span><i style="background:none;border:1.5px dashed var(--s1)"></i>Full-year 2026 projection</span></div></div>
         <div class="panel"><h3>Health Score — ${H.grade} · ${H.score}/100</h3><div class="subs">${subBars(H.subs)}</div></div>
       </div>
       <div class="kpis" style="margin-top:9px">${kpiHTML}</div>
@@ -438,15 +501,14 @@ function render(acct0){
         <div>
           <div class="subhd">Performing LITT ${u.kols.length?`<span style="color:var(--ink-3);font-weight:600">· ★ = LITT KOL</span>`:""}</div>
           <table class="u"><thead><tr><th>Surgeon</th><th>Volume</th><th>Wheelhouse</th></tr></thead><tbody>${perfRows}</tbody></table>
-          <div class="subhd" style="margin-top:8px">LITT-Naïve Development Targets</div>
-          <table class="u"><thead><tr><th>Surgeon</th><th>In-house volume</th><th>Wheelhouse</th></tr></thead><tbody>${naiveRows}</tbody></table>
+          <div class="subhd" style="margin-top:8px">LITT-Naïve Targets <span style="color:var(--ink-3);font-weight:600">· ranked by candidacy</span></div>
+          <table class="u"><thead><tr><th>Surgeon</th><th>In-house signal</th><th>Wheelhouse</th></tr></thead><tbody>${naiveRows}</tbody></table>
         </div>
         <div>
           <div class="subhd">Referrers &amp; Indication Populations</div>
           <table class="u"><thead><tr><th>Clinician</th><th>Indication</th><th style="text-align:right">Pool</th></tr></thead><tbody>${refRows}</tbody></table>
           <div class="panel" style="margin-top:8px;padding:8px 10px"><h3>Addressable Reservoirs</h3>${barsReservoir(acct.reservoirs)}
-            <div class="leg"><span><i style="background:var(--s2)"></i>Addressable LITT / yr</span><span><i style="background:var(--rule)"></i>Claims pool</span></div>
-          </div>
+            <div class="leg"><span><i style="background:var(--s2)"></i>Addressable LITT / yr</span><span><i style="background:var(--rule)"></i>Claims pool</span></div></div>
         </div>
       </div>
     </div>
@@ -456,49 +518,51 @@ function render(acct0){
   const page2=`<div class="sheet">
     ${nameplate()}
     <div class="sec"><h2><span class="n">D</span> Situation</h2>
-      <div style="font-size:11.5px;line-height:1.45;color:var(--ink)">${ed(acr,"situation",acct.situation,"div")}</div>
-    </div>
+      <div style="font-size:11.5px;line-height:1.45;color:var(--ink)">${edT(acr,"situation",acct.situation,"div")}</div></div>
     <div class="sec"><h2><span class="n">E</span> SWOT Analysis</h2>
-      <div class="swot">
-        ${swotBox("strengths","s","Strengths")}
-        ${swotBox("weaknesses","w","Weaknesses")}
-        ${swotBox("opportunities","o","Opportunities")}
-        ${swotBox("threats","t","Threats")}
-      </div>
-    </div>
+      <div class="swot">${swotBox("strengths","s","Strengths")}${swotBox("weaknesses","w","Weaknesses")}${swotBox("opportunities","o","Opportunities")}${swotBox("threats","t","Threats")}</div></div>
     <div class="sec"><h2><span class="n">F</span> Strategy &amp; Tactics</h2>
       ${playHTML}
-    </div>
+      <div class="addplay" onclick="addPlay('${acr}')">+ add strategy play</div></div>
     <div class="foot"><span>Strengths · Weaknesses · Opportunities · Threats → Concrete plays</span><span>Page 2 / 2 · ${esc(acr)}</span></div>
   </div>`;
 
-  /* appendix */
+  // appendix
   let appx="";
   if((acct.appendix||[]).length){
     const entries=acct.appendix.map(e=>{
-      const papers=(e.papers||[]).map(p=>`<div class="paper"><span class="yr">${p.year||""}</span>
-        <span><span class="ti">${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}</span>
-        ${p.area?`<span class="ar">${esc(p.area)}${p.journal?" · "+esc(p.journal):""}</span>`:""}</span>
-        <span class="kd">${esc(p.kind||"")}</span></div>`).join("");
+      const papers=(e.papers||[]).map(p=>{
+        const affc=p.aff===2?"h":p.aff===1?"m":"l";const afft=p.aff===2?"LITT":p.aff===1?"ADJ":"—";
+        return `<div class="paper"><span class="aff ${affc}">${afft}</span>
+          <span><span class="ti">${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`:esc(p.title)}</span>
+          <span class="mt">${esc(p.kind||"")}${p.journal?" · "+esc(p.journal):(p.area?" · "+esc(p.area):"")}</span></span>
+          <span class="yr">${p.year||""}</span></div>`;}).join("");
       const themes=(e.themes||[]).map(t=>`<span>${esc(t)}</span>`).join("");
+      const cand=e.candidacy?`<div class="cand ${e.candidacy.assessment||''}"><span class="lab">${esc(e.candidacy.assessment||'candidacy')} LITT candidate.</span>
+        ${esc(e.candidacy.rationale||'')} ${(e.candidacy.drivers||[]).map(d=>`<span class="dr">${esc(d.value)} ${esc(d.label)}</span>`).join("")}</div>`:"";
+      const links=[e.profile_url&&`<a href="${esc(e.profile_url)}" target="_blank" rel="noopener">Hospital profile ↗</a>`,
+        e.pubmed_url&&`<a href="${esc(e.pubmed_url)}" target="_blank" rel="noopener">PubMed ↗</a>`,
+        e.scholar_url&&`<a href="${esc(e.scholar_url)}" target="_blank" rel="noopener">Scholar ↗</a>`,
+        e.medscout&&`<a href="${esc(e.medscout)}" target="_blank" rel="noopener">Medscout ↗</a>`,
+        e.other_url&&`<a href="${esc(e.other_url)}" target="_blank" rel="noopener">More ↗</a>`].filter(Boolean).join(" · ");
       return `<div class="entry" id="appx-${esc(acr)}-${slug(e.physician)}">
-        <div class="ehd"><div><div class="nm">${esc(e.physician)}</div><div class="arc">${esc(e.archetype||"")}${e.facility?" · "+esc(e.facility):""}</div></div>
-          ${e.grade?`<span class="gr" style="background:${gradeColor(e.grade)}">LITT ${esc(e.grade)}${e.score?" · "+e.score:""}</span>`:""}</div>
-        ${e.identity?`<div class="idy">${esc(e.identity)}</div>`:""}
+        <div class="ehd"><div><div class="role">${esc(e.role||"")}</div><div class="nm">${esc(e.physician)}</div>
+          <div class="arc">${esc(e.title||e.archetype||"")}${e.facility&&!(e.title||"").includes(e.facility)?" · "+esc(e.facility):""}</div></div>
+          <div class="badges">${e.grade?`<span class="gr" style="background:${gradeColor(e.grade)}">LITT ${esc(e.grade)}${e.score?" · "+e.score:""}</span>`:""}${e.enriched?`<span class="rc">researched ✓</span>`:""}</div></div>
+        ${e.bio?`<div class="bio">${esc(e.bio)}</div>`:(e.identity?`<div class="bio">${esc(e.identity)}</div>`:"")}
+        ${cand}
         ${themes?`<div class="themes">${themes}</div>`:""}
-        <div class="papers">${papers||'<div style="font-size:10.5px;color:var(--ink-3)">No indexed papers.</div>'}</div>
-        <div style="margin-top:6px;font-size:10px;font-family:var(--mono)">
-          ${e.medscout?`<a href="${esc(e.medscout)}" target="_blank" rel="noopener">Medscout ↗</a> · `:""}
-          ${e.scholar_url?`<a href="${esc(e.scholar_url)}" target="_blank" rel="noopener">Scholar ↗</a> · `:""}
-          ${e.profile_url?`<a href="${esc(e.profile_url)}" target="_blank" rel="noopener">Profile ↗</a>`:""}
-        </div></div>`;
+        <div class="papers">${papers||'<div style="font-size:10.5px;color:var(--ink-3)">No indexed papers yet — use the links below to pull their body of work.</div>'}</div>
+        ${links?`<div class="links">${links}</div>`:""}
+        <div class="notes"><span class="lb">Field notes</span> ${edT(acr,`appxnotes.${slug(e.physician)}`,(applyEdits(acct0).appxnotes||{})[slug(e.physician)]||"— add what you learn in the field —",'span')}</div>
+      </div>`;
     }).join("");
     appx=`<div class="sheet appx">
       ${nameplate()}
-      <div class="sec"><h2><span class="n">G</span> Research Appendix — Physician KOL Dossiers</h2>
-        <div style="font-size:10.5px;color:var(--ink-2);margin-bottom:9px">LITT and LITT-adjacent research for physicians on this account, organized by physician → indication/area → facility. Titles link to PubMed.</div>
-        ${entries}
-      </div>
+      <div class="sec"><h2><span class="n">G</span> Research Appendix — Physician Deep Dives</h2>
+        <div style="font-size:10.5px;color:var(--ink-2);margin-bottom:9px">Every performer and LITT-naïve target on this account, with research focus (bios · hospital sites · PubMed).
+        Papers are sorted by how closely they tie to LITT (<b style="color:var(--heat)">LITT</b> = directly laser/ablation · <b style="color:var(--warn)">ADJ</b> = ablation-amenable indication), then by date.</div>
+        ${entries}</div>
       <div class="foot"><span>Research appendix · ${esc(acct.name)}</span><span>${esc(acr)}</span></div>
     </div>`;
   }
@@ -514,64 +578,59 @@ function jump(acr,name){const el=document.getElementById(`appx-${acr}-${slug(nam
     el.style.boxShadow="0 0 0 3px var(--warn)";setTimeout(()=>el.style.boxShadow="",1400);}}
 
 /* ---------- edit binding ---------- */
+function coerceNum(t){t=(t||"").replace(/[$,×\s]/g,"");if(t==="—"||t==="")return 0;const n=Number(t);return isNaN(n)?0:n;}
 function bindEdits(){
   document.querySelectorAll("[contenteditable][data-path]").forEach(el=>{
     el.addEventListener("blur",()=>{
-      const acr=el.dataset.acr,path=el.dataset.path,val=el.innerText.trim();
-      setEdit(acr,path,val);
+      const acr=el.dataset.acr,path=el.dataset.path,kind=el.dataset.kind;
+      if(kind==="num"){const v=coerceNum(el.innerText);setEdit(acr,path,v);render(IDX[acr]);}
+      else{setEdit(acr,path,el.innerText.trim());}
+    });
+  });
+  document.querySelectorAll("select.ed[data-path]").forEach(el=>{
+    el.addEventListener("change",()=>{
+      const acr=el.dataset.acr,path=el.dataset.path;let v=el.value;
+      if(path==="header.does_litt")v=(v==="Yes");
+      setEdit(acr,path,v);render(IDX[acr]);
     });
   });
 }
-function addPoint(acr,key){
-  const c=applyEdits(IDX[acr]);const arr=(c.swot[key]||[]).slice();arr.push("New point — click to edit");
-  arr.forEach((v,i)=>setEdit(acr,`swot.${key}.${i}`,v));render(IDX[acr]);
-}
-function rmPoint(acr,key,idx){
-  const c=applyEdits(IDX[acr]);const arr=(c.swot[key]||[]).slice();arr.splice(idx,1);
-  const e=loadEdits();if(e[acr])for(const k in e[acr])if(k.startsWith(`swot.${key}.`))delete e[acr][k];saveEdits(e);
-  arr.forEach((v,i)=>setEdit(acr,`swot.${key}.${i}`,v));render(IDX[acr]);
-}
+
+/* ---------- SWOT edit ops ---------- */
+function addPoint(acr,key){const c=derive(applyEdits(IDX[acr]));const arr=(c.swot[key]||[]).slice();arr.push("New point — click to edit");
+  dropEditsPrefix(acr,`swot.${key}.`);arr.forEach((v,i)=>setEdit(acr,`swot.${key}.${i}`,v));render(IDX[acr]);}
+function rmPoint(acr,key,idx){const c=derive(applyEdits(IDX[acr]));const arr=(c.swot[key]||[]).slice();arr.splice(idx,1);
+  dropEditsPrefix(acr,`swot.${key}.`);arr.forEach((v,i)=>setEdit(acr,`swot.${key}.${i}`,v));render(IDX[acr]);}
+
+/* ---------- strategy edit ops (store whole array) ---------- */
+function stratArr(acr){return derive(applyEdits(IDX[acr])).strategy||[];}
+function saveStrat(acr,arr){setEdit(acr,"strategy",arr);render(IDX[acr]);}
+function addPlay(acr){const a=stratArr(acr);a.push({type:"Custom",target:"New target",objective:"Objective — click to edit.",tactics:["First tactic — click to edit."]});saveStrat(acr,a);}
+function rmPlay(acr,i){const a=stratArr(acr);a.splice(i,1);saveStrat(acr,a);}
+function addTactic(acr,i){const a=stratArr(acr);(a[i].tactics=a[i].tactics||[]).push("New tactic — click to edit.");saveStrat(acr,a);}
+function rmTactic(acr,i,j){const a=stratArr(acr);a[i].tactics.splice(j,1);saveStrat(acr,a);}
 
 /* ---------- controls ---------- */
-function selectAcct(acr){CUR=acr;render(IDX[acr]);document.getElementById("picker").value=acr;
-  location.hash=acr;window.scrollTo({top:0});}
-function initPicker(){
-  const pk=document.getElementById("picker");
-  pk.innerHTML=DATA.accounts.map(a=>`<option value="${a.acronym}">#${a.rank} · ${esc(a.name)} — ${esc(a.class)} · Health ${a.health.grade}</option>`).join("");
-  pk.addEventListener("change",e=>selectAcct(e.target.value));
-}
+function selectAcct(acr){CUR=acr;render(IDX[acr]);document.getElementById("picker").value=acr;location.hash=acr;window.scrollTo({top:0});}
+function initPicker(){const pk=document.getElementById("picker");
+  pk.innerHTML=DATA.accounts.map(a=>`<option value="${a.acronym}">#${a.rank} · ${esc(a.name)} — ${esc(a.class)} · Health ${derive(applyEdits(a)).health.grade}</option>`).join("");
+  pk.addEventListener("change",e=>selectAcct(e.target.value));}
 document.getElementById("printBtn").onclick=()=>window.print();
-document.getElementById("resetBtn").onclick=()=>{
-  if(!CUR)return; if(!confirm("Discard all your edits for this account?"))return;
-  const e=loadEdits();delete e[CUR];saveEdits(e);render(IDX[CUR]);
-};
-document.getElementById("exportBtn").onclick=()=>{
-  const blob=new Blob([JSON.stringify(loadEdits(),null,2)],{type:"application/json"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
-  a.download="account-card-edits.json";a.click();
-};
+document.getElementById("resetBtn").onclick=()=>{if(!CUR)return;if(!confirm("Discard all your edits for this account?"))return;
+  const e=loadEdits();delete e[CUR];saveEdits(e);render(IDX[CUR]);};
+document.getElementById("exportBtn").onclick=()=>{const blob=new Blob([JSON.stringify(loadEdits(),null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="account-card-edits.json";a.click();};
 document.getElementById("importBtn").onclick=()=>document.getElementById("fileIn").click();
-document.getElementById("fileIn").onchange=e=>{
-  const f=e.target.files[0];if(!f)return;const r=new FileReader();
-  r.onload=()=>{try{const inc=JSON.parse(r.result);const cur=loadEdits();
-    for(const acr in inc)cur[acr]=Object.assign(cur[acr]||{},inc[acr]);saveEdits(cur);
-    render(IDX[CUR]);alert("Edits imported.");}catch(err){alert("Could not read that file.")}};
-  r.readAsText(f);
-};
+document.getElementById("fileIn").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const inc=JSON.parse(r.result);const cur=loadEdits();for(const acr in inc)cur[acr]=Object.assign(cur[acr]||{},inc[acr]);saveEdits(cur);render(IDX[CUR]);alert("Edits imported.");}catch(err){alert("Could not read that file.")}};
+  r.readAsText(f);};
 
 /* ---------- boot ---------- */
-async function loadData(){
-  const raw=document.getElementById("acct-data").textContent.trim();
-  if(raw){return JSON.parse(raw);}          // embedded (standalone / artifact)
-  const res=await fetch("account-cards.json");return res.json();   // hosted
-}
-loadData().then(d=>{
-  DATA=d;DATA.accounts.forEach(a=>IDX[a.acronym]=a);
-  initPicker();
-  const h=(location.hash||"").replace("#","");
-  selectAcct(IDX[h]?h:DATA.accounts[0].acronym);
-}).catch(e=>{document.getElementById("wrap").innerHTML=
-  `<div class="editnote">Could not load data: ${esc(e.message)}</div>`;});
+async function loadData(){const raw=document.getElementById("acct-data").textContent.trim();
+  if(raw){return JSON.parse(raw);}const res=await fetch("account-cards.json");return res.json();}
+loadData().then(d=>{DATA=d;LIB=d.library||{};DATA.accounts.forEach(a=>IDX[a.acronym]=a);
+  initPicker();const h=(location.hash||"").replace("#","");selectAcct(IDX[h]?h:DATA.accounts[0].acronym);
+}).catch(e=>{document.getElementById("wrap").innerHTML=`<div class="editnote">Could not load data: ${esc(e.message)}</div>`;});
 </script>
 </body>
 </html>
@@ -587,7 +646,6 @@ def write_full(path, embed):
     print(f"  wrote {path}  ({len(html)//1024} KB)")
 
 def write_fragment(path):
-    """Body-only fragment for the claude.ai Artifact publish (it supplies <head>/<body>)."""
     html = fill(embed=True)
     style = html[html.index("<style>"):html.index("</style>") + len("</style>")]
     body = html[html.index("<body>") + len("<body>"):html.index("</body>")]
@@ -596,8 +654,8 @@ def write_fragment(path):
         f.write(frag)
     print(f"  wrote {path}  ({len(frag)//1024} KB, fragment)")
 
-print("Building Account Report Card tool:")
-write_full("tools/account-cards-alt/account-cards.html", embed=False)              # hosted: fetches json
-write_full("tools/account-cards-alt/account-cards-standalone.html", embed=True)    # double-click, no server
-write_fragment("tools/account-cards-alt/account-cards-artifact.html")              # claude.ai artifact publish
+print("Building Account Report Card tool (alt):")
+write_full(f"{OUT}/account-cards.html", embed=False)
+write_full(f"{OUT}/account-cards-standalone.html", embed=True)
+write_fragment(f"{OUT}/account-cards-artifact.html")
 print("Done.")

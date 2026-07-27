@@ -31,6 +31,34 @@ PROVIDERS = PROF["providers"]
 TERR = AI.TERRITORY
 REGION_AVG_CASE = TERR["avg_rev_per_case"]  # 18,300
 
+# ---- enrichment (live web research for naive candidates / champions) -----------
+_ENR_PATH = os.path.join(HERE, "research_enrichment.json")
+ENRICH = {}
+if os.path.exists(_ENR_PATH):
+    ENRICH = {k: v for k, v in json.load(open(_ENR_PATH)).items() if not k.startswith("_")}
+
+# ---- capital-equipment taxonomy (robots vs navigation are NOT the same thing) --
+# Robots physically drive the trajectory; navigation/targeting platforms plan and
+# guide it. ClearPoint SmartFrame is MRI-guided NAVIGATION/targeting, not a robot.
+LIBRARY = {
+    "litt": [
+        "NeuroBlate (Monteris — ours)", "Visualase (Medtronic — competitor)", "None",
+    ],
+    "robots": [
+        "ROSA (Zimmer Biomet)", "Mazor X (Medtronic)", "ExcelsiusGPS (Globus)",
+        "Cirq arm (Brainlab)", "Stealth Autoguide (Medtronic)", "neuromate (Renishaw)",
+        "None", "Unknown — confirm in field",
+    ],
+    "navigation": [
+        "ClearPoint SmartFrame (MRI-guided targeting)", "Brainlab (Curve / Kick)",
+        "Medtronic StealthStation", "Stryker Q Guidance", "Frameless (AxiEM / mask)",
+        "Leksell / CRW frame", "None", "Unknown — confirm in field",
+    ],
+    "play_types": [
+        "Develop surgeon", "Crack competitor", "Activate referral", "Defend", "Custom",
+    ],
+}
+
 # ---- raw sales aggregation -----------------------------------------------------
 # Map raw hospital strings -> account acronym.
 HOSP2ACR = {
@@ -105,6 +133,62 @@ for p in PROVIDERS:
     if isinstance(res, dict) and res.get("matched") and has_papers(res) and grade in ("A", "B"):
         KOL_NAMES.add(p["name"])
 
+def _num(x):
+    try: return int(x or 0)
+    except (TypeError, ValueError): return 0
+
+def candidate_profile(name):
+    """Data-driven read on a LITT-naive surgeon: drivers (with real numbers), a
+    composite score for ranking, and a plain-language 'why this candidate'."""
+    p = PROV_BY_NAME.get(name) or {}
+    seeg = _num(p.get("seeg"))
+    epi = _num(p.get("epi_cranio"))
+    tum = _num(p.get("tumor_cranio"))
+    mets = _num(p.get("mets_rn"))
+    pool = _num(p.get("intractable"))
+    wh = ((p.get("wheelhouse") or {}).get("archetype") or "")
+    enr = ENRICH.get(name) or {}
+    assess = ((enr.get("litt_candidacy") or {}).get("assessment") or "").lower()
+    kol = name in KOL_NAMES
+    # wheelhouse LITT affinity bonus
+    whl = wh.lower()
+    wh_bonus = 0
+    if any(k in whl for k in ("ablation", "litt", "laser")): wh_bonus += 8
+    if any(k in whl for k in ("epilepsy", "seeg", "mtle", "focal cortical")): wh_bonus += 5
+    if any(k in whl for k in ("metasta", "necrosis", "glioma", "gbm", "tumor")): wh_bonus += 3
+    # research-verified candidacy override (strong signal when we have it)
+    assess_adj = {"strong": 10, "moderate": 2, "weak": -12}.get(assess, 0)
+    score = (seeg * 3) + (epi * 0.5) + (tum * 0.35) + (mets * 0.15) \
+            + (8 if kol else 0) + wh_bonus + assess_adj
+    drivers = []
+    if seeg: drivers.append({"label": "SEEG implants", "value": seeg})
+    if epi:  drivers.append({"label": "epilepsy cranis", "value": epi})
+    if tum:  drivers.append({"label": "tumor cranis", "value": tum})
+    if mets: drivers.append({"label": "mets/RN cranis", "value": mets})
+    if pool: drivers.append({"label": "intractable pool", "value": pool})
+    # rationale — prefer the researched assessment, else derive from claims signal
+    if enr.get("litt_candidacy", {}).get("rationale"):
+        rationale = enr["litt_candidacy"]["rationale"]
+    elif seeg and epi:
+        rationale = (f"Active epilepsy surgeon — {seeg} SEEG implants and {epi} epilepsy "
+                     f"craniotomies. SEEG-localized foci convert directly into ablation targets.")
+    elif epi:
+        rationale = f"{epi} epilepsy craniotomies — epilepsy volume amenable to LITT conversion."
+    elif tum or mets:
+        rationale = (f"{tum + mets} tumor / mets-RN craniotomies — a candidate for tumor, "
+                     f"metastasis and radiation-necrosis ablation.")
+    else:
+        rationale = ("Low in-house craniotomy/SEEG signal in claims — confirm current case "
+                     "mix and interest before investing.")
+    if kol and "KOL" not in rationale:
+        rationale += " Published LITT/epilepsy KOL."
+    return {
+        "score": round(score, 1), "drivers": drivers, "rationale": rationale,
+        "assessment": assess or None, "wheelhouse": wh,
+        "seeg": seeg, "epi_cranio": epi, "tumor_cranio": tum, "mets_rn": mets, "pool": pool,
+        "kol": kol,
+    }
+
 def classify_universe(acr, acct):
     """Return performers, kols, naive_targets, referrers for an account card."""
     prov = by_acct.get(acr, [])
@@ -128,15 +212,18 @@ def classify_universe(acr, acct):
         if name in perf_names:
             continue
         p = pmap.get(name) or _find(name)
+        cp = candidate_profile(name)
         naive.append({
             "name": name, "npi": (p or {}).get("npi"),
             "cohort": (p or {}).get("cohort", ""),
-            "epi_cranio": (p or {}).get("epi_cranio", 0),
-            "tumor_cranio": (p or {}).get("tumor_cranio", 0),
-            "seeg": (p or {}).get("seeg", 0),
-            "wheelhouse": ((p or {}).get("wheelhouse") or {}).get("archetype", ""),
-            "kol": name in KOL_NAMES,
+            "epi_cranio": cp["epi_cranio"], "tumor_cranio": cp["tumor_cranio"],
+            "seeg": cp["seeg"], "mets_rn": cp["mets_rn"], "pool": cp["pool"],
+            "wheelhouse": cp["wheelhouse"], "kol": cp["kol"],
+            "score": cp["score"], "drivers": cp["drivers"],
+            "rationale": cp["rationale"], "assessment": cp["assessment"],
         })
+    # rank naive targets by data-driven candidate score (best first)
+    naive.sort(key=lambda n: -n["score"])
     # referrers = curated referrers + epilepsy/necrosis referrers with indication pools
     referrers = []
     for name, ind, n in acct.get("referrers", []):
@@ -156,40 +243,88 @@ def pubmed(title):
     from urllib.parse import quote_plus
     return "https://pubmed.ncbi.nlm.nih.gov/?term=" + quote_plus(title) if title else None
 
-# ---- research appendix (KOLs on the account) ----------------------------------
+def pubmed_name(name):
+    from urllib.parse import quote_plus
+    parts = name.split()
+    if len(parts) < 2: return None
+    q = f"{parts[-1]} {parts[0][0]}"  # "Feldstein N"
+    return "https://pubmed.ncbi.nlm.nih.gov/?term=" + quote_plus(q + "[Author]")
+
+def scholar_name(name):
+    from urllib.parse import quote_plus
+    return "https://scholar.google.com/scholar?q=" + quote_plus(name + " laser interstitial thermal OR epilepsy OR glioma")
+
+# per-paper LITT affinity: 2=directly LITT, 1=ablation-amenable indication, 0=other
+_HIGH = ("litt", "laser interstitial", "laser ablation", "mr-guided laser", "mrglitt",
+         "mrgLITT", "thermal therapy", "thermal ablation", "interstitial thermal", "laser")
+_MED = ("seeg", "stereoelectro", "drug-resistant epilepsy", "drug resistant epilepsy",
+        "temporal lobe epilepsy", "mtle", "epilepsy surg", "focal cortical", "hypothalamic hamartoma",
+        "tuberous", "brain metasta", "radiation necrosis", "recurrent glioma", "glioblastoma",
+        "gbm", "high-grade glioma", "ablation", "convection-enhanced", "meningioma")
+def paper_affinity(title, area="", explicit=None):
+    if explicit in ("high", "med", "low"):
+        return {"high": 2, "med": 1, "low": 0}[explicit]
+    t = (str(title or "") + " " + str(area or "")).lower()
+    if any(k in t for k in _HIGH): return 2
+    if any(k in t for k in _MED): return 1
+    return 0
+
+# ---- research appendix: deep-dive for every performer + naive target ----------
 def build_appendix(acr, acct):
-    names = {s[0] for s in acct.get("surgeons", [])} | set(acct.get("user_targets", []))
+    perf = [s[0] for s in acct.get("surgeons", [])]
+    naive = [n for n in acct.get("user_targets", []) if n not in perf]
+    order = [("Performer", n) for n in perf] + [("Development target", n) for n in naive]
     entries = []
-    for name in sorted(names):
-        p = PROV_BY_NAME.get(name)
-        if not p:
-            continue
+    for role, name in order:
+        p = PROV_BY_NAME.get(name) or {}
         res = p.get("research") or {}
-        if not has_papers(res):
-            continue
         wh = p.get("wheelhouse") or {}
         rel = res.get("litt_relevance") or {}
+        enr = ENRICH.get(name) or {}
+        # papers: merge json key/recent + enrichment, tag affinity, sort by (affinity, year)
         papers = []
         for pp in (res.get("key_papers") or []):
             papers.append({"title": pp.get("title"), "year": pp.get("year"),
                            "area": pp.get("topic") or wh.get("archetype", ""),
                            "journal": pp.get("journal", ""), "kind": "Key",
+                           "aff": paper_affinity(pp.get("title"), pp.get("topic")),
                            "url": pubmed(pp.get("title"))})
         for pp in (res.get("recent_papers") or []):
             papers.append({"title": pp.get("title"), "year": pp.get("year"),
                            "area": pp.get("topic") or wh.get("archetype", ""),
                            "journal": pp.get("journal", ""), "kind": "Recent",
+                           "aff": paper_affinity(pp.get("title"), pp.get("topic")),
                            "url": pubmed(pp.get("title"))})
+        seen = {(pp["title"] or "").lower() for pp in papers}
+        for pp in (enr.get("papers") or []):
+            if (pp.get("title") or "").lower() in seen: continue
+            papers.append({"title": pp.get("title"), "year": pp.get("year"),
+                           "area": pp.get("journal", ""), "journal": pp.get("journal", ""),
+                           "kind": "Verified",
+                           "aff": paper_affinity(pp.get("title"), pp.get("journal"), pp.get("litt_affinity")),
+                           "url": pp.get("url") or pubmed(pp.get("title"))})
+        papers.sort(key=lambda x: (-(x["aff"]), -(x["year"] or 0)))
+        # candidacy (for naive targets)
+        cand = candidate_profile(name) if role == "Development target" else None
+        links = enr.get("links") or {}
         entries.append({
-            "physician": name, "npi": p.get("npi"),
+            "physician": name, "role": role, "npi": p.get("npi"),
             "grade": rel.get("grade"), "score": rel.get("score"),
+            "title": enr.get("title") or res.get("identity", ""),
+            "bio": enr.get("bio", ""),
             "identity": res.get("identity", ""),
-            "facility": (p.get("affiliations") or p.get("system") or "").split(",")[0].strip(),
+            "facility": enr.get("current_institution") or acct.get("system", ""),
             "archetype": wh.get("archetype", ""),
-            "themes": res.get("themes", [])[:4],
+            "themes": (enr.get("research_focus") or res.get("themes") or [])[:7],
             "rationale": rel.get("rationale", ""),
+            "candidacy": ({"assessment": cand["assessment"], "rationale": cand["rationale"],
+                           "drivers": cand["drivers"]} if cand else None),
             "medscout": p.get("medscout"),
-            "scholar_url": res.get("scholar_url"), "profile_url": res.get("profile_url"),
+            "profile_url": links.get("hospital_profile") or res.get("profile_url"),
+            "scholar_url": links.get("scholar") or res.get("scholar_url") or scholar_name(name),
+            "pubmed_url": links.get("pubmed_search") or pubmed_name(name),
+            "other_url": links.get("other"),
+            "enriched": bool(enr),
             "papers": papers,
         })
     return entries
@@ -236,17 +371,23 @@ def header_facts(acct):
     does_litt = acct.get("cases_logged", 0) > 0 or any(pl in ("NeuroBlate", "Visualase", "ClearPoint") for pl in plats)
     seeg = sum(p.get("seeg", 0) for p in by_acct.get(acct["acronym"], []))
     crani = sum(p.get("epi_cranio", 0) + p.get("tumor_cranio", 0) for p in by_acct.get(acct["acronym"], []))
-    # robot: ClearPoint SmartFrame is competitive; ROSA is Zimmer (synergy). Seed from situation text.
     sit = acct.get("situation", "").lower()
-    robot = "ROSA (Zimmer)" if "rosa" in sit else ("ClearPoint SmartFrame" if "clearpoint" in plats or "clearpoint" in sit else "")
+    # ROBOT = physically drives the trajectory (ROSA etc.). ClearPoint SmartFrame is
+    # NAVIGATION/targeting, NOT a robot — seed it under navigation, never robot.
+    robot = "ROSA (Zimmer Biomet)" if "rosa" in sit else ""
+    nav = "ClearPoint SmartFrame (MRI-guided targeting)" if ("clearpoint" in plats or "clearpoint" in sit) else ""
+    # competitive LITT threat (laser / ecosystem) — ClearPoint is a targeting ecosystem, not a laser
+    comp_bits = []
+    if "Visualase" in plats: comp_bits.append("Visualase (Medtronic)")
+    if "ClearPoint" in plats: comp_bits.append("ClearPoint ecosystem (targeting/nav)")
     return {
         "account_type": acct.get("class"),
         "does_litt": does_litt,
-        "our_system": "NeuroBlate" if "NeuroBlate" in plats else "—",
-        "competitor_system": ", ".join(pl for pl in plats if pl in ("Visualase", "ClearPoint")) or "None confirmed",
+        "our_system": "NeuroBlate (Monteris — ours)" if "NeuroBlate" in plats else "—",
+        "competitor_system": ", ".join(comp_bits) or "None confirmed",
         "mri": "",                         # confirm in field
-        "robot": robot,                    # seeded from intel where mentioned
-        "navigation": "",                  # confirm in field
+        "robot": robot,                    # ROSA etc. — seeded where the deck states it
+        "navigation": nav,                 # ClearPoint SmartFrame / Brainlab / StealthStation
         "does_seeg": bool(seeg),
         "seeg_volume": seeg,
         "crani_over_50": crani >= 50,
@@ -301,10 +442,12 @@ def swot_seed(acct, biz, hdr):
             O.append(f"{r['indication']}: ~{r['addressable']} addressable of {r['pool']} pool — under-penetrated.")
     if any(s[1] > 0 for s in acct.get("surgeons", [])) and len([s for s in acct.get("surgeons", []) if s[1] > 0]) == 1:
         W.append("Single-surgeon dependency — volume collapses to zero on one departure. Develop a second adopter.")
-    if any(pl in ("Visualase", "ClearPoint") for pl in plats):
-        comp = ", ".join(pl for pl in plats if pl in ("Visualase", "ClearPoint"))
-        W.append(f"Competitive laser in-house ({comp}) — split platform, capital-standardization risk.")
-        T.append(f"{comp} entrenchment / competitive KOL influence — monitor capital cycle and consulting ties.")
+    if "Visualase" in plats:
+        W.append("Competitive laser in-house (Visualase, Medtronic) — split platform, capital-standardization risk.")
+        T.append("Visualase entrenchment / competitive KOL influence — monitor capital cycle and consulting ties.")
+    if "ClearPoint" in plats:
+        W.append("ClearPoint targeting/navigation ecosystem in-house — capital-standardization pressure toward the competitive stack.")
+        T.append("ClearPoint consultant influence pushing system standardization — monitor capital committee and consulting ties.")
     for name in acct.get("user_targets", []):
         if name in KOL_NAMES:
             T.append(f"Competitive KOL activity around {name} — confirm allegiance in field.")
@@ -313,20 +456,29 @@ def swot_seed(acct, biz, hdr):
         T.append("Revenue trending down — diagnose whether clinical, capital, or relationship-driven.")
     return {"strengths": S, "weaknesses": W, "opportunities": O, "threats": T}
 
-def strategy_seed(acct, hdr):
+def strategy_seed(acct, hdr, naive_ranked):
     plays = []
     perf = [s for s in acct.get("surgeons", []) if s[1] > 0]
-    # develop-surgeon play
-    naive = [n for n in acct.get("user_targets", []) if n not in {s[0] for s in perf}]
-    if naive:
+    # develop-surgeon play — lead with the highest-scoring data-driven candidate
+    if naive_ranked:
+        top = naive_ranked[0]
+        name = top["name"]
+        wh = top.get("wheelhouse") or ""
+        n_cand = min(3, max(2, (top.get("epi_cranio", 0) + top.get("tumor_cranio", 0)) // 5 or 2))
         plays.append({
             "type": "Develop surgeon",
-            "target": naive[0],
-            "objective": f"Convert {naive[0]} from LITT-naïve to first case within 2 quarters.",
-            "tactics": ["Peer-to-peer with in-account performer + a matched KOL proctor",
-                        "Cadaver / sim lab on NeuroBlate workflow",
-                        "Case-selection clinic: co-review 2-3 of their craniotomy candidates for LITT suitability",
-                        "Carry the indication evidence pack matched to their wheelhouse"],
+            "target": name,
+            "why": top.get("rationale", ""),
+            "assessment": top.get("assessment"),
+            "drivers": top.get("drivers", []),
+            "objective": f"Convert {name} from LITT-naïve to a first case within two quarters.",
+            "tactics": [
+                f"Proctored first case: pair {name} with a matched NeuroBlate KOL proctor for their first ablation.",
+                "Reference-site visit: bring them to observe a live NeuroBlate case at a nearby high-volume account.",
+                f"Joint case-selection clinic: co-review {n_cand} of their SEEG/craniotomy candidates for ablation suitability.",
+                "Value-analysis support: prep the VAC packet (clinical + economic) to clear capital/committee hurdles.",
+                f"Carry the indication evidence pack matched to their wheelhouse{f' ({wh})' if wh else ''}.",
+            ],
         })
     # crack-competitor play
     plats = [p.split(" (")[0] for p in acct.get("platform", [])]
@@ -348,6 +500,24 @@ def strategy_seed(acct, hdr):
                         "Contrast real-time thermal monitoring & larger single-trajectory ablation volume",
                         "Trial-in-value-analysis motion where a system is already under review"],
         })
+    # activate-referral play — when a large indication pool sits upstream of the OR
+    rs = reservoirs(acct)
+    big = sorted(rs, key=lambda r: -r["addressable"])[:1]
+    top_refs = [r[0] for r in (acct.get("epilepsy_referrers", []) + acct.get("necrosis_referrers", []))][:3]
+    if big and big[0]["addressable"] >= 20:
+        r = big[0]
+        ind = r["indication"]
+        refs_str = (" (" + ", ".join(top_refs) + ")") if top_refs else ""
+        plays.append({
+            "type": "Activate referral",
+            "target": f"{ind} referral base",
+            "objective": f"Convert the {ind} pool (~{r['addressable']} addressable of {r['pool']}) into logged cases via referrer activation.",
+            "tactics": [
+                f"Prime the top referrers{refs_str} with the {ind}-matched evidence pack.",
+                "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
+                "Close the referral loop back to the performing surgeon and track conversion.",
+            ],
+        })
     return plays
 
 # ---- assemble ------------------------------------------------------------------
@@ -368,7 +538,7 @@ for acct in AI.ACCOUNTS:
         "reservoirs": reservoirs(acct),
         "universe": {"performers": perf, "kols": kols, "naive_targets": naive, "referrers": refs},
         "swot": swot_seed(acct, biz, hdr),
-        "strategy": strategy_seed(acct, hdr),
+        "strategy": strategy_seed(acct, hdr, naive),
         "appendix": build_appendix(acr, acct),
     })
 
@@ -377,7 +547,9 @@ out = {
         "title": "LITT Account Report Cards — Northeast Territory",
         "generated": PROF["meta"].get("generated", ""),
         "note": "Data-driven sections computed from account intel + physician universe + 3-yr NeuroBlate sales. Qualitative sections (header confirmations, SWOT, strategy) are editable seeds.",
+        "enriched": sorted(ENRICH.keys()),
     },
+    "library": LIBRARY,
     "territory": {
         "region_avg_case": REGION_AVG_CASE, "quota_2026": TERR["quota_2026"],
         "cases_ytd_2026": TERR["cases_ytd_2026"], "candidate_universe_yr": TERR["candidate_universe_yr"],

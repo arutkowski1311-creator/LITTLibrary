@@ -1,0 +1,62 @@
+{
+ "_note": "Live web-research enrichment for LITT-naive development candidates and key champions. Merged by build_account_cards.py into the research appendix and candidate rationale. Keyed by physician name.",
+ "Raymond F Sekula": {
+  "npi": "1942363445",
+  "title": "J. Lawrence Pool Professor & Vice Chair of Neurological Surgery; Director of Minimally Invasive Brain Surgery, Columbia / NewYork-Presbyterian",
+  "current_institution": "NewYork-Presbyterian / Columbia University Irving Medical Center",
+  "bio": "Functional and skull-base neurosurgeon regarded as one of the world's foremost experts in microvascular decompression (MVD) and minimally invasive cranial-nerve surgery. Practice is dedicated to cranial neuralgias (trigeminal neuralgia, hemifacial spasm, glossopharyngeal neuralgia) and difficult skull-base tumors. 6,000+ surgeries including 2,500+ MVDs; co-editor of the textbook 'Microvascular Decompression Surgery'; previously Residency Program Director at Pittsburgh (UPMC).",
+  "research_focus": ["Microvascular decompression (MVD) technique & outcomes", "Trigeminal neuralgia & facial-pain mechanisms (NIH-funded)", "Hemifacial spasm", "Glossopharyngeal neuralgia", "Endoscopic / keyhole minimally invasive cranial-nerve surgery", "Skull-base tumors (acoustic neuroma, meningioma, CPA)"],
+  "litt_candidacy": {"assessment": "weak", "rationale": "Entire clinical & research focus is vascular compression of cranial nerves (MVD) and skull-base tumor resection via open/endoscopic approaches. Does none of the ablation-amenable work that drives NeuroBlate adoption — no drug-resistant epilepsy/SEEG, intra-axial glioma, brain metastases, or radiation necrosis — so LITT is largely orthogonal to his practice."},
+  "papers": [
+   {"title": "Which surgical technique has a superior clinical outcome in microvascular decompression? A systematic review and meta-analysis of transposition versus interposition for trigeminal neuralgia and hemifacial spasm", "year": 2025, "journal": "Neurosurgical Review", "litt_affinity": "low", "url": "https://pubmed.ncbi.nlm.nih.gov/40338347/"},
+   {"title": "Decompression Surgery in Elderly Patients with Hemifacial Spasm Refractory to Botulinum Toxin", "year": 2024, "journal": "Movement Disorders Clinical Practice", "litt_affinity": "low", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11329574/"},
+   {"title": "Microvascular decompression for developmental venous anomaly causing hemifacial spasm: illustrative case", "year": 2024, "journal": "J Neurosurg: Case Lessons", "litt_affinity": "low", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10763632/"}
+  ],
+  "links": {"hospital_profile": "https://www.neurosurgery.columbia.edu/profile/raymond-f-sekula-jr-md", "scholar": "", "pubmed_search": "https://pubmed.ncbi.nlm.nih.gov/?term=Sekula+RF", "other": "https://raymondsekulamd.com"},
+  "sources": ["https://www.neurosurgery.columbia.edu/profile/raymond-f-sekula-jr-md", "https://doctors.nyp.org/raymond-f-sekula-md/columbiadoctors-midtown", "https://pubmed.ncbi.nlm.nih.gov/40338347/"]
+ },
+ "Jeffrey N Bruce": {
+  "npi": "1659422137",
+  "title": "Edgar M. Housepian Professor of Neurological Surgery Research; Vice-Chair, Neurological Surgery; Co-Director, Brain Tumor Center; Director of Skull Base Surgery — Columbia / NewYork-Presbyterian",
+  "current_institution": "NewYork-Presbyterian / Columbia University Irving Medical Center",
+  "bio": "Senior academic neuro-oncologic neurosurgeon and nationally recognized authority on complex brain and skull-base tumors — high-volume practice in gliomas, meningiomas, pituitary/craniopharyngioma, skull base, and pineal-region tumors (200+ pineal operations). Co-directs Columbia's Brain Tumor Center and directs the NIH-funded Bartoli Brain Tumor Research Laboratory. Best known for pioneering convection-enhanced delivery (CED) of chemotherapeutics for malignant glioma.",
+  "research_focus": ["Convection-enhanced delivery (CED) of chemotherapeutics for malignant glioma", "Malignant glioma / GBM therapeutics & blood-brain-barrier drug delivery", "Glioma immunotherapy / immunomodulatory local delivery", "Pineal-region tumor microsurgery", "Skull-base & pituitary/craniopharyngioma surgery", "Stereotactic & minimally invasive technique"],
+  "litt_candidacy": {"assessment": "moderate", "rationale": "Has exactly the population LITT targets (high volume of recurrent/deep gliomas plus stereotactic/minimally-invasive expertise), so technical adoption is plausible — but his research identity is built on convection-enhanced delivery, a competing local-therapy modality he has championed for decades, so LITT is neither his focus nor an obvious extension of his program."},
+  "papers": [
+   {"title": "Convection-enhanced delivery of immunomodulatory therapy for high-grade glioma", "year": 2023, "journal": "Neuro-Oncology Advances", "litt_affinity": "med", "url": "https://pubmed.ncbi.nlm.nih.gov/37215957/"},
+   {"title": "Chronic convection-enhanced delivery of topotecan for patients with recurrent glioblastoma: a first-in-patient, single-centre, single-arm, phase 1b trial", "year": 2022, "journal": "The Lancet Oncology", "litt_affinity": "med", "url": "https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(22)00599-X/abstract"},
+   {"title": "Convection Enhanced Delivery of Topotecan for Gliomas: A Single-Center Experience", "year": 2021, "journal": "Pharmaceutics", "litt_affinity": "med", "url": "https://doi.org/10.3390/pharmaceutics13010039"},
+   {"title": "Regression of recurrent malignant gliomas with convection-enhanced delivery of topotecan", "year": 2011, "journal": "Neurosurgery", "litt_affinity": "med", "url": "https://pubmed.ncbi.nlm.nih.gov/21562434/"}
+  ],
+  "links": {"hospital_profile": "https://www.neurosurgery.columbia.edu/profile/jeffrey-n-bruce-md", "scholar": "", "pubmed_search": "https://pubmed.ncbi.nlm.nih.gov/?term=Bruce+JN%5BAuthor%5D+glioma", "other": "https://www.cancer.columbia.edu/profile/jeffrey-n-bruce-md"},
+  "sources": ["https://www.neurosurgery.columbia.edu/profile/jeffrey-n-bruce-md", "https://www.cancer.columbia.edu/profile/jeffrey-n-bruce-md", "https://pubmed.ncbi.nlm.nih.gov/37215957/"]
+ },
+ "Brian Gill": {
+  "npi": "",
+  "title": "Assistant Professor of Neurological Surgery, Columbia / NewYork-Presbyterian (Neurological Institute of New York); member, Herbert Irving Comprehensive Cancer Center",
+  "current_institution": "NewYork-Presbyterian / Columbia University Irving Medical Center",
+  "bio": "Neurosurgeon-scientist (MD PhD) who trained and was chief resident at Columbia, did a neurosurgical-oncology fellowship at Memorial Sloan Kettering, then returned to Columbia. Clinically focused on complex brain tumors; lab work on the peritumoral microenvironment and tumor-neuron interactions in glioma. Embedded in Columbia's McKhann/Schevon intracranial-EEG group and identified as the successor to McKhann's LITT practice; presents on LITT for brain-tumor management.",
+  "research_focus": ["Glioma-associated / tumor-related epilepsy", "Peritumoral microenvironment & tumor-neuron interactions", "Intracranial EEG / SEEG electrophysiology", "SEEG-guided targeted biopsy & single-nucleus transcriptomics", "LITT / laser ablation for brain tumors", "Neurosurgical oncology (complex gliomas)"],
+  "litt_candidacy": {"assessment": "strong", "rationale": "Trained within Columbia's McKhann/Schevon epilepsy-SEEG group and named successor to the McKhann LITT practice; actively presents on LITT for brain-tumor management and runs SEEG-guided focal-epilepsy research — positioning him as a dual tumor-and-epilepsy ablation champion."},
+  "papers": [
+   {"title": "Electrophysiologically Targeted Biopsies Reveal the Transcriptional Landscape of Focal Epilepsy", "year": 2026, "journal": "bioRxiv (preprint)", "litt_affinity": "med", "url": "https://www.biorxiv.org/content/10.64898/2026.03.06.708552v1"},
+   {"title": "Single unit analysis and wide-field imaging reveal alterations in excitatory and inhibitory neurons in glioma", "year": 2022, "journal": "Brain", "litt_affinity": "med", "url": "https://academic.oup.com/brain/article-abstract/145/10/3666/6584708"}
+  ],
+  "links": {"hospital_profile": "https://www.neurosurgery.columbia.edu/profile/brian-j-gill-md", "scholar": "https://scholar.google.com/citations?user=X0IBRdkAAAAJ&hl=en", "pubmed_search": "https://pubmed.ncbi.nlm.nih.gov/?term=Gill+BJA", "other": "https://www.cancer.columbia.edu/profile/brian-j-gill-md"},
+  "sources": ["https://www.neurosurgery.columbia.edu/news/please-welcome-dr-brian-gill", "https://www.cancer.columbia.edu/profile/brian-j-gill-md", "https://nyp.org/advances-neurology/new-molecular-insights-gleaned-into-tumor-related-epilepsy"]
+ },
+ "Neil Feldstein": {
+  "npi": "1588608186",
+  "title": "Director of Pediatric Neurological Surgery & Professor of Neurological Surgery, Columbia / NewYork-Presbyterian (Morgan Stanley Children's Hospital); co-director, combined Weill Cornell-Columbia pediatric neurosurgery program",
+  "current_institution": "NewYork-Presbyterian / Columbia University Irving Medical Center (Morgan Stanley Children's Hospital)",
+  "bio": "Has directed Columbia's Division of Pediatric Neurological Surgery since 1994 and now co-directs the combined Weill Cornell-Columbia pediatric program. National reputation in Chiari malformation, spinal dysraphism, pediatric brain/spinal tumors, and vascular malformations. A core surgeon in Columbia's Comprehensive/Pediatric Epilepsy Center — SEEG, resective epilepsy surgery, hemispherectomy, and MR-guided LITT for drug-resistant epilepsy.",
+  "research_focus": ["Pediatric drug-resistant epilepsy surgery", "Stereo-EEG (SEEG) localization of the epileptogenic zone", "MRg-LITT / laser ablation for epilepsy incl. MTLE", "Pediatric hemispherectomy", "Chiari malformation & spinal dysraphism", "Pediatric brain & spinal cord tumors", "Cerebrovascular malformations (moyamoya, AVM, cavernous)"],
+  "litt_candidacy": {"assessment": "strong", "rationale": "Co-author on Columbia's landmark SEEG-guided laser-ablation series for temporal lobe epilepsy and practices within a comprehensive epilepsy center offering MRg-LITT; NYP innovations materials cite him directly on MR-guided laser interstitial thermal therapy for pediatric drug-resistant epilepsy."},
+  "papers": [
+   {"title": "Laser ablation is effective for temporal lobe epilepsy with and without mesial temporal sclerosis if hippocampal seizure onsets are localized by stereoelectroencephalography", "year": 2018, "journal": "Epilepsia", "litt_affinity": "high", "url": "https://pubmed.ncbi.nlm.nih.gov/29392715/"},
+   {"title": "The role of stereo-electroencephalography to localize the epileptogenic zone in children with nonlesional brain MRI", "year": 2021, "journal": "Epilepsy Research", "litt_affinity": "med", "url": "https://pubmed.ncbi.nlm.nih.gov/34920378/"}
+  ],
+  "links": {"hospital_profile": "https://www.neurosurgery.columbia.edu/profile/neil-feldstein-md", "scholar": "", "pubmed_search": "https://pubmed.ncbi.nlm.nih.gov/?term=Feldstein+NA", "other": "https://www.doximity.com/pub/neil-feldstein-md"},
+  "sources": ["https://www.neurosurgery.columbia.edu/profile/neil-feldstein-md", "https://www.columbianeurosurgery.org/news/dr-feldstein-explains-new-options-in-epilepsy-surgery/", "https://pubmed.ncbi.nlm.nih.gov/29392715/"]
+ }
+}
