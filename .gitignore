@@ -5,3 +5,6 @@ physician-profiles-artifact.html
 # Python bytecode
 __pycache__/
 *.pyc
+
+tools/node_modules/
+tools/package*.json
