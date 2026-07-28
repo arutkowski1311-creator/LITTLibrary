@@ -147,6 +147,26 @@
   .le .dot{width:9px;height:9px;border-radius:50%;flex:none}
   .le .r{margin-left:auto;color:var(--mute);font-size:11px}
   .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:10px;background:var(--chip);color:var(--mute)}
+  .setup{border-bottom:1px solid var(--line)}
+  .setup summary{padding:10px 14px;cursor:pointer;color:var(--accent);font-size:12.5px;font-weight:600;list-style:none}
+  .setup summary::-webkit-details-marker{display:none}
+  .setup summary::before{content:"⚙ ";}
+  .setup-body{padding:4px 14px 14px;display:flex;flex-direction:column;gap:8px}
+  .srow{display:flex;gap:8px;flex-wrap:wrap}
+  .setup label{display:flex;flex-direction:column;gap:3px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);flex:1}
+  .setup input[type=text]{background:var(--raise);border:1px solid var(--line);border-radius:7px;padding:7px 8px;color:var(--text);font-size:13px;text-transform:none;letter-spacing:0}
+  #lineupEdit{display:flex;flex-direction:column;gap:5px}
+  .le-row{display:flex;gap:6px;align-items:center}
+  .le-row .n{width:44px}
+  .le-row input{background:var(--raise);border:1px solid var(--line);border-radius:6px;padding:6px 7px;color:var(--text);font-size:12.5px}
+  .le-row .nm{flex:1}
+  .le-row .slot{width:18px;color:var(--mute);font-size:11px;text-align:center}
+  .scfg{background:var(--raise);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12.5px;color:var(--text)}
+  .scfg:hover{border-color:var(--accent)}
+  .scfg.danger{color:var(--hot);border-color:color-mix(in srgb,var(--hot) 40%,var(--line))}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;
+    padding:9px 16px;border-radius:9px;font-size:13px;z-index:50;opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.show{opacity:1}
   .note{font-size:11px;color:var(--mute);padding:8px 14px 14px}
   .foot{max-width:1280px;margin:0 auto;padding:4px 18px 30px;color:var(--mute);font-size:11.5px}
 </style>
@@ -159,9 +179,9 @@
   </div>
   <div class="live">
     <span class="livepill"><span class="livedot"></span>LIVE</span>
-    <div class="score num"><span id="hScore">6</span><small>NJ RAW</small>
+    <div class="score num"><span id="hScore">6</span><small id="teamLabel">NJ RAW</small>
       <span style="color:var(--mute)">·</span>
-      <span id="aScore">2</span><small>Valley</small></div>
+      <span id="aScore">2</span><small id="oppLabel">Valley</small></div>
     <button class="themetgl" id="themeBtn" title="Toggle theme">◐</button>
   </div>
 </header>
@@ -196,6 +216,25 @@
   <!-- RIGHT: scorekeeper -->
   <div class="card sk">
     <h2>Score the game <span class="r" id="skMeta"></span></h2>
+    <details class="setup" id="setup">
+      <summary>Game setup — teams, roster, data</summary>
+      <div class="setup-body">
+        <div class="srow">
+          <label>Our team<input id="cfgTeam" type="text"></label>
+          <label>Opponent<input id="cfgOpp" type="text"></label>
+        </div>
+        <label>Our pitcher<input id="cfgPitcher" type="text"></label>
+        <div class="mini" style="margin-top:8px">Lineup (tap to edit)</div>
+        <div id="lineupEdit"></div>
+        <div class="srow" style="margin-top:10px">
+          <button class="scfg" id="saveCfg">Save setup</button>
+          <button class="scfg" id="exportBtn">⬇ Export game</button>
+          <button class="scfg" id="importBtn">⬆ Import</button>
+          <button class="scfg danger" id="newGameBtn">New game</button>
+          <input type="file" id="importFile" accept="application/json" hidden>
+        </div>
+      </div>
+    </details>
     <div class="sit">
       <div class="diamond" id="diamond">
         <div class="b b2"></div><div class="b b3"></div><div class="b b1"></div>
@@ -277,8 +316,7 @@
 <script>
 (function(){
   "use strict";
-  var LINEUP=[{num:2,n:"M. Roman"},{num:14,n:"Vernick"},{num:24,n:"Rutkowski"},{num:22,n:"Y. Roman"},
-    {num:5,n:"Schneider"},{num:3,n:"Zamrock"},{num:25,n:"Cokely"},{num:11,n:"Garner"},{num:17,n:"Dorr"}];
+  var LINEUP;  // assigned from S.cfg.lineup after state loads (editable roster)
 
   // Zones: outfield wedges + infield spots. code -> label, angle(deg, 0=CF, - = left), depth
   var OF=[["lfl","LF line",-48],["lf","LF",-33],["lcf","LCF",-17],["cf","CF",0],["rcf","RCF",17],["rf","RF",33],["rfl","RF line",48]];
@@ -327,8 +365,17 @@
     {out:"BB",pc:6,sw:1}
   ];
 
+  var DEFAULT_LINEUP=[{num:2,n:"M. Roman"},{num:14,n:"Vernick"},{num:24,n:"Rutkowski"},{num:22,n:"Y. Roman"},
+    {num:5,n:"Schneider"},{num:3,n:"Zamrock"},{num:25,n:"Cokely"},{num:11,n:"Garner"},{num:17,n:"Dorr"}];
+  var DEFAULT_CFG={team:"NJ Raw",opp:"Valley",pitcher:"#14 Vernick",lineup:DEFAULT_LINEUP.slice()};
+
   var LS="raw:broadcast:v1";
-  var S=load()||{ev:SEED.slice(),st:Object.assign({},ST0)};
+  var S=load()||{cfg:clone(DEFAULT_CFG),ev:SEED.slice(),st:Object.assign({},ST0)};
+  if(!S.cfg)S.cfg=clone(DEFAULT_CFG);
+  if(!S.cfg.lineup||S.cfg.lineup.length!==9)S.cfg.lineup=DEFAULT_LINEUP.slice();
+  LINEUP=S.cfg.lineup;                       // all rendering reads the live roster
+  PITCHER.name=S.cfg.pitcher||PITCHER.name;
+  function clone(o){return JSON.parse(JSON.stringify(o));}
   function load(){try{return JSON.parse(localStorage.getItem(LS));}catch(e){return null;}}
   function save(){try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}}
 
@@ -356,7 +403,46 @@
     setBase("b1",st.on1);setBase("b2",st.on2);setBase("b3",st.on3);
     $("#rispTag").textContent=(st.on2||st.on3)?"RISP":"";
     $("#hScore").textContent=st.us;$("#aScore").textContent=st.them;
-    $("#skMeta").textContent="NJ Raw "+st.us+" · Valley "+st.them;
+    $("#teamLabel").textContent=S.cfg.team;$("#oppLabel").textContent=S.cfg.opp;
+    $("#skMeta").textContent=S.cfg.team+" "+st.us+" · "+S.cfg.opp+" "+st.them;
+  }
+  /* ---------- setup: config + roster + data ---------- */
+  function renderSetup(){
+    $("#cfgTeam").value=S.cfg.team;$("#cfgOpp").value=S.cfg.opp;$("#cfgPitcher").value=S.cfg.pitcher;
+    var box=$("#lineupEdit");box.innerHTML="";
+    S.cfg.lineup.forEach(function(p,i){
+      var row=document.createElement("div");row.className="le-row";
+      row.innerHTML='<span class="slot">'+(i+1)+'</span>'+
+        '<input class="n" type="text" inputmode="numeric" value="'+p.num+'" aria-label="jersey">'+
+        '<input class="nm" type="text" value="'+p.n.replace(/"/g,"&quot;")+'" aria-label="name">';
+      row.querySelector(".n").oninput=function(){p.num=this.value;};
+      row.querySelector(".nm").oninput=function(){p.n=this.value;};
+      box.appendChild(row);
+    });
+  }
+  function toast(msg){var t=document.getElementById("_toast");if(!t){t=document.createElement("div");t.id="_toast";t.className="toast";document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove("show");},1800);}
+  function bindSetup(){
+    $("#saveCfg").onclick=function(){
+      S.cfg.team=$("#cfgTeam").value||"Home";S.cfg.opp=$("#cfgOpp").value||"Away";
+      S.cfg.pitcher=$("#cfgPitcher").value||S.cfg.pitcher;PITCHER.name=S.cfg.pitcher;
+      LINEUP=S.cfg.lineup;fillBatterSel();renderAll();renderPanel();toast("Setup saved");
+    };
+    $("#exportBtn").onclick=function(){
+      var blob=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
+      var a=document.createElement("a");a.href=URL.createObjectURL(blob);
+      a.download=(S.cfg.team+"-vs-"+S.cfg.opp).replace(/\s+/g,"_")+".json";a.click();toast("Game exported");
+    };
+    $("#importBtn").onclick=function(){$("#importFile").click();};
+    $("#importFile").onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();
+      r.onload=function(){try{var d=JSON.parse(r.result);if(!d.cfg||!d.ev)throw 0;S=d;LINEUP=S.cfg.lineup;PITCHER.name=S.cfg.pitcher;
+        save();renderSetup();fillBatterSel();renderAll();renderPanel();toast("Game imported");}catch(x){toast("Not a valid game file");}};
+      r.readAsText(f);};
+    $("#newGameBtn").onclick=function(){
+      if(!confirm("Start a new game? The current play log is cleared (roster kept)."))return;
+      S.ev=[];S.st={inn:1,half:"T",outs:0,balls:0,strikes:0,bi:0,us:0,them:0,on1:0,on2:0,on3:0};
+      save();fillBatterSel();renderAll();renderPanel();toast("New game started");$("#setup").open=false;
+    };
   }
   function setBase(cls,on){var el=document.querySelector(".diamond ."+cls);if(el)el.classList.toggle("on",!!on);}
   function renderBatter(){
@@ -599,25 +685,50 @@
   /* ================= CAMERAS (synced schematic) ================= */
   var CAMS=[{label:"Center field",off:0,rot:0},{label:"High home",off:0,rot:180},
             {label:"First base",off:0,rot:-60},{label:"Third base",off:0,rot:60}];
+  // restore saved per-camera config (offset + feed) from setup
+  CAMS.forEach(function(c,i){var s=(S.cfg.cameras&&S.cfg.cameras[i])||{};c.off=s.off||0;c.feed=s.feed||null;});
+  function saveCams(){S.cfg.cameras=CAMS.map(function(c){return{off:c.off,feed:c.feed};});save();}
   var canvases=[];
+  // turn a Cloudflare playback id / HLS url / full url into an embeddable source
+  function feedEmbed(val,d,cv){
+    var vid=d.querySelector("video"),fr=d.querySelector("iframe");
+    fr.style.display="none";vid.style.display="none";
+    if(!val){cv.style.display="block";return;}
+    cv.style.display="none";
+    if(/\.m3u8($|\?)/.test(val)){ vid.src=val;vid.style.display="block";vid.play().catch(function(){}); }
+    else if(/^https?:\/\//.test(val)){ fr.src=val;fr.style.display="block"; }
+    else { fr.src="https://iframe.videodelivery.net/"+encodeURIComponent(val)+"?autoplay=true&muted=true";fr.style.display="block"; }
+  }
   function buildCams(){
-    var wrap=$("#cams");wrap.innerHTML="";
+    var wrap=$("#cams");wrap.innerHTML="";canvases=[];
     CAMS.forEach(function(c,i){
       var d=document.createElement("div");d.className="cam";
-      d.innerHTML='<canvas></canvas><video playsinline muted loop style="display:none;width:100%;aspect-ratio:16/10;object-fit:cover"></video>'+
+      d.innerHTML='<canvas></canvas>'+
+        '<video playsinline muted loop style="display:none;width:100%;aspect-ratio:16/10;object-fit:cover"></video>'+
+        '<iframe allow="autoplay;fullscreen" style="display:none;width:100%;aspect-ratio:16/10;border:0"></iframe>'+
         '<span class="cl">'+c.label+'</span><span class="tc">00:00.0</span>'+
         '<span class="rec"><span class="rd"></span>REC</span>'+
-        '<label class="feed" title="Attach a real feed (Cloudflare/HLS/file)" style="position:absolute;top:6px;right:74px;background:#000a;color:#cfe;border-radius:6px;padding:2px 7px;font-size:10px;cursor:pointer">＋ feed<input type="file" accept="video/*" hidden></label>'+
-        '<span class="off"><input type="range" class="offr" min="-1500" max="1500" step="50" value="0" aria-label="'+c.label+' sync offset"><span>+0 ms</span></span>';
+        '<button class="feed" title="Attach a real feed" style="position:absolute;top:6px;right:74px;background:#000a;color:#cfe;border:0;border-radius:6px;padding:3px 7px;font-size:10px;cursor:pointer">'+(c.feed?"● live":"＋ feed")+'</button>'+
+        '<input type="file" accept="video/*" hidden>'+
+        '<span class="off"><input type="range" class="offr" min="-1500" max="1500" step="50" value="'+c.off+'" aria-label="'+c.label+' sync offset"><span>'+(c.off>=0?"+":"")+c.off+' ms</span></span>';
       wrap.appendChild(d);
       var cv=d.querySelector("canvas");canvases.push(cv);
       var rng=d.querySelector(".offr");
+      d.classList.toggle("desync",Math.abs(c.off)>60);
       rng.oninput=function(){c.off=+rng.value;d.querySelector(".off span").textContent=(c.off>=0?"+":"")+c.off+" ms";
-        d.classList.toggle("desync",Math.abs(c.off)>60);updateSyncState();};
-      var vid=d.querySelector("video");
-      d.querySelector(".feed input").onchange=function(e){var f=e.target.files[0];if(!f)return;
-        vid.src=URL.createObjectURL(f);vid.style.display="block";cv.style.display="none";vid.play().catch(function(){});
-        d.querySelector(".feed").textContent="● live";};
+        d.classList.toggle("desync",Math.abs(c.off)>60);updateSyncState();saveCams();};
+      var vid=d.querySelector("video"),file=d.querySelector("input[type=file]"),btn=d.querySelector(".feed");
+      file.onchange=function(e){var f=e.target.files[0];if(!f)return;var url=URL.createObjectURL(f);
+        c.feed=null;feedEmbed(null,d,cv);vid.src=url;vid.style.display="block";cv.style.display="none";vid.play().catch(function(){});
+        btn.textContent="● local";};
+      btn.onclick=function(){
+        var val=prompt("Paste a Cloudflare Stream playback ID or HLS URL for “"+c.label+"”.\nLeave blank to pick a local video file instead.", c.feed||"");
+        if(val===null)return;
+        val=val.trim();
+        if(val===""){ file.click(); return; }
+        c.feed=val;feedEmbed(val,d,cv);btn.textContent="● live";saveCams();
+      };
+      if(c.feed)feedEmbed(c.feed,d,cv);
     });
   }
   function updateSyncState(){
@@ -692,6 +803,6 @@
     r.setAttribute("data-theme",cur==="dark"?"light":"dark");};
 
   /* init */
-  fillBatterSel();buildSpray();buildCams();renderAll();updateSyncState();requestAnimationFrame(loop);
+  renderSetup();bindSetup();fillBatterSel();buildSpray();buildCams();renderAll();updateSyncState();requestAnimationFrame(loop);
 })();
 </script>
