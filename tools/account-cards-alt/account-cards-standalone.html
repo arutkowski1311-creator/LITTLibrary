@@ -304,11 +304,13 @@ ul.pts li:hover .x{opacity:.7}
   <select id="picker" aria-label="Choose account"></select>
   <span class="hint">Click any highlighted value to edit · numbers recompute downstream · saved in this browser</span>
   <span class="spacer"></span>
+  <button id="loadDataBtn" title="Load your own territory data (an account-cards.json from the builder)">↥ Load my data</button>
   <button id="resetBtn" title="Discard edits for this account">↺ Reset</button>
-  <button id="importBtn" title="Load a saved edits file">↑ Import</button>
-  <button id="exportBtn" title="Download all your edits">↓ Export</button>
+  <button id="importBtn" title="Load a saved edits file">↑ Import edits</button>
+  <button id="exportBtn" title="Download all your edits">↓ Export edits</button>
   <button id="printBtn" class="primary" title="Print / Save as PDF">⎙ Print / PDF</button>
   <input type="file" id="fileIn" accept="application/json" style="display:none">
+  <input type="file" id="dataIn" accept="application/json" style="display:none">
 </div>
 
 <div class="editnote">
@@ -711,7 +713,16 @@ function rmTactic(acr,i,j){const a=stratArr(acr);a[i].tactics.splice(j,1);saveSt
 function selectAcct(acr){CUR=acr;render(IDX[acr]);document.getElementById("picker").value=acr;location.hash=acr;window.scrollTo({top:0});}
 function initPicker(){const pk=document.getElementById("picker");
   pk.innerHTML=DATA.accounts.map(a=>`<option value="${a.acronym}">#${a.rank} · ${esc(a.name)} — ${esc(a.class)} · Health ${derive(applyEdits(a)).health.grade}</option>`).join("");
-  pk.addEventListener("change",e=>selectAcct(e.target.value));}
+  pk.onchange=e=>selectAcct(e.target.value);}
+document.getElementById("loadDataBtn").onclick=()=>document.getElementById("dataIn").click();
+document.getElementById("dataIn").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const nd=JSON.parse(r.result);
+    if(!nd||!Array.isArray(nd.accounts)||!nd.accounts.length)throw new Error("no accounts[] in this file");
+    DATA=nd;LIB=nd.library||LIB;IDX={};DATA.accounts.forEach(a=>IDX[a.acronym]=a);
+    initPicker();selectAcct(DATA.accounts[0].acronym);
+    alert(`Loaded ${DATA.accounts.length} accounts from ${f.name}.`);
+  }catch(err){alert("Could not load that data file: "+err.message)}};
+  r.readAsText(f);};
 document.getElementById("printBtn").onclick=()=>window.print();
 document.getElementById("resetBtn").onclick=()=>{if(!CUR)return;if(!confirm("Discard all your edits for this account?"))return;
   const e=loadEdits();delete e[CUR];saveEdits(e);render(IDX[CUR]);};
