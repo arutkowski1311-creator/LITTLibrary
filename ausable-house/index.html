@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ausable House · Luxury Adirondack Rental in Wilmington, NY</title>
+<meta name="description" content="Ausable House & The Pinecone Perch — a luxury Adirondack escape in Wilmington, NY. Minutes from Whiteface Mountain, Lake Placid, and the Ausable River. Book direct.">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ausable House · Luxury Adirondack Rental">
+<meta property="og:description" content="A quiet Adirondack escape minutes from Whiteface Mountain & the Ausable River. Book direct and save.">
+<meta property="og:image" content="assets/media/hero-poster.jpg">
+<meta property="og:url" content="https://ausablehouse.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+
+<!-- Structured data for SEO (Google understands this as a lodging listing) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"LodgingBusiness",
+  "name":"Ausable House","description":"Luxury Adirondack vacation rental in Wilmington, NY.",
+  "address":{"@type":"PostalAddress","addressLocality":"Wilmington","addressRegion":"NY","addressCountry":"US"},
+  "amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Wi-Fi","value":true}]
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= NAV ======================= -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brandmark">
+      <svg class="mk" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 12h3v9h5v-6h2v6h5v-9h3L12 2Z" fill="#b0894f"/></svg>
+      Ausable House
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#stays">The Stays</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#area">Area Guide</a>
+      <a href="#concierge">Concierge</a>
+      <a href="#about">About</a>
+      <a href="#book" class="btn btn-lg" style="padding:.6rem 1.3rem">Book Now</a>
+    </div>
+    <button class="navtoggle" id="navtoggle" aria-label="Menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero" id="top">
+  <video id="heroVideo" autoplay muted loop playsinline></video>
+  <div class="hero-fallback" id="heroFallback"></div>
+  <div class="wrap">
+    <p class="eyebrow">Wilmington, New York · Adirondack Park</p>
+    <h1>Your Adirondack escape begins at Ausable House.</h1>
+    <p class="lead">A custom mountain home and a private hideaway, tucked in the woods
+      minutes from Whiteface Mountain, Lake Placid, and trophy trout on the Ausable River.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-lg">Check Availability</a>
+      <a href="#stays" class="btn btn-ghost btn-lg">Explore the Stays</a>
+    </div>
+  </div>
+  <div class="scrollcue">Scroll to explore ↓</div>
+</header>
+
+<!-- ======================= STAYS ======================= -->
+<section id="stays">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow">Two Ways to Stay</p>
+      <h2>Ausable House &amp; The Pinecone Perch</h2>
+      <p class="lead" style="margin:0 auto 2.5rem">Rent either on its own — or both together when availability allows.</p>
+    </div>
+    <div class="grid grid-2" id="propertyCards"><!-- injected by main.js --></div>
+    <p class="notice reveal" id="bundleNote" style="margin-top:2rem"></p>
+  </div>
+</section>
+
+<!-- ======================= GALLERY ======================= -->
+<section id="gallery" class="section-cream2">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow">See It For Yourself</p>
+      <h2>Gallery</h2>
+    </div>
+    <div class="gallery-filters reveal" id="galleryFilters"></div>
+    <div class="masonry" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ======================= AREA GUIDE ======================= -->
+<section id="area">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow">The Adirondacks, At Your Door</p>
+      <h2>Area Guide</h2>
+      <p class="lead" style="margin:0 auto 2.5rem">Ski, hike, fish, paddle, or simply breathe.
+        Everything below is a short drive from your door.</p>
+    </div>
+    <div class="guide-grid" id="guideGrid"></div>
+  </div>
+</section>
+
+<!-- ======================= CONCIERGE ======================= -->
+<section id="concierge" class="section-dark">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow">Your Personal Adirondack Concierge</p>
+      <h2>Build Your Custom Itinerary</h2>
+      <p class="lead" style="margin:0 auto 1rem">Answer a few optional questions and we'll craft a
+        tailored day-by-day itinerary — matched to your dates, your group, and your vibe —
+        then hand you a downloadable PDF with emergency info and directions built in.</p>
+      <p class="muted" style="font-size:.85rem">Everything here is optional. Skip any question.</p>
+    </div>
+    <div class="concierge-wrap reveal" style="margin-top:2.5rem">
+      <div id="conciergeForm"></div>
+      <div style="text-align:center;margin-top:1.5rem">
+        <button class="btn btn-lg" id="buildItinerary">Build My Itinerary</button>
+      </div>
+      <div id="itineraryPreview"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= BOOK ======================= -->
+<section id="book">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow">Reserve Your Dates</p>
+      <h2>Book Your Stay</h2>
+      <p class="lead" style="margin:0 auto 2.5rem">Pick your property and dates. We hold turnover time
+        between guests automatically, so what you see is truly available.</p>
+    </div>
+    <div class="split">
+      <div class="reveal">
+        <div class="field">
+          <label for="bookProperty">Choose your stay</label>
+          <select id="bookProperty"></select>
+        </div>
+        <div class="cal" id="bookCal"></div>
+        <div class="cal-legend">
+          <span><i class="swatch" style="background:var(--forest)"></i>Selected</span>
+          <span><i class="swatch" style="background:#efe6d6"></i>Booked</span>
+          <span><i class="swatch" style="background:#e6d9c1"></i>Turnover buffer</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="summary" id="bookSummary"></div>
+        <div id="directBookingNotice"></div>
+      </div>
+    </div>
+
+    <!-- Booking request form (revealed once dates picked) -->
+    <div class="card" id="bookFormCard" style="margin-top:2.5rem;display:none">
+      <div class="pad">
+        <h3>Request to Book</h3>
+        <p class="muted" style="font-size:.9rem">Send us your details and we'll confirm within 24 hours.</p>
+        <form id="bookForm">
+          <div class="row-2">
+            <div class="field"><label>Full name</label><input required name="name"></div>
+            <div class="field"><label>Email</label><input required type="email" name="email"></div>
+          </div>
+          <div class="row-2">
+            <div class="field"><label>Phone</label><input name="phone"></div>
+            <div class="field"><label>Number of guests</label><input type="number" min="1" name="guests" value="2"></div>
+          </div>
+          <div class="field"><label>Anything we should know? (pets, occasion, questions)</label>
+            <textarea name="notes" rows="3"></textarea></div>
+
+          <h4 style="margin-top:1.5rem">Optional Add-Ons</h4>
+          <div id="addOnList" class="grid grid-3" style="gap:.6rem"></div>
+
+          <div style="margin-top:1.6rem">
+            <label class="checkline"><input type="checkbox" id="ackDirect" required>
+              <span>I understand this is a <b>direct booking</b> — it is priced below the online
+              platforms, but it does <b>not</b> include AirCover / platform guest protection,
+              and my <b>deposit is non-refundable</b>. (<a href="#" data-doc="direct">Read full terms</a>)</span></label>
+            <label class="checkline"><input type="checkbox" id="ackWinter" required>
+              <span>I understand this is a <b>cold-weather mountain property</b>. Ice and snow are
+              inherent risks I accept, and in winter a <b>4×4 / AWD vehicle</b> is strongly
+              recommended for the driveway. (<a href="#" data-doc="winter">Read winter &amp; safety notice</a>)</span></label>
+            <label class="checkline"><input type="checkbox" id="ackWaiver" required>
+              <span>I have read and agree to the <a href="#" data-doc="waiver">Liability Waiver &amp; Rental Agreement</a>
+              and <a href="#" data-doc="rules">House Rules</a>.</span></label>
+            <label class="checkline" id="ackStairsLine" style="display:none"><input type="checkbox" id="ackStairs">
+              <span><b>The Pinecone Perch</b> is reached by <b>outdoor stairs</b> to a second-floor
+              entrance, which can be icy in winter. I accept this and confirm it suits my group.</span></label>
+          </div>
+          <button class="btn btn-lg" type="submit" style="margin-top:1.5rem">Send Booking Request</button>
+          <p class="hint" style="margin-top:.7rem">This sends an email to the owner. No payment is taken online yet —
+            you'll receive a secure payment link with your confirmation.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section id="about" class="section-cream2">
+  <div class="wrap">
+    <div class="reveal" style="max-width:52rem;margin:0 auto">
+      <p class="eyebrow center">Our Story</p>
+      <h2 class="center">About the Property</h2>
+      <p class="lead" style="margin:1.5rem auto">Tucked into a peaceful wooded setting in Wilmington, New York,
+        our custom mountain property offers a quiet Adirondack escape just minutes from Whiteface Mountain
+        and many of the region's best outdoor experiences.</p>
+      <p>The property includes two separate accommodations:</p>
+      <h3 style="margin-top:1.6rem">Ausable House</h3>
+      <p>A spacious custom mountain home designed for gathering, relaxing, and enjoying everything the
+        Adirondacks have to offer.</p>
+      <h3 style="margin-top:1.6rem">The Perch</h3>
+      <p>A private second-floor apartment located above the garage, offering guests a cozy and independent
+        retreat of their own.</p>
+      <p style="margin-top:1.2rem">Each accommodation can be rented separately, or Ausable House and The Perch
+        may be rented together when availability allows. This makes the property a great option for couples,
+        families, groups of friends, or larger parties who want to stay close while still having their own
+        private space.</p>
+      <p>The home feels secluded enough to offer peace, privacy, and a real connection to nature, while
+        remaining conveniently close to Whiteface Mountain, Lake Placid, hiking trails, mountain biking,
+        swimming, skiing, and trophy trout fishing on the Ausable River.</p>
+      <p>I bought this property because the Adirondacks have always held a special place in my life. Some of
+        my strongest childhood memories were formed here exploring the woods, spending time near the water,
+        and developing a sense of wonder and connection to nature that has stayed with me ever since.</p>
+      <p>My hope is to give others the opportunity to experience that same feeling. Whether you come to ski,
+        hike, ride, fish, swim, explore, or simply enjoy the quiet, this property was created to be more than
+        just a place to stay.</p>
+      <p style="font-family:var(--serif);font-size:1.4rem;color:var(--forest);margin-top:1.4rem">
+        It is a home base for adventure, exploration, and making your own Adirondack memories.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SHARE ======================= -->
+<section id="share">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow">Show Off Your Trip</p>
+      <h2>Share Your Adirondack Getaway</h2>
+      <p class="lead" style="margin:0 auto 2.5rem">Generate a mobile-ready story image, caption, and
+        curated hashtags to post when you book — and send friends straight back here.</p>
+    </div>
+    <div class="share-preview reveal">
+      <div class="share-canvas-wrap">
+        <canvas id="shareCanvas" width="1080" height="1920"></canvas>
+        <div style="margin-top:1rem;text-align:center">
+          <button class="btn" id="downloadShare">Download Image</button>
+          <button class="btn btn-dark" id="cycleShare">Next Photo</button>
+        </div>
+      </div>
+      <div style="flex:1;min-width:260px">
+        <div class="field"><label>Which stay?</label><select id="shareProperty"></select></div>
+        <div class="field"><label>Your dates (optional)</label><input id="shareDates" placeholder="e.g. Aug 12–16"></div>
+        <div class="field"><label>Your vibe (optional)</label><input id="shareVibe" placeholder="e.g. long hikes and campfires"></div>
+        <label style="font-weight:600;font-size:.85rem;color:var(--forest)">Caption</label>
+        <div class="caption-box" id="shareCaption"></div>
+        <button class="btn btn-dark" id="copyCaption" style="margin-top:.7rem">Copy Caption + Hashtags</button>
+        <div class="hashtags" id="shareHashtags"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTACT / MESSAGE ======================= -->
+<section id="contact" class="section-dark">
+  <div class="wrap">
+    <div class="contact-split">
+      <div class="reveal">
+        <p class="eyebrow">Talk To Us</p>
+        <h2>Have a Question?</h2>
+        <p class="lead">Whether it's about availability, your group, gear, or getting up the driveway
+          in January — we're happy to help.</p>
+        <ul class="contact-info" id="contactInfo"></ul>
+      </div>
+      <div class="reveal">
+        <div class="card"><div class="pad">
+          <form id="messageForm">
+            <div class="field"><label>Your name</label><input required name="name"></div>
+            <div class="field"><label>Email</label><input required type="email" name="email"></div>
+            <div class="field"><label>Message</label><textarea required name="message" rows="5"></textarea></div>
+            <button class="btn btn-lg" type="submit">Send Message</button>
+          </form>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brandmark" style="margin-bottom:.8rem">
+          <svg class="mk" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 12h3v9h5v-6h2v6h5v-9h3L12 2Z" fill="#b0894f"/></svg>
+          Ausable House
+        </div>
+        <p style="max-width:24rem">A luxury Adirondack escape in Wilmington, New York.
+          Ausable House &amp; The Pinecone Perch.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p><a href="#stays">The Stays</a><br><a href="#gallery">Gallery</a><br>
+           <a href="#area">Area Guide</a><br><a href="#concierge">Concierge</a><br>
+           <a href="#book">Book</a></p>
+      </div>
+      <div>
+        <h4>Guest Info</h4>
+        <p><a href="#" data-doc="waiver">Rental Agreement</a><br>
+           <a href="#" data-doc="rules">House Rules</a><br>
+           <a href="#" data-doc="direct">Direct-Booking Terms</a><br>
+           <a href="#" data-doc="winter">Winter &amp; Safety</a><br>
+           <a href="#" data-doc="privacy">Privacy Policy</a></p>
+      </div>
+    </div>
+    <div class="legal-links">
+      <span>© <span id="year"></span> Ausable House. All rights reserved.</span>
+      <span class="muted">Independent direct-booking site — not affiliated with Airbnb or Vrbo.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================= OVERLAYS ======================= -->
+<div class="lightbox" id="lightbox"><button class="x" id="lightboxClose">×</button><div id="lightboxContent"></div></div>
+<div class="modal" id="docModal"><div class="sheet"><button class="x" id="docClose">×</button><div id="docContent"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/legal.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/calendar.js"></script>
+<script src="assets/js/booking.js"></script>
+<script src="assets/js/concierge.js"></script>
+<script src="assets/js/share.js"></script>
+</body>
+</html>
