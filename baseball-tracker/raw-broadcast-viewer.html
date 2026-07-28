@@ -185,6 +185,7 @@
       <div class="tabs" id="tabs">
         <button class="tab on" data-t="box">Box score</button>
         <button class="tab" data-t="splits">Situational splits</button>
+        <button class="tab" data-t="clips">Clips <span id="clipCount" class="tag" style="margin-left:4px"></span></button>
         <button class="tab" data-t="log">Play log</button>
       </div>
       <div class="panel" id="panel"></div>
@@ -282,6 +283,8 @@
   var OF=[["lfl","LF line",-48],["lf","LF",-33],["lcf","LCF",-17],["cf","CF",0],["rcf","RCF",17],["rf","RF",33],["rfl","RF line",48]];
   var IF=[["3b","3B",-32,0.42],["ss","SS",-14,0.5],["p","P",0,0.34],["2b","2B",14,0.5],["1b","1B",32,0.42],["c","C",0,0.16]];
   var ZANG={}; OF.forEach(function(z){ZANG[z[0]]=z[2];}); IF.forEach(function(z){ZANG[z[0]]=z[2];});
+  var LAUNCHW={ground:"ground ball",line:"line drive",fly:"fly ball",popup:"pop-up",blooper:"blooper"};
+  var QW={soft:"soft",med:"medium",hard:"hard",scorched:"scorched"};
 
   // seed play log (pa events) with situation snapshots -> real-looking splits
   function pa(bi,r,z,q,l,sit,extra){var e={k:"pa",bi:bi,r:r,z:z,q:q,l:l,sit:sit};if(extra)for(var k in extra)e[k]=extra[k];
@@ -307,8 +310,6 @@
   function load(){try{return JSON.parse(localStorage.getItem(LS));}catch(e){return null;}}
   function save(){try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}}
 
-  var LAUNCHW={ground:"ground ball",line:"line drive",fly:"fly ball",popup:"pop-up",blooper:"blooper"};
-  var QW={soft:"soft",med:"medium",hard:"hard",scorched:"scorched"};
   function zLabel(z){var a=OF.concat(IF).filter(function(x){return x[0]===z;});return a[0]?a[0][1]:z;}
   function buildTxt(e){
     if(e.out==="K")return "K";
@@ -458,9 +459,45 @@
   function onbits(sit){var b=[];if(sit.on1)b.push("1B");if(sit.on2)b.push("2B");if(sit.on3)b.push("3B");
     var base=b.length?b.join("/"):"bases empty";return base+", "+sit.o+" out";}
 
+  // ---------- derived: clips (the connective tissue) ----------
+  // Every in-play event auto-produces a clip from each angle, filed to the player + situation.
+  function clipList(){
+    var out=[];
+    S.ev.forEach(function(e,idx){
+      if(e.k!=="pa"||!e.z)return;  // in-play events get clips
+      out.push({idx:idx,bi:e.bi,txt:e.txt,q:e.q,r:e.r,sit:e.sit,rbi:e.rbi,caught:e.caught});
+    });
+    return out;
+  }
+  function renderClips(){
+    var qcol={soft:"var(--blue)",med:"var(--good)",hard:"var(--warn)",scorched:"var(--scorch)"};
+    var CAMLBL=["CF","HH","1B","3B"];
+    var list=clipList().reverse();
+    if(!list.length)return '<div class="note">No clips yet — log a ball in play and a clip is cut from every angle, filed to the player and the situation.</div>';
+    var h='<div style="display:flex;flex-direction:column;gap:8px">';
+    list.forEach(function(c){
+      var b=LINEUP[c.bi];var col=qcol[c.q]||"var(--line)";
+      var badge=(c.q==="hard"||c.q==="scorched")?(c.r==="Out"||c.caught?'<span class="tag" style="background:color-mix(in srgb,var(--hot) 18%,transparent);color:var(--hot)">hard-hit out</span>':'<span class="tag" style="background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)">hard-hit</span>'):'';
+      h+='<div class="stat" style="display:flex;gap:10px;align-items:center;padding:9px 11px">'+
+        '<div style="width:44px;height:30px;border-radius:6px;background:#0c1f14;position:relative;flex:none;overflow:hidden;border:1px solid var(--line)">'+
+          '<div style="position:absolute;inset:0;display:grid;place-items:center;color:'+col+';font-size:15px">▶</div></div>'+
+        '<div style="min-width:0;flex:1">'+
+          '<div style="font-weight:700;font-size:12.5px">#'+b.num+' '+b.n+' '+badge+'</div>'+
+          '<div style="font-size:11.5px;color:var(--mute)">'+c.txt+(c.sit?' · '+onbits(c.sit):'')+'</div>'+
+          '<div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap">'+
+            CAMLBL.map(function(l){return '<span class="tag" style="font-size:9px">'+l+'</span>';}).join('')+
+            '<span class="tag" style="font-size:9px">🔒 signed · consent: media_use</span></div>'+
+        '</div></div>';
+    });
+    h+='</div>';
+    h+='<div class="note">One asset per event = a stat line <b>and</b> '+CAMLBL.length+' angle clips. It feeds the player’s reel, the parent feed, the RAW Report, and (with scout_release consent + org approval) the scout portal. Access is consent-gated; URLs are signed.</div>';
+    return h;
+  }
+
   var curTab="box";
   function renderPanel(){
-    $("#panel").innerHTML=curTab==="box"?renderBox():curTab==="splits"?renderSplits():renderLog();
+    $("#panel").innerHTML=curTab==="box"?renderBox():curTab==="splits"?renderSplits():curTab==="clips"?renderClips():renderLog();
+    var cc=$("#clipCount");if(cc){var n=clipList().length;cc.textContent=n?n:"";}
   }
   function renderAll(){renderSituation();renderBatter();renderPanel();save();}
 
@@ -514,14 +551,20 @@
     var wrap=$("#cams");wrap.innerHTML="";
     CAMS.forEach(function(c,i){
       var d=document.createElement("div");d.className="cam";
-      d.innerHTML='<canvas></canvas><span class="cl">'+c.label+'</span><span class="tc">00:00.0</span>'+
+      d.innerHTML='<canvas></canvas><video playsinline muted loop style="display:none;width:100%;aspect-ratio:16/10;object-fit:cover"></video>'+
+        '<span class="cl">'+c.label+'</span><span class="tc">00:00.0</span>'+
         '<span class="rec"><span class="rd"></span>REC</span>'+
-        '<span class="off"><input type="range" min="-1500" max="1500" step="50" value="0" aria-label="'+c.label+' sync offset"><span>+0 ms</span></span>';
+        '<label class="feed" title="Attach a real feed (Cloudflare/HLS/file)" style="position:absolute;top:6px;right:74px;background:#000a;color:#cfe;border-radius:6px;padding:2px 7px;font-size:10px;cursor:pointer">＋ feed<input type="file" accept="video/*" hidden></label>'+
+        '<span class="off"><input type="range" class="offr" min="-1500" max="1500" step="50" value="0" aria-label="'+c.label+' sync offset"><span>+0 ms</span></span>';
       wrap.appendChild(d);
       var cv=d.querySelector("canvas");canvases.push(cv);
-      var rng=d.querySelector("input");
+      var rng=d.querySelector(".offr");
       rng.oninput=function(){c.off=+rng.value;d.querySelector(".off span").textContent=(c.off>=0?"+":"")+c.off+" ms";
         d.classList.toggle("desync",Math.abs(c.off)>60);updateSyncState();};
+      var vid=d.querySelector("video");
+      d.querySelector(".feed input").onchange=function(e){var f=e.target.files[0];if(!f)return;
+        vid.src=URL.createObjectURL(f);vid.style.display="block";cv.style.display="none";vid.play().catch(function(){});
+        d.querySelector(".feed").textContent="● live";};
     });
   }
   function updateSyncState(){

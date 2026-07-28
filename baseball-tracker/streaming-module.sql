@@ -197,10 +197,26 @@ create policy games_follower_read on games for select
   );
 
 -- Scorecard children: readable if the parent game is readable; writable by org staff.
+-- The subquery on games re-applies games' RLS (a select only sees permitted game rows).
 create policy pitches_staff_rw on pitches
   using (is_org_staff(org_id)) with check (is_org_staff(org_id));
 create policy pitches_scoped_read on pitches for select
-  using (exists (select 1 from games g where g.id = pitches.game_id));  -- games RLS does the gating
+  using (exists (select 1 from games g where g.id = pitches.game_id));
+
+create policy atbats_staff_rw on at_bats
+  using (is_org_staff(org_id)) with check (is_org_staff(org_id));
+create policy atbats_scoped_read on at_bats for select
+  using (exists (select 1 from games g where g.id = at_bats.game_id));
+
+create policy batted_staff_rw on batted_balls
+  using (is_org_staff(org_id)) with check (is_org_staff(org_id));
+create policy batted_scoped_read on batted_balls for select
+  using (exists (select 1 from games g where g.id = batted_balls.game_id));
+
+create policy cameras_staff_rw on game_cameras
+  using (is_org_staff(org_id)) with check (is_org_staff(org_id));
+create policy cameras_member_read on game_cameras for select
+  using (is_org_member(org_id));  -- raw stream URLs; premium gating is enforced app-side
 
 -- CLIPS — the strict one. A clip of a minor is visible ONLY to:
 --   * org staff (coach/admin) for that org, OR
@@ -226,11 +242,83 @@ create policy broadcasts_staff_rw on game_broadcasts
 create policy broadcasts_member_read on game_broadcasts for select
   using (is_org_member(org_id));
 
+-- ─────────────────────────────────────────────────────────────────────────────
+-- HELPER FUNCTIONS  (SECURITY DEFINER so RLS policies can call them without recursion)
+-- The core migration owns is_org_member/is_org_staff/follows_*/is_family_member; the two
+-- this module adds are below. All are STABLE and read auth.uid() for the current caller.
+-- ─────────────────────────────────────────────────────────────────────────────
+
+-- A player has active consent of a given kind if a consents row exists, not revoked.
+create or replace function has_active_consent(target_player uuid, kind text)
+returns boolean language sql stable security definer set search_path = public as $$
+  select exists (
+    select 1 from consents c
+    where c.player_id = target_player
+      and c.covers   = kind
+      and c.revoked_at is null
+  );
+$$;
+
+-- A scout may see a player only with BOTH parental scout_release consent AND an org approval.
+-- (scout_approvals is an Operations/Scout-module table: {org_id, player_id, scout_user_id,
+--  approved_at}. Referenced here; created in that module's migration.)
+create or replace function scout_can_see(target_player uuid)
+returns boolean language sql stable security definer set search_path = public as $$
+  select has_active_consent(target_player, 'scout_release')
+     and exists (
+       select 1 from scout_approvals a
+       where a.player_id = target_player
+         and a.scout_user_id = auth.uid()
+         and a.approved_at is not null
+     );
+$$;
+
+-- Premium stream access: org staff, the player's family, or an active streaming subscription
+-- for this org (a contribution/subscription in the Fundraising streaming campaign).
+create or replace function has_stream_access(target_game uuid, tier text)
+returns boolean language sql stable security definer set search_path = public as $$
+  with g as (select org_id from games where id = target_game)
+  select
+    is_org_staff((select org_id from g))
+    or (tier = 'free')
+    or exists (  -- an active streaming subscription for this org
+      select 1 from contributions ct
+      join campaigns cp on cp.id = ct.campaign_id
+      where ct.org_id = (select org_id from g)
+        and cp.type = 'streaming'
+        and ct.status = 'succeeded'
+    );
+$$;
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- RAW SCORE DERIVATION  (server-side, versioned, null-safe — store raw, never a score)
+-- Run after a game finalizes (or incrementally). Writes per-player game measurements into
+-- the CORE raw_measurements table; the RAW Score engine consumes those. Never zero-fills:
+-- a player with no balls in play gets NO row, not a 0.
+-- ─────────────────────────────────────────────────────────────────────────────
+create or replace function derive_game_measurements(target_game uuid, model text)
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  insert into raw_measurements (org_id, player_id, domain, measure_key, value, captured_at, source, model_version)
+  select bb.org_id, bb.batter_player_id, 'Game Production', 'hard_hit_rate',
+         avg((bb.hardness in ('hard','scorched'))::int)::numeric,
+         g.starts_at, 'game', model
+  from batted_balls bb
+  join games g on g.id = bb.game_id
+  where bb.game_id = target_game
+    and bb.batter_player_id is not null
+    and bb.hardness is not null            -- null contact quality is excluded, not counted as 0
+  group by bb.org_id, bb.batter_player_id, g.starts_at;
+
+  -- Additional measures (avg contact quality, RISP production, etc.) follow the same shape.
+  -- exit_velo_est joins here unchanged once CV supplies it — the RAW Score path never changes.
+end;
+$$;
+
 -- TODO for the implementing session:
---   1. Repeat the staff_rw + scoped_read policy pair on at_bats, batted_balls, game_cameras.
---   2. Build has_active_consent(player, covers) and scout_can_see(player) helpers.
---   3. The RAW Score derivation job → raw_measurements (server-side, versioned, null-safe).
---   4. Supabase Realtime: publish games/pitches/batted_balls so the scoreboard + parent
---      live feed update without polling (replaces any hand-rolled WebSocket).
---   5. Clip creation runs server-side against Cloudflare Stream (clip API), writing signed
---      URLs — never expose an unsigned playback URL for a minor's clip.
+--   1. Supabase Realtime: add games/pitches/batted_balls to the realtime publication so the
+--      scoreboard + parent live feed update without polling (replaces hand-rolled sockets).
+--   2. Clip creation runs server-side against the Cloudflare Stream clip API, writing SIGNED
+--      URLs into clips.cf_clip_url — never expose an unsigned playback URL for a minor's clip.
+--   3. Confirm scout_approvals + a streaming-subscription flag exist in their modules before
+--      wiring scout_can_see / has_stream_access in production.
