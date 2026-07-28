@@ -147,6 +147,11 @@
   .le .dot{width:9px;height:9px;border-radius:50%;flex:none}
   .le .r{margin-left:auto;color:var(--mute);font-size:11px}
   .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:10px;background:var(--chip);color:var(--mute)}
+  .modebar{display:flex;gap:0;padding:10px 14px 0}
+  .mode{flex:1;background:var(--raise);border:1px solid var(--line);padding:8px;font-size:12.5px;font-weight:600;color:var(--mute)}
+  .mode:first-child{border-radius:8px 0 0 8px;border-right:0}
+  .mode:last-child{border-radius:0 8px 8px 0}
+  .mode.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
   .setup{border-bottom:1px solid var(--line)}
   .setup summary{padding:10px 14px;cursor:pointer;color:var(--accent);font-size:12.5px;font-weight:600;list-style:none}
   .setup summary::-webkit-details-marker{display:none}
@@ -248,6 +253,11 @@
         <div class="cnt"><div class="big num" id="inn">B5</div><div class="lbl">Inning</div></div>
         <div class="risp" id="rispTag"></div>
       </div>
+    </div>
+
+    <div class="modebar">
+      <button id="mBat" class="mode on">We're batting</button>
+      <button id="mPit" class="mode">We're pitching</button>
     </div>
 
     <div class="atbat">
@@ -375,7 +385,16 @@
   if(!S.cfg.lineup||S.cfg.lineup.length!==9)S.cfg.lineup=DEFAULT_LINEUP.slice();
   LINEUP=S.cfg.lineup;                       // all rendering reads the live roster
   PITCHER.name=S.cfg.pitcher||PITCHER.name;
+  if(!S.side)S.side="bat";                    // 'bat' = we're hitting, 'pit' = we're in the field
+  if(!S.pev)S.pev=seedPev();                  // pitching event log (opponent PAs vs our pitcher)
+  if(S.st.obi==null)S.st.obi=0;               // opponent batting-order index
   function clone(o){return JSON.parse(JSON.stringify(o));}
+  // Build a pitching event log from the seeded outing summary, in the same shape as S.ev.
+  function seedPev(){var ev=[];PPA.forEach(function(e){var pc=e.pc||1,sw=e.sw||0;
+    for(var i=0;i<pc;i++){var res=i<sw?"swing":(i===pc-1&&!e.out)?"inplay":(e.out==="BB"?"ball":"called");
+      ev.push({k:"pitch",res:res,first:i===0});}
+    var p={k:"pa",bi:0,r:e.r||null,z:e.z||null,q:e.q||null,l:e.l||null,caught:e.caught||0,out:e.out||null,sit:null};
+    p.txt=buildTxt(p);ev.push(p);});return ev;}
   function load(){try{return JSON.parse(localStorage.getItem(LS));}catch(e){return null;}}
   function save(){try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}}
 
@@ -446,7 +465,15 @@
   }
   function setBase(cls,on){var el=document.querySelector(".diamond ."+cls);if(el)el.classList.toggle("on",!!on);}
   function renderBatter(){
-    var st=S.st,b=LINEUP[st.bi];
+    var st=S.st;
+    if(S.side==="pit"){
+      $("#batterName").textContent=S.cfg.opp+" — batter "+(st.obi+1);
+      $("#batterLine").textContent="On the mound: "+S.cfg.pitcher;
+      $("#batterSel").style.display="none";
+      return;
+    }
+    $("#batterSel").style.display="";
+    var b=LINEUP[st.bi];
     $("#batterName").textContent="#"+b.num+" "+b.n;
     var line=battersBox().find(function(r){return r.bi===st.bi;});
     $("#batterLine").textContent="Today "+(line?line.H+"-for-"+line.AB:"0-for-0")+(line&&line.hard?" · "+line.hard+" hard-hit":"");
@@ -602,24 +629,25 @@
     return h;
   }
 
-  // ---------- derived: pitcher line (the defensive mirror) ----------
+  // ---------- derived: pitcher line (the defensive mirror) — from the live pitching log ----------
   function renderPitcher(){
-    var pitches=0,K=0,BB=0,H=0,bip=0,hard=0,hho=0,sw=0,firstK=0,BF=PPA.length;
+    var pitches=0,K=0,BB=0,H=0,bip=0,hard=0,hho=0,sw=0,strikes=0,BF=0;
     var spray={};
-    PPA.forEach(function(e){
-      pitches+=e.pc||0; sw+=e.sw||0;
-      if(e.out==="K")K++; if(e.out==="BB")BB++;
-      if(HITS[e.r])H++;
-      if(e.q){bip++;if(e.q==="hard"||e.q==="scorched"){hard++;if(e.r==="Out"||e.caught)hho++;} if(e.z)spray[e.z]=(spray[e.z]||0)+1;}
+    S.pev.forEach(function(e){
+      if(e.k==="pitch"){pitches++;if(e.res==="swing")sw++;
+        if(e.res==="called"||e.res==="swing"||e.res==="foul"||e.res==="inplay")strikes++;}
+      else if(e.k==="pa"){BF++;
+        if(e.out==="K")K++; if(e.out==="BB")BB++;
+        if(HITS[e.r])H++;
+        if(e.q){bip++;if(e.q==="hard"||e.q==="scorched"){hard++;if(e.r==="Out"||e.caught)hho++;} if(e.z)spray[e.z]=(spray[e.z]||0)+1;}
+      }
     });
-    var strikePct=pitches?Math.round(100*(pitches-countBalls())/pitches):0;
-    function countBalls(){var b=0;PPA.forEach(function(e){/* approx: BB implies ~4 balls */ if(e.out==="BB")b+=4;});return b;}
     var whiffPct=pitches?Math.round(100*sw/pitches):0;
     var hardPct=bip?Math.round(100*hard/bip):0;
     function stat(v,l,acc){return '<div class="stat'+(acc?' accent':'')+'"><div class="v">'+v+'</div><div class="l">'+l+'</div></div>';}
     var h='<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">'+
       '<div class="disp" style="font-size:20px">'+PITCHER.name+'</div>'+
-      '<div style="color:var(--mute);font-size:12px">'+BF+' batters faced · '+pitches+' pitches</div></div>';
+      '<div style="color:var(--mute);font-size:12px">'+BF+' batters faced · '+pitches+' pitches · '+(pitches?Math.round(100*strikes/pitches):0)+'% strikes</div></div>';
     h+='<div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">';
     h+=stat(K,"Strikeouts");
     h+=stat(BB,"Walks");
@@ -641,24 +669,28 @@
   function renderAll(){renderSituation();renderBatter();renderPanel();save();}
 
   /* ================= TAGGING ================= */
-  function addPitch(res){ S.st.balls;S.ev.push({k:"pitch",res:res,first:false});
+  function curEv(){return S.side==="pit"?S.pev:S.ev;}       // active event log
+  function addPitch(res){ var first=lastWasOutcome();
+    curEv().push({k:"pitch",res:res,first:first});
     if(res==="ball"){S.st.balls=Math.min(4,S.st.balls+1);}
     else if(res==="called"||res==="foul"){S.st.strikes=Math.min(2,S.st.strikes+((res==="foul"&&S.st.strikes>=2)?0:1));}
     else if(res==="hbp"){addOutcome({out:"HBP"});return;}
     renderAll();
   }
+  function lastWasOutcome(){var log=curEv();for(var i=log.length-1;i>=0;i--){if(log[i].k==="pa")return true;if(log[i].k==="pitch")return false;}return true;}
   function addOutcome(e){
-    var st=S.st;
-    var ev={k:"pa",bi:st.bi,r:e.r||null,z:e.z||null,q:e.q||null,l:e.l||null,caught:e.caught||0,out:e.out||null,
+    var st=S.st, pit=S.side==="pit";
+    var ev={k:"pa",bi:pit?st.obi:st.bi,r:e.r||null,z:e.z||null,q:e.q||null,l:e.l||null,caught:e.caught||0,out:e.out||null,
       sit:{o:st.outs,on1:st.on1,on2:st.on2,on3:st.on3},rbi:e.rbi||0};
     ev.txt=buildTxt(ev);
     // advance game state (light simulation)
     if(e.out==="K"||e.r==="Out"){st.outs++;}
-    if(e.rbi){st.us+=e.rbi;}
+    if(e.rbi){ if(pit)st.them+=e.rbi; else st.us+=e.rbi; }
     if(HITS[e.r]||e.out==="BB"||e.out==="HBP"){/* runners on – simplistic: put man on */ st.on1=1;}
     if(st.outs>=3){st.outs=0;st.half=st.half==="T"?"B":"T";if(st.half==="T")st.inn++;st.on1=st.on2=st.on3=0;}
-    st.balls=0;st.strikes=0;st.bi=(st.bi+1)%9;
-    S.ev.push(ev);
+    st.balls=0;st.strikes=0;
+    if(pit)st.obi=(st.obi+1)%9; else st.bi=(st.bi+1)%9;
+    curEv().push(ev);
     resetDraft();$("#sprayWrap").classList.remove("show");$("#inplayBtn").classList.remove("sel");
     fillBatterSel();renderAll();
   }
@@ -676,8 +708,19 @@
   document.querySelectorAll("[data-r]").forEach(function(b){b.onclick=function(){sel("[data-r]",b);draft.r=b.dataset.r;draft.caught=b.dataset.caught?1:0;refreshSave();};});
   function sel(q,b){document.querySelectorAll(q).forEach(function(x){x.classList.remove("sel");});b.classList.add("sel");}
   $("#saveBtn").onclick=function(){if(draftReady())addOutcome(draft);};
-  $("#undoBtn").onclick=function(){for(var i=S.ev.length-1;i>=0;i--){if(S.ev[i].k==="pa"){S.ev.splice(i,1);break;}}renderAll();};
+  $("#undoBtn").onclick=function(){var log=curEv();for(var i=log.length-1;i>=0;i--){if(log[i].k==="pa"){log.splice(i,1);break;}}renderAll();renderPanel();};
   $("#batterSel").onchange=function(){S.st.bi=+this.value;renderAll();};
+  function setSide(side){
+    S.side=side;S.st.balls=0;S.st.strikes=0;
+    $("#mBat").classList.toggle("on",side==="bat");$("#mPit").classList.toggle("on",side==="pit");
+    // when we flip to pitching, the natural view is the pitcher line; batting → box
+    curTab=side==="pit"?"pitch":"box";
+    document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("on",x.dataset.t===curTab);});
+    resetDraft();$("#sprayWrap").classList.remove("show");$("#inplayBtn").classList.remove("sel");
+    renderAll();renderPanel();
+  }
+  $("#mBat").onclick=function(){setSide("bat");};
+  $("#mPit").onclick=function(){setSide("pit");};
   document.querySelectorAll(".tab").forEach(function(t){t.onclick=function(){
     document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on");});t.classList.add("on");
     curTab=t.dataset.t;renderPanel();};});
@@ -803,6 +846,9 @@
     r.setAttribute("data-theme",cur==="dark"?"light":"dark");};
 
   /* init */
+  $("#mBat").classList.toggle("on",S.side!=="pit");$("#mPit").classList.toggle("on",S.side==="pit");
+  if(S.side==="pit")curTab="pitch";
+  document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("on",x.dataset.t===curTab);});
   renderSetup();bindSetup();fillBatterSel();buildSpray();buildCams();renderAll();updateSyncState();requestAnimationFrame(loop);
 })();
 </script>
