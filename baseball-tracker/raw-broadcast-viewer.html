@@ -211,6 +211,7 @@
         <button class="tab on" data-t="box">Box score</button>
         <button class="tab" data-t="splits">Situational splits</button>
         <button class="tab" data-t="clips">Clips <span id="clipCount" class="tag" style="margin-left:4px"></span></button>
+        <button class="tab" data-t="player">Player</button>
         <button class="tab" data-t="pitch">Pitching</button>
         <button class="tab" data-t="log">Play log</button>
       </div>
@@ -534,7 +535,7 @@
     var h='<table><thead><tr><th>Batter</th><th>AB</th><th>H</th><th>XB</th><th>RBI</th><th>Hard</th><th>Hard%</th></tr></thead><tbody>';
     rows.forEach(function(r){
       var hp=r.bip?Math.round(100*r.hard/r.bip)+"%":"—";
-      h+='<tr'+(r.hard>=2?' class="hot"':'')+'><td>#'+r.num+' '+r.n+'</td><td>'+r.AB+'</td><td>'+r.H+'</td><td>'+r.xb+'</td><td>'+r.RBI+'</td><td>'+(r.hard||"")+'</td><td>'+hp+'</td></tr>';
+      h+='<tr data-bi="'+r.bi+'"'+(r.hard>=2?' class="hot"':'')+' style="cursor:pointer"><td>#'+r.num+' '+esc(r.n)+'</td><td>'+r.AB+'</td><td>'+r.H+'</td><td>'+r.xb+'</td><td>'+r.RBI+'</td><td>'+(r.hard||"")+'</td><td>'+hp+'</td></tr>';
     });
     var T=rows.reduce(function(a,r){a.AB+=r.AB;a.H+=r.H;a.xb+=r.xb;a.RBI+=r.RBI;a.hard+=r.hard;a.bip+=r.bip;return a;},{AB:0,H:0,xb:0,RBI:0,hard:0,bip:0});
     h+='</tbody><tfoot><tr><th>Team</th><th>'+T.AB+'</th><th>'+T.H+'</th><th>'+T.xb+'</th><th>'+T.RBI+'</th><th>'+T.hard+'</th><th>'+(T.bip?Math.round(100*T.hard/T.bip)+"%":"—")+'</th></tr></tfoot></table>';
@@ -661,14 +662,76 @@
     return h;
   }
 
+  // ---------- derived: single-player profile (feeds RAW Score / recruiting / scout) ----------
+  var curPlayer=0;
+  function renderPlayer(){
+    var b=LINEUP[curPlayer]||LINEUP[0];
+    var pas=S.ev.filter(function(e){return e.k==="pa"&&e.bi===curPlayer;});
+    var AB=0,H=0,xb=0,RBI=0,bip=0,hard=0,hho=0,spray={};
+    pas.forEach(function(e){
+      if(e.out==="BB")return;AB++;
+      if(HITS[e.r]){H++;if(e.r!=="1B")xb++;}
+      if(e.rbi)RBI+=e.rbi;
+      if(e.q){bip++;if(e.q==="hard"||e.q==="scorched"){hard++;if(e.r==="Out"||e.caught)hho++;}if(e.z)spray[e.z]=(spray[e.z]||0)+1;}
+    });
+    var hardPct=bip?Math.round(100*hard/bip):0;
+    var opts=LINEUP.map(function(p,i){return '<option value="'+i+'"'+(i===curPlayer?' selected':'')+'>#'+p.num+' '+esc(p.n)+'</option>';}).join("");
+    function stat(v,l,acc){return '<div class="stat'+(acc?' accent':'')+'"><div class="v">'+v+'</div><div class="l">'+l+'</div></div>';}
+    var h='<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">'+
+      '<div class="disp" style="font-size:22px">#'+b.num+' '+esc(b.n)+'</div>'+
+      '<select id="playerSel" style="margin-left:auto;background:var(--raise);border:1px solid var(--line);border-radius:7px;padding:6px 8px;color:var(--text)">'+opts+'</select></div>';
+    h+='<div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">';
+    h+=stat(H+'<small>/'+AB+'</small>',"Today");
+    h+=stat(xb,"Extra-base");
+    h+=stat(RBI,"RBI");
+    h+=stat(hardPct+'<small>%</small>',"Hard-hit rate",true);
+    h+=stat(hard,"Hard-hit balls");
+    h+=stat(hho,"Hard-hit outs");
+    h+='</div>';
+    h+='<div class="mini" style="margin-top:12px">Spray chart</div>'+sprayBar(spray);
+    // clip reel
+    var clips=pas.filter(function(e){return e.z;});
+    h+='<div class="mini" style="margin-top:12px">Clip reel ('+clips.length+')</div>';
+    if(clips.length){
+      var qcol={soft:"var(--blue)",med:"var(--good)",hard:"var(--warn)",scorched:"var(--scorch)"};
+      h+='<div style="display:flex;gap:6px;overflow-x:auto;padding:4px 0">';
+      clips.slice().reverse().forEach(function(c){var col=qcol[c.q]||"var(--line)";
+        h+='<div style="flex:none;width:96px"><div style="height:56px;border-radius:7px;background:#0c1f14;position:relative;border:1px solid var(--line)">'+
+          '<div style="position:absolute;inset:0;display:grid;place-items:center;color:'+col+';font-size:18px">▶</div>'+
+          '<span style="position:absolute;bottom:3px;left:4px;font-size:8px;color:#cfe;background:#0009;padding:0 4px;border-radius:4px">'+(c.r||"")+'</span></div>'+
+          '<div style="font-size:9.5px;color:var(--mute);margin-top:3px;line-height:1.25">'+esc(c.txt.replace(/ —.*to /," → "))+'</div></div>';});
+      h+='</div>';
+    } else h+='<div class="note" style="padding-left:0">No clips yet for this player.</div>';
+    // RAW Score contribution (honest: raw inputs, not a client-side score)
+    h+='<div class="stat accent" style="margin-top:12px"><div class="l" style="margin:0 0 4px">Feeds the RAW Score — raw inputs (server-computed)</div>'+
+      '<div style="font-size:12px">Game Production · <code>hard_hit_rate</code> = '+(bip?(hard/bip).toFixed(2):"—")+' · <code>xbh</code> = '+xb+
+      ' <span class="tag" style="margin-left:4px">source: game</span></div></div>';
+    h+='<div class="note">This is the player-facing side of the same event log: game line, contact quality, spray, and the clip reel — the assets that feed the RAW Score, the recruiting profile, and (with consent + approval) the scout portal.</div>';
+    return h;
+  }
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+
   var curTab="box";
   function renderPanel(){
-    $("#panel").innerHTML=curTab==="box"?renderBox():curTab==="splits"?renderSplits():curTab==="clips"?renderClips():curTab==="pitch"?renderPitcher():renderLog();
+    $("#panel").innerHTML=curTab==="box"?renderBox():curTab==="splits"?renderSplits():curTab==="clips"?renderClips():curTab==="player"?renderPlayer():curTab==="pitch"?renderPitcher():renderLog();
     var cc=$("#clipCount");if(cc){var n=clipList().length;cc.textContent=n?n:"";}
   }
   function renderAll(){renderSituation();renderBatter();renderPanel();save();}
 
   /* ================= TAGGING ================= */
+  // Advance base runners for a result code; mutate st.on1/2/3; return runs scored.
+  function advanceBases(st,code){
+    var b=[!!st.on1,!!st.on2,!!st.on3],runs=0,on=function(a){return a.filter(Boolean).length;};
+    if(code==="HR"){runs=on(b)+1;b=[false,false,false];}
+    else if(code==="3B"){runs=on(b);b=[false,false,true];}
+    else if(code==="2B"){if(b[2])runs++;if(b[1])runs++;b=[false,true,b[0]];}
+    else if(code==="1B"||code==="E"){if(b[2])runs++;b=[true,b[0],b[1]];}
+    else if(code==="BB"||code==="HBP"){if(b[0]&&b[1]&&b[2])runs++;var n3=b[2]||(b[0]&&b[1]),n2=b[1]||b[0];b=[true,n2,n3];}
+    else if(code==="FC"){b=[true,b[0],b[1]];}   // batter safe, lead runner retired (approx)
+    // "Out"/"K": no base change
+    st.on1=b[0];st.on2=b[1];st.on3=b[2];
+    return runs;
+  }
   function curEv(){return S.side==="pit"?S.pev:S.ev;}       // active event log
   function addPitch(res){ var first=lastWasOutcome();
     curEv().push({k:"pitch",res:res,first:first});
@@ -683,10 +746,12 @@
     var ev={k:"pa",bi:pit?st.obi:st.bi,r:e.r||null,z:e.z||null,q:e.q||null,l:e.l||null,caught:e.caught||0,out:e.out||null,
       sit:{o:st.outs,on1:st.on1,on2:st.on2,on3:st.on3},rbi:e.rbi||0};
     ev.txt=buildTxt(ev);
-    // advance game state (light simulation)
-    if(e.out==="K"||e.r==="Out"){st.outs++;}
-    if(e.rbi){ if(pit)st.them+=e.rbi; else st.us+=e.rbi; }
-    if(HITS[e.r]||e.out==="BB"||e.out==="HBP"){/* runners on – simplistic: put man on */ st.on1=1;}
+    // advance runners + score (real base-running, not an approximation)
+    var code=e.out?e.out:e.r;
+    var runs=advanceBases(st,code);
+    ev.rbi=(HITS[code]||code==="BB"||code==="HBP")?runs:0;  // errors/FC score runs but earn no RBI
+    if(pit)st.them+=runs; else st.us+=runs;
+    if(e.out==="K"||e.r==="Out")st.outs++;
     if(st.outs>=3){st.outs=0;st.half=st.half==="T"?"B":"T";if(st.half==="T")st.inn++;st.on1=st.on2=st.on3=0;}
     st.balls=0;st.strikes=0;
     if(pit)st.obi=(st.obi+1)%9; else st.bi=(st.bi+1)%9;
@@ -724,6 +789,11 @@
   document.querySelectorAll(".tab").forEach(function(t){t.onclick=function(){
     document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on");});t.classList.add("on");
     curTab=t.dataset.t;renderPanel();};});
+  // player selector + click a box-score row to open that player's profile
+  $("#panel").addEventListener("change",function(e){if(e.target.id==="playerSel"){curPlayer=+e.target.value;renderPanel();}});
+  $("#panel").addEventListener("click",function(e){var row=e.target.closest("[data-bi]");
+    if(row){curPlayer=+row.dataset.bi;curTab="player";
+      document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("on",x.dataset.t==="player");});renderPanel();}});
 
   /* ================= CAMERAS (synced schematic) ================= */
   var CAMS=[{label:"Center field",off:0,rot:0},{label:"High home",off:0,rot:180},
