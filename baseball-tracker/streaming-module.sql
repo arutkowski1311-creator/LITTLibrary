@@ -51,8 +51,32 @@ create table game_cameras (
   created_at     timestamptz not null default now()
 );
 
+-- BROADCAST + VIEWER TIERS (Phase 5: "free vs premium viewer tiers").
+-- Premium access is a paid entitlement that ties to the Fundraising Engine's streaming
+-- revenue (campaigns.type='streaming', contributions.source_tag='streaming').
+create table game_broadcasts (
+  id            uuid primary key default gen_random_uuid(),
+  org_id        uuid not null references orgs(id),
+  game_id       uuid not null references games(id),
+  is_live       boolean not null default false,
+  free_tier     text default 'scoreboard',  -- what a free viewer gets: scoreboard | delayed | none
+  premium_tier  text default 'multicam',     -- what premium gets: multicam | clips | full
+  created_at    timestamptz not null default now()
+);
+-- Access helper the app calls: has_stream_access(game, 'premium') — true for org staff,
+-- the player's family, or an account with an active streaming subscription for this org.
+
 -- ─────────────────────────────────────────────────────────────────────────────
 -- THE SCORECARD  (event-sourced: at_bat → pitch → batted_ball; state stamped on each)
+-- PORT MAP — this is the existing prototype's LiveGame data, normalized:
+--   game:st  {inn,half,outs,balls,strikes,bi,us,them,pc}  → games + pitches.state cols
+--   game:ev  {k:'pitch',res,first}                        → pitches (res→result)
+--   game:ev  {k:'pa',bi,txt,r,z,q,out,tk,sw}              → at_bats + batted_balls, where
+--     bi (lineup slot) → players.id via lineup;  r → result;  q(soft|med|hard) → hardness
+--     z (cf|rcf|rfl|3b|ss|…) → SPLIT into spray_zone + fielder + depth;
+--     launch (fly|line|ground|pop) is today only in txt → PULL OUT into batted_balls.launch.
+--   Enhancements the port adds: structured launch, split z, optional 'scorched' 4th tier,
+--   exit_velo_est (null now, CV later), and per-player linkage (bi → players.id).
 -- Opposing players aren't in our players table, so player refs are nullable + a name text.
 -- RAW Score measurements are only ever written for OUR players (a real players.id).
 -- ─────────────────────────────────────────────────────────────────────────────
@@ -153,6 +177,7 @@ create table clips (
 
 alter table games         enable row level security;
 alter table game_cameras  enable row level security;
+alter table game_broadcasts enable row level security;
 alter table at_bats       enable row level security;
 alter table pitches       enable row level security;
 alter table batted_balls  enable row level security;
@@ -193,6 +218,13 @@ create policy clips_scoped_read on clips for select
   );
 create policy clips_staff_write on clips for all
   using (is_org_staff(org_id)) with check (is_org_staff(org_id));
+
+-- Broadcast row: staff manage it; any org member may read whether a game is live, but the
+-- actual premium video access is gated by has_stream_access() at the player/URL layer.
+create policy broadcasts_staff_rw on game_broadcasts
+  using (is_org_staff(org_id)) with check (is_org_staff(org_id));
+create policy broadcasts_member_read on game_broadcasts for select
+  using (is_org_member(org_id));
 
 -- TODO for the implementing session:
 --   1. Repeat the staff_rw + scoped_read policy pair on at_bats, batted_balls, game_cameras.

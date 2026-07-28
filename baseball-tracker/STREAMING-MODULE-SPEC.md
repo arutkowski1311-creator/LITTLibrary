@@ -8,6 +8,47 @@ shared core, following every non-negotiable in `CLAUDE.md`.
 > the *real* backend. Those were vendor-neutral sketches written before I saw the
 > RAW Co. brief. The aligned schema is `streaming-module.sql`.
 
+## Where it sits in the build plan — Phase 5
+
+Per `RAW-Platform-Build-Plan.docx`, this is **Phase 5 (Streaming)**: *"the
+four-camera broadcast into the app, free vs premium viewer tiers, and the
+Broadcast Kit as a product. Cloudflare Stream for the video + clipping... begin
+hardware procurement in parallel with earlier phases."* Two consequences:
+
+- **Start hardware now, ship the module mid.** Camera/kit procurement has lead
+  time, so the **Broadcast Kit** (permanent PoE + portable rigs — see
+  `HARDWARE.md`) can be ordered during Phases 0–4 even though the software lands
+  at Phase 5.
+- **The Broadcast Kit is itself a product**, and the stream carries **free vs
+  premium viewer tiers** — both monetization surfaces, wired to the existing
+  streaming-revenue fundraiser (`campaigns.type='streaming'`). Modeled as
+  `game_broadcasts` + a `has_stream_access(game, tier)` helper.
+
+It also feeds **Phase 4 (RAW Score)** and **Phase 6 (Scout portal)**: the
+scorecard produces `raw_measurements`, and consent-gated clips are the scout
+portal's verified film.
+
+## Porting the existing scorekeeper (it's already event-sourced)
+
+The prototype's `LiveGame` component (in `nj-raw-app.jsx`) already stores the
+scorecard as an event log via the `store` / `usePersist` seam — the exact seam
+CLAUDE.md names for the Supabase swap. Nothing is thrown away; the port just
+points those writes at the module tables:
+
+| Prototype (localStorage via `usePersist`) | → Module table |
+|---|---|
+| `game:st` `{inn,half,outs,balls,strikes,bi,us,them,pc}` | `games` + state cols on `pitches` |
+| `game:ev` `{k:'pitch',res,first}` | `pitches` |
+| `game:ev` `{k:'pa',bi,txt,r,z,q,out,...}` | `at_bats` + `batted_balls` |
+
+Field mapping: `bi` (lineup slot) → `players.id`; `q` (soft/med/hard) →
+`hardness`; `r` → `result`; `z` (cf/rcf/rfl/3b/ss…) → split into `spray_zone` +
+`fielder` + `depth`; `launch` (fly/line/ground/pop), today only inside `txt`,
+gets pulled into its own column. The port is the moment to (optionally) add the
+4th **`scorched`** tier the deep-stat vision wanted, and `exit_velo_est` (null
+now, CV later). Because `usePersist` already abstracts reads/writes, screens
+don't get rewritten — only the store backend changes.
+
 ## How it fits the architecture
 
 - **Shared core, not a silo.** The module reads/writes core tables (`orgs`,

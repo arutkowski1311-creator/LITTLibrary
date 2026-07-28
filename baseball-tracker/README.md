@@ -4,7 +4,20 @@ A design + Phase-0 prototype for watching a college/showcase game from 2–4
 camera angles and tagging pitches and batted balls (e.g. *"hard ball to right
 field"*), saved by team → player → game.
 
-## Files
+## RAW Co. platform alignment (read these first)
+This started vendor-neutral, then the RAW Co. project brief arrived. The camera
+work is **Phase 5 (Streaming)** of that platform. These are the aligned artifacts:
+- **[`STREAMING-MODULE-SPEC.md`](./STREAMING-MODULE-SPEC.md)** — the module spec:
+  Phase-5 fit, porting the existing `LiveGame` scorekeeper, multi-tenant/RLS,
+  consent-gated clips, RAW Score feed, viewer tiers, Cloudflare + Supabase.
+- **[`streaming-module.sql`](./streaming-module.sql)** — schema in the
+  `schema-sketch.sql` style: org_id + RLS on every table, consent-gated clips,
+  broadcast tiers, and the `raw_measurements` feed. **Supersedes `schema.sql`.**
+- **[`HARDWARE.md`](./HARDWARE.md)** — the Broadcast Kit: permanent PoE + portable
+  rigs as spec checklists, uplink constraints, Cloudflare Live Input wiring.
+- **[`NJRAW-ASSESSMENT.md`](./NJRAW-ASSESSMENT.md)** / **[`NJRAW-INTEGRATION-BLUEPRINT.md`](./NJRAW-INTEGRATION-BLUEPRINT.md)** — what the app already does, and the role-by-role integration.
+
+## Vendor-neutral design (the reasoning, still accurate)
 - **[`DESIGN.md`](./DESIGN.md)** — architecture, camera-sync strategy, tech
   stack, and the phased build plan. Start here.
 - **[`DATA-MODEL.md`](./DATA-MODEL.md)** — the situational stat engine: event
