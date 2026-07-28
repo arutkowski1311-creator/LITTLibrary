@@ -113,9 +113,22 @@ window.SITE = {
   ratesRules: {
     weekendMultiplier: 1.15,     // Fri/Sat nights
     holidayMultiplier: 1.35,     // dates listed below
-    depositPercent: 0.30,        // % of total collected as NON-REFUNDABLE deposit
+    depositPercent: 0.50,        // NON-REFUNDABLE deposit taken at booking
+    balanceDueDays: 7,           // balance (rest) due this many days before check-in
+    cancelCutoffDays: 7,         // cancel > this many days out = balance refunded
     directDiscountPercent: 0.08, // "book direct" savings vs. platform pricing
     taxPercent: 0.13             // combined NY sales + Essex County occupancy (VERIFY!)
+  },
+
+  /* ---- Tax profile (used by the owner tax tracker: owner.html) ---------- */
+  // VERIFY current rates with NY Dept. of Taxation & Finance + Essex County.
+  tax: {
+    nySalesTaxPercent: 0.08,       // NY state + local sales tax on the rental (VERIFY)
+    essexOccupancyPercent: 0.05,   // Essex County occupancy ("bed") tax (VERIFY)
+    filingFrequency: "quarterly",  // how often you remit — quarterly|monthly|annual
+    // NY sales-tax quarters end: Feb, May, Aug, Nov; returns due ~20 days later.
+    reminderNote: "NY sales-tax quarters end the last day of Feb/May/Aug/Nov; " +
+                  "returns are generally due the 20th of the following month."
   },
 
   /* ---- Availability ---------------------------------------------------- */
@@ -183,5 +196,95 @@ window.SITE = {
                "#AdirondackLife","#VisitAdirondacks","#ADKgetaway"],
     captionTemplate: "We're headed to {property} in the Adirondacks! {dates} of mountain air, " +
                      "Whiteface views, and {vibe}. Book your own escape 👇"
+  },
+
+  /* ---- Reviews / testimonials ------------------------------------------ */
+  reviews: {
+    // Your Google Business Profile links (create one at business.google.com):
+    googleReadUrl:  "https://www.google.com/maps",          // <-- your Google reviews page
+    googleWriteUrl: "https://g.page/r/YOUR_PLACE_ID/review", // <-- your "write a review" link
+    // Seed testimonials here (replace with real ones as they come in):
+    testimonials: [
+      { name:"The Harrington Family", location:"Boston, MA", rating:5, stay:"Ausable House",
+        text:"The most peaceful week we've had in years. The kids fished the Ausable every morning and we skied Whiteface twice. The house is stunning and the flyover video doesn't do it justice." },
+      { name:"Marcus & Devin", location:"Brooklyn, NY", rating:5, stay:"The Pinecone Perch",
+        text:"The perfect cozy hideaway for two. Coffee on the deck, a day in Lake Placid, and back to the fire. We're already planning our winter trip." },
+      { name:"Sarah L.", location:"Montreal, QC", rating:5, stay:"Both properties",
+        text:"We booked both for a family reunion — nine of us, everyone had their own space. The concierge itinerary they sent had us at High Falls Gorge and a swimming hole we'd never have found. Flawless." },
+      { name:"Tom R.", location:"Albany, NY", rating:5, stay:"Ausable House",
+        text:"Booked direct and saved a real chunk versus the apps. Communication was fast, the driveway warning was spot-on (bring the 4x4!), and the whole place felt like a true luxury retreat." }
+    ]
+  },
+
+  /* ---- Social hashtag feed --------------------------------------------- */
+  // TRUE hashtag auto-ingestion needs a service (Instagram Graph API or an
+  // aggregator like EmbedSocial / Curator.io / Taggbox / Elfsight). Paste the
+  // embed <script>/<div> from one of those into `aggregatorEmbed` to go live.
+  // Until then, this shows a curated feed you control here.
+  social: {
+    hashtag: "#AusableHouse",
+    instagram: "https://instagram.com/",   // <-- your IG profile
+    aggregatorEmbed: null,                  // <-- paste live-feed embed HTML here later
+    posts: [
+      { img:"assets/media/gallery/whiteface.jpg", caption:"Bluebird day on Whiteface 🏔️ #AusableHouse", handle:"@guest_skier" },
+      { img:"assets/media/gallery/river.jpg",     caption:"Morning on the Ausable 🎣 #AusableHouse", handle:"@flyfish_adk" },
+      { img:"assets/media/gallery/great-room.jpg",caption:"Fireside after a long hike ✨ #AusableHouse", handle:"@thewanderinghs" },
+      { img:"assets/media/gallery/perch-living.jpg",caption:"Our little Perch in the pines 🌲 #AusableHouse", handle:"@marcus.and.devin" }
+    ]
+  },
+
+  /* ---- Digital house manual (shown on manual.html) --------------------- */
+  // Share this page's link with confirmed guests. Fill in the blanks.
+  houseManual: {
+    wifiNetwork: "AusableHouse",
+    wifiPassword: "___________",       // <-- set
+    checkIn: "4:00 PM",
+    checkOut: "10:00 AM",
+    lockboxNote: "Door code is emailed the morning of arrival.",
+    sections: [
+      { title:"Arrival & Parking", icon:"🚗", items:[
+        "Follow the driveway to the top and park in the gravel area by the garage.",
+        "WINTER: the driveway is a steep, slick hill — a 4x4/AWD with good tires is strongly recommended. Go slow and keep momentum.",
+        "The Pinecone Perch is up the outdoor stairs on the garage's second floor — use the handrail; steps can be icy."
+      ]},
+      { title:"Wi-Fi & Connectivity", icon:"📶", items:[
+        "Network and password are at the top of this page.",
+        "Cell service can be spotty in the mountains — Wi-Fi calling recommended."
+      ]},
+      { title:"Heat, Fireplace & Wood Stove", icon:"🔥", items:[
+        "Thermostats are in the main hallway — please keep between 60–72°F.",
+        "Wood-burning fireplace: open the flue fully before lighting; never leave a fire unattended; only dispose of ashes once completely cold.",
+        "Firewood can be added to your booking; do not burn treated or painted wood."
+      ]},
+      { title:"Kitchen & Appliances", icon:"🍳", items:[
+        "Dishwasher pods are under the sink — please run it before you leave.",
+        "Coffee maker, basic spices, and cookware are provided.",
+        "Recycling and trash instructions are below — this is bear country."
+      ]},
+      { title:"Trash, Recycling & Bears", icon:"🐻", items:[
+        "NEVER leave food or trash outside — this is active bear country.",
+        "Keep all doors and windows closed and locked when out.",
+        "Bag trash and place it in the bear-resistant bin/garage as instructed; take it to the transfer station or leave for pickup per the note by the door."
+      ]},
+      { title:"Water & Septic", icon:"💧", items:[
+        "The property is on a private well — the water is safe; conserve where you can.",
+        "SEPTIC: flush only toilet paper. No wipes, paper towels, feminine products, grease, or chemicals."
+      ]},
+      { title:"Gear & Add-Ons", icon:"🛶", items:[
+        "Canoe/kayak use can be added to your stay — life vests are required and provided.",
+        "Use all gear at your own risk and follow posted safety guidance."
+      ]},
+      { title:"Check-Out", icon:"🔑", items:[
+        "Start the dishwasher and bag the trash.",
+        "Turn thermostats to 62°F (winter) / off (summer).",
+        "Turn off lights, close and lock all windows and doors.",
+        "Leave keys/fobs where you found them and pull the door shut."
+      ]},
+      { title:"Local Essentials", icon:"🧭", items:[
+        "Nearest groceries & gas: Wilmington / Jay; larger stores in Lake Placid (~20 min).",
+        "Firewood, bait, and licenses: local shops in Wilmington (NY DEC fishing license required).",
+        "Urgent care & hospital details are on your concierge itinerary and below."
+      ]}
+    ]
   }
 };

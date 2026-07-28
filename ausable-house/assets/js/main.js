@@ -26,6 +26,11 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  /* ---------- reveal-on-scroll observer (defined early so all sections can use it) ---------- */
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} });
+  }, {threshold:.12});
+
   /* ---------- nav ---------- */
   const nav = document.getElementById("nav");
   addEventListener("scroll", ()=>nav.classList.toggle("scrolled", scrollY>60));
@@ -120,6 +125,50 @@
       <div class="cat">${a.cat}</div><h3 style="font-size:1.25rem;margin:.3rem 0 .5rem">${a.name}</h3>
       <p style="font-size:.92rem;color:#4a4d40">${a.blurb}</p></div>`).join("");
 
+  /* ---------- testimonials + Google ---------- */
+  const rv = S.reviews||{};
+  const tg = document.getElementById("testimonialGrid");
+  if(tg){
+    tg.innerHTML = (rv.testimonials||[]).map(t=>`
+      <div class="tstm reveal">
+        <span class="stay">${t.stay}</span>
+        <div class="stars">${"★".repeat(t.rating||5)}</div>
+        <p class="quote">“${t.text}”</p>
+        <p class="who">${t.name} <span>· ${t.location}</span></p>
+      </div>`).join("");
+    document.querySelectorAll("#testimonialGrid .reveal").forEach(el=>io.observe(el));
+  }
+  const gr = document.getElementById("googleReviews");
+  if(gr){
+    gr.innerHTML = `
+      <a class="google-badge" href="${rv.googleReadUrl||'#'}" target="_blank" rel="noopener">
+        <span class="g"><b>G</b><b>o</b><b>o</b><b>g</b><b>l</b><b>e</b></span>
+        <span>★★★★★ Read our reviews</span></a>
+      <a class="btn btn-dark" style="margin-left:.6rem" href="${rv.googleWriteUrl||'#'}" target="_blank" rel="noopener">Leave a Review</a>`;
+  }
+
+  /* ---------- social hashtag feed ---------- */
+  const sh = S.social||{};
+  const heading = document.getElementById("socialHeading");
+  if(heading && sh.hashtag) heading.textContent = sh.hashtag;
+  const sf = document.getElementById("socialFeed");
+  if(sf){
+    if(sh.aggregatorEmbed){
+      // live feed from an aggregator (EmbedSocial / Curator / Taggbox / Elfsight)
+      sf.innerHTML = sh.aggregatorEmbed;
+    } else {
+      sf.innerHTML = `<div class="social-grid">${(sh.posts||[]).map(p=>`
+        <div class="social-tile">
+          <img src="${p.img}" alt="${p.caption||''}" loading="lazy" onerror="this.closest('.social-tile').style.background='linear-gradient(135deg,#2b3d31,#101a14)'">
+          <div class="meta"><b>${p.handle||''}</b>${p.caption||''}</div>
+        </div>`).join("")}</div>
+        <div class="social-cta">
+          <a class="btn" href="${sh.instagram||'#'}" target="_blank" rel="noopener">Follow on Instagram</a>
+          <p class="muted" style="font-size:.82rem;margin-top:.8rem">Tag <b>${sh.hashtag}</b> to be featured.</p>
+        </div>`;
+    }
+  }
+
   /* ---------- contact ---------- */
   document.getElementById("contactInfo").innerHTML = `
     <li><b>Email:</b> <a href="mailto:${S.brand.email}" style="color:var(--brass-2)">${S.brand.email}</a></li>
@@ -135,10 +184,7 @@
     window.AH.toast("Opening your email to send…");
   });
 
-  /* ---------- reveal on scroll ---------- */
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} });
-  }, {threshold:.12});
+  /* ---------- reveal on scroll: observe everything now on the page ---------- */
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 
   /* ---------- legal doc modal ---------- */

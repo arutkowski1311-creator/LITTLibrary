@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital House Manual · Ausable House</title>
+<meta name="robots" content="noindex"><!-- private: share the link with confirmed guests -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .manual-hero{background:var(--forest);color:var(--cream);padding:clamp(3rem,7vw,5rem) 0 2.5rem;text-align:center}
+  .wifi-card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);padding:1.6rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:-3rem auto 2rem;max-width:760px;position:relative;z-index:2}
+  .wifi-card .cell{text-align:center}
+  .wifi-card .k{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);font-weight:700}
+  .wifi-card .v{font-family:var(--serif);font-size:1.5rem;color:var(--forest);word-break:break-word}
+  .man-sec{background:var(--white);border-radius:16px;box-shadow:var(--shadow-sm);padding:1.6rem;margin-bottom:1.2rem;border:1px solid rgba(0,0,0,.04)}
+  .man-sec h3{display:flex;align-items:center;gap:.6rem;font-size:1.35rem;color:var(--forest)}
+  .man-sec .ic{font-size:1.6rem}
+  .man-sec ul{margin:.6rem 0 0;padding-left:1.3rem}
+  .man-sec li{margin:.45rem 0;font-size:.96rem}
+  .emergency-card{background:#8a3d13;color:#fff;border-radius:16px;padding:1.6rem;margin:1.2rem 0}
+  .emergency-card h3{color:#fff}.emergency-card a{color:#ffd9b0}
+  @media print{.noprint{display:none}.man-sec,.wifi-card{box-shadow:none;border:1px solid #ddd}}
+</style>
+</head>
+<body>
+<div class="manual-hero">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--brass-2)">Welcome to</p>
+    <h1 style="font-size:clamp(2rem,6vw,3.4rem)">Your Digital House Manual</h1>
+    <p class="lead" style="color:#d8cfbb;margin:.5rem auto 0">Everything you need for a smooth, safe, and restful Adirondack stay.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="wifi-card" id="wifiCard"></div>
+  <div id="manualBody"></div>
+  <div class="emergency-card" id="emergencyCard"></div>
+  <div class="center noprint" style="margin:2rem 0 4rem">
+    <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+    <a class="btn btn-dark" href="index.html">Back to Ausable House</a>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script>
+(function(){
+  const S=window.SITE, m=S.houseManual, em=S.brand.emergency;
+  document.getElementById("wifiCard").innerHTML=`
+    <div class="cell"><div class="k">Wi-Fi Network</div><div class="v">${m.wifiNetwork}</div></div>
+    <div class="cell"><div class="k">Wi-Fi Password</div><div class="v">${m.wifiPassword}</div></div>
+    <div class="cell"><div class="k">Check-in</div><div class="v">${m.checkIn}</div></div>
+    <div class="cell"><div class="k">Check-out</div><div class="v">${m.checkOut}</div></div>`;
+  document.getElementById("manualBody").innerHTML=
+    (m.lockboxNote?`<div class="notice"><b>Entry:</b> ${m.lockboxNote}</div>`:"")+
+    m.sections.map(s=>`<div class="man-sec"><h3><span class="ic">${s.icon||"•"}</span>${s.title}</h3>
+      <ul>${s.items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`).join("");
+  document.getElementById("emergencyCard").innerHTML=`
+    <h3>🚨 Emergency &amp; Important Numbers</h3>
+    <p style="margin:.4rem 0"><b>In any emergency, call 911.</b></p>
+    <p style="margin:.3rem 0"><b>Property address:</b> ${em.addressLine}</p>
+    <p style="margin:.3rem 0"><b>Nearest hospital:</b> ${em.nearestHospital} — <a href="tel:${em.hospitalPhone.replace(/[^0-9]/g,'')}">${em.hospitalPhone}</a></p>
+    <p style="margin:.3rem 0"><b>Poison control:</b> ${em.poison}</p>
+    <p style="margin:.3rem 0">${em.nonEmergency}</p>
+    <p style="margin:.3rem 0"><b>Your host, ${S.brand.ownerName}:</b> ${S.brand.phone} · <a href="mailto:${S.brand.email}">${S.brand.email}</a></p>`;
+})();
+</script>
+</body>
+</html>

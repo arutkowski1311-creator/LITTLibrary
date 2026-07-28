@@ -99,7 +99,10 @@
     const tax = subtotal * R.taxPercent;
     const total = subtotal + tax;
     const deposit = total * R.depositPercent;
-    return {p,n,nightly,addons,chosen,cleaning:p.cleaningFee,directDiscount,subtotal,tax,total,deposit};
+    const balance = total - deposit;
+    let balanceDueDate = "";
+    if(start){ const bd=new Date(start); bd.setDate(bd.getDate()-R.balanceDueDays); balanceDueDate=iso(bd); }
+    return {p,n,nightly,addons,chosen,cleaning:p.cleaningFee,directDiscount,subtotal,tax,total,deposit,balance,balanceDueDate};
   }
 
   function renderSummary(){
@@ -123,11 +126,15 @@
       <div class="line"><span class="brass">Book-direct savings (${Math.round(R.directDiscountPercent*100)}%)</span><span class="brass">−${AH.money(b.directDiscount)}</span></div>
       <div class="line"><span>Taxes &amp; occupancy (${Math.round(R.taxPercent*100)}%)</span><span>${AH.money(b.tax)}</span></div>
       <div class="line total"><span>Total</span><span>${AH.money(b.total)}</span></div>
-      <div class="line" style="border:0;margin-top:.6rem"><span>Non-refundable deposit (${Math.round(R.depositPercent*100)}%)</span><span class="brass">${AH.money(b.deposit)}</span></div>`;
+      <div class="line" style="border-top:1px solid rgba(255,255,255,.25);margin-top:.6rem"><span>Due today — ${Math.round(R.depositPercent*100)}% deposit <span class="brass">(non-refundable)</span></span><span class="brass">${AH.money(b.deposit)}</span></div>
+      <div class="line" style="border:0"><span>Balance due ${R.balanceDueDays} days before check-in${b.balanceDueDate?` (${b.balanceDueDate})`:""}</span><span>${AH.money(b.balance)}</span></div>`;
 
     noticeEl.innerHTML=`<div class="notice warn" style="margin-top:1rem">
       <b>Booking direct:</b> this rate is lower than the online platforms, but it does not include
-      AirCover/platform guest protection, and the deposit is <b>non-refundable</b>. See the checkboxes below.</div>`;
+      AirCover/platform guest protection, and the ${Math.round(R.depositPercent*100)}% deposit is
+      <b>non-refundable</b>. Cancel more than ${R.cancelCutoffDays} days out and your balance isn't
+      charged; cancel within ${R.cancelCutoffDays} days and the stay is 100% forfeited.
+      <a href="#" data-doc="direct">Full cancellation policy →</a></div>`;
     formCard.style.display="block";
   }
 
@@ -160,7 +167,9 @@ Dates: ${iso(start)} check-in → ${iso(end)} check-out (${b.n} nights)
 Add-ons: ${b.chosen.map(a=>a.name).join(", ")||"none"}
 
 Estimated total: ${AH.money(b.total)}
-Non-refundable deposit due: ${AH.money(b.deposit)}
+  incl. tax/occupancy: ${AH.money(b.tax)}   <-- log this for tax remittance
+Deposit due now (${Math.round(R.depositPercent*100)}%, non-refundable): ${AH.money(b.deposit)}
+Balance due ${b.balanceDueDate} (${R.balanceDueDays} days before check-in): ${AH.money(b.balance)}
 
 Notes: ${f.notes.value||"—"}
 

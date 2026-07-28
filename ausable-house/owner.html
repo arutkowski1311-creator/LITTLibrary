@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner Tax Tracker · Ausable House</title>
+<meta name="robots" content="noindex"><!-- private owner tool -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  body{background:var(--cream)}
+  .owner-hero{background:var(--forest);color:var(--cream);padding:2.5rem 0 2rem}
+  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
+  .stat{background:var(--white);border-radius:14px;padding:1.2rem;box-shadow:var(--shadow-sm)}
+  .stat .k{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);font-weight:700}
+  .stat .v{font-family:var(--serif);font-size:2rem;color:var(--forest);line-height:1.1}
+  .stat .s{font-size:.8rem;color:var(--stone)}
+  table{width:100%;border-collapse:collapse;background:var(--white);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  th,td{padding:.7rem .8rem;text-align:left;font-size:.88rem;border-bottom:1px solid #efe6d6}
+  th{background:var(--forest);color:var(--cream);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+  td .del{color:#b3541f;cursor:pointer;border:0;background:none;font-weight:700}
+  .quarter-block{background:var(--white);border-radius:14px;padding:1.2rem;box-shadow:var(--shadow-sm);margin-bottom:1rem;border-left:4px solid var(--brass)}
+  .quarter-block.due{border-left-color:#b3541f;background:rgba(179,84,31,.06)}
+  .add-form{background:var(--white);border-radius:14px;padding:1.4rem;box-shadow:var(--shadow-sm);margin-bottom:1.5rem}
+  .add-form .row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr auto;gap:.8rem;align-items:end}
+  @media(max-width:760px){.add-form .row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="owner-hero"><div class="wrap">
+  <p class="eyebrow" style="color:var(--brass-2)">Private · Owner Tools</p>
+  <h1 style="font-size:clamp(1.8rem,5vw,2.8rem)">Tax Tracker</h1>
+  <p class="lead" style="color:#d8cfbb">Log each completed booking's taxable rent — this computes the
+    NY sales tax + Essex County occupancy tax you owe and flags your next filing deadline.
+    Data is saved privately in this browser.</p>
+</div></div>
+
+<div class="wrap" style="padding-top:2rem;padding-bottom:4rem">
+  <div id="reminderBanner"></div>
+  <div class="stat-row" id="stats"></div>
+
+  <h3>Add a completed booking</h3>
+  <div class="add-form"><div class="row">
+    <div class="field" style="margin:0"><label>Guest / label</label><input id="fGuest" placeholder="e.g. Harrington"></div>
+    <div class="field" style="margin:0"><label>Property</label><select id="fProp"></select></div>
+    <div class="field" style="margin:0"><label>Check-out date</label><input id="fDate" type="date"></div>
+    <div class="field" style="margin:0"><label>Taxable rent ($)</label><input id="fRent" type="number" min="0" placeholder="e.g. 1980"></div>
+    <button class="btn" id="addBtn">Add</button>
+  </div>
+  <p class="hint" id="taxRateNote"></p></div>
+
+  <h3>Tax owed by quarter</h3>
+  <div id="quarters"></div>
+
+  <h3 style="margin-top:2rem">All bookings</h3>
+  <table><thead><tr><th>Date</th><th>Guest</th><th>Property</th><th>Rent</th><th>Sales tax</th><th>Occupancy</th><th>Total tax</th><th></th></tr></thead>
+    <tbody id="rows"></tbody></table>
+  <div style="margin-top:1rem">
+    <button class="btn btn-dark" id="exportBtn">Export CSV</button>
+    <a class="btn" href="index.html">Back to site</a>
+  </div>
+  <p class="hint" id="deadlineNote" style="margin-top:1.5rem"></p>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="assets/js/config.js"></script>
+<script>
+(function(){
+  const S=window.SITE, T=S.tax, KEY="ah_tax_ledger_v1";
+  const money=n=>"$"+(Math.round(n*100)/100).toLocaleString("en-US",{minimumFractionDigits:2});
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]}};
+  const save=d=>localStorage.setItem(KEY,JSON.stringify(d));
+  let data=load();
+
+  document.getElementById("fProp").innerHTML=S.properties.map(p=>`<option>${p.name}</option>`).join("")+"<option>Both</option>";
+  document.getElementById("taxRateNote").textContent=
+    `Rates applied: NY sales tax ${(T.nySalesTaxPercent*100).toFixed(2)}% + Essex occupancy ${(T.essexOccupancyPercent*100).toFixed(2)}%. Verify current rates before filing.`;
+  document.getElementById("deadlineNote").textContent=T.reminderNote;
+
+  const taxOf=rent=>({sales:rent*T.nySalesTaxPercent, occ:rent*T.essexOccupancyPercent});
+
+  // NY quarter: Mar-May(Q1), Jun-Aug(Q2), Sep-Nov(Q3), Dec-Feb(Q4). Due 20th after quarter end.
+  function quarterInfo(dateStr){
+    const d=new Date(dateStr+"T00:00:00"), m=d.getMonth(), y=d.getFullYear();
+    // NY sales-tax quarters
+    let label, endY=y, dueMonth, dueY=y;
+    if(m>=2&&m<=4){label=`${y} · Mar–May`; dueMonth=5; dueY=y;}
+    else if(m>=5&&m<=7){label=`${y} · Jun–Aug`; dueMonth=8; dueY=y;}
+    else if(m>=8&&m<=10){label=`${y} · Sep–Nov`; dueMonth=11; dueY=y;}
+    else {const yy=(m===11)?y:y; label=`${(m===11?y:y-1)}–${(m===11?y+1:y)} · Dec–Feb`; dueMonth=2; dueY=(m===11?y+1:y);}
+    const due=new Date(dueY, dueMonth, 20);
+    return {label, due};
+  }
+
+  function render(){
+    const rows=document.getElementById("rows");
+    let totalRent=0,totalTax=0;
+    const byQ={};
+    data.sort((a,b)=>a.date.localeCompare(b.date));
+    rows.innerHTML=data.map((r,i)=>{
+      const t=taxOf(r.rent), tt=t.sales+t.occ;
+      totalRent+=r.rent; totalTax+=tt;
+      const q=quarterInfo(r.date);
+      byQ[q.label]=byQ[q.label]||{rent:0,sales:0,occ:0,due:q.due};
+      byQ[q.label].rent+=r.rent; byQ[q.label].sales+=t.sales; byQ[q.label].occ+=t.occ;
+      return `<tr><td>${r.date}</td><td>${r.guest||"—"}</td><td>${r.prop}</td>
+        <td>${money(r.rent)}</td><td>${money(t.sales)}</td><td>${money(t.occ)}</td>
+        <td><b>${money(tt)}</b></td><td><button class="del" data-i="${i}">✕</button></td></tr>`;
+    }).join("")||`<tr><td colspan="8" class="muted">No bookings logged yet.</td></tr>`;
+
+    // stats
+    const now=new Date();
+    let upcomingDue=null, upcomingAmt=0;
+    Object.values(byQ).forEach(q=>{ if(q.due>=new Date(now.getFullYear(),now.getMonth(),now.getDate())){ if(!upcomingDue||q.due<upcomingDue){upcomingDue=q.due;upcomingAmt=q.sales+q.occ;} } });
+    document.getElementById("stats").innerHTML=`
+      <div class="stat"><div class="k">Bookings logged</div><div class="v">${data.length}</div></div>
+      <div class="stat"><div class="k">Taxable rent (all)</div><div class="v">${money(totalRent)}</div></div>
+      <div class="stat"><div class="k">Total tax owed (all)</div><div class="v">${money(totalTax)}</div></div>
+      <div class="stat"><div class="k">Next filing</div><div class="v" style="font-size:1.3rem">${upcomingDue?upcomingDue.toISOString().slice(0,10):"—"}</div><div class="s">${upcomingDue?money(upcomingAmt)+" due":"nothing pending"}</div></div>`;
+
+    // quarters
+    const qs=Object.entries(byQ).sort((a,b)=>a[1].due-b[1].due);
+    const soon=new Date(); soon.setDate(soon.getDate()+30);
+    document.getElementById("quarters").innerHTML=qs.map(([label,q])=>{
+      const total=q.sales+q.occ; const dueSoon=q.due<=soon && q.due>=new Date(new Date().toDateString());
+      return `<div class="quarter-block ${dueSoon?'due':''}">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+          <div><b>${label}</b> — file by <b>${q.due.toISOString().slice(0,10)}</b>${dueSoon?' <span style="color:#b3541f">⚠ due soon</span>':''}</div>
+          <div>Rent ${money(q.rent)} · <b>Tax due ${money(total)}</b></div></div>
+        <div class="hint">NY sales ${money(q.sales)} + Essex occupancy ${money(q.occ)}</div></div>`;
+    }).join("")||`<p class="muted">Add bookings to see quarterly totals.</p>`;
+
+    // reminder banner
+    const rb=document.getElementById("reminderBanner");
+    const dueSoonQ=qs.find(([,q])=>{const s=new Date();s.setDate(s.getDate()+30);return q.due<=s&&q.due>=new Date(new Date().toDateString());});
+    rb.innerHTML=dueSoonQ?`<div class="notice warn"><b>Tax filing due soon:</b> ${money(dueSoonQ[1].sales+dueSoonQ[1].occ)} for ${dueSoonQ[0]} — file by ${dueSoonQ[1].due.toISOString().slice(0,10)}. <a href="#" id="calLink">Add a calendar reminder</a></div>`:"";
+    const cl=document.getElementById("calLink"); if(cl) cl.onclick=e=>{e.preventDefault();makeICS(dueSoonQ[1].due, dueSoonQ[1].sales+dueSoonQ[1].occ, dueSoonQ[0]);};
+
+    rows.querySelectorAll(".del").forEach(b=>b.onclick=()=>{data.splice(+b.dataset.i,1);save(data);render();});
+  }
+
+  function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600);}
+
+  document.getElementById("addBtn").onclick=()=>{
+    const rent=+document.getElementById("fRent").value;
+    const date=document.getElementById("fDate").value;
+    if(!rent||!date){toast("Enter a date and taxable rent.");return;}
+    data.push({guest:document.getElementById("fGuest").value, prop:document.getElementById("fProp").value, date, rent});
+    save(data); document.getElementById("fGuest").value=document.getElementById("fRent").value="";
+    render(); toast("Booking added.");
+  };
+
+  document.getElementById("exportBtn").onclick=()=>{
+    const rows=[["Date","Guest","Property","Rent","SalesTax","OccupancyTax","TotalTax"]];
+    data.forEach(r=>{const t=taxOf(r.rent);rows.push([r.date,r.guest,r.prop,r.rent,t.sales.toFixed(2),t.occ.toFixed(2),(t.sales+t.occ).toFixed(2)]);});
+    const csv=rows.map(r=>r.map(c=>`"${c}"`).join(",")).join("\n");
+    const a=document.createElement("a");a.href="data:text/csv;charset=utf-8,"+encodeURIComponent(csv);a.download="ausable-house-tax.csv";a.click();
+  };
+
+  // downloadable calendar reminder (.ics) for the filing deadline
+  function makeICS(due, amt, label){
+    const d=due.toISOString().slice(0,10).replace(/-/g,"");
+    const ics=`BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//AusableHouse//Tax//EN\nBEGIN:VEVENT\nUID:tax-${d}@ausablehouse\nDTSTART;VALUE=DATE:${d}\nSUMMARY:File Ausable House sales/occupancy tax (~$${Math.round(amt)})\nDESCRIPTION:${label} quarter. Remit NY sales tax + Essex County occupancy tax.\nBEGIN:VALARM\nTRIGGER:-P3D\nACTION:DISPLAY\nDESCRIPTION:Tax filing due in 3 days\nEND:VALARM\nEND:VEVENT\nEND:VCALENDAR`;
+    const a=document.createElement("a");a.href="data:text/calendar;charset=utf-8,"+encodeURIComponent(ics);a.download="tax-reminder.ics";a.click();
+    toast("Calendar reminder downloaded — add it to your calendar.");
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

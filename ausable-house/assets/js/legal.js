@@ -104,14 +104,28 @@
       <li>Cancellations do not receive the platform's flexible refunds.</li>
       <li>We strongly recommend Guest purchase their own <b>travel insurance</b>.</li>
     </ul>
-    <h4>Payment</h4>
-    <p>A non-refundable deposit of ${Math.round(S.ratesRules.depositPercent*100)}% is due to confirm.
-    The balance is due before check-in. A refundable security hold may apply. Applicable New York
-    sales tax and Essex County occupancy tax are collected and remitted.</p>
-    <h4>Cancellation</h4>
-    <p>If Guest cancels: the deposit is forfeited. If the balance was paid, the refundable portion
-    (if any) is returned per the confirmation email. In the rare case Host must cancel, Guest
-    receives a full refund of amounts paid.</p>`),
+    <h4>Payment schedule</h4>
+    <ul class="feat">
+      <li>A <b>${Math.round(S.ratesRules.depositPercent*100)}% deposit</b> is due at the time of
+        booking to confirm the reservation. This deposit is <b>non-refundable</b>.</li>
+      <li>The <b>remaining balance</b> is due <b>${S.ratesRules.balanceDueDays} days before check-in</b>.</li>
+      <li>A refundable security hold may also apply. Applicable New York sales tax and Essex County
+        occupancy tax are collected and remitted.</li>
+    </ul>
+    <h4>Cancellation policy</h4>
+    <ul class="feat">
+      <li>The ${Math.round(S.ratesRules.depositPercent*100)}% deposit is
+        <b>non-refundable at all times</b>, once paid.</li>
+      <li><b>Cancel more than ${S.ratesRules.cancelCutoffDays} days before check-in:</b> the balance
+        is not charged (or is refunded if already paid). The Guest forfeits only the
+        ${Math.round(S.ratesRules.depositPercent*100)}% deposit.</li>
+      <li><b>Cancel within ${S.ratesRules.cancelCutoffDays} days of check-in:</b> no refund is given
+        and <b>100% of the reservation is forfeited</b>.</li>
+      <li>No-shows and early departures are treated as cancellations within the window (no refund).</li>
+      <li>We strongly recommend Guest purchase <b>travel insurance</b> to cover unforeseen changes.</li>
+    </ul>
+    <p>If <b>Host</b> must cancel (rare — e.g., property damage or safety issue), Guest receives a
+    <b>full refund</b> of all amounts paid, including the deposit.</p>`),
 
   /* ---------------- Winter & Safety Notice ---------------- */
   winter: wrap("Winter, Weather &amp; Safety Notice", `
