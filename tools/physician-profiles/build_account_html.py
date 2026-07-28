@@ -127,6 +127,25 @@ select.ed:hover{border-color:var(--warn)}
 .subrow .track{display:block;height:7px;border-radius:4px;background:var(--rule-2);overflow:hidden}
 .subrow .fill{display:block;height:7px;border-radius:4px}
 .subrow .val{font-family:var(--mono);text-align:right;color:var(--ink-2)}
+.subrow{cursor:help}
+.deriv{margin-top:8px;border-top:1px solid var(--rule-2);padding-top:6px}
+.deriv .dh{font-size:8.4px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.deriv ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
+.deriv li{font-size:8.8px;line-height:1.3;color:var(--ink-2);font-family:var(--mono)}
+.deriv li b{color:var(--ink);font-family:var(--sans);font-weight:700}
+
+/* reservoirs — sized by winnable market, $ opportunity */
+.rsv{display:flex;flex-direction:column;gap:5px}
+.rsv-hd{font-size:10px;color:var(--ink-2);margin-bottom:3px;line-height:1.35}
+.rsv-hd b{color:var(--ink);font-family:var(--mono)}
+.rsv-hd .mut{color:var(--ink-3);font-size:9px}
+.rsv-row{display:grid;grid-template-columns:96px 1fr;gap:7px;align-items:center;column-gap:8px}
+.rsv-ind{font-size:10px;color:var(--ink-2);line-height:1.15}
+.rsv-track{grid-column:2;height:14px;background:var(--rule-2);border-radius:4px;overflow:hidden;position:relative}
+.rsv-fill{display:block;height:14px;border-radius:4px;background:linear-gradient(90deg,var(--s2),#f2854f)}
+.rsv-val{grid-column:2;font-size:9.5px;color:var(--ink-3);font-family:var(--mono);margin-top:-2px}
+.rsv-val b{color:var(--heat);font-size:11px}
+.rsv-val .u{color:var(--ink-3)} .rsv-val .mut{color:var(--ink-3)}
 
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .kpi{border:1px solid var(--rule);border-radius:7px;padding:8px 9px;background:var(--sheet-2)}
@@ -217,6 +236,16 @@ ul.pts li:hover .x{opacity:.7}
 .appx .cand .lab{font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:9px}
 .appx .cand.strong .lab{color:var(--good)} .appx .cand.moderate .lab{color:var(--warn)} .appx .cand.weak .lab{color:var(--bad)}
 .appx .cand .dr{display:inline-block;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,.06);border-radius:999px;padding:1px 7px;margin:3px 3px 0 0}
+.train{border:1px solid var(--rule);border-radius:6px;padding:7px 9px;margin-bottom:8px;background:var(--sheet-2)}
+.train-hd{font-size:8.6px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.lbadge{font-family:var(--mono);font-size:8.5px;font-weight:700;padding:1px 7px;border-radius:999px}
+.lbadge.nb{background:var(--good-soft);color:var(--good)}
+.lbadge.vis{background:var(--heat-soft);color:var(--heat)}
+.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;font-size:10px;margin-bottom:4px;line-height:1.3}
+.train-grid span{font-weight:700;color:var(--ink-3);margin-right:5px;font-size:8.4px;text-transform:uppercase;letter-spacing:.04em}
+.train-note{font-size:10px;color:var(--ink-2);line-height:1.36;margin-bottom:3px}
+.train-litt{font-size:10px;color:var(--ink);line-height:1.4;margin-top:2px}
+.train-litt b{color:var(--heat)}
 .themes{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px}
 .themes span{font-size:9.5px;background:var(--sheet-2);border:1px solid var(--rule);border-radius:999px;padding:1px 7px;color:var(--ink-2)}
 .appx .papers{display:flex;flex-direction:column;gap:0}
@@ -319,23 +348,28 @@ function derive(acct){
   const totalNet=(+n["2024"]||0)+(+n["2025"]||0)+(+n["2026_ytd"]||0);
   b.rev_per_case=cases?Math.round(totalNet/cases):null;
   b.rev_vs_region=b.rev_per_case?Math.round(b.rev_per_case/rg*100)/100:null;
-  // health
-  const subs={};
+  // health — weighted 0-100, transparent sub-scores with derivations
+  const subs={},deriv={};
   const tmap={Up:25,New:20,Flat:14,Down:6,Competitive:8};
   subs["Trajectory"]=tmap[b.trend]!=null?tmap[b.trend]:12;
+  deriv["Trajectory"]=`trend “${b.trend}” → ${subs["Trajectory"]}/25 (Up 25 · New 20 · Flat 14 · Competitive 8 · Down 6)`;
   const addr=(acct.reservoirs||[]).reduce((a,r)=>a+(+r.addressable||0),0);
   subs["Reservoir capture"]=addr?Math.min(20,Math.round((cases/addr)*60)):8;
+  deriv["Reservoir capture"]=addr?`${cases} cases ÷ ${addr} addressable/yr = ${Math.round(cases/addr*100)}% capture → ${subs["Reservoir capture"]}/20 (min(20, capture×60))`:`no reservoir mapped → ${subs["Reservoir capture"]}/20 default`;
   const nsurg=(acct.universe.performers||[]).filter(p=>(+p.cases||0)>0).length;
   subs["Surgeon depth"]=nsurg===0?4:nsurg===1?8:Math.min(20,8+nsurg*4);
+  deriv["Surgeon depth"]=`${nsurg} performing surgeon${nsurg===1?"":"s"} → ${subs["Surgeon depth"]}/20 (0→4, 1→8, then 8+4·n; single-surgeon risk)`;
   const plats=acct.platform||[];
   const comp=plats.includes("Visualase")||plats.includes("ClearPoint");
   subs["Competitive position"]=acct.class==="Competitive"?5:(comp?10:20);
+  deriv["Competitive position"]=acct.class==="Competitive"?`competitive account → 5/20`:(comp?`competitive laser in-house (${plats.filter(x=>x==="Visualase"||x==="ClearPoint").join(", ")}) → 10/20`:`no competitive laser in-house → 20/20`);
   const rv=b.rev_vs_region;
   subs["Value capture"]=(rv&&rv>=1)?15:(rv?10:7);
+  deriv["Value capture"]=rv?`$/case ${rv}× region avg → ${subs["Value capture"]}/15 (≥1×→15, else 10)`:`no case value yet → ${subs["Value capture"]}/15`;
   const total=Object.values(subs).reduce((a,x)=>a+x,0);
   const grade=total>=85?"A":total>=78?"A-":total>=72?"B+":total>=65?"B":total>=58?"B-":
               total>=50?"C+":total>=42?"C":total>=32?"D":"F";
-  acct.health={score:total,grade:grade,subs:subs};
+  acct.health={score:total,grade:grade,subs:subs,deriv:deriv};
   return acct;
 }
 
@@ -358,18 +392,19 @@ function barsSales(b){
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Net sales by year with full-year 2026">
     <line x1="0" y1="${H-pad}" x2="${W}" y2="${H-pad}" stroke="var(--rule)"/>${bars}</svg>`;
 }
-function barsReservoir(rs){
+function reservoirViz(rs,regAvg){
   if(!rs.length)return `<div style="font-size:10.5px;color:var(--ink-3);padding:8px 0">No reservoir pools mapped for this account.</div>`;
-  const max=Math.max(...rs.map(r=>+r.pool||0),1);
-  const W=330,rowh=26,H=rs.length*rowh+6,labW=118,barW=W-labW-46;
-  let out="";
-  rs.forEach((r,i)=>{const y=i*rowh+6;const pw=(+r.pool||0)/max*barW, aw=(+r.addressable||0)/max*barW;
-    out+=`<text x="0" y="${y+11}" font-size="10" fill="var(--ink-2)">${esc(r.indication)}</text>`;
-    out+=`<rect x="${labW}" y="${y+4}" width="${pw.toFixed(1)}" height="9" rx="4" fill="var(--rule)"/>`;
-    out+=`<rect x="${labW}" y="${y+4}" width="${Math.max(2,aw).toFixed(1)}" height="9" rx="4" fill="var(--s2)"/>`;
-    out+=`<text x="${(labW+pw+5).toFixed(1)}" y="${y+12}" font-size="9.5" font-family="var(--mono)" fill="var(--ink-3)">${r.addressable}/${r.pool}</text>`;
-  });
-  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Addressable LITT candidates vs claims pool">${out}</svg>`;
+  const rows=rs.map(r=>({ind:r.indication,addr:+r.addressable||0,pool:+r.pool||0})).sort((a,b)=>b.addr-a.addr);
+  const max=Math.max(...rows.map(r=>r.addr),1);
+  const totAddr=rows.reduce((a,r)=>a+r.addr,0), totVal=totAddr*(regAvg||18300);
+  const bar=r=>{const pct=Math.max(4,r.addr/max*100);const v=r.addr*(regAvg||18300);
+    return `<div class="rsv-row">
+      <div class="rsv-ind">${esc(r.ind)}</div>
+      <div class="rsv-track"><span class="rsv-fill" style="width:${pct.toFixed(0)}%"></span></div>
+      <div class="rsv-val"><b>${r.addr}</b><span class="u">/yr</span> <span class="mut">${CURRENCY(v)} · of ${r.pool}</span></div></div>`;};
+  return `<div class="rsv"><div class="rsv-hd"><b>${totAddr}</b> addressable LITT candidates / yr · <b>${CURRENCY(totVal)}</b> opportunity
+    <span class="mut">(addressable × ${CURRENCY(regAvg||18300)} avg case)</span></div>
+    ${rows.map(bar).join("")}</div>`;
 }
 function gauge(score,grade){
   const R=42,cx=48,cy=48,C=Math.PI*R,frac=Math.max(0,Math.min(1,score/100)),col=gradeColor(grade);
@@ -381,13 +416,19 @@ function gauge(score,grade){
     <text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="9.5" font-family="var(--mono)" fill="var(--ink-3)">${score}/100</text>
   </svg>`;
 }
-function subBars(subs){
+function subBars(subs,deriv){
   const maxes={"Trajectory":25,"Reservoir capture":20,"Surgeon depth":20,"Competitive position":20,"Value capture":15};
   let out="";
   for(const k in subs){const mx=maxes[k]||20,f=Math.max(0,Math.min(1,subs[k]/mx));
     const col=f>=.75?"var(--good)":f>=.45?"var(--s4)":"var(--bad)";
-    out+=`<div class="subrow"><span>${esc(k)}</span><span class="track"><span class="fill" style="width:${(f*100).toFixed(0)}%;background:${col}"></span></span><span class="val">${subs[k]}/${mx}</span></div>`;}
+    const tip=deriv&&deriv[k]?` title="${esc(deriv[k])}"`:"";
+    out+=`<div class="subrow"${tip}><span>${esc(k)}</span><span class="track"><span class="fill" style="width:${(f*100).toFixed(0)}%;background:${col}"></span></span><span class="val">${subs[k]}/${mx}</span></div>`;}
   return out;
+}
+function derivList(deriv){
+  if(!deriv)return"";
+  const items=Object.keys(deriv).map(k=>`<li><b>${esc(k)}</b> — ${esc(deriv[k])}</li>`).join("");
+  return `<div class="deriv"><div class="dh">How the score is derived · sum of five drivers, this account's inputs</div><ul>${items}</ul></div>`;
 }
 
 /* ---------- editable helpers ---------- */
@@ -492,7 +533,7 @@ function render(acct0){
       <div class="grid2">
         <div class="panel"><h3>Net Sales &amp; Full-Year 2026</h3>${barsSales(b)}
           <div class="leg"><span><i style="background:var(--s1)"></i>Booked</span><span><i style="background:none;border:1.5px dashed var(--s1)"></i>Full-year 2026 projection</span></div></div>
-        <div class="panel"><h3>Health Score — ${H.grade} · ${H.score}/100</h3><div class="subs">${subBars(H.subs)}</div></div>
+        <div class="panel"><h3>Health Score — ${H.grade} · ${H.score}/100</h3><div class="subs">${subBars(H.subs,H.deriv)}</div>${derivList(H.deriv)}</div>
       </div>
       <div class="kpis" style="margin-top:9px">${kpiHTML}</div>
     </div>
@@ -507,8 +548,7 @@ function render(acct0){
         <div>
           <div class="subhd">Referrers &amp; Indication Populations</div>
           <table class="u"><thead><tr><th>Clinician</th><th>Indication</th><th style="text-align:right">Pool</th></tr></thead><tbody>${refRows}</tbody></table>
-          <div class="panel" style="margin-top:8px;padding:8px 10px"><h3>Addressable Reservoirs</h3>${barsReservoir(acct.reservoirs)}
-            <div class="leg"><span><i style="background:var(--s2)"></i>Addressable LITT / yr</span><span><i style="background:var(--rule)"></i>Claims pool</span></div></div>
+          <div class="panel" style="margin-top:8px;padding:8px 10px"><h3>Addressable Reservoirs — Winnable Market / yr</h3>${reservoirViz(acct.reservoirs,b.region_avg_case)}</div>
         </div>
       </div>
     </div>
@@ -551,6 +591,7 @@ function render(acct0){
           <div class="badges">${e.grade?`<span class="gr" style="background:${gradeColor(e.grade)}">LITT ${esc(e.grade)}${e.score?" · "+e.score:""}</span>`:""}${e.enriched?`<span class="rc">researched ✓</span>`:""}</div></div>
         ${e.bio?`<div class="bio">${esc(e.bio)}</div>`:(e.identity?`<div class="bio">${esc(e.identity)}</div>`:"")}
         ${cand}
+        ${trainingBlock(e.training)}
         ${themes?`<div class="themes">${themes}</div>`:""}
         <div class="papers">${papers||'<div style="font-size:10.5px;color:var(--ink-3)">No indexed papers yet — use the links below to pull their body of work.</div>'}</div>
         ${links?`<div class="links">${links}</div>`:""}
@@ -571,6 +612,19 @@ function render(acct0){
   bindEdits();
 }
 
+function trainingBlock(t){
+  if(!t)return"";
+  const plat=t.litt_platform||"";
+  const isNB=/neuroblate/i.test(plat),isVis=/visualase/i.test(plat);
+  const badge=plat?`<span class="lbadge ${isNB?'nb':isVis?'vis':''}">${isNB?'NeuroBlate-trained house ✦':isVis?'Visualase house':esc(plat)}</span>`:"";
+  const rows=[["Med school",t.med_school],["Residency",t.residency],["Fellowship",t.fellowship]].filter(r=>r[1]);
+  const grid=rows.length?`<div class="train-grid">`+rows.map(r=>`<div><span>${r[0]}</span>${esc(r[1])}</div>`).join("")+`</div>`:"";
+  const note=t.pedigree_note?`<div class="train-note">${esc(t.pedigree_note)}</div>`:"";
+  const house=t.litt_house?`<div class="train-litt"><b>LITT house:</b> ${esc(t.litt_house)}</div>`:"";
+  const litt=t.litt_exposure?`<div class="train-litt"><b>LITT exposure:</b> ${esc(t.litt_exposure)}</div>`:"";
+  if(!grid&&!litt&&note)return `<div class="train"><div class="train-hd">Training</div>${note}</div>`;
+  return `<div class="train"><div class="train-hd">Training &amp; LITT pedigree ${badge}</div>${grid}${note}${house}${litt}</div>`;
+}
 function slug(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
 function hasAppendix(acct,name){return (acct.appendix||[]).some(e=>e.physician===name)}
 function jump(acr,name){const el=document.getElementById(`appx-${acr}-${slug(name)}`);

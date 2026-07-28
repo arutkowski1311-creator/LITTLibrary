@@ -307,11 +307,16 @@ def build_appendix(acr, acct):
         # candidacy (for naive targets)
         cand = candidate_profile(name) if role == "Development target" else None
         links = enr.get("links") or {}
+        # training pedigree — enrichment (structured) preferred, else the flat string in the universe
+        training = enr.get("training")
+        if not training and p.get("training"):
+            training = {"pedigree_note": p.get("training")}
         entries.append({
             "physician": name, "role": role, "npi": p.get("npi"),
             "grade": rel.get("grade"), "score": rel.get("score"),
             "title": enr.get("title") or res.get("identity", ""),
             "bio": enr.get("bio", ""),
+            "training": training,
             "identity": res.get("identity", ""),
             "facility": enr.get("current_institution") or acct.get("system", ""),
             "archetype": wh.get("archetype", ""),
