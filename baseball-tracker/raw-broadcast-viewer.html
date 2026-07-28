@@ -186,6 +186,7 @@
         <button class="tab on" data-t="box">Box score</button>
         <button class="tab" data-t="splits">Situational splits</button>
         <button class="tab" data-t="clips">Clips <span id="clipCount" class="tag" style="margin-left:4px"></span></button>
+        <button class="tab" data-t="pitch">Pitching</button>
         <button class="tab" data-t="log">Play log</button>
       </div>
       <div class="panel" id="panel"></div>
@@ -304,6 +305,27 @@
     pa(2,"2B","rfl","hard","line",{o:2,on1:1,on2:0,on3:0},{rbi:1})
   ];
   var ST0={inn:5,half:"B",outs:1,balls:0,strikes:0,bi:3,us:6,them:2,on1:0,on2:1,on3:0};
+
+  // Pitcher parity: our pitcher's outing (opponent PAs). Same depth as the batting side —
+  // this is the defensive mirror the scorekeeper produces when we're in the field.
+  var PITCHER={name:"#14 Vernick"};
+  // each PA: pc=pitches, sw=swinging strikes, res/quality of contact allowed, out for K/BB
+  var PPA=[
+    {r:"Out",z:"cf",q:"med",l:"fly",pc:3,sw:1},
+    {out:"K",pc:4,sw:2},
+    {r:"1B",z:"lf",q:"soft",l:"blooper",pc:3,sw:0},
+    {out:"K",pc:3,sw:3},
+    {r:"Out",z:"ss",q:"med",l:"ground",pc:2,sw:1},
+    {r:"2B",z:"rcf",q:"scorched",l:"line",pc:5,sw:1},
+    {out:"BB",pc:5,sw:1},
+    {r:"Out",z:"rf",q:"hard",l:"fly",pc:4,sw:1,caught:1},
+    {out:"K",pc:3,sw:2},
+    {r:"1B",z:"3b","q":"soft",l:"ground",pc:2,sw:0},
+    {r:"Out",z:"2b",q:"med",l:"ground",pc:6,sw:2},
+    {out:"K",pc:4,sw:3},
+    {r:"Out",z:"lcf",q:"hard",l:"fly",pc:3,sw:1,caught:1},
+    {out:"BB",pc:6,sw:1}
+  ];
 
   var LS="raw:broadcast:v1";
   var S=load()||{ev:SEED.slice(),st:Object.assign({},ST0)};
@@ -494,9 +516,40 @@
     return h;
   }
 
+  // ---------- derived: pitcher line (the defensive mirror) ----------
+  function renderPitcher(){
+    var pitches=0,K=0,BB=0,H=0,bip=0,hard=0,hho=0,sw=0,firstK=0,BF=PPA.length;
+    var spray={};
+    PPA.forEach(function(e){
+      pitches+=e.pc||0; sw+=e.sw||0;
+      if(e.out==="K")K++; if(e.out==="BB")BB++;
+      if(HITS[e.r])H++;
+      if(e.q){bip++;if(e.q==="hard"||e.q==="scorched"){hard++;if(e.r==="Out"||e.caught)hho++;} if(e.z)spray[e.z]=(spray[e.z]||0)+1;}
+    });
+    var strikePct=pitches?Math.round(100*(pitches-countBalls())/pitches):0;
+    function countBalls(){var b=0;PPA.forEach(function(e){/* approx: BB implies ~4 balls */ if(e.out==="BB")b+=4;});return b;}
+    var whiffPct=pitches?Math.round(100*sw/pitches):0;
+    var hardPct=bip?Math.round(100*hard/bip):0;
+    function stat(v,l,acc){return '<div class="stat'+(acc?' accent':'')+'"><div class="v">'+v+'</div><div class="l">'+l+'</div></div>';}
+    var h='<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">'+
+      '<div class="disp" style="font-size:20px">'+PITCHER.name+'</div>'+
+      '<div style="color:var(--mute);font-size:12px">'+BF+' batters faced · '+pitches+' pitches</div></div>';
+    h+='<div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">';
+    h+=stat(K,"Strikeouts");
+    h+=stat(BB,"Walks");
+    h+=stat(H,"Hits allowed");
+    h+=stat(hardPct+'<small>%</small>',"Hard-contact allowed",true);
+    h+=stat(whiffPct+'<small>%</small>',"Whiff rate");
+    h+=stat(hho,"Hard-hit outs (in his favor)");
+    h+='</div>';
+    h+='<div class="mini" style="margin-top:12px">Contact allowed — spray</div>'+sprayBar(spray);
+    h+='<div class="note">Same depth as the batting side, mirrored: not just a line score but <b>where</b> and <b>how hard</b> contact came, plus whiff rate and hard-hit outs. Hard-contact-allowed % is the pitcher-development signal — the mound equivalent of a hitter\'s hard-hit rate. Full parity: when we\'re in the field, the scorekeeper feeds this instead of the batting box.</div>';
+    return h;
+  }
+
   var curTab="box";
   function renderPanel(){
-    $("#panel").innerHTML=curTab==="box"?renderBox():curTab==="splits"?renderSplits():curTab==="clips"?renderClips():renderLog();
+    $("#panel").innerHTML=curTab==="box"?renderBox():curTab==="splits"?renderSplits():curTab==="clips"?renderClips():curTab==="pitch"?renderPitcher():renderLog();
     var cc=$("#clipCount");if(cc){var n=clipList().length;cc.textContent=n?n:"";}
   }
   function renderAll(){renderSituation();renderBatter();renderPanel();save();}
