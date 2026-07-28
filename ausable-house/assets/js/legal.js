@@ -92,6 +92,11 @@
   direct: wrap("Direct-Booking Terms, Payment &amp; Cancellation", `
     <div class="notice warn"><b>Please read carefully.</b> Booking directly with us is different
     from booking through Airbnb or Vrbo.</div>
+    <h4>How booking works</h4>
+    <p>Submitting the form sends a <b>booking request</b> — it is <b>not a confirmed reservation</b>.
+    Requested dates are <b>not held</b> until we confirm availability and the deposit is paid. We reply
+    within <b>${(S.booking&&S.booking.confirmWithinHours)||24} hours</b> with confirmation and a secure
+    payment link. A reservation is confirmed only once we accept it and the deposit is received.</p>
     <h4>No platform protection</h4>
     <p>This reservation is <b>not</b> made through Airbnb, Vrbo, or any online travel platform.
     It does <b>not</b> include AirCover, host guarantee, platform guest protection, travel

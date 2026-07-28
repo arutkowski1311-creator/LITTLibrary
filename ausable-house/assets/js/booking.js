@@ -13,8 +13,20 @@
   let viewDate = new Date(); viewDate.setDate(1);
   let start=null, end=null, model={blocked:new Set(),buffer:new Set()};
 
+  const B = S.booking || { confirmWithinHours:24, requestNote:"" };
+
   // property dropdown
   sel.innerHTML = S.properties.map(p=>`<option value="${p.id}">${p.name} — ${p.beds}BR/${p.baths}BA · sleeps ${p.sleeps}</option>`).join("");
+
+  // request-policy messaging (config-driven)
+  const policyNote = document.getElementById("requestPolicyNote");
+  if(policyNote) policyNote.innerHTML = `<b>Please note:</b> ${B.requestNote}`;
+  const hint = document.getElementById("bookHint");
+  if(hint) hint.innerHTML = `This sends a booking <b>request</b> to the owner — it is not a confirmed
+    reservation and your dates are not held until we reply (within ${B.confirmWithinHours} hours).
+    No payment is taken online yet; you'll receive a secure link to pay the deposit with your confirmation.`;
+  const emailLink = document.getElementById("confirmEmailLink");
+  if(emailLink){ emailLink.href = "mailto:"+S.brand.email; emailLink.textContent = S.brand.email; }
 
   const iso = AV.iso;
   const today = new Date(); today.setHours(0,0,0,0);
@@ -129,13 +141,21 @@
       <div class="line" style="border-top:1px solid rgba(255,255,255,.25);margin-top:.6rem"><span>Due today — ${Math.round(R.depositPercent*100)}% deposit <span class="brass">(non-refundable)</span></span><span class="brass">${AH.money(b.deposit)}</span></div>
       <div class="line" style="border:0"><span>Balance due ${R.balanceDueDays} days before check-in${b.balanceDueDate?` (${b.balanceDueDate})`:""}</span><span>${AH.money(b.balance)}</span></div>`;
 
-    noticeEl.innerHTML=`<div class="notice warn" style="margin-top:1rem">
+    noticeEl.innerHTML=`<div class="notice" style="margin-top:1rem">
+      <b>These dates aren't confirmed yet.</b> Submitting below sends a request — we'll confirm
+      availability within ${B.confirmWithinHours} hours and send a link to pay the deposit.
+      Your dates are held once we confirm.</div>
+      <div class="notice warn" style="margin-top:.8rem">
       <b>Booking direct:</b> this rate is lower than the online platforms, but it does not include
       AirCover/platform guest protection, and the ${Math.round(R.depositPercent*100)}% deposit is
       <b>non-refundable</b>. Cancel more than ${R.cancelCutoffDays} days out and your balance isn't
       charged; cancel within ${R.cancelCutoffDays} days and the stay is 100% forfeited.
       <a href="#" data-doc="direct">Full cancellation policy →</a></div>`;
     formCard.style.display="block";
+    // if the guest changed dates/property after submitting, restore the form
+    const rc = document.getElementById("requestConfirmed");
+    const bf = document.getElementById("bookForm");
+    if(rc && rc.style.display==="block"){ rc.style.display="none"; if(bf) bf.style.display="block"; }
   }
 
   function renderAddOns(){
@@ -156,7 +176,8 @@
     }
     const b=priceBreakdown(); const f=e.target;
     const body =
-`NEW BOOKING REQUEST — ${b.p.name}
+`NEW BOOKING REQUEST (UNCONFIRMED) — ${b.p.name}
+Reply within ${B.confirmWithinHours}h to confirm and send the deposit link.
 --------------------------------
 Guest: ${f.name.value}
 Email: ${f.email.value}
@@ -176,7 +197,18 @@ Notes: ${f.notes.value||"—"}
 Acknowledged: direct-booking terms, winter/safety notice, liability waiver & house rules.
 ${sel.value==="the-perch"?"Acknowledged: outdoor-stairs access.":""}`;
     location.href = AH.mailto(`Booking Request — ${b.p.name} (${iso(start)}→${iso(end)})`, body);
-    AH.toast("Opening your email to send the request…");
+
+    // show on-page pending-confirmation state
+    const msg = document.getElementById("confirmedMsg");
+    if(msg) msg.innerHTML = `Thanks, ${f.name.value.split(" ")[0]||"there"}! Your request for
+      <b>${b.p.name}</b> (${iso(start)} → ${iso(end)}) has been sent. This is <b>not a confirmed
+      reservation yet</b> — we'll review availability and reply within
+      <b>${B.confirmWithinHours} hours</b> with confirmation and a secure link to pay the
+      ${Math.round(R.depositPercent*100)}% deposit. Your dates are held once we confirm.`;
+    f.style.display = "none";
+    document.getElementById("requestConfirmed").style.display = "block";
+    document.getElementById("requestConfirmed").scrollIntoView({behavior:"smooth",block:"center"});
+    AH.toast("Request sent — pending confirmation within "+B.confirmWithinHours+"h.");
   });
 
   sel.addEventListener("change", loadProperty);

@@ -120,6 +120,15 @@ window.SITE = {
     taxPercent: 0.13             // combined NY sales + Essex County occupancy (VERIFY!)
   },
 
+  /* ---- Booking request policy ------------------------------------------ */
+  booking: {
+    confirmWithinHours: 24,   // how long guests wait for confirmation
+    // Shown to guests: a request is NOT a confirmed reservation until you reply.
+    requestNote: "Submitting is a booking REQUEST, not a confirmed reservation. " +
+                 "Your dates are not held until we confirm — we'll reply within 24 hours " +
+                 "with confirmation and a secure link to pay the deposit."
+  },
+
   /* ---- Tax profile (used by the owner tax tracker: owner.html) ---------- */
   // VERIFY current rates with NY Dept. of Taxation & Finance + Essex County.
   tax: {

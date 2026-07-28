@@ -160,7 +160,7 @@
     <div class="card" id="bookFormCard" style="margin-top:2.5rem;display:none">
       <div class="pad">
         <h3>Request to Book</h3>
-        <p class="muted" style="font-size:.9rem">Send us your details and we'll confirm within 24 hours.</p>
+        <div class="notice" id="requestPolicyNote"></div>
         <form id="bookForm">
           <div class="row-2">
             <div class="field"><label>Full name</label><input required name="name"></div>
@@ -193,9 +193,16 @@
               entrance, which can be icy in winter. I accept this and confirm it suits my group.</span></label>
           </div>
           <button class="btn btn-lg" type="submit" style="margin-top:1.5rem">Send Booking Request</button>
-          <p class="hint" style="margin-top:.7rem">This sends an email to the owner. No payment is taken online yet —
-            you'll receive a secure payment link with your confirmation.</p>
+          <p class="hint" id="bookHint" style="margin-top:.7rem"></p>
         </form>
+        <!-- shown after submit -->
+        <div id="requestConfirmed" style="display:none;text-align:center;padding:1rem 0">
+          <div style="font-size:2.4rem">📩</div>
+          <h3 style="color:var(--forest)">Request Sent — Pending Confirmation</h3>
+          <p id="confirmedMsg" style="max-width:34rem;margin:.5rem auto"></p>
+          <p class="muted" style="font-size:.85rem">If your email client didn't open, email us directly at
+            <a href="mailto:arutkowski1311@gmail.com" id="confirmEmailLink">the address in Contact</a>.</p>
+        </div>
       </div>
     </div>
   </div>
