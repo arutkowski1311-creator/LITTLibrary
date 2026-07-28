@@ -62,14 +62,18 @@ python3 tools/physician-profiles/build_account_html.py     # → the three HTML 
 
 ## Composite health score
 
-Weighted 0–100 → letter grade (sub-scores shown on the card):
+Health answers one question — **"are we winning here, and can we hold it?"** — as a
+weighted 0–100 → letter grade. Each driver is computed from the account's actual
+inputs and shown, with its derivation, on the card (no magic constants hidden):
 
-| Sub-score | Max | Basis |
+| Driver | Max | Basis |
 | --- | --- | --- |
-| Trajectory | 25 | trend (Up/Down/Flat/New/Competitive) |
-| Reservoir capture | 20 | cases logged vs total addressable reservoir |
-| Surgeon depth | 20 | active performing surgeons (single-surgeon risk) |
-| Competitive position | 20 | competitive laser in-house / competitive-class penalty |
-| Value capture | 15 | revenue per case vs region average |
+| Momentum | 30 | revenue growth (2026 full-year vs prior), sanity-checked against the trend |
+| Franchise & adoption | 25 | logged case volume + number of active surgeons (single-surgeon fragility) |
+| Competitive position | 25 | do we own the LITT business — sole NeuroBlate vs competitor also in-house vs not ours |
+| Value capture | 20 | revenue per case vs region average (graduated) |
 
-The grade and every qualitative field are seeds — all editable in the tool.
+**Opportunity/headroom is deliberately *not* in the health score** — reservoir size,
+naïve targets and annual potential are upside, shown in their own sections, so a
+competitive account we don't own yet reads as low health *and* high opportunity at
+the same time. The grade and every qualitative field are seeds — all editable in the tool.

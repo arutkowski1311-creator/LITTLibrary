@@ -133,6 +133,7 @@ select.ed:hover{border-color:var(--warn)}
 .deriv ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
 .deriv li{font-size:8.8px;line-height:1.3;color:var(--ink-2);font-family:var(--mono)}
 .deriv li b{color:var(--ink);font-family:var(--sans);font-weight:700}
+.deriv .dnote{font-size:8.4px;color:var(--ink-3);margin-top:4px;font-style:italic}
 
 /* reservoirs — sized by winnable market, $ opportunity */
 .rsv{display:flex;flex-direction:column;gap:5px}
@@ -266,9 +267,36 @@ ul.pts li:hover .x{opacity:.7}
   border:1px solid var(--rule);border-left:3px solid var(--warn);border-radius:6px;padding:9px 12px;box-shadow:var(--shadow)}
 .editnote b{color:var(--ink)}
 
-@media (max-width:920px){ .sheet{width:100%;min-width:0;padding:20px 16px 34px} .seal{width:78px} .seal .ring{width:72px;height:72px}
-  .grid2,.uni-cols{grid-template-columns:1fr} .caps{grid-template-columns:repeat(2,1fr)} .foot{position:static;margin-top:14px}
-  .editnote{width:100%}}
+/* ---------- responsive / mobile ---------- */
+@media (max-width:920px){
+  .wrap{padding:14px 10px 40px;gap:16px}
+  .sheet{width:100%;min-width:0;min-height:0;padding:20px 16px 26px}
+  .seal{width:78px} .seal .ring{width:72px;height:72px}
+  .grid2,.uni-cols{grid-template-columns:1fr}
+  .caps{grid-template-columns:repeat(2,1fr)}
+  .foot{position:static;margin-top:14px}
+  .editnote{width:100%}
+}
+@media (max-width:620px){
+  body{font-size:13.5px}
+  .wrap{padding:10px 8px 40px}
+  .sheet{padding:16px 12px 22px;border-radius:0}
+  .plate{flex-wrap:wrap}
+  .plate h1{font-size:23px}
+  .seal{width:64px;order:-1} .seal .ring{width:58px;height:58px} .seal .lab{display:none}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .swot{grid-template-columns:1fr}
+  .train-grid{grid-template-columns:1fr}
+  .q{min-height:0}
+  .bar{gap:8px;padding:9px 11px}
+  .bar .hint{display:none}
+  .bar select#picker{min-width:0;flex:1 1 100%;order:-1}
+  .bar button{flex:1 1 auto;justify-content:center;padding:8px 8px;font-size:12px}
+  .appx .paper{grid-template-columns:46px 1fr;gap:7px}
+  .appx .paper .yr{grid-column:2;text-align:left;margin-top:-2px}
+  .appx .ehd{flex-wrap:wrap}
+  .rsv-row{grid-template-columns:78px 1fr}
+}
 
 @media print{
   @page{size:letter portrait;margin:0}
@@ -348,24 +376,43 @@ function derive(acct){
   const totalNet=(+n["2024"]||0)+(+n["2025"]||0)+(+n["2026_ytd"]||0);
   b.rev_per_case=cases?Math.round(totalNet/cases):null;
   b.rev_vs_region=b.rev_per_case?Math.round(b.rev_per_case/rg*100)/100:null;
-  // health — weighted 0-100, transparent sub-scores with derivations
+  // ---- Account Health: four drivers that answer "are we winning here, and can we hold it?"
+  // Opportunity/headroom (reservoirs, naive targets) is shown separately — it is upside, not health.
   const subs={},deriv={};
-  const tmap={Up:25,New:20,Flat:14,Down:6,Competitive:8};
-  subs["Trajectory"]=tmap[b.trend]!=null?tmap[b.trend]:12;
-  deriv["Trajectory"]=`trend “${b.trend}” → ${subs["Trajectory"]}/25 (Up 25 · New 20 · Flat 14 · Competitive 8 · Down 6)`;
-  const addr=(acct.reservoirs||[]).reduce((a,r)=>a+(+r.addressable||0),0);
-  subs["Reservoir capture"]=addr?Math.min(20,Math.round((cases/addr)*60)):8;
-  deriv["Reservoir capture"]=addr?`${cases} cases ÷ ${addr} addressable/yr = ${Math.round(cases/addr*100)}% capture → ${subs["Reservoir capture"]}/20 (min(20, capture×60))`:`no reservoir mapped → ${subs["Reservoir capture"]}/20 default`;
+  // 1) Momentum /30 — revenue direction & growth (actual YoY, sanity-checked against the trend label)
+  const proj=+n["2026_proj"]||0, prev=(+n["2025"]||0)||(+n["2024"]||0);
+  let mom, momWhy;
+  if(proj>0 && prev>0){
+    const g=proj/prev;
+    mom = g>=1.3?30 : g>=1.1?24 : g>=0.9?18 : g>=0.6?11 : 5;
+    momWhy=`2026 projected ${CURRENCY(proj)} vs ${CURRENCY(prev)} prior = ${g.toFixed(1)}×`;
+    if(b.trend==="Down" && mom>11){ mom=11; momWhy+=", but trend Down"; }
+    if(b.trend==="Competitive" && mom>8){ mom=8; momWhy+=", competitive"; }
+  } else {
+    const tm={Up:24,New:18,Flat:15,Down:8,Competitive:8}; mom=tm[b.trend]!=null?tm[b.trend]:12;
+    momWhy=`trend “${b.trend}”, limited revenue to trend on`;
+  }
+  subs["Momentum"]=mom;
+  deriv["Momentum"]=`revenue direction & growth — ${momWhy} → ${mom}/30`;
+  // 2) Franchise & adoption /25 — how much recurring volume, across how many surgeons (fragility)
+  const vol=Math.min(15,Math.round(cases*0.75));
   const nsurg=(acct.universe.performers||[]).filter(p=>(+p.cases||0)>0).length;
-  subs["Surgeon depth"]=nsurg===0?4:nsurg===1?8:Math.min(20,8+nsurg*4);
-  deriv["Surgeon depth"]=`${nsurg} performing surgeon${nsurg===1?"":"s"} → ${subs["Surgeon depth"]}/20 (0→4, 1→8, then 8+4·n; single-surgeon risk)`;
-  const plats=acct.platform||[];
-  const comp=plats.includes("Visualase")||plats.includes("ClearPoint");
-  subs["Competitive position"]=acct.class==="Competitive"?5:(comp?10:20);
-  deriv["Competitive position"]=acct.class==="Competitive"?`competitive account → 5/20`:(comp?`competitive laser in-house (${plats.filter(x=>x==="Visualase"||x==="ClearPoint").join(", ")}) → 10/20`:`no competitive laser in-house → 20/20`);
+  const depth=nsurg===0?0:nsurg===1?4:nsurg===2?7:10;
+  subs["Franchise & adoption"]=vol+depth;
+  deriv["Franchise & adoption"]=`${cases} logged cases → ${vol}/15 volume, ${nsurg} active surgeon${nsurg===1?"":"s"} → ${depth}/10 depth${nsurg<=1?" (single-surgeon risk)":""} = ${vol+depth}/25`;
+  // 3) Competitive position /25 — do we own the LITT business here?
+  const plats=acct.platform||[], hasNB=plats.includes("NeuroBlate");
+  const compIn=plats.includes("Visualase")||plats.includes("ClearPoint");
+  let cp;
+  if(acct.class==="Competitive"||!hasNB){ cp=6; deriv["Competitive position"]=`competitor-controlled / not yet ours → 6/25`; }
+  else if(compIn){ cp=14; deriv["Competitive position"]=`NeuroBlate installed, but ${plats.filter(x=>x==="Visualase"||x==="ClearPoint").join(", ")} also in-house → 14/25 (split platform, standardization risk)`; }
+  else { cp=25; deriv["Competitive position"]=`NeuroBlate installed, no competitor laser in-house → 25/25`; }
+  subs["Competitive position"]=cp;
+  // 4) Value capture /20 — are the cases we do worth a lot? (graduated, not pass/fail)
   const rv=b.rev_vs_region;
-  subs["Value capture"]=(rv&&rv>=1)?15:(rv?10:7);
-  deriv["Value capture"]=rv?`$/case ${rv}× region avg → ${subs["Value capture"]}/15 (≥1×→15, else 10)`:`no case value yet → ${subs["Value capture"]}/15`;
+  const vc = rv==null?10 : rv>=1.5?20 : rv>=1.2?17 : rv>=1.0?14 : rv>=0.8?10 : 6;
+  subs["Value capture"]=vc;
+  deriv["Value capture"]=rv==null?`no case value yet → 10/20 (neutral)`:`$/case ${rv}× region avg → ${vc}/20 (≥1.5×→20 · ≥1.2×→17 · ≥1×→14 · ≥0.8×→10 · else 6)`;
   const total=Object.values(subs).reduce((a,x)=>a+x,0);
   const grade=total>=85?"A":total>=78?"A-":total>=72?"B+":total>=65?"B":total>=58?"B-":
               total>=50?"C+":total>=42?"C":total>=32?"D":"F";
@@ -417,7 +464,7 @@ function gauge(score,grade){
   </svg>`;
 }
 function subBars(subs,deriv){
-  const maxes={"Trajectory":25,"Reservoir capture":20,"Surgeon depth":20,"Competitive position":20,"Value capture":15};
+  const maxes={"Momentum":30,"Franchise & adoption":25,"Competitive position":25,"Value capture":20};
   let out="";
   for(const k in subs){const mx=maxes[k]||20,f=Math.max(0,Math.min(1,subs[k]/mx));
     const col=f>=.75?"var(--good)":f>=.45?"var(--s4)":"var(--bad)";
@@ -428,7 +475,7 @@ function subBars(subs,deriv){
 function derivList(deriv){
   if(!deriv)return"";
   const items=Object.keys(deriv).map(k=>`<li><b>${esc(k)}</b> — ${esc(deriv[k])}</li>`).join("");
-  return `<div class="deriv"><div class="dh">How the score is derived · sum of five drivers, this account's inputs</div><ul>${items}</ul></div>`;
+  return `<div class="deriv"><div class="dh">How the score is derived · “are we winning here, and can we hold it?” · four drivers, this account's inputs</div><ul>${items}</ul><div class="dnote">Opportunity/headroom (reservoirs, naïve targets) is shown separately below — it's upside, not current health.</div></div>`;
 }
 
 /* ---------- editable helpers ---------- */
