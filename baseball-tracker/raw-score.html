@@ -1,0 +1,146 @@
+<style>
+  :root{
+    --bone:#F2F2F2;--white:#FFF;--ink:#111;--blue:#7FAED6;--blue-deep:#2E5D8F;--brown:#6A4A2B;--brown-pale:#EFE7DE;
+    --good:#2C7C55;--warn:#B9762A;--hot:#C23B34;
+    --page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;
+    --accent:var(--blue-deep);--accent-ink:#fff;
+    --font-display:'Anton','Oswald','Arial Narrow','Haettenschweiler',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}}
+  :root[data-theme="light"]{--page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;--accent:var(--blue-deep);--accent-ink:#fff;}
+  :root[data-theme="dark"]{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:center;gap:14px;padding:12px 18px;background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep)}
+  .badge{width:38px;height:38px;border-radius:8px;background:var(--blue-deep);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:19px}
+  .badge b{color:var(--brown-pale)}
+  header .title{font-family:var(--font-display);font-size:20px;line-height:1}
+  header .sub{font-size:11px;color:#9fb6c9;letter-spacing:.08em;text-transform:uppercase}
+  header .cycle{margin-left:auto;font-size:12px;color:#9fb6c9}
+  .themetgl{background:#ffffff22;border:1px solid #ffffff33;color:#fff;border-radius:7px;padding:6px 9px;font-size:12px;margin-left:12px;cursor:pointer}
+  .wrap{max-width:1160px;margin:0 auto;padding:16px;display:grid;grid-template-columns:270px 1fr;gap:16px}
+  @media(max-width:860px){.wrap{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .rail h2,.detail .hd h2{margin:0;padding:12px 14px;font-family:var(--font-display);font-size:13px;letter-spacing:.05em;color:var(--mute);border-bottom:1px solid var(--line)}
+  .prow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer;width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left;color:var(--text)}
+  .prow:hover{background:var(--raise)}
+  .prow.sel{background:color-mix(in srgb,var(--accent) 12%,var(--card))}
+  .prow .n{font-weight:600;font-size:13.5px}
+  .prow .p{font-size:11px;color:var(--mute)}
+  .prow .sc{margin-left:auto;font-family:var(--font-display);font-size:22px;line-height:1}
+  .prow .sc small{font-family:var(--font-body);font-size:10px;color:var(--mute)}
+  .detail .hd{display:flex;align-items:flex-end;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .who .nm{font-family:var(--font-display);font-size:30px;line-height:.95}
+  .who .meta{color:var(--mute);font-size:12.5px}
+  .headline{margin-left:auto;text-align:center}
+  .headline .big{font-family:var(--font-display);font-size:58px;line-height:.8;color:var(--accent)}
+  .headline .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  .pv{display:flex;gap:8px;justify-content:center;margin-top:8px}
+  .pill{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--chip);color:var(--mute)}
+  .pill.up{color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent)}
+  .domains{padding:14px 18px;display:flex;flex-direction:column;gap:11px}
+  .dom{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}
+  .dom .top{display:flex;align-items:baseline;gap:8px}
+  .dom .dn{font-weight:600;font-size:13.5px}
+  .dom .wt{font-size:10px;color:var(--mute);background:var(--chip);border-radius:10px;padding:1px 7px}
+  .dom .sc{font-family:var(--font-display);font-size:20px;justify-self:end;grid-row:1/3}
+  .meter{grid-column:1/2;height:8px;border-radius:6px;background:var(--raise);overflow:hidden;border:1px solid var(--line)}
+  .meter i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue-deep),var(--blue))}
+  .dom .src{grid-column:1/3;font-size:11px;color:var(--mute)}
+  .dom .src code{background:var(--chip);border-radius:4px;padding:0 4px;font-size:10.5px}
+  .dom .conf{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px}
+  .live{margin:0 18px 16px;padding:12px 14px;border-radius:10px;background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line))}
+  .live b{color:var(--accent)}
+  .note{font-size:11px;color:var(--mute);padding:0 18px 18px}
+  .note code{background:var(--chip);border-radius:4px;padding:0 4px}
+</style>
+
+<header>
+  <div class="badge disp">N<b>J</b></div>
+  <div><div class="title">RAW Score</div><div class="sub">Player development index</div></div>
+  <div class="cycle num">Cycle · Summer 2026 · model v0.4</div>
+  <button class="themetgl" id="themeBtn" title="Toggle theme">◐</button>
+</header>
+
+<div class="wrap">
+  <div class="card rail">
+    <h2>Roster</h2>
+    <div id="roster"></div>
+  </div>
+  <div class="card detail" id="detail"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // 8 domains + published weights (from the brief). Formulas/normalization are server-side, not here.
+  var DOMAINS=[
+    {k:"gp",  n:"Game Production",          w:0.20, src:"<code>hard_hit_rate</code> · <code>xbh</code> · <code>on_base</code> — from the scorekeeper", source:"game"},
+    {k:"tools",n:"Baseball Tools",          w:0.20, src:"<code>exit_velo</code> · <code>bat_speed</code> · <code>arm</code> · <code>60_time</code>", source:"rapsodo / testing"},
+    {k:"ath", n:"Athletic Capacity",        w:0.15, src:"<code>cmj</code> · <code>60_time</code> · <code>y_balance</code>", source:"testing / workouts"},
+    {k:"learn",n:"Learning & Coachability", w:0.15, src:"coach evaluations", source:"coach_review"},
+    {k:"iq",  n:"Baseball Intelligence",    w:0.10, src:"situational reads, pitch recognition", source:"coach_review"},
+    {k:"team",n:"Team Impact",              w:0.10, src:"contribution to the team environment", source:"coach_review"},
+    {k:"mental",n:"Mental Performance",     w:0.05, src:"consent-based, non-diagnostic development signal", source:"survey"},
+    {k:"comm",n:"Communication & Leadership",w:0.05, src:"communication & leadership ratings", source:"coach_review"}
+  ];
+  // sample players (mock domain results 0–100 + confidence 0–1). In production these are
+  // raw_score_snapshots computed server-side from raw_measurements.
+  var PLAYERS=[
+    {num:24,n:"Rutkowski",pos:"CF",vel:"+3",dom:{gp:88,tools:84,ath:80,learn:90,iq:82,team:86,mental:74,comm:80},conf:{gp:.9,tools:.8,ath:.7,learn:.85,iq:.7,team:.8,mental:.6,comm:.75},pot:92},
+    {num:14,n:"Vernick",pos:"RHP",vel:"+5",dom:{gp:70,tools:86,ath:78,learn:80,iq:76,team:74,mental:68,comm:70},conf:{gp:.6,tools:.85,ath:.7,learn:.75,iq:.65,team:.7,mental:.55,comm:.65},pot:88},
+    {num:2, n:"M. Roman",pos:"2B",vel:"+1",dom:{gp:74,tools:70,ath:76,learn:82,iq:78,team:88,mental:72,comm:84},conf:{gp:.75,tools:.7,ath:.7,learn:.8,iq:.7,team:.85,mental:.6,comm:.8},pot:80},
+    {num:5, n:"Schneider",pos:"SS",vel:"+2",dom:{gp:66,tools:72,ath:82,learn:76,iq:70,team:72,mental:70,comm:68},conf:{gp:.65,tools:.7,ath:.75,learn:.7,iq:.6,team:.7,mental:.55,comm:.6},pot:79}
+  ];
+  PLAYERS.forEach(function(p){ // illustrative weighted aggregate (real one is server-side, versioned)
+    var s=0;DOMAINS.forEach(function(d){s+=p.dom[d.k]*d.w;});p.raw=Math.round(s);
+  });
+
+  var $=function(s){return document.querySelector(s);};
+  var cur=0;
+  function confColor(c){return c>=.8?"var(--good)":c>=.65?"var(--warn)":"var(--hot)";}
+  function renderRoster(){
+    var el=$("#roster");el.innerHTML="";
+    PLAYERS.forEach(function(p,i){
+      var b=document.createElement("button");b.className="prow"+(i===cur?" sel":"");
+      b.innerHTML='<div><div class="n">#'+p.num+' '+p.n+'</div><div class="p">'+p.pos+'</div></div>'+
+        '<div class="sc num">'+p.raw+'<small>/100</small></div>';
+      b.onclick=function(){cur=i;renderRoster();renderDetail();};
+      el.appendChild(b);
+    });
+  }
+  function renderDetail(){
+    var p=PLAYERS[cur];
+    var h='<div class="hd"><div class="who"><div class="nm">#'+p.num+' '+p.n+'</div>'+
+      '<div class="meta">'+p.pos+' · NJ Raw · 15U National</div></div>'+
+      '<div class="headline"><div class="big num">'+p.raw+'</div><div class="lbl">RAW Score</div>'+
+      '<div class="pv"><span class="pill">Potential '+p.pot+'</span><span class="pill up">▲ '+p.vel+' velocity</span></div></div></div>';
+    h+='<div class="domains">';
+    DOMAINS.forEach(function(d){var v=p.dom[d.k],c=p.conf[d.k];
+      h+='<div class="dom">'+
+        '<div class="top"><span class="dn">'+d.n+'</span><span class="wt">'+Math.round(d.w*100)+'% weight</span></div>'+
+        '<div class="sc num">'+v+'</div>'+
+        '<div class="meter"><i style="width:'+v+'%"></i></div>'+
+        '<div class="src"><span class="conf" style="background:'+confColor(c)+'" title="confidence"></span>'+d.src+' <span class="wt">'+d.source+'</span></div>'+
+      '</div>';
+    });
+    h+='</div>';
+    h+='<div class="live"><b>Game Production is live.</b> This domain is fed directly by the scorekeeper — '+
+      'hard-hit rate, extra-base hits and on-base from every tagged at-bat flow into <code>raw_measurements</code> (source: game). '+
+      'Score the game, and this number moves.</div>';
+    h+='<div class="note">Prototype with sample results. In production, each domain score is a <code>raw_score_snapshot</code> '+
+      'computed <b>server-side</b> from <code>raw_measurements</code> — raw data stored first, scores versioned and recomputable. '+
+      'The published domain <b>weights</b> are shown; the scoring <b>formulas and normalization tables stay on the server</b> and never ship to the client. '+
+      'Confidence (the dot) reflects how much data backs each domain — a missing measure is <code>null</code>, never zero. '+
+      'Mental Performance is a consent-based development signal, never diagnostic and never a gate.</div>';
+    $("#detail").innerHTML=h;
+  }
+  $("#themeBtn").onclick=function(){var r=document.documentElement;
+    var cu=r.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    r.setAttribute("data-theme",cu==="dark"?"light":"dark");};
+  renderRoster();renderDetail();
+})();
+</script>
