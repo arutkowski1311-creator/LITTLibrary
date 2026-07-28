@@ -147,6 +147,8 @@ select.ed:hover{border-color:var(--warn)}
 .rsv-val{grid-column:2;font-size:9.5px;color:var(--ink-3);font-family:var(--mono);margin-top:-2px}
 .rsv-val b{color:var(--heat);font-size:11px}
 .rsv-val .u{color:var(--ink-3)} .rsv-val .mut{color:var(--ink-3)}
+.rsv-def{grid-column:1 / -1;margin-top:7px;padding-top:6px;border-top:1px solid var(--rule-2);font-size:8.8px;line-height:1.4;color:var(--ink-3)}
+.rsv-def b{color:var(--ink-2)}
 
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .kpi{border:1px solid var(--rule);border-radius:7px;padding:8px 9px;background:var(--sheet-2)}
@@ -439,19 +441,31 @@ function barsSales(b){
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Net sales by year with full-year 2026">
     <line x1="0" y1="${H-pad}" x2="${W}" y2="${H-pad}" stroke="var(--rule)"/>${bars}</svg>`;
 }
-function reservoirViz(rs,regAvg){
+function reservoirViz(acr,rs,regAvg){
+  regAvg=regAvg||18300;
   if(!rs.length)return `<div style="font-size:10.5px;color:var(--ink-3);padding:8px 0">No reservoir pools mapped for this account.</div>`;
-  const rows=rs.map(r=>({ind:r.indication,addr:+r.addressable||0,pool:+r.pool||0})).sort((a,b)=>b.addr-a.addr);
+  // keep original index for edit paths; addressable = pool × factor%
+  const rows=rs.map((r,i)=>({i,ind:r.indication,pool:+r.pool||0,f:(r.factor_pct==null?5:+r.factor_pct),
+    logic:r.logic||"LITT-appropriate share of the coded pool",
+    addr:Math.round((+r.pool||0)*(r.factor_pct==null?5:+r.factor_pct)/100)}))
+    .sort((a,b)=>b.addr-a.addr);
   const max=Math.max(...rows.map(r=>r.addr),1);
-  const totAddr=rows.reduce((a,r)=>a+r.addr,0), totVal=totAddr*(regAvg||18300);
-  const bar=r=>{const pct=Math.max(4,r.addr/max*100);const v=r.addr*(regAvg||18300);
-    return `<div class="rsv-row">
+  const totAddr=rows.reduce((a,r)=>a+r.addr,0), totVal=totAddr*regAvg;
+  const bar=r=>{const pct=Math.max(4,r.addr/max*100);const v=r.addr*regAvg;
+    return `<div class="rsv-row" title="${esc(r.logic)}">
       <div class="rsv-ind">${esc(r.ind)}</div>
       <div class="rsv-track"><span class="rsv-fill" style="width:${pct.toFixed(0)}%"></span></div>
-      <div class="rsv-val"><b>${r.addr}</b><span class="u">/yr</span> <span class="mut">${CURRENCY(v)} · of ${r.pool}</span></div></div>`;};
-  return `<div class="rsv"><div class="rsv-hd"><b>${totAddr}</b> addressable LITT candidates / yr · <b>${CURRENCY(totVal)}</b> opportunity
-    <span class="mut">(addressable × ${CURRENCY(regAvg||18300)} avg case)</span></div>
-    ${rows.map(bar).join("")}</div>`;
+      <div class="rsv-val"><b>${r.addr}</b><span class="u">/yr</span> ${CURRENCY(v)}
+        <span class="mut">= ${edN(acr,`reservoirs.${r.i}.pool`,r.pool)} coded × ${edN(acr,`reservoirs.${r.i}.factor_pct`,r.f)}%</span></div></div>`;};
+  const m=DATA.reservoir_method||{};
+  return `<div class="rsv">
+    <div class="rsv-hd"><b>${totAddr}</b> addressable LITT candidates / yr · <b>${CURRENCY(totVal)}</b> opportunity
+      <span class="mut">(addressable × ${CURRENCY(regAvg)} avg case)</span></div>
+    ${rows.map(bar).join("")}
+    <div class="rsv-def"><b>Pool</b> = patients coded for the indication in this account's referral area.
+      <b>Addressable</b> = the clinically LITT-appropriate share (the editable % — differs by indication, e.g. focal epilepsy, symptomatic radiation necrosis, deep/SRS-failed mets).
+      <b>Opportunity</b> = addressable × ${CURRENCY(regAvg)} avg case. This is the <b>total winnable market / yr, inclusive of cases we already win</b> — not incremental; the plan's realistic near-term add is the “Annual potential” tile.</div>
+  </div>`;
 }
 function gauge(score,grade){
   const R=42,cx=48,cy=48,C=Math.PI*R,frac=Math.max(0,Math.min(1,score/100)),col=gradeColor(grade);
@@ -595,7 +609,7 @@ function render(acct0){
         <div>
           <div class="subhd">Referrers &amp; Indication Populations</div>
           <table class="u"><thead><tr><th>Clinician</th><th>Indication</th><th style="text-align:right">Pool</th></tr></thead><tbody>${refRows}</tbody></table>
-          <div class="panel" style="margin-top:8px;padding:8px 10px"><h3>Addressable Reservoirs — Winnable Market / yr</h3>${reservoirViz(acct.reservoirs,b.region_avg_case)}</div>
+          <div class="panel" style="margin-top:8px;padding:8px 10px"><h3>Addressable Reservoirs — Winnable Market / yr</h3>${reservoirViz(acr,acct.reservoirs,b.region_avg_case)}</div>
         </div>
       </div>
     </div>

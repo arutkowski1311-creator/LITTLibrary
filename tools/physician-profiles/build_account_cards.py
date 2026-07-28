@@ -361,12 +361,32 @@ def business(acr, acct):
         "sku_mix": {k: round(v) for k, v in sorted(sku_mix.get(acr, {}).items(), key=lambda x: -x[1])},
     }
 
-# ---- reservoir penetration -----------------------------------------------------
+# ---- addressable reservoirs ----------------------------------------------------
+# The pool is the raw claims count coded for the indication in the account's referral
+# area. Addressable = the clinically LITT-appropriate share of that pool, per year.
+# This factor is NOT uniform: LITT eligibility differs sharply by indication.
+INDICATION_FACTORS = {   # % of the coded pool realistically in-play for LITT
+    "Radiation necrosis":  20,  # symptomatic / steroid-dependent / progressive RN; biopsy+ablation+steroid weaning in one pass
+    "Recurrent GBM":       12,  # deep / eloquent / unresectable recurrence, adequate performance status
+    "Intractable epilepsy": 8,  # focal, localizable only — MTLE (sweet spot), FCD, hypothalamic hamartoma, PVNH
+    "Mets":                 3,  # deep/inaccessible or SRS-failed local recurrence; most mets go to SRS ± systemic
+}
+INDICATION_LOGIC = {
+    "Radiation necrosis":  "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)",
+    "Recurrent GBM":       "deep / eloquent / unresectable recurrence with adequate performance status",
+    "Intractable epilepsy": "focal, localizable epilepsy — MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH",
+    "Mets":                 "deep / surgically-inaccessible lesions or SRS-failed local recurrence",
+}
+DEFAULT_FACTOR = 5
+
 def reservoirs(acct):
     out = []
     for name, tup in (acct.get("reservoirs") or {}).items():
-        addr, pool = tup
-        out.append({"indication": name, "addressable": addr, "pool": pool})
+        _old_addr, pool = tup
+        f = INDICATION_FACTORS.get(name, DEFAULT_FACTOR)
+        out.append({"indication": name, "pool": pool, "factor_pct": f,
+                    "addressable": round(pool * f / 100.0),
+                    "logic": INDICATION_LOGIC.get(name, "LITT-appropriate share of the coded pool")})
     return out
 
 # ---- header capability chips (seeded; editable in tool) ------------------------
@@ -555,6 +575,13 @@ out = {
         "enriched": sorted(ENRICH.keys()),
     },
     "library": LIBRARY,
+    "reservoir_method": {
+        "pool": "Patients coded for this indication in the account's referral area (claims volume).",
+        "addressable": "The clinically LITT-appropriate share of the pool, per year — factor differs by indication (editable).",
+        "opportunity": "Addressable × the region's average revenue per case ($" + f"{REGION_AVG_CASE:,}" + ").",
+        "scope": "Total winnable market per year — inclusive of the cases we already win, not incremental. The plan's realistic near-term incremental target is the separate “Annual potential” figure.",
+        "factors": INDICATION_FACTORS,
+    },
     "territory": {
         "region_avg_case": REGION_AVG_CASE, "quota_2026": TERR["quota_2026"],
         "cases_ytd_2026": TERR["cases_ytd_2026"], "candidate_universe_yr": TERR["candidate_universe_yr"],

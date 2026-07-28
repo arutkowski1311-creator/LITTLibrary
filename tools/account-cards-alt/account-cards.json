@@ -45,6 +45,18 @@
    "Custom"
   ]
  },
+ "reservoir_method": {
+  "pool": "Patients coded for this indication in the account's referral area (claims volume).",
+  "addressable": "The clinically LITT-appropriate share of the pool, per year \u2014 factor differs by indication (editable).",
+  "opportunity": "Addressable \u00d7 the region's average revenue per case ($18,300).",
+  "scope": "Total winnable market per year \u2014 inclusive of the cases we already win, not incremental. The plan's realistic near-term incremental target is the separate \u201cAnnual potential\u201d figure.",
+  "factors": {
+   "Radiation necrosis": 20,
+   "Recurrent GBM": 12,
+   "Intractable epilepsy": 8,
+   "Mets": 3
+  }
+ },
  "territory": {
   "region_avg_case": 18300,
   "quota_2026": 106,
@@ -80,11 +92,11 @@
     "service_contract": ""
    },
    "health": {
-    "score": 83,
+    "score": 79,
     "grade": "A-",
     "subs": {
      "Trajectory": 25,
-     "Reservoir capture": 17,
+     "Reservoir capture": 13,
      "Surgeon depth": 16,
      "Competitive position": 10,
      "Value capture": 15
@@ -123,23 +135,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 22,
-     "pool": 434
+     "pool": 434,
+     "factor_pct": 3,
+     "addressable": 13,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 4,
-     "pool": 76
+     "pool": 76,
+     "factor_pct": 20,
+     "addressable": 15,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 24,
-     "pool": 487
+     "pool": 487,
+     "factor_pct": 8,
+     "addressable": 39,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
+     "pool": 4,
+     "factor_pct": 12,
      "addressable": 0,
-     "pool": 4
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -308,8 +328,7 @@
      "Competitive laser in-house (Visualase, Medtronic) \u2014 split platform, capital-standardization risk."
     ],
     "opportunities": [
-     "Intractable epilepsy: ~24 addressable of 487 pool \u2014 under-penetrated.",
-     "Mets: ~22 addressable of 434 pool \u2014 under-penetrated."
+     "Intractable epilepsy: ~39 addressable of 487 pool \u2014 under-penetrated."
     ],
     "threats": [
      "Visualase entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
@@ -358,7 +377,7 @@
     {
      "type": "Activate referral",
      "target": "Intractable epilepsy referral base",
-     "objective": "Convert the Intractable epilepsy pool (~24 addressable of 487) into logged cases via referrer activation.",
+     "objective": "Convert the Intractable epilepsy pool (~39 addressable of 487) into logged cases via referrer activation.",
      "tactics": [
       "Prime the top referrers (Samuel E Koszer, Shraddha Srinivasan, Michael Waldrop) with the Intractable epilepsy-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
@@ -818,23 +837,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 111,
-     "pool": 2211
+     "pool": 2211,
+     "factor_pct": 3,
+     "addressable": 66,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 1,
-     "pool": 20
+     "pool": 20,
+     "factor_pct": 20,
+     "addressable": 4,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 38,
-     "pool": 755
+     "pool": 755,
+     "factor_pct": 8,
+     "addressable": 60,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
+     "pool": 2,
+     "factor_pct": 12,
      "addressable": 0,
-     "pool": 2
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -995,8 +1022,8 @@
     ],
     "weaknesses": [],
     "opportunities": [
-     "Mets: ~111 addressable of 2211 pool \u2014 under-penetrated.",
-     "Intractable epilepsy: ~38 addressable of 755 pool \u2014 under-penetrated."
+     "Mets: ~66 addressable of 2211 pool \u2014 under-penetrated.",
+     "Intractable epilepsy: ~60 addressable of 755 pool \u2014 under-penetrated."
     ],
     "threats": [
      "Competitive KOL activity around Eyiyemisi Damisah \u2014 confirm allegiance in field."
@@ -1030,7 +1057,7 @@
     {
      "type": "Activate referral",
      "target": "Mets referral base",
-     "objective": "Convert the Mets pool (~111 addressable of 2211) into logged cases via referrer activation.",
+     "objective": "Convert the Mets pool (~66 addressable of 2211) into logged cases via referrer activation.",
      "tactics": [
       "Prime the top referrers (Aline Herlopian, Nicholas A Blondin, Lawrence J Hirsch) with the Mets-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
@@ -1389,23 +1416,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 308,
-     "pool": 6166
+     "pool": 6166,
+     "factor_pct": 3,
+     "addressable": 185,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 1,
-     "pool": 18
+     "pool": 18,
+     "factor_pct": 20,
+     "addressable": 4,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 307,
-     "pool": 6140
+     "pool": 6140,
+     "factor_pct": 8,
+     "addressable": 491,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
-     "addressable": 1,
-     "pool": 20
+     "pool": 20,
+     "factor_pct": 12,
+     "addressable": 2,
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -1606,8 +1641,8 @@
      "ClearPoint targeting/navigation ecosystem in-house \u2014 capital-standardization pressure toward the competitive stack."
     ],
     "opportunities": [
-     "Mets: ~308 addressable of 6166 pool \u2014 under-penetrated.",
-     "Intractable epilepsy: ~307 addressable of 6140 pool \u2014 under-penetrated."
+     "Intractable epilepsy: ~491 addressable of 6140 pool \u2014 under-penetrated.",
+     "Mets: ~185 addressable of 6166 pool \u2014 under-penetrated."
     ],
     "threats": [
      "ClearPoint consultant influence pushing system standardization \u2014 monitor capital committee and consulting ties.",
@@ -1660,10 +1695,10 @@
     },
     {
      "type": "Activate referral",
-     "target": "Mets referral base",
-     "objective": "Convert the Mets pool (~308 addressable of 6166) into logged cases via referrer activation.",
+     "target": "Intractable epilepsy referral base",
+     "objective": "Convert the Intractable epilepsy pool (~491 addressable of 6140) into logged cases via referrer activation.",
      "tactics": [
-      "Prime the top referrers (Masanori Takeoka, Jurriaan M Peters, Jeffrey Bolton) with the Mets-matched evidence pack.",
+      "Prime the top referrers (Masanori Takeoka, Jurriaan M Peters, Jeffrey Bolton) with the Intractable epilepsy-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
       "Close the referral loop back to the performing surgeon and track conversion."
      ]
@@ -2047,11 +2082,11 @@
     "service_contract": ""
    },
    "health": {
-    "score": 41,
-    "grade": "D",
+    "score": 42,
+    "grade": "C",
     "subs": {
      "Trajectory": 6,
-     "Reservoir capture": 2,
+     "Reservoir capture": 3,
      "Surgeon depth": 8,
      "Competitive position": 10,
      "Value capture": 15
@@ -2089,23 +2124,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 68,
-     "pool": 1360
+     "pool": 1360,
+     "factor_pct": 3,
+     "addressable": 41,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 1,
-     "pool": 10
+     "pool": 10,
+     "factor_pct": 20,
+     "addressable": 2,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 27,
-     "pool": 545
+     "pool": 545,
+     "factor_pct": 8,
+     "addressable": 44,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
-     "addressable": 0,
-     "pool": 7
+     "pool": 7,
+     "factor_pct": 12,
+     "addressable": 1,
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -2235,8 +2278,8 @@
      "Competitive laser in-house (Visualase, Medtronic) \u2014 split platform, capital-standardization risk."
     ],
     "opportunities": [
-     "Mets: ~68 addressable of 1360 pool \u2014 under-penetrated.",
-     "Intractable epilepsy: ~27 addressable of 545 pool \u2014 under-penetrated."
+     "Intractable epilepsy: ~44 addressable of 545 pool \u2014 under-penetrated.",
+     "Mets: ~41 addressable of 1360 pool \u2014 under-penetrated."
     ],
     "threats": [
      "Visualase entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
@@ -2276,10 +2319,10 @@
     },
     {
      "type": "Activate referral",
-     "target": "Mets referral base",
-     "objective": "Convert the Mets pool (~68 addressable of 1360) into logged cases via referrer activation.",
+     "target": "Intractable epilepsy referral base",
+     "objective": "Convert the Intractable epilepsy pool (~44 addressable of 545) into logged cases via referrer activation.",
      "tactics": [
-      "Prime the top referrers (Trudy Pang, Niravkumar Barot, Volney Sheen) with the Mets-matched evidence pack.",
+      "Prime the top referrers (Trudy Pang, Niravkumar Barot, Volney Sheen) with the Intractable epilepsy-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
       "Close the referral loop back to the performing surgeon and track conversion."
      ]
@@ -3658,11 +3701,11 @@
     "service_contract": ""
    },
    "health": {
-    "score": 100,
+    "score": 97,
     "grade": "A",
     "subs": {
      "Trajectory": 25,
-     "Reservoir capture": 20,
+     "Reservoir capture": 17,
      "Surgeon depth": 20,
      "Competitive position": 20,
      "Value capture": 15
@@ -3700,23 +3743,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 5,
-     "pool": 96
+     "pool": 96,
+     "factor_pct": 3,
+     "addressable": 3,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 0,
-     "pool": 9
+     "pool": 9,
+     "factor_pct": 20,
+     "addressable": 2,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 61,
-     "pool": 1212
+     "pool": 1212,
+     "factor_pct": 8,
+     "addressable": 97,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
+     "pool": 1,
+     "factor_pct": 12,
      "addressable": 0,
-     "pool": 1
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -3887,7 +3938,7 @@
     ],
     "weaknesses": [],
     "opportunities": [
-     "Intractable epilepsy: ~61 addressable of 1212 pool \u2014 under-penetrated."
+     "Intractable epilepsy: ~97 addressable of 1212 pool \u2014 under-penetrated."
     ],
     "threats": []
    },
@@ -3915,7 +3966,7 @@
     {
      "type": "Activate referral",
      "target": "Intractable epilepsy referral base",
-     "objective": "Convert the Intractable epilepsy pool (~61 addressable of 1212) into logged cases via referrer activation.",
+     "objective": "Convert the Intractable epilepsy pool (~97 addressable of 1212) into logged cases via referrer activation.",
      "tactics": [
       "Prime the top referrers (Steven Wolf, Simon Hanft, Charles Fleischner) with the Intractable epilepsy-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
@@ -4827,11 +4878,11 @@
     "service_contract": ""
    },
    "health": {
-    "score": 86,
-    "grade": "A",
+    "score": 84,
+    "grade": "A-",
     "subs": {
      "Trajectory": 25,
-     "Reservoir capture": 6,
+     "Reservoir capture": 4,
      "Surgeon depth": 20,
      "Competitive position": 20,
      "Value capture": 15
@@ -4868,23 +4919,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 125,
-     "pool": 2503
+     "pool": 2503,
+     "factor_pct": 3,
+     "addressable": 75,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 26,
-     "pool": 519
+     "pool": 519,
+     "factor_pct": 20,
+     "addressable": 104,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 64,
-     "pool": 1271
+     "pool": 1271,
+     "factor_pct": 8,
+     "addressable": 102,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
-     "addressable": 1,
-     "pool": 22
+     "pool": 22,
+     "factor_pct": 12,
+     "addressable": 3,
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -5076,8 +5135,8 @@
     ],
     "weaknesses": [],
     "opportunities": [
-     "Mets: ~125 addressable of 2503 pool \u2014 under-penetrated.",
-     "Intractable epilepsy: ~64 addressable of 1271 pool \u2014 under-penetrated."
+     "Radiation necrosis: ~104 addressable of 519 pool \u2014 under-penetrated.",
+     "Intractable epilepsy: ~102 addressable of 1271 pool \u2014 under-penetrated."
     ],
     "threats": [
      "Competitive KOL activity around John G Golfinos \u2014 confirm allegiance in field."
@@ -5110,10 +5169,10 @@
     },
     {
      "type": "Activate referral",
-     "target": "Mets referral base",
-     "objective": "Convert the Mets pool (~125 addressable of 2503) into logged cases via referrer activation.",
+     "target": "Radiation necrosis referral base",
+     "objective": "Convert the Radiation necrosis pool (~104 addressable of 519) into logged cases via referrer activation.",
      "tactics": [
-      "Prime the top referrers (Daniel J Luciano, Christopher J Elder, Daniel Friedman) with the Mets-matched evidence pack.",
+      "Prime the top referrers (Daniel J Luciano, Christopher J Elder, Daniel Friedman) with the Radiation necrosis-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
       "Close the referral loop back to the performing surgeon and track conversion."
      ]
@@ -5492,18 +5551,24 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 3,
-     "pool": 68
+     "pool": 68,
+     "factor_pct": 3,
+     "addressable": 2,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
+     "pool": 1,
+     "factor_pct": 20,
      "addressable": 0,
-     "pool": 1
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 5,
-     "pool": 100
+     "pool": 100,
+     "factor_pct": 8,
+     "addressable": 8,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     }
    ],
    "universe": {
@@ -5901,11 +5966,11 @@
     "service_contract": ""
    },
    "health": {
-    "score": 58,
+    "score": 59,
     "grade": "B-",
     "subs": {
      "Trajectory": 6,
-     "Reservoir capture": 2,
+     "Reservoir capture": 3,
      "Surgeon depth": 20,
      "Competitive position": 20,
      "Value capture": 10
@@ -5942,13 +6007,17 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 422,
-     "pool": 8431
+     "pool": 8431,
+     "factor_pct": 3,
+     "addressable": 253,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 3,
-     "pool": 64
+     "pool": 64,
+     "factor_pct": 20,
+     "addressable": 13,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     }
    ],
    "universe": {
@@ -6122,7 +6191,7 @@
     ],
     "weaknesses": [],
     "opportunities": [
-     "Mets: ~422 addressable of 8431 pool \u2014 under-penetrated."
+     "Mets: ~253 addressable of 8431 pool \u2014 under-penetrated."
     ],
     "threats": [
      "Competitive KOL activity around Cameron W Brennan \u2014 confirm allegiance in field.",
@@ -6153,7 +6222,7 @@
     {
      "type": "Activate referral",
      "target": "Mets referral base",
-     "objective": "Convert the Mets pool (~422 addressable of 8431) into logged cases via referrer activation.",
+     "objective": "Convert the Mets pool (~253 addressable of 8431) into logged cases via referrer activation.",
      "tactics": [
       "Prime the top referrers (Matthias A Karajannis, Catherine E Scorrano, Fiorella Iglesias Cardenas) with the Mets-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
@@ -6934,23 +7003,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 9,
-     "pool": 186
+     "pool": 186,
+     "factor_pct": 3,
+     "addressable": 6,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 0,
-     "pool": 5
+     "pool": 5,
+     "factor_pct": 20,
+     "addressable": 1,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 14,
-     "pool": 288
+     "pool": 288,
+     "factor_pct": 8,
+     "addressable": 23,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
+     "pool": 1,
+     "factor_pct": 12,
      "addressable": 0,
-     "pool": 1
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -7087,7 +7164,9 @@
    "swot": {
     "strengths": [],
     "weaknesses": [],
-    "opportunities": [],
+    "opportunities": [
+     "Intractable epilepsy: ~23 addressable of 288 pool \u2014 under-penetrated."
+    ],
     "threats": []
    },
    "strategy": [
@@ -7109,6 +7188,16 @@
       "Joint case-selection clinic: co-review 2 of their SEEG/craniotomy candidates for ablation suitability.",
       "Value-analysis support: prep the VAC packet (clinical + economic) to clear capital/committee hurdles.",
       "Carry the indication evidence pack matched to their wheelhouse."
+     ]
+    },
+    {
+     "type": "Activate referral",
+     "target": "Intractable epilepsy referral base",
+     "objective": "Convert the Intractable epilepsy pool (~23 addressable of 288) into logged cases via referrer activation.",
+     "tactics": [
+      "Prime the top referrers (Mercedes Jacobson, Molly C Cincotta, Steven W Hwang) with the Intractable epilepsy-matched evidence pack.",
+      "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
+      "Close the referral loop back to the performing surgeon and track conversion."
      ]
     }
    ],
@@ -7338,8 +7427,10 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 6,
-     "pool": 126
+     "pool": 126,
+     "factor_pct": 3,
+     "addressable": 4,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     }
    ],
    "universe": {
@@ -7854,23 +7945,31 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 116,
-     "pool": 2314
+     "pool": 2314,
+     "factor_pct": 3,
+     "addressable": 69,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 4,
-     "pool": 78
+     "pool": 78,
+     "factor_pct": 20,
+     "addressable": 16,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 54,
-     "pool": 1073
+     "pool": 1073,
+     "factor_pct": 8,
+     "addressable": 86,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     },
     {
      "indication": "Recurrent GBM",
-     "addressable": 0,
-     "pool": 9
+     "pool": 9,
+     "factor_pct": 12,
+     "addressable": 1,
+     "logic": "deep / eloquent / unresectable recurrence with adequate performance status"
     }
    ],
    "universe": {
@@ -8055,8 +8154,8 @@
      "Competitive laser in-house (Visualase, Medtronic) \u2014 split platform, capital-standardization risk."
     ],
     "opportunities": [
-     "Mets: ~116 addressable of 2314 pool \u2014 under-penetrated.",
-     "Intractable epilepsy: ~54 addressable of 1073 pool \u2014 under-penetrated."
+     "Intractable epilepsy: ~86 addressable of 1073 pool \u2014 under-penetrated.",
+     "Mets: ~69 addressable of 2314 pool \u2014 under-penetrated."
     ],
     "threats": [
      "Visualase entrenchment / competitive KOL influence \u2014 monitor capital cycle and consulting ties.",
@@ -8109,10 +8208,10 @@
     },
     {
      "type": "Activate referral",
-     "target": "Mets referral base",
-     "objective": "Convert the Mets pool (~116 addressable of 2314) into logged cases via referrer activation.",
+     "target": "Intractable epilepsy referral base",
+     "objective": "Convert the Intractable epilepsy pool (~86 addressable of 1073) into logged cases via referrer activation.",
      "tactics": [
-      "Prime the top referrers (Shahram Izadyar, Xiangping Zhou, Carlos F Muniz) with the Mets-matched evidence pack.",
+      "Prime the top referrers (Shahram Izadyar, Xiangping Zhou, Carlos F Muniz) with the Intractable epilepsy-matched evidence pack.",
       "Build the tumor-board / epilepsy-conference presence so LITT is named as an option at case selection.",
       "Close the referral loop back to the performing surgeon and track conversion."
      ]
@@ -8408,18 +8507,24 @@
    "reservoirs": [
     {
      "indication": "Mets",
-     "addressable": 18,
-     "pool": 350
+     "pool": 350,
+     "factor_pct": 3,
+     "addressable": 10,
+     "logic": "deep / surgically-inaccessible lesions or SRS-failed local recurrence"
     },
     {
      "indication": "Radiation necrosis",
-     "addressable": 1,
-     "pool": 22
+     "pool": 22,
+     "factor_pct": 20,
+     "addressable": 4,
+     "logic": "symptomatic / steroid-dependent / progressive RN (biopsy + ablation + steroid weaning in one pass)"
     },
     {
      "indication": "Intractable epilepsy",
-     "addressable": 9,
-     "pool": 175
+     "pool": 175,
+     "factor_pct": 8,
+     "addressable": 14,
+     "logic": "focal, localizable epilepsy \u2014 MTLE, focal cortical dysplasia, hypothalamic hamartoma, PVNH"
     }
    ],
    "universe": {

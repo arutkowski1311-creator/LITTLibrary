@@ -29,7 +29,15 @@ Open `account-cards-standalone.html` (double-click, works offline) to evaluate i
 - **Composite health grade** as a gauge seal on every page **plus transparent sub-scores**,
   so the grade is never a black box.
 - **Full-year 2026 projection** (through Dec 31), net-sales bars, KPI tiles for probes/case
-  and $/case vs region average, and an addressable-reservoir chart.
+  and $/case vs region average.
+- **Addressable reservoirs by indication.** Pool = claims coded for the indication in the
+  account's referral area. Addressable = pool × a **per-indication LITT-eligibility factor**
+  (radiation necrosis 20% · recurrent GBM 12% · focal epilepsy 8% · mets 3%) — not a flat
+  rate, because LITT suitability differs sharply by indication. Both pool and factor are
+  **editable per account** and recompute the bars, the $ opportunity (addressable × region
+  avg case) and the headline live. This is the **total winnable market/yr, inclusive of
+  current cases** — not incremental; the plan's realistic near-term add is the separate
+  "Annual potential" figure. The logic is spelled out under each bar and in a panel note.
 - **Persist / share / print**: edits save to `localStorage` per account, with JSON
   **Export / Import** and a two-page **Print / PDF** (research appendix follows).
 
