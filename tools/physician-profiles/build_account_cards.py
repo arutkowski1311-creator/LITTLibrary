@@ -545,6 +545,28 @@ def strategy_seed(acct, hdr, naive_ranked):
         })
     return plays
 
+# ---- field intelligence: rep-owned layer no database can supply ----------------
+# One structured slot per kind of on-the-ground fact (staff moves, champion,
+# competitor activity, capital status, decision-makers, recent events, sentiment).
+# Medscout gives volumes; sales gives revenue; only the rep knows a surgeon is
+# leaving. Seeded empty unless the account intel carries a curated overlay.
+FIELD_INTEL_SLOTS = [
+    ("staff_moves", "Staff & surgeon moves", "— surgeons arriving / leaving / retiring; volume impact —"),
+    ("champion", "Champion & relationship", "— who's our advocate, how strong —"),
+    ("competitor_activity", "Competitor activity", "— Visualase / ClearPoint reps, trials, evals on the ground —"),
+    ("capital_status", "Capital / committee status", "— purchase in motion, budget frozen, VAC pending —"),
+    ("decision_makers", "Decision-makers & blockers", "— who actually controls the platform decision —"),
+    ("recent_events", "Recent events", "— new hire, new iMRI, service issue, lost case —"),
+    ("sentiment", "Momentum & sentiment", "— warming / cooling / stalled, and why —"),
+]
+
+def field_intel(acct):
+    fi = dict(acct.get("field_intel") or {})
+    out = {"updated": fi.get("updated", "")}
+    for key, _label, _ph in FIELD_INTEL_SLOTS:
+        out[key] = fi.get(key, "")
+    return out
+
 # ---- assemble ------------------------------------------------------------------
 cards = []
 for acct in AI.ACCOUNTS:
@@ -562,6 +584,7 @@ for acct in AI.ACCOUNTS:
         "business": biz,
         "reservoirs": reservoirs(acct),
         "universe": {"performers": perf, "kols": kols, "naive_targets": naive, "referrers": refs},
+        "field_intel": field_intel(acct),
         "swot": swot_seed(acct, biz, hdr),
         "strategy": strategy_seed(acct, hdr, naive),
         "appendix": build_appendix(acr, acct),

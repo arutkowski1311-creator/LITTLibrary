@@ -182,6 +182,14 @@ table.u tr:last-child td{border-bottom:none}
 
 /* SWOT */
 .swot{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.fintel{display:grid;grid-template-columns:1fr 1fr;gap:7px 12px}
+.fintel .fi{border:1px solid var(--rule);border-radius:7px;padding:6px 9px 7px;background:var(--sheet-2);min-height:44px}
+.fintel .fi.wide{grid-column:1 / -1}
+.fintel .fi .fl{font-size:8.6px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--brand-2);margin-bottom:2px}
+.fintel .fi .fv{font-size:10.6px;line-height:1.36;color:var(--ink)}
+.fintel .fi .fv:empty::before,.fintel .fi .fv.ph{color:var(--ink-3);font-style:italic}
+.fi-hd{display:flex;align-items:baseline;justify-content:space-between;font-size:9.6px;color:var(--ink-3);margin:-2px 0 7px}
+.fi-hd .own{font-weight:700;color:var(--brand-2);letter-spacing:.04em}
 .q{border:1px solid var(--rule);border-radius:8px;padding:9px 10px;min-height:120px}
 .q h4{margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;display:flex;gap:7px;align-items:center}
 .q h4 .b{width:6px;height:16px;border-radius:2px}
@@ -559,6 +567,25 @@ function render(acct0){
       <div class="addpt" onclick="addPoint('${acr}','${key}')">+ add point</div></div>`;
   };
 
+  // field intelligence — rep-owned layer no database supplies
+  const FINTEL_SLOTS=[
+    ["staff_moves","Staff & surgeon moves","— surgeons arriving / leaving / retiring; volume impact —",true],
+    ["champion","Champion & relationship","— who's our advocate, how strong —",false],
+    ["competitor_activity","Competitor activity","— Visualase / ClearPoint reps, trials, evals on the ground —",false],
+    ["capital_status","Capital / committee status","— purchase in motion, budget frozen, VAC pending —",false],
+    ["decision_makers","Decision-makers & blockers","— who actually controls the platform decision —",false],
+    ["recent_events","Recent events","— new hire, new iMRI, service issue, lost case —",false],
+    ["sentiment","Momentum & sentiment","— warming / cooling / stalled, and why —",true],
+  ];
+  const fi=acct.field_intel||{};
+  const fintelHTML=`<div class="fi-hd"><span><span class="own">Field-reported · rep-owned</span> — what Medscout &amp; sales can't see</span>
+      <span>Last updated ${edT(acr,"field_intel.updated",fi.updated||"—")}</span></div>
+    <div class="fintel">`+FINTEL_SLOTS.map(([k,label,ph,wide])=>{
+      const v=fi[k], has=v&&!/^—.*—$/.test(String(v).trim());
+      return `<div class="fi${wide?' wide':''}"><div class="fl">${label}</div>
+        <div class="fv${has?'':' ph'}">${edT(acr,`field_intel.${k}`,has?v:ph)}</div></div>`;
+    }).join("")+`</div>`;
+
   // strategy
   const playClass=t=>/crack/i.test(t)?"crack":/referral/i.test(t)?"referral":/defend/i.test(t)?"defend":"";
   const playHTML=(acct.strategy||[]).map((p,pi)=>{
@@ -622,9 +649,11 @@ function render(acct0){
     ${nameplate()}
     <div class="sec"><h2><span class="n">D</span> Situation</h2>
       <div style="font-size:11.5px;line-height:1.45;color:var(--ink)">${edT(acr,"situation",acct.situation,"div")}</div></div>
-    <div class="sec"><h2><span class="n">E</span> SWOT Analysis</h2>
+    <div class="sec"><h2><span class="n">E</span> Field Intelligence</h2>
+      ${fintelHTML}</div>
+    <div class="sec"><h2><span class="n">F</span> SWOT Analysis</h2>
       <div class="swot">${swotBox("strengths","s","Strengths")}${swotBox("weaknesses","w","Weaknesses")}${swotBox("opportunities","o","Opportunities")}${swotBox("threats","t","Threats")}</div></div>
-    <div class="sec"><h2><span class="n">F</span> Strategy &amp; Tactics</h2>
+    <div class="sec"><h2><span class="n">G</span> Strategy &amp; Tactics</h2>
       ${playHTML}
       <div class="addplay" onclick="addPlay('${acr}')">+ add strategy play</div></div>
     <div class="foot"><span>Strengths · Weaknesses · Opportunities · Threats → Concrete plays</span><span>Page 2 / 2 · ${esc(acr)}</span></div>
@@ -663,7 +692,7 @@ function render(acct0){
     }).join("");
     appx=`<div class="sheet appx">
       ${nameplate()}
-      <div class="sec"><h2><span class="n">G</span> Research Appendix — Physician Deep Dives</h2>
+      <div class="sec"><h2><span class="n">H</span> Research Appendix — Physician Deep Dives</h2>
         <div style="font-size:10.5px;color:var(--ink-2);margin-bottom:9px">Every performer and LITT-naïve target on this account, with research focus (bios · hospital sites · PubMed).
         Papers are sorted by how closely they tie to LITT (<b style="color:var(--heat)">LITT</b> = directly laser/ablation · <b style="color:var(--warn)">ADJ</b> = ablation-amenable indication), then by date.</div>
         ${entries}</div>

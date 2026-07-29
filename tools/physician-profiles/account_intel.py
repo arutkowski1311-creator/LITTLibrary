@@ -45,6 +45,16 @@ ACCOUNTS = [
         "epilepsy_referrers": [("Samuel E Koszer", 344), ("Shraddha Srinivasan", 96)],
         "necrosis_referrers": [("Michael Waldrop", 217), ("Katherine D Brodie", 206), ("Wen R Zhang", 189)],
         "business_potential_yr": 108352, "incremental_cases": 8, "win": "High",
+        "field_intel": {
+            "updated": "2026-07",
+            "staff_moves": "Guy McKhann departing for Emory (confirmed). Brian Gill is the designated successor. Adjust McKhann's forward NeuroBlate volume down through year-end and shift his cases to Gill; expect only 1–2 bridge cases from McKhann before he transitions, and 1–2 may follow him to whoever covers Emory. Priority: lock Gill as primary operator and protect the install base before the handoff.",
+            "champion": "McKhann has been the sole champion — relationship strong but leaving. Gill (5 cases) is the continuity play; deepen the relationship now so the franchise survives the transition.",
+            "competitor_activity": "In-house Visualase rep on site. Brett Youngerman shows 2 LITT in claims not in our log (likely Visualase) — confirm platform and contest.",
+            "capital_status": "— confirm capital / VAC status in the field —",
+            "decision_makers": "— confirm who owns the platform decision post-McKhann —",
+            "recent_events": "McKhann → Emory transition in progress; successor handoff to Gill underway.",
+            "sentiment": "Fastest-growing account on revenue, but single-champion risk is now live with the McKhann departure — momentum intact only if Gill converts.",
+        },
     },
     {
         "rank": 2, "name": "Yale New Haven", "acronym": "YALE", "system": "Yale New Haven Health System",
