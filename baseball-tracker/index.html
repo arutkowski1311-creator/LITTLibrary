@@ -17,7 +17,7 @@
   /* hero */
   .hero{background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep);padding:22px 18px 18px}
   .hero .bar{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px}
-  .badge{width:50px;height:46px;border-radius:10px;background:var(--blue-deep);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:23px;white-space:nowrap;letter-spacing:0}
+  .badge{width:52px;height:46px;border-radius:10px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:23px;white-space:nowrap;letter-spacing:0}
   .badge b{color:var(--brown-pale)}
   .wm{font-family:var(--font-display);font-size:30px;line-height:.9}
   .wm .co{color:var(--blue)}
@@ -77,11 +77,12 @@
   <p>Eight modules on one multi-tenant spine. Green = live prototype you can click today. Amber = backend blueprint written. Grey = planned in the build roadmap.</p>
   <div class="phases">
     <div class="ph"><b>Phase 0</b>Spine · auth · RLS<span class="s">Blueprint</span></div>
-    <div class="ph"><b>Financial</b>Payments · Stripe<span class="s">Blueprint</span></div>
+    <div class="ph"><b>Financial</b>Payments · Stripe<span class="s">Live</span></div>
     <div class="ph"><b>Calendar</b>Scheduling<span class="s">Live</span></div>
     <div class="ph"><b>Parent Home</b>Retention · social<span class="s">Live</span></div>
-    <div class="ph"><b>RAW Score</b>The moat<span class="s">Live</span></div>
-    <div class="ph"><b>Scorekeeper</b>Stats · broadcast<span class="s">Live</span></div>
+    <div class="ph"><b>RAW Score</b>Index · report<span class="s">Live</span></div>
+    <div class="ph"><b>Scorekeeper</b>Score · box · analytics<span class="s">Live</span></div>
+    <div class="ph"><b>Broadcast</b>Overlay · stream<span class="s">Live</span></div>
     <div class="ph"><b>Training</b>Workouts<span class="s">Live</span></div>
     <div class="ph"><b>Coaching</b>Eval · video<span class="s">Live</span></div>
   </div>
@@ -102,7 +103,11 @@
     raw:"https://claude.ai/code/artifact/4f9af97b-fa7c-4540-9566-bd9607ef01d8",
     score:"https://claude.ai/code/artifact/cbd95816-9737-434e-9106-a7799d916c1f",
     train:"https://claude.ai/code/artifact/707d0652-055d-40f3-83a7-1ef3e30ef488",
-    coach:"https://claude.ai/code/artifact/e5b4f706-f587-4243-a8d9-730e9a88ef36"
+    coach:"https://claude.ai/code/artifact/e5b4f706-f587-4243-a8d9-730e9a88ef36",
+    box:"https://claude.ai/code/artifact/aff11548-b6d3-4b74-9205-bd49cd27c4d3",
+    report:"https://claude.ai/code/artifact/947e046e-6e97-4064-b704-76010c2f5824",
+    broadcast:"https://claude.ai/code/artifact/b1d1f595-f65f-4708-ba42-b552b49d8a36",
+    pay:"https://claude.ai/code/artifact/00d1770c-f390-47df-83bf-79f3baa8f24a"
   };
   // module catalog
   var M={
@@ -110,18 +115,21 @@
     cal:{ic:"📅",bg:"#C79A3A",n:"Calendar",p:"Practices, games, tournaments and testing — with RSVP, uniform and directions.",u:U.cal,st:"live"},
     raw:{ic:"📊",bg:"#7FAED6",n:"RAW Score",p:"The development index across 8 weighted domains — your player's growth over time.",u:U.raw,st:"live"},
     score:{ic:"🎥",bg:"#111",n:"Scorekeeper & Broadcast",p:"Score the game, tag every play, run the multi-camera stream and cut clips live.",u:U.score,st:"live"},
+    box:{ic:"📊",bg:"#2F6DB0",n:"Box Score & Analytics",p:"Line score, full box score, spray chart and pitch heatmap — with CSV/print export.",u:U.box,st:"live"},
+    broadcast:{ic:"📺",bg:"#111",n:"Broadcast Producer",p:"On-air scoreboard + lower-thirds, multi-angle switching and a shareable viewer link.",u:U.broadcast,st:"live"},
     train:{ic:"💪",bg:"#2C7C55",n:"Training",p:"Coach-assigned workouts with set logging — feeds Athletic Capacity in the RAW Score.",u:U.train,st:"live"},
     coach:{ic:"🎬",bg:"#6A4A2B",n:"Coaching",p:"Player evaluations, the auto-filed video library, and practice-plan time tracking.",u:U.coach,st:"live"},
-    pay:{ic:"💳",bg:"#B9762A",n:"Payments",p:"Team fees, tournament billing and payouts on Stripe Connect.",st:"bp"},
+    report:{ic:"📄",bg:"#7A4FB5",n:"RAW Report",p:"Printable one-page player report — score, domains, measurables and clips — for recruiting.",u:U.report,st:"live"},
+    pay:{ic:"💳",bg:"#B9762A",n:"Payments",p:"Team fees, tournament billing, invoices and payouts on Stripe Connect.",u:U.pay,st:"live"},
     scout:{ic:"🔍",bg:"#2E5D8F",n:"Scout Portal",p:"Shareable RAW Reports and verified clips for recruiters and college coaches.",st:"pl"},
     ops:{ic:"🏟️",bg:"#111",n:"Command Center",p:"Org-wide view: every team, roster, revenue and coach hours in one place.",st:"pl"}
   };
   var ROLES=[
-    {id:"parent",ic:"👪",l:"Parent",d:"Everything about your player, in one daily home.",mods:["home","cal","raw","score","pay"]},
-    {id:"player",ic:"🧢",l:"Player",d:"Your schedule, training, film and development index.",mods:["cal","train","raw","score"]},
-    {id:"coach",ic:"📋",l:"Coach",d:"Run practices, evaluate players, score games and manage film.",mods:["coach","score","cal","raw","train"]},
-    {id:"org",ic:"🏟️",l:"Org / Director",d:"Operate the whole club — teams, money and staff.",mods:["ops","pay","coach","cal","score"]},
-    {id:"scout",ic:"🔍",l:"Scout",d:"Verified performance data and film for recruiting.",mods:["scout","raw","score"]}
+    {id:"parent",ic:"👪",l:"Parent",d:"Everything about your player, in one daily home.",mods:["home","cal","raw","report","score","pay"]},
+    {id:"player",ic:"🧢",l:"Player",d:"Your schedule, training, film and development index.",mods:["cal","train","raw","report","score"]},
+    {id:"coach",ic:"📋",l:"Coach",d:"Run practices, evaluate players, score games and manage film.",mods:["coach","score","box","broadcast","cal","raw","train"]},
+    {id:"org",ic:"🏟️",l:"Org / Director",d:"Operate the whole club — teams, money and staff.",mods:["ops","pay","coach","box","broadcast","score","cal"]},
+    {id:"scout",ic:"🔍",l:"Scout",d:"Verified performance data and film for recruiting.",mods:["scout","report","raw","box","score"]}
   ];
   var cur=0;
   function renderRoles(){
