@@ -144,6 +144,7 @@
 
   // ---- PDF generation via jsPDF ----
   function makePDF(it){
+    if(!window.jspdf){ AH.toast("PDF download works on the published site."); return; }
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({unit:"pt",format:"letter"});
     const W = doc.internal.pageSize.getWidth();
