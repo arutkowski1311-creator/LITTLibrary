@@ -1,0 +1,188 @@
+<style>
+  :root{
+    --bone:#F2F2F2;--white:#FFF;--ink:#111;--blue:#7FAED6;--blue-deep:#2E5D8F;--brown:#6A4A2B;--brown-pale:#EFE7DE;
+    --good:#2C7C55;--warn:#B9762A;--hot:#C23B34;--gold:#C79A3A;
+    --page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;
+    --accent:var(--blue-deep);--accent-ink:#fff;--bar:#2E5D8F;
+    --font-display:'Anton','Oswald','Arial Narrow',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;--bar:#5B9BD4;}}
+  :root[data-theme="light"]{--page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;--accent:var(--blue-deep);--accent-ink:#fff;--bar:#2E5D8F;}
+  :root[data-theme="dark"]{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;--bar:#5B9BD4;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  a{text-decoration:none;color:inherit}
+  header{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep)}
+  .badge{width:36px;height:36px;border-radius:8px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px}
+  .badge b{color:var(--brown-pale)}
+  header .title{font-family:var(--font-display);font-size:18px;line-height:1}
+  header .sub{font-size:11px;color:#9fb6c9}
+  .season{margin-left:auto;font-size:12px;color:#9fb6c9}
+  .themetgl{background:#ffffff1f;border:1px solid #ffffff33;color:#fff;border-radius:7px;padding:5px 8px;font-size:12px;cursor:pointer;margin-left:10px}
+  .wrap{max-width:1160px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:16px}
+  .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  @media(max-width:900px){.tiles{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 13px}
+  .tile .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--mute)}
+  .tile .v{font-family:var(--font-display);font-size:26px;line-height:1;margin-top:4px}
+  .tile .d{font-size:10.5px;color:var(--mute);margin-top:3px}
+  .tile .d.up{color:var(--good)}
+  .split{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start}
+  @media(max-width:880px){.split{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ch{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .ch .t{font-family:var(--font-display);font-size:14px}
+  .ch .r{margin-left:auto;font-size:12px;color:var(--accent)}
+  /* teams table */
+  .tbl{overflow-x:auto}
+  .tbl table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px}
+  .tbl th,.tbl td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  .tbl th{font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--mute);font-weight:600}
+  .tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .tbl tr:hover td{background:var(--raise)}
+  .fill{display:flex;align-items:center;gap:7px;min-width:96px}
+  .fill .m{flex:1;height:7px;border-radius:5px;background:var(--raise);border:1px solid var(--line);overflow:hidden}
+  .fill .m i{display:block;height:100%;background:var(--bar)}
+  .fill .m i.low{background:var(--warn)}
+  .fill .x{font-size:11px;color:var(--mute);min-width:38px;text-align:right}
+  .rec{font-weight:600}
+  /* coach hours */
+  .coach{padding:6px 14px 12px}
+  .cr{display:grid;grid-template-columns:120px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--line)}
+  .cr:last-child{border-bottom:0}
+  .cr .nm{font-weight:600;font-size:13px}
+  .cr .m{height:8px;border-radius:5px;background:var(--raise);border:1px solid var(--line);overflow:hidden}
+  .cr .m i{display:block;height:100%;background:var(--bar)}
+  .cr .h{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--mute);min-width:78px;text-align:right}
+  .cr .h b{color:var(--text)}
+  .payroll{padding:10px 14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute);display:flex;justify-content:space-between}
+  .payroll b{color:var(--text);font-family:var(--font-display);font-size:16px}
+  /* alerts */
+  .alerts{padding:8px 14px 12px}
+  .al{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);align-items:flex-start}
+  .al:last-child{border-bottom:0}
+  .al .ic{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+  .al.warn .ic{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+  .al.hot .ic{background:color-mix(in srgb,var(--hot) 16%,transparent);color:var(--hot)}
+  .al.info .ic{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+  .al .bd{font-size:13px}.al .bd .mt{font-size:11.5px;color:var(--mute)}
+  .al a{color:var(--accent);font-weight:600;font-size:12px}
+  /* quick links */
+  .qlinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px}
+  .ql{display:flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--raise);border-radius:10px;padding:10px;font-size:13px;font-weight:600;transition:border-color .12s,transform .12s}
+  .ql:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .ql .e{font-size:16px}
+  .foot{max-width:1160px;margin:0 auto;padding:2px 16px 26px;color:var(--mute);font-size:11px}
+</style>
+
+<header>
+  <div class="badge disp">R<b>C</b></div>
+  <div><div class="title">Command Center</div><div class="sub">NJ Raw Baseball · Org director</div></div>
+  <div class="season num">Season: Summer 2026</div>
+  <button class="themetgl" id="themeBtn">◐</button>
+</header>
+
+<div class="wrap">
+  <div class="tiles">
+    <div class="tile"><div class="k">Teams</div><div class="v num">6</div><div class="d">4 age groups</div></div>
+    <div class="tile"><div class="k">Athletes</div><div class="v num">72</div><div class="d up">▲ 8 this season</div></div>
+    <div class="tile"><div class="k">Coaches</div><div class="v num">9</div><div class="d">6 head · 3 asst</div></div>
+    <div class="tile"><div class="k">Revenue</div><div class="v num">$54.3k</div><div class="d up">▲ 12% YoY</div></div>
+    <div class="tile"><div class="k">Collected</div><div class="v num">88%</div><div class="d">$3.9k outstanding</div></div>
+    <div class="tile"><div class="k">Roster fill</div><div class="v num">92%</div><div class="d">72 of 78 spots</div></div>
+  </div>
+
+  <div class="split">
+    <div class="col" style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="ch"><span class="t">Teams</span><a class="r" href="#">Manage →</a></div>
+        <div class="tbl" id="teams"></div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="t">Coach hours — this month</span><a class="r" href="https://claude.ai/code/artifact/e5b4f706-f587-4243-a8d9-730e9a88ef36" target="_blank" rel="noopener">Coaching →</a></div>
+        <div class="coach" id="coach"></div>
+        <div class="payroll"><span>Estimated coach payroll · July</span><b class="num" id="payroll">$0</b></div>
+      </div>
+    </div>
+
+    <div class="col" style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="ch"><span class="t">Needs attention</span></div>
+        <div class="alerts" id="alerts"></div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="t">Jump to</span></div>
+        <div class="qlinks">
+          <a class="ql" href="https://claude.ai/code/artifact/00d1770c-f390-47df-83bf-79f3baa8f24a" target="_blank" rel="noopener"><span class="e">💳</span>Financials</a>
+          <a class="ql" href="https://claude.ai/code/artifact/c3552373-6287-43f7-abff-b56b7b684a5e" target="_blank" rel="noopener"><span class="e">📅</span>Calendar</a>
+          <a class="ql" href="https://claude.ai/code/artifact/e5b4f706-f587-4243-a8d9-730e9a88ef36" target="_blank" rel="noopener"><span class="e">🎬</span>Coaching</a>
+          <a class="ql" href="https://claude.ai/code/artifact/a02fd9d3-2010-4320-81cd-7bf609acb3d5" target="_blank" rel="noopener"><span class="e">🔍</span>Scout Portal</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="foot">Prototype · sample figures. The Command Center is the org's bird's-eye: every team, athlete, coach and dollar in one place, with alerts that link straight to the module that resolves them. Data rolls up from the same tenant — teams, invoices (Financials), practice time (Coaching) and rosters.</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var TEAMS=[
+    {n:"15U National",coach:"Tony M.",cap:13,have:13,w:18,l:6,rev:12400},
+    {n:"14U National",coach:"Jimmy C.",cap:13,have:12,w:15,l:9,rev:10800},
+    {n:"16U Showcase",coach:"Rob D.",cap:15,have:14,w:10,l:12,rev:9900},
+    {n:"13U Elite",coach:"Marco S.",cap:12,have:11,w:12,l:10,rev:8600},
+    {n:"12U Elite",coach:"Dana P.",cap:12,have:12,w:14,l:8,rev:7200},
+    {n:"11U Development",coach:"Ana R.",cap:13,have:10,w:8,l:10,rev:5400}
+  ];
+  (function(){
+    var h='<table><thead><tr><th>Team</th><th>Head coach</th><th>Roster</th><th class="num">Record</th><th class="num">Revenue</th></tr></thead><tbody>';
+    TEAMS.forEach(function(t){
+      var pct=Math.round(t.have/t.cap*100);var low=pct<85;
+      h+='<tr><td><b>'+t.n+'</b></td><td>'+t.coach+'</td>'+
+        '<td><div class="fill"><div class="m"><i class="'+(low?"low":"")+'" style="width:'+pct+'%"></i></div><span class="x num">'+t.have+'/'+t.cap+'</span></div></td>'+
+        '<td class="num rec">'+t.w+'–'+t.l+'</td>'+
+        '<td class="num">$'+t.rev.toLocaleString()+'</td></tr>';
+    });
+    h+='</tbody></table>';
+    $("#teams").innerHTML=h;
+  })();
+
+  var COACH=[
+    {n:"Tony M.",h:42},{n:"Rob D.",h:38},{n:"Jimmy C.",h:36},{n:"Marco S.",h:31},{n:"Dana P.",h:28},{n:"Ana R.",h:22}
+  ];
+  var RATE=35;
+  (function(){
+    var maxH=42,tot=0;var el=$("#coach");el.innerHTML="";
+    COACH.forEach(function(c){tot+=c.h;
+      var d=document.createElement("div");d.className="cr";
+      d.innerHTML='<div class="nm">'+c.n+'</div><div class="m"><i style="width:'+(c.h/maxH*100)+'%"></i></div>'+
+        '<div class="h"><b>'+c.h+'h</b> · $'+(c.h*RATE).toLocaleString()+'</div>';
+      el.appendChild(d);
+    });
+    $("#payroll").textContent="$"+(tot*RATE).toLocaleString();
+  })();
+
+  var ALERTS=[
+    {t:"hot",ic:"!",bd:"2 invoices overdue",mt:"$525 · Roman, Nguyen · 8+ days late",a:"Open Financials",u:"https://claude.ai/code/artifact/00d1770c-f390-47df-83bf-79f3baa8f24a"},
+    {t:"warn",ic:"▤",bd:"11U Development below roster target",mt:"10 of 13 spots filled — 3 tryout invites pending",a:"View roster",u:"#"},
+    {t:"warn",ic:"⚠",bd:"Coach Rob — SafeSport cert expires in 21 days",mt:"Renewal reminder sent Jul 24",a:"Compliance",u:"#"},
+    {t:"info",ic:"◆",bd:"Cooperstown Elite Weekend in 16 days",mt:"3 teams entered · hotel block 60% booked",a:"Open Calendar",u:"https://claude.ai/code/artifact/c3552373-6287-43f7-abff-b56b7b684a5e"}
+  ];
+  (function(){var el=$("#alerts");el.innerHTML="";
+    ALERTS.forEach(function(a){var d=document.createElement("div");d.className="al "+a.t;
+      var link=a.u==="#"?'<a href="#">'+a.a+' →</a>':'<a href="'+a.u+'" target="_blank" rel="noopener">'+a.a+' →</a>';
+      d.innerHTML='<div class="ic">'+a.ic+'</div><div class="bd">'+a.bd+'<div class="mt">'+a.mt+'</div>'+link+'</div>';
+      el.appendChild(d);});
+  })();
+
+  $("#themeBtn").onclick=function(){var d=document.documentElement;
+    var c=d.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    d.setAttribute("data-theme",c==="dark"?"light":"dark");};
+})();
+</script>
