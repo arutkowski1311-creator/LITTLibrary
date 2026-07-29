@@ -10,19 +10,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>
-  .manual-hero{background:var(--forest);color:var(--cream);padding:clamp(3rem,7vw,5rem) 0 2.5rem;text-align:center}
-  .wifi-card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);padding:1.6rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:-3rem auto 2rem;max-width:760px;position:relative;z-index:2}
+  .manual-hero{background:radial-gradient(120% 100% at 70% 0%,#241d10,transparent 55%),var(--bg-2);
+    border-bottom:1px solid var(--line-gold);padding:clamp(3rem,7vw,5rem) 0 3rem;text-align:center}
+  .wifi-card{background:var(--panel);border:1px solid var(--line-gold);border-radius:16px;box-shadow:var(--shadow);
+    padding:1.6rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:-2.5rem auto 2rem;max-width:760px;position:relative;z-index:2}
   .wifi-card .cell{text-align:center}
-  .wifi-card .k{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);font-weight:700}
-  .wifi-card .v{font-family:var(--serif);font-size:1.5rem;color:var(--forest);word-break:break-word}
-  .man-sec{background:var(--white);border-radius:16px;box-shadow:var(--shadow-sm);padding:1.6rem;margin-bottom:1.2rem;border:1px solid rgba(0,0,0,.04)}
-  .man-sec h3{display:flex;align-items:center;gap:.6rem;font-size:1.35rem;color:var(--forest)}
+  .wifi-card .k{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .wifi-card .v{font-family:var(--serif);font-size:1.5rem;color:var(--white);word-break:break-word}
+  .man-sec{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.6rem;margin-bottom:1.2rem}
+  .man-sec h3{display:flex;align-items:center;gap:.6rem;font-size:1.35rem;color:var(--white)}
   .man-sec .ic{font-size:1.6rem}
   .man-sec ul{margin:.6rem 0 0;padding-left:1.3rem}
-  .man-sec li{margin:.45rem 0;font-size:.96rem}
-  .emergency-card{background:#8a3d13;color:#fff;border-radius:16px;padding:1.6rem;margin:1.2rem 0}
-  .emergency-card h3{color:#fff}.emergency-card a{color:#ffd9b0}
-  @media print{.noprint{display:none}.man-sec,.wifi-card{box-shadow:none;border:1px solid #ddd}}
+  .man-sec li{margin:.45rem 0;font-size:.94rem;color:var(--body)}
+  .emergency-card{background:linear-gradient(180deg,#3a2010,#241208);border:1px solid rgba(217,138,69,.4);color:#f2e3d4;border-radius:16px;padding:1.6rem;margin:1.2rem 0}
+  .emergency-card h3{color:#fff}.emergency-card a{color:#f0b782}
+  /* ink-friendly when printing / saving as PDF */
+  @media print{
+    body{background:#fff!important;color:#111!important}
+    .manual-hero{background:#fff!important;border-bottom:1px solid #ccc}
+    .manual-hero .eyebrow,.wifi-card .k,.man-sec h3{color:#8a6a20!important}
+    .wifi-card,.man-sec{background:#fff!important;border:1px solid #ddd!important;box-shadow:none!important;color:#111!important}
+    .wifi-card .v,.man-sec li,h1,.lead{color:#111!important}
+    .emergency-card{background:#fff!important;border:1px solid #b3541f!important;color:#111!important}
+    .noprint{display:none}
+  }
 </style>
 </head>
 <body>

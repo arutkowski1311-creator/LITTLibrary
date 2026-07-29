@@ -19,33 +19,37 @@
     ctx.clearRect(0,0,W,H);
 
     const finish = ()=>{
-      // gradient scrim
+      // gradient scrim (black)
       const g=ctx.createLinearGradient(0,0,0,H);
-      g.addColorStop(0,"rgba(16,22,17,.35)"); g.addColorStop(.55,"rgba(16,22,17,0)");
-      g.addColorStop(1,"rgba(16,22,17,.92)");
+      g.addColorStop(0,"rgba(8,8,10,.5)"); g.addColorStop(.5,"rgba(8,8,10,.1)");
+      g.addColorStop(1,"rgba(6,6,8,.95)");
       ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
 
+      // thin gold frame
+      ctx.strokeStyle="rgba(200,162,76,.5)"; ctx.lineWidth=3;
+      ctx.strokeRect(40,40,W-80,H-80);
+
       // top eyebrow
-      ctx.fillStyle="#caa668"; ctx.font="600 34px Inter, sans-serif"; ctx.textAlign="center";
-      ctx.fillText("W I L M I N G T O N ,   N Y", W/2, 130);
+      ctx.fillStyle="#c8a24c"; ctx.font="600 34px Inter, sans-serif"; ctx.textAlign="center";
+      ctx.fillText("W I L M I N G T O N ,   N Y", W/2, 150);
 
       // brand
-      ctx.fillStyle="#f5efe4"; ctx.font="700 96px 'Cormorant Garamond', Georgia, serif";
-      ctx.fillText(propName.toUpperCase(), W/2, 250);
+      ctx.fillStyle="#f6f3ec"; ctx.font="600 92px 'Cormorant Garamond', Georgia, serif";
+      ctx.fillText(propName.toUpperCase(), W/2, 260);
 
       // vibe / dates block near bottom
       let by = H-360;
-      if(datesEl.value){ ctx.fillStyle="#f5efe4"; ctx.font="600 56px 'Cormorant Garamond', serif";
-        ctx.fillText(datesEl.value, W/2, by); by+=80; }
-      ctx.fillStyle="#e7dcc7"; ctx.font="400 40px Inter, sans-serif";
+      if(datesEl.value){ ctx.fillStyle="#e6c983"; ctx.font="italic 600 58px 'Cormorant Garamond', serif";
+        ctx.fillText(datesEl.value, W/2, by); by+=82; }
+      ctx.fillStyle="#d6d2c8"; ctx.font="400 40px Inter, sans-serif";
       const vibe = vibeEl.value || "Adirondack air, Whiteface views, and quiet woods";
-      wrap(vibe, W/2, by, W-160, 50);
+      wrap(vibe, W/2, by, W-180, 50);
 
       // footer CTA
-      ctx.fillStyle="#caa668"; ctx.font="700 40px Inter, sans-serif";
-      ctx.fillText("BOOK DIRECT", W/2, H-150);
-      ctx.fillStyle="#f5efe4"; ctx.font="400 34px Inter, sans-serif";
-      ctx.fillText((S.brand.url||"").replace(/^https?:\/\//,""), W/2, H-95);
+      ctx.fillStyle="#c8a24c"; ctx.font="700 40px Inter, sans-serif";
+      ctx.fillText("BOOK DIRECT", W/2, H-160);
+      ctx.fillStyle="#f6f3ec"; ctx.font="400 34px Inter, sans-serif";
+      ctx.fillText((S.brand.url||"").replace(/^https?:\/\//,""), W/2, H-105);
     };
 
     const src = imgs[imgIndex % imgs.length];
@@ -64,9 +68,9 @@
   }
   function bgFallback(W,H){
     const g=ctx.createLinearGradient(0,0,W,H);
-    g.addColorStop(0,"#2b3d31"); g.addColorStop(1,"#101a14");
+    g.addColorStop(0,"#211b0f"); g.addColorStop(.5,"#12100b"); g.addColorStop(1,"#0a0a0c");
     ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-    ctx.fillStyle="rgba(245,239,228,.15)"; ctx.font="italic 40px 'Cormorant Garamond', serif";
+    ctx.fillStyle="rgba(200,162,76,.18)"; ctx.font="italic 40px 'Cormorant Garamond', serif";
     ctx.textAlign="center"; ctx.fillText("(add photos in config.js)", W/2, H/2);
   }
   function wrap(text,x,y,maxW,lh){

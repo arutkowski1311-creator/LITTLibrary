@@ -10,20 +10,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>
-  body{background:var(--cream)}
-  .owner-hero{background:var(--forest);color:var(--cream);padding:2.5rem 0 2rem}
+  body{background:var(--bg)}
+  .owner-hero{background:radial-gradient(120% 100% at 70% 0%,#241d10,transparent 55%),var(--bg-2);
+    border-bottom:1px solid var(--line-gold);padding:2.5rem 0 2rem}
+  h3{color:var(--white)}
   .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
-  .stat{background:var(--white);border-radius:14px;padding:1.2rem;box-shadow:var(--shadow-sm)}
-  .stat .k{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);font-weight:700}
-  .stat .v{font-family:var(--serif);font-size:2rem;color:var(--forest);line-height:1.1}
-  .stat .s{font-size:.8rem;color:var(--stone)}
-  table{width:100%;border-collapse:collapse;background:var(--white);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm)}
-  th,td{padding:.7rem .8rem;text-align:left;font-size:.88rem;border-bottom:1px solid #efe6d6}
-  th{background:var(--forest);color:var(--cream);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
-  td .del{color:#b3541f;cursor:pointer;border:0;background:none;font-weight:700}
-  .quarter-block{background:var(--white);border-radius:14px;padding:1.2rem;box-shadow:var(--shadow-sm);margin-bottom:1rem;border-left:4px solid var(--brass)}
-  .quarter-block.due{border-left-color:#b3541f;background:rgba(179,84,31,.06)}
-  .add-form{background:var(--white);border-radius:14px;padding:1.4rem;box-shadow:var(--shadow-sm);margin-bottom:1.5rem}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.2rem}
+  .stat .k{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .stat .v{font-family:var(--serif);font-size:2rem;color:var(--white);line-height:1.1}
+  .stat .s{font-size:.8rem;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{padding:.7rem .8rem;text-align:left;font-size:.86rem;border-bottom:1px solid var(--line);color:var(--body)}
+  th{background:var(--panel-2);color:var(--gold);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+  td b{color:var(--text)}
+  td .del{color:var(--amber);cursor:pointer;border:0;background:none;font-weight:700}
+  .quarter-block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.2rem;margin-bottom:1rem;border-left:4px solid var(--gold);color:var(--body)}
+  .quarter-block b{color:var(--text)}
+  .quarter-block.due{border-left-color:var(--amber);background:rgba(217,138,69,.1)}
+  .add-form{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin-bottom:1.5rem}
   .add-form .row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr auto;gap:.8rem;align-items:end}
   @media(max-width:760px){.add-form .row{grid-template-columns:1fr 1fr}}
 </style>

@@ -157,8 +157,8 @@
     };
 
     // header band
-    doc.setFillColor(31,45,36); doc.rect(0,0,W,44,"F");
-    doc.setTextColor(202,166,104); doc.setFont("times","bold"); doc.setFontSize(18);
+    doc.setFillColor(16,15,18); doc.rect(0,0,W,44,"F");
+    doc.setTextColor(200,162,76); doc.setFont("times","bold"); doc.setFontSize(18);
     doc.text("AUSABLE HOUSE", M, 29);
     doc.setTextColor(230,220,199); doc.setFontSize(9); doc.setFont("times","italic");
     doc.text("Your Adirondack Concierge Itinerary", W-M, 29, {align:"right"});

@@ -39,11 +39,10 @@
   toggle.addEventListener("click", ()=>links.classList.toggle("open"));
   links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>links.classList.remove("open")));
 
-  /* ---------- hero video ---------- */
+  /* ---------- hero: video > image > gradient fallback ---------- */
   const video = document.getElementById("heroVideo");
   const fallback = document.getElementById("heroFallback");
   if (S.media.heroPoster) video.poster = S.media.heroPoster;
-  // Only load the video source if a file is configured; otherwise keep gradient fallback.
   if (S.media.heroVideo){
     const src = document.createElement("source");
     src.src = S.media.heroVideo; src.type = "video/mp4";
@@ -51,7 +50,16 @@
     video.addEventListener("loadeddata", ()=>{ fallback.style.display="none"; });
     video.addEventListener("error", ()=>{ video.style.display="none"; });
     video.load();
-  } else { video.style.display="none"; }
+  } else {
+    video.style.display="none";
+    // no video yet — use the hero image (keeps the styled gradient beneath if it fails)
+    if (S.media.heroImage){
+      const im = new Image();
+      im.onload = ()=>{ fallback.style.backgroundImage=`url("${S.media.heroImage}")`;
+        fallback.style.backgroundSize="cover"; fallback.style.backgroundPosition="center"; };
+      im.src = S.media.heroImage;
+    }
+  }
 
   /* ---------- property cards ---------- */
   const pc = document.getElementById("propertyCards");

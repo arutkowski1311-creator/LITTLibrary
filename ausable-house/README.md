@@ -3,6 +3,10 @@
 A mobile-first, luxury Adirondack direct-booking website for **Ausable House** (4BR/2BA main
 home) and **The Pinecone Perch** (1BR/1BA apartment) in Wilmington, NY.
 
+**Look & feel:** black + deep antique gold + warm white, elegant serif display over a clean sans —
+a cinematic, premium dark theme. All colors live as CSS variables at the top of
+`assets/css/site.css` (`--gold`, `--bg`, `--panel`, …) if you ever want to tune them.
+
 Everything here is **static** — it runs on any web host (GitHub Pages, Netlify, Cloudflare
 Pages, Vercel) with no server required for Phase 1. You edit one file (`assets/js/config.js`)
 to run the whole site.
@@ -15,8 +19,10 @@ to run the whole site.
    this folder and visit `http://localhost:8000`).
 2. **Edit `assets/js/config.js`** — your contact info, address, rates, add-ons, area guide,
    events, and calendar feeds all live here. It's commented throughout.
-3. **Add your media** to `assets/media/` (see that folder's README). At minimum: `flyover.mp4`
-   and `hero-poster.jpg`.
+3. **Media**: the site ships with **free placeholder photos** (Lorem Picsum) so it looks complete
+   right now — no blank spaces. Swap them for your own anytime by editing the `src` values in
+   `config.js` → `media` and dropping files into `assets/media/`. When you add a flyover video,
+   set `media.heroVideo` to its path and it takes over the hero automatically.
 4. **Deploy** to any static host. For a custom domain (e.g. `ausablehouse.com`), point DNS at
    your host and enable HTTPS.
 

@@ -27,25 +27,30 @@ window.SITE = {
   },
 
   /* ---- Media ----------------------------------------------------------- */
+  // TEMPORARY FREE PLACEHOLDERS via Lorem Picsum (picsum.photos) — reliable,
+  // free, no attribution required. Swap each `src` for your own files in
+  // assets/media/ when ready (e.g. "assets/media/gallery/great-room.jpg").
+  // When you add a flyover video, set heroVideo to its path and it takes over.
   media: {
-    // Drop your flyover video into assets/media/ and set the filename here.
-    heroVideo: "assets/media/flyover.mp4",     // <-- ADD your video file
-    heroPoster: "assets/media/hero-poster.jpg",// still frame shown before video loads
-    // Gallery items: type "image" or "video". Add as many as you like.
+    heroVideo: "",                                            // <-- set to "assets/media/flyover.mp4" when ready
+    heroImage: "https://picsum.photos/seed/ausable-hero/1920/1080",   // used until a video is added
+    heroPoster: "https://picsum.photos/seed/ausable-hero/1280/720",
     gallery: [
-      { type: "image", src: "assets/media/gallery/great-room.jpg",  caption: "The great room at Ausable House", tags: ["main"] },
-      { type: "image", src: "assets/media/gallery/kitchen.jpg",     caption: "Chef's kitchen",                  tags: ["main"] },
-      { type: "image", src: "assets/media/gallery/primary.jpg",     caption: "Primary suite",                   tags: ["main"] },
-      { type: "image", src: "assets/media/gallery/perch-living.jpg",caption: "The Perch — living space",        tags: ["perch"] },
-      { type: "image", src: "assets/media/gallery/river.jpg",       caption: "Ausable River, minutes away",     tags: ["area"] },
-      { type: "image", src: "assets/media/gallery/whiteface.jpg",   caption: "Whiteface Mountain",              tags: ["area"] },
-      { type: "video", src: "assets/media/gallery/winter-tour.mp4", caption: "Winter walkthrough", poster: "assets/media/gallery/winter-poster.jpg", tags: ["main"] }
+      { type: "image", src: "https://picsum.photos/seed/ah-greatroom/900/700",  caption: "The great room at Ausable House", tags: ["main"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-kitchen/900/1100",   caption: "Chef's kitchen",                  tags: ["main"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-primary/900/700",    caption: "Primary suite",                   tags: ["main"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-deck/900/900",       caption: "Evenings on the deck",            tags: ["main"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-perch/900/800",      caption: "The Perch — living space",        tags: ["perch"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-perchview/900/1100", caption: "The Perch — treetop views",       tags: ["perch"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-river/900/700",      caption: "Ausable River, minutes away",     tags: ["area"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-whiteface/900/1100", caption: "Whiteface Mountain",              tags: ["area"] },
+      { type: "image", src: "https://picsum.photos/seed/ah-trail/900/800",      caption: "Trails from the door",            tags: ["area"] }
     ],
     // Curated images used for the shareable social card carousel:
     shareImages: [
-      "assets/media/gallery/great-room.jpg",
-      "assets/media/gallery/whiteface.jpg",
-      "assets/media/gallery/river.jpg"
+      "https://picsum.photos/seed/ah-greatroom/1080/1920",
+      "https://picsum.photos/seed/ah-whiteface/1080/1920",
+      "https://picsum.photos/seed/ah-river/1080/1920"
     ]
   },
 
@@ -235,10 +240,10 @@ window.SITE = {
     instagram: "https://instagram.com/",   // <-- your IG profile
     aggregatorEmbed: null,                  // <-- paste live-feed embed HTML here later
     posts: [
-      { img:"assets/media/gallery/whiteface.jpg", caption:"Bluebird day on Whiteface 🏔️ #AusableHouse", handle:"@guest_skier" },
-      { img:"assets/media/gallery/river.jpg",     caption:"Morning on the Ausable 🎣 #AusableHouse", handle:"@flyfish_adk" },
-      { img:"assets/media/gallery/great-room.jpg",caption:"Fireside after a long hike ✨ #AusableHouse", handle:"@thewanderinghs" },
-      { img:"assets/media/gallery/perch-living.jpg",caption:"Our little Perch in the pines 🌲 #AusableHouse", handle:"@marcus.and.devin" }
+      { img:"https://picsum.photos/seed/ah-whiteface/600/600", caption:"Bluebird day on Whiteface 🏔️ #AusableHouse", handle:"@guest_skier" },
+      { img:"https://picsum.photos/seed/ah-river/600/600",     caption:"Morning on the Ausable 🎣 #AusableHouse", handle:"@flyfish_adk" },
+      { img:"https://picsum.photos/seed/ah-greatroom/600/600", caption:"Fireside after a long hike ✨ #AusableHouse", handle:"@thewanderinghs" },
+      { img:"https://picsum.photos/seed/ah-perch/600/600",     caption:"Our little Perch in the pines 🌲 #AusableHouse", handle:"@marcus.and.devin" }
     ]
   },
 
