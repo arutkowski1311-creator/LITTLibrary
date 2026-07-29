@@ -1,0 +1,171 @@
+<style>
+  :root{
+    --bone:#F2F2F2;--white:#FFF;--ink:#111;--blue:#7FAED6;--blue-deep:#2E5D8F;--brown:#6A4A2B;--brown-pale:#EFE7DE;
+    --good:#2C7C55;--warn:#B9762A;--hot:#C23B34;--gold:#C79A3A;
+    --page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;
+    --accent:var(--blue-deep);--accent-ink:#fff;
+    --font-display:'Anton','Oswald','Arial Narrow',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}}
+  :root[data-theme="light"]{--page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;--accent:var(--blue-deep);--accent-ink:#fff;}
+  :root[data-theme="dark"]{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep)}
+  .badge{width:36px;height:36px;border-radius:8px;background:var(--blue-deep);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:18px}
+  .badge b{color:var(--brown-pale)}
+  header .title{font-family:var(--font-display);font-size:18px;line-height:1}
+  header .sub{font-size:11px;color:#9fb6c9}
+  header .blk{margin-left:auto;font-size:12px;color:#9fb6c9;text-align:right}
+  .themetgl{background:#ffffff1f;border:1px solid #ffffff33;color:#fff;border-radius:7px;padding:5px 8px;font-size:12px;cursor:pointer;margin-left:10px}
+  .wrap{max-width:1120px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1fr 330px;gap:16px;align-items:start}
+  @media(max-width:880px){.wrap{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ch{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .ch .t{font-family:var(--font-display);font-size:14px}
+  .ch .t small{font-family:var(--font-body);color:var(--mute);font-size:12px;display:block;letter-spacing:0}
+  .prog{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .prog .bar{width:120px;height:8px;background:var(--raise);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .prog .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--good),#4aa877);width:0;transition:width .25s}
+  .prog .pct{font-family:var(--font-display);font-size:16px;min-width:38px;text-align:right}
+  /* exercise */
+  .ex{border-bottom:1px solid var(--line);padding:12px 14px}
+  .ex:last-child{border-bottom:0}
+  .ex .top{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+  .ex .nm{font-weight:700;font-size:14.5px}
+  .ex .scheme{font-size:12px;color:var(--mute)}
+  .ex .cue{font-size:11.5px;color:var(--mute);background:var(--chip);border-radius:8px;padding:2px 8px;margin-left:auto}
+  .sets{display:flex;flex-wrap:wrap;gap:7px}
+  .set{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--raise);border-radius:9px;padding:5px 9px;cursor:pointer;user-select:none;font-size:12.5px}
+  .set .box{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--mute);display:grid;place-items:center;font-size:11px;color:#fff}
+  .set.done{border-color:var(--good);background:color-mix(in srgb,var(--good) 14%,var(--card))}
+  .set.done .box{background:var(--good);border-color:var(--good)}
+  .set .w{color:var(--mute)}
+  .set.done .w{color:var(--text)}
+  /* side */
+  .feed{padding:12px 14px}
+  .dom{margin-bottom:12px}
+  .dom .l{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px}
+  .dom .l b{color:var(--mute);font-weight:600}
+  .dom .m{height:8px;border-radius:6px;background:var(--raise);border:1px solid var(--line);overflow:hidden}
+  .dom .m i{display:block;height:100%;background:linear-gradient(90deg,var(--blue-deep),var(--blue))}
+  .measure{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px dashed var(--line);font-size:13px}
+  .measure b{font-variant-numeric:tabular-nums}
+  .measure .pr{font-size:10px;color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent);border-radius:6px;padding:1px 6px;margin-left:6px}
+  .week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;padding:12px 14px}
+  .wd{text-align:center;border:1px solid var(--line);border-radius:9px;padding:7px 2px;font-size:11px;background:var(--raise)}
+  .wd .d{font-weight:700;color:var(--mute)}
+  .wd .tag{margin-top:4px;font-size:9.5px;border-radius:5px;padding:2px 0;color:#fff}
+  .wd.today{outline:2px solid var(--accent);outline-offset:-2px}
+  .logbtn{width:100%;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px;font-size:13.5px;font-weight:700;cursor:pointer}
+  .done-banner{margin:0 14px 14px;padding:11px 12px;border-radius:10px;background:color-mix(in srgb,var(--good) 14%,var(--card));border:1px solid var(--good);color:var(--good);font-size:13px;font-weight:600;display:none}
+  .foot{max-width:1120px;margin:0 auto;padding:2px 16px 24px;color:var(--mute);font-size:11px}
+</style>
+
+<header>
+  <div class="badge disp">N<b>J</b></div>
+  <div><div class="title">Training</div><div class="sub">#24 Rutkowski · CF</div></div>
+  <div class="blk">Week 6 of 12 · Strength block<br><span style="color:#7FAED6">Assigned by Coach Tony</span></div>
+  <button class="themetgl" id="themeBtn">◐</button>
+</header>
+
+<div class="wrap">
+  <div class="col">
+    <div class="card">
+      <div class="ch"><div class="t">Today's session<small>Monday · Lower + Power · ~55 min</small></div>
+        <div class="prog"><div class="bar"><i id="progFill"></i></div><div class="pct num" id="progPct">0%</div></div>
+      </div>
+      <div class="done-banner" id="doneBanner">✓ Session complete — logged to your training history and RAW Score inputs.</div>
+      <div id="exlist"></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="ch"><div class="t">Feeds your RAW Score<small>Training → measurable domains</small></div></div>
+      <div class="feed">
+        <div class="dom"><div class="l"><b>Athletic Capacity</b><span class="num">80</span></div><div class="m"><i style="width:80%"></i></div></div>
+        <div class="dom"><div class="l"><b>Baseball Tools</b><span class="num">84</span></div><div class="m"><i style="width:84%"></i></div></div>
+        <div class="measure"><span>Vertical (CMJ)</span><span><b>26.4"</b><span class="pr">PR +0.8</span></span></div>
+        <div class="measure"><span>60-yd dash</span><span><b>7.02s</b><span class="pr">PR −0.05</span></span></div>
+        <div class="measure"><span>Exit velo (tee)</span><span><b>91 mph</b><span class="pr">PR +2</span></span></div>
+        <div class="measure"><span>Trap-bar deadlift</span><span><b>255 lb</b><span class="pr">PR +10</span></span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch"><div class="t">This week</div></div>
+      <div class="week" id="week"></div>
+      <div style="padding:0 14px 14px"><button class="logbtn" id="logBtn">＋ Log a measurement</button></div>
+    </div>
+  </div>
+</div>
+<div class="foot">Prototype · sample plan. Coaches assign periodized programs; players log sessions here. Completed work and testing PRs flow into <code>raw_measurements</code> and update the Athletic Capacity &amp; Baseball Tools domains — never overwriting raw data.</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var EX=[
+    {nm:"Trap-bar deadlift",scheme:"4 × 5 @ 245 lb",cue:"Drive through floor",sets:[245,245,245,245]},
+    {nm:"Trap-bar jump",scheme:"4 × 3 @ 95 lb",cue:"Max intent",sets:[95,95,95,95]},
+    {nm:"Rear-foot split squat",scheme:"3 × 8 / leg @ 40s",cue:"Control down",sets:[40,40,40]},
+    {nm:"Nordic curl",scheme:"3 × 6",cue:"Slow eccentric",sets:["BW","BW","BW"]},
+    {nm:"Med-ball rotational throw",scheme:"4 × 4 / side @ 6 lb",cue:"Hips lead",sets:[6,6,6,6]},
+    {nm:"Anti-rotation press",scheme:"3 × 10 / side",cue:"Ribs down",sets:["band","band","band"]}
+  ];
+  var total=EX.reduce(function(a,e){return a+e.sets.length;},0);
+  var done=0;
+
+  function renderEx(){
+    var el=$("#exlist");el.innerHTML="";
+    EX.forEach(function(e,ei){
+      var d=document.createElement("div");d.className="ex";
+      var h='<div class="top"><span class="nm">'+e.nm+'</span><span class="scheme">'+e.scheme+'</span><span class="cue">'+e.cue+'</span></div><div class="sets">';
+      e.sets.forEach(function(w,si){
+        h+='<div class="set" data-e="'+ei+'" data-s="'+si+'"><span class="box"></span>Set '+(si+1)+' <span class="w">'+w+(typeof w==="number"?" lb":"")+'</span></div>';
+      });
+      h+='</div>';d.innerHTML=h;el.appendChild(d);
+    });
+    el.querySelectorAll(".set").forEach(function(b){
+      b.onclick=function(){
+        var was=b.classList.contains("done");
+        b.classList.toggle("done");
+        b.querySelector(".box").textContent=was?"":"✓";
+        done+=was?-1:1;updateProg();
+      };
+    });
+  }
+  function updateProg(){
+    var pct=Math.round(done/total*100);
+    $("#progFill").style.width=pct+"%";
+    $("#progPct").textContent=pct+"%";
+    $("#doneBanner").style.display=pct===100?"block":"none";
+  }
+  var WK=[
+    {d:"Mon",tag:"Lift",c:"#2E5D8F",today:true},
+    {d:"Tue",tag:"Throw",c:"#2C7C55"},
+    {d:"Wed",tag:"Speed",c:"#7FAED6"},
+    {d:"Thu",tag:"Lift",c:"#2E5D8F"},
+    {d:"Fri",tag:"Recovery",c:"#6A4A2B"},
+    {d:"Sat",tag:"Game",c:"#C79A3A"},
+    {d:"Sun",tag:"Off",c:"#9a9a96"}
+  ];
+  function renderWeek(){
+    var el=$("#week");el.innerHTML="";
+    WK.forEach(function(w){
+      var d=document.createElement("div");d.className="wd"+(w.today?" today":"");
+      d.innerHTML='<div class="d">'+w.d+'</div><div class="tag" style="background:'+w.c+'">'+w.tag+'</div>';
+      el.appendChild(d);
+    });
+  }
+  $("#logBtn").onclick=function(){var o=this.textContent;this.textContent="Opening log sheet…";var t=this;setTimeout(function(){t.textContent=o;},1200);};
+  $("#themeBtn").onclick=function(){var r=document.documentElement;
+    var c=r.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    r.setAttribute("data-theme",c==="dark"?"light":"dark");};
+  renderEx();renderWeek();updateProg();
+})();
+</script>
