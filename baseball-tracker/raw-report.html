@@ -1,0 +1,152 @@
+<style>
+  :root{
+    --ink:#141414;--blue-deep:#2E5D8F;--blue:#7FAED6;--brown:#6A4A2B;--brown-pale:#EFE7DE;--gold:#C79A3A;
+    --good:#2C7C55;--mute:#6b6b66;--line:#e2ddd4;--raise:#F6F3ED;--paper:#fff;--page:#d9d6cf;
+    --font-display:'Anton','Oswald','Arial Narrow',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font-body);font-size:13px;line-height:1.5}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  /* screen toolbar */
+  .toolbar{position:sticky;top:0;z-index:10;background:var(--ink);color:#fff;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:3px solid var(--blue-deep)}
+  .toolbar .t{font-family:var(--font-display);font-size:15px}
+  .toolbar .sp{margin-left:auto}
+  .tbtn{background:#ffffff18;border:1px solid #ffffff33;color:#fff;border-radius:8px;padding:7px 13px;font-size:13px;cursor:pointer}
+  .tbtn.pri{background:var(--blue-deep);border-color:var(--blue-deep);font-weight:700}
+  select{background:#ffffff12;border:1px solid #ffffff33;color:#fff;border-radius:8px;padding:6px 9px;font-size:12.5px}
+  select option{color:#111}
+  /* paper */
+  .sheet{background:var(--paper);width:8.5in;max-width:calc(100% - 32px);margin:20px auto;padding:0.5in 0.55in;box-shadow:0 6px 26px #0003;border-radius:2px}
+  /* header band */
+  .rhead{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:12px}
+  .mark{width:56px;height:52px;border-radius:9px;background:var(--blue-deep);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:25px;white-space:nowrap;letter-spacing:0}
+  .mark b{color:var(--brown-pale)}
+  .rhead .wm{font-family:var(--font-display);font-size:24px;line-height:.9}
+  .rhead .wm .co{color:var(--blue-deep)}
+  .rhead .doc{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  .rhead .right{margin-left:auto;text-align:right;font-size:11px;color:var(--mute)}
+  /* identity row */
+  .idrow{display:flex;gap:16px;align-items:flex-start;margin-top:14px}
+  .idrow .name{font-family:var(--font-display);font-size:34px;line-height:.9}
+  .idrow .vitals{font-size:12px;color:var(--mute);margin-top:4px}
+  .idrow .vitals b{color:var(--ink)}
+  .score-badge{margin-left:auto;text-align:center;border:2px solid var(--blue-deep);border-radius:12px;padding:8px 16px;min-width:118px}
+  .score-badge .n{font-family:var(--font-display);font-size:46px;line-height:.8;color:var(--blue-deep)}
+  .score-badge .l{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  .score-badge .pct{font-size:11px;color:var(--good);font-weight:700;margin-top:3px}
+  /* section */
+  .sec{margin-top:16px}
+  .sec h3{font-family:var(--font-display);font-size:13px;letter-spacing:.05em;margin:0 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line);color:var(--ink)}
+  .cols{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}
+  /* domains */
+  .dom{margin-bottom:8px}
+  .dom .l{display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:3px}
+  .dom .l b{font-weight:600}.dom .l .w{color:var(--mute);font-weight:400}
+  .dom .l .v{font-family:var(--font-display);font-size:13px;color:var(--blue-deep)}
+  .dom .m{height:7px;border-radius:5px;background:var(--raise);overflow:hidden;border:1px solid var(--line)}
+  .dom .m i{display:block;height:100%;background:linear-gradient(90deg,var(--blue-deep),var(--blue))}
+  /* measures */
+  .meas{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .mcard{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--raise)}
+  .mcard .k{font-size:10px;letter-spacing:.03em;text-transform:uppercase;color:var(--mute)}
+  .mcard .v{font-family:var(--font-display);font-size:20px;line-height:1;margin-top:2px}
+  .mcard .v small{font-family:var(--font-body);font-size:10px;color:var(--mute)}
+  .mcard .pr{font-size:9.5px;color:var(--good);font-weight:700}
+  /* clips */
+  .clips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .clip{border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .clip .top{display:flex;gap:8px;padding:8px;align-items:center}
+  .qr{width:38px;height:38px;border-radius:5px;flex:none;background:
+    repeating-linear-gradient(45deg,var(--ink) 0 3px,transparent 0 6px),
+    repeating-linear-gradient(-45deg,var(--ink) 0 3px,transparent 0 6px);
+    background-color:#fff;border:1px solid var(--ink);opacity:.85}
+  .clip .ti{font-size:11px;font-weight:700;line-height:1.2}
+  .clip .mt{font-size:10px;color:var(--mute)}
+  .clip .lk{font-family:ui-monospace,Menlo,monospace;font-size:9.5px;color:var(--blue-deep);padding:0 8px 8px}
+  /* note */
+  .note{border-left:3px solid var(--blue-deep);background:var(--raise);padding:10px 12px;border-radius:0 8px 8px 0;font-size:12px}
+  .note .by{font-size:10.5px;color:var(--mute);margin-top:6px}
+  .rfoot{margin-top:16px;border-top:1px solid var(--line);padding-top:8px;display:flex;justify-content:space-between;font-size:9.5px;color:var(--mute)}
+  .verified{display:inline-flex;gap:4px;align-items:center;color:var(--good);font-weight:700}
+  @media(max-width:640px){.cols,.meas{grid-template-columns:1fr}.clips{grid-template-columns:1fr 1fr}.idrow{flex-wrap:wrap}}
+  @media print{
+    @page{size:letter;margin:0}
+    body{background:#fff}
+    .toolbar{display:none!important}
+    .sheet{width:auto;max-width:none;margin:0;box-shadow:none;padding:0.45in 0.5in;border-radius:0}
+    .sec{margin-top:12px}
+  }
+</style>
+
+<div class="toolbar">
+  <span class="t">RAW Report</span>
+  <label style="font-size:11px;color:#9fb6c9">Player
+    <select id="who"></select>
+  </label>
+  <span class="sp"></span>
+  <button class="tbtn" id="themeNote" title="Report prints on white" disabled style="opacity:.7;cursor:default">Prints white · letter</button>
+  <button class="tbtn pri" id="pdfBtn">⎙ Download PDF</button>
+</div>
+
+<div class="sheet" id="sheet"></div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var DOMS=[
+    {n:"Game Production",w:20},{n:"Baseball Tools",w:20},{n:"Athletic Capacity",w:15},
+    {n:"Learning & Coachability",w:15},{n:"Baseball Intelligence",w:10},{n:"Team Impact",w:10},
+    {n:"Mental Performance",w:5},{n:"Communication & Leadership",w:5}
+  ];
+  var P=[
+    {num:24,name:"Michael Rutkowski",pos:"CF / RHP",grad:"2028",ht:"5'11\"",wt:"165",bt:"R / R",gpa:"3.8",
+     city:"Freehold, NJ",team:"NJ Raw 15U National",raw:84,pct:"Top 8% · 15U",pot:92,vel:"+3",
+     dom:[88,84,80,90,82,86,74,80],
+     meas:[["Exit velo (game)","94","mph","PR +3"],["60-yd dash","7.02","s","PR −0.05"],["Bat speed","72","mph","PR +2"],["Inf velo","82","mph",""],["Vertical (CMJ)","26.4","in","PR +0.8"],["Hard-hit rate","48","%",""]],
+     clips:[["RBI double, LC gap","vs Arsenal · Aug 2","raw.co/c/9F2A"],["Diving catch, gap","vs Storm · Jul 26","raw.co/c/7K1B"],["2-run triple","vs Titans · Jul 19","raw.co/c/4M8C"]],
+     note:"Advanced two-strike approach and premium bat-to-ball for his age. Plus runner with efficient routes in center. Coachable, high-motor, sets the tone in the dugout. Projects as a top-of-order table-setter with developing pull-side power.",
+     by:"Coach Tony M. · NJ Raw · Jul 2026"},
+    {num:14,name:"Jordan Vernick",pos:"RHP / 1B",grad:"2028",ht:"6'2\"",wt:"185",bt:"R / R",gpa:"3.6",
+     city:"Marlboro, NJ",team:"NJ Raw 15U National",raw:79,pct:"Top 15% · 15U",pot:88,vel:"+5",
+     dom:[70,86,78,80,76,74,68,70],
+     meas:[["Fastball","84","mph","PR +2"],["Spin rate","2180","rpm",""],["60-yd dash","7.4","s",""],["Exit velo","89","mph","PR +2"],["Vertical (CMJ)","24.1","in",""],["Strike %","64","%","PR +4"]],
+     clips:[["Punchout, 84 FB","vs Storm · Jul 26","raw.co/c/2P4D"],["Backdoor slider K","vs Titans · Jul 19","raw.co/c/6R2E"],["1-2-3 inning","vs Arsenal · Aug 2","raw.co/c/8T9F"]],
+     note:"Projectable frame with a fastball trending up and a slider showing bat-missing shape. Repeats delivery well; strike-throwing has jumped this summer. Priority development: change-up and lower-half drive. High upside arm.",
+     by:"Coach Tony M. · NJ Raw · Jul 2026"}
+  ];
+  var cur=0;
+  function render(){
+    var p=P[cur];
+    var domH="";
+    DOMS.forEach(function(d,i){domH+='<div class="dom"><div class="l"><b>'+d.n+' <span class="w">· '+d.w+'%</span></b><span class="v num">'+p.dom[i]+'</span></div><div class="m"><i style="width:'+p.dom[i]+'%"></i></div></div>';});
+    var measH="";
+    p.meas.forEach(function(m){measH+='<div class="mcard"><div class="k">'+m[0]+'</div><div class="v num">'+m[1]+' <small>'+m[2]+'</small></div>'+(m[3]?'<div class="pr">'+m[3]+'</div>':'<div class="pr">&nbsp;</div>')+'</div>';});
+    var clipH="";
+    p.clips.forEach(function(c){clipH+='<div class="clip"><div class="top"><div class="qr"></div><div><div class="ti">'+c[0]+'</div><div class="mt">'+c[1]+'</div></div></div><div class="lk">▶ '+c[2]+'</div></div>';});
+    $("#sheet").innerHTML=
+      '<div class="rhead"><div class="mark disp">R<b>C</b></div>'+
+        '<div><div class="wm">RAW <span class="co">Co.</span></div><div class="doc">Player Development Report</div></div>'+
+        '<div class="right">Report ID · RC-'+p.num+'-2607<br>Cycle: Summer 2026 · model v0.4</div></div>'+
+      '<div class="idrow"><div><div class="name">#'+p.num+' '+p.name+'</div>'+
+        '<div class="vitals"><b>'+p.pos+'</b> · Class of <b>'+p.grad+'</b> · <b>'+p.ht+'</b>, <b>'+p.wt+' lb</b> · B/T <b>'+p.bt+'</b> · GPA <b>'+p.gpa+'</b><br>'+p.city+' · '+p.team+'</div></div>'+
+        '<div class="score-badge"><div class="n num">'+p.raw+'</div><div class="l">RAW Score</div><div class="pct">'+p.pct+'</div></div></div>'+
+      '<div class="cols">'+
+        '<div class="sec"><h3>Development index — 8 domains</h3>'+domH+
+          '<div style="font-size:10px;color:var(--mute);margin-top:6px">Potential ceiling <b class="num">'+p.pot+'</b> · velocity <b style="color:var(--good)">▲ '+p.vel+'</b> this cycle. Scores computed server-side and versioned.</div></div>'+
+        '<div class="sec"><h3>Verified measurables</h3><div class="meas">'+measH+'</div></div>'+
+      '</div>'+
+      '<div class="sec"><h3>Top performances — scan to watch</h3><div class="clips">'+clipH+'</div></div>'+
+      '<div class="sec"><h3>Coach evaluation</h3><div class="note">'+p.note+'<div class="by">— '+p.by+'</div></div></div>'+
+      '<div class="rfoot"><span class="verified">✓ Verified by RAW Co. · data captured on-device</span>'+
+        '<span>Generated Jul 29, 2026 · rawco.app · confidential — for recruiting use</span></div>';
+  }
+  // populate select
+  var sel=$("#who");P.forEach(function(p,i){var o=document.createElement("option");o.value=i;o.textContent="#"+p.num+" "+p.name;sel.appendChild(o);});
+  sel.onchange=function(){cur=+sel.value;render();};
+  $("#pdfBtn").onclick=function(){window.print();};
+  render();
+})();
+</script>
