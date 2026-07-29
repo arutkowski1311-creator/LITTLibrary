@@ -1,0 +1,260 @@
+<style>
+  :root{
+    --bone:#F2F2F2;--white:#FFF;--ink:#111;--blue:#7FAED6;--blue-deep:#2E5D8F;--brown:#6A4A2B;--brown-pale:#EFE7DE;
+    --good:#2C7C55;--warn:#B9762A;--hot:#C23B34;--live:#C23B34;
+    --page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;
+    --accent:var(--blue-deep);--accent-ink:#fff;
+    --font-display:'Anton','Oswald','Arial Narrow',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}}
+  :root[data-theme="light"]{--page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;--accent:var(--blue-deep);--accent-ink:#fff;}
+  :root[data-theme="dark"]{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep);position:sticky;top:0;z-index:5}
+  .badge{width:36px;height:36px;border-radius:8px;background:var(--blue-deep);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:18px}
+  .badge b{color:var(--brown-pale)}
+  header .hi{font-family:var(--font-display);font-size:17px;line-height:1}
+  header .sub{font-size:11px;color:#9fb6c9}
+  .kidsw{margin-left:auto;display:flex;gap:6px;align-items:center}
+  .kidbtn{background:#ffffff14;border:1px solid #ffffff2b;color:#fff;border-radius:20px;padding:5px 11px;font-size:12px;cursor:pointer;display:flex;gap:6px;align-items:center}
+  .kidbtn.on{background:var(--blue-deep);border-color:var(--blue-deep)}
+  .kidbtn .av{width:18px;height:18px;border-radius:50%;background:var(--brown);color:#fff;font-size:10px;display:grid;place-items:center;font-weight:700}
+  .themetgl{background:#ffffff1f;border:1px solid #ffffff33;color:#fff;border-radius:7px;padding:5px 8px;font-size:12px;cursor:pointer}
+  .wrap{max-width:1060px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start}
+  @media(max-width:820px){.wrap{grid-template-columns:1fr}}
+  .col{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .card .h{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line)}
+  .card .h .t{font-family:var(--font-display);font-size:13px;letter-spacing:.04em;color:var(--mute)}
+  .card .h .r{margin-left:auto;font-size:12px;color:var(--accent);cursor:pointer;text-decoration:none}
+  .pad{padding:14px}
+  /* today */
+  .ev{display:flex;gap:12px;align-items:flex-start}
+  .ev .when{background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:8px 10px;text-align:center;min-width:58px}
+  .ev .when .d{font-family:var(--font-display);font-size:22px;line-height:.9}
+  .ev .when .m{font-size:10px;letter-spacing:.1em}
+  .ev .info{min-width:0}
+  .ev .info .ti{font-weight:700;font-size:15px}
+  .ev .info .li{font-size:12.5px;color:var(--mute)}
+  .kv{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .kv span{font-size:11px;background:var(--chip);border-radius:8px;padding:3px 8px;color:var(--mute)}
+  .kv b{color:var(--text)}
+  .rsvp{display:flex;gap:8px;margin-top:12px}
+  .btn{border:1px solid var(--line);background:var(--raise);color:var(--text);border-radius:9px;padding:8px 12px;font-size:13px;cursor:pointer;font-weight:600}
+  .btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .btn.ok{background:color-mix(in srgb,var(--good) 16%,var(--card));border-color:var(--good);color:var(--good)}
+  /* pay */
+  .pay{display:flex;align-items:center;gap:12px}
+  .pay .amt{font-family:var(--font-display);font-size:30px;color:var(--warn)}
+  .pay .due{font-size:12px;color:var(--mute)}
+  /* watch */
+  .watch{display:flex;gap:10px;align-items:center}
+  .thumb{position:relative;width:120px;aspect-ratio:16/9;border-radius:9px;background:linear-gradient(135deg,#20303f,#0f1a24);flex:none;overflow:hidden;border:1px solid var(--line);display:grid;place-items:center}
+  .thumb .play{width:34px;height:34px;border-radius:50%;background:#ffffffd0;display:grid;place-items:center;color:#123}
+  .livetag{position:absolute;top:6px;left:6px;background:var(--live);color:#fff;font-size:9px;font-weight:800;letter-spacing:.08em;padding:2px 6px;border-radius:5px;display:flex;gap:4px;align-items:center}
+  .livetag i{width:6px;height:6px;border-radius:50%;background:#fff;animation:pl 1.2s infinite}
+  @keyframes pl{50%{opacity:.3}}
+  .clips{display:flex;gap:8px;overflow-x:auto;padding-top:4px}
+  .clip{flex:none;width:104px}
+  .clip .ct{width:104px;aspect-ratio:16/9;border-radius:8px;background:linear-gradient(135deg,#26323d,#141c24);border:1px solid var(--line);position:relative;display:grid;place-items:center;color:#cfe0ee;font-size:10px}
+  .clip .cl{font-size:11px;color:var(--mute);margin-top:3px;line-height:1.25}
+  .clip .cl b{color:var(--text)}
+  /* score */
+  .score{display:flex;align-items:center;gap:14px}
+  .score .big{font-family:var(--font-display);font-size:44px;color:var(--accent);line-height:.8}
+  .score .lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .score .up{color:var(--good);font-size:12px;font-weight:700}
+  /* announce */
+  .ann{display:flex;gap:10px;padding:10px 0;border-top:1px dashed var(--line)}
+  .ann:first-child{border-top:0}
+  .ann .av{width:30px;height:30px;border-radius:50%;background:var(--brown);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:700;flex:none}
+  .ann .who{font-weight:700;font-size:13px}
+  .ann .tm{font-size:11px;color:var(--mute)}
+  .ann .bd{font-size:13px}
+  /* feed */
+  .post{padding:12px 14px;border-bottom:1px solid var(--line)}
+  .post .top{display:flex;gap:9px;align-items:center;margin-bottom:8px}
+  .post .av{width:32px;height:32px;border-radius:50%;color:#fff;font-size:12px;display:grid;place-items:center;font-weight:700;flex:none}
+  .post .nm{font-weight:700;font-size:13px}
+  .post .mt{font-size:11px;color:var(--mute)}
+  .post .bd{font-size:13.5px;margin-bottom:9px}
+  .post .media{border-radius:10px;aspect-ratio:16/9;background:linear-gradient(135deg,#2a3a49,#131c25);display:grid;place-items:center;color:#bcd0e2;font-size:12px;margin-bottom:9px;border:1px solid var(--line)}
+  .react{display:flex;gap:14px;align-items:center;color:var(--mute);font-size:12.5px}
+  .react button{background:none;border:0;color:var(--mute);cursor:pointer;font-size:12.5px;display:flex;gap:5px;align-items:center;padding:2px}
+  .react button.liked{color:var(--hot);font-weight:700}
+  .foot{max-width:1060px;margin:0 auto;padding:4px 16px 26px;color:var(--mute);font-size:11px}
+</style>
+
+<header>
+  <div class="badge disp">N<b>J</b></div>
+  <div><div class="hi" id="greet">Good afternoon</div><div class="sub">NJ Raw · 15U National</div></div>
+  <div class="kidsw" id="kidsw"></div>
+  <button class="themetgl" id="themeBtn">◐</button>
+</header>
+
+<div class="wrap">
+  <div class="col">
+    <!-- TODAY -->
+    <div class="card">
+      <div class="h"><span class="t">Next up</span><a class="r" href="#">Full calendar →</a></div>
+      <div class="pad">
+        <div class="ev">
+          <div class="when"><div class="d num" id="evD">SAT</div><div class="m num" id="evM">AUG 2</div></div>
+          <div class="info">
+            <div class="ti" id="evTi">Tournament — Diamond Nation</div>
+            <div class="li" id="evLi">Pool play vs. Tri-State Arsenal</div>
+            <div class="kv">
+              <span>First pitch <b>10:00 AM</b></span>
+              <span>Arrive <b>8:30 AM</b></span>
+              <span>Uniform <b>Gray / Navy</b></span>
+              <span>Field <b>#7</b></span>
+            </div>
+            <div class="kv"><span>📍 <b>Flemington, NJ</b> · <a href="#" style="color:var(--accent)">Directions</a></span></div>
+            <div class="rsvp" id="rsvp">
+              <button class="btn pri" data-v="in">I'm going</button>
+              <button class="btn" data-v="out">Can't make it</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAY -->
+    <div class="card">
+      <div class="h"><span class="t">Balance due</span><a class="r" href="#">History →</a></div>
+      <div class="pad">
+        <div class="pay">
+          <div class="amt num">$185.00</div>
+          <div class="due">Fall tournament fee<br>Due <b>Aug 5, 2026</b></div>
+          <button class="btn pri" style="margin-left:auto" id="payBtn">Pay now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- WATCH -->
+    <div class="card">
+      <div class="h"><span class="t">Watch</span><a class="r" href="#">All clips →</a></div>
+      <div class="pad">
+        <div class="watch">
+          <div class="thumb"><div class="livetag"><i></i>LIVE</div><div class="play">▶</div></div>
+          <div><div style="font-weight:700">Field 7 — live now</div><div class="li" style="font-size:12.5px;color:var(--mute)">Top 3rd · NJ Raw 4, Arsenal 2 · 128 watching</div>
+            <button class="btn pri" style="margin-top:8px">Open stream</button></div>
+        </div>
+        <div class="clips" id="clips"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <!-- SCORE -->
+    <div class="card">
+      <div class="h"><span class="t" id="scoreHd">Rutkowski · RAW Score</span><a class="r" href="#">Report →</a></div>
+      <div class="pad">
+        <div class="score">
+          <div><div class="big num" id="scoreN">84</div></div>
+          <div><div class="lbl">Development index</div><div class="up" id="scoreV">▲ +3 this cycle</div>
+            <div style="font-size:12px;color:var(--mute);margin-top:4px">Top gains: Game Production, Coachability</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANNOUNCEMENTS -->
+    <div class="card">
+      <div class="h"><span class="t">From your coaches</span></div>
+      <div class="pad" style="padding-top:4px;padding-bottom:6px">
+        <div class="ann"><div class="av">JC</div><div><div class="who">Coach Jimmy <span class="tm">· 2h ago</span></div><div class="bd">Bring extra water Saturday — heat index near 95°. Sunscreen on before arrival, please.</div></div></div>
+        <div class="ann"><div class="av" style="background:var(--blue-deep)">TM</div><div><div class="who">Coach Tony <span class="tm">· yesterday</span></div><div class="bd">Great work at Tuesday's cage session. Exit-velo testing next practice — feeds RAW Scores.</div></div></div>
+      </div>
+    </div>
+
+    <!-- FEED -->
+    <div class="card">
+      <div class="h"><span class="t">Team feed</span><a class="r" href="#">Post →</a></div>
+      <div id="feed"></div>
+    </div>
+  </div>
+</div>
+<div class="foot">Prototype · sample data. Parent home is the daily-retention surface — schedule, payments, live video and your player's progress in one place. Social posts respect per-family visibility &amp; photo-consent settings.</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var KIDS=[
+    {id:0,in:"MR",name:"Rutkowski",score:84,vel:"+3"},
+    {id:1,in:"AR",name:"A. Rutkowski",score:76,vel:"+2"}
+  ];
+  var cur=0;
+  var CLIPS=[
+    {tag:"XBH",who:"Rutkowski",what:"RBI double, LC gap"},
+    {tag:"K",who:"Vernick",what:"Punchout, 84 mph"},
+    {tag:"WEB",who:"M. Roman",what:"Diving stop, 4-3"},
+    {tag:"HR",who:"Schneider",what:"2-run shot"}
+  ];
+  var FEED=[
+    {av:"#2E5D8F",in:"NJ",nm:"NJ Raw (Team)",mt:"1h ago · Field 7",bd:"That's a 4-run 2nd! Bats are awake. 🔥 #RawNation",media:"📸 Dugout celebration",likes:42,liked:false,cm:6},
+    {av:"#6A4A2B",in:"KR",nm:"Kelly Rutkowski",mt:"3h ago",bd:"Travel-ball parents — carpool spots open for Saturday, reply if you need a ride!",media:null,likes:11,liked:false,cm:4},
+    {av:"#2C7C55",in:"JC",nm:"Coach Jimmy",mt:"yesterday",bd:"Player of the week: #24 for the best two-strike approach on the team. Keep grinding.",media:"🏅 Player of the Week",likes:58,liked:true,cm:9}
+  ];
+
+  function renderKidsw(){
+    var el=$("#kidsw");el.innerHTML="";
+    KIDS.forEach(function(k){
+      var b=document.createElement("button");b.className="kidbtn"+(k.id===cur?" on":"");
+      b.innerHTML='<span class="av">'+k.in+'</span>'+k.name.split(" ").slice(-1)[0];
+      b.onclick=function(){cur=k.id;renderKid();renderKidsw();};
+      el.appendChild(b);
+    });
+  }
+  function renderKid(){
+    var k=KIDS[cur];
+    $("#scoreHd").textContent=k.name+" · RAW Score";
+    $("#scoreN").textContent=k.score;
+    $("#scoreV").textContent="▲ "+k.vel+" this cycle";
+  }
+  function renderClips(){
+    var el=$("#clips");el.innerHTML="";
+    CLIPS.forEach(function(c){
+      var d=document.createElement("div");d.className="clip";
+      d.innerHTML='<div class="ct">▶ '+c.tag+'</div><div class="cl"><b>'+c.who+'</b><br>'+c.what+'</div>';
+      el.appendChild(d);
+    });
+  }
+  function renderFeed(){
+    var el=$("#feed");el.innerHTML="";
+    FEED.forEach(function(p,i){
+      var d=document.createElement("div");d.className="post";
+      d.innerHTML='<div class="top"><div class="av" style="background:'+p.av+'">'+p.in+'</div>'+
+        '<div><div class="nm">'+p.nm+'</div><div class="mt">'+p.mt+'</div></div></div>'+
+        '<div class="bd">'+p.bd+'</div>'+
+        (p.media?'<div class="media">'+p.media+'</div>':'')+
+        '<div class="react">'+
+          '<button class="likeb'+(p.liked?" liked":"")+'" data-i="'+i+'">'+(p.liked?"♥":"♡")+' <span class="num">'+p.likes+'</span></button>'+
+          '<button>💬 <span class="num">'+p.cm+'</span></button>'+
+          '<button>↗ Share</button>'+
+        '</div>';
+      el.appendChild(d);
+    });
+    el.querySelectorAll(".likeb").forEach(function(b){
+      b.onclick=function(){var i=+b.dataset.i;var p=FEED[i];p.liked=!p.liked;p.likes+=p.liked?1:-1;renderFeed();};
+    });
+  }
+  // RSVP
+  $("#rsvp").addEventListener("click",function(e){
+    var b=e.target.closest("button");if(!b)return;
+    $("#rsvp").querySelectorAll("button").forEach(function(x){x.className="btn";});
+    if(b.dataset.v==="in"){b.className="btn ok";b.textContent="✓ You're going";}
+    else{b.className="btn";b.textContent="Marked out";b.style.opacity=".7";}
+  });
+  $("#payBtn").onclick=function(){this.textContent="Opening checkout…";var t=this;setTimeout(function(){t.textContent="Pay now";},1200);};
+  $("#themeBtn").onclick=function(){var r=document.documentElement;
+    var c=r.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    r.setAttribute("data-theme",c==="dark"?"light":"dark");};
+
+  renderKidsw();renderKid();renderClips();renderFeed();
+})();
+</script>
