@@ -1,0 +1,219 @@
+<style>
+  :root{
+    --bone:#F2F2F2;--white:#FFF;--ink:#111;--blue:#7FAED6;--blue-deep:#2E5D8F;--brown:#6A4A2B;--brown-pale:#EFE7DE;
+    --good:#2C7C55;--warn:#B9762A;--hot:#C23B34;--gold:#C79A3A;
+    --page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;
+    --accent:var(--blue-deep);--accent-ink:#fff;
+    --font-display:'Anton','Oswald','Arial Narrow',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}}
+  :root[data-theme="light"]{--page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;--accent:var(--blue-deep);--accent-ink:#fff;}
+  :root[data-theme="dark"]{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep)}
+  .badge{width:36px;height:36px;border-radius:8px;background:var(--blue-deep);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:18px}
+  .badge b{color:var(--brown-pale)}
+  header .title{font-family:var(--font-display);font-size:18px;line-height:1}
+  header .sub{font-size:11px;color:#9fb6c9}
+  .roles{margin-left:auto;display:flex;gap:5px}
+  .role{background:#ffffff14;border:1px solid #ffffff2b;color:#fff;border-radius:18px;padding:5px 11px;font-size:12px;cursor:pointer}
+  .role.on{background:var(--blue-deep);border-color:var(--blue-deep)}
+  .themetgl{background:#ffffff1f;border:1px solid #ffffff33;color:#fff;border-radius:7px;padding:5px 8px;font-size:12px;cursor:pointer;margin-left:8px}
+  .wrap{max-width:1160px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
+  @media(max-width:880px){.wrap{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .calhd{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .calhd .mo{font-family:var(--font-display);font-size:20px}
+  .nav{margin-left:auto;display:flex;gap:6px}
+  .nav button,.today{border:1px solid var(--line);background:var(--raise);color:var(--text);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line);font-size:11px;color:var(--mute)}
+  .legend span{display:flex;gap:5px;align-items:center}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line)}
+  .dow div{padding:7px 0;text-align:center;font-size:11px;color:var(--mute);letter-spacing:.05em;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr)}
+  .cell{min-height:92px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px;cursor:pointer;position:relative}
+  .cell:nth-child(7n){border-right:0}
+  .cell.out{background:var(--raise);color:var(--mute)}
+  .cell.sel{outline:2px solid var(--accent);outline-offset:-2px;border-radius:6px}
+  .cell .dn{font-size:12px;font-weight:600}
+  .cell.today .dn{background:var(--accent);color:var(--accent-ink);border-radius:50%;width:22px;height:22px;display:grid;place-items:center}
+  .evp{margin-top:3px;display:flex;flex-direction:column;gap:2px}
+  .evp .e{font-size:10.5px;border-radius:4px;padding:1px 5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4}
+  @media(max-width:880px){.cell{min-height:64px}.evp .e{font-size:9px}}
+  /* side */
+  .side .sh{padding:12px 14px;border-bottom:1px solid var(--line);font-family:var(--font-display);font-size:15px}
+  .side .sh small{font-family:var(--font-body);color:var(--mute);font-size:12px;display:block;letter-spacing:0;text-transform:none}
+  .agenda{padding:6px 0}
+  .ai{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+  .ai:hover{background:var(--raise)}
+  .ai .bar{width:4px;border-radius:3px;flex:none}
+  .ai .ti{font-weight:600;font-size:13.5px}
+  .ai .mt{font-size:12px;color:var(--mute)}
+  .ai .tm{margin-left:auto;font-size:12px;color:var(--mute);white-space:nowrap}
+  .empty{padding:22px 14px;color:var(--mute);font-size:13px;text-align:center}
+  /* detail */
+  .detail{padding:14px}
+  .detail .type{display:inline-block;font-size:10px;color:#fff;border-radius:6px;padding:2px 8px;letter-spacing:.06em;text-transform:uppercase}
+  .detail h3{margin:8px 0 2px;font-size:17px}
+  .detail .sub{color:var(--mute);font-size:12.5px}
+  .kv{display:flex;flex-direction:column;gap:7px;margin:12px 0}
+  .kv .row{display:flex;gap:8px;font-size:13px}
+  .kv .row b{color:var(--mute);font-weight:600;min-width:74px}
+  .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .btn{border:1px solid var(--line);background:var(--raise);color:var(--text);border-radius:9px;padding:8px 12px;font-size:13px;cursor:pointer;font-weight:600}
+  .btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .btn.ok{background:color-mix(in srgb,var(--good) 16%,var(--card));border-color:var(--good);color:var(--good)}
+  .foot{max-width:1160px;margin:0 auto;padding:2px 16px 24px;color:var(--mute);font-size:11px}
+</style>
+
+<header>
+  <div class="badge disp">N<b>J</b></div>
+  <div><div class="title">Calendar</div><div class="sub">NJ Raw · 15U National</div></div>
+  <div class="roles" id="roles"></div>
+  <button class="themetgl" id="themeBtn">◐</button>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <div class="calhd">
+      <div class="mo" id="moLbl">August 2026</div>
+      <div class="nav">
+        <button class="today" id="todayBtn">Today</button>
+        <button id="prev">‹</button><button id="next">›</button>
+      </div>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="dow"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div class="card side">
+    <div class="sh" id="sideH">Saturday, Aug 2<small id="sideSub">Tap an event for details</small></div>
+    <div class="agenda" id="agenda"></div>
+    <div id="detail"></div>
+  </div>
+</div>
+<div class="foot">Prototype · sample schedule (Aug 2026). One calendar, role-aware — parents see RSVP, uniform and directions; coaches see rosters and attendance; the org sees every team. Payment due-dates surface here and in Parent Home.</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var TYPES={
+    practice:{c:"#2E5D8F",l:"Practice"},
+    game:{c:"#2C7C55",l:"Game"},
+    tourn:{c:"#C79A3A",l:"Tournament"},
+    testing:{c:"#7FAED6",l:"Testing"},
+    payment:{c:"#B9762A",l:"Payment due"},
+    event:{c:"#6A4A2B",l:"Team event"}
+  };
+  // events for Aug 2026 (month index 7). key: day-of-month
+  var EV={
+    2:[{t:"tourn",ti:"Tournament — Diamond Nation",tm:"10:00 AM",loc:"Flemington, NJ · Field 7",arr:"8:30 AM",uni:"Gray / Navy",note:"Pool play vs. Tri-State Arsenal. Bring extra water — heat.",fee:null}],
+    4:[{t:"practice",ti:"Team practice",tm:"5:30 PM",loc:"RAW Facility · Cage A",arr:"5:15 PM",uni:"Practice tee",note:"Two-strike approach + bunt defense."}],
+    5:[{t:"payment",ti:"Fall tournament fee",tm:"11:59 PM",loc:"—",amt:"$185.00",note:"Auto-charged to card on file unless paid.",fee:"185.00"}],
+    7:[{t:"testing",ti:"Exit-velo & 60-time testing",tm:"5:30 PM",loc:"RAW Facility",arr:"5:15 PM",uni:"Practice tee",note:"Feeds Baseball Tools + Athletic Capacity in RAW Scores."}],
+    9:[{t:"game",ti:"Scrimmage vs. Jersey Shore Titans",tm:"1:00 PM",loc:"Ocean County Park",arr:"11:45 AM",uni:"White / Navy",note:"7-inning tune-up."}],
+    11:[{t:"practice",ti:"Team practice",tm:"5:30 PM",loc:"RAW Facility · Cage A",arr:"5:15 PM",uni:"Practice tee"}],
+    14:[{t:"tourn",ti:"USSSA Elite Weekend",tm:"9:00 AM",loc:"Cooperstown Region",arr:"7:30 AM",uni:"Gray / Navy",note:"3-game guarantee. Hotel block info in the app."}],
+    15:[{t:"tourn",ti:"USSSA Elite Weekend — Day 2",tm:"9:00 AM",loc:"Cooperstown Region",arr:"7:30 AM",uni:"White / Navy"}],
+    18:[{t:"event",ti:"Team film & pizza night",tm:"6:00 PM",loc:"RAW Facility · Classroom",note:"Review weekend clips together."}],
+    21:[{t:"practice",ti:"Team practice",tm:"5:30 PM",loc:"RAW Facility · Cage A",arr:"5:15 PM"}],
+    23:[{t:"game",ti:"League game vs. Central NJ Storm",tm:"12:00 PM",loc:"Mercer County Park",arr:"10:45 AM",uni:"White / Navy"}],
+    29:[{t:"tourn",ti:"End-of-summer Showcase",tm:"9:00 AM",loc:"Diamond Nation",arr:"7:30 AM",uni:"Gray / Navy",note:"Scouts attending. RAW Reports shared to recruiters."}]
+  };
+  var Y=2026,M=7; // August
+  var sel=2, sday=2; // selected day
+  var MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var DN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  // roles just filter which types are emphasized (all shown; label changes)
+  var ROLES=["Parent","Player","Coach","Org"];var role=0;
+  function renderRoles(){var el=$("#roles");el.innerHTML="";
+    ROLES.forEach(function(r,i){var b=document.createElement("button");b.className="role"+(i===role?" on":"");
+      b.textContent=r;b.onclick=function(){role=i;renderRoles();};el.appendChild(b);});}
+
+  function renderLegend(){var el=$("#legend");el.innerHTML="";
+    Object.keys(TYPES).forEach(function(k){var t=TYPES[k];
+      el.insertAdjacentHTML("beforeend",'<span><i class="dot" style="background:'+t.c+'"></i>'+t.l+'</span>');});}
+
+  function renderGrid(){
+    $("#moLbl").textContent=MN[M]+" "+Y;
+    var first=new Date(Y,M,1).getDay();
+    var days=new Date(Y,M+1,0).getDate();
+    var prevDays=new Date(Y,M,0).getDate();
+    var g=$("#grid");g.innerHTML="";
+    var today=new Date();var isThisMonth=(today.getFullYear()===Y&&today.getMonth()===M);
+    var cells=42;
+    for(var i=0;i<cells;i++){
+      var dnum,out=false,dayEv=null,thisDay=null;
+      if(i<first){dnum=prevDays-first+1+i;out=true;}
+      else if(i>=first+days){dnum=i-first-days+1;out=true;}
+      else{dnum=i-first+1;thisDay=dnum;dayEv=(M===7?EV[dnum]:null);}
+      var c=document.createElement("div");c.className="cell"+(out?" out":"");
+      if(!out&&thisDay===sel&&M===7)c.className+=" sel";
+      if(!out&&isThisMonth&&today.getDate()===thisDay)c.className+=" today";
+      var html='<div class="dn">'+dnum+'</div>';
+      if(dayEv){html+='<div class="evp">';
+        dayEv.slice(0,3).forEach(function(e){html+='<div class="e" style="background:'+TYPES[e.t].c+'">'+e.ti+'</div>';});
+        html+='</div>';}
+      c.innerHTML=html;
+      (function(d,hasEv){if(!out){c.onclick=function(){sel=d;sday=d;renderGrid();renderSide();};}})(thisDay,dayEv);
+      g.appendChild(c);
+    }
+  }
+
+  function renderSide(){
+    var evs=(M===7?EV[sel]:null)||[];
+    $("#sideH").innerHTML=DN[new Date(Y,M,sel).getDay()]+", "+MN[M].slice(0,3)+" "+sel+
+      '<small>'+(evs.length?evs.length+" event"+(evs.length>1?"s":""):"No events")+'</small>';
+    var a=$("#agenda");a.innerHTML="";$("#detail").innerHTML="";
+    if(!evs.length){a.innerHTML='<div class="empty">Nothing scheduled. Pick another day.</div>';return;}
+    evs.forEach(function(e,i){
+      var d=document.createElement("div");d.className="ai";
+      d.innerHTML='<div class="bar" style="background:'+TYPES[e.t].c+'"></div>'+
+        '<div><div class="ti">'+e.ti+'</div><div class="mt">'+(e.loc||"")+'</div></div>'+
+        '<div class="tm">'+(e.tm||"")+'</div>';
+      d.onclick=function(){renderDetail(e);a.querySelectorAll(".ai").forEach(function(x){x.style.background="";});d.style.background="var(--raise)";};
+      a.appendChild(d);
+    });
+    renderDetail(evs[0]);a.querySelector(".ai").style.background="var(--raise)";
+  }
+
+  function renderDetail(e){
+    var t=TYPES[e.t];
+    var h='<div class="detail"><span class="type" style="background:'+t.c+'">'+t.l+'</span>'+
+      '<h3>'+e.ti+'</h3><div class="sub">'+DN[new Date(Y,M,sel).getDay()]+', '+MN[M]+' '+sel+' · '+(e.tm||"")+'</div>'+
+      '<div class="kv">';
+    if(e.loc&&e.loc!=="—")h+='<div class="row"><b>Location</b><span>'+e.loc+'</span></div>';
+    if(e.arr)h+='<div class="row"><b>Arrive</b><span>'+e.arr+'</span></div>';
+    if(e.uni)h+='<div class="row"><b>Uniform</b><span>'+e.uni+'</span></div>';
+    if(e.amt)h+='<div class="row"><b>Amount</b><span style="color:var(--warn);font-weight:700">'+e.amt+'</span></div>';
+    if(e.note)h+='<div class="row"><b>Notes</b><span>'+e.note+'</span></div>';
+    h+='</div><div class="acts">';
+    if(e.t==="payment"||e.fee){h+='<button class="btn pri" data-pay="1">Pay '+(e.amt||"$"+e.fee)+'</button>';}
+    else{h+='<button class="btn pri" data-rsvp="in">I\'m going</button><button class="btn" data-rsvp="out">Can\'t make it</button>';}
+    if(e.loc&&e.loc!=="—")h+='<button class="btn">Directions</button>';
+    h+='</div></div>';
+    var el=$("#detail");el.innerHTML=h;
+    var rsvp=el.querySelectorAll("[data-rsvp]");
+    rsvp.forEach(function(b){b.onclick=function(){rsvp.forEach(function(x){x.className="btn";});
+      if(b.dataset.rsvp==="in"){b.className="btn ok";b.textContent="✓ You're going";}else{b.textContent="Marked out";b.style.opacity=".7";}};});
+    var pay=el.querySelector("[data-pay]");if(pay)pay.onclick=function(){var o=pay.textContent;pay.textContent="Opening checkout…";setTimeout(function(){pay.textContent=o;},1200);};
+  }
+
+  $("#prev").onclick=function(){M--;if(M<0){M=11;Y--;}sel=1;renderGrid();renderSide();};
+  $("#next").onclick=function(){M++;if(M>11){M=0;Y++;}sel=1;renderGrid();renderSide();};
+  $("#todayBtn").onclick=function(){Y=2026;M=7;sel=2;renderGrid();renderSide();};
+  $("#themeBtn").onclick=function(){var r=document.documentElement;
+    var c=r.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    r.setAttribute("data-theme",c==="dark"?"light":"dark");};
+
+  renderRoles();renderLegend();renderGrid();renderSide();
+})();
+</script>
