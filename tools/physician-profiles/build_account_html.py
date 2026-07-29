@@ -276,6 +276,28 @@ ul.pts li:hover .x{opacity:.7}
 .editnote{max-width:8.5in;width:8.5in;font-size:11px;color:var(--ink-2);background:var(--sheet);
   border:1px solid var(--rule);border-left:3px solid var(--warn);border-radius:6px;padding:9px 12px;box-shadow:var(--shadow)}
 .editnote b{color:var(--ink)}
+.editnote kbd{font-family:var(--mono);font-size:10px;background:var(--sheet-2);border:1px solid var(--rule);
+  border-radius:4px;padding:0 5px;color:var(--ink)}
+
+/* ---------- overlay + toast ---------- */
+.ovl{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  background:rgba(15,25,33,.55);padding:20px}
+.ovl-card{background:var(--sheet);color:var(--ink);width:min(560px,100%);max-height:88vh;overflow:auto;
+  border-radius:12px;box-shadow:var(--shadow);padding:18px 20px}
+.ovl-hd{font-weight:800;font-size:15px;margin-bottom:6px}
+.ovl-p{font-size:12px;color:var(--ink-2);margin:0 0 10px}
+.ovl-p code{font-family:var(--mono);font-size:11px}
+.ovl textarea{width:100%;height:220px;font-family:var(--mono);font-size:11px;line-height:1.4;
+  border:1px solid var(--rule);border-radius:8px;padding:10px;background:var(--sheet-2);color:var(--ink);resize:vertical}
+.ovl-row{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.ovl-row .spacer{flex:1}
+.ovl-row button,.ovl-row a.btn{font:inherit;font-weight:600;font-size:13px;padding:7px 14px;border-radius:7px;
+  cursor:pointer;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);text-decoration:none;display:inline-block}
+.ovl-row button.primary{background:var(--heat);border-color:transparent;color:#fff}
+.ovl-row button:hover,.ovl-row a.btn:hover{border-color:var(--warn)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:210;
+  background:color-mix(in srgb,var(--brand) 94%,#000);color:#fff;font-size:13px;font-weight:600;
+  padding:10px 16px;border-radius:8px;box-shadow:var(--shadow);max-width:min(520px,90vw);text-align:center}
 
 /* ---------- responsive / mobile ---------- */
 @media (max-width:920px){
@@ -312,7 +334,7 @@ ul.pts li:hover .x{opacity:.7}
   @page{size:letter portrait;margin:0}
   html,body{background:#fff}
   body{background-image:none}
-  .bar,.editnote,.addpt,.addplay,.play .rm,.play ul li .x,ul.pts li .x{display:none!important}
+  .bar,.editnote,.ovl,.toast,.addpt,.addplay,.play .rm,.play ul li .x,ul.pts li .x{display:none!important}
   .wrap{padding:0;gap:0}
   .sheet{width:8.5in;min-height:11in;box-shadow:none;border-radius:0;margin:0;page-break-after:always;padding:0.5in 0.5in 0.42in}
   .sheet::before{border:none}
@@ -333,22 +355,39 @@ ul.pts li:hover .x{opacity:.7}
   <button id="loadDataBtn" title="Load your own territory data (an account-cards.json from the builder)">↥ Load my data</button>
   <button id="resetBtn" title="Discard edits for this account">↺ Reset</button>
   <button id="importBtn" title="Load a saved edits file">↑ Import edits</button>
-  <button id="exportBtn" title="Download all your edits">↓ Export edits</button>
+  <button id="exportBtn" title="Save all your edits to a file (or copy them)">↓ Export edits</button>
   <button id="printBtn" class="primary" title="Print / Save as PDF">⎙ Print / PDF</button>
   <input type="file" id="fileIn" accept="application/json" style="display:none">
   <input type="file" id="dataIn" accept="application/json" style="display:none">
 </div>
 
 <div class="editnote">
-  <b>Everything is editable.</b> Data-driven sections (sales, cases, probes/case, reservoirs, physician universe, KOL research)
-  are computed from the territory plan + physician universe + three years of NeuroBlate sales. Click any highlighted value to
-  change it — <b>editing a number (sales, cases, reservoirs, surgeon volume) recomputes the KPIs, health grade and charts downstream.</b>
-  Robot and navigation are dropdowns from a capital library (ClearPoint SmartFrame is navigation, not a robot). Add or remove
-  strategy plays and SWOT points yourself. Research under each physician is sorted by how closely it ties to LITT, then by date.
-  Edits save in your browser until you Export them.
+  <b>How to use this card.</b> Pick an account from the bar above. Anything that highlights amber when you hover is
+  editable — click it and type. <b>Text</b> fields (posture, strategy plays, SWOT points, physician notes) save as you write.
+  <b>Numbers</b> — sales, case counts, probes/case, reservoir factors, surgeon volumes — <b>recompute everything downstream the moment
+  you change them:</b> the KPI row, the health grade, the reservoir bars and the annual-opportunity math all update live off your
+  inputs. Use the ⊕ / ✕ controls to add or remove plays and SWOT points.
+  Edits are saved in this browser, per account — <b>Export edits</b> writes them to a file (or copies them) to keep or hand back
+  for a central merge, <b>Import edits</b> loads that file, <b>Reset</b> clears just the current account, and
+  <b>Print / PDF</b> produces a clean one-account handout. <b>Load my data</b> swaps in your own territory's dataset from the builder.
 </div>
 
 <div class="wrap" id="wrap"></div>
+
+<div id="exportModal" class="ovl" style="display:none">
+  <div class="ovl-card">
+    <div class="ovl-hd">Export your edits</div>
+    <p class="ovl-p">Your edits for every account, as one <code>.json</code> file. <b>Download</b> it, or copy the text below and
+      save it yourself. Load it again later with <b>Import edits</b>, or send it in for a central merge.</p>
+    <textarea id="exportTa" readonly spellcheck="false"></textarea>
+    <div class="ovl-row">
+      <button id="exportCopy" class="primary">Copy to clipboard</button>
+      <a id="exportDl" class="btn" download="account-card-edits.json">Download file</a>
+      <span class="spacer"></span>
+      <button id="exportClose">Close</button>
+    </div>
+  </div>
+</div>
 
 <script id="acct-data" type="application/json">__DATA__</script>
 <script>
@@ -770,11 +809,41 @@ document.getElementById("dataIn").onchange=e=>{const f=e.target.files[0];if(!f)r
     alert(`Loaded ${DATA.accounts.length} accounts from ${f.name}.`);
   }catch(err){alert("Could not load that data file: "+err.message)}};
   r.readAsText(f);};
-document.getElementById("printBtn").onclick=()=>window.print();
+/* embedded viewers (e.g. the claude.ai artifact frame) sandbox window.print()
+   and file downloads — detect that so the buttons can degrade gracefully. */
+const inFrame=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+const PRINTKEY=(navigator.platform||"").toUpperCase().indexOf("MAC")>=0?"⌘P":"Ctrl+P";
+let toastT=null;
+function toast(msg){let t=document.getElementById("toast");
+  if(!t){t=document.createElement("div");t.id="toast";t.className="toast";document.body.appendChild(t);}
+  t.textContent=msg;t.style.display="block";clearTimeout(toastT);
+  toastT=setTimeout(()=>{t.style.display="none";},4200);}
+
+document.getElementById("printBtn").onclick=()=>{
+  try{window.print();}catch(e){}
+  if(inFrame)toast("Print didn't open? This viewer blocks it — press "+PRINTKEY+" to print or save as PDF (the layout is print-ready).");
+};
 document.getElementById("resetBtn").onclick=()=>{if(!CUR)return;if(!confirm("Discard all your edits for this account?"))return;
   const e=loadEdits();delete e[CUR];saveEdits(e);render(IDX[CUR]);};
-document.getElementById("exportBtn").onclick=()=>{const blob=new Blob([JSON.stringify(loadEdits(),null,2)],{type:"application/json"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="account-card-edits.json";a.click();};
+
+const exportModal=document.getElementById("exportModal");
+document.getElementById("exportClose").onclick=()=>{exportModal.style.display="none";};
+exportModal.onclick=e=>{if(e.target===exportModal)exportModal.style.display="none";};
+document.getElementById("exportCopy").onclick=()=>{const ta=document.getElementById("exportTa");
+  ta.focus();ta.select();let ok=false;try{ok=document.execCommand("copy");}catch(e){}
+  if(ok){toast("Copied all edits to the clipboard.");}
+  else if(navigator.clipboard){navigator.clipboard.writeText(ta.value).then(()=>toast("Copied all edits to the clipboard.")).catch(()=>toast("Select the text and copy it manually."));}
+  else{toast("Select the text and copy it manually.");}};
+document.getElementById("exportBtn").onclick=()=>{const json=JSON.stringify(loadEdits(),null,2);
+  const ta=document.getElementById("exportTa");ta.value=json;
+  const dl=document.getElementById("exportDl");
+  try{dl.href=URL.createObjectURL(new Blob([json],{type:"application/json"}));}
+  catch(e){dl.href="data:application/json;charset=utf-8,"+encodeURIComponent(json);}
+  // Standalone/hosted file: fire the real download. Sandboxed viewers block it, so always
+  // open the modal too — Copy / Download-link there is the reliable path.
+  if(!inFrame){const a=document.createElement("a");a.href=dl.href;a.download="account-card-edits.json";
+    document.body.appendChild(a);a.click();a.remove();}
+  exportModal.style.display="flex";};
 document.getElementById("importBtn").onclick=()=>document.getElementById("fileIn").click();
 document.getElementById("fileIn").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
   r.onload=()=>{try{const inc=JSON.parse(r.result);const cur=loadEdits();for(const acr in inc)cur[acr]=Object.assign(cur[acr]||{},inc[acr]);saveEdits(cur);render(IDX[CUR]);alert("Edits imported.");}catch(err){alert("Could not read that file.")}};
