@@ -1,0 +1,146 @@
+<style>
+  :root{
+    --bone:#F2F2F2;--white:#FFF;--ink:#111;--blue:#7FAED6;--blue-deep:#2E5D8F;--brown:#6A4A2B;--brown-pale:#EFE7DE;
+    --good:#2C7C55;--warn:#B9762A;--hot:#C23B34;--gold:#C79A3A;
+    --page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;
+    --accent:var(--blue-deep);--accent-ink:#fff;
+    --font-display:'Anton','Oswald','Arial Narrow',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}}
+  :root[data-theme="light"]{--page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;--accent:var(--blue-deep);--accent-ink:#fff;}
+  :root[data-theme="dark"]{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep);flex-wrap:wrap}
+  .badge{width:36px;height:36px;border-radius:8px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px}
+  .badge b{color:var(--brown-pale)}
+  header .title{font-family:var(--font-display);font-size:18px;line-height:1}
+  header .sub{font-size:11px;color:#9fb6c9}
+  .search{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .search input{background:#ffffff14;border:1px solid #ffffff2e;color:#fff;border-radius:8px;padding:8px 11px;font-size:13px;width:200px}
+  .search input::placeholder{color:#9fb6c9}
+  .watch{display:flex;gap:6px;align-items:center;background:#ffffff14;border:1px solid #ffffff2e;color:#fff;border-radius:8px;padding:7px 11px;font-size:13px;cursor:pointer}
+  .watch .st{color:var(--gold)}
+  .themetgl{background:#ffffff1f;border:1px solid #ffffff33;color:#fff;border-radius:7px;padding:6px 9px;font-size:12px;cursor:pointer}
+  .wrap{max-width:1120px;margin:0 auto;padding:16px}
+  .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:14px}
+  .filters label{font-size:12px;color:var(--mute);display:flex;flex-direction:column;gap:3px}
+  .filters select,.filters input[type=range]{margin-top:0}
+  select{border:1px solid var(--line);background:var(--raise);color:var(--text);border-radius:8px;padding:6px 9px;font-size:13px}
+  input[type=range]{accent-color:var(--accent);width:130px}
+  .rangeval{font-family:var(--font-display);font-size:15px;color:var(--accent)}
+  .count{margin-left:auto;font-size:12.5px;color:var(--mute)}
+  .count b{color:var(--text)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .pc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .pc .top{display:flex;gap:12px;padding:14px;border-bottom:1px solid var(--line)}
+  .pc .av{width:52px;height:52px;border-radius:11px;background:var(--brown);color:#fff;font-family:var(--font-display);font-size:20px;display:flex;align-items:center;justify-content:center;flex:none}
+  .pc .who .nm{font-weight:800;font-size:16px;line-height:1.1}
+  .pc .who .meta{font-size:12px;color:var(--mute)}
+  .pc .who .ver{display:inline-flex;gap:4px;align-items:center;font-size:10.5px;color:var(--good);font-weight:700;margin-top:3px}
+  .pc .score{margin-left:auto;text-align:center}
+  .pc .score .n{font-family:var(--font-display);font-size:30px;line-height:.8;color:var(--accent)}
+  .pc .score .l{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .pc .star{position:absolute;cursor:pointer}
+  .measrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+  .measrow .m{background:var(--card);padding:8px 6px;text-align:center}
+  .measrow .m .v{font-family:var(--font-display);font-size:16px}
+  .measrow .m .k{font-size:9px;letter-spacing:.03em;text-transform:uppercase;color:var(--mute)}
+  .pc .acts{display:flex;gap:8px;padding:12px 14px;margin-top:auto}
+  .btn{border:1px solid var(--line);background:var(--raise);color:var(--text);border-radius:9px;padding:8px 10px;font-size:12.5px;cursor:pointer;font-weight:600;flex:1;text-align:center;text-decoration:none}
+  .btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .starbtn{border:1px solid var(--line);background:var(--raise);border-radius:9px;width:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--mute);flex:none}
+  .starbtn.on{color:var(--gold);border-color:var(--gold)}
+  .empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:40px}
+  .foot{max-width:1120px;margin:0 auto;padding:10px 16px 26px;color:var(--mute);font-size:11px}
+  .foot code{background:var(--chip);border-radius:4px;padding:0 4px}
+</style>
+
+<header>
+  <div class="badge disp">R<b>C</b></div>
+  <div><div class="title">Scout Portal</div><div class="sub">Verified recruiting data · RAW Co.</div></div>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search players…">
+    <button class="watch"><span class="st">★</span> Watchlist <b class="num" id="wCount">0</b></button>
+    <button class="themetgl" id="themeBtn">◐</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="filters">
+    <label>Grad year<select id="fGrad"><option value="">All</option><option>2027</option><option>2028</option><option>2029</option></select></label>
+    <label>Position<select id="fPos"><option value="">All</option><option>C</option><option>1B</option><option>2B</option><option>SS</option><option>3B</option><option>OF</option><option>RHP</option><option>LHP</option></select></label>
+    <label>Min RAW Score <span class="rangeval num" id="rv">0</span><input type="range" id="fScore" min="0" max="95" value="0" step="1"></label>
+    <label>Sort<select id="fSort"><option value="score">RAW Score</option><option value="grad">Grad year</option><option value="velo">Top velo</option></select></label>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+<div class="foot">Prototype · sample athletes. The Scout Portal exposes only what a family has consented to share: verified, on-device-captured measurables and RAW Scores. No raw video or PII beyond the shared report. Every figure carries a <code>verified</code> provenance flag; recruiters can build a watchlist and open the printable RAW Report.</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var REPORT="https://claude.ai/code/artifact/947e046e-6e97-4064-b704-76010c2f5824";
+  var P=[
+    {n:"Michael Rutkowski",pos:"OF",grad:"2028",raw:84,velo:94,sixty:7.02,city:"Freehold, NJ",meas:[["EV","94"],["60","7.02"],["Arm","82"],["Bat","72"]]},
+    {n:"Jordan Vernick",pos:"RHP",grad:"2028",raw:79,velo:84,sixty:7.4,city:"Marlboro, NJ",meas:[["FB","84"],["Spin","2180"],["60","7.4"],["EV","89"]]},
+    {n:"Marcus Roman",pos:"2B",grad:"2029",raw:74,velo:80,sixty:7.1,city:"Edison, NJ",meas:[["EV","86"],["60","7.10"],["Arm","80"],["Bat","66"]]},
+    {n:"Danny Schneider",pos:"SS",grad:"2027",raw:81,velo:88,sixty:6.9,city:"Toms River, NJ",meas:[["EV","90"],["60","6.90"],["Arm","88"],["Bat","70"]]},
+    {n:"Luis Alvarez",pos:"1B",grad:"2028",raw:72,velo:85,sixty:7.5,city:"Newark, NJ",meas:[["EV","91"],["60","7.50"],["Arm","78"],["Bat","74"]]},
+    {n:"Peter Kowalski",pos:"3B",grad:"2027",raw:77,velo:86,sixty:7.2,city:"Clifton, NJ",meas:[["EV","89"],["60","7.20"],["Arm","85"],["Bat","69"]]},
+    {n:"David Nguyen",pos:"LHP",grad:"2029",raw:76,velo:82,sixty:7.6,city:"Cherry Hill, NJ",meas:[["FB","82"],["Spin","2240"],["60","7.60"],["EV","84"]]},
+    {n:"Andre Baptiste",pos:"OF",grad:"2028",raw:70,velo:83,sixty:6.8,city:"Trenton, NJ",meas:[["EV","88"],["60","6.80"],["Arm","81"],["Bat","65"]]},
+    {n:"Cole Whitman",pos:"C",grad:"2027",raw:78,velo:79,sixty:7.7,city:"Wayne, NJ",meas:[["Pop","1.95"],["EV","90"],["Arm","79"],["Bat","71"]]}
+  ];
+  P.forEach(function(p,i){p.id=i;p.watched=false;});
+  var watch=new Set();
+
+  function initials(n){var s=n.split(" ");return (s[0][0]+s[s.length-1][0]);}
+  function matchPos(p,f){if(!f)return true;if(f==="OF")return p.pos==="OF";return p.pos===f;}
+  function render(){
+    var q=$("#q").value.trim().toLowerCase();
+    var g=$("#fGrad").value,pos=$("#fPos").value,ms=+$("#fScore").value,sort=$("#fSort").value;
+    var list=P.filter(function(p){
+      return (!q||p.n.toLowerCase().indexOf(q)>=0||p.city.toLowerCase().indexOf(q)>=0)
+        &&(!g||p.grad===g)&&matchPos(p,pos)&&p.raw>=ms;
+    });
+    list.sort(function(a,b){
+      if(sort==="grad")return a.grad.localeCompare(b.grad)||b.raw-a.raw;
+      if(sort==="velo")return b.velo-a.velo;
+      return b.raw-a.raw;
+    });
+    $("#count").innerHTML="<b>"+list.length+"</b> of "+P.length+" athletes";
+    var el=$("#grid");el.innerHTML="";
+    if(!list.length){el.innerHTML='<div class="empty">No athletes match these filters.</div>';return;}
+    list.forEach(function(p){
+      var c=document.createElement("div");c.className="pc";
+      var measH="";p.meas.forEach(function(m){measH+='<div class="m"><div class="v num">'+m[1]+'</div><div class="k">'+m[0]+'</div></div>';});
+      c.innerHTML=
+        '<div class="top"><div class="av">'+initials(p.n)+'</div>'+
+          '<div class="who"><div class="nm">'+p.n+'</div><div class="meta">'+p.pos+' · Class of '+p.grad+' · '+p.city+'</div>'+
+            '<div class="ver">✓ Verified · captured on-device</div></div>'+
+          '<div class="score"><div class="n num">'+p.raw+'</div><div class="l">RAW</div></div></div>'+
+        '<div class="measrow">'+measH+'</div>'+
+        '<div class="acts"><button class="starbtn'+(watch.has(p.id)?" on":"")+'" data-id="'+p.id+'" title="Add to watchlist">★</button>'+
+          '<a class="btn pri" href="'+REPORT+'" target="_blank" rel="noopener">View report</a>'+
+          '<button class="btn">Clips</button></div>';
+      el.appendChild(c);
+    });
+    el.querySelectorAll(".starbtn").forEach(function(b){
+      b.onclick=function(){var id=+b.dataset.id;if(watch.has(id))watch.delete(id);else watch.add(id);
+        b.classList.toggle("on");$("#wCount").textContent=watch.size;};
+    });
+  }
+  ["q","fGrad","fPos","fSort"].forEach(function(id){$("#"+id).addEventListener("input",render);$("#"+id).addEventListener("change",render);});
+  $("#fScore").addEventListener("input",function(){$("#rv").textContent=this.value;render();});
+  $("#themeBtn").onclick=function(){var d=document.documentElement;
+    var c=d.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    d.setAttribute("data-theme",c==="dark"?"light":"dark");};
+  render();
+})();
+</script>
