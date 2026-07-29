@@ -1,0 +1,316 @@
+<style>
+  :root{
+    --bone:#F2F2F2;--white:#FFF;--ink:#111;--blue:#7FAED6;--blue-deep:#2E5D8F;--brown:#6A4A2B;--brown-pale:#EFE7DE;
+    --good:#2C7C55;--warn:#B9762A;--hot:#C23B34;
+    --page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;
+    --accent:var(--blue-deep);--accent-ink:#fff;
+    /* validated categorical (light+dark): single / double / triple / hr */
+    --c-1b:#2F6DB0;--c-2b:#C77F1E;--c-3b:#7A4FB5;--c-hr:#C6362F;--c-out:#9AA0A6;
+    /* sequential blue ramp light->dark */
+    --s0:#EEF4FA;--s1:#CFE0F0;--s2:#9FC0E0;--s3:#6699C8;--s4:#3D74AC;--s5:#234E77;
+    --field:#DCE7D8;--field-line:#B7C7B0;--dirt:#E3D3BC;
+    --font-display:'Anton','Oswald','Arial Narrow',system-ui,sans-serif;
+    --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;--field:#20302a;--field-line:#33473c;--dirt:#3a3020;--s0:#1d2733;--s1:#244056;--s2:#2f5d84;--s3:#4b83b6;--s4:#79a9d6;--s5:#a9cbea;}}
+  :root[data-theme="light"]{--page:#ECEAE4;--card:#FFF;--text:#151515;--mute:#6A6A66;--line:#DED9D0;--raise:#F7F5F0;--chip:#EFEAE1;--accent:var(--blue-deep);--accent-ink:#fff;--field:#DCE7D8;--field-line:#B7C7B0;--dirt:#E3D3BC;--s0:#EEF4FA;--s1:#CFE0F0;--s2:#9FC0E0;--s3:#6699C8;--s4:#3D74AC;--s5:#234E77;}
+  :root[data-theme="dark"]{--page:#14161A;--card:#1B1F25;--text:#ECEEF1;--mute:#93A0AD;--line:#2A3038;--raise:#222831;--chip:#232A33;--accent:#7FAED6;--accent-ink:#08161f;--field:#20302a;--field-line:#33473c;--dirt:#3a3020;--s0:#1d2733;--s1:#244056;--s2:#2f5d84;--s3:#4b83b6;--s4:#79a9d6;--s5:#a9cbea;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .disp{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.02em}
+  .num{font-variant-numeric:tabular-nums}
+  header{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--ink);color:#fff;border-bottom:3px solid var(--blue-deep)}
+  .badge{width:36px;height:36px;border-radius:8px;background:var(--blue-deep);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:18px}
+  .badge b{color:var(--brown-pale)}
+  header .title{font-family:var(--font-display);font-size:18px;line-height:1}
+  header .sub{font-size:11px;color:#9fb6c9}
+  .hbtns{margin-left:auto;display:flex;gap:7px}
+  .hbtn{background:#ffffff16;border:1px solid #ffffff2f;color:#fff;border-radius:8px;padding:6px 11px;font-size:12.5px;cursor:pointer}
+  .themetgl{background:#ffffff1f;border:1px solid #ffffff33;color:#fff;border-radius:7px;padding:6px 9px;font-size:12px;cursor:pointer}
+  .wrap{max-width:1080px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ch{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .ch .t{font-family:var(--font-display);font-size:14px}
+  .seg{margin-left:auto;display:flex;gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .seg button{background:var(--raise);border:0;color:var(--text);padding:6px 12px;font-size:12.5px;cursor:pointer;border-right:1px solid var(--line)}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--accent);color:var(--accent-ink)}
+  /* line score */
+  table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+  .ls{padding:6px 4px 12px}
+  .ls table{font-size:14px}
+  .ls th,.ls td{padding:7px 8px;text-align:center;border-bottom:1px solid var(--line)}
+  .ls th{color:var(--mute);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em}
+  .ls td.team{text-align:left;font-weight:700;white-space:nowrap}
+  .ls td.tot{font-weight:800;background:var(--raise)}
+  .ls tr:last-child td{border-bottom:0}
+  /* box score */
+  .bx{overflow-x:auto}
+  .bx table{font-size:13px;min-width:520px}
+  .bx th,.bx td{padding:7px 9px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+  .bx th{color:var(--mute);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em;position:sticky;top:0;background:var(--card)}
+  .bx td.nm,.bx th.nm{text-align:left;font-weight:600}
+  .bx tr:hover td{background:var(--raise)}
+  .bx tfoot td{font-weight:800;border-top:2px solid var(--line);background:var(--raise)}
+  .bx .pos{color:var(--mute);font-weight:400;font-size:11px}
+  .sub2{font-family:var(--font-display);font-size:12px;color:var(--mute);padding:12px 14px 4px;letter-spacing:.04em}
+  /* analytics */
+  .viz{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  @media(max-width:760px){.viz{grid-template-columns:1fr}.viz .vpanel:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+  .vpanel{padding:14px}
+  .vpanel:first-child{border-right:1px solid var(--line)}
+  .vhd{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .vhd .vt{font-weight:700;font-size:13.5px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;font-size:11.5px;color:var(--mute)}
+  .legend span{display:flex;gap:5px;align-items:center}
+  .sw{width:11px;height:11px;border-radius:50%;display:inline-block}
+  svg{display:block;width:100%;height:auto}
+  select{border:1px solid var(--line);background:var(--raise);color:var(--text);border-radius:8px;padding:5px 8px;font-size:12px;margin-left:auto}
+  .ramp{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:var(--mute)}
+  .ramp .steps{display:flex}
+  .ramp .steps i{width:20px;height:11px;display:block}
+  .tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:11.5px;border-radius:7px;padding:6px 9px;opacity:0;transition:opacity .1s;z-index:20;white-space:nowrap;box-shadow:0 4px 14px #0004}
+  .tip .k{color:#9fb6c9}
+  .foot{max-width:1080px;margin:0 auto;padding:2px 16px 26px;color:var(--mute);font-size:11px}
+  @media print{
+    header .hbtns,header .themetgl,.seg,select{display:none!important}
+    body{background:#fff;color:#000}.card{break-inside:avoid;border-color:#bbb}
+    .wrap{max-width:none;padding:0}
+  }
+</style>
+
+<header>
+  <div class="badge disp">N<b>J</b></div>
+  <div><div class="title">Box Score & Analytics</div><div class="sub">NJ Raw 7 · Tri-State Arsenal 2 — Final · Aug 2, 2026</div></div>
+  <div class="hbtns"><button class="hbtn" id="csvBtn">⤓ Export CSV</button><button class="hbtn" id="printBtn">⎙ Print / PDF</button></div>
+  <button class="themetgl" id="themeBtn">◐</button>
+</header>
+
+<div class="wrap">
+  <!-- LINE SCORE -->
+  <div class="card">
+    <div class="ch"><span class="t">Line score</span></div>
+    <div class="ls" id="lineScore"></div>
+  </div>
+
+  <!-- BOX SCORE -->
+  <div class="card">
+    <div class="ch"><span class="t">Box score</span>
+      <div class="seg" id="teamSeg"><button data-t="raw" class="on">NJ Raw</button><button data-t="ars">Arsenal</button></div>
+    </div>
+    <div class="sub2">Batting</div>
+    <div class="bx" id="batBox"></div>
+    <div class="sub2">Pitching</div>
+    <div class="bx" id="pitchBox"></div>
+  </div>
+
+  <!-- ANALYTICS -->
+  <div class="card">
+    <div class="ch"><span class="t">Analytics — NJ Raw</span></div>
+    <div class="viz">
+      <div class="vpanel">
+        <div class="vhd"><span class="vt">Spray chart</span>
+          <select id="sprayWho"><option value="ALL">All batters</option></select>
+        </div>
+        <svg id="spray" viewBox="0 0 300 288" role="img" aria-label="Spray chart of batted balls"></svg>
+        <div class="legend">
+          <span><i class="sw" style="background:var(--c-1b)"></i>Single</span>
+          <span><i class="sw" style="background:var(--c-2b)"></i>Double</span>
+          <span><i class="sw" style="background:var(--c-3b)"></i>Triple</span>
+          <span><i class="sw" style="background:var(--c-hr)"></i>Home run</span>
+          <span><i class="sw" style="background:var(--c-out)"></i>Out / in play</span>
+        </div>
+      </div>
+      <div class="vpanel">
+        <div class="vhd"><span class="vt">Pitch location — catcher's view</span>
+          <select id="heatMetric"><option value="count">Pitch density</option><option value="whiff">Whiff rate</option></select>
+        </div>
+        <svg id="heat" viewBox="0 0 240 260" role="img" aria-label="Pitch location heatmap"></svg>
+        <div class="ramp" id="ramp"><span>Low</span><div class="steps"></div><span>High</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="foot">Prototype · sample game. Everything here is derived from the scorekeeper's tagged at-bats (<code>events</code>), so the box score, spray chart and heatmap update as you score. Colors are a colorblind-safe categorical set (validated) with a single-hue sequential ramp for density.</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var tip=$("#tip");
+  function showTip(html,e){tip.innerHTML=html;tip.style.opacity="1";moveTip(e);}
+  function moveTip(e){var x=e.clientX+12,y=e.clientY+12;if(x+180>innerWidth)x=e.clientX-180;tip.style.left=x+"px";tip.style.top=y+"px";}
+  function hideTip(){tip.style.opacity="0";}
+
+  // ---------- DATA (sample, derived from scorekeeper) ----------
+  var INN=[1,2,3,4,5,6,7];
+  var LINE={
+    raw:{name:"NJ Raw",r:[0,2,1,0,3,0,1],R:7,H:9,E:1},
+    ars:{name:"Tri-State Arsenal",r:[1,0,0,1,0,0,0],R:2,H:5,E:2}
+  };
+  // batting: [name,pos, AB,R,H,RBI,BB,K, 2b,3b,hr]
+  var BAT={
+    raw:[
+      ["Rutkowski","CF",4,2,3,2,1,0,1,0,0],
+      ["Vernick","DH",4,1,2,1,0,1,0,0,1],
+      ["M. Roman","2B",4,1,1,1,0,0,0,0,0],
+      ["Schneider","SS",3,1,1,2,1,0,0,0,1],
+      ["Alvarez","1B",4,0,1,0,0,1,1,0,0],
+      ["Kowalski","3B",3,1,1,0,1,1,0,0,0],
+      ["Nguyen","RF",3,0,0,0,0,2,0,0,0],
+      ["Baptiste","LF",3,1,0,0,0,1,0,0,0],
+      ["Cho","C",3,0,0,0,0,1,0,0,0]
+    ],
+    ars:[
+      ["Doyle","SS",4,0,1,0,0,1,0,0,0],
+      ["Franco","CF",3,1,1,0,1,0,0,0,0],
+      ["Webb","1B",4,0,1,1,0,1,1,0,0],
+      ["Iverson","3B",4,0,1,1,0,0,0,0,0],
+      ["Park","C",3,1,1,0,0,1,0,0,0],
+      ["Silva","2B",3,0,0,0,0,2,0,0,0],
+      ["Grant","RF",3,0,0,0,0,1,0,0,0],
+      ["Ochoa","LF",3,0,0,0,0,1,0,0,0],
+      ["Reed","DH",3,0,0,0,0,2,0,0,0]
+    ]
+  };
+  // pitching: [name, IP,H,R,ER,BB,K]
+  var PIT={
+    raw:[["Vernick","5.0",4,1,1,1,8],["Schneider","2.0",1,1,0,1,3]],
+    ars:[["Doyle (L)","4.1",7,6,5,3,4],["Grant","1.2",2,1,1,1,2]]
+  };
+  // spray points for NJ Raw: {who,type,x,y}  (x,y in 0..300 / 0..288 field space)
+  var SPRAY=[
+    {who:"Rutkowski",type:"1b",x:198,y:150},{who:"Rutkowski",type:"1b",x:120,y:120},{who:"Rutkowski",type:"2b",x:60,y:95},
+    {who:"Vernick",type:"hr",x:238,y:60},{who:"Vernick",type:"1b",x:170,y:170},{who:"Vernick",type:"out",x:150,y:110},
+    {who:"M. Roman",type:"1b",x:210,y:175},{who:"M. Roman",type:"out",x:95,y:150},
+    {who:"Schneider",type:"hr",x:60,y:52},{who:"Schneider",type:"1b",x:140,y:160},
+    {who:"Alvarez",type:"2b",x:250,y:110},{who:"Alvarez",type:"out",x:180,y:130},
+    {who:"Kowalski",type:"1b",x:110,y:175},{who:"Nguyen",type:"out",x:200,y:120},
+    {who:"Baptiste",type:"out",x:130,y:100},{who:"Cho",type:"out",x:165,y:140}
+  ];
+  var CTYPE={"1b":"var(--c-1b)","2b":"var(--c-2b)","3b":"var(--c-3b)","hr":"var(--c-hr)","out":"var(--c-out)"};
+  var CTLBL={"1b":"Single","2b":"Double","3b":"Triple","hr":"Home run","out":"Out / in play"};
+  // pitch heat: 5x5 grid (row0=top). counts + whiffs
+  var HEAT={
+    count:[[2,3,4,3,2],[3,6,9,7,3],[4,10,14,11,4],[3,7,10,8,3],[2,4,5,4,2]],
+    whiff:[[0,0,1,0,0],[0,2,3,2,0],[1,3,6,4,1],[1,4,7,5,1],[2,5,8,6,2]]
+  };
+
+  // ---------- RENDER LINE SCORE ----------
+  (function(){
+    var h='<table><thead><tr><th class="team" style="text-align:left">Team</th>';
+    INN.forEach(function(i){h+='<th>'+i+'</th>';});
+    h+='<th>R</th><th>H</th><th>E</th></tr></thead><tbody>';
+    ["ars","raw"].forEach(function(k){var t=LINE[k];
+      h+='<tr><td class="team">'+t.name+'</td>';
+      t.r.forEach(function(v){h+='<td>'+v+'</td>';});
+      h+='<td class="tot">'+t.R+'</td><td class="tot">'+t.H+'</td><td class="tot">'+t.E+'</td></tr>';
+    });
+    h+='</tbody></table>';
+    $("#lineScore").innerHTML=h;
+  })();
+
+  // ---------- RENDER BOX SCORE ----------
+  var team="raw";
+  function avg(h,ab){return ab?("."+String(Math.round(h/ab*1000)).padStart(3,"0")):".000";}
+  function renderBox(){
+    // batting
+    var rows=BAT[team],tot=[0,0,0,0,0,0];
+    var h='<table><thead><tr><th class="nm">Batter</th><th>AB</th><th>R</th><th>H</th><th>RBI</th><th>BB</th><th>K</th><th>AVG</th></tr></thead><tbody>';
+    rows.forEach(function(r){
+      tot[0]+=r[2];tot[1]+=r[3];tot[2]+=r[4];tot[3]+=r[5];tot[4]+=r[6];tot[5]+=r[7];
+      h+='<tr><td class="nm">'+r[0]+' <span class="pos">'+r[1]+'</span></td>'+
+        '<td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td>'+r[5]+'</td><td>'+r[6]+'</td><td>'+r[7]+'</td><td>'+avg(r[4],r[2])+'</td></tr>';
+    });
+    h+='</tbody><tfoot><tr><td class="nm">Totals</td><td>'+tot[0]+'</td><td>'+tot[1]+'</td><td>'+tot[2]+'</td><td>'+tot[3]+'</td><td>'+tot[4]+'</td><td>'+tot[5]+'</td><td></td></tr></tfoot></table>';
+    $("#batBox").innerHTML=h;
+    // pitching
+    var ph='<table><thead><tr><th class="nm">Pitcher</th><th>IP</th><th>H</th><th>R</th><th>ER</th><th>BB</th><th>K</th></tr></thead><tbody>';
+    PIT[team].forEach(function(r){ph+='<tr><td class="nm">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td>'+r[5]+'</td><td>'+r[6]+'</td></tr>';});
+    ph+='</tbody></table>';
+    $("#pitchBox").innerHTML=ph;
+  }
+  $("#teamSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+    team=b.dataset.t;$("#teamSeg").querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b);});renderBox();});
+
+  // ---------- SPRAY CHART ----------
+  var SVGNS="http://www.w3.org/2000/svg";
+  function el(n,a){var e=document.createElementNS(SVGNS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function renderSpray(){
+    var s=$("#spray");s.innerHTML="";
+    // field: grass polygon (foul territory clipped), outfield arc
+    var HP={x:150,y:268};
+    // fair wedge: home -> LF foul pole -> arc -> RF foul pole
+    s.appendChild(el("path",{d:"M150 268 L28 92 A 150 150 0 0 1 272 92 Z",fill:"var(--field)",stroke:"var(--field-line)","stroke-width":"1.5"}));
+    // infield dirt diamond
+    s.appendChild(el("path",{d:"M150 268 L206 212 L150 156 L94 212 Z",fill:"var(--dirt)",stroke:"var(--field-line)","stroke-width":"1"}));
+    // bases
+    [[150,268],[206,212],[150,156],[94,212]].forEach(function(b){s.appendChild(el("rect",{x:b[0]-3,y:b[1]-3,width:6,height:6,fill:"#fff",stroke:"var(--field-line)",transform:"rotate(45 "+b[0]+" "+b[1]+")"}));});
+    // foul lines
+    s.appendChild(el("line",{x1:150,y1:268,x2:28,y2:92,stroke:"var(--field-line)","stroke-width":"1"}));
+    s.appendChild(el("line",{x1:150,y1:268,x2:272,y2:92,stroke:"var(--field-line)","stroke-width":"1"}));
+    // points
+    var who=$("#sprayWho").value;
+    SPRAY.forEach(function(p){
+      if(who!=="ALL"&&p.who!==who)return;
+      var r=p.type==="out"?3.4:5;
+      var c=el("circle",{cx:p.x,cy:p.y,r:r,fill:"var("+ ({"1b":"--c-1b","2b":"--c-2b","3b":"--c-3b","hr":"--c-hr","out":"--c-out"}[p.type]) +")",
+        stroke:"var(--card)","stroke-width":"1.5",style:"cursor:pointer"});
+      c.addEventListener("mouseenter",function(e){showTip('<b>'+p.who+'</b> · <span class="k">'+CTLBL[p.type]+'</span>',e);});
+      c.addEventListener("mousemove",moveTip);c.addEventListener("mouseleave",hideTip);
+      s.appendChild(c);
+    });
+  }
+  // populate spray who dropdown
+  (function(){var whos=BAT.raw.map(function(r){return r[0];});var sel=$("#sprayWho");
+    whos.forEach(function(w){var o=document.createElement("option");o.value=w;o.textContent=w;sel.appendChild(o);});
+    sel.onchange=renderSpray;})();
+
+  // ---------- HEATMAP ----------
+  var STEPS=["--s0","--s1","--s2","--s3","--s4","--s5"];
+  function renderRamp(){var box=$("#ramp").querySelector(".steps");box.innerHTML="";
+    STEPS.forEach(function(s){var i=document.createElement("i");i.style.background="var("+s+")";box.appendChild(i);});}
+  function renderHeat(){
+    var metric=$("#heatMetric").value;var g=HEAT[metric];
+    var max=0;g.forEach(function(row){row.forEach(function(v){if(v>max)max=v;});});
+    var h=$("#heat");h.innerHTML="";
+    var cell=40,ox=20,oy=18;
+    for(var r=0;r<5;r++)for(var c=0;c<5;c++){
+      var v=g[r][c];var t=max?v/max:0;
+      var step=v===0?"--s0":STEPS[Math.min(5,Math.ceil(t*5))];
+      var x=ox+c*cell,y=oy+r*cell;
+      var rect=el("rect",{x:x,y:y,width:cell-2,height:cell-2,rx:4,fill:"var("+step+")",stroke:"var(--line)","stroke-width":"0.5",style:"cursor:pointer"});
+      (function(rr,cc,vv){rect.addEventListener("mouseenter",function(e){
+        var lbl=metric==="whiff"?(vv+" whiffs"):(vv+" pitches");
+        showTip('<span class="k">Zone '+(rr+1)+","+(cc+1)+'</span> · <b>'+lbl+'</b>',e);});})(r,c,v);
+      rect.addEventListener("mousemove",moveTip);rect.addEventListener("mouseleave",hideTip);
+      h.appendChild(rect);
+    }
+    // strike zone outline (center 3x3)
+    h.appendChild(el("rect",{x:ox+cell,y:oy+cell,width:cell*3-2,height:cell*3-2,rx:3,fill:"none",stroke:"var(--text)","stroke-width":"1.6","stroke-dasharray":"4 3",opacity:"0.7"}));
+    // home plate under zone
+    h.appendChild(el("path",{d:"M"+(ox+cell*1.5)+" "+(oy+cell*5+6)+" L"+(ox+cell*3.5)+" "+(oy+cell*5+6)+" L"+(ox+cell*3.5)+" "+(oy+cell*5+16)+" L"+(ox+cell*2.5)+" "+(oy+cell*5+24)+" L"+(ox+cell*1.5)+" "+(oy+cell*5+16)+" Z",fill:"var(--raise)",stroke:"var(--field-line)"}));
+  }
+  $("#heatMetric").onchange=renderHeat;
+
+  // ---------- EXPORT ----------
+  $("#csvBtn").onclick=function(){
+    var lines=[["Batter","Pos","AB","R","H","RBI","BB","K","AVG"].join(",")];
+    BAT[team].forEach(function(r){lines.push([r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],avg(r[4],r[2])].join(","));});
+    lines.push("");lines.push(["Pitcher","IP","H","R","ER","BB","K"].join(","));
+    PIT[team].forEach(function(r){lines.push([r[0],r[1],r[2],r[3],r[4],r[5],r[6]].join(","));});
+    var blob=new Blob([lines.join("\n")],{type:"text/csv"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(blob);
+    a.download=(team==="raw"?"NJRaw":"Arsenal")+"_boxscore_2026-08-02.csv";a.click();
+    var o=this.textContent;this.textContent="✓ Downloaded";var self=this;setTimeout(function(){self.textContent=o;},1400);
+  };
+  $("#printBtn").onclick=function(){window.print();};
+  $("#themeBtn").onclick=function(){var d=document.documentElement;
+    var c=d.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    d.setAttribute("data-theme",c==="dark"?"light":"dark");renderSpray();renderHeat();};
+
+  renderBox();renderSpray();renderRamp();renderHeat();
+})();
+</script>
