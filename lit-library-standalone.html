@@ -161,6 +161,23 @@
   .viewhead{font-size:20px;font-weight:800;margin:0 0 4px}
   .viewsub{color:var(--ink2);margin:0 0 16px}
   .hidden{display:none}
+  .physcard{display:flex;flex-direction:column;gap:10px}
+  .physhead{display:flex;gap:12px;align-items:flex-start}
+  .physav{width:46px;height:46px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));box-shadow:0 0 14px rgba(123,92,255,.35)}
+  .physmeta{min-width:0}
+  .physname{font-size:15px;font-weight:700;color:var(--ink);line-height:1.25}
+  .physinst{font-size:12.5px;color:var(--ink2);margin-top:2px}
+  .physloc{font-size:11.5px;color:var(--muted);margin-top:1px}
+  .physbadges{display:flex;flex-wrap:wrap;gap:6px}
+  .physbadges .spec{color:var(--cyan);border-color:rgba(43,212,255,.4)}
+  .physfocus{margin:0;color:var(--ink2);font-size:13px;line-height:1.55}
+  .physinds{margin-top:2px}
+  .physfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(30,58,95,.5)}
+  .physrel{color:var(--cyan);font-size:12px;font-weight:600;cursor:pointer}
+  .physrel:hover{text-decoration:underline}
+  .physsrc{color:var(--muted);font-size:12px;white-space:nowrap}
+  .physsrc:hover{color:var(--cyan)}
+  @media(max-width:1024px){#physGrid{grid-template-columns:1fr !important}}
   @media(max-width:1024px){
     .app{grid-template-columns:64px minmax(0,1fr)}
     .brand h1,.brand .sub,.nav a .lbl,.side .foot,.btn span,.nav a .ct{display:none}
@@ -304,6 +321,17 @@
       <h2 class="viewhead">Meetings &amp; Events</h2>
       <p class="viewsub">Priority conferences monitored by the engine. Dates are by season; confirm exact dates on each society site.</p>
       <div class="grid" id="evGrid" style="grid-template-columns:repeat(2,1fr)"></div>
+    </section>
+
+    <!-- PHYSICIANS VIEW -->
+    <section id="view-physicians" class="hidden">
+      <h2 class="viewhead">Physicians</h2>
+      <p class="viewsub">Curated roster of physicians and investigators active in laser interstitial thermal therapy and related neurosurgery. Coverage is deliberate — physicians are included for their standing in the field, not derived from paper authorship. Click an indication to jump to the matching evidence.</p>
+      <div class="controls">
+        <input type="search" id="pq" placeholder="Search name, institution, specialty…" />
+        <span class="viewsub" id="physCount" style="margin:0;align-self:center"></span>
+      </div>
+      <div class="grid" id="physGrid" style="grid-template-columns:repeat(2,1fr)"></div>
     </section>
   </main>
 </div>
@@ -8254,6 +8282,7 @@
   ]
 };</script>
 <script>
+window.__PHYS__=[{"id": "golby-alexandra", "name": "Alexandra J. Golby, MD", "institution": "Brigham and Women's Hospital / Harvard Medical School", "location": "Boston, MA, USA", "specialty": "Neurosurgery", "littFocus": "Senior academic figure in image-guided neurosurgery, intraoperative MRI (AMIGO suite), and brain mapping for tumors and epilepsy near eloquent cortex — a leader in image-guided ablation and resection rather than a single-indication LITT operator.", "indications": ["newly_gbm", "recurrent_gbm", "other_tumor"], "confidence": "high", "sourceUrl": "https://physiciandirectory.brighamandwomens.org/details/689/alexandra-golby-neurosurgery-radiology-boston"}, {"id": "barnett-gene", "name": "Gene H. Barnett, MD, MBA", "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor & Neuro-Oncology Center", "location": "Cleveland, OH, USA", "specialty": "Neurosurgical oncology", "littFocus": "Pioneer of stereotactic laser ablation (LITT) for brain tumors and radiation necrosis and an early adopter of the NeuroBlate system; long-standing leader in computer-assisted and stereotactic neurosurgery.", "indications": ["newly_gbm", "recurrent_gbm", "brain_met", "radiation_necrosis"], "confidence": "high", "sourceUrl": "https://my.clevelandclinic.org/staff/531-gene-barnett"}, {"id": "mohammadi-alireza", "name": "Alireza M. Mohammadi, MD", "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor & Neuro-Oncology Center", "location": "Cleveland, OH, USA", "specialty": "Neurosurgical oncology", "littFocus": "Leading investigator in LITT for gliomas and brain metastases; principal author on the multicenter LAANTERN NeuroBlate registry and on upfront-LITT studies in newly diagnosed glioblastoma.", "indications": ["newly_gbm", "recurrent_gbm", "brain_met"], "confidence": "high", "sourceUrl": "https://my.clevelandclinic.org/staff/17482-alireza-mohammadi"}, {"id": "sloan-andrew", "name": "Andrew E. Sloan, MD, MBA, FACS", "institution": "Affiliation in transition — recent sources conflict (Piedmont Healthcare, Atlanta vs. Premier Health / Wright State, Dayton); adjunct at Case Western Reserve", "location": "Atlanta, GA / Dayton, OH, USA (unconfirmed)", "specialty": "Neurosurgical oncology", "littFocus": "Neurosurgical oncologist experienced in LITT for gliomas and metastases and in brain-tumor immunotherapy; formerly Director of the Brain Tumor & Neuro-Oncology Center at University Hospitals / Case Western in Cleveland.", "indications": ["newly_gbm", "recurrent_gbm", "brain_met"], "confidence": "low", "sourceUrl": "https://doctors.premierhealth.com/provider/andrew-sloan/4835255"}, {"id": "gross-robert", "name": "Robert E. Gross, MD, PhD", "institution": "Rutgers — Robert Wood Johnson & New Jersey Medical Schools (Chair of Neurosurgery)", "location": "New Brunswick / Newark, NJ, USA", "specialty": "Epilepsy neurosurgery", "littFocus": "A principal developer and popularizer of stereotactic laser amygdalohippocampotomy (SLAH) for mesial temporal lobe epilepsy; leader in stereotactic laser ablation and DBS for epilepsy. Moved from Emory to Rutgers in 2023.", "indications": ["mtle", "focal_epilepsy"], "confidence": "high", "sourceUrl": "https://rwjms.rutgers.edu/people/robert-gross"}, {"id": "willie-jon", "name": "Jon T. Willie, MD, PhD, FAANS", "institution": "UT Health Austin / Dell Medical School, The University of Texas at Austin", "location": "Austin, TX, USA", "specialty": "Epilepsy neurosurgery", "littFocus": "Major contributor to laser ablation for epilepsy, including SLAH outcomes and technique refinement; now Chief of Functional and Epilepsy Surgery at Dell Med after directing stereotactic/functional/epilepsy surgery at Washington University in St. Louis.", "indications": ["mtle", "focal_epilepsy"], "confidence": "high", "sourceUrl": "https://dellmed.utexas.edu/directory/jon-willie"}, {"id": "sperling-michael", "name": "Michael R. Sperling, MD", "institution": "Thomas Jefferson University — Jefferson Comprehensive Epilepsy Center", "location": "Philadelphia, PA, USA", "specialty": "Epileptology", "littFocus": "Epileptologist and Director of the Jefferson Comprehensive Epilepsy Center; the medical/epileptology counterpart in laser-ablation programs, contributing to selection and outcomes evidence for LITT/SLAH in drug-resistant epilepsy.", "indications": ["mtle", "focal_epilepsy"], "confidence": "high", "sourceUrl": "https://www.jeffersonhealth.org/find-a-doctor/s/sperling-michael-r"}, {"id": "fecci-peter", "name": "Peter E. Fecci, MD, PhD", "institution": "University of Colorado Anschutz Medical Campus (Chair of Neurosurgery; moved from Duke in 2025)", "location": "Aurora / Denver, CO, USA", "specialty": "Neurosurgical oncology", "littFocus": "National leader in combining LITT with immunotherapy for primary and metastatic brain tumors, including work on LITT-induced blood-brain-barrier disruption to enhance immune and drug delivery; previously directed the Duke Center for Brain and Spine Metastasis.", "indications": ["newly_gbm", "recurrent_gbm", "brain_met"], "confidence": "high", "sourceUrl": "https://www.cu.edu/cu-careers/news/peter-e-fecci-md-phd-named-chair-department-neurosurgery"}, {"id": "leuthardt-eric", "name": "Eric C. Leuthardt, MD, MBA", "institution": "Washington University School of Medicine in St. Louis — Taylor Family Department of Neurosurgery", "location": "St. Louis, MO, USA", "specialty": "Neurosurgery", "littFocus": "Early adopter and investigator of LITT for gliomas and metastases and of LITT-mediated blood-brain-barrier disruption; broad innovator in brain-computer interfaces and neurotechnology.", "indications": ["newly_gbm", "recurrent_gbm", "brain_met"], "confidence": "high", "sourceUrl": "https://neurosurgery.wustl.edu/people/eric-c-leuthardt-md/"}, {"id": "chiang-veronica", "name": "Veronica L. Chiang, MD, FAANS", "institution": "Yale School of Medicine / Yale New Haven Hospital (Director, Gamma Knife Center)", "location": "New Haven, CT, USA", "specialty": "Stereotactic neurosurgery", "littFocus": "Leading authority on LITT for brain metastases and post-radiosurgery radiation necrosis, including comparative work of LITT vs bevacizumab for radiation necrosis; integrates LITT with SRS in multidisciplinary brain-metastasis care.", "indications": ["brain_met", "radiation_necrosis"], "confidence": "high", "sourceUrl": "https://medicine.yale.edu/profile/veronica-chiang/"}, {"id": "chen-clark", "name": "Clark C. Chen, MD, PhD", "institution": "Warren Alpert Medical School of Brown University / Brown University Health (Director, Brain Tumor Program; moved from University of Minnesota in 2024)", "location": "Providence, RI, USA", "specialty": "Neurosurgical oncology", "littFocus": "Neurosurgical oncologist focused on minimally invasive neuro-oncology including LITT for gliomas; NIH-funded glioblastoma researcher, formerly Chair of Neurosurgery at the University of Minnesota.", "indications": ["newly_gbm", "recurrent_gbm"], "confidence": "high", "sourceUrl": "https://neurosurgery.med.brown.edu/people/clark-c-chen-md-phd"}, {"id": "tandon-nitin", "name": "Nitin Tandon, MD", "institution": "McGovern Medical School, UTHealth Houston (Chief of Epilepsy Surgery)", "location": "Houston, TX, USA", "specialty": "Epilepsy neurosurgery", "littFocus": "High-volume epilepsy surgeon who pioneered robot-assisted SEEG combined with MRI-guided laser ablation for drug-resistant epilepsy; leads the Texas Institute for Restorative Neurotechnologies.", "indications": ["focal_epilepsy", "mtle"], "confidence": "high", "sourceUrl": "https://med.uth.edu/neurosurgery/2022/11/01/nitin-tandon-md/"}, {"id": "curry-daniel", "name": "Daniel J. Curry, MD", "institution": "Texas Children's Hospital / Baylor College of Medicine (Director, Functional Neurosurgery & Epilepsy Surgery)", "location": "Houston, TX, USA", "specialty": "Pediatric epilepsy surgery", "littFocus": "Pioneer of pediatric MRI-guided laser ablation for epilepsy (Texas Children's performed the world's first LITT-for-epilepsy case); particularly known for laser ablation of hypothalamic hamartomas and other pediatric epileptogenic lesions.", "indications": ["hypothalamic_hamartoma", "focal_epilepsy"], "confidence": "high", "sourceUrl": "https://www.texaschildrens.org/find-a-provider/daniel-j-curry-md"}, {"id": "sharan-ashwini", "name": "Ashwini D. Sharan, MD, FACS", "institution": "Thomas Jefferson University (Division Director, Functional & Epilepsy Neurosurgery)", "location": "Philadelphia, PA, USA", "specialty": "Epilepsy neurosurgery", "littFocus": "Leads Jefferson's surgical epilepsy program performing both ablative (laser) and resective procedures; past CNS president and a prominent figure in neuromodulation and minimally invasive epilepsy surgery.", "indications": ["mtle", "focal_epilepsy"], "confidence": "high", "sourceUrl": "https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/neurosurgery/faculty/sharan.html"}, {"id": "smith-kris", "name": "Kris A. Smith, MD", "institution": "Barrow Neurological Institute — St. Joseph's Hospital & Medical Center", "location": "Phoenix, AZ, USA", "specialty": "Neurosurgery", "littFocus": "Brain tumor and epilepsy surgeon who uses LITT for tumors and epilepsy; directs Barrow's Hypothalamic Hamartoma Program and Stereotactic-Functional-Epilepsy Fellowship, with laser ablation part of his minimally invasive practice.", "indications": ["recurrent_gbm", "hypothalamic_hamartoma", "focal_epilepsy"], "confidence": "high", "sourceUrl": "https://www.barrowneuro.org/person/kris-smith-md/"}, {"id": "laxton-adrian", "name": "Adrian W. Laxton, MD", "institution": "Atrium Health Wake Forest Baptist / Wake Forest University School of Medicine (Director of Functional Neurosurgery)", "location": "Winston-Salem, NC, USA", "specialty": "Functional neurosurgery", "littFocus": "Functional and tumor neurosurgeon offering LITT/laser ablation for epilepsy and brain tumors alongside DBS and radiosurgery.", "indications": ["focal_epilepsy", "recurrent_gbm"], "confidence": "high", "sourceUrl": "https://school.wakehealth.edu/faculty/l/adrian-w-laxton"}, {"id": "prabhu-sujit", "name": "Sujit S. Prabhu, MD, FRCS", "institution": "The University of Texas MD Anderson Cancer Center — Department of Neurosurgery", "location": "Houston, TX, USA", "specialty": "Neurosurgical oncology", "littFocus": "High-volume LITT operator for deep-seated and eloquent gliomas and metastases; published widely on LITT for newly diagnosed and recurrent glioblastoma (including time-to-chemotherapy and IDH-wildtype outcomes) and involved in multicenter LITT efficacy work.", "indications": ["newly_gbm", "recurrent_gbm", "brain_met"], "confidence": "high", "sourceUrl": "https://faculty.mdanderson.org/profiles/sujit_prabhu.html"}, {"id": "englot-dario", "name": "Dario J. Englot, MD, PhD", "institution": "Vanderbilt University Medical Center (Surgical Director of Epilepsy)", "location": "Nashville, TN, USA", "specialty": "Epilepsy neurosurgery", "littFocus": "Surgical director of one of the country's highest-volume epilepsy programs; performs and studies laser ablation and SEEG for drug-resistant epilepsy, with a research focus on brain-network mechanisms of seizures and neuromodulation.", "indications": ["focal_epilepsy", "mtle"], "confidence": "high", "sourceUrl": "https://www.vumc.org/neurosurgerydept/person/dario-englot-md-phd"}];
 const C={cyan:"#2AD4FF",blue:"#3B82F6",purple:"#7B5CFF",teal:"#14B8A6",green:"#1ED760",yellow:"#FFC857",muted:"#64748B",danger:"#EF4444"};
 const PHYSICIAN=(typeof window!=="undefined"&&window.__PHYSICIAN__===true)||/physician/i.test(location.pathname);
 if(PHYSICIAN){
@@ -8273,7 +8302,7 @@ const SPECIALTIES=["neurosurgery","neuroOncology","epileptology","radiationOncol
 const NAV=[
   ["dashboard","Dashboard","◎"],["literature","Literature","▤"],["guidelines","Clinical Guidelines","❑"],
   ["trials","Trials & Studies","⚗"],["technology","Technology","⚙"],["indications","Indications","◉"],
-  ["reimbursement","Reimbursement","$"],["expert","Expert Insights","☻"],["meetings","Meetings & Events","▦"],["mylib","My Library","★"]
+  ["reimbursement","Reimbursement","$"],["expert","Expert Insights","☻"],["physicians","Physicians","⚕"],["meetings","Meetings & Events","▦"],["mylib","My Library","★"]
 ].filter(n=>!(PHYSICIAN&&(n[0]==="reimbursement"||n[0]==="expert")));
 const EVENTS=[
   ["SNO","Society for Neuro-Oncology Annual Meeting","Nov · USA","https://www.soc-neuro-onc.org/annual-meeting/"],
@@ -8508,12 +8537,60 @@ function renderMeetings(){
     <div style="color:var(--cyan);font-size:12px;margin-top:10px;word-break:break-all">Visit event site →</div></a>`).join("");
 }
 
+// ---- PHYSICIANS ----
+let PHYS=null;
+function physInitials(n){return String(n||"").replace(/,.*$/,"").trim().split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,2).join("").toUpperCase();}
+function physShort(n){return String(n||"").replace(/,.*$/,"").trim();}
+function loadPhys(cb){
+  if(PHYS!==null){cb();return;}
+  const done=d=>{const a=(d&&(d.physicians||d.items||d))||[];PHYS=Array.isArray(a)?a:[];cb();};
+  if(window.__PHYS__){done(window.__PHYS__);return;}
+  fetch("physicians.json").then(r=>r.ok?r.json():Promise.reject()).then(done).catch(()=>done([]));
+}
+function renderPhysicians(){
+  const grid=$("#physGrid");if(!grid)return;
+  if(PHYS===null)grid.innerHTML='<div class="empty">Loading roster…</div>';
+  loadPhys(()=>{
+    const q=(($("#pq")||{}).value||"").toLowerCase().trim();
+    const list=PHYS.filter(p=>!q||[p.name,p.institution,p.specialty,p.location,p.littFocus,(p.indications||[]).map(indName).join(" ")].join(" ").toLowerCase().includes(q));
+    const cnt=$("#physCount");if(cnt)cnt.textContent=PHYS.length?(list.length+(list.length===1?" physician":" physicians")+(q?" of "+PHYS.length:"")):"";
+    if(!PHYS.length){grid.innerHTML='<div class="empty">Physician roster unavailable.</div>';return;}
+    if(!list.length){grid.innerHTML='<div class="empty">No physicians match your search.</div>';return;}
+    grid.innerHTML=list.map(p=>{
+      const rel=(DATA.items||[]).filter(it=>(it.indications||[]).some(k=>(p.indications||[]).includes(k))).length;
+      const inds=(p.indications||[]).map(k=>`<span class="chip" data-ind="${esc(k)}">${esc(indName(k))}</span>`).join("");
+      const src=p.sourceUrl?`<a class="physsrc" href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">Profile ↗</a>`:"";
+      const unv=p.confidence==="low"?'<span class="pill" title="Current affiliation could not be fully verified">affiliation unverified</span>':"";
+      return `<div class="card physcard">
+        <div class="physhead">
+          <div class="physav">${esc(physInitials(p.name))}</div>
+          <div class="physmeta">
+            <div class="physname">${esc(p.name)}</div>
+            <div class="physinst">${esc(p.institution||"")}</div>
+            ${p.location?`<div class="physloc">${esc(p.location)}</div>`:""}
+          </div>
+        </div>
+        <div class="physbadges"><span class="pill spec">${esc(p.specialty||"")}</span>${unv}</div>
+        ${p.littFocus?`<p class="physfocus">${esc(p.littFocus)}</p>`:""}
+        ${inds?`<div class="chips physinds">${inds}</div>`:""}
+        <div class="physfoot">
+          <span class="physrel" data-phys="${esc(p.id||"")}">${rel} related finding${rel===1?"":"s"} →</span>
+          ${src}
+        </div>
+      </div>`;
+    }).join("");
+    grid.querySelectorAll("[data-ind]").forEach(e=>e.onclick=()=>openInList(it=>(it.indications||[]).includes(e.dataset.ind),indName(e.dataset.ind),"Findings mapped to this indication."));
+    grid.querySelectorAll(".physrel").forEach(e=>e.onclick=()=>{const p=PHYS.find(x=>(x.id||"")===e.dataset.phys);if(!p||!(p.indications||[]).length)return;openInList(it=>(it.indications||[]).some(k=>(p.indications||[]).includes(k)),physShort(p.name)+" — related evidence",(p.institution||"")+(p.specialty?" · "+p.specialty:""));});
+  });
+}
+
 // ---- ROUTER ----
 function go(view,keepFilter){
   document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("active",a.dataset.v===view));
   $("#crumb").textContent=(NAV.find(n=>n[0]===view)||["","Dashboard"])[1];
-  ["dashboard","list","indications","meetings"].forEach(v=>$("#view-"+v).classList.add("hidden"));
+  ["dashboard","list","indications","meetings","physicians"].forEach(v=>$("#view-"+v).classList.add("hidden"));
   if(view==="dashboard"){$("#view-dashboard").classList.remove("hidden");renderDashboard();return;}
+  if(view==="physicians"){$("#view-physicians").classList.remove("hidden");renderPhysicians();return;}
   if(view==="indications"){$("#view-indications").classList.remove("hidden");renderIndications();return;}
   if(view==="meetings"){$("#view-meetings").classList.remove("hidden");renderMeetings();return;}
   // list-style views
@@ -8540,6 +8617,7 @@ function hydrate(d){
   go(NAV.some(n=>n[0]===start)?start:"dashboard");
 }
 ["q","f-indication","f-strategy","f-direction","f-impact","f-biz"].forEach(id=>document.addEventListener("input",e=>{if(e.target.id===id)renderList();}));
+document.addEventListener("input",e=>{if(e.target&&e.target.id==="pq")renderPhysicians();});
 $("#f-sort").addEventListener("change",e=>{sortKey=e.target.value;sortDir=sortKey==="date"?-1:-1;renderList();});
 $("#refresh").onclick=()=>$("#file").click();
 $("#file").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();

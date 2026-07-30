@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "curated",
+  "lastUpdated": "2026-07-30",
+  "note": "Curated roster of physicians and investigators active in LITT (MRI-guided laser interstitial thermal therapy) and related neurosurgery for neuro-oncology and epilepsy. Coverage is DELIBERATE, not derived from paper authorship — a physician appears here because they are a recognized figure in the field, not because they authored one of the tracked findings. Affiliations were web-verified as of lastUpdated; changing jobs is common, so confidence flags note where a current primary institution could not be confirmed. Each physician's indications map to database.json taxonomy keys, which drives the related-evidence cross-links in the app.",
+  "indicationTaxonomyRef": "database.json > taxonomy.indications",
+  "physicians": [
+    {
+      "id": "golby-alexandra",
+      "name": "Alexandra J. Golby, MD",
+      "institution": "Brigham and Women's Hospital / Harvard Medical School",
+      "location": "Boston, MA, USA",
+      "specialty": "Neurosurgery",
+      "littFocus": "Senior academic figure in image-guided neurosurgery, intraoperative MRI (AMIGO suite), and brain mapping for tumors and epilepsy near eloquent cortex — a leader in image-guided ablation and resection rather than a single-indication LITT operator.",
+      "indications": ["newly_gbm", "recurrent_gbm", "other_tumor"],
+      "confidence": "high",
+      "sourceUrl": "https://physiciandirectory.brighamandwomens.org/details/689/alexandra-golby-neurosurgery-radiology-boston"
+    },
+    {
+      "id": "barnett-gene",
+      "name": "Gene H. Barnett, MD, MBA",
+      "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor & Neuro-Oncology Center",
+      "location": "Cleveland, OH, USA",
+      "specialty": "Neurosurgical oncology",
+      "littFocus": "Pioneer of stereotactic laser ablation (LITT) for brain tumors and radiation necrosis and an early adopter of the NeuroBlate system; long-standing leader in computer-assisted and stereotactic neurosurgery.",
+      "indications": ["newly_gbm", "recurrent_gbm", "brain_met", "radiation_necrosis"],
+      "confidence": "high",
+      "sourceUrl": "https://my.clevelandclinic.org/staff/531-gene-barnett"
+    },
+    {
+      "id": "mohammadi-alireza",
+      "name": "Alireza M. Mohammadi, MD",
+      "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor & Neuro-Oncology Center",
+      "location": "Cleveland, OH, USA",
+      "specialty": "Neurosurgical oncology",
+      "littFocus": "Leading investigator in LITT for gliomas and brain metastases; principal author on the multicenter LAANTERN NeuroBlate registry and on upfront-LITT studies in newly diagnosed glioblastoma.",
+      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
+      "confidence": "high",
+      "sourceUrl": "https://my.clevelandclinic.org/staff/17482-alireza-mohammadi"
+    },
+    {
+      "id": "sloan-andrew",
+      "name": "Andrew E. Sloan, MD, MBA, FACS",
+      "institution": "Affiliation in transition — recent sources conflict (Piedmont Healthcare, Atlanta vs. Premier Health / Wright State, Dayton); adjunct at Case Western Reserve",
+      "location": "Atlanta, GA / Dayton, OH, USA (unconfirmed)",
+      "specialty": "Neurosurgical oncology",
+      "littFocus": "Neurosurgical oncologist experienced in LITT for gliomas and metastases and in brain-tumor immunotherapy; formerly Director of the Brain Tumor & Neuro-Oncology Center at University Hospitals / Case Western in Cleveland.",
+      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
+      "confidence": "low",
+      "sourceUrl": "https://doctors.premierhealth.com/provider/andrew-sloan/4835255"
+    },
+    {
+      "id": "gross-robert",
+      "name": "Robert E. Gross, MD, PhD",
+      "institution": "Rutgers — Robert Wood Johnson & New Jersey Medical Schools (Chair of Neurosurgery)",
+      "location": "New Brunswick / Newark, NJ, USA",
+      "specialty": "Epilepsy neurosurgery",
+      "littFocus": "A principal developer and popularizer of stereotactic laser amygdalohippocampotomy (SLAH) for mesial temporal lobe epilepsy; leader in stereotactic laser ablation and DBS for epilepsy. Moved from Emory to Rutgers in 2023.",
+      "indications": ["mtle", "focal_epilepsy"],
+      "confidence": "high",
+      "sourceUrl": "https://rwjms.rutgers.edu/people/robert-gross"
+    },
+    {
+      "id": "willie-jon",
+      "name": "Jon T. Willie, MD, PhD, FAANS",
+      "institution": "UT Health Austin / Dell Medical School, The University of Texas at Austin",
+      "location": "Austin, TX, USA",
+      "specialty": "Epilepsy neurosurgery",
+      "littFocus": "Major contributor to laser ablation for epilepsy, including SLAH outcomes and technique refinement; now Chief of Functional and Epilepsy Surgery at Dell Med after directing stereotactic/functional/epilepsy surgery at Washington University in St. Louis.",
+      "indications": ["mtle", "focal_epilepsy"],
+      "confidence": "high",
+      "sourceUrl": "https://dellmed.utexas.edu/directory/jon-willie"
+    },
+    {
+      "id": "sperling-michael",
+      "name": "Michael R. Sperling, MD",
+      "institution": "Thomas Jefferson University — Jefferson Comprehensive Epilepsy Center",
+      "location": "Philadelphia, PA, USA",
+      "specialty": "Epileptology",
+      "littFocus": "Epileptologist and Director of the Jefferson Comprehensive Epilepsy Center; the medical/epileptology counterpart in laser-ablation programs, contributing to selection and outcomes evidence for LITT/SLAH in drug-resistant epilepsy.",
+      "indications": ["mtle", "focal_epilepsy"],
+      "confidence": "high",
+      "sourceUrl": "https://www.jeffersonhealth.org/find-a-doctor/s/sperling-michael-r"
+    },
+    {
+      "id": "fecci-peter",
+      "name": "Peter E. Fecci, MD, PhD",
+      "institution": "University of Colorado Anschutz Medical Campus (Chair of Neurosurgery; moved from Duke in 2025)",
+      "location": "Aurora / Denver, CO, USA",
+      "specialty": "Neurosurgical oncology",
+      "littFocus": "National leader in combining LITT with immunotherapy for primary and metastatic brain tumors, including work on LITT-induced blood-brain-barrier disruption to enhance immune and drug delivery; previously directed the Duke Center for Brain and Spine Metastasis.",
+      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
+      "confidence": "high",
+      "sourceUrl": "https://www.cu.edu/cu-careers/news/peter-e-fecci-md-phd-named-chair-department-neurosurgery"
+    },
+    {
+      "id": "leuthardt-eric",
+      "name": "Eric C. Leuthardt, MD, MBA",
+      "institution": "Washington University School of Medicine in St. Louis — Taylor Family Department of Neurosurgery",
+      "location": "St. Louis, MO, USA",
+      "specialty": "Neurosurgery",
+      "littFocus": "Early adopter and investigator of LITT for gliomas and metastases and of LITT-mediated blood-brain-barrier disruption; broad innovator in brain-computer interfaces and neurotechnology.",
+      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
+      "confidence": "high",
+      "sourceUrl": "https://neurosurgery.wustl.edu/people/eric-c-leuthardt-md/"
+    },
+    {
+      "id": "chiang-veronica",
+      "name": "Veronica L. Chiang, MD, FAANS",
+      "institution": "Yale School of Medicine / Yale New Haven Hospital (Director, Gamma Knife Center)",
+      "location": "New Haven, CT, USA",
+      "specialty": "Stereotactic neurosurgery",
+      "littFocus": "Leading authority on LITT for brain metastases and post-radiosurgery radiation necrosis, including comparative work of LITT vs bevacizumab for radiation necrosis; integrates LITT with SRS in multidisciplinary brain-metastasis care.",
+      "indications": ["brain_met", "radiation_necrosis"],
+      "confidence": "high",
+      "sourceUrl": "https://medicine.yale.edu/profile/veronica-chiang/"
+    },
+    {
+      "id": "chen-clark",
+      "name": "Clark C. Chen, MD, PhD",
+      "institution": "Warren Alpert Medical School of Brown University / Brown University Health (Director, Brain Tumor Program; moved from University of Minnesota in 2024)",
+      "location": "Providence, RI, USA",
+      "specialty": "Neurosurgical oncology",
+      "littFocus": "Neurosurgical oncologist focused on minimally invasive neuro-oncology including LITT for gliomas; NIH-funded glioblastoma researcher, formerly Chair of Neurosurgery at the University of Minnesota.",
+      "indications": ["newly_gbm", "recurrent_gbm"],
+      "confidence": "high",
+      "sourceUrl": "https://neurosurgery.med.brown.edu/people/clark-c-chen-md-phd"
+    },
+    {
+      "id": "tandon-nitin",
+      "name": "Nitin Tandon, MD",
+      "institution": "McGovern Medical School, UTHealth Houston (Chief of Epilepsy Surgery)",
+      "location": "Houston, TX, USA",
+      "specialty": "Epilepsy neurosurgery",
+      "littFocus": "High-volume epilepsy surgeon who pioneered robot-assisted SEEG combined with MRI-guided laser ablation for drug-resistant epilepsy; leads the Texas Institute for Restorative Neurotechnologies.",
+      "indications": ["focal_epilepsy", "mtle"],
+      "confidence": "high",
+      "sourceUrl": "https://med.uth.edu/neurosurgery/2022/11/01/nitin-tandon-md/"
+    },
+    {
+      "id": "curry-daniel",
+      "name": "Daniel J. Curry, MD",
+      "institution": "Texas Children's Hospital / Baylor College of Medicine (Director, Functional Neurosurgery & Epilepsy Surgery)",
+      "location": "Houston, TX, USA",
+      "specialty": "Pediatric epilepsy surgery",
+      "littFocus": "Pioneer of pediatric MRI-guided laser ablation for epilepsy (Texas Children's performed the world's first LITT-for-epilepsy case); particularly known for laser ablation of hypothalamic hamartomas and other pediatric epileptogenic lesions.",
+      "indications": ["hypothalamic_hamartoma", "focal_epilepsy"],
+      "confidence": "high",
+      "sourceUrl": "https://www.texaschildrens.org/find-a-provider/daniel-j-curry-md"
+    },
+    {
+      "id": "sharan-ashwini",
+      "name": "Ashwini D. Sharan, MD, FACS",
+      "institution": "Thomas Jefferson University (Division Director, Functional & Epilepsy Neurosurgery)",
+      "location": "Philadelphia, PA, USA",
+      "specialty": "Epilepsy neurosurgery",
+      "littFocus": "Leads Jefferson's surgical epilepsy program performing both ablative (laser) and resective procedures; past CNS president and a prominent figure in neuromodulation and minimally invasive epilepsy surgery.",
+      "indications": ["mtle", "focal_epilepsy"],
+      "confidence": "high",
+      "sourceUrl": "https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/neurosurgery/faculty/sharan.html"
+    },
+    {
+      "id": "smith-kris",
+      "name": "Kris A. Smith, MD",
+      "institution": "Barrow Neurological Institute — St. Joseph's Hospital & Medical Center",
+      "location": "Phoenix, AZ, USA",
+      "specialty": "Neurosurgery",
+      "littFocus": "Brain tumor and epilepsy surgeon who uses LITT for tumors and epilepsy; directs Barrow's Hypothalamic Hamartoma Program and Stereotactic-Functional-Epilepsy Fellowship, with laser ablation part of his minimally invasive practice.",
+      "indications": ["recurrent_gbm", "hypothalamic_hamartoma", "focal_epilepsy"],
+      "confidence": "high",
+      "sourceUrl": "https://www.barrowneuro.org/person/kris-smith-md/"
+    },
+    {
+      "id": "laxton-adrian",
+      "name": "Adrian W. Laxton, MD",
+      "institution": "Atrium Health Wake Forest Baptist / Wake Forest University School of Medicine (Director of Functional Neurosurgery)",
+      "location": "Winston-Salem, NC, USA",
+      "specialty": "Functional neurosurgery",
+      "littFocus": "Functional and tumor neurosurgeon offering LITT/laser ablation for epilepsy and brain tumors alongside DBS and radiosurgery.",
+      "indications": ["focal_epilepsy", "recurrent_gbm"],
+      "confidence": "high",
+      "sourceUrl": "https://school.wakehealth.edu/faculty/l/adrian-w-laxton"
+    },
+    {
+      "id": "prabhu-sujit",
+      "name": "Sujit S. Prabhu, MD, FRCS",
+      "institution": "The University of Texas MD Anderson Cancer Center — Department of Neurosurgery",
+      "location": "Houston, TX, USA",
+      "specialty": "Neurosurgical oncology",
+      "littFocus": "High-volume LITT operator for deep-seated and eloquent gliomas and metastases; published widely on LITT for newly diagnosed and recurrent glioblastoma (including time-to-chemotherapy and IDH-wildtype outcomes) and involved in multicenter LITT efficacy work.",
+      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
+      "confidence": "high",
+      "sourceUrl": "https://faculty.mdanderson.org/profiles/sujit_prabhu.html"
+    },
+    {
+      "id": "englot-dario",
+      "name": "Dario J. Englot, MD, PhD",
+      "institution": "Vanderbilt University Medical Center (Surgical Director of Epilepsy)",
+      "location": "Nashville, TN, USA",
+      "specialty": "Epilepsy neurosurgery",
+      "littFocus": "Surgical director of one of the country's highest-volume epilepsy programs; performs and studies laser ablation and SEEG for drug-resistant epilepsy, with a research focus on brain-network mechanisms of seizures and neuromodulation.",
+      "indications": ["focal_epilepsy", "mtle"],
+      "confidence": "high",
+      "sourceUrl": "https://www.vumc.org/neurosurgerydept/person/dario-englot-md-phd"
+    }
+  ]
+}

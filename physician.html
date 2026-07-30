@@ -161,6 +161,23 @@
   .viewhead{font-size:20px;font-weight:800;margin:0 0 4px}
   .viewsub{color:var(--ink2);margin:0 0 16px}
   .hidden{display:none}
+  .physcard{display:flex;flex-direction:column;gap:10px}
+  .physhead{display:flex;gap:12px;align-items:flex-start}
+  .physav{width:46px;height:46px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--purple),var(--blue));box-shadow:0 0 14px rgba(123,92,255,.35)}
+  .physmeta{min-width:0}
+  .physname{font-size:15px;font-weight:700;color:var(--ink);line-height:1.25}
+  .physinst{font-size:12.5px;color:var(--ink2);margin-top:2px}
+  .physloc{font-size:11.5px;color:var(--muted);margin-top:1px}
+  .physbadges{display:flex;flex-wrap:wrap;gap:6px}
+  .physbadges .spec{color:var(--cyan);border-color:rgba(43,212,255,.4)}
+  .physfocus{margin:0;color:var(--ink2);font-size:13px;line-height:1.55}
+  .physinds{margin-top:2px}
+  .physfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(30,58,95,.5)}
+  .physrel{color:var(--cyan);font-size:12px;font-weight:600;cursor:pointer}
+  .physrel:hover{text-decoration:underline}
+  .physsrc{color:var(--muted);font-size:12px;white-space:nowrap}
+  .physsrc:hover{color:var(--cyan)}
+  @media(max-width:1024px){#physGrid{grid-template-columns:1fr !important}}
   @media(max-width:1024px){
     .app{grid-template-columns:64px minmax(0,1fr)}
     .brand h1,.brand .sub,.nav a .lbl,.side .foot,.btn span,.nav a .ct{display:none}
@@ -305,6 +322,17 @@
       <p class="viewsub">Priority conferences monitored by the engine. Dates are by season; confirm exact dates on each society site.</p>
       <div class="grid" id="evGrid" style="grid-template-columns:repeat(2,1fr)"></div>
     </section>
+
+    <!-- PHYSICIANS VIEW -->
+    <section id="view-physicians" class="hidden">
+      <h2 class="viewhead">Physicians</h2>
+      <p class="viewsub">Curated roster of physicians and investigators active in laser interstitial thermal therapy and related neurosurgery. Coverage is deliberate — physicians are included for their standing in the field, not derived from paper authorship. Click an indication to jump to the matching evidence.</p>
+      <div class="controls">
+        <input type="search" id="pq" placeholder="Search name, institution, specialty…" />
+        <span class="viewsub" id="physCount" style="margin:0;align-self:center"></span>
+      </div>
+      <div class="grid" id="physGrid" style="grid-template-columns:repeat(2,1fr)"></div>
+    </section>
   </main>
 </div>
 
@@ -331,7 +359,7 @@ const SPECIALTIES=["neurosurgery","neuroOncology","epileptology","radiationOncol
 const NAV=[
   ["dashboard","Dashboard","◎"],["literature","Literature","▤"],["guidelines","Clinical Guidelines","❑"],
   ["trials","Trials & Studies","⚗"],["technology","Technology","⚙"],["indications","Indications","◉"],
-  ["reimbursement","Reimbursement","$"],["expert","Expert Insights","☻"],["meetings","Meetings & Events","▦"],["mylib","My Library","★"]
+  ["reimbursement","Reimbursement","$"],["expert","Expert Insights","☻"],["physicians","Physicians","⚕"],["meetings","Meetings & Events","▦"],["mylib","My Library","★"]
 ].filter(n=>!(PHYSICIAN&&(n[0]==="reimbursement"||n[0]==="expert")));
 const EVENTS=[
   ["SNO","Society for Neuro-Oncology Annual Meeting","Nov · USA","https://www.soc-neuro-onc.org/annual-meeting/"],
@@ -566,12 +594,60 @@ function renderMeetings(){
     <div style="color:var(--cyan);font-size:12px;margin-top:10px;word-break:break-all">Visit event site →</div></a>`).join("");
 }
 
+// ---- PHYSICIANS ----
+let PHYS=null;
+function physInitials(n){return String(n||"").replace(/,.*$/,"").trim().split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,2).join("").toUpperCase();}
+function physShort(n){return String(n||"").replace(/,.*$/,"").trim();}
+function loadPhys(cb){
+  if(PHYS!==null){cb();return;}
+  const done=d=>{const a=(d&&(d.physicians||d.items||d))||[];PHYS=Array.isArray(a)?a:[];cb();};
+  if(window.__PHYS__){done(window.__PHYS__);return;}
+  fetch("physicians.json").then(r=>r.ok?r.json():Promise.reject()).then(done).catch(()=>done([]));
+}
+function renderPhysicians(){
+  const grid=$("#physGrid");if(!grid)return;
+  if(PHYS===null)grid.innerHTML='<div class="empty">Loading roster…</div>';
+  loadPhys(()=>{
+    const q=(($("#pq")||{}).value||"").toLowerCase().trim();
+    const list=PHYS.filter(p=>!q||[p.name,p.institution,p.specialty,p.location,p.littFocus,(p.indications||[]).map(indName).join(" ")].join(" ").toLowerCase().includes(q));
+    const cnt=$("#physCount");if(cnt)cnt.textContent=PHYS.length?(list.length+(list.length===1?" physician":" physicians")+(q?" of "+PHYS.length:"")):"";
+    if(!PHYS.length){grid.innerHTML='<div class="empty">Physician roster unavailable.</div>';return;}
+    if(!list.length){grid.innerHTML='<div class="empty">No physicians match your search.</div>';return;}
+    grid.innerHTML=list.map(p=>{
+      const rel=(DATA.items||[]).filter(it=>(it.indications||[]).some(k=>(p.indications||[]).includes(k))).length;
+      const inds=(p.indications||[]).map(k=>`<span class="chip" data-ind="${esc(k)}">${esc(indName(k))}</span>`).join("");
+      const src=p.sourceUrl?`<a class="physsrc" href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">Profile ↗</a>`:"";
+      const unv=p.confidence==="low"?'<span class="pill" title="Current affiliation could not be fully verified">affiliation unverified</span>':"";
+      return `<div class="card physcard">
+        <div class="physhead">
+          <div class="physav">${esc(physInitials(p.name))}</div>
+          <div class="physmeta">
+            <div class="physname">${esc(p.name)}</div>
+            <div class="physinst">${esc(p.institution||"")}</div>
+            ${p.location?`<div class="physloc">${esc(p.location)}</div>`:""}
+          </div>
+        </div>
+        <div class="physbadges"><span class="pill spec">${esc(p.specialty||"")}</span>${unv}</div>
+        ${p.littFocus?`<p class="physfocus">${esc(p.littFocus)}</p>`:""}
+        ${inds?`<div class="chips physinds">${inds}</div>`:""}
+        <div class="physfoot">
+          <span class="physrel" data-phys="${esc(p.id||"")}">${rel} related finding${rel===1?"":"s"} →</span>
+          ${src}
+        </div>
+      </div>`;
+    }).join("");
+    grid.querySelectorAll("[data-ind]").forEach(e=>e.onclick=()=>openInList(it=>(it.indications||[]).includes(e.dataset.ind),indName(e.dataset.ind),"Findings mapped to this indication."));
+    grid.querySelectorAll(".physrel").forEach(e=>e.onclick=()=>{const p=PHYS.find(x=>(x.id||"")===e.dataset.phys);if(!p||!(p.indications||[]).length)return;openInList(it=>(it.indications||[]).some(k=>(p.indications||[]).includes(k)),physShort(p.name)+" — related evidence",(p.institution||"")+(p.specialty?" · "+p.specialty:""));});
+  });
+}
+
 // ---- ROUTER ----
 function go(view,keepFilter){
   document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("active",a.dataset.v===view));
   $("#crumb").textContent=(NAV.find(n=>n[0]===view)||["","Dashboard"])[1];
-  ["dashboard","list","indications","meetings"].forEach(v=>$("#view-"+v).classList.add("hidden"));
+  ["dashboard","list","indications","meetings","physicians"].forEach(v=>$("#view-"+v).classList.add("hidden"));
   if(view==="dashboard"){$("#view-dashboard").classList.remove("hidden");renderDashboard();return;}
+  if(view==="physicians"){$("#view-physicians").classList.remove("hidden");renderPhysicians();return;}
   if(view==="indications"){$("#view-indications").classList.remove("hidden");renderIndications();return;}
   if(view==="meetings"){$("#view-meetings").classList.remove("hidden");renderMeetings();return;}
   // list-style views
@@ -598,6 +674,7 @@ function hydrate(d){
   go(NAV.some(n=>n[0]===start)?start:"dashboard");
 }
 ["q","f-indication","f-strategy","f-direction","f-impact","f-biz"].forEach(id=>document.addEventListener("input",e=>{if(e.target.id===id)renderList();}));
+document.addEventListener("input",e=>{if(e.target&&e.target.id==="pq")renderPhysicians();});
 $("#f-sort").addEventListener("change",e=>{sortKey=e.target.value;sortDir=sortKey==="date"?-1:-1;renderList();});
 $("#refresh").onclick=()=>$("#file").click();
 $("#file").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();

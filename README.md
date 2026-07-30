@@ -20,6 +20,18 @@ Two front-ends read the same `database.json`:
 updates every view. `database.json` is the system of record: **144 findings** spanning
 2012-2026, each dated, mapped to indications, and scored on two axes.
 
+### Physicians roster
+A **Physicians** tab lists curated physicians/investigators active in LITT and related
+neurosurgery. It is backed by its own system of record, `physicians.json` — a *deliberate*
+KOL roster (not derived from paper authorship), so recognized figures appear whether or not
+they authored a tracked finding. Each physician is mapped to `database.json` indication keys,
+which powers the "related findings" cross-links and indication chips on every profile card.
+Affiliations are web-verified as of `physicians.json > lastUpdated`; a `confidence` flag marks
+entries whose current primary institution could not be confirmed (shown as an
+"affiliation unverified" badge). The hosted pages fetch `physicians.json`; the offline
+`*-standalone.html` builds embed the same roster as `window.__PHYS__`, so refreshing a
+standalone build means re-embedding the current `physicians.json`.
+
 ### The two scoring axes
 - **Clinical Impact (★1–5):** an editorial rating against a fixed rubric in the engine spec
   (5 = immediate practice-changing → 1 = minimal importance), judged from study design,
