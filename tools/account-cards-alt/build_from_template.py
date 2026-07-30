@@ -53,6 +53,14 @@ RESERVOIR_METHOD = {
 
 # ----- intake schema: sheet -> [(column, help)] --------------------------------
 SHEETS = {
+    "Territory": [
+        ("rep_name", "Your name — the territory owner"),
+        ("territory_name", "Your territory label, e.g. Northeast / Great Lakes / SoCal"),
+        ("states_covered", "The states/areas you own — semicolon list, e.g. NY;NJ;CT;MA. This is your region: it scopes the claims pull and the facility research."),
+        ("areas_detail", "Optional — for split states, name the metros/counties you hold, e.g. NY = NYC metro + Westchester + Long Island"),
+        ("region_avg_case", "Region average revenue per LITT case ($). Blank = 18,300 default."),
+        ("notes", "Any territory-level notes"),
+    ],
     "Accounts": [
         ("rank", "Priority rank (1 = top)"), ("account_name", "e.g. Columbia (NYP)"),
         ("acronym", "Short unique code, e.g. CUMC"), ("health_system", "e.g. NewYork-Presbyterian"),
@@ -101,6 +109,8 @@ def make_template(path):
             cell.comment = Comment(help_, "template"); ws.column_dimensions[cell.column_letter].width = max(12, min(30, len(name) + 6))
         ws.freeze_panes = "A2"
     # one worked example so reps see the shape
+    wb["Territory"].append(["Your Name", "Northeast", "NY;NJ;CT;MA",
+                            "NY = NYC metro + Westchester + Long Island", 18300, ""])
     ex = wb["Accounts"]
     ex.append([1, "Example Medical Center", "EMC", "Example Health", "Installed", "Expand, priority",
                "NeuroBlate;Visualase", "High", "Fast-growing account; single-surgeon dependency; competitor Visualase in-house.",
@@ -118,6 +128,7 @@ def make_template(path):
     notes = wb.create_sheet("READ ME", 0)
     for i, line in enumerate([
         "LITT Account Report Card — territory intake", "",
+        "0. On the Territory tab, put your name and the states/areas you cover — this is your region.",
         "1. Fill one row per account in Accounts; add surgeons, referrers and reservoirs on their tabs (link by acronym).",
         "2. Run:  python3 build_from_template.py  <thisfile>.xlsx", "",
         "3. Open account-cards.html (or -standalone.html), click “Load my data”, choose the generated .json.",
@@ -169,6 +180,13 @@ def candidate(row):
 
 def build(path, out):
     wb = openpyxl.load_workbook(path, data_only=True)
+    # territory / region declaration (single row)
+    terr = next(_rows(wb["Territory"]), {}) if "Territory" in wb.sheetnames else {}
+    terr_name = str(terr.get("territory_name") or "").strip()
+    avg_case = _num(terr.get("region_avg_case")) or REGION_AVG_CASE
+    states = [s.strip() for s in str(terr.get("states_covered") or "").replace(",", ";").split(";") if s.strip()]
+    reservoir_method = dict(RESERVOIR_METHOD,
+                            opportunity=f"Addressable × the region's average revenue per case (${avg_case:,}).")
     surg = defaultdict(list); refs = defaultdict(list); resv = defaultdict(list)
     for r in _rows(wb["Surgeons"]): surg[r.get("acronym")].append(r)
     for r in _rows(wb["Referrers"]): refs[r.get("acronym")].append(r)
@@ -218,7 +236,7 @@ def build(path, out):
                                     "2026_ytd": _num(a.get("net_2026_ytd")), "2026_proj": _num(a.get("net_2026_proj"))},
                     "probes_by_year": {"2024": _num(a.get("probes_2024")), "2025": _num(a.get("probes_2025")),
                                        "2026": _num(a.get("probes_2026"))},
-                    "region_avg_case": REGION_AVG_CASE, "cases_logged": _num(a.get("cases_logged")),
+                    "region_avg_case": avg_case, "cases_logged": _num(a.get("cases_logged")),
                     "business_potential_yr": _num(a.get("business_potential_yr")),
                     "incremental_cases": _num(a.get("incremental_cases")), "trend": a.get("trend") or "Flat", "sku_mix": {}}
         # SWOT + strategy seeds (self-contained, from the workbook)
@@ -234,8 +252,13 @@ def build(path, out):
             "swot": swot, "strategy": strategy, "appendix": appendix,
         })
     accounts.sort(key=lambda c: c["rank"])
-    data = {"meta": {"title": "LITT Account Report Cards", "generated": "", "note": "Built from territory intake workbook.", "enriched": []},
-            "territory": {"region_avg_case": REGION_AVG_CASE}, "library": LIBRARY, "reservoir_method": RESERVOIR_METHOD,
+    title = "LITT Account Report Cards" + (f" — {terr_name}" if terr_name else "")
+    data = {"meta": {"title": title, "generated": "", "note": "Built from territory intake workbook.", "enriched": [],
+                     "rep": str(terr.get("rep_name") or ""), "states": states,
+                     "areas": str(terr.get("areas_detail") or "")},
+            "territory": {"region_avg_case": avg_case, "name": terr_name, "states": states,
+                          "areas": str(terr.get("areas_detail") or ""), "rep": str(terr.get("rep_name") or "")},
+            "library": LIBRARY, "reservoir_method": reservoir_method,
             "accounts": accounts}
     with open(out, "w") as f: json.dump(data, f, indent=1)
     print(f"Wrote {out} — {len(accounts)} accounts. Open the tool and use “Load my data”.")
