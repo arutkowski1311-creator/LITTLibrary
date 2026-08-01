@@ -192,12 +192,12 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
   ];
   // fundraising sources -> the shared contributions ledger
   var SRC=[
-    {ic:"&#9971;",bg:"#3E9E6B",n:"Golf Outing",note:"Get RAW at The Beav",raised:18200,goal:20000,st:"soon",stl:"Oct 13"},
+    {ic:"&#9971;",bg:"#3E9E6B",n:"Golf Outing",note:"Get RAW at The Beav",raised:18200,goal:20000,st:"soon",stl:"Oct 13",u:"https://claude.ai/code/artifact/7233c068-8a3b-4b35-971c-3a85d7204bec"},
     {ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",note:"Live prediction game &middot; 1.2k picks",raised:9650,goal:10000,st:"live",stl:"Live",u:"https://claude.ai/code/artifact/b4e8ae1b-c126-460f-ac8c-03726084f982"},
     {ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",note:"Season Kickoff &middot; 620 entries",raised:12400,goal:15000,st:"open",stl:"Draws Nov 30",u:"https://claude.ai/code/artifact/a655ec1a-2b90-4d45-bf05-95a50f5b50e9"},
-    {ic:"&#128722;",bg:"#2E5D8F",n:"Team Store",note:"88 orders &middot; player credit",raised:4120,goal:6000,st:"open",stl:"Ongoing"},
-    {ic:"&#128250;",bg:"#6A4A2B",n:"Streaming",note:"128 subs &middot; 6 ad sponsors",raised:3910,goal:5000,st:"rec",stl:"Recurring"},
-    {ic:"&#128296;",bg:"#7A4FB5",n:"Auctions",note:"Silent &middot; 40 items",raised:2300,goal:4000,st:"soon",stl:"Ends Fri"},
+    {ic:"&#128722;",bg:"#2E5D8F",n:"Team Store",note:"88 orders &middot; player credit",raised:4120,goal:6000,st:"open",stl:"Ongoing",u:"https://claude.ai/code/artifact/84c6951f-41b9-47b0-9ba5-51798d514f49"},
+    {ic:"&#128250;",bg:"#6A4A2B",n:"Streaming",note:"128 subs &middot; 6 ad sponsors",raised:3910,goal:5000,st:"rec",stl:"Recurring",u:"https://claude.ai/code/artifact/72a4e78b-752f-4245-8be0-77c189d16a92"},
+    {ic:"&#128296;",bg:"#7A4FB5",n:"Auctions",note:"Silent &middot; 40 items",raised:2300,goal:4000,st:"soon",stl:"Ends Fri",u:"https://claude.ai/code/artifact/29e28192-00bd-4296-8ae4-31d21384e4d3"},
     {ic:"&#127991;",bg:"#71706B",n:"Sponsorships",note:"9 local businesses",raised:1900,goal:5000,st:"open",stl:"Direct"}
   ];
   var COACH=[["Coach Vasquez",42,"$1,470",78],["A. Ruiz",31,"$1,085",58],["Coach Kim",27,"$945",50],["Coach Park",22,"$770",41]];
@@ -215,12 +215,12 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
     [C.mute,"2 uniform orders unfulfilled"]
   ];
   var PRODUCTS=[
-    {ic:"&#9971;",bg:"#3E9E6B",n:"Golf Outing",d:"Turnkey playbook + preferred course network. Sponsors, foursomes, auction, day-of checklist."},
-    {ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",d:"Your signature game &mdash; Fuse Coin prediction markets with locked odds, sponsor-funded rewards and leaderboards. Free to play, no cash value."},
-    {ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",d:"Goal thermometer, social sharing, auto-marketing. Configurable for state gaming rules."},
-    {ic:"&#128250;",bg:"#6A4A2B",n:"Streaming Revenue",d:"Subscriptions + overlay ads + a local advertising marketplace. Streaming pays for itself."},
-    {ic:"&#128722;",bg:"#2E5D8F",n:"Team Store",d:"You&rsquo;re the storefront, not the warehouse. Buyers pick a player to credit; org fulfills locally."},
-    {ic:"&#128296;",bg:"#7A4FB5",n:"Auctions",d:"Live (auctioneer + big screen) or week-long online. Instant bids, auto-close, checkout."}
+    {ic:"&#9971;",bg:"#3E9E6B",n:"Golf Outing",d:"Turnkey playbook + preferred course network. Sponsors, foursomes, auction, day-of checklist.",u:"https://claude.ai/code/artifact/7233c068-8a3b-4b35-971c-3a85d7204bec"},
+    {ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",d:"Your signature game &mdash; Fuse Coin prediction markets with locked odds, sponsor-funded rewards and leaderboards. Free to play, no cash value.",u:"https://claude.ai/code/artifact/b4e8ae1b-c126-460f-ac8c-03726084f982"},
+    {ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",d:"Goal thermometer, social sharing, auto-marketing. Configurable for state gaming rules.",u:"https://claude.ai/code/artifact/a655ec1a-2b90-4d45-bf05-95a50f5b50e9"},
+    {ic:"&#128250;",bg:"#6A4A2B",n:"Streaming Revenue",d:"Subscriptions + overlay ads + a local advertising marketplace. Streaming pays for itself.",u:"https://claude.ai/code/artifact/72a4e78b-752f-4245-8be0-77c189d16a92"},
+    {ic:"&#128722;",bg:"#2E5D8F",n:"Team Store",d:"You&rsquo;re the storefront, not the warehouse. Buyers pick a player to credit; org fulfills locally.",u:"https://claude.ai/code/artifact/84c6951f-41b9-47b0-9ba5-51798d514f49"},
+    {ic:"&#128296;",bg:"#7A4FB5",n:"Auctions",d:"Live (auctioneer + big screen) or week-long online. Instant bids, auto-close, checkout.",u:"https://claude.ai/code/artifact/29e28192-00bd-4296-8ae4-31d21384e4d3"}
   ];
 
   function pctcol(p){return p>=100?C.good:C.blueDeep;}
@@ -249,7 +249,7 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
 
   $("#alerts").innerHTML=ALERTS.map(function(a){return '<div class="alert"><span class="dot" style="background:'+a[0]+'"></span><span>'+a[1]+'</span></div>';}).join('');
 
-  $("#prods").innerHTML=PRODUCTS.map(function(p){return '<div class="prod"><div class="h"><span class="chip" style="background:'+p.bg+'22;box-shadow:inset 0 0 0 1px '+p.bg+'55">'+p.ic+'</span><span class="n">'+p.n+'</span></div><div class="d">'+p.d+'</div></div>';}).join('');
+  $("#prods").innerHTML=PRODUCTS.map(function(p){return '<div class="prod"><div class="h"><span class="chip" style="background:'+p.bg+'22;box-shadow:inset 0 0 0 1px '+p.bg+'55">'+p.ic+'</span><span class="n">'+p.n+'</span></div><div class="d">'+p.d+'</div>'+(p.u?'<a href="'+p.u+'" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-size:11px;font-weight:800;color:var(--blueDeep);text-decoration:none">Preview template &rarr;</a>':'')+'</div>';}).join('');
 
   // animate bars on load
   requestAnimationFrame(function(){
