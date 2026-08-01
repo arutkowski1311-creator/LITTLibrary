@@ -163,7 +163,7 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
     </div>
   </div>
 
-  <div class="foot">Prototype &middot; sample figures. The Fundraising Dashboard is the org&rsquo;s single source of truth: every campaign &mdash; golf outing, RAWDuel, raffle, streaming, team store, auctions &mdash; writes to one shared <code>contributions</code> ledger tagged by source, so a league president always knows the total and the mix. Raffle &amp; gaming modules are configurable and the org is responsible for complying with applicable state laws. Money moves on <code>Stripe Connect</code>; coach time-tracking rolls up to org billing.</div>
+  <div class="foot">Prototype &middot; sample figures. The Fundraising Dashboard is the org&rsquo;s single source of truth: every campaign &mdash; golf outing, Fuse, raffle, streaming, team store, auctions &mdash; writes to one shared <code>contributions</code> ledger tagged by source, so a league president always knows the total and the mix. Raffle &amp; gaming modules are configurable and the org is responsible for complying with applicable state laws. Money moves on <code>Stripe Connect</code>; coach time-tracking rolls up to org billing.</div>
 </div>
 
 <!-- new campaign modal -->
@@ -193,7 +193,7 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
   // fundraising sources -> the shared contributions ledger
   var SRC=[
     {ic:"&#9971;",bg:"#3E9E6B",n:"Golf Outing",note:"Get RAW at The Beav",raised:18200,goal:20000,st:"soon",stl:"Oct 13"},
-    {ic:"&#9876;",bg:"#CF5B5B",n:"RAWDuel",note:"Bracket of 64 &middot; 1.2k votes",raised:9650,goal:10000,st:"live",stl:"Live"},
+    {ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",note:"Live prediction game &middot; 1.2k picks",raised:9650,goal:10000,st:"live",stl:"Live"},
     {ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",note:"Season Kickoff &middot; 620 entries",raised:12400,goal:15000,st:"open",stl:"Draws Nov 30"},
     {ic:"&#128722;",bg:"#2E5D8F",n:"Team Store",note:"88 orders &middot; player credit",raised:4120,goal:6000,st:"open",stl:"Ongoing"},
     {ic:"&#128250;",bg:"#6A4A2B",n:"Streaming",note:"128 subs &middot; 6 ad sponsors",raised:3910,goal:5000,st:"rec",stl:"Recurring"},
@@ -204,19 +204,19 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
   var TEAMS=[["15U National","Vasquez","13/13","18&ndash;6","$12,400"],["16U Showcase","Ruiz","14/15","10&ndash;12","$9,900"],["14U National","Kim","12/13","15&ndash;9","$10,800"],["13U Elite","Park","11/12","12&ndash;10","$8,600"]];
   var EVENTS=[
     ["OCT","13","Golf Outing &middot; The Beav","32 foursomes &middot; 14 sponsors confirmed"],
-    ["OCT","18","RAWDuel championship","Final 8 &middot; livestreamed"],
+    ["OCT","18","Fuse championship","Final 8 &middot; livestreamed"],
     ["NOV","30","Raffle drawing","Live on stream &middot; 3 winners"],
     ["OCT","10","Auction closes","Fri 8pm &middot; text alerts to bidders"]
   ];
   var ALERTS=[
     [C.warn,"2 background checks pending &middot; staff"],
     [C.warn,"12 families with a balance ($3.2k)"],
-    [C.bad,"RAWDuel prize fulfillment due after Oct 18"],
+    [C.bad,"Fuse prize fulfillment due after Oct 18"],
     [C.mute,"2 uniform orders unfulfilled"]
   ];
   var PRODUCTS=[
     {ic:"&#9971;",bg:"#3E9E6B",n:"Golf Outing",d:"Turnkey playbook + preferred course network. Sponsors, foursomes, auction, day-of checklist."},
-    {ic:"&#9876;",bg:"#CF5B5B",n:"RAWDuel",d:"Your signature game. Brackets, voting, donations, livestream and leaderboards &mdash; free to play."},
+    {ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",d:"Your signature game &mdash; Fuse Coin prediction markets with locked odds, sponsor-funded rewards and leaderboards. Free to play, no cash value."},
     {ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",d:"Goal thermometer, social sharing, auto-marketing. Configurable for state gaming rules."},
     {ic:"&#128250;",bg:"#6A4A2B",n:"Streaming Revenue",d:"Subscriptions + overlay ads + a local advertising marketplace. Streaming pays for itself."},
     {ic:"&#128722;",bg:"#2E5D8F",n:"Team Store",d:"You&rsquo;re the storefront, not the warehouse. Buyers pick a player to credit; org fulfills locally."},

@@ -15,9 +15,9 @@ body{margin:0;background:#05070a;font-family:var(--body);color:var(--ink);-webki
 svg{display:block}
 /* top bar */
 .top{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,#0d1017,#0b0d12);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:11px 15px}
-.wm{font-family:var(--disp);font-size:23px;letter-spacing:.02em;display:flex;align-items:center;gap:2px}
+.wm{font-family:var(--disp);font-size:23px;letter-spacing:.02em;display:flex;align-items:center;gap:2px;color:#fff}
 .wm .spark{width:14px;height:20px;margin-right:3px;background:linear-gradient(180deg,var(--fuse),var(--spark));clip-path:polygon(55% 0,20% 55%,48% 55%,30% 100%,85% 40%,55% 40%);filter:drop-shadow(0 0 6px #f6a93b88)}
-.wm b{color:var(--fuse)}
+.wm b{color:var(--spark)}
 .bank{margin-left:auto;display:flex;align-items:center;gap:7px;background:#1a1207;border:1px solid #4a3311;border-radius:999px;padding:6px 12px}
 .coin{width:16px;height:16px;border-radius:999px;background:radial-gradient(circle at 35% 30%,#ffd479,var(--fuse) 60%,#c47f1e);flex:none;box-shadow:0 0 8px #f6a93b66}
 .bank .v{font-family:var(--disp);font-size:17px;color:var(--fuse);line-height:1}
@@ -162,7 +162,7 @@ svg{display:block}
 
 <div class="phone">
   <div class="top">
-    <div class="wm"><span class="spark"></span>f<b>u</b>se</div>
+    <div class="wm"><span class="spark"></span><b>f</b>use</div>
     <div class="bank"><span class="coin"></span><span><span class="v num" id="bank">5,000</span><span class="esc" id="esc"></span></span></div>
   </div>
   <div class="wrap" id="wrap"></div>
