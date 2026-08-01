@@ -158,12 +158,27 @@ svg{display:block}
 .toast .c{color:var(--fuse)}
 .banner{background:#12161e;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:11.5px;color:var(--mute);line-height:1.5;display:flex;gap:8px}
 .banner .yc{color:var(--fuse);font-weight:800}
+
+.prof{width:34px;height:34px;border-radius:999px;background:#2b3440;border:1px solid var(--line2);color:var(--fuse);font-weight:800;cursor:pointer;font-family:var(--body);flex:none;margin-left:2px}
+.tog{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.sw{width:44px;height:26px;border-radius:20px;background:#2b3440;position:relative;transition:.2s;flex:none;cursor:pointer}
+.sw i{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:999px;background:#fff;transition:.2s}
+.sw.on{background:var(--spark)}.sw.on i{left:20px}
+.ledger .lg{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.ledger .lg:first-of-type{border-top:0}
+.ledger .li{flex:1}.ledger .lt{font-size:13px;font-weight:600}.ledger .ls{font-size:11px;color:var(--mute)}
+.ledger .la{font-family:var(--disp);font-size:16px}.la.pos{color:var(--good)}.la.neg{color:var(--mute)}
+.ledger .lb{font-size:10px;color:var(--dim);text-align:right}
+.auc .big{font-family:var(--disp);font-size:40px;color:var(--fuse)}
+.bidrow{display:flex;gap:8px;margin-top:12px}
+.bidrow input{flex:1;background:var(--card2);border:1px solid var(--line2);border-radius:11px;color:var(--ink);font-family:var(--disp);font-size:20px;padding:10px 13px;outline:0}
+.bidhist .bh{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line);font-size:12.5px}
 </style>
 
 <div class="phone">
   <div class="top">
     <div class="wm"><span class="spark"></span><b>f</b>use</div>
-    <div class="bank"><span class="coin"></span><span><span class="v num" id="bank">5,000</span><span class="esc" id="esc"></span></span></div>
+    <div class="bank"><span class="coin"></span><span><span class="v num" id="bank">5,000</span><span class="esc" id="esc"></span></span></div><button class="prof" id="profBtn">NR</button>
   </div>
   <div class="wrap" id="wrap"></div>
   <div class="nav" id="nav"></div>
@@ -176,7 +191,7 @@ svg{display:block}
 (function(){
   "use strict";
   var $=function(s){return document.querySelector(s);};
-  var state={tab:"home",bank:5000,escrow:0,wagers:[],claimed:{}};
+  var state={tab:"home",bank:5000,escrow:0,wagers:[],claimed:{},youth:false,autobid:false,aucId:null,ledger:[{t:"Opening allocation",s:"Welcome to Fuse",amt:5000,bal:5000}]};
   var GAME={us:"NJ Raw",them:"Valley Storm",usScore:5,themScore:3,half:"Bot",inning:5,outs:1,bases:[true,false,false],batter:"#24 Rutkowski"};
   // American odds helpers
   function profit(stake,odds){return odds>0?stake*odds/100:stake*100/Math.abs(odds);}
@@ -217,7 +232,7 @@ svg{display:block}
     h+='<div class="live"><div class="lz">'+GAME.inning+'</div><div class="tag"><i></i>LIVE &middot; '+GAME.half+' '+GAME.inning+'</div>'+
       '<div class="score"><span class="t">'+GAME.us+'</span><span class="n us num">'+GAME.usScore+'</span><span class="n num">'+GAME.themScore+'</span><span class="t">'+GAME.them+'</span></div>'+
       '<div class="meta">'+MARKETS.length+' markets open &middot; '+GAME.outs+' out &middot; runner on 1st &middot; at bat '+GAME.batter+'</div>'+
-      '<button class="cta" data-go="live">'+(recovery?"Earn coins to play &rarr;":"&#9889; Make your picks")+'</button></div>';
+      '<button class="cta" data-go="live">'+(recovery?"Earn coins to play &rarr;":yl("&#9889; Make your picks","&#9889; Take the challenge"))+'</button></div>';
     if(recovery){
       h+='<div class="card" style="border-color:#4a3311"><div class="eyb" style="color:var(--fuse)">Your Fuse Bank is empty</div>'+
         '<div class="mut" style="font-size:12.5px;margin-top:5px">No problem &mdash; earn your way back in. No purchase, no auto-refill.</div>'+
@@ -246,7 +261,7 @@ svg{display:block}
     MARKETS.forEach(function(m){
       var cls=m.opts.length===3?"three":"two";var soon=m.lock<=20;
       h+='<div class="mkt '+cls+'"><div class="q">'+m.q+'</div><div class="lock'+(soon?" soon":"")+'">&#128274; 0:'+("0"+m.lock).slice(-2)+'</div>'+
-        '<div class="sel">'+m.opts.map(function(o,i){return '<button class="opt" data-mkt="'+m.id+'" data-oi="'+i+'"><div class="ol">'+o[0]+'</div><div class="od num">'+fmtOdds(o[1])+'</div><div class="om num">'+mult(o[1])+'x</div></button>';}).join('')+'</div>'+
+        '<div class="sel">'+m.opts.map(function(o,i){return '<button class="opt" data-mkt="'+m.id+'" data-oi="'+i+'"><div class="ol">'+o[0]+'</div>'+(state.youth?'<div class="od num">'+mult(o[1])+'&times;</div><div class="om">coins to win</div>':'<div class="od num">'+fmtOdds(o[1])+'</div><div class="om num">'+mult(o[1])+'x</div>')+'</button>';}).join('')+'</div>'+
         '<div class="maxs">Max stake '+m.max.toLocaleString()+' coins at this price</div>'+
         '<div class="spon"><span class="lg" style="background:'+m.spon[2]+'">'+m.spon[1]+'</span>Presented by '+m.spon[0]+'</div></div>';
     });
@@ -279,7 +294,7 @@ svg{display:block}
     REWARDS.forEach(function(r){
       var claimed=state.claimed[r.id];
       var can=state.bank>=r.cost && r.left>0 && !claimed;
-      var btn=r.type==="auction"?'<button class="claim bid" data-bid="'+r.id+'">Bid +100</button>':
+      var btn=r.type==="auction"?'<button class="claim bid" data-auc="'+r.id+'">View auction</button>':
         '<button class="claim" data-claim="'+r.id+'"'+(can?"":" disabled")+'>'+(claimed?"Claimed":"Claim")+'</button>';
       h+='<div class="rw"><div class="im">'+r.em+'<span class="qtag">'+(r.type==="auction"?"Auction":r.left+" left")+'</span></div>'+
         '<div class="bd"><div class="rn">'+r.n+'</div><div class="rs">'+r.s+'</div>'+
@@ -304,14 +319,35 @@ svg{display:block}
     var h='<div class="eyb">Earn coins &middot; missions &amp; recovery</div>';
     MISSIONS.forEach(function(m){
       h+='<div class="mission"><div class="h"><span class="ic">'+m.ic+'</span><div><div class="mn">'+m.n+'</div><div class="md">'+m.d+'</div></div>'+
-        '<span class="rew">+'+m.rew+'</span></div><div class="foot"><b>'+m.tag[0]+'</b> &middot; '+m.tag[1]+' &middot; approved via ledger entry</div></div>';
+        '<span class="rew">+'+m.rew+'</span></div><div class="foot"><b>'+m.tag[0]+'</b> &middot; '+m.tag[1]+'</div><button class="claim" data-collect="'+m.rew+'" data-cn="'+m.n.replace(/&[^;]+;/g,"")+'" style="width:100%;margin-top:9px;background:#1a2230;color:var(--fuse)">Collect when verified</button></div>';
     });
     h+='<div class="banner"><span class="yc">&#10084;</span><div>Coins are earned, never bought. Approved coins always appear as a visible ledger entry, not an unexplained balance change. Recovery is framed without shame &mdash; earning paths are ranked by speed.</div></div>';
     return h;
   }
 
+  function yl(a,y){return state.youth?y:a;}
+  function led(t,s,amt){state.ledger.unshift({t:t,s:s,amt:amt,bal:Math.round(state.bank)});}
+  function profile(){
+    var h='<button class="settlebtn" data-go="home" style="width:auto;padding:8px 14px;margin-bottom:2px">&larr; Back</button>';
+    h+='<div class="card"><div class="eyb">Account</div><div style="display:flex;align-items:center;gap:12px;margin-top:9px"><div style="width:46px;height:46px;border-radius:999px;background:#2b3440;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--fuse)">NR</div><div><div style="font-weight:800">Nick R. household</div><div class="mut" style="font-size:12px">NJ Raw &middot; fan account</div></div></div></div>';
+    h+='<div class="tog"><div><div style="font-weight:800;font-size:14px">Youth-safe mode</div><div class="mut" style="font-size:11.5px;max-width:270px">Challenge language, parent approval on reward claims, and private team leaderboards.</div></div><div class="sw'+(state.youth?" on":"")+'" id="youthSw"><i></i></div></div>';
+    h+='<div class="card ledger"><div class="eyb" style="margin-bottom:5px">Wallet ledger</div><div class="mut" style="font-size:11px;margin-bottom:4px">Every coin change is traceable &mdash; wager, win, earning, reward or correction. No cash value.</div>'+state.ledger.map(function(e){var pos=e.amt>0;return '<div class="lg"><div class="li"><div class="lt">'+e.t+'</div><div class="ls">'+e.s+'</div></div><div style="text-align:right"><div class="la '+(pos?"pos":"neg")+'">'+(e.amt>0?"+"+e.amt.toLocaleString():e.amt<0?"&minus;"+Math.abs(e.amt).toLocaleString():"&mdash;")+'</div><div class="lb">bal '+e.bal.toLocaleString()+'</div></div></div>';}).join('')+'</div>';
+    h+='<div class="legal">Fuse Coins can&rsquo;t be purchased, transferred, or redeemed for cash. Youth reward claims require parent approval.</div>';
+    return h;
+  }
+  function auctionDetail(){
+    var r=REWARDS.filter(function(x){return x.id===state.aucId;})[0]||REWARDS[2];
+    var h='<button class="settlebtn" data-go="rewards" style="width:auto;padding:8px 14px;margin-bottom:2px">&larr; Rewards</button>';
+    h+='<div class="card auc"><div class="eyb">Auction &middot; sponsor-funded</div><div style="font-size:36px;text-align:center;margin:8px 0">'+r.em+'</div><div style="font-weight:800;font-size:16px;text-align:center">'+r.n+'</div>'+
+      '<div style="text-align:center;margin-top:10px"><div class="mut" style="font-size:11px">Current top bid</div><div class="big num">'+r.cost.toLocaleString()+'</div><div class="mut" style="font-size:12px">Closes in 2:14:08 &middot; +100 min increment</div></div>'+
+      '<div class="bidrow"><input id="bidAmt" inputmode="numeric" value="'+(r.cost+100)+'"><button class="claim" id="placeBid">Place bid</button></div>'+
+      '<div class="tog" style="margin-top:11px;padding:11px 13px"><div><div style="font-weight:800;font-size:13px">Auto-bid</div><div class="mut" style="font-size:11px">Fuse bids the minimum to keep you on top, up to your max.</div></div><div class="sw'+(state.autobid?" on":"")+'" id="autoSw"><i></i></div></div>'+
+      '<div class="legal" style="text-align:left;margin-top:11px">Anti-sniping: a bid in the final 60 seconds extends the timer by 60 seconds, so everyone gets a fair last bid.</div></div>';
+    h+='<div class="card bidhist"><div class="eyb" style="margin-bottom:3px">Bid history</div>'+[["You",r.cost],["Dawn K.",r.cost-100],["Big Tony",r.cost-250],["Mike B.",r.cost-500]].map(function(b){return '<div class="bh"><span>'+b[0]+'</span><span class="num" style="color:var(--fuse)">'+b[1].toLocaleString()+'</span></div>';}).join('')+'</div>';
+    return h;
+  }
   function render(){
-    var f={home:home,live:live,wagers:wagers,rewards:rewards,rank:rank,earn:earn}[state.tab]||home;
+    var f={home:home,live:live,wagers:wagers,rewards:rewards,rank:rank,earn:earn,profile:profile,auction:auctionDetail}[state.tab]||home;
     $("#wrap").innerHTML=f();
     updBank();renderNav();
     // wire go buttons
@@ -323,6 +359,11 @@ svg{display:block}
     // claims
     $("#wrap").querySelectorAll("[data-claim]").forEach(function(b){b.onclick=function(){claim(b.dataset.claim);};});
     $("#wrap").querySelectorAll("[data-bid]").forEach(function(b){b.onclick=function(){var r=REWARDS.filter(function(x){return x.id===b.dataset.bid;})[0];if(state.bank<r.cost+100){toast("Not enough coins to raise the bid");return;}r.cost+=100;render();toast('Top bid &mdash; <span class="c">'+r.cost.toLocaleString()+'</span> coins');};});
+    var ysw=$("#youthSw");if(ysw)ysw.onclick=function(){state.youth=!state.youth;render();};
+    var asw=$("#autoSw");if(asw)asw.onclick=function(){state.autobid=!state.autobid;render();toast(state.autobid?"Auto-bid on":"Auto-bid off");};
+    var pbid=$("#placeBid");if(pbid)pbid.onclick=function(){var r=REWARDS.filter(function(x){return x.id===state.aucId;})[0];var amt=parseInt(($("#bidAmt").value||"").replace(/\D/g,""))||0;if(amt<r.cost+100){toast("Bid at least "+(r.cost+100).toLocaleString());return;}if(state.bank<amt){toast("Not enough coins");return;}r.cost=amt;render();toast('You&rsquo;re the top bid &middot; <span class="c">'+amt.toLocaleString()+'</span>');};
+    $("#wrap").querySelectorAll("[data-auc]").forEach(function(b){b.onclick=function(){state.aucId=b.dataset.auc;state.tab="auction";render();window.scrollTo(0,0);};});
+    $("#wrap").querySelectorAll("[data-collect]").forEach(function(b){b.onclick=function(){var amt=+b.dataset.collect;state.bank+=amt;led("Mission earned",b.getAttribute("data-cn")||"Mission",amt);updBank();render();toast("+"+amt+' coins &middot; <span class="c">logged to ledger</span>');};});
   }
 
   /* ---------- WAGER SLIP ---------- */
@@ -339,7 +380,7 @@ svg{display:block}
     var pf=profit(stake,odds);
     var h='<button class="close" id="slipClose">&times;</button>';
     if(slip.locked){
-      h+='<div class="locked-msg"><div class="big">&#128274; Your odds are locked</div>'+
+      h+='<div class="locked-msg"><div class="big">&#128274; '+yl("Your odds are locked","Your pick is locked")+'</div>'+
         '<div class="rc">'+o[0]+' &middot; '+m.q+'</div>'+
         '<div class="calc" style="margin-top:14px"><div class="row"><span>Locked price</span><b class="num" style="color:var(--fuse)">'+fmtOdds(odds)+'</b></div>'+
         '<div class="row"><span>Stake</span><b class="num">'+stake.toLocaleString()+'</b></div>'+
@@ -362,7 +403,7 @@ svg{display:block}
       '<div class="row"><span>Total return</span><b class="num">'+Math.round(stake+pf).toLocaleString()+'</b></div>'+
       '<div class="row"><span>Bank after</span><b class="num">'+Math.round(after).toLocaleString()+'</b></div>'+
       '<div class="row"><span class="mut">Max at this price</span><b class="num mut">'+m.max.toLocaleString()+'</b></div></div>'+
-      '<button class="lockbtn" id="lockBtn"'+(stake>0?"":" disabled")+'>'+(slip.newOdds!=null?"Accept new price & Lock Pick":"Lock Pick")+'</button>'+
+      '<button class="lockbtn" id="lockBtn"'+(stake>0?"":" disabled")+'>'+(slip.newOdds!=null?yl("Accept new price & Lock Pick","Accept & lock my pick"):yl("Lock Pick","Lock my pick"))+'</button>'+
       '<div class="legal">Coins move from your bank into escrow when you lock. No cash value.</div>';
     $("#slip").innerHTML=h;
     $("#slipClose").onclick=closeSlip;
@@ -382,7 +423,7 @@ svg{display:block}
     }
     // accept
     state.bank-=stake;state.escrow+=stake;
-    state.wagers.unshift({q:m.q,sel:o[0],odds:odds,stake:stake,profit:profit(stake,odds),status:"pending"});
+    state.wagers.unshift({q:m.q,sel:o[0],odds:odds,stake:stake,profit:profit(stake,odds),status:"pending"});led("Locked pick",o[0]+" &middot; "+m.spon[0],-stake);
     slip.locked=true;renderSlip();updBank();
   }
   function settle(){
@@ -391,8 +432,8 @@ svg{display:block}
     pend.forEach(function(w){
       var win=((w.stake*13+w.odds+w.q.length)%100)/100 < (w.odds<0?0.62:0.42); // favorites hit more
       state.escrow-=w.stake;
-      if(win){w.status="won";state.bank+=w.stake+w.profit;credit+=w.stake+w.profit;won++;}
-      else{w.status="lost";lost++;}
+      if(win){w.status="won";state.bank+=w.stake+w.profit;credit+=w.stake+w.profit;won++;led("Pick won",w.sel+" at "+fmtOdds(w.odds),w.stake+w.profit);}
+      else{w.status="lost";lost++;led("Pick lost",w.sel,0);}
     });
     render();updBank();
     toast('Results in &middot; <span class="c">'+won+' won</span>, '+lost+' lost &middot; +'+Math.round(credit).toLocaleString()+' coins');
@@ -400,10 +441,11 @@ svg{display:block}
   function claim(id){
     var r=REWARDS.filter(function(x){return x.id===id;})[0];
     if(state.bank<r.cost||r.left<=0||state.claimed[id])return;
-    state.bank-=r.cost;r.left--;state.claimed[id]=true;render();
+    state.bank-=r.cost;r.left--;state.claimed[id]=true;led("Reward claimed",r.n.replace(/&[^;]+;/g,"").trim(),-r.cost);render();
     toast('Claimed &middot; <span class="c">QR sent</span> to your wallet');
   }
   $("#sheet").addEventListener("click",function(e){if(e.target===this)closeSlip();});
+  var pbtn=$("#profBtn");if(pbtn)pbtn.onclick=function(){state.tab="profile";render();window.scrollTo(0,0);};
   render();
 })();
 </script>
