@@ -87,10 +87,12 @@ h1{font-family:var(--disp);font-size:52px;margin:26px 0 10px;color:#fff;text-tra
     home:"https://claude.ai/code/artifact/2fafcaa0-6f66-4d86-a418-bc92427558b5",
     cal:"https://claude.ai/code/artifact/c3552373-6287-43f7-abff-b56b7b684a5e",
     raw:"https://claude.ai/code/artifact/4f9af97b-fa7c-4540-9566-bd9607ef01d8",
-    score:"https://claude.ai/code/artifact/cbd95816-9737-434e-9106-a7799d916c1f",
+    score:"https://claude.ai/code/artifact/6f554f4c-19b3-42fc-953f-fc8c022ded11",
     train:"https://claude.ai/code/artifact/707d0652-055d-40f3-83a7-1ef3e30ef488",
     coach:"https://claude.ai/code/artifact/e5b4f706-f587-4243-a8d9-730e9a88ef36",
     fuse:"https://claude.ai/code/artifact/b4e8ae1b-c126-460f-ac8c-03726084f982",
+    raffle:"https://claude.ai/code/artifact/a655ec1a-2b90-4d45-bf05-95a50f5b50e9",
+    fuseconsole:"https://claude.ai/code/artifact/d862a2ac-0297-472a-b592-c90c3e14604c",
     box:"https://claude.ai/code/artifact/aff11548-b6d3-4b74-9205-bd49cd27c4d3",
     report:"https://claude.ai/code/artifact/947e046e-6e97-4064-b704-76010c2f5824",
     broadcast:"https://claude.ai/code/artifact/b1d1f595-f65f-4708-ba42-b552b49d8a36",
@@ -109,15 +111,17 @@ h1{font-family:var(--disp);font-size:52px;margin:26px 0 10px;color:#fff;text-tra
     train:{ic:"&#128170;",bg:"#3E9E6B",n:"Training",p:"Coach-assigned workouts with logging &mdash; feeds Athletic Capacity.",u:U.train},
     coach:{ic:"&#127916;",bg:"#6A4A2B",n:"Coaching",p:"Evaluations, the auto-filed video library, and practice-plan time.",u:U.coach},
     fuse:{ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",p:"The prediction game &mdash; live picks with locked odds and sponsor-funded rewards. Free to play, no cash value.",u:U.fuse},
+    raffle:{ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",p:"Run a raffle &mdash; live thermometer, social sharing, AI auto-marketing and a verifiable winner draw.",u:U.raffle},
+    fuseconsole:{ic:"&#128203;",bg:"#2E5D8F",n:"Fuse Console",p:"Org + sponsor admin &mdash; Economy Health Index, sponsors, reward inventory and missions.",u:U.fuseconsole},
     pay:{ic:"&#128179;",bg:"#D08A3C",n:"Payments",p:"Team fees, invoices, balances and payouts on Stripe Connect.",u:U.pay},
     scout:{ic:"&#128269;",bg:"#2E5D8F",n:"Scout Portal",p:"Verified athletes, watchlist and printable reports for recruiters.",u:U.scout},
     ops:{ic:"&#127967;",bg:"#111",n:"Command Center",p:"Every team, roster, dollar and coach hour &mdash; with alerts that link to fixes.",u:U.ops}
   };
   var ROLES=[
-    {id:"parent",icon:"home",nm:"Parent",who:"Jason Roman",ds:"Mason #2 and Myles #22. Schedule, payments, live games, messaging.",mods:["home","fuse","cal","raw","report","score","pay"]},
+    {id:"parent",icon:"home",nm:"Parent",who:"Jason Roman",ds:"Mason #2 and Myles #22. Schedule, payments, live games, messaging.",mods:["home","fuse","raffle","cal","raw","report","score","pay"]},
     {id:"player",icon:"user",nm:"Player",who:"Nick Rutkowski",ds:"#24. Your RAW Score, progress, training, and recruiting.",mods:["raw","fuse","report","train","cal","score"]},
     {id:"coach",icon:"clip",nm:"Coach",who:"",ds:"Attendance, live scorekeeper, evaluations and film.",mods:["coach","score","box","broadcast","cal","raw"]},
-    {id:"org",icon:"bar",nm:"Org",who:"",ds:"Finances, registration, compliance, and fundraisers.",mods:["ops","pay","coach","box","broadcast","cal"]},
+    {id:"org",icon:"bar",nm:"Org",who:"",ds:"Finances, registration, compliance, and fundraisers.",mods:["ops","fuseconsole","pay","raffle","coach","box","broadcast","cal"]},
     {id:"scout",icon:"search",nm:"Scout",who:"",ds:"Verified performance data and film for recruiting.",mods:["scout","report","raw","box"]}
   ];
 

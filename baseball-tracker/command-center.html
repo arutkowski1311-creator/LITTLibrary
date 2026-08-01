@@ -193,8 +193,8 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
   // fundraising sources -> the shared contributions ledger
   var SRC=[
     {ic:"&#9971;",bg:"#3E9E6B",n:"Golf Outing",note:"Get RAW at The Beav",raised:18200,goal:20000,st:"soon",stl:"Oct 13"},
-    {ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",note:"Live prediction game &middot; 1.2k picks",raised:9650,goal:10000,st:"live",stl:"Live"},
-    {ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",note:"Season Kickoff &middot; 620 entries",raised:12400,goal:15000,st:"open",stl:"Draws Nov 30"},
+    {ic:"&#9889;",bg:"#FF6A2B",n:"Fuse",note:"Live prediction game &middot; 1.2k picks",raised:9650,goal:10000,st:"live",stl:"Live",u:"https://claude.ai/code/artifact/b4e8ae1b-c126-460f-ac8c-03726084f982"},
+    {ic:"&#127903;",bg:"#C79A3A",n:"Digital Raffle",note:"Season Kickoff &middot; 620 entries",raised:12400,goal:15000,st:"open",stl:"Draws Nov 30",u:"https://claude.ai/code/artifact/a655ec1a-2b90-4d45-bf05-95a50f5b50e9"},
     {ic:"&#128722;",bg:"#2E5D8F",n:"Team Store",note:"88 orders &middot; player credit",raised:4120,goal:6000,st:"open",stl:"Ongoing"},
     {ic:"&#128250;",bg:"#6A4A2B",n:"Streaming",note:"128 subs &middot; 6 ad sponsors",raised:3910,goal:5000,st:"rec",stl:"Recurring"},
     {ic:"&#128296;",bg:"#7A4FB5",n:"Auctions",note:"Silent &middot; 40 items",raised:2300,goal:4000,st:"soon",stl:"Ends Fri"},
@@ -229,10 +229,10 @@ header .season{margin-left:auto;font-size:12px;color:#9a9893}
     '<div class="v num">'+k[1]+'</div><div class="l">'+k[2]+'</div><div class="sub">'+k[3]+'</div></div>';}).join('');
 
   $("#sources").innerHTML=SRC.map(function(s){var p=Math.min(100,Math.round(s.raised/s.goal*100));
-    return '<div class="src"><div class="top"><span class="chip" style="background:'+s.bg+'22;box-shadow:inset 0 0 0 1px '+s.bg+'55">'+s.ic+'</span>'+
+    return (s.u?'<a class="src" href="'+s.u+'" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block">':'<div class="src">')+'<div class="top"><span class="chip" style="background:'+s.bg+'22;box-shadow:inset 0 0 0 1px '+s.bg+'55">'+s.ic+'</span>'+
       '<div><div class="nm">'+s.n+'</div><div class="st">'+s.note+'</div></div><span class="pill '+s.st+'">'+s.stl+'</span></div>'+
       '<div class="amt num">$'+s.raised.toLocaleString()+'</div><div class="goal num">of $'+s.goal.toLocaleString()+' &middot; '+p+'%</div>'+
-      '<div class="bar"><i data-w="'+p+'" style="background:'+pctcol(p)+'"></i></div></div>';}).join('');
+      '<div class="bar"><i data-w="'+p+'" style="background:'+pctcol(p)+'"></i></div>'+(s.u?'<div style="font-size:11px;font-weight:800;color:var(--blueDeep);margin-top:8px">Open campaign &rarr;</div></a>':'</div>');}).join('');
 
   $("#coachTbl").innerHTML='<thead><tr><th>Coach</th><th class="num">Hours</th><th>Utilization</th><th class="num">Billable</th></tr></thead><tbody>'+
     COACH.map(function(c){return '<tr><td><b>'+c[0]+'</b></td><td class="num">'+c[1]+'h</td>'+
