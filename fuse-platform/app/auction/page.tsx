@@ -11,7 +11,7 @@ export default async function AuctionPage() {
   const auction = (
     await query(
       uid,
-      `select a.*, c.title from auction a join campaign c on c.id=a.campaign_id limit 1`,
+      `select a.*, c.title from auction a join campaign c on c.id=a.campaign_id order by a.created_at desc limit 1`,
     )
   ).rows[0]
   if (!auction) return <div className="wrap"><h1>No auction</h1><p className="sub">Switch to an org member above.</p></div>

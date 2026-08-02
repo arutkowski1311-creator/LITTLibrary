@@ -14,7 +14,7 @@ export default async function RafflePage() {
        from raffle r
        join campaign c on c.id = r.campaign_id
        join organization o on o.id = r.org_id
-       limit 1`,
+       order by r.created_at desc limit 1`,
     )
   ).rows[0]
   if (!raffle) return <div className="wrap"><h1>No raffle</h1><p className="sub">Switch to an org member above.</p></div>

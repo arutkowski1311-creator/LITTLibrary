@@ -42,6 +42,78 @@ export async function createOrg(formData: FormData) {
 }
 
 /**
+ * Launch a fundraiser from scratch. Creates the campaign plus the type-specific
+ * scaffolding (golf outing + packages / raffle + prizes + rules + tickets /
+ * auction + lots) with sensible defaults, so a freshly onboarded org has a
+ * working, populated module page immediately. Runs as the org member (RLS).
+ */
+export async function createCampaign(formData: FormData) {
+  const uid = currentUid()
+  const type = String(formData.get('type'))
+  const defaults: Record<string, string> = { golf: 'Charity Golf Outing', raffle: 'Fundraiser Raffle', auction: 'Benefit Auction' }
+  const title = (String(formData.get('title') || '').trim() || defaults[type] || 'Campaign')
+  const slug = `${type}-${Date.now().toString(36)}`
+  let dest = '/'
+
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    if (!org) throw new Error('no org')
+    const status = type === 'raffle' ? 'draft' : 'published' // raffle waits on the compliance gate
+    const goal = type === 'golf' ? 2000000 : type === 'raffle' ? 1000000 : 500000
+    const camp = (
+      await c.query(
+        `insert into campaign(org_id,type,title,slug,status,goal_cents) values ($1,$2,$3,$4,$5,$6) returning id`,
+        [org.id, type, title, slug, status, goal],
+      )
+    ).rows[0]
+
+    if (type === 'golf') {
+      const course = (await c.query('select id from golf_course limit 1')).rows[0]
+      const pkg = course ? (await c.query('select id from golf_package where course_id=$1 limit 1', [course.id])).rows[0] : null
+      const ev = (
+        await c.query(
+          `insert into event(org_id,campaign_id,name,starts_at,capacity)
+           values ($1,$2,$3, now()+interval '60 days',144) returning id`,
+          [org.id, camp.id, title],
+        )
+      ).rows[0]
+      await c.query(
+        `insert into golf_outing(org_id,event_id,course_id,package_id,proposed_date,deposit_cents,go_no_go_deadline)
+         values ($1,$2,$3,$4,(now()+interval '60 days')::date,100000,(now()+interval '39 days')::date)`,
+        [org.id, ev.id, course?.id ?? null, pkg?.id ?? null],
+      )
+      await c.query(
+        `insert into package(org_id,campaign_id,event_id,kind,name,price_cents,qty_total,exclusive_category) values
+         ($1,$2,$3,'registration','Foursome',60000,36,null),
+         ($1,$2,$3,'registration','Individual Golfer',15000,20,null),
+         ($1,$2,$3,'sponsorship','Title Sponsor',250000,1,'title'),
+         ($1,$2,$3,'sponsorship','Hole Sponsor',25000,18,null)`,
+        [org.id, camp.id, ev.id],
+      )
+      dest = '/golf'
+    } else if (type === 'raffle') {
+      const r = (await c.query(`insert into raffle(campaign_id,org_id,draw_at) values ($1,$2, now()+interval '45 days') returning id`, [camp.id, org.id])).rows[0]
+      await c.query(`insert into raffle_prize(raffle_id,title,fmv_cents,winner_order) values ($1,'Grand Prize',50000,1),($1,'Runner-up',20000,2)`, [r.id])
+      await c.query(`insert into raffle_rule_version(raffle_id,version,body,published_at) values ($1,1,'Official rules: 18+, see organization for details.', now())`, [r.id])
+      await c.query(`insert into package(org_id,campaign_id,kind,name,price_cents,qty_total) values ($1,$2,'entry','Raffle Ticket',500,null)`, [org.id, camp.id])
+      dest = '/raffle'
+    } else if (type === 'auction') {
+      const a = (await c.query(`insert into auction(campaign_id,org_id,mode,anti_snipe_seconds) values ($1,$2,'silent',120) returning id`, [camp.id, org.id])).rows[0]
+      await c.query(
+        `insert into auction_item(auction_id,org_id,title,fmv_cents,reserve_cents,min_bid_cents,increment_cents,closes_at) values
+         ($1,$2,'Signed Memorabilia',30000,10000,5000,2500, now()+interval '7 days'),
+         ($1,$2,'VIP Experience',50000,20000,10000,5000, now()+interval '7 days')`,
+        [a.id, org.id],
+      )
+      dest = '/auction'
+    }
+  })
+
+  revalidatePath('/', 'layout')
+  redirect(dest)
+}
+
+/**
  * Buy a golf package (foursome / sponsorship / etc). Creates the order + item
  * (inventory and exclusivity guards fire in the DB), then runs the fake charge
  * and record_payment — which mirrors the payment and posts the balanced ledger

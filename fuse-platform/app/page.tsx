@@ -1,5 +1,6 @@
 import { query, money } from '@/lib/db'
 import { currentUid } from '@/lib/auth'
+import { createCampaign } from './actions'
 
 export const dynamic = 'force-dynamic'
 
@@ -76,6 +77,25 @@ export default async function Dashboard() {
           <span className="m" style={{ color: 'var(--mute)' }}>No modules enabled.</span>
         ) : (
           modules.map((m) => <span key={m} className="pill soon">{m}</span>)
+        )}
+      </div>
+
+      <div className="section-h">Launch a fundraiser</div>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        {[
+          { type: 'golf', label: '⛳ Golf outing' },
+          { type: 'raffle', label: '🎟️ Raffle' },
+          { type: 'auction', label: '🔨 Auction' },
+        ]
+          .filter((x) => modules.includes(x.type))
+          .map((x) => (
+            <form key={x.type} action={createCampaign}>
+              <input type="hidden" name="type" value={x.type} />
+              <button className="btn ghost">{x.label}</button>
+            </form>
+          ))}
+        {modules.filter((m) => ['golf', 'raffle', 'auction'].includes(m)).length === 0 && (
+          <span className="m" style={{ color: 'var(--mute)' }}>No fundraiser modules enabled — add them in onboarding.</span>
         )}
       </div>
 

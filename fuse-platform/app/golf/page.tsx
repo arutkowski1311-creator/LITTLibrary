@@ -16,7 +16,7 @@ export default async function GolfOuting() {
        join golf_course c on c.id = go.course_id
        join event e on e.id = go.event_id
        join campaign cm on cm.id = e.campaign_id
-       limit 1`,
+       order by go.created_at desc limit 1`,
     )
   ).rows[0]
 
