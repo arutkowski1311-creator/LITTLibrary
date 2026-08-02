@@ -76,7 +76,14 @@ export default async function Dashboard() {
         {modules.length === 0 ? (
           <span className="m" style={{ color: 'var(--mute)' }}>No modules enabled.</span>
         ) : (
-          modules.map((m) => <span key={m} className="pill soon">{m}</span>)
+          modules.map((m) => {
+            const path: Record<string, string> = { golf: '/golf', raffle: '/raffle', auction: '/auction', store: '/store', sponsorship: '/sponsors' }
+            return path[m] ? (
+              <a key={m} className="pill soon" href={path[m]} style={{ textDecoration: 'none' }}>{m} →</a>
+            ) : (
+              <span key={m} className="pill soon">{m}</span>
+            )
+          })
         )}
       </div>
 

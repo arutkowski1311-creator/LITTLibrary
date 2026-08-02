@@ -304,6 +304,54 @@ export async function buyProduct(formData: FormData) {
   revalidatePath('/')
 }
 
+/** Sponsorship CRM — add a sponsor. */
+export async function addSponsor(formData: FormData) {
+  const uid = currentUid()
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    await c.query(
+      `insert into sponsor(org_id, business, contact_name, contact_email, category, renewal_date, notes)
+       values ($1,$2,$3,$4,$5,$6,$7)`,
+      [
+        org.id,
+        String(formData.get('business') || 'New Sponsor'),
+        String(formData.get('contact_name') || ''),
+        String(formData.get('contact_email') || ''),
+        String(formData.get('category') || '') || null,
+        String(formData.get('renewal_date') || '') || null,
+        String(formData.get('notes') || '') || null,
+      ],
+    )
+  })
+  revalidatePath('/sponsors')
+}
+
+/** Add a deliverable (proof-of-performance obligation) to a sponsor. */
+export async function addDeliverable(formData: FormData) {
+  const uid = currentUid()
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    await c.query(
+      `insert into sponsor_deliverable(org_id, sponsor_id, description, status, due_date)
+       values ($1,$2,$3,'pending',$4)`,
+      [org.id, String(formData.get('sponsorId')), String(formData.get('description') || 'Deliverable'), String(formData.get('due_date') || '') || null],
+    )
+  })
+  revalidatePath('/sponsors')
+}
+
+/** Mark a deliverable fulfilled (with optional proof URL). */
+export async function fulfillDeliverable(formData: FormData) {
+  const uid = currentUid()
+  await withUser(uid, (c) =>
+    c.query(`update sponsor_deliverable set status='fulfilled', proof_url=$2 where id=$1`, [
+      String(formData.get('id')),
+      String(formData.get('proof_url') || '') || null,
+    ]),
+  )
+  revalidatePath('/sponsors')
+}
+
 /** 21-day binding go/no-go decision. */
 export async function setGoNoGo(formData: FormData) {
   const uid = currentUid()

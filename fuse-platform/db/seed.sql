@@ -128,3 +128,13 @@ insert into auction(id, campaign_id, org_id, mode, anti_snipe_seconds) values
 insert into auction_item(id, auction_id, org_id, title, fmv_cents, reserve_cents, min_bid_cents, increment_cents, closes_at) values
   ('56000000-0000-4000-8000-000000000001','55000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111','Signed Jersey',30000,10000,5000,2500, now()+interval '5 days'),
   ('56000000-0000-4000-8000-000000000002','55000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111','Batting Lesson x4',40000,15000,7500,2500, now()+interval '5 days');
+
+-- Sponsors (CRM) + deliverables (proof of performance)
+insert into sponsor(id, org_id, business, contact_name, contact_email, category, renewal_date, notes) values
+  ('70000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111','Clinton Auto Group','Dana Ruiz','dana@clintonauto.example','auto_dealer', date '2026-12-01','Title sponsor 3 years running'),
+  ('70000000-0000-4000-8000-000000000002','11111111-1111-1111-1111-111111111111','Riverside Pediatrics','Dr. Patel','patel@rvped.example','healthcare', date '2026-11-15','Interested in streaming ads'),
+  ('70000000-0000-4000-8000-000000000003','11111111-1111-1111-1111-111111111111','Hometown Bank','Sam Cole','sam@htbank.example','financial', date '2027-01-10', null);
+insert into sponsor_deliverable(org_id, sponsor_id, campaign_id, description, status, due_date) values
+  ('11111111-1111-1111-1111-111111111111','70000000-0000-4000-8000-000000000001','50000000-0000-4000-8000-000000000001','Logo on event banner','fulfilled', date '2026-10-01'),
+  ('11111111-1111-1111-1111-111111111111','70000000-0000-4000-8000-000000000001','50000000-0000-4000-8000-000000000001','Hole 9 signage photo','pending', date '2026-10-13'),
+  ('11111111-1111-1111-1111-111111111111','70000000-0000-4000-8000-000000000002',null,'Streaming lower-third (5 games)','in_progress', date '2026-11-01');
