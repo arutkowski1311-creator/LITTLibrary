@@ -216,3 +216,47 @@ insert into video_asset(org_id, player_id, team_id, bucket, title, url, provider
   ('11111111-1111-1111-1111-111111111111','a0000000-0000-4000-8000-000000000003','22222222-0000-4000-8000-000000000001','game','2 HR vs Hunterdon Heat','https://hudl.com/example-nick-hr','hudl','org','a0000000-0000-4000-8000-000000000001'),
   ('11111111-1111-1111-1111-111111111111','a0000000-0000-4000-8000-000000000003','22222222-0000-4000-8000-000000000001','skills','Cage session — oppo work','https://drive.google.com/file/example','drive','coaches','a0000000-0000-4000-8000-000000000001'),
   ('11111111-1111-1111-1111-111111111111','a0000000-0000-4000-8000-000000000101','22222222-0000-4000-8000-000000000001','practice','Fielding reps','https://youtu.be/example-mason','youtube','org','a0000000-0000-4000-8000-000000000001');
+
+-- ===================== Seeded revenue (for dashboard charts) =====================
+-- Extra campaigns so revenue-by-source has multiple bars.
+insert into campaign(id, org_id, type, title, slug, status) values
+  ('50000000-0000-4000-8000-000000000004','11111111-1111-1111-1111-111111111111','store','Spirit Wear Store','store-2026','published'),
+  ('50000000-0000-4000-8000-000000000005','11111111-1111-1111-1111-111111111111','streaming','Live Streaming','streaming-2026','published');
+insert into package(id, org_id, campaign_id, kind, name, price_cents, qty_total) values
+  ('53000000-0000-4000-8000-000000000010','11111111-1111-1111-1111-111111111111','50000000-0000-4000-8000-000000000004','product','Team Hoodie',4500,null),
+  ('53000000-0000-4000-8000-000000000011','11111111-1111-1111-1111-111111111111','50000000-0000-4000-8000-000000000005','ticket','Season Pass',3000,null),
+  ('53000000-0000-4000-8000-000000000012','11111111-1111-1111-1111-111111111111','50000000-0000-4000-8000-000000000005','ad','Scorebug Sponsor',50000,1);
+
+-- Backdated paid orders + balanced ledger entries across sources and weeks.
+do $$
+declare
+  v_org uuid := '11111111-1111-1111-1111-111111111111';
+  s record; v_order uuid; v_grp uuid; v_unit bigint; v_gross bigint; v_fee bigint; v_plat bigint; v_net bigint;
+begin
+  for s in select * from (values
+    ('53000000-0000-4000-8000-000000000001'::uuid, date '2026-06-05', 4),   -- golf foursomes
+    ('53000000-0000-4000-8000-000000000003'::uuid, date '2026-06-12', 1),   -- golf title sponsor
+    ('53000000-0000-4000-8000-000000000001'::uuid, date '2026-06-19', 6),   -- golf foursomes
+    ('53000000-0000-4000-8000-000000000004'::uuid, date '2026-06-26', 5),   -- golf hole sponsors
+    ('53000000-0000-4000-8000-000000000005'::uuid, date '2026-07-03', 30),  -- raffle tickets
+    ('53000000-0000-4000-8000-000000000010'::uuid, date '2026-07-10', 8),   -- store hoodies
+    ('53000000-0000-4000-8000-000000000011'::uuid, date '2026-07-15', 20),  -- streaming subs
+    ('53000000-0000-4000-8000-000000000005'::uuid, date '2026-07-17', 40),  -- raffle tickets
+    ('53000000-0000-4000-8000-000000000012'::uuid, date '2026-07-20', 1)    -- streaming ad
+  ) as t(pkg, d, qty) loop
+    select price_cents into v_unit from package where id = s.pkg;
+    v_gross := v_unit * s.qty;
+    v_fee := round(v_gross * 0.029) + 30;
+    v_plat := round(v_gross * 0.02);
+    v_net := v_gross - v_fee - v_plat;
+    insert into "order"(org_id, subtotal_cents, total_cents, status, created_at)
+      values (v_org, v_gross, v_gross, 'paid', s.d) returning id into v_order;
+    insert into order_item(order_id, package_id, qty, unit_price_cents) values (v_order, s.pkg, s.qty, v_unit);
+    v_grp := gen_random_uuid();
+    insert into ledger_entry(org_id, txn_group, order_id, party, direction, amount_cents, created_at) values
+      (v_org, v_grp, v_order, 'org','debit', v_gross, s.d),
+      (v_org, v_grp, v_order, 'fund','credit', v_net, s.d),
+      (v_org, v_grp, v_order, 'payment_fee','credit', v_fee, s.d),
+      (v_org, v_grp, v_order, 'platform','credit', v_plat, s.d);
+  end loop;
+end $$;

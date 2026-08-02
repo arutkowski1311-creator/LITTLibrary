@@ -1,6 +1,7 @@
 import { query, money } from '@/lib/db'
 import { currentUid } from '@/lib/auth'
 import { createCampaign } from './actions'
+import { HBars, AreaChart } from './components/charts'
 
 export const dynamic = 'force-dynamic'
 
@@ -46,6 +47,27 @@ export default async function Dashboard() {
   const raised = Number(summary.net_proceeds_cents ?? 0)
   const pct = goal > 0 ? Math.min(100, Math.round((raised / goal) * 100)) : 0
 
+  // Revenue by source (bars) + cumulative raised over time (area).
+  const bySource = campaigns
+    .filter((c) => Number(c.raised_cents) > 0)
+    .map((c) => ({ label: c.title, value: Number(c.raised_cents) }))
+    .sort((a, b) => b.value - a.value)
+  const overTimeRows = (
+    await query(
+      uid,
+      `select created_at::date as d, sum(amount_cents) as net
+       from ledger_entry where org_id=$1 and party='fund' and direction='credit'
+       group by created_at::date order by d`,
+      [org.id],
+    )
+  ).rows
+  let running = 0
+  const overTime = overTimeRows.map((r) => {
+    running += Number(r.net)
+    return { label: new Date(r.d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }), value: running }
+  })
+  const fmtK = (n: number) => (n >= 100000 ? `$${(n / 100000).toFixed(0)}k` : money(n).replace('.00', ''))
+
   return (
     <div className="wrap">
       <div className="crumb">{org.public_name}</div>
@@ -86,6 +108,21 @@ export default async function Dashboard() {
           })
         )}
       </div>
+
+      {bySource.length > 0 && (
+        <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 16, alignItems: 'stretch' }}>
+          <div className="card">
+            <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 12 }}>Revenue by source</div>
+            <HBars items={bySource} fmt={(n) => money(n)} />
+          </div>
+          <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 4 }}>Raised over time</div>
+            <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+              <AreaChart labels={overTime.map((p) => p.label)} values={overTime.map((p) => p.value)} fmt={fmtK} />
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="section-h">Team &amp; development</div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>

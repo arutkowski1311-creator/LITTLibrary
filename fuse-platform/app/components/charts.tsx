@@ -133,6 +133,85 @@ export function TrendChart({
 }
 
 // ---------------------------------------------------------------------------
+// Horizontal bars — magnitude comparison across categories (revenue by source).
+// Plain HTML; value direct-labeled at the end of each row.
+// ---------------------------------------------------------------------------
+export function HBars({ items, fmt }: { items: { label: string; value: number; color?: string }[]; fmt: (n: number) => string }) {
+  const max = Math.max(...items.map((i) => i.value), 1)
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
+      {items.map((it, i) => (
+        <div key={i} style={{ display: 'grid', gridTemplateColumns: '116px 1fr 86px', gap: 10, alignItems: 'center' }}>
+          <span style={{ fontSize: 13, fontWeight: 600 }}>{it.label}</span>
+          <div style={{ height: 14, background: 'var(--line)', borderRadius: 999, overflow: 'hidden' }}>
+            <div style={{ height: '100%', width: `${Math.max(2, (it.value / max) * 100)}%`, background: it.color ?? 'var(--fuse)', borderRadius: 999 }} />
+          </div>
+          <span style={{ fontSize: 13, fontWeight: 800, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{fmt(it.value)}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Area — cumulative magnitude over time (money raised). Single series: gradient
+// fill under a 2px line, y-axis money-formatted.
+// ---------------------------------------------------------------------------
+export function AreaChart({
+  labels,
+  values,
+  fmt,
+  w = 620,
+  h = 210,
+  color = 'var(--fuse)',
+}: {
+  labels: string[]
+  values: number[]
+  fmt: (n: number) => string
+  w?: number
+  h?: number
+  color?: string
+}) {
+  const padL = 46
+  const padR = 14
+  const padT = 12
+  const padB = 24
+  const iw = w - padL - padR
+  const ih = h - padT - padB
+  const n = values.length
+  const max = Math.max(...values, 1)
+  const x = (i: number) => padL + (n <= 1 ? iw : (iw * i) / (n - 1))
+  const y = (v: number) => padT + ih * (1 - v / max)
+  const line = values.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ')
+  const area = `${line} L${x(n - 1).toFixed(1)},${padT + ih} L${x(0).toFixed(1)},${padT + ih} Z`
+  const ticks = [0, max / 2, max]
+  const gid = 'area-grad'
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} width="100%" role="img" aria-label="Money raised over time">
+      <defs>
+        <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity={0.28} />
+          <stop offset="100%" stopColor={color} stopOpacity={0.02} />
+        </linearGradient>
+      </defs>
+      {ticks.map((t, k) => (
+        <g key={k}>
+          <line x1={padL} y1={y(t)} x2={padL + iw} y2={y(t)} stroke={GRID} strokeWidth={1} />
+          <text x={padL - 6} y={y(t)} fontSize={9} textAnchor="end" dominantBaseline="middle" fill={MUTE} style={{ fontVariantNumeric: 'tabular-nums' }}>{fmt(t)}</text>
+        </g>
+      ))}
+      <path d={area} fill={`url(#${gid})`} />
+      <path d={line} fill="none" stroke={color} strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
+      {values.map((v, i) => (
+        <circle key={i} cx={x(i)} cy={y(v)} r={2.5} fill={color} />
+      ))}
+      {labels.map((l, i) => (i % Math.ceil(n / 6) === 0 || i === n - 1 ? <text key={i} x={x(i)} y={h - 7} fontSize={9} textAnchor="middle" fill={MUTE}>{l}</text> : null))}
+    </svg>
+  )
+}
+
+// ---------------------------------------------------------------------------
 // Sparkline — one tiny trend, last point marked. For roster rows.
 // ---------------------------------------------------------------------------
 export function Sparkline({ values, color = 'var(--fuse)', w = 88, h = 26 }: { values: number[]; color?: string; w?: number; h?: number }) {
