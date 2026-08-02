@@ -94,6 +94,7 @@ export default async function Dashboard() {
         <a className="btn ghost" href="/evaluate">📋 Evaluate</a>
         <a className="btn ghost" href="/scoring">⚾ Scoring</a>
         <a className="btn ghost" href="/training">💪 Training</a>
+        <a className="btn ghost" href="/video">🎥 Video</a>
       </div>
 
       <div className="section-h">Launch a fundraiser</div>

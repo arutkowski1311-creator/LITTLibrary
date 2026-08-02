@@ -445,6 +445,39 @@ export async function setRsvp(formData: FormData) {
   revalidatePath('/calendar')
 }
 
+function providerOf(url: string): string {
+  if (/youtu/.test(url)) return 'youtube'
+  if (/vimeo/.test(url)) return 'vimeo'
+  if (/hudl/.test(url)) return 'hudl'
+  if (/drive\.google|docs\.google/.test(url)) return 'drive'
+  return 'link'
+}
+
+/** Add a video by external link — the org references it, never hosts it. */
+export async function addVideo(formData: FormData) {
+  const uid = currentUid()
+  const url = String(formData.get('url') || '').trim()
+  if (!url) throw new Error('paste a video link')
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    await c.query(
+      `insert into video_asset(org_id, player_id, bucket, title, url, provider, visibility, created_by)
+       values ($1,$2,$3,$4,$5,$6,$7,$8)`,
+      [
+        org.id,
+        String(formData.get('playerId') || '') || null,
+        String(formData.get('bucket') || 'other'),
+        String(formData.get('title') || 'Untitled'),
+        url,
+        providerOf(url),
+        String(formData.get('visibility') || 'org'),
+        uid,
+      ],
+    )
+  })
+  revalidatePath('/video')
+}
+
 /** Scorekeeper — record one plate appearance (updates line + game score). */
 export async function recordPa(formData: FormData) {
   const uid = currentUid()
