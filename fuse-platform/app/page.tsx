@@ -68,7 +68,7 @@ export default async function Dashboard() {
       <div className="section-h">Campaigns</div>
       <div className="list">
         {campaigns.map((c) => {
-          const href = c.type === 'golf' ? '/golf' : c.type === 'raffle' ? '/raffle' : undefined
+          const href = c.type === 'golf' ? '/golf' : c.type === 'raffle' ? '/raffle' : c.type === 'auction' ? '/auction' : undefined
           const inner = (
             <>
               <div>

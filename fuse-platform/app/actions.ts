@@ -123,6 +123,40 @@ export async function drawRaffle(formData: FormData) {
   revalidatePath('/raffle')
 }
 
+/**
+ * Place a proxy/max bid as the acting user's supporter. Concurrency safety
+ * lives in place_bid (SELECT ... FOR UPDATE); this just resolves the bidder and
+ * calls it. Rejections (below increment, closed) come back in the jsonb result;
+ * we revalidate either way so the page reflects current state.
+ */
+export async function placeBid(formData: FormData) {
+  const uid = currentUid()
+  const itemId = String(formData.get('itemId'))
+  const maxDollars = parseFloat(String(formData.get('max')))
+  const maxCents = Math.round((isFinite(maxDollars) ? maxDollars : 0) * 100)
+
+  await withUser(uid, async (c) => {
+    const sup = (
+      await c.query(
+        'select id from supporter where user_id=$1 union all select id from supporter limit 1',
+        [uid],
+      )
+    ).rows[0]
+    if (!sup) throw new Error('no supporter for bidder')
+    await c.query('select place_bid($1,$2,$3) as r', [itemId, sup.id, maxCents])
+  })
+
+  revalidatePath('/auction')
+}
+
+/** Organizer closes a lot: sold if reserve cleared, else unsold. */
+export async function closeLot(formData: FormData) {
+  const uid = currentUid()
+  const itemId = String(formData.get('itemId'))
+  await withUser(uid, (c) => c.query('select auction_close_item($1)', [itemId]))
+  revalidatePath('/auction')
+}
+
 /** 21-day binding go/no-go decision. */
 export async function setGoNoGo(formData: FormData) {
   const uid = currentUid()

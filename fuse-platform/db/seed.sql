@@ -79,7 +79,8 @@ insert into package(id, org_id, campaign_id, event_id, kind, name, price_cents, 
 -- Supporters -----------------------------------------------------------------
 insert into supporter(id, org_id, user_id, full_name, email) values
   ('60000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111','a0000000-0000-4000-8000-000000000002','Jason Roman','jason@njraw.example'),
-  ('60000000-0000-4000-8000-000000000002','11111111-1111-1111-1111-111111111111',null,'Coach Mike','mike@njraw.example');
+  ('60000000-0000-4000-8000-000000000002','11111111-1111-1111-1111-111111111111',null,'Coach Mike','mike@njraw.example'),
+  ('60000000-0000-4000-8000-000000000003','11111111-1111-1111-1111-111111111111','a0000000-0000-4000-8000-000000000001','Adam Rutkowski','adam@njraw.example');
 
 -- Raffle (published through the compliance gate) -----------------------------
 insert into campaign(id, org_id, type, title, slug, goal_cents, status) values
