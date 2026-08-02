@@ -10,11 +10,16 @@ export default async function Dashboard() {
   if (!org) {
     return (
       <div className="wrap">
-        <h1>No organization</h1>
-        <p className="sub">This user isn’t a member of any org, so RLS shows nothing. Switch personas above.</p>
+        <h1>Welcome to Fuse</h1>
+        <p className="sub">You’re not part of an organization yet. Set one up in under a minute.</p>
+        <a className="btn spark" href="/onboarding" style={{ padding: 14 }}>Create your organization →</a>
       </div>
     )
   }
+
+  const modules = (
+    await query(uid, 'select distinct module_key from entitlement where org_id=$1 order by module_key', [org.id])
+  ).rows.map((r) => r.module_key)
 
   const summary =
     (await query(uid, 'select * from org_ledger_summary where org_id=$1', [org.id])).rows[0] ?? {}
@@ -36,7 +41,7 @@ export default async function Dashboard() {
     )
   ).rows
 
-  const goal = campaigns.reduce((s, c) => s + Number(c.goal_cents ?? 0), 0)
+  const goal = Number(org.annual_goal_cents ?? 0) || campaigns.reduce((s, c) => s + Number(c.goal_cents ?? 0), 0)
   const raised = Number(summary.net_proceeds_cents ?? 0)
   const pct = goal > 0 ? Math.min(100, Math.round((raised / goal) * 100)) : 0
 
@@ -63,6 +68,15 @@ export default async function Dashboard() {
         <div className="card kpi"><div className="v">{money(summary.org_cash_cents)}</div><div className="l">Org cash</div></div>
         <div className="card kpi"><div className="v">{money(summary.platform_fees_cents)}</div><div className="l">Platform fees</div></div>
         <div className="card kpi"><div className="v">{money(summary.processor_fees_cents)}</div><div className="l">Processor fees</div></div>
+      </div>
+
+      <div className="section-h">Your modules</div>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        {modules.length === 0 ? (
+          <span className="m" style={{ color: 'var(--mute)' }}>No modules enabled.</span>
+        ) : (
+          modules.map((m) => <span key={m} className="pill soon">{m}</span>)
+        )}
       </div>
 
       <div className="section-h">Campaigns</div>

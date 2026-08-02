@@ -14,6 +14,34 @@ export async function setUser(formData: FormData) {
 }
 
 /**
+ * Onboard a new organization (§5). One atomic security-definer call creates the
+ * org, the owner membership, and the module-entitlement plan+subscription — so
+ * a brand-new user lands in a working, entitled org. Then redirect to it.
+ */
+export async function createOrg(formData: FormData) {
+  const uid = currentUid()
+  const modules = formData.getAll('modules').map(String)
+  const goalDollars = parseFloat(String(formData.get('goal'))) || 0
+
+  await withUser(uid, (c) =>
+    c.query('select create_organization($1,$2,$3,$4,$5,$6,$7,$8,$9)', [
+      String(formData.get('public_name') || 'New Org'),
+      String(formData.get('legal_name') || ''),
+      String(formData.get('entity_type') || 'nonprofit_501c3'),
+      String(formData.get('jurisdiction') || 'US-NJ'),
+      String(formData.get('brand_primary') || '#F6A93B'),
+      String(formData.get('brand_accent') || '#FF6A2B'),
+      Math.round(goalDollars * 100),
+      formData.get('connect') === 'on',
+      modules,
+    ]),
+  )
+
+  revalidatePath('/', 'layout')
+  redirect('/')
+}
+
+/**
  * Buy a golf package (foursome / sponsorship / etc). Creates the order + item
  * (inventory and exclusivity guards fire in the DB), then runs the fake charge
  * and record_payment — which mirrors the payment and posts the balanced ledger

@@ -8,12 +8,15 @@
 insert into auth.users(id) values
   ('a0000000-0000-4000-8000-000000000001'),
   ('a0000000-0000-4000-8000-000000000002'),
-  ('a0000000-0000-4000-8000-000000000003');
+  ('a0000000-0000-4000-8000-000000000003'),
+  ('a0000000-0000-4000-8000-000000000004');
 
 insert into app_user(id, full_name, email) values
   ('a0000000-0000-4000-8000-000000000001','Adam Rutkowski','adam@njraw.example'),
   ('a0000000-0000-4000-8000-000000000002','Jason Roman','jason@njraw.example'),
-  ('a0000000-0000-4000-8000-000000000003','Nick Rutkowski','nick@njraw.example');
+  ('a0000000-0000-4000-8000-000000000003','Nick Rutkowski','nick@njraw.example'),
+  -- Fresh organizer with no org membership yet — used to demo onboarding.
+  ('a0000000-0000-4000-8000-000000000004','Taylor Chen','taylor@example.com');
 
 insert into platform_admin(user_id) values ('a0000000-0000-4000-8000-000000000001');
 

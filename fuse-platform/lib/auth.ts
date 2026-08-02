@@ -12,6 +12,7 @@ export interface DevUser {
 export const DEV_USERS: DevUser[] = [
   { id: 'a0000000-0000-4000-8000-000000000001', name: 'Adam Rutkowski', role: 'Org Owner' },
   { id: 'a0000000-0000-4000-8000-000000000002', name: 'Jason Roman', role: 'Team Manager / Parent' },
+  { id: 'a0000000-0000-4000-8000-000000000004', name: 'Taylor Chen', role: 'New — no org yet' },
 ]
 
 const COOKIE = 'fuse_uid'
