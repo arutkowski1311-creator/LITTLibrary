@@ -372,6 +372,45 @@ export async function buyProduct(formData: FormData) {
   revalidatePath('/')
 }
 
+/** Scorekeeper — record one plate appearance (updates line + game score). */
+export async function recordPa(formData: FormData) {
+  const uid = currentUid()
+  const gameId = String(formData.get('gameId'))
+  const playerId = String(formData.get('playerId'))
+  const result = String(formData.get('result'))
+  const rbi = parseInt(String(formData.get('rbi') || '0'), 10) || 0
+  const inning = parseInt(String(formData.get('inning') || '1'), 10) || 1
+  const half = String(formData.get('half') || 'top')
+  if (!playerId) throw new Error('pick a batter')
+  await withUser(uid, (c) => c.query('select record_pa($1,$2,$3,$4,$5,$6)', [gameId, playerId, inning, half, result, rbi]))
+  revalidatePath(`/scoring/${gameId}`)
+}
+
+/** Mark a game final. */
+export async function finalizeGame(formData: FormData) {
+  const uid = currentUid()
+  const gameId = String(formData.get('gameId'))
+  await withUser(uid, (c) => c.query(`update game set status='final' where id=$1`, [gameId]))
+  revalidatePath(`/scoring/${gameId}`)
+  revalidatePath('/scoring')
+}
+
+/** Log a training assignment as completed. */
+export async function logWorkout(formData: FormData) {
+  const uid = currentUid()
+  const assignmentId = String(formData.get('assignmentId'))
+  const playerId = String(formData.get('playerId'))
+  const notes = String(formData.get('notes') || '')
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    await c.query(
+      `insert into workout_log(org_id, assignment_id, player_id, completed, notes) values ($1,$2,$3,true,$4)`,
+      [org.id, assignmentId, playerId || null, notes || null],
+    )
+  })
+  revalidatePath('/training')
+}
+
 /** Sponsorship CRM — add a sponsor. */
 export async function addSponsor(formData: FormData) {
   const uid = currentUid()

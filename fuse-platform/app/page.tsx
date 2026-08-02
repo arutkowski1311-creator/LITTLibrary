@@ -87,6 +87,13 @@ export default async function Dashboard() {
         )}
       </div>
 
+      <div className="section-h">Team &amp; development</div>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <a className="btn ghost" href="/players">👥 Roster &amp; RAW</a>
+        <a className="btn ghost" href="/scoring">⚾ Scoring</a>
+        <a className="btn ghost" href="/training">💪 Training</a>
+      </div>
+
       <div className="section-h">Launch a fundraiser</div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {[
