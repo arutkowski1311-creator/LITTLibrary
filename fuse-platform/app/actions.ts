@@ -50,7 +50,7 @@ export async function createOrg(formData: FormData) {
 export async function createCampaign(formData: FormData) {
   const uid = currentUid()
   const type = String(formData.get('type'))
-  const defaults: Record<string, string> = { golf: 'Charity Golf Outing', raffle: 'Fundraiser Raffle', auction: 'Benefit Auction' }
+  const defaults: Record<string, string> = { golf: 'Charity Golf Outing', raffle: 'Fundraiser Raffle', auction: 'Benefit Auction', store: 'Team Store' }
   const title = (String(formData.get('title') || '').trim() || defaults[type] || 'Campaign')
   const slug = `${type}-${Date.now().toString(36)}`
   let dest = '/'
@@ -106,6 +106,16 @@ export async function createCampaign(formData: FormData) {
         [a.id, org.id],
       )
       dest = '/auction'
+    } else if (type === 'store') {
+      await c.query(
+        `insert into package(org_id,campaign_id,kind,name,price_cents,qty_total) values
+         ($1,$2,'product','Team Hoodie',4500,null),
+         ($1,$2,'product','Fitted Cap',2200,null),
+         ($1,$2,'product','Game Tee',1800,null),
+         ($1,$2,'product','Car Magnet',1000,null)`,
+        [org.id, camp.id],
+      )
+      dest = '/store'
     }
   })
 
@@ -255,6 +265,43 @@ export async function closeLot(formData: FormData) {
   const itemId = String(formData.get('itemId'))
   await withUser(uid, (c) => c.query('select auction_close_item($1)', [itemId]))
   revalidatePath('/auction')
+}
+
+/**
+ * Buy a store product crediting a specific player. Same commerce spine; the
+ * player attribution rides on order_item.attribution_player, which powers the
+ * per-player credit leaderboard. Checkout is gated on picking a player.
+ */
+export async function buyProduct(formData: FormData) {
+  const uid = currentUid()
+  const packageId = String(formData.get('packageId'))
+  const playerId = String(formData.get('playerId'))
+  if (!playerId) throw new Error('pick a player to support')
+
+  await withUser(uid, async (c) => {
+    const pkg = (await c.query('select org_id, price_cents from package where id=$1', [packageId])).rows[0]
+    if (!pkg) throw new Error('product not found')
+    const supporter = (await c.query('select id from supporter limit 1')).rows[0]
+    const order = (
+      await c.query(
+        `insert into "order"(org_id,supporter_id,subtotal_cents,total_cents,status)
+         values ($1,$2,$3,$3,'pending') returning id`,
+        [pkg.org_id, supporter?.id ?? null, pkg.price_cents],
+      )
+    ).rows[0]
+    await c.query(
+      `insert into order_item(order_id,package_id,qty,unit_price_cents,attribution_player)
+       values ($1,$2,1,$3,$4)`,
+      [order.id, packageId, pkg.price_cents, playerId],
+    )
+    const charge = await payments.charge({ orderId: order.id, grossCents: pkg.price_cents })
+    await c.query('select record_payment($1,$2,$3,$4,$5)', [
+      order.id, pkg.price_cents, charge.feeCents, charge.platformFeeCents, charge.intent,
+    ])
+  })
+
+  revalidatePath('/store')
+  revalidatePath('/')
 }
 
 /** 21-day binding go/no-go decision. */

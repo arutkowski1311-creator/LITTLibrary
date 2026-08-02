@@ -86,6 +86,7 @@ export default async function Dashboard() {
           { type: 'golf', label: '⛳ Golf outing' },
           { type: 'raffle', label: '🎟️ Raffle' },
           { type: 'auction', label: '🔨 Auction' },
+          { type: 'store', label: '🛍️ Team store' },
         ]
           .filter((x) => modules.includes(x.type))
           .map((x) => (
@@ -102,7 +103,7 @@ export default async function Dashboard() {
       <div className="section-h">Campaigns</div>
       <div className="list">
         {campaigns.map((c) => {
-          const href = c.type === 'golf' ? '/golf' : c.type === 'raffle' ? '/raffle' : c.type === 'auction' ? '/auction' : undefined
+          const href = c.type === 'golf' ? '/golf' : c.type === 'raffle' ? '/raffle' : c.type === 'auction' ? '/auction' : c.type === 'store' ? '/store' : undefined
           const inner = (
             <>
               <div>
