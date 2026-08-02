@@ -91,6 +91,7 @@ export default async function Dashboard() {
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <a className="btn ghost" href="/calendar">📅 Calendar</a>
         <a className="btn ghost" href="/players">👥 Roster &amp; RAW</a>
+        <a className="btn ghost" href="/evaluate">📋 Evaluate</a>
         <a className="btn ghost" href="/scoring">⚾ Scoring</a>
         <a className="btn ghost" href="/training">💪 Training</a>
       </div>

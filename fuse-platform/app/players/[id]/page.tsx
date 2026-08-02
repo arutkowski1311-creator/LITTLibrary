@@ -20,14 +20,20 @@ export default async function PlayerReport({ params }: { params: { id: string } 
   if (!player) return <div className="wrap"><h1>Player not found</h1></div>
 
   const overall = (await query(uid, 'select overall from player_raw_overall where player_id=$1', [params.id])).rows[0]?.overall ?? 0
+  const pillars = (await query(uid, 'select pillar_name, score from player_pillar_score where player_id=$1 order by sort', [params.id])).rows
   const domains = (
     await query(
       uid,
-      `select d.name, l.score from player_raw_latest l join raw_domain d on d.id=l.domain_id
-       where l.player_id=$1 order by d.weight desc, d.name`,
+      `select p.name as pillar, d.name, l.score
+       from player_raw_latest l
+       join raw_domain d on d.id = l.domain_id
+       join raw_pillar p on p.id = d.pillar_id
+       where l.player_id=$1 order by p.sort, d.sort`,
       [params.id],
     )
   ).rows
+  const byPillar: Record<string, { name: string; score: number }[]> = {}
+  for (const d of domains) (byPillar[d.pillar] ??= []).push({ name: d.name, score: Number(d.score) })
 
   const season = (
     await query(
@@ -63,16 +69,30 @@ export default async function PlayerReport({ params }: { params: { id: string } 
       <p className="sub" style={{ marginTop: 6 }}>Development report · {avg(Number(season.h), Number(season.ab))} AVG / {obp(Number(season.h), Number(season.bb), Number(season.ab))} OBP</p>
 
       <div className="section-h">RAW DNA</div>
-      <div className="card">
-        {domains.map((d, i) => (
-          <div key={i} style={{ margin: '8px 0' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 3 }}>
-              <span>{d.name}</span><span style={{ fontWeight: 700 }}>{d.score}</span>
-            </div>
-            <div className="bar"><i style={{ width: `${d.score}%`, background: barColor(Number(d.score)) }} /></div>
+      <div className="grid cols-3" style={{ marginBottom: 10 }}>
+        {pillars.map((p, i) => (
+          <div key={i} className="card kpi" style={{ textAlign: 'center' }}>
+            <div className="v" style={{ color: barColor(Number(p.score)) }}>{p.score}</div>
+            <div className="l">{p.pillar_name}</div>
           </div>
         ))}
       </div>
+      {pillars.map((p) => (
+        <div key={p.pillar_name} className="card" style={{ marginBottom: 10 }}>
+          <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 6 }}>
+            {p.pillar_name}
+            {p.pillar_name === 'Psychological' && <span className="pill soon" style={{ marginLeft: 8 }}>coach-rated</span>}
+          </div>
+          {(byPillar[p.pillar_name] ?? []).map((d, i) => (
+            <div key={i} style={{ margin: '7px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 3 }}>
+                <span>{d.name}</span><span style={{ fontWeight: 700 }}>{d.score}</span>
+              </div>
+              <div className="bar"><i style={{ width: `${d.score}%`, background: barColor(d.score) }} /></div>
+            </div>
+          ))}
+        </div>
+      ))}
 
       <div className="section-h">Season line</div>
       <div className="grid cols-4">

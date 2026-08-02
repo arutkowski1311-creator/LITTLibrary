@@ -140,15 +140,35 @@ insert into sponsor_deliverable(org_id, sponsor_id, campaign_id, description, st
   ('11111111-1111-1111-1111-111111111111','70000000-0000-4000-8000-000000000002',null,'Streaming lower-third (5 games)','in_progress', date '2026-11-01');
 
 -- ============================ Sports operations ============================
--- RAW development domains (weighted)
-insert into raw_domain(code, name, weight) values
-  ('hit','Hitting',1.3),('pow','Power',1.1),('spd','Speed',1.0),('fld','Fielding',1.1),
-  ('arm','Arm',0.9),('ath','Athleticism',1.0),('iq','Baseball IQ',1.0),('mkp','Makeup',0.8);
+-- RAW model v2: three weighted pillars
+insert into raw_pillar(code, name, weight, sort) values
+  ('phys','Physical',0.30,1),('tech','Technical',0.40,2),('psych','Psychological',0.30,3);
+
+-- Domains under pillars (psychological expanded into 7 coach-rated sub-traits)
+insert into raw_domain(code, name, weight, pillar_id, kind, sort)
+select v.code, v.name, v.weight, (select id from raw_pillar where code=v.pillar), v.kind, v.sort
+from (values
+  ('spd','Speed',1.0,'phys','objective',1),
+  ('pow','Power',1.1,'phys','objective',2),
+  ('arm','Arm',0.9,'phys','objective',3),
+  ('ath','Athleticism',1.0,'phys','subjective',4),
+  ('hit','Hitting',1.2,'tech','objective',1),
+  ('fld','Fielding',1.0,'tech','subjective',2),
+  ('thr','Throwing',0.9,'tech','subjective',3),
+  ('iq','Baseball IQ',1.0,'tech','subjective',4),
+  ('cmp','Compete',1.2,'psych','subjective',1),
+  ('coa','Coachability',1.0,'psych','subjective',2),
+  ('res','Resilience',1.1,'psych','subjective',3),
+  ('foc','Focus',1.0,'psych','subjective',4),
+  ('poi','Poise',1.0,'psych','subjective',5),
+  ('eth','Work Ethic',1.0,'psych','subjective',6),
+  ('ldr','Leadership',0.9,'psych','subjective',7)
+) as v(code,name,weight,pillar,kind,sort);
 
 -- Latest RAW scores for the three players (deterministic pseudo-values 45-95)
-insert into raw_score(org_id, player_id, domain_id, score, as_of)
+insert into raw_score(org_id, player_id, domain_id, score, as_of, method)
 select '11111111-1111-1111-1111-111111111111', pl.id, d.id,
-       45 + (abs(hashtext(pl.id::text || d.code)) % 51), date '2026-07-15'
+       45 + (abs(hashtext(pl.id::text || d.code)) % 51), date '2026-07-15','coach'
 from (values ('a0000000-0000-4000-8000-000000000003'::uuid),
              ('a0000000-0000-4000-8000-000000000101'::uuid),
              ('a0000000-0000-4000-8000-000000000102'::uuid)) pl(id)

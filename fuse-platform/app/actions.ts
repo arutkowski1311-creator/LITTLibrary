@@ -372,6 +372,36 @@ export async function buyProduct(formData: FormData) {
   revalidatePath('/')
 }
 
+/**
+ * Coach comparative evaluation: rate the whole roster on one trait at once
+ * (context to calibrate), writing a raw_score per player with today's date so
+ * the RAW number moves and a trend builds. All tied to one evaluation session.
+ */
+export async function evaluateTeam(formData: FormData) {
+  const uid = currentUid()
+  const domainId = String(formData.get('domainId'))
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    const team = (await c.query('select id from team where org_id=$1 limit 1', [org.id])).rows[0]
+    const ev = (
+      await c.query(`insert into evaluation(org_id, team_id, evaluator, domain_id) values ($1,$2,$3,$4) returning id`, [org.id, team?.id ?? null, uid, domainId])
+    ).rows[0]
+    for (const [key, val] of formData.entries()) {
+      if (!key.startsWith('score_')) continue
+      const playerId = key.slice(6)
+      const score = parseInt(String(val), 10)
+      if (isNaN(score)) continue
+      await c.query(
+        `insert into raw_score(org_id, player_id, domain_id, score, as_of, method, evaluator, evaluation_id)
+         values ($1,$2,$3,$4, current_date, 'coach', $5, $6)`,
+        [org.id, playerId, domainId, Math.max(0, Math.min(100, score)), uid, ev.id],
+      )
+    }
+  })
+  revalidatePath('/evaluate')
+  revalidatePath('/players')
+}
+
 /** Add a team schedule event (practice / tournament / meeting …). */
 export async function addScheduleEvent(formData: FormData) {
   const uid = currentUid()
