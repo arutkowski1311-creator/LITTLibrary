@@ -77,7 +77,7 @@ export default async function Dashboard() {
           <span className="m" style={{ color: 'var(--mute)' }}>No modules enabled.</span>
         ) : (
           modules.map((m) => {
-            const path: Record<string, string> = { golf: '/golf', raffle: '/raffle', auction: '/auction', store: '/store', sponsorship: '/sponsors' }
+            const path: Record<string, string> = { golf: '/golf', raffle: '/raffle', auction: '/auction', store: '/store', sponsorship: '/sponsors', streaming: '/streaming' }
             return path[m] ? (
               <a key={m} className="pill soon" href={path[m]} style={{ textDecoration: 'none' }}>{m} →</a>
             ) : (
@@ -94,6 +94,7 @@ export default async function Dashboard() {
           { type: 'raffle', label: '🎟️ Raffle' },
           { type: 'auction', label: '🔨 Auction' },
           { type: 'store', label: '🛍️ Team store' },
+          { type: 'streaming', label: '📡 Streaming' },
         ]
           .filter((x) => modules.includes(x.type))
           .map((x) => (
@@ -110,7 +111,7 @@ export default async function Dashboard() {
       <div className="section-h">Campaigns</div>
       <div className="list">
         {campaigns.map((c) => {
-          const href = c.type === 'golf' ? '/golf' : c.type === 'raffle' ? '/raffle' : c.type === 'auction' ? '/auction' : c.type === 'store' ? '/store' : undefined
+          const href = c.type === 'golf' ? '/golf' : c.type === 'raffle' ? '/raffle' : c.type === 'auction' ? '/auction' : c.type === 'store' ? '/store' : c.type === 'streaming' ? '/streaming' : undefined
           const inner = (
             <>
               <div>

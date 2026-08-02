@@ -50,7 +50,7 @@ export async function createOrg(formData: FormData) {
 export async function createCampaign(formData: FormData) {
   const uid = currentUid()
   const type = String(formData.get('type'))
-  const defaults: Record<string, string> = { golf: 'Charity Golf Outing', raffle: 'Fundraiser Raffle', auction: 'Benefit Auction', store: 'Team Store' }
+  const defaults: Record<string, string> = { golf: 'Charity Golf Outing', raffle: 'Fundraiser Raffle', auction: 'Benefit Auction', store: 'Team Store', streaming: 'Live Streaming' }
   const title = (String(formData.get('title') || '').trim() || defaults[type] || 'Campaign')
   const slug = `${type}-${Date.now().toString(36)}`
   let dest = '/'
@@ -116,11 +116,79 @@ export async function createCampaign(formData: FormData) {
         [org.id, camp.id],
       )
       dest = '/store'
+    } else if (type === 'streaming') {
+      await c.query(
+        `insert into package(org_id,campaign_id,kind,name,price_cents,qty_total) values
+         ($1,$2,'ticket','Season Pass (per month)',3000,null),
+         ($1,$2,'ad','Scorebug Sponsor',50000,1),
+         ($1,$2,'ad','Pregame :30 Spot',25000,4),
+         ($1,$2,'ad','Lower-third',15000,6),
+         ($1,$2,'ad','Sponsored Replay',20000,3)`,
+        [org.id, camp.id],
+      )
+      dest = '/streaming'
     }
   })
 
   revalidatePath('/', 'layout')
   redirect(dest)
+}
+
+// Org keeps this share of subscription revenue; the platform's rev-share cut is
+// the rest, modeled as the platform fee on the ledger.
+const ORG_STREAM_SHARE = 0.7
+
+/** Subscribe a viewer (one month). Posts the org's rev-share to the ledger. */
+export async function subscribeStreaming() {
+  const uid = currentUid()
+  await withUser(uid, async (c) => {
+    const pkg = (
+      await c.query(
+        `select p.id, p.org_id, p.price_cents from package p
+         join campaign c on c.id = p.campaign_id
+         where c.type='streaming' and p.kind='ticket' order by c.created_at desc limit 1`,
+      )
+    ).rows[0]
+    if (!pkg) throw new Error('no streaming pass')
+    const sup = (await c.query('select id from supporter limit 1')).rows[0]
+    const order = (
+      await c.query(
+        `insert into "order"(org_id,supporter_id,subtotal_cents,total_cents,status)
+         values ($1,$2,$3,$3,'pending') returning id`,
+        [pkg.org_id, sup?.id ?? null, pkg.price_cents],
+      )
+    ).rows[0]
+    await c.query(`insert into order_item(order_id,package_id,qty,unit_price_cents) values ($1,$2,1,$3)`, [order.id, pkg.id, pkg.price_cents])
+    const gross = Number(pkg.price_cents)
+    const processor = Math.round(gross * 0.029) + 30
+    const platform = Math.round(gross * (1 - ORG_STREAM_SHARE)) // platform rev-share cut
+    await c.query('select record_payment($1,$2,$3,$4,$5)', [order.id, gross, processor, platform, `pi_sub_${order.id.slice(0, 8)}`])
+  })
+  revalidatePath('/streaming')
+  revalidatePath('/')
+}
+
+/** Sell an advertising slot (standard facilitation fee, inventory-guarded). */
+export async function sellAd(formData: FormData) {
+  const uid = currentUid()
+  const packageId = String(formData.get('packageId'))
+  await withUser(uid, async (c) => {
+    const pkg = (await c.query('select org_id, price_cents from package where id=$1', [packageId])).rows[0]
+    if (!pkg) throw new Error('ad slot not found')
+    const sup = (await c.query('select id from supporter limit 1')).rows[0]
+    const order = (
+      await c.query(
+        `insert into "order"(org_id,supporter_id,subtotal_cents,total_cents,status)
+         values ($1,$2,$3,$3,'pending') returning id`,
+        [pkg.org_id, sup?.id ?? null, pkg.price_cents],
+      )
+    ).rows[0]
+    await c.query(`insert into order_item(order_id,package_id,qty,unit_price_cents) values ($1,$2,1,$3)`, [order.id, packageId, pkg.price_cents])
+    const charge = await payments.charge({ orderId: order.id, grossCents: pkg.price_cents })
+    await c.query('select record_payment($1,$2,$3,$4,$5)', [order.id, pkg.price_cents, charge.feeCents, charge.platformFeeCents, charge.intent])
+  })
+  revalidatePath('/streaming')
+  revalidatePath('/')
 }
 
 /**
