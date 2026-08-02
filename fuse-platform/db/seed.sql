@@ -138,3 +138,41 @@ insert into sponsor_deliverable(org_id, sponsor_id, campaign_id, description, st
   ('11111111-1111-1111-1111-111111111111','70000000-0000-4000-8000-000000000001','50000000-0000-4000-8000-000000000001','Logo on event banner','fulfilled', date '2026-10-01'),
   ('11111111-1111-1111-1111-111111111111','70000000-0000-4000-8000-000000000001','50000000-0000-4000-8000-000000000001','Hole 9 signage photo','pending', date '2026-10-13'),
   ('11111111-1111-1111-1111-111111111111','70000000-0000-4000-8000-000000000002',null,'Streaming lower-third (5 games)','in_progress', date '2026-11-01');
+
+-- ============================ Sports operations ============================
+-- RAW development domains (weighted)
+insert into raw_domain(code, name, weight) values
+  ('hit','Hitting',1.3),('pow','Power',1.1),('spd','Speed',1.0),('fld','Fielding',1.1),
+  ('arm','Arm',0.9),('ath','Athleticism',1.0),('iq','Baseball IQ',1.0),('mkp','Makeup',0.8);
+
+-- Latest RAW scores for the three players (deterministic pseudo-values 45-95)
+insert into raw_score(org_id, player_id, domain_id, score, as_of)
+select '11111111-1111-1111-1111-111111111111', pl.id, d.id,
+       45 + (abs(hashtext(pl.id::text || d.code)) % 51), date '2026-07-15'
+from (values ('a0000000-0000-4000-8000-000000000003'::uuid),
+             ('a0000000-0000-4000-8000-000000000101'::uuid),
+             ('a0000000-0000-4000-8000-000000000102'::uuid)) pl(id)
+cross join raw_domain d;
+
+-- Games
+insert into game(id, org_id, team_id, opponent, starts_at, location, home, status, us_runs, them_runs, inning) values
+  ('80000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111','22222222-0000-4000-8000-000000000001','Hunterdon Heat', now()-interval '3 days','Diamond 1', true,'final',7,4,7),
+  ('80000000-0000-4000-8000-000000000002','11111111-1111-1111-1111-111111111111','22222222-0000-4000-8000-000000000001','Warren Wave', now()+interval '2 days','Away', false,'scheduled',0,0,1);
+
+-- Box score for the completed game
+insert into player_game_stat(org_id, game_id, player_id, ab,h,b2,b3,hr,rbi,bb,so,r,sb) values
+  ('11111111-1111-1111-1111-111111111111','80000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-000000000003',4,2,1,0,1,3,0,1,2,1),
+  ('11111111-1111-1111-1111-111111111111','80000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-000000000101',3,1,0,0,0,1,1,0,1,0),
+  ('11111111-1111-1111-1111-111111111111','80000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-000000000102',4,3,1,0,0,2,0,0,2,2);
+
+-- Training
+insert into workout(id, org_id, name, category, description) values
+  ('90000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111','Tee Work — Oppo Field','Hitting','3x15 balls driven to the opposite field'),
+  ('90000000-0000-4000-8000-000000000002','11111111-1111-1111-1111-111111111111','Sprint Ladder','Speed','6x60ft sprints, full recovery'),
+  ('90000000-0000-4000-8000-000000000003','11111111-1111-1111-1111-111111111111','Long Toss Progression','Arm','Build out to 120ft, controlled');
+insert into workout_assignment(id, org_id, workout_id, player_id, assigned_by, due_date) values
+  ('91000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111','90000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-000000000003','a0000000-0000-4000-8000-000000000001', date '2026-08-05'),
+  ('91000000-0000-4000-8000-000000000002','11111111-1111-1111-1111-111111111111','90000000-0000-4000-8000-000000000002','a0000000-0000-4000-8000-000000000003','a0000000-0000-4000-8000-000000000001', date '2026-08-06'),
+  ('91000000-0000-4000-8000-000000000003','11111111-1111-1111-1111-111111111111','90000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-000000000101','a0000000-0000-4000-8000-000000000001', date '2026-08-05');
+insert into workout_log(org_id, assignment_id, player_id, logged_on, completed, notes) values
+  ('11111111-1111-1111-1111-111111111111','91000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-000000000003', date '2026-08-01', true,'42/45 solid contact, stayed inside the ball');
