@@ -1,0 +1,21 @@
+# Local Postgres only — no cloud account, no Stripe. `docker compose up -d`,
+# then `npm run db:reset`. Data persists in the named volume between runs.
+services:
+  db:
+    image: postgres:16
+    container_name: fuse_db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fuse
+    ports:
+      - "5432:5432"
+    volumes:
+      - fuse_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d fuse"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  fuse_pg:
