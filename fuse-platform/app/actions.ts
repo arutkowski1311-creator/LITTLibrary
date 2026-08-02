@@ -372,6 +372,49 @@ export async function buyProduct(formData: FormData) {
   revalidatePath('/')
 }
 
+/** Add a team schedule event (practice / tournament / meeting …). */
+export async function addScheduleEvent(formData: FormData) {
+  const uid = currentUid()
+  const starts = String(formData.get('starts_at'))
+  if (!starts) throw new Error('pick a date/time')
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    const team = (await c.query('select id from team where org_id=$1 limit 1', [org.id])).rows[0]
+    await c.query(
+      `insert into schedule_event(org_id, team_id, type, title, starts_at, location, notes)
+       values ($1,$2,$3,$4,$5,$6,$7)`,
+      [
+        org.id, team?.id ?? null,
+        String(formData.get('type') || 'practice'),
+        String(formData.get('title') || 'Event'),
+        starts,
+        String(formData.get('location') || '') || null,
+        String(formData.get('notes') || '') || null,
+      ],
+    )
+  })
+  revalidatePath('/calendar')
+}
+
+/** RSVP (yes/no/maybe) to a schedule event or a game, one per user. */
+export async function setRsvp(formData: FormData) {
+  const uid = currentUid()
+  const kind = String(formData.get('kind')) // 'event' | 'game'
+  const refId = String(formData.get('refId'))
+  const status = String(formData.get('status'))
+  await withUser(uid, async (c) => {
+    const org = (await c.query('select id from organization limit 1')).rows[0]
+    if (kind === 'game') {
+      await c.query('delete from rsvp where game_id=$1 and user_id=$2', [refId, uid])
+      await c.query('insert into rsvp(org_id, game_id, user_id, status) values ($1,$2,$3,$4)', [org.id, refId, uid, status])
+    } else {
+      await c.query('delete from rsvp where schedule_event_id=$1 and user_id=$2', [refId, uid])
+      await c.query('insert into rsvp(org_id, schedule_event_id, user_id, status) values ($1,$2,$3,$4)', [org.id, refId, uid, status])
+    }
+  })
+  revalidatePath('/calendar')
+}
+
 /** Scorekeeper — record one plate appearance (updates line + game score). */
 export async function recordPa(formData: FormData) {
   const uid = currentUid()
