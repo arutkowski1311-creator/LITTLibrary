@@ -1,5 +1,6 @@
 import { query } from '@/lib/db'
 import { currentUid } from '@/lib/auth'
+import { Sparkline } from '../components/charts'
 
 export const dynamic = 'force-dynamic'
 
@@ -31,6 +32,23 @@ export default async function PlayersPage() {
     )
   ).rows
 
+  // Overall RAW over time per player → roster sparklines.
+  const trend = (
+    await query(
+      uid,
+      `select rs.player_id, rs.as_of,
+              round(sum(rs.score * d.weight * p.weight) / nullif(sum(d.weight * p.weight),0)) as overall
+       from raw_score rs
+       join raw_domain d on d.id = rs.domain_id
+       join raw_pillar p on p.id = d.pillar_id
+       where rs.org_id=$1
+       group by rs.player_id, rs.as_of order by rs.player_id, rs.as_of`,
+      [org.id],
+    )
+  ).rows
+  const trendBy: Record<string, number[]> = {}
+  for (const r of trend) (trendBy[r.player_id] ??= []).push(Number(r.overall))
+
   return (
     <div className="wrap">
       <div className="crumb"><a href="/">Dashboard</a> · Roster</div>
@@ -44,8 +62,9 @@ export default async function PlayersPage() {
               <div className="n">{p.full_name}</div>
               <div className="m">{p.team ?? 'Unrostered'} · {avg(Number(p.h), Number(p.ab))} AVG · {p.hr} HR · {p.rbi} RBI</div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ textAlign: 'right' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <Sparkline values={trendBy[p.id] ?? []} color="var(--fuse)" />
+              <div style={{ textAlign: 'right', minWidth: 34 }}>
                 <div style={{ fontWeight: 800, fontSize: 20 }}>{p.raw_overall}</div>
                 <div className="m" style={{ fontSize: 10, color: 'var(--mute)' }}>RAW</div>
               </div>

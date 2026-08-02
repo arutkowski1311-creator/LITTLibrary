@@ -165,14 +165,17 @@ from (values
   ('ldr','Leadership',0.9,'psych','subjective',7)
 ) as v(code,name,weight,pillar,kind,sort);
 
--- Latest RAW scores for the three players (deterministic pseudo-values 45-95)
+-- RAW scores across three evaluation snapshots (shows an upward development
+-- trend: earlier dates start below the current value, converging to it)
 insert into raw_score(org_id, player_id, domain_id, score, as_of, method)
 select '11111111-1111-1111-1111-111111111111', pl.id, d.id,
-       45 + (abs(hashtext(pl.id::text || d.code)) % 51), date '2026-07-15','coach'
+       greatest(0, least(100, (45 + (abs(hashtext(pl.id::text || d.code)) % 51)) - snap.off)),
+       snap.d, 'coach'
 from (values ('a0000000-0000-4000-8000-000000000003'::uuid),
              ('a0000000-0000-4000-8000-000000000101'::uuid),
              ('a0000000-0000-4000-8000-000000000102'::uuid)) pl(id)
-cross join raw_domain d;
+cross join raw_domain d
+cross join (values (date '2026-04-01', 13), (date '2026-05-20', 7), (date '2026-07-15', 0)) snap(d, off);
 
 -- Games
 insert into game(id, org_id, team_id, opponent, starts_at, location, home, status, us_runs, them_runs, inning) values

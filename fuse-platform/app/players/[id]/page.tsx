@@ -1,5 +1,6 @@
 import { query } from '@/lib/db'
 import { currentUid } from '@/lib/auth'
+import { Radar, TrendChart, PILLAR_COLOR } from '../../components/charts'
 
 export const dynamic = 'force-dynamic'
 
@@ -34,6 +35,31 @@ export default async function PlayerReport({ params }: { params: { id: string } 
   ).rows
   const byPillar: Record<string, { name: string; score: number }[]> = {}
   for (const d of domains) (byPillar[d.pillar] ??= []).push({ name: d.name, score: Number(d.score) })
+
+  // Radar axes across all domains, tinted by pillar.
+  const radarAxes = domains.map((d) => ({ label: d.name, value: Number(d.score), color: PILLAR_COLOR[d.pillar] }))
+
+  // Pillar scores over evaluation snapshots → multi-line trend.
+  const trendRows = (
+    await query(
+      uid,
+      `select rs.as_of, p.name as pillar, p.sort,
+              round(sum(rs.score * d.weight) / nullif(sum(d.weight),0)) as score
+       from raw_score rs
+       join raw_domain d on d.id = rs.domain_id
+       join raw_pillar p on p.id = d.pillar_id
+       where rs.player_id=$1
+       group by rs.as_of, p.name, p.sort order by rs.as_of, p.sort`,
+      [params.id],
+    )
+  ).rows
+  const trendDates = [...new Set(trendRows.map((r) => r.as_of.toISOString().slice(0, 10)))]
+  const trendLabels = trendDates.map((d) => new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }))
+  const trendSeries = ['Physical', 'Technical', 'Psychological'].map((name) => ({
+    name,
+    color: PILLAR_COLOR[name],
+    values: trendDates.map((d) => Number(trendRows.find((r) => r.as_of.toISOString().slice(0, 10) === d && r.pillar === name)?.score ?? 0)),
+  })).filter((s) => s.values.some((v) => v > 0))
 
   const season = (
     await query(
@@ -71,12 +97,26 @@ export default async function PlayerReport({ params }: { params: { id: string } 
       <div className="section-h">RAW DNA</div>
       <div className="grid cols-3" style={{ marginBottom: 10 }}>
         {pillars.map((p, i) => (
-          <div key={i} className="card kpi" style={{ textAlign: 'center' }}>
-            <div className="v" style={{ color: barColor(Number(p.score)) }}>{p.score}</div>
+          <div key={i} className="card kpi" style={{ textAlign: 'center', boxShadow: `inset 3px 0 0 ${PILLAR_COLOR[p.pillar_name] ?? 'var(--fuse)'}` }}>
+            <div className="v" style={{ color: PILLAR_COLOR[p.pillar_name] ?? barColor(Number(p.score)) }}>{p.score}</div>
             <div className="l">{p.pillar_name}</div>
           </div>
         ))}
       </div>
+
+      <div className="grid" style={{ gridTemplateColumns: '360px 1fr', gap: 14, marginBottom: 10, alignItems: 'stretch' }}>
+        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 4 }}>RAW DNA profile</div>
+          <Radar axes={radarAxes} />
+        </div>
+        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 4 }}>Development trend</div>
+          <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+            {trendSeries.length > 0 ? <TrendChart labels={trendLabels} series={trendSeries} /> : <span className="m" style={{ color: 'var(--mute)' }}>Not enough evaluations yet.</span>}
+          </div>
+        </div>
+      </div>
+
       {pillars.map((p) => (
         <div key={p.pillar_name} className="card" style={{ marginBottom: 10 }}>
           <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 6 }}>
@@ -88,7 +128,7 @@ export default async function PlayerReport({ params }: { params: { id: string } 
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 3 }}>
                 <span>{d.name}</span><span style={{ fontWeight: 700 }}>{d.score}</span>
               </div>
-              <div className="bar"><i style={{ width: `${d.score}%`, background: barColor(d.score) }} /></div>
+              <div className="bar"><i style={{ width: `${d.score}%`, background: PILLAR_COLOR[p.pillar_name] ?? barColor(d.score) }} /></div>
             </div>
           ))}
         </div>
