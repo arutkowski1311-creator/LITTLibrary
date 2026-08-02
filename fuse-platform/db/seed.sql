@@ -93,6 +93,9 @@ insert into raffle_prize(raffle_id, title, fmv_cents, winner_order) values
   ('54000000-0000-4000-8000-000000000001','Season Pass',50000,2);
 insert into raffle_rule_version(raffle_id, version, body, published_at) values
   ('54000000-0000-4000-8000-000000000001',1,'Official rules: 18+, NJ residents, no purchase necessary...', now());
+-- entry package: $5 per ticket, unlimited (revenue flows through the shared spine)
+insert into package(id, org_id, campaign_id, kind, name, price_cents, qty_total) values
+  ('53000000-0000-4000-8000-000000000005','11111111-1111-1111-1111-111111111111','50000000-0000-4000-8000-000000000002','entry','Raffle Ticket',500,null);
 update campaign set status='published' where id='50000000-0000-4000-8000-000000000002';
 insert into raffle_entry(raffle_id, org_id, supporter_id, entry_number, rules_version)
   select '54000000-0000-4000-8000-000000000001','11111111-1111-1111-1111-111111111111',

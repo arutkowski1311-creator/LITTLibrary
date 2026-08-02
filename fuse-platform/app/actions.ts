@@ -56,6 +56,73 @@ export async function purchasePackage(formData: FormData) {
   revalidatePath('/')
 }
 
+/**
+ * Buy raffle tickets. Reuses the exact commerce spine: an order + order_item on
+ * the raffle's entry package (revenue posts to the ledger via record_payment),
+ * then N raffle_entry rows appended after the current high number. The
+ * immutability trigger blocks this once entries are locked.
+ */
+export async function buyRaffleTickets(formData: FormData) {
+  const uid = currentUid()
+  const raffleId = String(formData.get('raffleId'))
+  const packageId = String(formData.get('packageId'))
+  const qty = Math.max(1, parseInt(String(formData.get('qty')), 10) || 1)
+
+  await withUser(uid, async (c) => {
+    const pkg = (await c.query('select org_id, price_cents from package where id=$1', [packageId])).rows[0]
+    if (!pkg) throw new Error('ticket package not found')
+    const total = pkg.price_cents * qty
+
+    const supporter = (await c.query('select id from supporter limit 1')).rows[0]
+    const order = (
+      await c.query(
+        `insert into "order"(org_id, supporter_id, subtotal_cents, total_cents, status)
+         values ($1,$2,$3,$3,'pending') returning id`,
+        [pkg.org_id, supporter?.id ?? null, total],
+      )
+    ).rows[0]
+    await c.query(
+      `insert into order_item(order_id, package_id, qty, unit_price_cents) values ($1,$2,$3,$4)`,
+      [order.id, packageId, qty, pkg.price_cents],
+    )
+
+    const charge = await payments.charge({ orderId: order.id, grossCents: total })
+    await c.query('select record_payment($1,$2,$3,$4,$5)', [
+      order.id, total, charge.feeCents, charge.platformFeeCents, charge.intent,
+    ])
+
+    // Append qty entries after the current high number.
+    await c.query(
+      `insert into raffle_entry(raffle_id, org_id, supporter_id, order_id, entry_number, rules_version)
+       select $1, $2, $3, $4,
+              coalesce((select max(entry_number) from raffle_entry where raffle_id=$1),0) + gs,
+              coalesce((select max(version) from raffle_rule_version where raffle_id=$1 and published_at is not null),1)
+       from generate_series(1,$5) gs`,
+      [raffleId, pkg.org_id, supporter?.id ?? null, order.id, qty],
+    )
+  })
+
+  revalidatePath('/raffle')
+  revalidatePath('/')
+}
+
+/** Lock the eligible set (immutable snapshot). */
+export async function lockRaffle(formData: FormData) {
+  const uid = currentUid()
+  const raffleId = String(formData.get('raffleId'))
+  await withUser(uid, (c) => c.query('select raffle_lock_entries($1)', [raffleId]))
+  revalidatePath('/raffle')
+}
+
+/** Run the seeded, reproducible draw. */
+export async function drawRaffle(formData: FormData) {
+  const uid = currentUid()
+  const raffleId = String(formData.get('raffleId'))
+  const seed = `draw-${raffleId.slice(0, 8)}-${Date.now()}`
+  await withUser(uid, (c) => c.query('select raffle_run_draw($1,$2)', [raffleId, seed]))
+  revalidatePath('/raffle')
+}
+
 /** 21-day binding go/no-go decision. */
 export async function setGoNoGo(formData: FormData) {
   const uid = currentUid()
