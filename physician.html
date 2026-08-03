@@ -387,7 +387,7 @@ const QUICK=[["Engine Spec","docs/clinical-intelligence-engine.md"],["Baseline R
 
 let DATA={items:[]},TAX={indications:{},strategies:{}},sortKey=(PHYSICIAN?"clinicalImpactScore":"littBusinessImpact"),sortDir=-1;
 let listFilter=null,listTitle="Literature";
-const STARS=new Set(JSON.parse(localStorage.getItem("lit_stars")||"[]"));
+const STARS=new Set(JSON.parse((function(){try{return localStorage.getItem("lit_stars")}catch(e){return null}})()||"[]"));
 
 const $=s=>document.querySelector(s);
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -579,7 +579,7 @@ function renderList(){
 }
 const rw=(k,v,raw)=>v==null||v===""?"":`<dt>${esc(k)}</dt><dd>${raw?v:esc(v)}</dd>`;
 function toggleStar(id,el){if(STARS.has(id)){STARS.delete(id);el.classList.remove("on");}else{STARS.add(id);el.classList.add("on");}
-  localStorage.setItem("lit_stars",JSON.stringify([...STARS]));}
+  try{localStorage.setItem("lit_stars",JSON.stringify([...STARS]));}catch(e){}}
 
 // ---- INDICATIONS VIEW ----
 function renderIndications(){
