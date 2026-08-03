@@ -17,7 +17,7 @@ Two front-ends read the same `database.json`:
 - A **Physician View / Full View** toggle is in each dashboard's Quick Links.
 
 `index.html` is the live dashboard and reads `database.json` directly, so updating the data
-updates every view. `database.json` is the system of record: **144 findings** spanning
+updates every view. `database.json` is the system of record: **160 findings** spanning
 2012-2026, each dated, mapped to indications, and scored on two axes.
 
 ### Physicians roster
