@@ -61,26 +61,49 @@
     }
   }
 
-  /* ---------- property cards ---------- */
+  /* ---------- three rental options: House · Apartment · House + Apartment ---------- */
   const pc = document.getElementById("propertyCards");
+  const fromRate = id => Math.min(...window.PRICING.seasons.map(s=>window.PRICING.rateFor(id,s)));
   pc.innerHTML = S.properties.map(p=>{
     const access = p.accessNote
       ? `<div class="notice warn"><b>Access note:</b> ${p.accessNote}</div>` : "";
-    const rateFrom = Math.min(...Object.values(p.rates));
     return `<div class="card reveal">
       <div class="media">${firstImageFor(p.id) || p.name}</div>
       <div class="pad">
         <p class="eyebrow" style="margin-bottom:.4rem">${p.subtitle}</p>
         <h3>${p.name}</h3>
         <div class="spec"><span><b>${p.beds}</b> bed</span><span><b>${p.baths}</b> bath</span>
-          <span>sleeps <b>${p.sleeps}</b></span><span>from <b>${window.AH.money(rateFrom)}</b>/night</span></div>
+          <span>sleeps <b>${p.sleeps}</b></span><span>from <b>${window.AH.money(fromRate(p.id))}</b>/night</span></div>
         <p>${p.description}</p>
         <ul class="feat">${p.features.map(f=>`<li>${f}</li>`).join("")}</ul>
         ${access}
         <a href="#book" class="btn" data-prop="${p.id}">Check ${p.name} Dates</a>
       </div></div>`;
   }).join("");
-  document.getElementById("bundleNote").innerHTML = "<b>Rent both together:</b> " + S.bundleNote;
+
+  // Third option — the bundle (House + Apartment), 10% off
+  const bpct = Math.round((S.pricing.bundleDiscountPercent||0)*100);
+  const h = window.AH.prop("ausable-house"), pe = window.AH.prop("the-perch");
+  const bundleFrom = (fromRate("ausable-house")+fromRate("the-perch"))*(1-(S.pricing.bundleDiscountPercent||0));
+  const bundleCard = document.createElement("div");
+  bundleCard.className = "card reveal";
+  bundleCard.style.gridColumn = "1 / -1";
+  bundleCard.innerHTML = `<div class="pad">
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center">
+        <div>
+          <p class="eyebrow" style="margin-bottom:.4rem">Book Both · The Whole Property</p>
+          <h3 style="margin-bottom:.3rem">Ausable House + The Pinecone Perch</h3>
+          <div class="spec"><span><b>${h.beds+pe.beds}</b> bed</span><span><b>${h.baths+pe.baths}</b> bath</span>
+            <span>sleeps <b>${h.sleeps+pe.sleeps}</b></span>
+            <span>from <b>${window.AH.money(bundleFrom)}</b>/night</span></div>
+        </div>
+        <span class="badge-verified" style="font-size:.8rem;padding:.4rem .8rem">Save ${bpct}% together</span>
+      </div>
+      <p style="margin-top:.3rem">${S.bundleNote}</p>
+      <a href="#book" class="btn" data-prop="both">Check Whole-Property Dates</a>
+    </div>`;
+  pc.appendChild(bundleCard);
+  const bn = document.getElementById("bundleNote"); if(bn) bn.style.display="none";
 
   function firstImageFor(id){
     const g = S.media.gallery.find(x=>x.type==="image" && (x.tags||[]).includes(id==="the-perch"?"perch":"main"));

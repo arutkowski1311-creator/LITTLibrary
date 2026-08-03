@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing · Comparable Homes · Ausable House</title>
+<meta name="robots" content="noindex"><!-- private owner tool -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  body{background:var(--bg)}
+  .p-hero{background:radial-gradient(120% 100% at 70% 0%,#241d10,transparent 55%),var(--bg-2);
+    border-bottom:1px solid var(--line-gold);padding:2.5rem 0 2rem}
+  h3{color:var(--white)}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}
+  th,td{padding:.65rem .8rem;text-align:left;font-size:.86rem;border-bottom:1px solid var(--line);color:var(--body)}
+  th{background:var(--panel-2);color:var(--gold);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+  td.num,th.num{text-align:right}
+  .result-row td{color:var(--white);font-weight:700;background:rgba(200,162,76,.08)}
+  .controls{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:end;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.3rem;margin:1.2rem 0}
+  .controls .field{margin:0;min-width:180px}
+  .out{font-family:var(--serif);color:var(--gold-2);font-size:1.1rem}
+  .grp{margin:2rem 0 .6rem;color:var(--gold);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+</style>
+</head>
+<body>
+<div class="p-hero"><div class="wrap">
+  <p class="eyebrow" style="color:var(--brass-2)">Private · Owner Tools</p>
+  <h1 style="font-size:clamp(1.8rem,5vw,2.8rem)">Pricing from Comparable Homes</h1>
+  <p class="lead" style="color:#d8cfbb">Your nightly rate is set from a list of comparable area homes,
+    positioned just under the market. Tune the strategy below, then lock your final choices into
+    <code>config.js</code> → <code>pricing</code>. The scheduled job reprices automatically.</p>
+</div></div>
+
+<div class="wrap" style="padding:2rem 0 4rem">
+  <div id="meta" class="hint"></div>
+
+  <div class="controls">
+    <div class="field"><label>Method</label>
+      <select id="method"><option value="median">Median</option><option value="mean">Mean</option><option value="trimmedMean">Trimmed mean</option></select></div>
+    <div class="field"><label>Positioning: <span class="out" id="posOut"></span> of comparable</label>
+      <input id="pos" type="range" min="0.80" max="1.10" step="0.01"></div>
+    <div class="field"><label>Round to nearest ($)</label>
+      <input id="round" type="number" min="1" step="1" style="width:120px"></div>
+    <div style="flex:1"></div>
+    <div class="hint" style="max-width:280px">Changes here preview live but aren't saved — set the winning
+      values in <code>config.js</code>.</div>
+  </div>
+
+  <div id="tables"></div>
+
+  <div class="notice" style="margin-top:1.5rem"><b>Want true hands-off market pricing?</b> The comps here are
+    the numbers you maintain. To have them track the live market automatically, connect a dynamic-pricing
+    tool (PriceLabs, Beyond, Wheelhouse, or AirDNA) — see the README. This page + the daily job then reprice
+    off fresh data with no manual work.</div>
+
+  <div style="margin-top:1.5rem">
+    <a class="btn" href="index.html">Back to site</a>
+    <a class="btn btn-dark" href="owner.html">Tax tracker</a>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/rates.js"></script>
+<script src="assets/js/pricing.js"></script>
+<script>
+(function(){
+  const S=window.SITE, P=S.pricing, PR=window.PRICING;
+  const money=n=>"$"+Math.round(n).toLocaleString("en-US");
+  const cap=s=>s[0].toUpperCase()+s.slice(1);
+  const SEASONS=PR.seasons;
+
+  const method=document.getElementById("method"), pos=document.getElementById("pos"),
+        round=document.getElementById("round"), posOut=document.getElementById("posOut");
+  method.value=P.method; pos.value=P.positioning; round.value=P.roundTo;
+
+  document.getElementById("meta").innerHTML =
+    (PR.lastUpdated? `Last scheduled snapshot: <b>${PR.lastUpdated}</b>. ` : "") +
+    `${P.mode==="comps"?"Pricing from comparable homes.":"Fixed pricing (comps off)."}`;
+
+  function render(){
+    // live-tune the shared pricing config, then recompute
+    P.method=method.value; P.positioning=parseFloat(pos.value); P.roundTo=parseInt(round.value)||1;
+    posOut.textContent=Math.round(P.positioning*100)+"%";
+
+    let html="";
+    S.properties.forEach(prop=>{
+      const comps=PR.compsFor(prop);
+      html+=`<div class="grp">${prop.name} — benchmarked against ${prop.compBedrooms[0]}–${prop.compBedrooms[1]} BR homes</div>
+        <div style="overflow-x:auto"><table><thead><tr>
+          <th>Comparable home</th><th class="num">BR</th>
+          ${SEASONS.map(s=>`<th class="num">${cap(s)}</th>`).join("")}</tr></thead><tbody>
+          ${comps.map(c=>`<tr><td>${c.name}</td><td class="num">${c.bedrooms}</td>
+            ${SEASONS.map(s=>`<td class="num">${money(c.rates[s])}</td>`).join("")}</tr>`).join("")}
+          <tr class="result-row"><td>→ Your nightly rate (${Math.round(P.positioning*100)}% of ${P.method})</td><td class="num">—</td>
+            ${SEASONS.map(s=>`<td class="num">${money(PR.computeRate(prop.id,s))}</td>`).join("")}</tr>
+        </tbody></table></div>`;
+    });
+    // bundle line
+    const bp=S.pricing.bundleDiscountPercent||0;
+    html+=`<div class="grp">Whole property (House + Perch)</div>
+      <div style="overflow-x:auto"><table><thead><tr><th>Option</th>${SEASONS.map(s=>`<th class="num">${cap(s)}</th>`).join("")}</tr></thead><tbody>
+        <tr class="result-row"><td>→ Both, ${Math.round(bp*100)}% bundle discount</td>
+        ${SEASONS.map(s=>{const both=(PR.computeRate("ausable-house",s)+PR.computeRate("the-perch",s))*(1-bp);return `<td class="num">${money(both)}</td>`;}).join("")}</tr>
+      </tbody></table></div>`;
+    document.getElementById("tables").innerHTML=html;
+  }
+  [method,pos,round].forEach(el=>el.addEventListener("input",render));
+  render();
+})();
+</script>
+</body>
+</html>

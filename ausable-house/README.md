@@ -3,9 +3,14 @@
 A mobile-first, luxury Adirondack direct-booking website for **Ausable House** (4BR/2BA main
 home) and **The Pinecone Perch** (1BR/1BA apartment) in Wilmington, NY.
 
-**Look & feel:** black + deep antique gold + warm white, elegant serif display over a clean sans —
-a cinematic, premium dark theme. All colors live as CSS variables at the top of
-`assets/css/site.css` (`--gold`, `--bg`, `--panel`, …) if you ever want to tune them.
+**Look & feel:** black + deep antique gold + warm white; **Fraunces** (modern editorial serif) for
+display over **Manrope** (clean geometric sans) for body — a cinematic, premium dark theme. All
+colors live as CSS variables at the top of `assets/css/site.css` (`--gold`, `--bg`, `--panel`, …);
+fonts are set via `--serif` / `--sans` there and the Google Fonts `<link>` in each HTML file.
+
+**Three ways to stay:** Ausable House, The Pinecone Perch, or **both together (−10%)** — all three are
+selectable in the booking widget and shown as cards. The bundle unions both calendars and applies the
+10% discount automatically.
 
 Everything here is **static** — it runs on any web host (GitHub Pages, Netlify, Cloudflare
 Pages, Vercel) with no server required for Phase 1. You edit one file (`assets/js/config.js`)
@@ -87,6 +92,27 @@ These genuinely can't be done well with a static site. Pick a path and I can wir
 
 ---
 
+## Automated pricing from comparable homes
+
+The nightly rate for each stay is **derived from a set list of comparable area homes** you keep in
+`config.js` → `pricing.comps`, positioned just under the market median (tune `positioning`, `method`,
+`roundTo`). Each property benchmarks against comps in its bedroom range (`compBedrooms`).
+
+- **See & tune it:** open **`pricing.html`** (private owner tool) — it shows every comp, the resulting
+  rate per season, and a live slider to test positioning/method before you lock values into `config.js`.
+- **"Update at set times, automatically":** `.github/workflows/pricing.yml` runs on a daily cron (and
+  on demand), recomputes rates via `scripts/update-pricing.js`, and commits the refreshed snapshot
+  (`assets/js/rates.js`), which the live site reads. *(GitHub only schedules workflows from the default
+  branch, so this activates once this branch is merged.)*
+- **True hands-off market pricing:** the comps are numbers *you* maintain. To have them track the live
+  market automatically, connect a dynamic-pricing service — **PriceLabs, Beyond, Wheelhouse, or AirDNA**
+  — which pulls real comparable-listing data. The engine then reprices off fresh data with no manual
+  work. I can wire one in on request.
+
+Set `pricing.mode: "fixed"` to ignore comps and use each property's own `rates` instead.
+
+---
+
 ## File map
 
 ```
@@ -94,17 +120,23 @@ ausable-house/
 ├─ index.html              # the whole site (single page)
 ├─ manual.html             # private digital house manual (share link with guests)
 ├─ owner.html              # private owner tax tracker (stays in your browser)
+├─ pricing.html            # private owner pricing tool (comps + live tuning)
+├─ scripts/
+│  └─ update-pricing.js    # recompute rates from comps (run by the cron)
 ├─ assets/
-│  ├─ css/site.css         # design system
+│  ├─ css/site.css         # design system (colors + fonts as CSS variables)
 │  ├─ js/
-│  │  ├─ config.js         # ← YOU EDIT THIS (all content & settings)
+│  │  ├─ config.js         # ← YOU EDIT THIS (all content, rates, comps, settings)
+│  │  ├─ pricing.js        # derive nightly rates from comparable homes
+│  │  ├─ rates.js          # auto-generated pricing snapshot (from the cron)
 │  │  ├─ legal.js          # waiver / rules / terms / privacy (lawyer review!)
-│  │  ├─ main.js           # nav, hero, gallery, area guide, modals
+│  │  ├─ main.js           # nav, hero, three stay cards, gallery, area guide
 │  │  ├─ calendar.js       # availability model + iCal + turnover buffers
-│  │  ├─ booking.js        # date picker, pricing, request submit
+│  │  ├─ booking.js        # date picker, three options + bundle, pricing, submit
 │  │  ├─ concierge.js      # survey → itinerary → PDF
 │  │  └─ share.js          # social story image + caption + hashtags
 │  └─ media/               # ← YOUR photos & video go here
+└─ ../.github/workflows/pricing.yml   # daily cron: reprice from comps
 ```
 
 ---

@@ -1,0 +1,38 @@
+name: Update Ausable House pricing
+
+# Recompute nightly rates from the comparable homes at set times, and commit the
+# refreshed snapshot (ausable-house/assets/js/rates.js). Runs from the default
+# branch (GitHub only schedules workflows on the default branch) and can also be
+# triggered by hand. To make the comps themselves auto-update from real market
+# data, wire a feed/dynamic-pricing tool (see ausable-house/README.md).
+
+on:
+  schedule:
+    - cron: "0 10 * * *"   # 10:00 UTC daily (~6:00 AM ET)
+  workflow_dispatch: {}     # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  reprice:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Recompute rates from comparable homes
+        working-directory: ausable-house
+        run: node scripts/update-pricing.js
+      - name: Commit refreshed rates if changed
+        run: |
+          if [ -n "$(git status --porcelain ausable-house/assets/js/rates.js)" ]; then
+            git config user.name  "ausable-pricing-bot"
+            git config user.email "actions@github.com"
+            git add ausable-house/assets/js/rates.js
+            git commit -m "chore(pricing): refresh rates from comparable homes"
+            git push
+          else
+            echo "No pricing change."
+          fi

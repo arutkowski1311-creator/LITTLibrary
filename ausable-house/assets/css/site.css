@@ -25,8 +25,8 @@
   --radius:14px;
   --radius-lg:20px;
   --maxw:1180px;
-  --serif:"Cormorant Garamond","Hoefler Text",Georgia,"Times New Roman",serif;
-  --sans:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+  --serif:"Fraunces","Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:"Manrope","Inter","Helvetica Neue",Arial,system-ui,sans-serif;
 
   /* legacy aliases so older inline styles keep working on the dark theme */
   --cream:var(--bg); --cream-2:var(--bg-2);
@@ -47,8 +47,8 @@ body{
 img,video,canvas,svg{max-width:100%;display:block}
 a{color:var(--gold);text-decoration:none;transition:color .2s}
 a:hover{color:var(--gold-2)}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:.2px;margin:0 0 .4em;color:var(--text)}
-h1{font-size:clamp(2.7rem,9vw,5.4rem);font-weight:500}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:550;line-height:1.06;letter-spacing:-.01em;margin:0 0 .4em;color:var(--text);font-optical-sizing:auto;text-wrap:balance}
+h1{font-size:clamp(2.7rem,9vw,5.4rem);font-weight:450;letter-spacing:-.02em}
 h2{font-size:clamp(2.1rem,5.5vw,3.4rem)}
 h3{font-size:clamp(1.4rem,3.2vw,2rem)}
 em,.italic{font-style:italic}

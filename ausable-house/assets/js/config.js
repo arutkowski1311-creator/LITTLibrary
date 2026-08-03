@@ -64,6 +64,7 @@ window.SITE = {
       beds: 4, baths: 2, sleeps: 10,
       turnoverDays: 1,
       minNights: 2,
+      compBedrooms: [3, 6],   // benchmark against comparable 3–6 BR homes (see pricing.comps)
       // Base nightly rate by season (USD). Weekend/holiday handled below.
       rates: { summer: 495, fall: 425, winter: 550, spring: 375 },
       cleaningFee: 175,
@@ -85,6 +86,7 @@ window.SITE = {
       beds: 1, baths: 1, sleeps: 2,
       turnoverDays: 1,
       minNights: 2,
+      compBedrooms: [0, 1],   // benchmark against comparable studio/1 BR apartments
       rates: { summer: 195, fall: 175, winter: 225, spring: 155 },
       cleaningFee: 85,
       petFee: 75,
@@ -123,6 +125,37 @@ window.SITE = {
     cancelCutoffDays: 7,         // cancel > this many days out = balance refunded
     directDiscountPercent: 0.08, // "book direct" savings vs. platform pricing
     taxPercent: 0.13             // combined NY sales + Essex County occupancy (VERIFY!)
+  },
+
+  /* ---- Dynamic pricing (comparable homes) ------------------------------ */
+  // The nightly BASE rate for each stay is derived from the comparable homes
+  // below, then seasonal / weekend / holiday multipliers (ratesRules) apply.
+  // Set mode:"fixed" to ignore comps and use each property's own `rates`.
+  //
+  // "Update at set times, automatically": a scheduled job
+  // (.github/workflows/pricing.yml) recomputes and commits assets/js/rates.js
+  // on a cron. Keep the comp rates below current — or wire a market feed /
+  // dynamic-pricing tool (PriceLabs, Beyond, Wheelhouse, AirDNA) so the comps
+  // themselves auto-update. See README "Automated pricing".
+  pricing: {
+    mode: "comps",               // "comps" | "fixed"
+    method: "median",            // median | mean | trimmedMean
+    positioning: 0.97,           // list at 97% of the comparable median (just under market)
+    roundTo: 5,                  // round nightly rate to nearest $5
+    bundleDiscountPercent: 0.10, // House + The Perch together save 10%
+    floorRate: { "ausable-house": 325, "the-perch": 135 }, // never price below this
+    refresh: "Recomputed on a schedule by .github/workflows/pricing.yml.",
+    // The SET LIST of homes we benchmark against. Edit freely; keep rates current.
+    comps: [
+      { name: "Whiteface Slopeside Chalet",  url: "", bedrooms: 4, rates: { winter: 640, summer: 545, fall: 485, spring: 415 } },
+      { name: "Ausable River Lodge",         url: "", bedrooms: 4, rates: { winter: 585, summer: 560, fall: 500, spring: 430 } },
+      { name: "High Peaks Family Home",       url: "", bedrooms: 5, rates: { winter: 695, summer: 610, fall: 540, spring: 470 } },
+      { name: "Wilmington Woods Retreat",     url: "", bedrooms: 3, rates: { winter: 495, summer: 460, fall: 410, spring: 360 } },
+      { name: "Whiteface View Cabin",         url: "", bedrooms: 4, rates: { winter: 560, summer: 520, fall: 465, spring: 400 } },
+      { name: "Downtown Lake Placid Loft",    url: "", bedrooms: 1, rates: { winter: 245, summer: 225, fall: 200, spring: 175 } },
+      { name: "Riverside Studio Apartment",   url: "", bedrooms: 1, rates: { winter: 205, summer: 195, fall: 175, spring: 155 } },
+      { name: "Jay Hamlet Carriage Apartment",url: "", bedrooms: 1, rates: { winter: 225, summer: 205, fall: 185, spring: 165 } }
+    ]
   },
 
   /* ---- Booking request policy ------------------------------------------ */

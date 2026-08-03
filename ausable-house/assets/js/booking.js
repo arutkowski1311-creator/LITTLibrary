@@ -1,7 +1,7 @@
-/* booking.js — interactive calendar, date selection, pricing, request submit */
+/* booking.js — interactive calendar, three stay options, comps pricing, submit */
 (function(){
   const S = window.SITE, AH = window.AH, AV = window.AVAIL;
-  const R = S.ratesRules;
+  const R = S.ratesRules, PR = S.pricing || {};
   const sel = document.getElementById("bookProperty");
   const calEl = document.getElementById("bookCal");
   const summaryEl = document.getElementById("bookSummary");
@@ -14,9 +14,20 @@
   let start=null, end=null, model={blocked:new Set(),buffer:new Set()};
 
   const B = S.booking || { confirmWithinHours:24, requestNote:"" };
+  const bundlePct = Math.round((PR.bundleDiscountPercent||0)*100);
 
-  // property dropdown
-  sel.innerHTML = S.properties.map(p=>`<option value="${p.id}">${p.name} — ${p.beds}BR/${p.baths}BA · sleeps ${p.sleeps}</option>`).join("");
+  /* ---- three stay options: House, Apartment, House + Apartment ---- */
+  const house = AH.prop("ausable-house"), perch = AH.prop("the-perch");
+  const stayUnits = v => v==="both" ? ["ausable-house","the-perch"] : [v];
+  const stayName  = v => v==="both" ? `${house.name} + ${perch.name}` : AH.prop(v).name;
+  const stayMinNights = v => Math.max(...stayUnits(v).map(id=>AH.prop(id).minNights));
+  const includesPerch = v => stayUnits(v).includes("the-perch");
+
+  const sumSleeps = house.sleeps + perch.sleeps;
+  sel.innerHTML =
+    `<option value="ausable-house">Ausable House — ${house.beds}BR/${house.baths}BA · sleeps ${house.sleeps}</option>` +
+    `<option value="the-perch">The Pinecone Perch — ${perch.beds}BR/${perch.baths}BA · sleeps ${perch.sleeps}</option>` +
+    `<option value="both">Ausable House + The Pinecone Perch — sleeps ${sumSleeps} · save ${bundlePct}%</option>`;
 
   // request-policy messaging (config-driven)
   const policyNote = document.getElementById("requestPolicyNote");
@@ -31,11 +42,15 @@
   const iso = AV.iso;
   const today = new Date(); today.setHours(0,0,0,0);
 
-  async function loadProperty(){
+  async function loadStay(){
     start=end=null;
-    model = await AV.model(sel.value);
-    stairsLine.style.display = sel.value==="the-perch" ? "flex" : "none";
-    document.getElementById("ackStairs").required = sel.value==="the-perch";
+    // union the availability of every unit in the selected stay
+    const models = await Promise.all(stayUnits(sel.value).map(id=>AV.model(id)));
+    model = { blocked:new Set(), buffer:new Set() };
+    models.forEach(mm=>{ mm.blocked.forEach(d=>model.blocked.add(d)); mm.buffer.forEach(d=>model.buffer.add(d)); });
+    const perchIn = includesPerch(sel.value);
+    stairsLine.style.display = perchIn ? "flex" : "none";
+    document.getElementById("ackStairs").required = perchIn;
     renderCal(); renderSummary(); renderAddOns();
   }
 
@@ -71,7 +86,6 @@
     if(!start || (start && end)){ start=d; end=null; }
     else if(d<=start){ start=d; }
     else {
-      // ensure no blocked/buffer day sits between start and chosen end
       let cur=new Date(start); let ok=true;
       while(cur<d){ cur.setDate(cur.getDate()+1); if(cur<d && isBlocked(cur)){ ok=false; break; } }
       if(!ok){ AH.toast("Those nights include an unavailable date — pick a clear range."); start=d; end=null; }
@@ -81,61 +95,65 @@
   }
 
   function nights(){ return start&&end ? Math.round((end-start)/86400000) : 0; }
-
-  function isHoliday(d){
-    // simple: treat configured holidayMultiplier dates — extend as needed
-    return false; // hook for future holiday list
-  }
+  function isHoliday(){ return false; } // hook for a future holiday list
 
   function priceBreakdown(){
-    const p=AH.prop(sel.value); const n=nights();
-    let nightly=0;
-    let cur=new Date(start);
-    for(let i=0;i<n;i++){
-      const season=AH.seasonOf(cur);
-      let rate=p.rates[season];
-      const dow=cur.getDay();
-      if(dow===5||dow===6) rate*=R.weekendMultiplier;
-      if(isHoliday(cur)) rate*=R.holidayMultiplier;
-      nightly+=rate;
-      cur.setDate(cur.getDate()+1);
-    }
-    // add-ons
+    const val=sel.value, units=stayUnits(val), n=nights();
+    let nightly=0, cleaning=0;
+    units.forEach(id=>{
+      const p=AH.prop(id); cleaning += p.cleaningFee;
+      let cur=new Date(start);
+      for(let i=0;i<n;i++){
+        const season=AH.seasonOf(cur);
+        let rate=window.PRICING.rateFor(id, season);   // comparable-homes derived
+        const dow=cur.getDay();
+        if(dow===5||dow===6) rate*=R.weekendMultiplier;
+        if(isHoliday(cur)) rate*=R.holidayMultiplier;
+        nightly+=rate;
+        cur.setDate(cur.getDate()+1);
+      }
+    });
     let addons=0; const chosen=[];
     addOnList.querySelectorAll("input:checked").forEach(c=>{
       const a=S.addOns.find(x=>x.id===c.value); if(a){ addons+=a.price; chosen.push(a); }
     });
-    const platformSubtotal = nightly + p.cleaningFee;
-    const directDiscount = platformSubtotal * R.directDiscountPercent;
-    const subtotal = platformSubtotal - directDiscount + addons;
+    const bundle = val==="both";
+    const discountPct = bundle ? (PR.bundleDiscountPercent||0) : R.directDiscountPercent;
+    const discountLabel = bundle
+      ? `Bundle savings — House + Perch (${bundlePct}%)`
+      : `Book-direct savings (${Math.round(R.directDiscountPercent*100)}%)`;
+    const platformSubtotal = nightly + cleaning;
+    const discount = platformSubtotal * discountPct;
+    const subtotal = platformSubtotal - discount + addons;
     const tax = subtotal * R.taxPercent;
     const total = subtotal + tax;
     const deposit = total * R.depositPercent;
     const balance = total - deposit;
     let balanceDueDate = "";
     if(start){ const bd=new Date(start); bd.setDate(bd.getDate()-R.balanceDueDays); balanceDueDate=iso(bd); }
-    return {p,n,nightly,addons,chosen,cleaning:p.cleaningFee,directDiscount,subtotal,tax,total,deposit,balance,balanceDueDate};
+    return {name:stayName(val),n,nightly,addons,chosen,cleaning,discount,discountLabel,bundle,
+            subtotal,tax,total,deposit,balance,balanceDueDate};
   }
 
   function renderSummary(){
-    const p=AH.prop(sel.value);
+    const name=stayName(sel.value), minN=stayMinNights(sel.value);
     if(!start||!end){
-      summaryEl.innerHTML=`<h3>${p.name}</h3><p style="color:#d8cfbb">Select your check-in and check-out
-        dates on the calendar to see live pricing. Minimum ${p.minNights} nights.</p>`;
+      summaryEl.innerHTML=`<h3>${name}</h3><p style="color:#d8cfbb">Select your check-in and check-out
+        dates on the calendar to see live pricing. Minimum ${minN} nights.</p>`;
       formCard.style.display="none"; noticeEl.innerHTML=""; return;
     }
     const b=priceBreakdown();
-    if(b.n < p.minNights){
-      summaryEl.innerHTML=`<h3>${p.name}</h3><p style="color:var(--brass-2)">Minimum stay is ${p.minNights} nights.
+    if(b.n < minN){
+      summaryEl.innerHTML=`<h3>${name}</h3><p style="color:var(--brass-2)">Minimum stay is ${minN} nights.
         You've selected ${b.n}. Extend your dates.</p>`;
       formCard.style.display="none"; return;
     }
-    summaryEl.innerHTML=`<h3>${p.name}</h3>
+    summaryEl.innerHTML=`<h3>${name}</h3>
       <div class="line"><span>${iso(start)} → ${iso(end)}</span><span>${b.n} nights</span></div>
-      <div class="line"><span>Nightly (seasonal)</span><span>${AH.money(b.nightly)}</span></div>
-      <div class="line"><span>Cleaning fee</span><span>${AH.money(b.cleaning)}</span></div>
+      <div class="line"><span>Nightly${b.bundle?" (both, seasonal)":" (seasonal)"}</span><span>${AH.money(b.nightly)}</span></div>
+      <div class="line"><span>Cleaning ${b.bundle?"fees (both)":"fee"}</span><span>${AH.money(b.cleaning)}</span></div>
       ${b.chosen.map(a=>`<div class="line"><span>${a.name}</span><span>${AH.money(a.price)}</span></div>`).join("")}
-      <div class="line"><span class="brass">Book-direct savings (${Math.round(R.directDiscountPercent*100)}%)</span><span class="brass">−${AH.money(b.directDiscount)}</span></div>
+      <div class="line"><span class="brass">${b.discountLabel}</span><span class="brass">−${AH.money(b.discount)}</span></div>
       <div class="line"><span>Taxes &amp; occupancy (${Math.round(R.taxPercent*100)}%)</span><span>${AH.money(b.tax)}</span></div>
       <div class="line total"><span>Total</span><span>${AH.money(b.total)}</span></div>
       <div class="line" style="border-top:1px solid rgba(255,255,255,.25);margin-top:.6rem"><span>Due today — ${Math.round(R.depositPercent*100)}% deposit <span class="brass">(non-refundable)</span></span><span class="brass">${AH.money(b.deposit)}</span></div>
@@ -152,7 +170,6 @@
       charged; cancel within ${R.cancelCutoffDays} days and the stay is 100% forfeited.
       <a href="#" data-doc="direct">Full cancellation policy →</a></div>`;
     formCard.style.display="block";
-    // if the guest changed dates/property after submitting, restore the form
     const rc = document.getElementById("requestConfirmed");
     const bf = document.getElementById("bookForm");
     if(rc && rc.style.display==="block"){ rc.style.display="none"; if(bf) bf.style.display="block"; }
@@ -162,7 +179,7 @@
     const season = start?AH.seasonOf(start):"all";
     addOnList.innerHTML=S.addOns
       .filter(a=>a.seasons.includes("all")||a.seasons.includes(season))
-      .map(a=>`<label class="checkline" style="background:var(--white);border:1px solid #e0d6c0;border-radius:10px;padding:.6rem .8rem">
+      .map(a=>`<label class="checkline" style="background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:.6rem .8rem">
         <input type="checkbox" value="${a.id}"><span><b>${a.name}</b><br>
         <span class="muted">${AH.money(a.price)} ${a.unit}</span></span></label>`).join("");
     addOnList.querySelectorAll("input").forEach(c=>c.addEventListener("change",renderSummary));
@@ -171,12 +188,12 @@
   // submit -> compose email to owner (no backend needed; payment link sent on confirm)
   document.getElementById("bookForm").addEventListener("submit", e=>{
     e.preventDefault();
-    if(sel.value==="the-perch" && !document.getElementById("ackStairs").checked){
+    if(includesPerch(sel.value) && !document.getElementById("ackStairs").checked){
       AH.toast("Please acknowledge the outdoor-stairs access note."); return;
     }
     const b=priceBreakdown(); const f=e.target;
     const body =
-`NEW BOOKING REQUEST (UNCONFIRMED) — ${b.p.name}
+`NEW BOOKING REQUEST (UNCONFIRMED) — ${b.name}
 Reply within ${B.confirmWithinHours}h to confirm and send the deposit link.
 --------------------------------
 Guest: ${f.name.value}
@@ -184,6 +201,7 @@ Email: ${f.email.value}
 Phone: ${f.phone.value}
 Guests: ${f.guests.value}
 
+Stay: ${b.name}${b.bundle?" (bundle — 10% off)":""}
 Dates: ${iso(start)} check-in → ${iso(end)} check-out (${b.n} nights)
 Add-ons: ${b.chosen.map(a=>a.name).join(", ")||"none"}
 
@@ -195,13 +213,12 @@ Balance due ${b.balanceDueDate} (${R.balanceDueDays} days before check-in): ${AH
 Notes: ${f.notes.value||"—"}
 
 Acknowledged: direct-booking terms, winter/safety notice, liability waiver & house rules.
-${sel.value==="the-perch"?"Acknowledged: outdoor-stairs access.":""}`;
-    location.href = AH.mailto(`Booking Request — ${b.p.name} (${iso(start)}→${iso(end)})`, body);
+${includesPerch(sel.value)?"Acknowledged: outdoor-stairs access.":""}`;
+    location.href = AH.mailto(`Booking Request — ${b.name} (${iso(start)}→${iso(end)})`, body);
 
-    // show on-page pending-confirmation state
     const msg = document.getElementById("confirmedMsg");
     if(msg) msg.innerHTML = `Thanks, ${f.name.value.split(" ")[0]||"there"}! Your request for
-      <b>${b.p.name}</b> (${iso(start)} → ${iso(end)}) has been sent. This is <b>not a confirmed
+      <b>${b.name}</b> (${iso(start)} → ${iso(end)}) has been sent. This is <b>not a confirmed
       reservation yet</b> — we'll review availability and reply within
       <b>${B.confirmWithinHours} hours</b> with confirmation and a secure link to pay the
       ${Math.round(R.depositPercent*100)}% deposit. Your dates are held once we confirm.`;
@@ -211,6 +228,6 @@ ${sel.value==="the-perch"?"Acknowledged: outdoor-stairs access.":""}`;
     AH.toast("Request sent — pending confirmation within "+B.confirmWithinHours+"h.");
   });
 
-  sel.addEventListener("change", loadProperty);
-  loadProperty();
+  sel.addEventListener("change", loadStay);
+  loadStay();
 })();
