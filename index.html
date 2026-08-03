@@ -178,6 +178,7 @@
   .physsrc{color:var(--muted);font-size:12px;white-space:nowrap}
   .physsrc:hover{color:var(--cyan)}
   @media(max-width:1024px){#physGrid{grid-template-columns:1fr !important}}
+  .physrank.notable{border-color:var(--yellow);color:var(--yellow)}
   .physavwrap{position:relative;flex:0 0 auto}
   .physrank{position:absolute;top:-7px;left:-7px;min-width:21px;height:21px;padding:0 5px;border-radius:999px;background:var(--bg);border:1px solid var(--cyan);color:var(--cyan);font-size:10.5px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 8px rgba(43,212,255,.3)}
   .physbadges .num{color:var(--green);border-color:rgba(30,215,96,.4)}
@@ -631,7 +632,7 @@ function renderPhysicians(){
         <div class="physhead">
           <div class="physavwrap">
             <div class="physav">${esc(physInitials(p.name))}</div>
-            ${p.rank?`<div class="physrank" title="Prominence rank (best-effort estimate)">#${esc(p.rank)}</div>`:""}
+            ${p.rank?`<div class="physrank" title="Prominence rank (best-effort estimate)">#${esc(p.rank)}</div>`:(p.notable?`<div class="physrank notable" title="Notable figure — shown outside the LITT-output ranking">★</div>`:"")}
           </div>
           <div class="physmeta">
             <div class="physname">${esc(p.name)}</div>

@@ -3,7 +3,7 @@
   "generatedBy": "curated+bibliometric-best-effort",
   "lastUpdated": "2026-08-03",
   "rankingBasis": "Ordered by prominence in LITT publishing and citation impact. This is a BEST-EFFORT ESTIMATE assembled from public web sources and published bibliometric analyses, NOT a programmatic citation count (OpenAlex/PubMed/Semantic Scholar/Crossref were unavailable). Placements are firmest in the top ~10 (based on senior authorship of the field's registries and landmark trials) and softer below. Only two hardNumbers are verified figures, both from the 2025 Frontiers in Neurology epilepsy-LITT bibliometric (Gross = most prolific; Kang = most cited).",
-  "note": "System of record for the Physicians tab. Each physician is mapped to database.json indication keys, which powers the related-evidence cross-links. Affiliations were web-verified as of lastUpdated; affiliationConfidence 'low' marks entries whose current primary institution could not be confirmed (shown as an 'affiliation unverified' badge).",
+  "note": "System of record for the Physicians tab. Each physician is mapped to database.json indication keys, which powers the related-evidence cross-links. Affiliations were web-verified as of lastUpdated; affiliationConfidence 'low' marks entries whose current primary institution could not be confirmed (shown as an 'affiliation unverified' badge). Entries with \"notable\": true are shown outside the numbered ranking (marked with a star badge) because they are recognized figures not ranked by LITT publication volume.",
   "indicationTaxonomyRef": "database.json > taxonomy.indications",
   "physicians": [
     {
@@ -638,6 +638,30 @@
       "sources": [
         "https://profiles.utsouthwestern.edu/profile/153415/bradley-lega.html",
         "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
+    },
+    {
+      "id": "golby-alexandra",
+      "notable": true,
+      "name": "Alexandra J. Golby, MD",
+      "institution": "Brigham and Women's Hospital / Harvard Medical School",
+      "location": "Boston, MA, USA",
+      "specialty": "Neurosurgery",
+      "primaryField": "Image-guided neurosurgery",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "other_tumor"
+      ],
+      "littFocus": "Shown as a notable adjacent figure rather than by LITT publication volume. A leader in image-guided neurosurgery, intraoperative MRI (AMIGO suite), and brain mapping for tumors and epilepsy near eloquent cortex — foundational to the image-guided ablation/resection workflow, though not a high-volume LITT publisher by the ranking metric.",
+      "representativeWorks": [
+        "Image-guided neurosurgery & intraoperative MRI (AMIGO) program"
+      ],
+      "hardNumbers": "",
+      "signal": "n/a",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://physiciandirectory.brighamandwomens.org/details/689/alexandra-golby-neurosurgery-radiology-boston"
       ]
     }
   ]
