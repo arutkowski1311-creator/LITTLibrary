@@ -1,207 +1,644 @@
 {
-  "schemaVersion": 1,
-  "generatedBy": "curated",
-  "lastUpdated": "2026-07-30",
-  "note": "Curated roster of physicians and investigators active in LITT (MRI-guided laser interstitial thermal therapy) and related neurosurgery for neuro-oncology and epilepsy. Coverage is DELIBERATE, not derived from paper authorship — a physician appears here because they are a recognized figure in the field, not because they authored one of the tracked findings. Affiliations were web-verified as of lastUpdated; changing jobs is common, so confidence flags note where a current primary institution could not be confirmed. Each physician's indications map to database.json taxonomy keys, which drives the related-evidence cross-links in the app.",
+  "schemaVersion": 2,
+  "generatedBy": "curated+bibliometric-best-effort",
+  "lastUpdated": "2026-08-03",
+  "rankingBasis": "Ordered by prominence in LITT publishing and citation impact. This is a BEST-EFFORT ESTIMATE assembled from public web sources and published bibliometric analyses, NOT a programmatic citation count (OpenAlex/PubMed/Semantic Scholar/Crossref were unavailable). Placements are firmest in the top ~10 (based on senior authorship of the field's registries and landmark trials) and softer below. Only two hardNumbers are verified figures, both from the 2025 Frontiers in Neurology epilepsy-LITT bibliometric (Gross = most prolific; Kang = most cited).",
+  "note": "System of record for the Physicians tab. Each physician is mapped to database.json indication keys, which powers the related-evidence cross-links. Affiliations were web-verified as of lastUpdated; affiliationConfidence 'low' marks entries whose current primary institution could not be confirmed (shown as an 'affiliation unverified' badge).",
   "indicationTaxonomyRef": "database.json > taxonomy.indications",
   "physicians": [
     {
-      "id": "golby-alexandra",
-      "name": "Alexandra J. Golby, MD",
-      "institution": "Brigham and Women's Hospital / Harvard Medical School",
-      "location": "Boston, MA, USA",
+      "id": "leuthardt-eric",
+      "rank": 1,
+      "name": "Eric C. Leuthardt, MD, MBA",
+      "institution": "Washington University School of Medicine in St. Louis",
+      "location": "St. Louis, MO, USA",
       "specialty": "Neurosurgery",
-      "littFocus": "Senior academic figure in image-guided neurosurgery, intraoperative MRI (AMIGO suite), and brain mapping for tumors and epilepsy near eloquent cortex — a leader in image-guided ablation and resection rather than a single-indication LITT operator.",
-      "indications": ["newly_gbm", "recurrent_gbm", "other_tumor"],
-      "confidence": "high",
-      "sourceUrl": "https://physiciandirectory.brighamandwomens.org/details/689/alexandra-golby-neurosurgery-radiology-boston"
-    },
-    {
-      "id": "barnett-gene",
-      "name": "Gene H. Barnett, MD, MBA",
-      "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor & Neuro-Oncology Center",
-      "location": "Cleveland, OH, USA",
-      "specialty": "Neurosurgical oncology",
-      "littFocus": "Pioneer of stereotactic laser ablation (LITT) for brain tumors and radiation necrosis and an early adopter of the NeuroBlate system; long-standing leader in computer-assisted and stereotactic neurosurgery.",
-      "indications": ["newly_gbm", "recurrent_gbm", "brain_met", "radiation_necrosis"],
-      "confidence": "high",
-      "sourceUrl": "https://my.clevelandclinic.org/staff/531-gene-barnett"
-    },
-    {
-      "id": "mohammadi-alireza",
-      "name": "Alireza M. Mohammadi, MD",
-      "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor & Neuro-Oncology Center",
-      "location": "Cleveland, OH, USA",
-      "specialty": "Neurosurgical oncology",
-      "littFocus": "Leading investigator in LITT for gliomas and brain metastases; principal author on the multicenter LAANTERN NeuroBlate registry and on upfront-LITT studies in newly diagnosed glioblastoma.",
-      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
-      "confidence": "high",
-      "sourceUrl": "https://my.clevelandclinic.org/staff/17482-alireza-mohammadi"
-    },
-    {
-      "id": "sloan-andrew",
-      "name": "Andrew E. Sloan, MD, MBA, FACS",
-      "institution": "Affiliation in transition — recent sources conflict (Piedmont Healthcare, Atlanta vs. Premier Health / Wright State, Dayton); adjunct at Case Western Reserve",
-      "location": "Atlanta, GA / Dayton, OH, USA (unconfirmed)",
-      "specialty": "Neurosurgical oncology",
-      "littFocus": "Neurosurgical oncologist experienced in LITT for gliomas and metastases and in brain-tumor immunotherapy; formerly Director of the Brain Tumor & Neuro-Oncology Center at University Hospitals / Case Western in Cleveland.",
-      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
-      "confidence": "low",
-      "sourceUrl": "https://doctors.premierhealth.com/provider/andrew-sloan/4835255"
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "brain_met"
+      ],
+      "littFocus": "Senior/lead author on the LAANTERN registry, the largest prospective multicenter LITT dataset (787-patient analysis, 2024), and senior author of the foundational Hawasli 2013 NeuroBlate glioma series. His WashU group is one of the two dominant neuro-oncology LITT programs.",
+      "representativeWorks": [
+        "LAANTERN 787-patient multicenter LITT analysis (2024)",
+        "Hawasli et al., MRI-guided LITT for intracranial lesions, Neurosurgery 2013"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://neurosurgery.wustl.edu/people/eric-c-leuthardt-md/",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
     },
     {
       "id": "gross-robert",
+      "rank": 2,
       "name": "Robert E. Gross, MD, PhD",
-      "institution": "Rutgers — Robert Wood Johnson & New Jersey Medical Schools (Chair of Neurosurgery)",
+      "institution": "Rutgers — Robert Wood Johnson & New Jersey Medical Schools",
       "location": "New Brunswick / Newark, NJ, USA",
       "specialty": "Epilepsy neurosurgery",
-      "littFocus": "A principal developer and popularizer of stereotactic laser amygdalohippocampotomy (SLAH) for mesial temporal lobe epilepsy; leader in stereotactic laser ablation and DBS for epilepsy. Moved from Emory to Rutgers in 2023.",
-      "indications": ["mtle", "focal_epilepsy"],
-      "confidence": "high",
-      "sourceUrl": "https://rwjms.rutgers.edu/people/robert-gross"
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Named the single most prolific author in a 2025 Frontiers in Neurology bibliometric analysis of LITT-in-epilepsy. Senior author of the landmark real-time MRI-guided SLAH series (Willie et al. 2014) that established LITT for mesial temporal lobe epilepsy, and PI of the SLATE trial.",
+      "representativeWorks": [
+        "Willie/Gross real-time MRI-guided SLAH for mesial TLE, Neurosurgery 2014",
+        "SLATE (Stereotactic Laser Ablation for Temporal lobe Epilepsy) trial"
+      ],
+      "hardNumbers": "14 LITT-epilepsy pubs (most prolific, 2025 bibliometric)",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://rwjms.rutgers.edu/people/robert-gross",
+        "https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2025.1492364/abstract"
+      ]
+    },
+    {
+      "id": "kim-albert",
+      "rank": 3,
+      "name": "Albert H. Kim, MD, PhD",
+      "institution": "Washington University School of Medicine / Siteman Cancer Center",
+      "location": "St. Louis, MO, USA",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "littFocus": "Co-author of the foundational Hawasli 2013 NeuroBlate glioma series and a LAANTERN 787-patient co-author; a core member of the WashU tumor-LITT program alongside Leuthardt with sustained high output on glioblastoma and metastasis ablation.",
+      "representativeWorks": [
+        "Hawasli et al., MRI-guided focused LITT, Neurosurgery 2013",
+        "LAANTERN multicenter analyses"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://neurosurgery.wustl.edu/people/albert-h-kim-md-phd/",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
     },
     {
       "id": "willie-jon",
-      "name": "Jon T. Willie, MD, PhD, FAANS",
-      "institution": "UT Health Austin / Dell Medical School, The University of Texas at Austin",
+      "rank": 4,
+      "name": "Jon T. Willie, MD, PhD",
+      "institution": "UT Health Austin / Dell Medical School, UT Austin",
       "location": "Austin, TX, USA",
       "specialty": "Epilepsy neurosurgery",
-      "littFocus": "Major contributor to laser ablation for epilepsy, including SLAH outcomes and technique refinement; now Chief of Functional and Epilepsy Surgery at Dell Med after directing stereotactic/functional/epilepsy surgery at Washington University in St. Louis.",
-      "indications": ["mtle", "focal_epilepsy"],
-      "confidence": "high",
-      "sourceUrl": "https://dellmed.utexas.edu/directory/jon-willie"
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "littFocus": "First author of the pivotal SLAH series (Neurosurgery 2014), the most influential paper establishing laser amygdalohippocampotomy for mesial TLE, and a leader of the SLATE multicenter trial. Also publishes on tumor and functional LITT.",
+      "representativeWorks": [
+        "Real-time MRI-guided SLAH for mesial TLE, Neurosurgery 2014",
+        "SLATE trial"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://dellmed.utexas.edu/directory/jon-willie",
+        "https://cdn.clinicaltrials.gov/large-docs/65/NCT02844465/Prot_000.pdf"
+      ]
+    },
+    {
+      "id": "curry-daniel",
+      "rank": 5,
+      "name": "Daniel J. Curry, MD",
+      "institution": "Texas Children's Hospital / Baylor College of Medicine",
+      "location": "Houston, TX, USA",
+      "specialty": "Pediatric epilepsy surgery",
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "hypothalamic_hamartoma",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Pioneered pediatric MRgLITT: first author of the first pediatric stereotactic laser ablation series (2012) and the leading authority on LITT for hypothalamic hamartoma. Director of the Texas Children's program that produced the largest pediatric-ablation datasets.",
+      "representativeWorks": [
+        "MR-guided stereotactic laser ablation in children, Epilepsy Behav 2012",
+        "Staged MRgLITT for hypothalamic hamartoma, Neurosurgery 2020"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.texaschildrens.org/find-a-provider/daniel-j-curry-md",
+        "https://academic.oup.com/neurosurgery/article-abstract/86/6/808/5570692"
+      ]
+    },
+    {
+      "id": "mohammadi-alireza",
+      "rank": 6,
+      "name": "Alireza M. Mohammadi, MD",
+      "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor Center",
+      "location": "Cleveland, OH, USA",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "littFocus": "Cleveland Clinic LITT lead and LAANTERN investigator; co-author on the 787-patient analysis and multiple high-impact glioblastoma, radiation-necrosis, and matched-cohort survival studies. Among the most cited on upfront LITT for newly diagnosed GBM.",
+      "representativeWorks": [
+        "LAANTERN multicenter analyses",
+        "Upfront LITT in newly diagnosed GBM vs biopsy-only matched cohort"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://my.clevelandclinic.org/staff/17482-alireza-mohammadi",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
+    },
+    {
+      "id": "chiang-veronica",
+      "rank": 7,
+      "name": "Veronica L. Chiang, MD",
+      "institution": "Yale School of Medicine / Yale New Haven Hospital",
+      "location": "New Haven, CT, USA",
+      "specialty": "Stereotactic neurosurgery",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "littFocus": "Yale brain-metastasis/LITT leader and lead of the LAASR multicenter prospective study of laser ablation after stereotactic radiosurgery (J Neurosurg 2018) — a defining paper for LITT in post-SRS radiation necrosis — plus LAANTERN co-authorship.",
+      "representativeWorks": [
+        "Laser ablation after SRS (LAASR) multicenter study, J Neurosurg 2018",
+        "LITT vs bevacizumab for radiation necrosis"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://medicine.yale.edu/profile/veronica-chiang/",
+        "https://thejns.org/view/journals/j-neurosurg/130/3/article-p804.xml"
+      ]
+    },
+    {
+      "id": "komotar-ricardo",
+      "rank": 8,
+      "name": "Ricardo J. Komotar, MD",
+      "institution": "University of Miami Miller School of Medicine / Sylvester Comprehensive Cancer Center",
+      "location": "Miami, FL, USA",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis",
+        "recurrent_gbm"
+      ],
+      "littFocus": "Co-leads the University of Miami LITT program, one of the highest-output tumor-ablation groups, with a large body of series on brain metastases, radical ablation of radiation necrosis, and glioma.",
+      "representativeWorks": [
+        "Radical LITT ablation for biopsy-proven radiation necrosis (Luther et al. 2020)",
+        "Miami brain-metastasis LITT series"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://med.miami.edu/faculty/ricardo-jorge-komotar-md-faans-facs",
+        "https://link.springer.com/article/10.1007/s11060-024-04650-1"
+      ]
+    },
+    {
+      "id": "ivan-michael",
+      "rank": 9,
+      "name": "Michael E. Ivan, MD",
+      "institution": "University of Miami Miller School of Medicine / Sylvester Comprehensive Cancer Center",
+      "location": "Miami, FL, USA",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis",
+        "recurrent_gbm"
+      ],
+      "littFocus": "Co-lead of the University of Miami LITT program with Komotar; senior/co-author on the group's prolific output covering radiation necrosis, brain metastases, and glioma-microenvironment mechanistic work.",
+      "representativeWorks": [
+        "Miami LITT radiation-necrosis and metastasis series",
+        "Modulating the glioma microenvironment with LITT (review, 2025)"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://doctors.umiamihealth.org/provider/michael-edward-ivan/525486",
+        "https://link.springer.com/article/10.1007/s11060-025-05305-5"
+      ]
+    },
+    {
+      "id": "sloan-andrew",
+      "rank": 10,
+      "name": "Andrew E. Sloan, MD, MBA",
+      "institution": "Affiliation in transition — Piedmont Healthcare (Atlanta) vs. Premier Health / Wright State (Dayton)",
+      "location": "Atlanta, GA / Dayton, OH, USA (unconfirmed)",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "brain_met"
+      ],
+      "littFocus": "First author of the NeuroBlate System first-in-human Phase I trial for recurrent glioblastoma (J Neurosurg 2013), a pivotal early clinical LITT study, and a LAANTERN 787-patient co-author.",
+      "representativeWorks": [
+        "NeuroBlate first-in-human Phase I trial for recurrent GBM, J Neurosurg 2013",
+        "LAANTERN multicenter analyses"
+      ],
+      "hardNumbers": "",
+      "signal": "high",
+      "affiliationConfidence": "low",
+      "sources": [
+        "https://doctors.premierhealth.com/provider/andrew-sloan/4835255",
+        "https://thejns.org/view/journals/j-neurosurg/118/6/article-p1202.xml"
+      ]
+    },
+    {
+      "id": "barnett-gene",
+      "rank": 11,
+      "name": "Gene H. Barnett, MD, MBA",
+      "institution": "Cleveland Clinic — Rose Ella Burkhardt Brain Tumor Center",
+      "location": "Cleveland, OH, USA",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "littFocus": "Senior author of the NeuroBlate first-in-human Phase I glioblastoma trial (2013) and a founding figure of clinical brain-tumor LITT at Cleveland Clinic. Highly cited for pivotal early work, though more recent output has tapered.",
+      "representativeWorks": [
+        "NeuroBlate first-in-human Phase I trial for recurrent GBM, J Neurosurg 2013",
+        "Early Cleveland Clinic tumor-ablation series"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://my.clevelandclinic.org/staff/531-gene-barnett",
+        "https://thejns.org/view/journals/j-neurosurg/118/6/article-p1202.xml"
+      ]
     },
     {
       "id": "sperling-michael",
+      "rank": 12,
       "name": "Michael R. Sperling, MD",
       "institution": "Thomas Jefferson University — Jefferson Comprehensive Epilepsy Center",
       "location": "Philadelphia, PA, USA",
       "specialty": "Epileptology",
-      "littFocus": "Epileptologist and Director of the Jefferson Comprehensive Epilepsy Center; the medical/epileptology counterpart in laser-ablation programs, contributing to selection and outcomes evidence for LITT/SLAH in drug-resistant epilepsy.",
-      "indications": ["mtle", "focal_epilepsy"],
-      "confidence": "high",
-      "sourceUrl": "https://www.jeffersonhealth.org/find-a-doctor/s/sperling-michael-r"
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Senior author of Kang et al., Epilepsia 2016 — a heavily cited prospective LITT-for-mesial-TLE study — and consistently ranked among the top overall epilepsy authors in bibliometric analyses. Anchors the prolific Jefferson epilepsy-LITT group.",
+      "representativeWorks": [
+        "Kang et al., LITT for medically intractable mesial TLE, Epilepsia 2016",
+        "Multicenter LITT targeting / 234-patient MTLE study"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.jeffersonhealth.org/find-a-doctor/s/sperling-michael-r",
+        "https://onlinelibrary.wiley.com/doi/10.1111/epi.13284"
+      ]
     },
     {
-      "id": "fecci-peter",
-      "name": "Peter E. Fecci, MD, PhD",
-      "institution": "University of Colorado Anschutz Medical Campus (Chair of Neurosurgery; moved from Duke in 2025)",
-      "location": "Aurora / Denver, CO, USA",
-      "specialty": "Neurosurgical oncology",
-      "littFocus": "National leader in combining LITT with immunotherapy for primary and metastatic brain tumors, including work on LITT-induced blood-brain-barrier disruption to enhance immune and drug delivery; previously directed the Duke Center for Brain and Spine Metastasis.",
-      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
-      "confidence": "high",
-      "sourceUrl": "https://www.cu.edu/cu-careers/news/peter-e-fecci-md-phd-named-chair-department-neurosurgery"
-    },
-    {
-      "id": "leuthardt-eric",
-      "name": "Eric C. Leuthardt, MD, MBA",
-      "institution": "Washington University School of Medicine in St. Louis — Taylor Family Department of Neurosurgery",
-      "location": "St. Louis, MO, USA",
-      "specialty": "Neurosurgery",
-      "littFocus": "Early adopter and investigator of LITT for gliomas and metastases and of LITT-mediated blood-brain-barrier disruption; broad innovator in brain-computer interfaces and neurotechnology.",
-      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
-      "confidence": "high",
-      "sourceUrl": "https://neurosurgery.wustl.edu/people/eric-c-leuthardt-md/"
-    },
-    {
-      "id": "chiang-veronica",
-      "name": "Veronica L. Chiang, MD, FAANS",
-      "institution": "Yale School of Medicine / Yale New Haven Hospital (Director, Gamma Knife Center)",
-      "location": "New Haven, CT, USA",
-      "specialty": "Stereotactic neurosurgery",
-      "littFocus": "Leading authority on LITT for brain metastases and post-radiosurgery radiation necrosis, including comparative work of LITT vs bevacizumab for radiation necrosis; integrates LITT with SRS in multidisciplinary brain-metastasis care.",
-      "indications": ["brain_met", "radiation_necrosis"],
-      "confidence": "high",
-      "sourceUrl": "https://medicine.yale.edu/profile/veronica-chiang/"
-    },
-    {
-      "id": "chen-clark",
-      "name": "Clark C. Chen, MD, PhD",
-      "institution": "Warren Alpert Medical School of Brown University / Brown University Health (Director, Brain Tumor Program; moved from University of Minnesota in 2024)",
-      "location": "Providence, RI, USA",
-      "specialty": "Neurosurgical oncology",
-      "littFocus": "Neurosurgical oncologist focused on minimally invasive neuro-oncology including LITT for gliomas; NIH-funded glioblastoma researcher, formerly Chair of Neurosurgery at the University of Minnesota.",
-      "indications": ["newly_gbm", "recurrent_gbm"],
-      "confidence": "high",
-      "sourceUrl": "https://neurosurgery.med.brown.edu/people/clark-c-chen-md-phd"
-    },
-    {
-      "id": "tandon-nitin",
-      "name": "Nitin Tandon, MD",
-      "institution": "McGovern Medical School, UTHealth Houston (Chief of Epilepsy Surgery)",
-      "location": "Houston, TX, USA",
+      "id": "wu-chengyuan",
+      "rank": 13,
+      "name": "Chengyuan Wu, MD, MSBmE",
+      "institution": "Thomas Jefferson University / Jefferson Health",
+      "location": "Philadelphia, PA, USA",
       "specialty": "Epilepsy neurosurgery",
-      "littFocus": "High-volume epilepsy surgeon who pioneered robot-assisted SEEG combined with MRI-guided laser ablation for drug-resistant epilepsy; leads the Texas Institute for Restorative Neurotechnologies.",
-      "indications": ["focal_epilepsy", "mtle"],
-      "confidence": "high",
-      "sourceUrl": "https://med.uth.edu/neurosurgery/2022/11/01/nitin-tandon-md/"
-    },
-    {
-      "id": "curry-daniel",
-      "name": "Daniel J. Curry, MD",
-      "institution": "Texas Children's Hospital / Baylor College of Medicine (Director, Functional Neurosurgery & Epilepsy Surgery)",
-      "location": "Houston, TX, USA",
-      "specialty": "Pediatric epilepsy surgery",
-      "littFocus": "Pioneer of pediatric MRI-guided laser ablation for epilepsy (Texas Children's performed the world's first LITT-for-epilepsy case); particularly known for laser ablation of hypothalamic hamartomas and other pediatric epileptogenic lesions.",
-      "indications": ["hypothalamic_hamartoma", "focal_epilepsy"],
-      "confidence": "high",
-      "sourceUrl": "https://www.texaschildrens.org/find-a-provider/daniel-j-curry-md"
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Core surgeon-scientist of the Jefferson epilepsy-LITT program; co-author of Kang et al. 2016 and lead on multicenter LITT targeting studies (234-patient MTLE surgical-targeting study) and stereo-EEG-guided ablation methodology.",
+      "representativeWorks": [
+        "Surgical targeting in LITT for mesial TLE: multicenter 234-patient study (2019)",
+        "Stereo-EEG-guided LITT for mesial TLE"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/neurosurgery/faculty/wu.html",
+        "https://pubmed.ncbi.nlm.nih.gov/31112302/"
+      ]
     },
     {
       "id": "sharan-ashwini",
-      "name": "Ashwini D. Sharan, MD, FACS",
-      "institution": "Thomas Jefferson University (Division Director, Functional & Epilepsy Neurosurgery)",
+      "rank": 14,
+      "name": "Ashwini D. Sharan, MD",
+      "institution": "Thomas Jefferson University",
       "location": "Philadelphia, PA, USA",
       "specialty": "Epilepsy neurosurgery",
-      "littFocus": "Leads Jefferson's surgical epilepsy program performing both ablative (laser) and resective procedures; past CNS president and a prominent figure in neuromodulation and minimally invasive epilepsy surgery.",
-      "indications": ["mtle", "focal_epilepsy"],
-      "confidence": "high",
-      "sourceUrl": "https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/neurosurgery/faculty/sharan.html"
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Co-author of the influential Kang et al. 2016 Epilepsia MTLE-LITT series and a longtime leader of the Jefferson epilepsy-surgery group, contributing to the multicenter LITT literature.",
+      "representativeWorks": [
+        "Kang et al., LITT for mesial TLE, Epilepsia 2016",
+        "Jefferson multicenter LITT targeting studies"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.jefferson.edu/academics/colleges-schools-institutes/skmc/departments/neurosurgery/faculty/sharan.html",
+        "https://onlinelibrary.wiley.com/doi/10.1111/epi.13284"
+      ]
     },
     {
-      "id": "smith-kris",
-      "name": "Kris A. Smith, MD",
-      "institution": "Barrow Neurological Institute — St. Joseph's Hospital & Medical Center",
-      "location": "Phoenix, AZ, USA",
-      "specialty": "Neurosurgery",
-      "littFocus": "Brain tumor and epilepsy surgeon who uses LITT for tumors and epilepsy; directs Barrow's Hypothalamic Hamartoma Program and Stereotactic-Functional-Epilepsy Fellowship, with laser ablation part of his minimally invasive practice.",
-      "indications": ["recurrent_gbm", "hypothalamic_hamartoma", "focal_epilepsy"],
-      "confidence": "high",
-      "sourceUrl": "https://www.barrowneuro.org/person/kris-smith-md/"
-    },
-    {
-      "id": "laxton-adrian",
-      "name": "Adrian W. Laxton, MD",
-      "institution": "Atrium Health Wake Forest Baptist / Wake Forest University School of Medicine (Director of Functional Neurosurgery)",
-      "location": "Winston-Salem, NC, USA",
-      "specialty": "Functional neurosurgery",
-      "littFocus": "Functional and tumor neurosurgeon offering LITT/laser ablation for epilepsy and brain tumors alongside DBS and radiosurgery.",
-      "indications": ["focal_epilepsy", "recurrent_gbm"],
-      "confidence": "high",
-      "sourceUrl": "https://school.wakehealth.edu/faculty/l/adrian-w-laxton"
-    },
-    {
-      "id": "prabhu-sujit",
-      "name": "Sujit S. Prabhu, MD, FRCS",
-      "institution": "The University of Texas MD Anderson Cancer Center — Department of Neurosurgery",
-      "location": "Houston, TX, USA",
+      "id": "hadjipanayis-constantinos",
+      "rank": 15,
+      "name": "Constantinos G. Hadjipanayis, MD, PhD",
+      "institution": "University of Pittsburgh / UPMC",
+      "location": "Pittsburgh, PA, USA",
       "specialty": "Neurosurgical oncology",
-      "littFocus": "High-volume LITT operator for deep-seated and eloquent gliomas and metastases; published widely on LITT for newly diagnosed and recurrent glioblastoma (including time-to-chemotherapy and IDH-wildtype outcomes) and involved in multicenter LITT efficacy work.",
-      "indications": ["newly_gbm", "recurrent_gbm", "brain_met"],
-      "confidence": "high",
-      "sourceUrl": "https://faculty.mdanderson.org/profiles/sujit_prabhu.html"
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "littFocus": "LAANTERN 787-patient co-author and an active glioma-ablation surgeon contributing to multicenter tumor-LITT outcomes literature; also a leader in fluorescence-guided glioma surgery.",
+      "representativeWorks": [
+        "LAANTERN 787-patient multicenter LITT analysis (2024)",
+        "Glioma LITT outcomes studies"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.neurosurgery.pitt.edu/people/costas-hadjipanayis",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
+    },
+    {
+      "id": "chen-clark",
+      "rank": 16,
+      "name": "Clark C. Chen, MD, PhD",
+      "institution": "Warren Alpert Medical School of Brown University / Brown University Health",
+      "location": "Providence, RI, USA",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "littFocus": "LAANTERN 787-patient co-author and prolific glioma-LITT contributor, publishing on LITT efficacy for newly diagnosed and recurrent glioblastoma.",
+      "representativeWorks": [
+        "LAANTERN multicenter analysis (2024)",
+        "Efficacy of LITT for IDH-wildtype glioblastoma"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://neurosurgery.med.brown.edu/people/clark-c-chen-md-phd",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
+    },
+    {
+      "id": "carpentier-alexandre",
+      "rank": 17,
+      "name": "Alexandre Carpentier, MD, PhD",
+      "institution": "Sorbonne University / Pitié-Salpêtrière Hospital (AP-HP)",
+      "location": "Paris, France",
+      "specialty": "Neurosurgery",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "brain_met",
+        "recurrent_gbm"
+      ],
+      "littFocus": "First author of the first-ever real-time MRI-guided LITT report for brain metastases (Neurosurgery 2008) — the foundational, highly cited paper that launched modern MRgLITT. Later work shifted toward focused ultrasound, so ongoing LITT volume is lower than his citation footprint.",
+      "representativeWorks": [
+        "Real-time MR-guided laser thermal therapy for metastatic brain tumors, Neurosurgery 2008",
+        "Early MRgLITT technique/feasibility reports"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.sorbonne-universite.fr/en/portraits/alexandre-carpentier",
+        "https://www.tandfonline.com/doi/full/10.1080/02656736.2020.1748238"
+      ]
+    },
+    {
+      "id": "shah-ashish",
+      "rank": 18,
+      "name": "Ashish H. Shah, MD",
+      "institution": "University of Miami Miller School of Medicine / Sylvester Comprehensive Cancer Center",
+      "location": "Miami, FL, USA",
+      "specialty": "Neurosurgical oncology",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "radiation_necrosis",
+        "recurrent_gbm",
+        "brain_met"
+      ],
+      "littFocus": "Productive member of the University of Miami LITT group; frequent author on radiation-necrosis series and glioma-microenvironment / immune-modulation mechanistic reviews of LITT.",
+      "representativeWorks": [
+        "Radical LITT for biopsy-proven radiation necrosis (Luther et al. 2020)",
+        "Modulating the glioma microenvironment with LITT (review, 2025)"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://med.miami.edu/faculty/ashish-h-shah-md",
+        "https://link.springer.com/article/10.1007/s11060-025-05305-5"
+      ]
+    },
+    {
+      "id": "ahluwalia-manmeet",
+      "rank": 19,
+      "name": "Manmeet S. Ahluwalia, MD, MBA",
+      "institution": "Baptist Health Miami Cancer Institute",
+      "location": "Miami, FL, USA",
+      "specialty": "Neuro-oncology (medical)",
+      "primaryField": "Neuro-oncology LITT",
+      "indications": [
+        "recurrent_gbm",
+        "newly_gbm",
+        "brain_met"
+      ],
+      "littFocus": "Neuro-oncologist and co-author on the NeuroBlate first-in-human GBM trial (2013); continues to contribute to LITT combination-therapy and radiation-necrosis literature.",
+      "representativeWorks": [
+        "NeuroBlate first-in-human Phase I trial, J Neurosurg 2013",
+        "LITT combination-therapy and radiation-necrosis studies"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://baptisthealth.net/doctors/manmeet-singh-ahluwalia/1832154",
+        "https://thejns.org/view/journals/j-neurosurg/118/6/article-p1202.xml"
+      ]
     },
     {
       "id": "englot-dario",
+      "rank": 20,
       "name": "Dario J. Englot, MD, PhD",
-      "institution": "Vanderbilt University Medical Center (Surgical Director of Epilepsy)",
+      "institution": "Vanderbilt University Medical Center",
       "location": "Nashville, TN, USA",
       "specialty": "Epilepsy neurosurgery",
-      "littFocus": "Surgical director of one of the country's highest-volume epilepsy programs; performs and studies laser ablation and SEEG for drug-resistant epilepsy, with a research focus on brain-network mechanisms of seizures and neuromodulation.",
-      "indications": ["focal_epilepsy", "mtle"],
-      "confidence": "high",
-      "sourceUrl": "https://www.vumc.org/neurosurgerydept/person/dario-englot-md-phd"
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "focal_epilepsy",
+        "mtle"
+      ],
+      "littFocus": "Vanderbilt epilepsy-surgery investigator publishing extensively on LITT-for-MTLE outcomes, connectome predictors of seizure freedom, and systematic reviews comparing LITT with open resection.",
+      "representativeWorks": [
+        "Structural-connectome predictors of LITT seizure freedom in MTLE (2021)",
+        "LITT MTLE outcome meta-analyses"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.vumc.org/neurosurgerydept/person/dario-englot-md-phd",
+        "https://pubmed.ncbi.nlm.nih.gov/34817885/"
+      ]
+    },
+    {
+      "id": "wilfong-angus",
+      "rank": 21,
+      "name": "Angus A. Wilfong, MD",
+      "institution": "Phoenix Children's Hospital / Barrow Neurological Institute",
+      "location": "Phoenix, AZ, USA",
+      "specialty": "Pediatric epileptology",
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "hypothalamic_hamartoma",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Epileptologist co-author of the first pediatric MRgLITT series (Curry et al. 2012) and co-developer of the hypothalamic-hamartoma laser program; high citation via foundational pediatric-ablation work.",
+      "representativeWorks": [
+        "MR-guided stereotactic laser ablation in children, Epilepsy Behav 2012",
+        "Hypothalamic hamartoma laser-ablation outcomes"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://phoenixchildrens.org/find-a-doctor/angus-a-wilfong-md",
+        "https://pubmed.ncbi.nlm.nih.gov/22687387/"
+      ]
+    },
+    {
+      "id": "smith-kris",
+      "rank": 22,
+      "name": "Kris A. Smith, MD",
+      "institution": "Barrow Neurological Institute — St. Joseph's Hospital",
+      "location": "Phoenix, AZ, USA",
+      "specialty": "Neurosurgery",
+      "primaryField": "Tumor & epilepsy LITT",
+      "indications": [
+        "recurrent_gbm",
+        "hypothalamic_hamartoma",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Barrow Neurological Institute LITT surgeon and LAANTERN 787-patient co-author, active across both tumor ablation and epilepsy LITT.",
+      "representativeWorks": [
+        "LAANTERN multicenter analyses",
+        "Barrow tumor- and epilepsy-LITT series"
+      ],
+      "hardNumbers": "",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://www.barrowneuro.org/person/kris-smith-md/",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
+    },
+    {
+      "id": "kang-joonyi",
+      "rank": 23,
+      "name": "Joon-Yi Kang, MD",
+      "institution": "Johns Hopkins University School of Medicine — Johns Hopkins Epilepsy Center",
+      "location": "Baltimore, MD, USA",
+      "specialty": "Epileptology",
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "mtle"
+      ],
+      "littFocus": "Identified as the most-cited author in the 2025 Frontiers epilepsy-LITT bibliometric, driven by first-authorship of the widely cited Kang et al. Epilepsia 2016 MTLE-LITT study. Citation prominence exceeds total publication volume.",
+      "representativeWorks": [
+        "Kang et al., LITT for medically intractable mesial TLE, Epilepsia 2016"
+      ],
+      "hardNumbers": "134 citations (most-cited, 2025 bibliometric)",
+      "signal": "medium",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://pure.johnshopkins.edu/en/persons/joon-kang/",
+        "https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2025.1492364/abstract"
+      ]
+    },
+    {
+      "id": "panov-fedor",
+      "rank": 24,
+      "name": "Fedor E. Panov, MD",
+      "institution": "Icahn School of Medicine at Mount Sinai",
+      "location": "New York, NY, USA",
+      "specialty": "Epilepsy neurosurgery",
+      "primaryField": "Tumor & epilepsy LITT",
+      "indications": [
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "littFocus": "Mount Sinai LITT surgeon and LAANTERN 787-patient co-author, publishing across epilepsy and tumor ablation.",
+      "representativeWorks": [
+        "LAANTERN multicenter analyses",
+        "Mount Sinai epilepsy- and tumor-LITT series"
+      ],
+      "hardNumbers": "",
+      "signal": "low",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://profiles.mountsinai.org/fedor-panov2",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
+    },
+    {
+      "id": "lega-bradley",
+      "rank": 25,
+      "name": "Bradley C. Lega, MD",
+      "institution": "UT Southwestern Medical Center — O'Donnell Brain Institute",
+      "location": "Dallas, TX, USA",
+      "specialty": "Epilepsy neurosurgery",
+      "primaryField": "Epilepsy LITT",
+      "indications": [
+        "focal_epilepsy",
+        "recurrent_gbm"
+      ],
+      "littFocus": "UT Southwestern epilepsy/functional surgeon and LAANTERN 787-patient co-author; contributor to LITT outcomes and stereo-EEG-guided ablation literature.",
+      "representativeWorks": [
+        "LAANTERN multicenter analysis (2024)",
+        "Stereo-EEG-guided LITT for focal epilepsy"
+      ],
+      "hardNumbers": "",
+      "signal": "low",
+      "affiliationConfidence": "high",
+      "sources": [
+        "https://profiles.utsouthwestern.edu/profile/153415/bradley-lega.html",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5456450"
+      ]
     }
   ]
 }

@@ -178,6 +178,11 @@
   .physsrc{color:var(--muted);font-size:12px;white-space:nowrap}
   .physsrc:hover{color:var(--cyan)}
   @media(max-width:1024px){#physGrid{grid-template-columns:1fr !important}}
+  .physavwrap{position:relative;flex:0 0 auto}
+  .physrank{position:absolute;top:-7px;left:-7px;min-width:21px;height:21px;padding:0 5px;border-radius:999px;background:var(--bg);border:1px solid var(--cyan);color:var(--cyan);font-size:10.5px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 8px rgba(43,212,255,.3)}
+  .physbadges .num{color:var(--green);border-color:rgba(30,215,96,.4)}
+  .physwork{font-size:11.5px;color:var(--muted);line-height:1.45}
+  .physwork span{color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:10px;margin-right:6px}
   @media(max-width:1024px){
     .app{grid-template-columns:64px minmax(0,1fr)}
     .brand h1,.brand .sub,.nav a .lbl,.side .foot,.btn span,.nav a .ct{display:none}
@@ -326,7 +331,7 @@
     <!-- PHYSICIANS VIEW -->
     <section id="view-physicians" class="hidden">
       <h2 class="viewhead">Physicians</h2>
-      <p class="viewsub">Curated roster of physicians and investigators active in laser interstitial thermal therapy and related neurosurgery. Coverage is deliberate — physicians are included for their standing in the field, not derived from paper authorship. Click an indication to jump to the matching evidence.</p>
+      <p class="viewsub">Ranked by prominence in LITT publishing and citation impact — a best-effort estimate from public sources and published bibliometrics, not exact counts (ordering is firmest in the top ~10). Each card links to related evidence; click an indication to filter, or “Refs” for sources.</p>
       <div class="controls">
         <input type="search" id="pq" placeholder="Search name, institution, specialty…" />
         <span class="viewsub" id="physCount" style="margin:0;align-self:center"></span>
@@ -599,7 +604,7 @@ function physInitials(n){return String(n||"").replace(/,.*$/,"").trim().split(/\
 function physShort(n){return String(n||"").replace(/,.*$/,"").trim();}
 function loadPhys(cb){
   if(PHYS!==null){cb();return;}
-  const done=d=>{const a=(d&&(d.physicians||d.items||d))||[];PHYS=Array.isArray(a)?a:[];cb();};
+  const done=d=>{const a=(d&&(d.physicians||d.items||d))||[];PHYS=Array.isArray(a)?a.slice().sort((x,y)=>(x.rank||999)-(y.rank||999)):[];cb();};
   if(window.__PHYS__){done(window.__PHYS__);return;}
   fetch("physicians.json").then(r=>r.ok?r.json():Promise.reject()).then(done).catch(()=>done([]));
 }
@@ -608,26 +613,34 @@ function renderPhysicians(){
   if(PHYS===null)grid.innerHTML='<div class="empty">Loading roster…</div>';
   loadPhys(()=>{
     const q=(($("#pq")||{}).value||"").toLowerCase().trim();
-    const list=PHYS.filter(p=>!q||[p.name,p.institution,p.specialty,p.location,p.littFocus,(p.indications||[]).map(indName).join(" ")].join(" ").toLowerCase().includes(q));
+    const list=PHYS.filter(p=>!q||[p.name,p.institution,p.specialty,p.location,p.littFocus,p.primaryField,(p.indications||[]).map(indName).join(" ")].join(" ").toLowerCase().includes(q));
     const cnt=$("#physCount");if(cnt)cnt.textContent=PHYS.length?(list.length+(list.length===1?" physician":" physicians")+(q?" of "+PHYS.length:"")):"";
     if(!PHYS.length){grid.innerHTML='<div class="empty">Physician roster unavailable.</div>';return;}
     if(!list.length){grid.innerHTML='<div class="empty">No physicians match your search.</div>';return;}
     grid.innerHTML=list.map(p=>{
       const rel=(DATA.items||[]).filter(it=>(it.indications||[]).some(k=>(p.indications||[]).includes(k))).length;
       const inds=(p.indications||[]).map(k=>`<span class="chip" data-ind="${esc(k)}">${esc(indName(k))}</span>`).join("");
-      const src=p.sourceUrl?`<a class="physsrc" href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">Profile ↗</a>`:"";
-      const unv=p.confidence==="low"?'<span class="pill" title="Current affiliation could not be fully verified">affiliation unverified</span>':"";
+      const srcUrl=(p.sources&&p.sources[0])||p.sourceUrl||"";
+      const src=srcUrl?`<a class="physsrc" href="${esc(srcUrl)}" target="_blank" rel="noopener">Refs ↗</a>`:"";
+      const unv=p.affiliationConfidence==="low"?'<span class="pill" title="Current affiliation could not be fully verified">affiliation unverified</span>':"";
+      const num=p.hardNumbers?`<span class="pill num" title="Verified figure from a published bibliometric">${esc(p.hardNumbers)}</span>`:"";
+      const pf=p.primaryField?`<span class="pill">${esc(p.primaryField)}</span>`:"";
+      const work=(p.representativeWorks&&p.representativeWorks[0])?`<div class="physwork"><span>Key work</span>${esc(p.representativeWorks[0])}</div>`:"";
       return `<div class="card physcard">
         <div class="physhead">
-          <div class="physav">${esc(physInitials(p.name))}</div>
+          <div class="physavwrap">
+            <div class="physav">${esc(physInitials(p.name))}</div>
+            ${p.rank?`<div class="physrank" title="Prominence rank (best-effort estimate)">#${esc(p.rank)}</div>`:""}
+          </div>
           <div class="physmeta">
             <div class="physname">${esc(p.name)}</div>
             <div class="physinst">${esc(p.institution||"")}</div>
             ${p.location?`<div class="physloc">${esc(p.location)}</div>`:""}
           </div>
         </div>
-        <div class="physbadges"><span class="pill spec">${esc(p.specialty||"")}</span>${unv}</div>
+        <div class="physbadges"><span class="pill spec">${esc(p.specialty||"")}</span>${pf}${num}${unv}</div>
         ${p.littFocus?`<p class="physfocus">${esc(p.littFocus)}</p>`:""}
+        ${work}
         ${inds?`<div class="chips physinds">${inds}</div>`:""}
         <div class="physfoot">
           <span class="physrel" data-phys="${esc(p.id||"")}">${rel} related finding${rel===1?"":"s"} →</span>

@@ -21,16 +21,20 @@ updates every view. `database.json` is the system of record: **144 findings** sp
 2012-2026, each dated, mapped to indications, and scored on two axes.
 
 ### Physicians roster
-A **Physicians** tab lists curated physicians/investigators active in LITT and related
-neurosurgery. It is backed by its own system of record, `physicians.json` — a *deliberate*
-KOL roster (not derived from paper authorship), so recognized figures appear whether or not
-they authored a tracked finding. Each physician is mapped to `database.json` indication keys,
-which powers the "related findings" cross-links and indication chips on every profile card.
-Affiliations are web-verified as of `physicians.json > lastUpdated`; a `confidence` flag marks
-entries whose current primary institution could not be confirmed (shown as an
-"affiliation unverified" badge). The hosted pages fetch `physicians.json`; the offline
-`*-standalone.html` builds embed the same roster as `window.__PHYS__`, so refreshing a
-standalone build means re-embedding the current `physicians.json`.
+A **Physicians** tab ranks physicians/investigators by their prominence in **LITT publishing
+and citation impact**, backed by its own system of record, `physicians.json`. The ordering is
+a *best-effort estimate* assembled from public web sources and published bibliometric analyses
+(programmatic citation databases — OpenAlex, PubMed, Semantic Scholar, Crossref — were not
+reachable), so `rankingBasis` in the file states the method plainly: placements are firmest in
+the top ~10 (senior authorship of the field's registries and landmark trials) and softer below,
+and only `hardNumbers` fields carry a verified figure (currently two, from the 2025 Frontiers
+in Neurology epilepsy-LITT bibliometric). Each physician is mapped to `database.json` indication
+keys, which powers the "related findings" cross-links and indication chips on every card; a
+`signal` field records ranking confidence and `affiliationConfidence: "low"` marks an
+unconfirmed current institution (shown as an "affiliation unverified" badge). The hosted pages
+fetch `physicians.json`; the offline `*-standalone.html` builds embed the same roster as
+`window.__PHYS__`, so refreshing a standalone build means re-embedding the current
+`physicians.json`.
 
 ### The two scoring axes
 - **Clinical Impact (★1–5):** an editorial rating against a fixed rubric in the engine spec
