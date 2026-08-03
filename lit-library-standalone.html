@@ -142,7 +142,7 @@
   tr.row:hover{background:rgba(43,212,255,.04)}
   .stars{color:var(--yellow);white-space:nowrap;letter-spacing:1px}
   .biz{font-weight:700;white-space:nowrap}
-  .tailwind{color:var(--green)}.headwind{color:var(--danger)}.neutral{color:var(--muted)}
+  .tailwind{color:var(--green)}.headwind{color:var(--danger)}.neutral{color:var(--muted)}.na{color:var(--muted);opacity:.6}
   body.physician .biz-only{display:none!important}
   body.physician #view-list thead th:nth-child(5),body.physician #view-list tbody td:nth-child(5){display:none}
   body.physician .internal-only{display:none!important}
@@ -303,7 +303,7 @@
         <select id="f-indication"><option value="">All indications</option></select>
         <select id="f-strategy"><option value="">All strategies</option></select>
         <select id="f-direction" class="biz-only"><option value="">Any direction</option>
-          <option value="tailwind">Tailwind (helps LITT)</option><option value="headwind">Headwind (hurts LITT)</option><option value="neutral">Neutral</option></select>
+          <option value="tailwind">Tailwind (helps LITT)</option><option value="headwind">Headwind (hurts LITT)</option><option value="neutral">Neutral</option><option value="na">N/A</option></select>
         <select id="f-impact"><option value="">All clinical impact</option><option value="5">★★★★★</option><option value="4">★★★★+</option><option value="3">★★★+</option></select>
         <select id="f-biz" class="biz-only"><option value="">All business impact</option><option value="9">9–10</option><option value="7">7+</option><option value="5">5+</option></select>
         <select id="f-sort"><option value="littBusinessImpact">Sort: business impact</option><option value="clinicalImpactScore">Sort: clinical impact</option><option value="date">Sort: date</option></select>
@@ -8335,7 +8335,8 @@ const $=s=>document.querySelector(s);
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const stars=n=>"★".repeat(+n||0)+"☆".repeat(Math.max(0,5-(+n||0)));
 const indName=k=>(TAX.indications||{})[k]||k, stratName=k=>(TAX.strategies||{})[k]||k;
-const dirSign=d=>d==="tailwind"?"▲":d==="headwind"?"▼":"■";
+const dirSign=d=>d==="tailwind"?"▲":d==="headwind"?"▼":d==="na"?"–":"■";
+const dirLabel=d=>d==="na"?"n/a":(d||"neutral");
 const fmtDate=d=>d||"";
 
 // classification helpers
@@ -8506,7 +8507,7 @@ function renderList(){
       ${rw("Indications",(it.indications||[]).map(indName).join(" · "))}
       ${PHYSICIAN?"":rw("Strategies",(it.strategies||[]).map(stratName).join(" · "))}
       ${rw("Clinical impact",stars(it.clinicalImpactScore)+" ("+(it.clinicalImpactScore)+"/5)",1)}
-      ${PHYSICIAN?"":rw("LITT business",`<span class="biz ${dir}">${dirSign(dir)} ${biz}/10 — ${esc(dir)}</span>`,1)}
+      ${PHYSICIAN?"":rw("LITT business",`<span class="biz ${dir}">${dirSign(dir)} ${biz}/10 — ${esc(dirLabel(dir))}</span>`,1)}
       ${PHYSICIAN?"":rw("Business levers",(it.businessLevers||[]).join(", "))+rw("Time horizon",it.timeHorizon)}
       ${PHYSICIAN?"":rw("Competitive impact",it.competitiveImpact)}${rw("Study design",it.studyDesign)}
       ${rw("Population",it.population)}${rw("Sample size",it.sampleSize)}${rw("Results",it.results)}

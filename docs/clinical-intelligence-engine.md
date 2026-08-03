@@ -270,8 +270,11 @@ must not be collapsed into one number:
 ### Axis 2 — LITT Business Impact Score (0–10) + Direction
 
 A single 0–10 magnitude for how strongly this moves the LITT business, paired with a
-**direction**: `tailwind` (strengthens LITT), `headwind` (weakens/displaces LITT), or
-`neutral` (matters but is direction-agnostic, e.g., shared category infrastructure).
+**direction**: `tailwind` (strengthens LITT), `headwind` (weakens/displaces LITT),
+`neutral` (matters but is direction-agnostic, e.g., shared category infrastructure), or
+`na` (business direction does not apply — a purely clinical, methodological, or educational
+item with no bearing on the LITT business; pair with a low 0–2 magnitude). Display label for
+`na` is "N/A".
 
 | Score | Meaning |
 | --- | --- |

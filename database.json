@@ -50,7 +50,7 @@
   "scoring": {
     "clinicalImpactScore": "Axis 1 — integer 1-5 stars: impact to the clinical discipline",
     "littBusinessImpact": "Axis 2 — integer 0-10: magnitude of effect on the LITT business",
-    "littBusinessDirection": "tailwind (strengthens LITT) | headwind (weakens/displaces) | neutral",
+    "littBusinessDirection": "tailwind (strengthens LITT) | headwind (weakens/displaces) | neutral (direction-agnostic) | na (does not apply — purely clinical/educational, no business bearing)",
     "verified": "verified | partial | unverified — provenance of the key figures"
   },
   "runs": [
