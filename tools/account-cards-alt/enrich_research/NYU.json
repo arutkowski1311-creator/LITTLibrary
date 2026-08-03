@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Peter A. Rozman",
+    "npi": "1811377393",
+    "identity": "Assistant Professor of Neurosurgery, NYU Grossman School of Medicine; stereotactic and functional / epilepsy neurosurgeon at the NYU Langone Comprehensive Epilepsy Center and Center for Neuromodulation (also NYC Health + Hospitals / Bellevue).",
+    "bio": "Peter Rozman is a young academic functional neurosurgeon at NYU Langone who focuses on epilepsy, movement disorders, and pain. He is fellowship-trained across the modern minimally invasive functional toolkit, including laser interstitial thermal therapy (LITT), robot-assisted stereo-EEG (SEEG), radiofrequency ablation, and MR-guided high-intensity focused ultrasound (HIFU). His research centers on intracranial electrophysiology of epilepsy networks, particularly temporal-pole and temporopolar seizure onset. He represents the incoming generation of NYU functional surgeons carrying the LITT program forward.",
+    "training": "Harvard Medical School (MD) · Neurosurgery residency, NYU Grossman School of Medicine / NYU Langone · Fellowship in stereotactic & functional neurosurgery and epilepsy surgery, Emory University · pedigree note: Harvard MD, NYU-trained, Emory functional/epilepsy fellowship — strong academic-functional lineage.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (ours)",
+    "litt_exposure": "Strong, direct. Claims show litt_perf 8 in the NeuroBlate (\"our equipment\") cohort, alongside SEEG (9) and epilepsy craniotomy (9). Explicitly fellowship-trained in LITT at Emory and lists laser ablation among his core minimally invasive techniques. An active NeuroBlate performer.",
+    "wheelhouse": "Epilepsy surgery, SEEG/robotic electrode implantation, LITT ablation, DBS/neuromodulation, movement disorders and pain; temporal-lobe and temporopolar epilepsy.",
+    "kol": false,
+    "kol_note": "Emerging, not yet a national KOL. Early-career (recently fellowship-trained); building a publication record in SEEG/temporopolar epilepsy. A high-value relationship to grow as he ramps NeuroBlate volume, but limited podium/authorship footprint so far.",
+    "recent_papers": [
+      {
+        "title": "Temporopolar epilepsy stereoEEG: implant technique and outcomes",
+        "journal": "Epilepsia Open",
+        "year": 2025,
+        "affinity": "med",
+        "note": "Multi-author SEEG methods/outcomes study with Rozman as a co-author; directly adjacent to LITT epilepsy targeting though the paper itself is about SEEG localization, not ablation."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["Early-career; thin verifiable publication trail beyond the temporopolar SEEG paper.", "Bio synthesized from NYU/aggregator listings; NYU Langone profile page not directly retrievable (403)."]
+  },
+  {
+    "name": "Dimitris G. Placantonakis",
+    "npi": "1174780498",
+    "identity": "Professor of Neurosurgery (and Cell Biology), NYU Grossman School of Medicine; surgical neuro-oncologist and Director of the Neurosurgical Laboratory for Stem Cell Research at NYU Langone (also NYC Health + Hospitals / Bellevue).",
+    "bio": "Dimitris Placantonakis is a senior physician-scientist and surgical neuro-oncologist at NYU Langone specializing in gliomas/glioblastoma, pituitary tumors, meningiomas, and brain metastases. He is a leading academic adopter of LITT for brain tumors, pioneering awake laser ablation for tumors in eloquent cortex and combining LITT with neoadjuvant PD1 immune-checkpoint blockade for recurrent high-grade glioma. As an MD-PhD he runs a well-funded glioma stem-cell laboratory (GPR133 and glioblastoma biology). He was a site investigator in Monteris's LAANTERN NeuroBlate registry, making him one of the strongest tumor-LITT champions in the region.",
+    "training": "NYU School of Medicine, Medical Scientist Training Program (MD, PhD, 2003) · Neurosurgery internship Weill Cornell, residency Memorial Sloan Kettering Cancer Center / Weill Cornell (NewYork-Presbyterian), completed 2010 · Postdoctoral fellowship in human embryonic stem-cell biology with Lorenz Studer & Viviane Tabar at MSKCC · pedigree note: NYU MSTP + Cornell/MSK neurosurgery + Studer/Tabar stem-cell training — elite physician-scientist lineage.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (ours)",
+    "litt_exposure": "Strong, direct and thought-leading. Claims show litt_perf 5 in the NeuroBlate (\"our equipment\") cohort plus mets/RN volume (8). Multiple peer-reviewed LITT publications (awake laser ablation technique; LITT+neoadjuvant PD1 for recurrent HGG; LITT penumbra cell-death biology) and named co-author on the Monteris LAANTERN NeuroBlate glioblastoma registry analysis. A NeuroBlate power user and evangelist.",
+    "wheelhouse": "Surgical neuro-oncology: glioblastoma/glioma, brain metastases, pituitary and skull-base tumors, meningioma; awake mapping, LITT/laser ablation, focused ultrasound, tubular retractor and endoscopic approaches; glioma stem-cell research.",
+    "kol": true,
+    "kol_note": "Yes — genuine tumor-LITT KOL. Publishes on LITT technique and LITT+immunotherapy combinations, directs an NIH-caliber glioma stem-cell lab, and was a LAANTERN (NeuroBlate) registry investigator. Ideal reference user, podium speaker, and clinical-evidence partner for NeuroBlate in neuro-oncology.",
+    "recent_papers": [
+      {
+        "title": "Efficacy of laser interstitial thermal therapy (LITT) for newly diagnosed and recurrent IDH wild-type glioblastoma",
+        "journal": "Neuro-Oncology Advances",
+        "year": 2022,
+        "affinity": "high",
+        "note": "LAANTERN prospective multicenter NeuroBlate registry (NCT02392078) analysis; Placantonakis is a listed co-author — directly tied to our platform's evidence base."
+      },
+      {
+        "title": "Neoadjuvant PD1 blockade with laser interstitial thermal therapy for recurrent high-grade glioma",
+        "journal": "Journal of Clinical Neuroscience",
+        "year": 2025,
+        "affinity": "high",
+        "note": "Case series (9 patients) pairing LITT with pembrolizumab in recurrent HGG; Placantonakis co-author. Positions LITT as an immuno-oncology enabler."
+      },
+      {
+        "title": "Awake Laser Ablation for Patients With Tumors in Eloquent Brain Areas: Operative Technique and Case Series",
+        "journal": "Cureus",
+        "year": 2020,
+        "affinity": "high",
+        "note": "Senior/last author (NYU group, 6-patient series) describing awake LITT to preserve eloquent function — an original technique contribution."
+      },
+      {
+        "title": "In vitro evidence for glioblastoma cell death in temperatures found in the penumbra of laser-ablated tumors",
+        "journal": "Journal of Neuro-Oncology",
+        "year": 2020,
+        "affinity": "med",
+        "note": "Mechanistic lab study on thermal-dose cytotoxicity from Placantonakis's group; underpins the biology of LITT ablation margins."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["Neoadjuvant-PD1 paper year/journal (J Clin Neurosci) taken from PubMed/search metadata; treat exact issue as approximate."]
+  },
+  {
+    "name": "Eveline Teresa Hidalgo",
+    "npi": "1205233053",
+    "identity": "Pediatric neurosurgeon and Director of Clinical Research for Pediatric Neurosurgery, Hassenfeld Children's Hospital / NYU Langone; faculty, NYU Grossman School of Medicine (also NYC Health + Hospitals / Bellevue). Packet name \"Teresa Hidalgo\" resolves to Eveline Teresa Hidalgo, MD.",
+    "bio": "Eveline Teresa Hidalgo is a pediatric neurosurgeon at NYU Langone's Hassenfeld Children's Hospital who specializes in pediatric epilepsy surgery and pediatric brain tumors. She co-leads the pediatric surgical epilepsy program and directs clinical research for pediatric neurosurgery, with a scholarly focus on surgical epilepsy outcomes in children and global-health access to epilepsy surgery. Because pediatric drug-resistant epilepsy is a core LITT indication and NYU is a NeuroBlate site, she is a plausible pediatric LITT performer, though the packet carries no NPI/claims to confirm her personal caseload.",
+    "training": "University of Bern Faculty of Medicine, Switzerland (MD) · Neurosurgery training and pediatric neurosurgery subspecialization (fellowship-trained pediatric neurosurgeon) · pedigree note: European (Bern) medical training; specific US residency/fellowship sites not verified in this pass — do not overstate.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "Flagged as a Performer but not independently verified. No NPI or claims were provided in the packet; identity was disambiguated by name+institution. She is a pediatric epilepsy surgeon at NYU (a NeuroBlate institution), so pediatric LITT is clinically plausible, but no claims signal or publication in this pass directly documents a personal LITT caseload or platform.",
+    "wheelhouse": "Pediatric neurosurgery: drug-resistant pediatric epilepsy surgery, pediatric brain tumors, surgical epilepsy outcomes research and global epilepsy-surgery access.",
+    "kol": false,
+    "kol_note": "Academic pediatric-epilepsy researcher (surgical outcomes, global health) and program co-leader, but not established as a LITT-specific KOL. Potential pediatric-epilepsy LITT reference if personal ablation experience can be confirmed.",
+    "recent_papers": [],
+    "candidacy": null,
+    "confidence": "low",
+    "flags": ["No NPI in packet; NPI 1205233053 and full name (Eveline Teresa Hidalgo) sourced from NYU/aggregator listings — verify before use.", "Performer role unconfirmed: no claims and no direct evidence of a personal LITT platform; litt_house left 'unknown'.", "Training details beyond University of Bern MD not verified; residency/fellowship sites intentionally omitted."]
+  },
+  {
+    "name": "Donato R. Pacione",
+    "npi": "1952594426",
+    "identity": "Assistant Professor of Neurosurgery, NYU Grossman School of Medicine; skull-base and complex-spine neurosurgeon, NYU Langone Pituitary Center (joined faculty 2013).",
+    "bio": "Donato Pacione is a skull-base and complex-spine neurosurgeon at NYU Langone who focuses on pituitary adenomas, meningiomas, craniopharyngiomas, schwannomas, chordomas, and metastatic lesions, with an emphasis on minimally invasive endoscopic endonasal and MRI-guided techniques. He graduated as medical-school valedictorian and AOA in 2006 and has co-authored roughly 90 peer-reviewed papers, concentrated in endoscopic endonasal skull-base surgery, antibiotic prophylaxis, and open-vs-endonasal anatomic approaches. His practice is anatomically centered on the skull base and spine rather than the deep-seated or eloquent parenchymal targets where LITT is typically used.",
+    "training": "Medical school (MD, 2006; valedictorian, Alpha Omega Alpha) · Neurosurgery residency followed by joining the NYU faculty practice in 2013; subspecialty focus in skull-base and complex spine surgery · pedigree note: specific medical-school, residency, and fellowship institutions not verified in this pass — stated facts limited to valedictorian/AOA 2006 and NYU faculty since 2013.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Claims classify him as a LITT-naïve craniotomy surgeon (tumor_cranio 1, mets_rn 2); his documented practice and publications are skull-base/endonasal and spine, with no laser-ablation footprint.",
+    "wheelhouse": "Skull-base surgery (pituitary adenoma, meningioma, craniopharyngioma, chordoma, schwannoma), endoscopic endonasal approaches, complex/deformity spine, metastatic skull-base disease.",
+    "kol": false,
+    "kol_note": "Recognized skull-base/spine surgeon and prolific co-author (~90 papers, endonasal skull base), but not a LITT voice. Any influence would be as a referrer or intracranial-tumor colleague, not an ablation champion.",
+    "recent_papers": [
+      {
+        "title": "Effect of surgical site preparation on pathogenic bacteria at the skull base in endoscopic endonasal surgery",
+        "journal": "Journal of Neurological Surgery Part B: Skull Base",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Endonasal infection-prevention study; representative of his skull-base focus, no LITT relevance."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Low-to-moderate development target",
+      "rationale": "Anatomic-fit is weak: his caseload is skull-base/endonasal and complex spine, whereas NeuroBlate's sweet spots are deep/eloquent tumors, metastases with radiation necrosis, and epilepsy foci — areas largely covered at NYU by Placantonakis and the functional team. He does see meningiomas and metastatic lesions (some of which can be LITT candidates), and he already embraces MRI-guided, minimally invasive technology, so he is technology-receptive. But with LITT champions already entrenched in his own department, he is more likely a referral source into the NeuroBlate program than a new personal adopter. Prioritize below the functional/neuro-onc naive targets."
+    },
+    "confidence": "medium",
+    "flags": ["Exact medical-school/residency/fellowship institutions not verified; training entry deliberately conservative.", "'~90 papers' and 2006 valedictorian/AOA from aggregator/Becker's profiles, not primary CV."]
+  },
+  {
+    "name": "Dennis London",
+    "npi": "1376078238",
+    "identity": "Assistant Professor of Neurosurgery, NYU Grossman School of Medicine; stereotactic & functional neurosurgeon at NYU Langone's Center for Neuromodulation (also NYC Health + Hospitals).",
+    "bio": "Dennis London is a newly appointed functional/neuromodulation neurosurgeon at NYU Langone who treats movement disorders (Parkinson's disease, essential tremor, dystonia), epilepsy, and select psychiatric conditions. He is trained in the full functional armamentarium — DBS, responsive neurostimulation (RNS), MR-guided focused ultrasound, laser ablation, and robotic/MRI-guided procedures — having just completed a stereotactic & functional fellowship at Stanford. His research background is in human single-neuron electrophysiology of the subthalamic nucleus and action planning in Parkinson's disease. As an early-career functional surgeon at a NeuroBlate site, he is a prime LITT growth target.",
+    "training": "Princeton University (A.B., Molecular Biology / Quantitative & Computational Neuroscience, summa cum laude, 2014) · New York University School of Medicine (MD, 2017) · Neurosurgery residency, NYU Grossman School of Medicine (2017–2024) · Fellowship in Stereotactic & Functional Neurosurgery, Stanford University (2025) · pedigree note: Princeton → NYU MD → NYU neurosurgery → Stanford functional — strong functional/academic pedigree.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "LITT-naïve in claims (epi_cranio 1; classified LITT-naïve craniotomy surgeon) — expected given he only entered independent practice in 2025. However, he lists laser ablation among his trained modalities from his Stanford functional fellowship, so he has hands-on exposure but no independent NeuroBlate case volume yet.",
+    "wheelhouse": "Stereotactic & functional neurosurgery: DBS, RNS, focused ultrasound, laser ablation for epilepsy/movement disorders; drug-resistant epilepsy; single-neuron electrophysiology / neural-circuit research.",
+    "kol": false,
+    "kol_note": "Not yet a KOL — early career, but strong research credentials (eLife single-neuron STN work) and an academic functional platform make him a rising voice worth cultivating early.",
+    "recent_papers": [
+      {
+        "title": "Distinct population code for movement kinematics and changes of ongoing movements in human subthalamic nucleus",
+        "journal": "eLife",
+        "year": 2021,
+        "affinity": "low",
+        "note": "First-author human STN single-neuron study (DBS-implant patients). High-caliber functional-neuroscience work but subject is movement planning, not LITT."
+      }
+    ],
+    "candidacy": {
+      "assessment": "High-priority development target",
+      "rationale": "Best LITT-adoption fit among the NYU naive cohort. He is a dedicated stereotactic/functional and epilepsy surgeon — exactly the profile that drives LITT ablation of mesial-temporal foci, hypothalamic hamartomas, and deep lesions — and he is already trained in laser ablation from his Stanford fellowship, so the clinical and technical barrier is low. As a brand-new independent surgeon (practice started 2025) building volume at an established NeuroBlate site, he is choosing his platform habits now; early engagement, proctoring, and case support could make NeuroBlate his default. Pair with Rozman/Placantonakis as internal champions."
+    },
+    "confidence": "medium",
+    "flags": ["Very early career (independent since 2025); limited independent case data by design.", "Laser-ablation training inferred from his listed modality set and Stanford functional fellowship; personal LITT case volume not yet documented in claims."]
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Fedor Panov",
+    "npi": "1962661686",
+    "identity": "Fedor E. Panov, MD — Associate Professor of Neurosurgery & Director, Adult Epilepsy Surgery Program, Mount Sinai Health System / Icahn School of Medicine (New York, NY).",
+    "bio": "Board-certified functional/epilepsy neurosurgeon whose practice centers on the surgical treatment of drug-resistant epilepsy and movement disorders. Case mix is dominated by minimally invasive epilepsy work — stereo-EEG (SEEG) mapping, laser ablation (LITT), responsive neurostimulation (RNS), and DBS/focused ultrasound — consistent with claims showing very high SEEG (91) and epilepsy craniotomy (122) volume plus a smaller but real LITT footprint (8). He directs Mount Sinai's adult epilepsy surgery program and has published 50+ manuscripts in epilepsy/neuromodulation.",
+    "training": "MD, Sidney Kimmel/Jefferson Medical College (Thomas Jefferson University), Philadelphia · Neurosurgery residency, Icahn School of Medicine at Mount Sinai · Fellowships: Epilepsy Neurosurgery, UCSF (Edward Chang) and Movement Disorders Neurosurgery, UCSF (Philip Starr / Paul Larson) · Pedigree note: UCSF Chang/Starr functional-neurosurgery lineage — a top-tier epilepsy/functional pedigree.",
+    "litt_house": "Visualase (Medtronic) — inferred. Packet cohort tags Panov's LITT claims as 'LITT — Competitor Equipment,' indicating the platform in his hands is the competitor. Not independently confirmed on a Mount Sinai capital-equipment source; Mount Sinai runs a full minimally-invasive epilepsy program.",
+    "litt_platform": "Visualase (Medtronic) — competitor equipment per claims cohort.",
+    "litt_exposure": "Hands-on LITT operator. Claims show litt_perf = 8 ablations, embedded in a high-volume SEEG-driven epilepsy program (seeg 91, epi_cranio 122) that he directs, so LITT is used as the ablation arm after SEEG localization (mesial temporal, insular, hypothalamic hamartoma, SEEG-guided focus ablation are program indications). No LITT-specific paper was verified under his direct authorship, so evidence is claims + program role rather than a citable LITT publication.",
+    "wheelhouse": "SEEG-first functional/epilepsy neurosurgeon — minimally invasive epilepsy surgery with laser ablation + neuromodulation (RNS/DBS).",
+    "kol": true,
+    "kol_note": "Directs the Adult Epilepsy Surgery Program at Mount Sinai and runs its neurosurgery pre-residency fellowship; 50+ publications across epilepsy neuromodulation/SEEG (PNAS, Neurosurgery, Ann Clin Transl Neurol, J Neurosurg Pediatr). Regional academic KOL in functional/epilepsy neurosurgery, though not a published LITT-technique thought leader specifically.",
+    "recent_papers": [
+      {
+        "title": "Deep anomaly detection of seizures with paired stereoelectroencephalography and video recordings",
+        "journal": "Scientific Reports (Nature)",
+        "year": 2021,
+        "affinity": "med",
+        "note": "Panov F co-author (Martini ML et al.). SEEG workflow/analytics — core to his LITT candidate-identification pipeline."
+      },
+      {
+        "title": "Centromedian thalamic responsive neurostimulation for Lennox-Gastaut epilepsy and autism",
+        "journal": "Annals of Clinical and Translational Neurology",
+        "year": 2020,
+        "affinity": "med",
+        "note": "Kwon CS, ... Panov F, Ghatan S. Functional/epilepsy neuromodulation — same drug-resistant-epilepsy population LITT serves."
+      },
+      {
+        "title": "Treatment of medically refractory seizures with responsive neurostimulation: 2 pediatric cases",
+        "journal": "Journal of Neurosurgery: Pediatrics",
+        "year": 2018,
+        "affinity": "low",
+        "note": "Kokoszka MA, Panov F, La Vega-Talbott M, McGoldrick PE, Wolf SM, Ghatan S. Early RNS case series; adjacent neuromodulation, not LITT."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": [
+      "CONVERSION TARGET: currently runs LITT on Visualase (Medtronic) per claims cohort 'LITT — Competitor Equipment' — he is a Performer on the competitor, not NeuroBlate-naive.",
+      "Very high SEEG (91) / epilepsy-craniotomy (122) volume with only 8 LITT cases = large under-penetrated ablation pipeline; strong displacement/expansion opportunity for NeuroBlate.",
+      "litt_house/litt_platform (Visualase) is inferred from the claims cohort tag, not verified on a Mount Sinai equipment source — confirm the physical laser platform on-site.",
+      "NPI 1962661686 consistent with Fedor E. Panov, neurosurgery, NY (live NPPES lookup blocked by proxy; disambiguation via name+institution+state, single MSSM physician, no duplicate).",
+      "No LITT-specific publication confirmed under his authorship despite 50+ papers — he is an epilepsy/neuromodulation KOL, not a LITT-technique author."
+    ]
+  }
+]

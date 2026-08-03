@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Scott Shepard",
+    "npi": "1346359841",
+    "merges": [],
+    "identity": "Scott R. Shepard, MD — Associate Professor of Clinical Neurosurgery, Lewis Katz School of Medicine at Temple University; Director of Neurosurgical Oncology, Temple University Hospital, Philadelphia PA. Confirmed via NPI 1346359841 and Temple Health directory.",
+    "bio": "Scott Shepard leads neurosurgical oncology at Temple University Hospital, focusing on brain tumors, brain metastases, and skull lesions treated with a combination of open surgery, stereotactic/Gamma Knife radiosurgery, and laser interstitial thermal therapy (LITT). He is Temple's public-facing spokesperson for LITT, having discussed the minimally invasive laser approach for seizure foci and hard-to-reach tumors in Temple Health's 'Moves in Medicine' and 6abc Action News segments. Claims data show him performing LITT on Monteris NeuroBlate for brain metastases, a high-volume metastasis practice. He came to Temple from UT Houston/Memorial Hermann after fellowship at Memorial Sloan Kettering.",
+    "training": "Weill Cornell Medical College (MD) · General surgery internship NewYork-Presbyterian, neurosurgery residency UC San Francisco · Surgical neuro-oncology fellowship Memorial Sloan Kettering Cancer Center · Strong onc pedigree (UCSF residency + MSKCC surgical neuro-onc).",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "Monteris NeuroBlate",
+    "litt_exposure": "Strong. Claims show LITT performed on NeuroBlate (litt_perf=1) within a high-volume brain-metastasis practice (mets_rn=70). Publicly promotes LITT for tumors and epilepsy foci in Temple Health / 6abc media as institutional LITT spokesperson.",
+    "wheelhouse": "Neurosurgical oncology, brain metastases, primary brain tumors, stereotactic/Gamma Knife radiosurgery, LITT for tumors, neurosurgical critical care.",
+    "kol": true,
+    "kol_note": "Institutional-level KOL: Director of Neurosurgical Oncology and Temple's media spokesperson for LITT. Influence is clinical/programmatic and regional; verifiable peer-reviewed first-author output appears thin (note: 'Shepard SR' brain-mets/SRS papers in search results trace to Matthew Shepard at UVA, a different person — not attributed here).",
+    "recent_papers": [],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["Performer role — candidacy null.", "Publication record unverified/thin; did NOT attribute Matthew Shepard (UVA) papers to him.", "Ours (NeuroBlate) — protect/grow account; already an active user and advocate."]
+  },
+  {
+    "name": "Willard Kasoff",
+    "npi": "1225214166",
+    "merges": ["Willard S Kasoff", "Willard Stein Kasoff"],
+    "identity": "Willard Stein Kasoff, MD, MPH — Associate Professor of Neurosurgery, Lewis Katz School of Medicine; Director of Stereotactic and Functional Neurosurgery, Temple University Hospital, Philadelphia PA. Packet NPI was null; NPI 1225214166 recovered from public directories (healthcare4ppl/NPPES). Two packet records ('Willard Kasoff' Performer + 'Willard S Kasoff' Development target) merged to one person.",
+    "bio": "Willard Kasoff directs stereotactic and functional neurosurgery at Temple, specializing in surgery for complex disorders of brain function — epilepsy, movement disorders (Parkinson's, essential tremor, dystonia), and pain — including deep brain stimulation and epilepsy surgery. His epilepsy/functional practice (SEEG-guided workup, mesial temporal and lesional ablation) makes him a natural LITT operator, and he is part of Temple's Comprehensive Epilepsy Center multidisciplinary team. He trained in epilepsy and functional/stereotactic neurosurgery at Yale and Emory. A 2024 CV appears in an FDA advisory-panel document, indicating regulatory/advisory engagement.",
+    "training": "Albert Einstein College of Medicine (MD, with distinction in epilepsy research; also MPH in health policy) · Neurological surgery residency Yale-New Haven / Yale School of Medicine · Fellowship in functional & stereotactic neurosurgery and epilepsy, Emory University School of Medicine (with Yale epilepsy-surgery training) · Functional/epilepsy pedigree (Yale + Emory).",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "Indirect/strong-fit but unconfirmed. Epilepsy + functional/stereotactic wheelhouse (SEEG, mesial temporal targets) is the core LITT use case, and packet lists him as a Performer, but there are no LITT claims and no evidence naming a specific platform. Platform (NeuroBlate vs. Visualase) undetermined.",
+    "wheelhouse": "Epilepsy surgery, stereotactic & functional neurosurgery, deep brain stimulation, movement disorders, pain; SEEG and lesional/mesial-temporal ablation.",
+    "kol": true,
+    "kol_note": "Functional-neurosurgery program leader (Director of Stereotactic & Functional Neurosurgery) active in DBS/epilepsy media at Temple; 2024 CV surfaced in an FDA panel document, suggesting advisory/regulatory involvement. Regional/functional-neuromodulation KOL.",
+    "recent_papers": [],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["Data inconsistency: canonical record tagged 'Performer' but in_claims=false with no NPI and no LITT claims — packet role kept, so candidacy null, but LITT usage is inferred, not proven.", "NPI (1225214166) recovered from public directory, not from packet — verify against NPPES.", "Med-school graduation year conflicting across sources (~2000 vs 2005); training presented from best-supported sources.", "Highest-fit epilepsy-LITT profile at TUH — confirm platform; risk/opportunity for NeuroBlate on the epilepsy side."]
+  },
+  {
+    "name": "Eric Quach",
+    "npi": "1871974469",
+    "merges": ["Eric T Quach"],
+    "identity": "Eric T. Quach, MD — cerebrovascular/endovascular and skull base neurosurgeon, Temple University Hospital, Philadelphia PA. Confirmed via NPI 1871974469 (matches both packet records). Two packet records ('Eric Quach' Performer + 'Eric T Quach' Development target, same NPI) merged to one person.",
+    "bio": "Eric Quach is an early-career Temple neurosurgeon specializing in open and endovascular cerebrovascular disease — brain aneurysms, subarachnoid hemorrhage, moyamoya, bypass, carotid stenosis, AVMs, cavernous malformations, dural AV fistulas — and skull base surgery. He completed Temple neurosurgery residency plus endovascular and cerebrovascular/skull base fellowships. Claims show him performing LITT on Monteris NeuroBlate for a small number of brain-metastasis cases, indicating incidental/emerging tumor-ablation exposure alongside his vascular core. His publication record centers on middle meningeal artery embolization for subdural hematoma and cerebrovascular case reports.",
+    "training": "Lewis Katz School of Medicine at Temple University (MD) · Neurosurgery residency Temple University Hospital (2015–2022) · Fellowships: Endovascular Surgical Neuroradiology, Temple University Hospital (2021–2022); Cerebrovascular & Skull Base Surgery, Zucker School of Medicine at Hofstra/Northwell (2022–2023) · Dual open + endovascular cerebrovascular pedigree.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "Monteris NeuroBlate",
+    "litt_exposure": "Present but low-volume. Claims show NeuroBlate LITT for brain metastases (mets_rn=3). LITT is adjacent to, not central to, his cerebrovascular/endovascular wheelhouse.",
+    "wheelhouse": "Cerebrovascular (open + endovascular): aneurysms, SAH, moyamoya, bypass, carotid stenosis, AVM/cavernoma, dural AV fistula; skull base surgery.",
+    "kol": false,
+    "kol_note": "Early-career; not yet a KOL. Publishing actively in cerebrovascular/endovascular topics but no LITT thought-leadership footprint.",
+    "recent_papers": [
+      {
+        "title": "Proximal Onyx embolization of the middle meningeal artery (POEM) technique for non-acute subdural hematomas: a single-center study of 123 patients using the Scepter dual-lumen balloon microcatheter",
+        "journal": "Journal of NeuroInterventional Surgery (journal to verify)",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Cerebrovascular/endovascular; unrelated to LITT. Journal/year approximate — verify exact citation."
+      },
+      {
+        "title": "Intravenous cangrelor infusion for the treatment of traumatic intracranial internal carotid artery dissection: illustrative case",
+        "journal": "Journal of Neurosurgery: Case Lessons",
+        "year": 2023,
+        "affinity": "low",
+        "note": "Cerebrovascular case report; unrelated to LITT."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["Performer role (NPI matches both records) — candidacy null.", "Ours (NeuroBlate), low LITT volume — growth potential if tumor/vascular ablation caseload expands.", "Paper journal/year for POEM study approximate — confirm exact citation before external use."]
+  },
+  {
+    "name": "Kadir Erkmen",
+    "npi": null,
+    "merges": [],
+    "identity": "Kadir Erkmen, MD, FAANS — Professor and Vice Chairman of Neurosurgery, Director of Cerebrovascular Surgery, and Neurosurgery Residency Program Director, Lewis Katz School of Medicine / Temple University Hospital, Philadelphia PA. Packet NPI null; identity confirmed via Temple Health directory and ResearchGate. Development target.",
+    "bio": "Kadir Erkmen is a senior cerebrovascular and skull base neurosurgeon and a major institutional leader at Temple — Vice Chairman, Director of Cerebrovascular Surgery, and Residency Program Director — and a longstanding Castle Connolly Top Doctor. His practice centers on cerebral aneurysms (clipping/coiling), AVMs, carotid disease, and complex skull base tumors including meningiomas; his published work is in skull base approaches and vascular neurosurgery. He is not a LITT operator: no claims and no LITT footprint, and his open vascular/skull base focus sits outside laser ablation. His strategic value is as a high-influence gatekeeper, referrer, and trainer of residents rather than as a device user.",
+    "training": "University of Maryland School of Medicine (MD) · Neurosurgery residency Brigham and Women's Hospital / Boston Children's Hospital, Harvard Medical School · Fellowship in skull base & vascular neurosurgery, University of Arkansas for Medical Sciences · Strong pedigree (Harvard/BWH residency + dedicated skull base/vascular fellowship).",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence. Vascular/skull base open-surgery focus; no LITT claims and no laser-ablation footprint.",
+    "wheelhouse": "Cerebrovascular surgery (aneurysm clipping, bypass, AVM, carotid), complex skull base tumors and meningiomas; residency education and departmental leadership.",
+    "kol": true,
+    "kol_note": "High-influence academic KOL: Professor, Vice Chairman, Director of Cerebrovascular Surgery, and Residency Program Director; Castle Connolly Top Doctor since 2014. Publishes in skull base/vascular neurosurgery; shapes trainee practice patterns.",
+    "recent_papers": [
+      {
+        "title": "The petrosal approach for the resection of a giant retrochiasmatic craniopharyngioma: 2-dimensional operative video",
+        "journal": "Operative Neurosurgery",
+        "year": 2021,
+        "affinity": "low",
+        "note": "Skull base open surgery; adjacent lesion territory but not a LITT case."
+      },
+      {
+        "title": "Skull base approaches for posterior circulation aneurysms",
+        "journal": "Skull Base",
+        "year": 2006,
+        "affinity": "low",
+        "note": "Cerebrovascular/skull base; PubMed 17170966. Older but characteristic of his focus."
+      },
+      {
+        "title": "Surgical management of petroclival meningiomas: factors determining the choice of approach",
+        "journal": "Neurosurgical Focus",
+        "year": 2005,
+        "affinity": "low",
+        "note": "Skull base meningioma approaches; representative career work, not LITT."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Low direct-LITT affinity, high strategic value — cultivate as an influencer/gatekeeper rather than an operator.",
+      "rationale": "Erkmen is a vascular/skull base surgeon with no evidence of laser ablation, so he is unlikely to become a personal NeuroBlate user. But as Vice Chairman, Director of Cerebrovascular Surgery, and Residency Program Director he controls departmental direction, referral routing, and how residents are trained — the exact levers that grow (or starve) a LITT program. Development value lies in relationship-building and steering appropriate deep/eloquent or recurrent tumor cases toward NeuroBlate colleagues (Shepard) and toward the epilepsy service (Kasoff), plus embedding LITT in resident exposure. Competitive note: no Visualase/Medtronic attachment observed, so no incumbent to displace."
+    },
+    "confidence": "high",
+    "flags": ["Development target — candidacy provided.", "NPI not in packet and not verified here (null).", "Not a LITT user; value is influence/referral/education, not device adoption.", "Papers are older/skull-base; low LITT affinity by design."]
+  }
+]

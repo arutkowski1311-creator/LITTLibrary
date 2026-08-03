@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Catherine Wassef",
+    "npi": null,
+    "identity": "Pediatric Neurosurgeon, Nemours Children's Health, Wilmington, DE (Nemours Children's Hospital, Delaware).",
+    "bio": "Wassef is a fellowship-trained pediatric neurosurgeon who joined Nemours' Delaware division as an early-career attending. Her self-described clinical focus is epilepsy surgery and minimally invasive approaches to brain surgery, which she pursued specifically through her pediatric neurosurgery fellowship at Children's Hospital Colorado (a high-volume epilepsy/ablation center). As a brand-new attending her independent case mix is not yet reflected in claims data, but her stated orientation points toward the intractable-epilepsy and lesional case types most amenable to stereotactic laser ablation.",
+    "training": "Lewis Katz School of Medicine at Temple University (MD, 2016) · General surgery internship, Duke University Hospital (2016-2017) · Neurological Surgery residency, University of Rochester Medical Center (2017-2024) · Pediatric Neurosurgery fellowship, Children's Hospital Colorado / University of Colorado (2024-2025); also a research fellowship at The Royal Melbourne Hospital · Pedigree note: Rochester neurosurgery training plus a Children's Colorado peds-epilepsy fellowship, a program with a mature minimally invasive/laser-ablation practice.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "Indirect, training-based. Her fellowship (Children's Hospital Colorado) and self-stated subspecialty in epilepsy and minimally invasive brain surgery make hands-on LITT exposure during fellowship plausible, but there is no published paper, case series, or bio statement that directly documents her personally performing LITT. Treat as 'trained at a LITT-active center; no direct verified LITT experience.'",
+    "wheelhouse": "Early-career pediatric epilepsy / minimally invasive surgeon",
+    "kol": false,
+    "kol_note": "No evidence of KOL status yet — too early in career; no verifiable authored publication record, society leadership, or podium/registry presence located.",
+    "recent_papers": [],
+    "candidacy": null,
+    "confidence": "low",
+    "flags": [
+      "no-claims: in_claims=false — brand-new attending (fellowship completed ~2025), no independent claims signal yet; role 'Performer' is inferred from stated subspecialty, not from procedure claims.",
+      "unverifiable: no NPI located; no specific authored publications confirmed; institution LITT platform (NeuroBlate vs Visualase) not confirmed from public sources.",
+      "Highest-value early-relationship target at this account: fellowship-trained epilepsy/MIS focus aligns directly with LITT even though hands-on experience is unconfirmed."
+    ]
+  },
+  {
+    "name": "Joseph Piatt",
+    "npi": "1245228220",
+    "identity": "Chief, Division of Neurosurgery (Pediatric Neurosurgery), Nemours Children's Health, Wilmington, DE; Professor of Neurological Surgery & Pediatrics, Sidney Kimmel Medical College, Thomas Jefferson University.",
+    "bio": "Piatt is a senior, academically prominent pediatric neurosurgeon who has led the Nemours (A.I. duPont) division in Wilmington since 2010 after prior chief roles at St. Christopher's Hospital for Children (Philadelphia) and OHSU. His clinical practice centers on hydrocephalus, Chiari malformation/syringomyelia, spinal dysraphism, craniosynostosis, pediatric craniospinal trauma, and primary brain tumors. His scholarly output is dominated by epidemiology and outcomes research (hydrocephalus, trauma triage, quality improvement) rather than device-driven or ablation surgery. Claims show a modest epilepsy footprint (SEEG and epilepsy-related craniotomy), consistent with a general pediatric practice rather than a dedicated laser-ablation program.",
+    "training": "University of Pennsylvania (MD) · Neurosurgery residency, Duke University · Pediatric neurosurgery fellowship, The Hospital for Sick Children, Toronto (while on active U.S. Army duty) · Pedigree note: Swarthmore College undergrad; Penn/Duke/SickKids lineage; long-tenured division chief and prolific academic (FAANS).",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Cohort flag is 'LITT-Naïve Craniotomy Surgeon.' His publication record and clinical bio show open/traditional pediatric neurosurgery (hydrocephalus, trauma, dysraphism, craniosynostosis) with no laser-ablation authorship or program involvement located.",
+    "wheelhouse": "Senior academic generalist pediatric neurosurgeon / epidemiology & outcomes researcher; open-surgery and hydrocephalus focus",
+    "kol": true,
+    "kol_note": "Genuine academic KOL — named professor at Sidney Kimmel/Jefferson, long-standing division chief, and a prolific, frequently cited author on pediatric neurosurgical epidemiology, hydrocephalus outcomes, and quality improvement. KOL influence is in health-services/epidemiology, not in ablation technology.",
+    "recent_papers": [
+      {
+        "title": "Thirty-day outcomes of surgery for hydrocephalus: metrics in a large cohort from the National Surgical Quality Improvement Program-Pediatric",
+        "journal": "Journal of Neurosurgery: Pediatrics",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Large-cohort outcomes/epidemiology on hydrocephalus surgery; representative of his methods focus, not LITT-related."
+      },
+      {
+        "title": "Social determinants of health in pediatric neurosurgery: reflections from the trauma literature",
+        "journal": "Journal of Neurosurgery: Pediatrics",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Health-services/trauma commentary; no device or ablation relevance."
+      },
+      {
+        "title": "Overtriage of transfers to the pediatric trauma center: the importance of minor head injury",
+        "journal": "Journal of Neurosurgery: Pediatrics",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Trauma-system epidemiology; illustrates non-ablation research direction."
+      },
+      {
+        "title": "Clinical factors associated with need for neurosurgical care in young children with imaging for macrocephaly: a case-control study",
+        "journal": "BMC Pediatrics",
+        "year": 2023,
+        "affinity": "low",
+        "note": "Diagnostic/epidemiology study; unrelated to LITT."
+      },
+      {
+        "title": "Current state and future direction of quality improvement in pediatric neurosurgery: a survey of pediatric neurosurgeons",
+        "journal": "Journal of Neurosurgery: Pediatrics",
+        "year": 2023,
+        "affinity": "low",
+        "note": "QI survey; leadership/health-services focus."
+      },
+      {
+        "title": "Achondroplasia natural history study (CLARITY): 60-year experience with hydrocephalus in achondroplasia from four skeletal dysplasia centers",
+        "journal": "Journal of Neurosurgery: Pediatrics",
+        "year": 2023,
+        "affinity": "low",
+        "note": "Multicenter hydrocephalus natural-history collaboration; no ablation content."
+      }
+    ],
+    "candidacy": {
+      "assessment": "weak",
+      "rationale": "Development target flagged LITT-Naïve Craniotomy Surgeon. Against LITT adoption: very senior career stage (division chief since 2010, chief roles since the 1990s), a research and clinical identity built around open surgery, hydrocephalus, trauma, and epidemiology rather than minimally invasive/ablative techniques, and no publication or program signal toward laser ablation. In favor (modest): a small epilepsy footprint in claims (SEEG=1, epilepsy craniotomy=3) means he touches the pathology LITT addresses, and as division chief he controls whether Nemours DE builds a program. Net: he is more likely a program gatekeeper/decision influencer than a personal high-volume LITT adopter; direct-user candidacy is weak, but he is worth cultivating as the chief who would authorize a platform. Recent-paper affinities are uniformly low."
+    },
+    "confidence": "medium",
+    "flags": [
+      "Identity/training/role verified via Nemours bios and AANS profile; recent papers sourced from search summaries of PubMed/JNS Pediatrics and consistent with his known research focus (titles/years to be spot-checked before external use).",
+      "Institution LITT platform (NeuroBlate vs Visualase) not confirmed from public sources — litt_house set to unknown.",
+      "Strategic note: as division chief he is the account-level decision-maker even though he is not himself a LITT performer."
+    ]
+  }
+]

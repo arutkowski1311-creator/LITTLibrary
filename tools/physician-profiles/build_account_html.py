@@ -362,14 +362,8 @@ ul.pts li:hover .x{opacity:.7}
 </div>
 
 <div class="editnote">
-  <b>How to use this card.</b> Pick an account from the bar above. Anything that highlights amber when you hover is
-  editable — click it and type. <b>Text</b> fields (posture, strategy plays, SWOT points, physician notes) save as you write.
-  <b>Numbers</b> — sales, case counts, probes/case, reservoir factors, surgeon volumes — <b>recompute everything downstream the moment
-  you change them:</b> the KPI row, the health grade, the reservoir bars and the annual-opportunity math all update live off your
-  inputs. Use the ⊕ / ✕ controls to add or remove plays and SWOT points.
-  Edits are saved in this browser, per account — <b>Export edits</b> writes them to a file (or copies them) to keep or hand back
-  for a central merge, <b>Import edits</b> loads that file, <b>Reset</b> clears just the current account, and
-  <b>Print / PDF</b> produces a clean one-account handout. <b>Load my data</b> swaps in your own territory's dataset from the builder.
+  <b>How to use this card.</b> Most fields are editable — anything that highlights amber when you hover. Change one and
+  everything it affects updates automatically: dependent numbers recalculate and the affected sections redraft on the spot.
 </div>
 
 <div class="wrap" id="wrap"></div>

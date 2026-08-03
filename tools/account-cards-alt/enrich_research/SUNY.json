@@ -1,0 +1,103 @@
+[
+  {
+    "name": "Zulma Tovar-Spinoza",
+    "npi": null,
+    "identity": "Professor of Neurosurgery, Neurology & Pediatrics and longtime pediatric epilepsy/LITT lead at SUNY Upstate Golisano Children's Hospital, Syracuse NY (recently affiliated with Driscoll Children's Hospital, Corpus Christi TX).",
+    "bio": "Tovar-Spinoza is one of the most-published pediatric LITT surgeons in the world and a foundational KOL in MR-guided laser interstitial thermal therapy for children with drug-resistant epilepsy and brain tumors. She built the SUNY Upstate pediatric MRgLITT program starting in 2013, pioneering staged ablation of cortical tubers and robot-assisted LITT of hypothalamic hamartomas. She discloses a consultant relationship with Monteris Medical (NeuroBlate) and has authored key editorials and technique papers spanning both the NeuroBlate and Visualase platforms.",
+    "training": "Universidad de Los Andes School of Medicine (MD, 1993) · Neurosurgery residency (institution not verified) · Pediatric Neurosurgery & Pediatric Epilepsy Fellowship, The Hospital for Sick Children (SickKids), Toronto, 2006-2008 · pedigree note: SickKids pediatric epilepsy surgery lineage; internationally recognized pediatric MRgLITT pioneer.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "ours",
+    "litt_exposure": "Extensive, high-volume direct operator experience since 2013; disclosed Monteris/NeuroBlate consultant. Published pediatric LITT series across brain tumors, cortical tubers, cavernous malformations and hypothalamic hamartomas. Note: her earliest tumor series used Visualase (Medtronic); the SUNY Upstate program has used both platforms, so she is genuinely dual-platform but carries an explicit NeuroBlate consulting relationship.",
+    "wheelhouse": "Pediatric epilepsy surgery, MRgLITT (tumors, cortical tubers, hypothalamic hamartoma, cavernous malformations), stereotactic/functional and pediatric neuro-oncology.",
+    "kol": true,
+    "kol_note": "Tier-1 pediatric LITT KOL: prolific author, guest editor of a Frontiers in Neurology MRg-LiTT editorial (2024), disclosed Monteris/NeuroBlate consultant. Reference-account caliber advocate for the platform in pediatrics.",
+    "recent_papers": [
+      {"title": "Editorial: Magnetic resonance-guided laser interstitial thermal therapy (MRg-LiTT) in the minimally invasive surgical treatment of epilepsy and/or brain neoplasms", "journal": "Frontiers in Neurology", "year": 2024, "affinity": "high", "note": "Co-authored editorial (Consales, Skoch, Tovar-Spinoza); positions her as a field-defining voice on MRgLITT."},
+      {"title": "Robot-assisted, real-time, MRI-guided laser interstitial thermal therapy for pediatric patients with hypothalamic hamartoma: surgical technique, pitfalls, and initial results", "journal": "Journal of Neurosurgery: Pediatrics", "year": 2022, "affinity": "high", "note": "16 procedures in 11 patients; robotic-arm + MRgLITT technique paper for a historically difficult indication."},
+      {"title": "The use of stereotactic MRI-guided laser interstitial thermal therapy for the treatment of pediatric cavernous malformations: the SUNY Upstate Golisano Children's Hospital experience", "journal": "Child's Nervous System", "year": 2022, "affinity": "high", "note": "Single-institution SUNY Upstate LITT series in a novel pediatric indication."},
+      {"title": "Emerging indications for stereotactic laser interstitial thermal therapy in pediatric neurosurgery", "journal": "International Journal of Hyperthermia", "year": 2020, "affinity": "high", "note": "Review broadening pediatric LITT indications; reinforces KOL/thought-leadership role."},
+      {"title": "Single and staged laser interstitial thermal therapy ablation for cortical tubers causing refractory epilepsy in pediatric patients", "journal": "Neurosurgical Focus", "year": 2018, "affinity": "high", "note": "Signature staged-ablation technique for tuberous sclerosis cortical tubers."},
+      {"title": "Magnetic resonance-guided laser interstitial thermal therapy: report of a series of pediatric brain tumors", "journal": "Journal of Neurosurgery: Pediatrics", "year": 2016, "affinity": "high", "note": "Early landmark pediatric brain-tumor LITT series from Golisano Children's Hospital (Visualase-era)."}
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["No NPI in packet / not in claims sample, yet unambiguously a high-volume LITT operator and KOL (packet 'no-claims' flag likely reflects sampling, not practice).", "Doximity/US News now list a Corpus Christi TX / Driscoll Children's Hospital affiliation — she may have relocated from or split time away from SUNY Upstate; verify current primary site.", "Dual-platform history (Visualase early, NeuroBlate consultant) — relationship is with Monteris but competitor exposure exists.", "Neurosurgery residency institution not verified — left unstated rather than fabricated."]
+  },
+  {
+    "name": "Kathleen Knudson",
+    "npi": "1992062269",
+    "identity": "Pediatric neurosurgeon at SUNY Upstate; named Director of Pediatric Neurosurgery in January 2025 (effectively succeeding Tovar-Spinoza's pediatric program leadership).",
+    "bio": "Knudson is a board-certified neurosurgeon with focused-practice certification in pediatric neurosurgery who leads pediatric neurosurgery at SUNY Upstate. Her practice spans epilepsy surgery, tumor craniotomy, craniosynostosis, hydrocephalus, spina bifida/Chiari and selective dorsal rhizotomy. Claims data place her as an active NeuroBlate LITT operator (litt_perf x2) alongside SEEG and epilepsy craniotomy, positioning her to carry the SUNY pediatric LITT franchise forward.",
+    "training": "Case Western Reserve University School of Medicine (MD) · Neurological Surgery residency, George Washington University · Pediatric Neurosurgery Fellowship, Cincinnati Children's Hospital Medical Center · pedigree note: Cincinnati Children's pediatric neurosurgery lineage (a leading pediatric LITT training environment).",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "ours",
+    "litt_exposure": "Direct operator: claims show litt_perf=2 in the 'LITT — Our Equipment (NeuroBlate)' cohort, plus SEEG (1) and epilepsy craniotomy (1), consistent with an active epilepsy-surgery + LITT practice on our platform.",
+    "wheelhouse": "Pediatric epilepsy surgery, SEEG, tumor craniotomy, craniosynostosis, hydrocephalus/endoscopy, spina bifida/Chiari, selective dorsal rhizotomy; NeuroBlate LITT.",
+    "kol": false,
+    "kol_note": "Not yet a published LITT KOL, but a rising program leader — new pediatric neurosurgery director and active NeuroBlate operator; strong reference-account development potential as she scales the pediatric LITT service.",
+    "recent_papers": [],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["Performer on our platform (candidacy null).", "No specific peer-reviewed publications independently verified in this pass — recent_papers left empty rather than fabricated; her research output warrants a dedicated lookup.", "Program-succession dynamic: inheriting a mature Tovar-Spinoza-built LITT service — high strategic value to retain/grow on NeuroBlate."]
+  },
+  {
+    "name": "Grahame Gould",
+    "npi": "1326216342",
+    "identity": "Cerebrovascular and endovascular neurosurgeon at SUNY Upstate; Neurosurgery Residency Program Director.",
+    "bio": "Gould is a dual-trained open cerebrovascular and endovascular neurosurgeon who directs the SUNY Upstate neurosurgery residency and practices at Upstate University Hospital and the Syracuse VA. His clinical focus is aneurysms, AVMs, stroke/thrombectomy and interventional neuroradiology rather than ablative tumor/epilepsy surgery. In the claims data he appears purely as a referring clinician (mets_rn=7), making him a potential downstream referral source rather than a LITT operator.",
+    "training": "Yale University School of Medicine (MD, 2004) · Neurosurgery residency, Yale-New Haven Hospital (2011) · Endovascular/Interventional Neuroradiology Fellowship, Thomas Jefferson University Hospital (AHA fellowship, 2012) · pedigree note: Yale neurosurgery + Jefferson cerebrovascular pedigree; now residency program director.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience; subspecialty is cerebrovascular/endovascular. Claims cohort is 'Referring Clinician' (radiation-necrosis/metastasis flags = 7), suggesting he encounters candidates he could refer, not treat.",
+    "wheelhouse": "Open cerebrovascular surgery (aneurysm, AVM, bypass), endovascular/neurointervention (thrombectomy, embolization), stroke; neurosurgical education.",
+    "kol": false,
+    "kol_note": "No LITT KOL profile; his influence is as residency program director — relevant for shaping trainee exposure to the platform, and as a referral/gatekeeper node.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Referral-development target, not an operator target.",
+      "rationale": "Cerebrovascular/endovascular practice means he will not personally adopt LITT, but a mets_rn=7 referring-clinician signal shows he sees metastasis/radiation-necrosis patients who are prime NeuroBlate candidates. As residency program director he also influences institutional practice patterns and trainee exposure. Cultivate as a referrer-to and internal champion who routes appropriate patients to Knudson/Upstate's LITT service rather than as a device purchaser."
+    },
+    "confidence": "medium",
+    "flags": ["Development-target role in packet, but functionally a referrer (cohort 'Referring Clinician') — not a LITT-naive craniotomy surgeon to convert.", "No publications verified in this pass; recent_papers empty rather than fabricated.", "Program-director status is strategically useful for trainee-level platform familiarity."]
+  },
+  {
+    "name": "Lawrence S. Chin",
+    "npi": "1023043114",
+    "identity": "Neuro-oncology/skull-base neurosurgeon; Robert B. & Molly G. King Endowed Professor, former Chair of Neurosurgery (2011-), and Dean of the Norton College of Medicine at SUNY Upstate.",
+    "bio": "Chin is a senior academic neurosurgeon focused on brain and spinal tumors, pituitary and skull-base surgery, with a long career in stereotactic radiosurgery — he directed the University of Maryland Gamma Knife Center (1996-2006) before chairing neurosurgery at Boston University and then SUNY Upstate. He co-edited a Gamma Knife radiosurgery reference text and is fluent in ablative/minimally invasive concepts, yet the claims data mark him a 'LITT-Naïve Craniotomy Surgeon' (tumor_cranio=2, mets_rn=5). His combination of radiosurgery fluency, tumor/mets caseload and institutional authority (Chair emeritus + Dean) makes him a high-leverage conversion and champion target.",
+    "training": "University of Michigan Medical School (MD) · Neurological Surgery residency, University of Southern California / LA County Medical Center · pedigree note: stereotactic radiosurgery career pedigree — Director, University of Maryland Gamma Knife Center 1996-2006; Chair, Boston University/Boston Medical Center 2006-2011; Chair, SUNY Upstate 2011.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT operator experience; classified in claims as a LITT-naïve craniotomy surgeon. However, deep stereotactic radiosurgery (Gamma Knife) background means high conceptual receptivity to image-guided ablation, and mets_rn=5 indicates a metastasis/radiation-necrosis population ideally suited to NeuroBlate.",
+    "wheelhouse": "Neuro-oncology (primary brain tumors, metastases), pituitary and skull-base surgery, stereotactic radiosurgery/Gamma Knife, minimally invasive spine; academic leadership.",
+    "kol": true,
+    "kol_note": "Radiosurgery/neuro-oncology KOL and institutional power center (endowed chair + Dean). Not a LITT KOL today, but conversion would carry outsized reference and internal-advocacy weight given his authority over the SUNY Upstate neurosurgery/oncology ecosystem.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "High-value LITT-naive conversion target with champion/authority upside.",
+      "rationale": "Textbook development profile: tumor and metastasis caseload (tumor_cranio=2, mets_rn=5) that maps directly onto NeuroBlate indications (recurrent tumor, radiation necrosis post-SRS), plus a Gamma Knife/radiosurgery mindset that primes him to accept image-guided thermal ablation as complementary to radiosurgery. His institutional roles (former/founding Chair, current Dean) mean adoption or endorsement can unlock program-level standardization on NeuroBlate. Approach with the radiosurgery-adjacent, radiation-necrosis salvage narrative (LAASR/LAANTERN evidence) rather than a de-novo LITT pitch."
+    },
+    "confidence": "medium",
+    "flags": ["LITT-naive per claims; radiosurgery pedigree is the conversion wedge.", "Now primarily in administrative/Dean role — personal operative volume may be limited; weigh operator-conversion vs. executive-champion strategy.", "Specific recent publications not individually verified in this pass; recent_papers left empty rather than fabricated (known body of work in Gamma Knife/glioma radiosurgery)."]
+  },
+  {
+    "name": "Ryan Miller",
+    "npi": null,
+    "identity": "Unable to verify a Syracuse/SUNY Upstate neurosurgeon named Ryan Miller; identity unresolved.",
+    "bio": "No public record was found for a 'Ryan Miller' practicing neurosurgery at SUNY Upstate or in Syracuse NY. Searches surfaced only Jonathan P. Miller (an Upstate functional/epilepsy neurosurgeon) and an unrelated Ryan J. Miller in family medicine in Buffalo NY. Given no NPI and no claims signal in the packet, this is most plausibly a current/former neurosurgery resident or a name/entity error requiring source confirmation before outreach.",
+    "training": "Not verified.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience; identity itself unverified.",
+    "wheelhouse": "Unknown — identity unresolved.",
+    "kol": false,
+    "kol_note": "None; cannot assess without a verified identity.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Cannot assess — disambiguate identity before any development action.",
+      "rationale": "Listed as a development target with no NPI and no claims signal, and no verifiable Syracuse neurosurgeon by this name. Confirm whether this is a neurosurgery resident/fellow at SUNY Upstate, a mis-transcription (e.g., of Jonathan Miller), or an out-of-list individual before allocating any sales effort."
+    },
+    "confidence": "low",
+    "flags": ["IDENTITY UNRESOLVED — no NPI, no claims, no matching Syracuse neurosurgeon found.", "Possible confusion with Jonathan P. Miller (Upstate functional/epilepsy neurosurgeon) — verify.", "All fields marked unknown/unverified rather than fabricated; requires human source confirmation."]
+  }
+]

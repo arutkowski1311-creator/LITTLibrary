@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Vanessa C. Milano",
+    "npi": "1285077396",
+    "identity": "Board-eligible stereotactic and functional neurosurgeon at Hackensack Meridian JFK University Medical Center Neuroscience Institute, Edison, NJ. Joined JFK in March 2023 and practices within its Movement Disorders and Brain & Spine Tumor programs. (NPI absent from input packet; verified via CMS NPI Registry / NJ, Edison.)",
+    "bio": "Dr. Vanessa Milano is a functional and epilepsy neurosurgeon who trained in the Toronto Western Hospital stereotactic-and-functional program associated with Andres Lozano and Suneil Kalia before joining Hackensack Meridian JFK in 2023. Her clinical practice centers on drug-resistant epilepsy surgery, deep brain stimulation, and movement disorders (essential tremor, Parkinson's disease, dystonia), along with trigeminal neuralgia and chronic pain. She operates as part of JFK's multidisciplinary Movement Disorders and Brain & Spine Tumor teams. Although her disease focus (drug-resistant epilepsy, functional/stereotactic surgery) is squarely in the LITT wheelhouse, no direct laser-ablation experience surfaced in the record.",
+    "training": "University of Texas Health Science Center at San Antonio (MD) · Neurosurgery residency, University of Rochester Medical Center · Research + clinical fellowship in stereotactic & functional neurosurgery, Toronto Western Hospital / University of Toronto · pedigree: trained in the Lozano/Kalia Toronto functional-neurosurgery group",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience found. No claims footprint at all (confirmed absent). Profile is strongly LITT-adjacent, however: fellowship-trained stereotactic/functional epilepsy surgeon who treats drug-resistant epilepsy and does DBS and stereotactic targeting — the core skill set and patient population for laser ablation.",
+    "wheelhouse": "Drug-resistant epilepsy surgery; deep brain stimulation and neuromodulation; movement disorders (essential tremor, Parkinson's, dystonia); stereotactic & functional neurosurgery; trigeminal neuralgia and chronic pain.",
+    "kol": false,
+    "kol_note": "Early-career (board-eligible) functional neurosurgeon with a legitimate peer-reviewed publication record from her Toronto fellowship (DBS/epilepsy meta-analysis, functional-connectomics glioma work), but not yet an independent KOL or podium voice. Potential to grow into a regional epilepsy/functional influencer.",
+    "recent_papers": [
+      {
+        "title": "Deep brain stimulation targets in epilepsy: Systematic review and meta-analysis of anterior and centromedian thalamic nuclei and hippocampus",
+        "journal": "Epilepsia",
+        "year": 2022,
+        "affinity": "med",
+        "note": "Milano V is a listed co-author (Vetkas et al.). Drug-resistant epilepsy is a primary LITT indication; the paper is neuromodulation rather than ablation, but confirms her focus on the exact patient population LITT serves."
+      },
+      {
+        "title": "A Network-Based Approach to Glioma Surgery: Insights from Functional Neurosurgery",
+        "journal": "Cancers",
+        "year": 2021,
+        "affinity": "med",
+        "note": "Milano V co-author (Samuel N, ... Lozano AM). Functional-connectomics approach to glioma — tumor-directed and adjacent to LITT's neuro-oncology use, though not about laser ablation itself."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": [
+      "NPI missing from input packet — located and verified: 1285077396 (Vanessa Christine Milano, Neurological Surgery, Edison NJ).",
+      "No claims footprint (confirmed) yet labeled 'Performer' in the input — likely mislabeled. She reads as a strong latent DEVELOPMENT prospect, not a performer: fellowship-trained epilepsy/functional neurosurgeon with no visible ablation volume. Candidacy left null per Performer rule, but recommend re-classifying to Development.",
+      "No direct LITT/NeuroBlate/Visualase evidence found; litt_house set to 'unknown'."
+    ]
+  },
+  {
+    "name": "Yevgenia Shekhtman",
+    "npi": "1508000787",
+    "identity": "Neurosurgeon and Director of Neurosurgical Education at the Hackensack Meridian JFK Neuroscience Institute, Edison, NJ; Assistant Professor at Hackensack Meridian School of Medicine. ABNS board-certified. Input lists her as 'Eugenia Shekhtman' — verified same individual (NPI 1508000787).",
+    "bio": "Dr. Yevgenia Shekhtman is a WashU/NYU-trained neurosurgeon who focuses on the surgical management of brain tumors (primary and metastatic) and degenerative spine disease, with an emphasis on minimally invasive technique. She serves as Director of Neurosurgical Education at JFK and helps run its multidisciplinary Brain & Spine Tumor Program. Claims data show her performing NeuroBlate laser ablation for brain metastases — our equipment — making her an active LITT operator on our platform. She is trilingual (English, Russian, Spanish).",
+    "training": "Washington University School of Medicine, St. Louis (MD, 2009) · Neurological Surgery residency, NYU (Grossman School of Medicine), Chief Resident (≈ 2009–2016) · no separate fellowship publicly listed · pedigree: WashU · NYU",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "theirs (NeuroBlate / Monteris — ours)",
+    "litt_exposure": "Direct LITT experience on our platform. Claims cohort 'LITT — Our Equipment (NeuroBlate)' with mets_rn = 7 (brain-metastasis LITT procedures). Brain metastases and radiation necrosis are core NeuroBlate indications and align with her brain-tumor / neuro-oncology practice. This is an existing NeuroBlate account — a retention/expansion relationship, not a conversion target.",
+    "wheelhouse": "Brain tumors (primary and metastatic) and neuro-oncology; minimally invasive spine surgery; neurosurgical education. LITT for brain mets on NeuroBlate.",
+    "kol": false,
+    "kol_note": "Director of Neurosurgical Education at JFK and Assistant Professor at Hackensack Meridian SOM — real regional teaching influence over trainees, but not a high-output research or podium KOL. Educator-influencer angle is the more relevant lever than publications.",
+    "recent_papers": [
+      {
+        "title": "Utilizing virtual reality for resection of recurrent ventral, extramedullary cervical meningioma",
+        "journal": "Surgical Neurology International",
+        "year": 2023,
+        "affinity": "low",
+        "note": "Technique/case report consistent with her minimally-invasive tumor practice; not LITT. Authorship search-derived, not individually PubMed-confirmed."
+      },
+      {
+        "title": "Scalp necrosis following preoperative endovascular embolisation of the superficial temporal artery for meningioma",
+        "journal": "BMJ Case Reports",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Meningioma / tumor-adjacent case report; not LITT. Authorship search-derived, not individually PubMed-confirmed."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": [
+      "Name variant: input 'Eugenia Shekhtman' vs. verified professional name 'Yevgenia Shekhtman' (NPI 1508000787). Same person.",
+      "Active NeuroBlate (OUR equipment) operator per claims — brain-mets LITT, mets_rn=7. Treat as retention/expansion, and as an internal advocate given her Director of Neurosurgical Education role.",
+      "recent_papers authorship is search-surfaced, not individually PubMed-verified (direct PubMed fetch was blocked); titles are consistent with her tumor/MIS profile but flagged for lower certainty."
+    ]
+  }
+]

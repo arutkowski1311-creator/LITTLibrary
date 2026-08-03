@@ -1,0 +1,109 @@
+[
+  {
+    "name": "Shiva L Kashanipour",
+    "npi": "1689871600",
+    "identity": "Neurosurgery Physician Assistant (PA-C, MHS) at Boston Children's Hospital, NOT a neurosurgeon. NPI 1689871600 resolves to a Physician Assistant taxonomy across NPI directories (npino, HIPAASpace, Brigham/BCH physician directories).",
+    "bio": "Shiva L Kashanipour is a certified physician assistant (PA-C) with a Master of Health Science who practices in the Department of Neurosurgery at Boston Children's Hospital, with cross-coverage experience in adult neurosurgery (Brigham and Women's / South Shore Health listings). As a neurosurgery PA she supports the operative and perioperative care of pediatric and adult neurosurgical patients, including epilepsy and craniotomy cases. She is a clinical team member and surgical first-assist, not an attending surgeon or equipment decision-maker. No independent thought-leadership or publication record was identified.",
+    "training": "Physician Assistant (PA-C, MHS) — not a physician; no MD, residency, or fellowship. Specific PA program not verified.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "Claims signal shows litt_perf=7 in the 'LITT — Competitor Equipment' cohort, i.e., LITT procedures billed under this NPI. However this NPI is a Physician Assistant, so these almost certainly reflect PA surgical-assist / first-assist billing on an attending's LITT cases, not independent operator experience. The specific competitor platform (Visualase/Medtronic vs. NeuroBlate) is NOT disambiguated in claims and was not web-verifiable for this individual; BCH's pediatric epilepsy program is commonly associated with Visualase, but that is not confirmed for her personally.",
+    "wheelhouse": "Pediatric and adult neurosurgery PA support; epilepsy/craniotomy operative assisting and perioperative management.",
+    "kol": false,
+    "kol_note": "No KOL profile — physician assistant with no identified publications, society leadership, or LITT thought-leadership.",
+    "recent_papers": [],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": [
+      "IDENTITY MISMATCH: target is a Neurosurgery Physician Assistant (PA-C, MHS), NOT a neurosurgeon and NOT a capital-equipment decision-maker; packet role 'Performer' overstates her clinical authority.",
+      "LITT 'Performer' claims (litt_perf=7) most likely represent PA surgical-assist billing on an attending's cases, not independent LITT operator experience.",
+      "Competitor-equipment platform inferred from claims cohort label only; specific platform not web-verified for this individual (litt_house set to 'unknown')."
+    ]
+  },
+  {
+    "name": "Timothy R Smith",
+    "npi": "1356674386",
+    "identity": "Timothy R. Smith, MD, PhD, MPH — adult neurosurgeon-scientist at Brigham and Women's Hospital / Dana-Farber Cancer Institute (Mass General Brigham), Boston, MA. Appears in this pediatric BCH packet via referral/claims overlap; he is not BCH staff.",
+    "bio": "Timothy R. Smith is Director of the Computational Neuroscience Outcomes Center (CNOC) in the Department of Neurosurgery at Brigham and Women's Hospital and an Associate Professor of Neurosurgery at Harvard Medical School. Trained additionally as an epidemiologist and statistician, he is best known as a data-science / outcomes-research neurosurgeon-scientist applying epidemiology, biostatistics, and machine learning to neurosurgical outcomes. Clinically he treats brain and spine tumors — gliomas, meningiomas, and metastatic disease — but his primary academic identity is predictive analytics rather than high-volume ablative surgery.",
+    "training": "David Geffen School of Medicine at UCLA (MD, 2007) · Residency in Neurological Surgery, Northwestern Memorial Hospital (2014) · Fellowship in Neurological Surgery, Brigham and Women's Hospital (2015) · also holds PhD and MPH (epidemiology/biostatistics); Harvard Medical School faculty pedigree.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Packet cohort labels him a 'LITT-Naïve Craniotomy Surgeon'; claims show tumor_cranio=1 and mets_rn=2 (metastasis / radiation-necrosis cases — pathologies that ARE LITT-eligible), but no LITT procedures. His publication record shows no LITT focus.",
+    "wheelhouse": "Neurosurgical oncology (glioma, meningioma, brain/spine metastasis) plus data-science and machine-learning outcomes research; leadership of computational outcomes (CNOC).",
+    "kol": true,
+    "kol_note": "Strong academic KOL in neurosurgical data science / outcomes research — Director of CNOC, HMS Associate Professor, prolific senior/corresponding author on ML and predictive-analytics work. Influence is in analytics and outcomes, not specifically in LITT or ablation.",
+    "recent_papers": [
+      {
+        "title": "An online calculator for the prediction of survival in glioblastoma patients using classical statistics and machine learning",
+        "journal": "Neurosurgery",
+        "year": 2020,
+        "affinity": "low",
+        "note": "Glioma prognostication tool (Senders et al.); glioma is LITT-eligible, but this is a predictive-modeling paper, not ablation — reflects his data-science identity."
+      },
+      {
+        "title": "Natural Language Processing for Automated Quantification of Brain Metastases Reported in Free-Text Radiology Reports",
+        "journal": "JCO Clinical Cancer Informatics",
+        "year": 2019,
+        "affinity": "low",
+        "note": "Brain-metastasis informatics from his CNOC group; mets are a core LITT indication, but this is an NLP methods paper, not clinical LITT."
+      },
+      {
+        "title": "Machine Learning and Neurosurgical Outcome Prediction: A Systematic Review",
+        "journal": "World Neurosurgery",
+        "year": 2018,
+        "affinity": "low",
+        "note": "Methodology review (Senders, Smith et al.); establishes his outcomes-research profile, no LITT relevance."
+      }
+    ],
+    "candidacy": {
+      "assessment": "moderate",
+      "rationale": "He treats LITT-eligible pathology (brain metastases, radiation necrosis, deep/eloquent gliomas) and is a highly credentialed HMS KOL, so as an academic champion he could carry influence. However he is LITT-naïve, his identity is data-science/outcomes rather than high-volume ablative surgery, and he is a BWH/Dana-Farber ADULT surgeon surfacing in a pediatric BCH account via referral overlap — not BCH staff. Adoption interest would hinge on his personal tumor case volume, which is not established here. Engage as a potential academic/outcomes ally rather than an immediate high-volume performer prospect."
+    },
+    "confidence": "high",
+    "flags": [
+      "Adult BWH/Dana-Farber (Mass General Brigham) neurosurgeon appearing in a PEDIATRIC BCH packet via referral/claims overlap — not a BCH staff surgeon.",
+      "Primary identity is data-science / outcomes research; personal tumor-ablation case volume not established.",
+      "No evidence of LITT experience (LITT-naïve)."
+    ]
+  },
+  {
+    "name": "William T Curry",
+    "npi": null,
+    "identity": "William T. Curry Jr., MD — adult neurosurgical oncologist at Massachusetts General Hospital; Adeline Rose Wydotis Professor of Neurosurgery, Harvard Medical School; Director of Neurosurgical Oncology (MGH) and, as of Feb 2025, MGB Chief Medical Officer for academic medical centers. Appears in this pediatric BCH packet via referral overlap; he is MGH adult staff, not BCH. No NPI in claims; a web-directory NPI (1730163395) exists but is not independently confirmed here.",
+    "bio": "William T. Curry is a national leader in the neurosurgical care of brain, skull-base, and spine tumors and in translational brain-tumor immunology at Massachusetts General Hospital. He has been on the MGH neurosurgical faculty since 2004, directs Neurosurgical Oncology, was co-director of Mass General Neuroscience, and in February 2025 became Mass General Brigham's Chief Medical Officer for academic medical centers. Clinically he manages benign and malignant tumors using both open and endoscopic/minimally invasive techniques; his research centers on immunotherapy and cellular (CAR-T) approaches for malignant gliomas. His growing administrative role has reduced personal operative volume.",
+    "training": "Harvard College (AB) · Cornell University Medical College / Weill Cornell Medicine (MD) · Neurosurgery residency, Massachusetts General Hospital · fellowship / clinical-research training in neuro-oncology (MGH); Harvard Medical School named professorship pedigree.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. No LITT claims in packet (in_claims=false, empty claims). His documented practice emphasizes open and endoscopic tumor resection and immunotherapy trials, not laser ablation.",
+    "wheelhouse": "Neurosurgical oncology — brain, skull-base, and spine tumors (glioma, meningioma, metastasis); translational glioblastoma immunotherapy / CAR-T; open and endoscopic minimally invasive resection.",
+    "kol": true,
+    "kol_note": "Major national KOL and institutional leader — named HMS professor, Director of Neurosurgical Oncology (MGH), MGB CMO for academic medical centers, and co-author on the landmark NEJM CAR-T (CARv3-TEAM-E) glioblastoma trial. High strategic/decision-maker influence, but his focus is tumor immunotherapy and administration, not LITT.",
+    "recent_papers": [
+      {
+        "title": "Intraventricular CARv3-TEAM-E T Cells in Recurrent Glioblastoma",
+        "journal": "New England Journal of Medicine",
+        "year": 2024,
+        "affinity": "med",
+        "note": "Landmark first-in-human GBM CAR-T trial; Curry is a listed co-author. Recurrent-GBM population overlaps with where LITT is also used, but immunotherapy is an alternative modality, not ablation."
+      },
+      {
+        "title": "Tandem chimeric antigen receptor (CAR) T cells targeting EGFRvIII and IL-13Rα2 are effective against heterogeneous glioblastoma",
+        "journal": "Neuro-Oncology Advances",
+        "year": 2023,
+        "affinity": "low",
+        "note": "Preclinical CAR-T for heterogeneous GBM (Choi/Curry group); immunotherapy focus, no LITT relevance."
+      }
+    ],
+    "candidacy": {
+      "assessment": "moderate — strategic influencer, weak direct-performer fit",
+      "rationale": "His pathology mix (glioma, skull-base, metastasis) is LITT-amenable and his seniority makes him a valuable institutional champion/decision-maker. But he is LITT-naïve with a resection- and immunotherapy-oriented practice, and his 2025 move into an MGB CMO administrative role reduces personal OR volume. He is also an ADULT MGH surgeon appearing in a pediatric BCH account via referral overlap, so direct-performer fit for this account is weak. Best positioned as a high-level relationship / institutional-champion target rather than a near-term LITT adopter."
+    },
+    "confidence": "high",
+    "flags": [
+      "NPI absent from claims (packet npi=null); web-directory NPI 1730163395 exists but is not independently confirmed — verify before use.",
+      "Adult MGH surgeon appearing in a PEDIATRIC BCH packet via referral overlap — not BCH staff.",
+      "Now MGB Chief Medical Officer (administrative, Feb 2025) — reduced personal operative volume.",
+      "No evidence of LITT experience (LITT-naïve); practice centers on resection and immunotherapy."
+    ]
+  }
+]

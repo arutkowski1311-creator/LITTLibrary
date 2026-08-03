@@ -1,0 +1,151 @@
+[
+  {
+    "name": "Alexandra Golby",
+    "npi": null,
+    "identity": "Alexandra J. Golby, MD — Professor of Neurosurgery & Radiology, Harvard Medical School; Director of Image-Guided Neurosurgery, Brigham & Women's Hospital (Boston, MA).",
+    "bio": "Golby is a senior academic neurosurgeon whose clinical practice centers on image-guided surgery for brain tumors and epilepsy, especially lesions intimately involved with eloquent (language/motor) cortex and critical white-matter tracts. She directs the AMIGO (Advanced Multimodality Image Guided Operating) suite and co-directs clinical fMRI at BWH, and leads a large translational program in fMRI, DTI tractography and intraoperative imaging for surgical planning. Her case mix is complex intra-axial tumors and eloquent-region resections rather than high-volume routine ablation.",
+    "training": "MD, Stanford University School of Medicine (BA, Yale) · Neurosurgery residency, Brigham & Women's Hospital / Boston Children's Hospital (Harvard program), chief resident 2001, completed 2002 · Congress of Neurological Surgeons Dandy Clinical Fellowship — functional/stereotactic training with Prof. Benabid (Grenoble, France) and Prof. Villemure (Lausanne, Switzerland) · Elite Harvard image-guided/functional-neurosurgery pedigree.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "Historically the strongest LITT/laser-ablation signal at BWH: served as Principal Investigator on the Brigham 'Neurosurgical Use of Interstitial Laser Therapy (ILT)' study (ClinicalTrials.gov NCT00207350, ~2002-2006). She directs the AMIGO image-guided OR (high-field intraoperative MRI), the exact MR-thermometry-capable infrastructure MRgLITT requires, and is a national leader in image-guided therapy. However, there is NO recent claims footprint for LITT procedures and no recent LITT-specific publications — her current hands-on MRgLITT volume is unverified. Best read: pioneering interstitial-laser investigator and image-guidance authority, but current personal LITT practice unconfirmed.",
+    "wheelhouse": "Image-guided / eloquent-cortex tumor & epilepsy neurosurgeon; fMRI/DTI and intraoperative-MRI authority.",
+    "kol": true,
+    "kol_note": "Internationally recognized KOL in image-guided neurosurgery, presurgical fMRI/DTI language mapping, and intraoperative MRI; directs AMIGO and an Image-Guided Neurosurgery fellowship; frequent invited speaker (e.g., World Medical Innovation Forum). Influence is in image-guided therapy broadly, which is adjacent to MRgLITT.",
+    "recent_papers": [
+      {
+        "title": "Movie-watching fMRI for presurgical language mapping in patients with brain tumour",
+        "journal": "Journal of Neurology, Neurosurgery & Psychiatry (JNNP)",
+        "year": 2022,
+        "affinity": "med",
+        "note": "Presurgical eloquent-cortex mapping in tumor patients — the planning workflow that feeds minimally invasive/eloquent-region decision-making."
+      },
+      {
+        "title": "Directionally encoded color track density imaging in brain tumor patients: a potential application to neuro-oncology surgical planning",
+        "journal": "NeuroImage: Clinical",
+        "year": 2023,
+        "affinity": "med",
+        "note": "Advanced tractography for neuro-oncology surgical planning; image-guidance adjacency to MR-guided ablation."
+      },
+      {
+        "title": "Tractography-based navigated TMS language mapping protocol",
+        "journal": "Frontiers in Oncology",
+        "year": 2022,
+        "affinity": "low",
+        "note": "Non-invasive language mapping methodology; planning tool, not ablation."
+      },
+      {
+        "title": "SlicerCBM: automatic framework for biomechanical analysis of the brain",
+        "journal": "International Journal of Computer Assisted Radiology and Surgery",
+        "year": 2023,
+        "affinity": "low",
+        "note": "Computational brain-shift / registration tooling for image-guided surgery."
+      },
+      {
+        "title": "TractGeoNet: a geometric deep learning framework for pointwise analysis of tract microstructure to predict language assessment performance",
+        "journal": "NeuroImage",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Deep-learning tractography research; low direct LITT relevance."
+      },
+      {
+        "title": "Identifying proximity to white matter language tracts with gradient-based intraoperative electrical mapping",
+        "journal": "Journal of Neurosurgery",
+        "year": 2025,
+        "affinity": "low",
+        "note": "Intraoperative eloquent-tract localization; planning/safety, not ablation."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": {
+      "in_claims": false,
+      "dup_of": null,
+      "note": "No claims footprint (real, prominent BWH neurosurgeon confirmed via BWH physician directory, HMS, Golby Lab, Dana-Farber). Packet lists her as 'Performer'; supporting LITT evidence is HISTORICAL (PI of Brigham interstitial-laser-therapy trial NCT00207350) plus AMIGO image-guided-OR leadership — no recent LITT procedure claims to confirm current hands-on ablation volume."
+    }
+  },
+  {
+    "name": "Timothy R Smith",
+    "npi": "1356674386",
+    "identity": "Timothy R. Smith, MD, PhD, MPH — Neurosurgeon; Director, Computational Neuroscience Outcomes Center (CNOC), Department of Neurosurgery, Brigham & Women's Hospital / Harvard Medical School (Boston, MA).",
+    "bio": "Smith is a neurosurgeon-scientist and neuro-oncology surgeon who treats intrinsic CNS and meningeal tumors of the brain and spine plus metastatic disease. He is best known as a methodologist — trained as an epidemiologist and statistician — building large-database, machine-learning and digital-phenotyping models to predict and improve neurosurgical outcomes as CNOC director. His profile is that of an academic outcomes/AI leader with a cranial and spinal tumor surgical practice.",
+    "training": "MD, David Geffen School of Medicine at UCLA (2007); also holds PhD and MPH (epidemiology/biostatistics) · Neurological Surgery residency, Northwestern Memorial Hospital / McGaw (Chicago), completed 2014 · Fellowship, Brigham & Women's Hospital Neurological Surgery (neuro-oncology/complex, 2015) · Data-science-forward academic pedigree combining neurosurgery with formal epidemiology training.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No verified evidence of direct, personal LITT/laser-ablation experience. Packet cohort labels him a 'LITT-Naïve Craniotomy Surgeon' (tumor_cranio 1, mets_rn 2) — his tumor patients are managed with open resection, not ablation. His research is outcomes/ML rather than device/ablation technique. NOTE: a widely cited national LITT-outcomes NIS study ('National Trends and Factors Predicting Outcomes Following LITT...', World Neurosurgery 2020) is by Sharma/Williams/Barnett et al. — NOT this Smith; do not attribute it to him. Net: LITT-naïve with a strong neuro-oncology tumor caseload that generates LITT-eligible candidates.",
+    "wheelhouse": "Neuro-oncology surgeon + computational-outcomes / machine-learning methodologist (CNOC director).",
+    "kol": true,
+    "kol_note": "KOL in neurosurgical outcomes science, health data / machine learning, and predictive analytics; directs CNOC, President of the Boston Society for Neurology, Neurosurgery & Psychiatry. Thought-leadership is in data/outcomes, not in LITT technique specifically.",
+    "recent_papers": [
+      {
+        "title": "Onco-functional outcome after resection for eloquent glioblastoma (OFO): a propensity-score matched analysis of an international, multicentre cohort study",
+        "journal": "European Journal of Cancer",
+        "year": 2024,
+        "affinity": "med",
+        "note": "Eloquent-GBM resection outcomes — the tumor population and eloquent-location problem that LITT is positioned to address minimally invasively."
+      },
+      {
+        "title": "Impact of maximal extent of resection on postoperative deficits, patient functioning, and survival within clinically important glioblastoma subgroups",
+        "journal": "Neuro-Oncology",
+        "year": 2023,
+        "affinity": "med",
+        "note": "Extent-of-resection vs. functional-preservation tradeoff — the clinical value argument underpinning minimally invasive ablation."
+      },
+      {
+        "title": "Machine learning for predicting post-operative outcomes in meningiomas: a systematic review and meta-analysis",
+        "journal": "Journal of Neuro-Oncology",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Representative of his ML/outcomes methods work; low direct LITT relevance."
+      }
+    ],
+    "candidacy": {
+      "assessment": "moderate",
+      "rationale": "Pros: high-visibility academic neuro-oncology surgeon at a flagship Harvard center with a tumor/metastasis caseload that produces LITT-eligible deep-seated and eloquent lesions, and a data/outcomes platform (CNOC) that could champion technology adoption and evidence generation. Cons: no evidence of any hands-on LITT and a research identity centered on analytics rather than device/procedural innovation, so personal adoption would be a genuine behavior change. Best approached as an evidence-and-outcomes-driven convert / institutional-influence play rather than a quick procedural convert."
+    },
+    "confidence": "high",
+    "flags": {
+      "in_claims": true,
+      "dup_of": null,
+      "note": "Also appears in the BCH packet with identical NPI (1356674386) — same person, canonical profile here. Do not attribute the World Neurosurgery 2020 national LITT NIS paper to him (different authors)."
+    }
+  },
+  {
+    "name": "William T Curry",
+    "npi": null,
+    "identity": "William T. Curry Jr., MD — Adeline Rose Wydotis Professor of Neurosurgery, Harvard Medical School; Director of Neurosurgical Oncology and Co-Director of Mass General Neuroscience, Massachusetts General Hospital (Boston, MA).",
+    "bio": "Curry is a national leader in the neurosurgical care of brain, skull-base and spine tumors, both benign and malignant, and runs a translational brain-tumor immunology laboratory. His signature academic work is immunotherapy for malignant glioma — autologous tumor-cell vaccination and, most recently, CAR-T (CARv3-TEAM-E / INCIPIENT) for recurrent glioblastoma. He is a high-volume, high-complexity open-cranial and skull-base tumor surgeon and a departmental leader.",
+    "training": "AB, Harvard College · MD, Cornell University Medical College (Weill Cornell), New York · Neurological Surgery residency, Massachusetts General Hospital (Harvard); neurosurgical-oncology / tumor-immunology research training · On MGH neurosurgical faculty since 2004 — classic MGH academic neuro-oncology pedigree.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct personal LITT/laser-ablation experience. Curry's surgical identity and publication record are open resection and immunotherapy (CAR-T, tumor vaccines), not stereotactic thermal ablation. He carries no LITT claims footprint in this packet. His large malignant-glioma and metastasis practice is a strong source of LITT-eligible referrals, but he himself reads as LITT-naïve.",
+    "wheelhouse": "Academic neurosurgical-oncology leader; brain/skull-base/spine tumor surgeon and glioma immunotherapy KOL.",
+    "kol": true,
+    "kol_note": "Major neuro-oncology KOL — Director of Neurosurgical Oncology and Co-Director of Mass General Neuroscience, endowed Harvard professor, PI/co-investigator on landmark glioblastoma CAR-T (NEJM 2024) and tumor-vaccine trials. Departmental and national influence, though not in LITT technique.",
+    "recent_papers": [
+      {
+        "title": "Intraventricular CARv3-TEAM-E T cells in recurrent glioblastoma (INCIPIENT trial)",
+        "journal": "New England Journal of Medicine",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Landmark first-in-human CAR-T for recurrent GBM; Curry is part of the MGH INCIPIENT team. Signals immunotherapy focus, not ablation."
+      },
+      {
+        "title": "The role of antibody-based therapies in neuro-oncology (review)",
+        "journal": "Mass General / neuro-oncology review (Ramapriyan, Gerstner, Choi, Curry)",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Review of antibody/immune therapies for CNS tumors; reinforces immunotherapy wheelhouse, low LITT relevance."
+      }
+    ],
+    "candidacy": {
+      "assessment": "weak",
+      "rationale": "Curry is an influential neuro-oncology leader whose institutional endorsement would carry weight, but as a personal LITT adopter he is a weak target: his surgical and research energy is committed to open resection and cutting-edge immunotherapy, he has no LITT footprint, and he is a department leader more likely to delegate ablation cases than to personally build a LITT practice. Better positioned as a referral/institutional-influence relationship than a hands-on performer conversion."
+    },
+    "confidence": "high",
+    "flags": {
+      "in_claims": false,
+      "dup_of": null,
+      "note": "No claims footprint. INSTITUTION MISMATCH: packet lists Curry under 'BWH' (and also under BCH), but he is a Massachusetts General Hospital neurosurgeon — same Mass General Brigham system, different hospital. Same person across the BWH/BCH entries (canonical profile here); verify site of practice (MGH) before territory assignment."
+    }
+  }
+]

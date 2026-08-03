@@ -1,0 +1,125 @@
+[
+  {
+    "name": "Theodore H. Schwartz",
+    "npi": "1811916455",
+    "identity": "Theodore H. Schwartz, MD — epilepsy & skull-base neurosurgeon; longtime Weill Cornell Medicine / NewYork-Presbyterian faculty (Director of Epilepsy Surgery, Director of Anterior Skull Base & Pituitary Surgery, David & Ursel Barnes Professor in Minimally Invasive Surgery). Relocated to the Icahn School of Medicine at Mount Sinai (~2025); claims/NPI history sits at Weill Cornell. Distinct from 'Justin Schwarz' (different person, different spelling).",
+    "bio": "Schwartz is one of the most recognized academic neurosurgeons in the country, best known for pioneering minimally invasive endoscopic endonasal skull-base and pituitary surgery and for running a basic-science epilepsy laboratory studying seizure onset, spread, and neurovascular coupling. Over 25 years at Weill Cornell he served as Director of Epilepsy Surgery and Co-Director of Surgical Neuro-Oncology, and his own faculty profile lists laser interstitial thermal therapy among his areas of expertise. He has authored 500+ peer-reviewed articles and chapters and wrote the 2024 popular-science book 'Gray Matters: A Biography of Brain Surgery' (an Economist best book of the year). In 2025 he moved to Mount Sinai as Professor of Neurosurgery.",
+    "training": "Harvard College (AB) · Harvard Medical School (MD) · Neurosurgery residency and chief residency at The Neurological Institute of New York (Columbia) · advanced fellowship year at Yale-New Haven; Van Wagenen and von Humboldt fellowships (Max Planck Institute, Munich) — elite Harvard/Columbia pedigree, KOL-tier.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (ours)",
+    "litt_exposure": "Strong: claims place him in the 'LITT — Our Equipment (NeuroBlate)' cohort (epi_cranio 21, seeg 2, mets_rn 5), and his own physician profile explicitly lists laser interstitial thermal therapy as an area of expertise. As Director of Epilepsy Surgery he is the natural LITT operator/champion at Weill Cornell for mesial-temporal and lesional epilepsy.",
+    "wheelhouse": "Drug-resistant epilepsy surgery (temporal/extratemporal, SEEG-guided), endoscopic endonasal skull-base & pituitary tumors, surgical neuro-oncology.",
+    "kol": true,
+    "kol_note": "National/international KOL: endowed professor, 500+ publications, epilepsy research-lab PI, author of a widely reviewed 2024 book, and a named developer of minimally invasive endonasal techniques. A marquee reference-surgeon and NeuroBlate advocate — watch for his institutional move to Mount Sinai as it may shift where his LITT volume lands.",
+    "recent_papers": [
+      {
+        "title": "Gray Matters: A Biography of Brain Surgery",
+        "journal": "Dutton / Penguin Random House (book)",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Popular-science biography of neurosurgery; named an Economist best book of 2024. Signals thought-leadership/KOL reach rather than LITT-specific evidence."
+      },
+      {
+        "title": "Reoperation for growth hormone-secreting pituitary adenomas: endonasal endoscopic series with systematic review and meta-analysis",
+        "journal": "Journal of Neurosurgery",
+        "year": 2017,
+        "affinity": "low",
+        "note": "Representative of his signature endoscopic endonasal skull-base body of work; not LITT."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": [
+      "Relocated to Icahn School of Medicine at Mount Sinai ~2025 — confirm current operating institution before targeting; NPI 1811916455 and NeuroBlate claims are Weill Cornell-era.",
+      "DISAMBIGUATION: this is Theodore H. Schwartz (epilepsy/skull-base KOL), NOT Justin Schwarz (junior neuroendovascular faculty, different spelling/person).",
+      "Individual LITT-authored paper titles were not separately verified; LITT exposure rests on claims cohort + his own profile listing LITT expertise (high confidence overall)."
+    ]
+  },
+  {
+    "name": "Justin Taylor Schwarz",
+    "npi": null,
+    "identity": "Justin Taylor Schwarz, MD — Assistant Professor of Neurological Surgery, Weill Cornell Medicine; Assistant Attending Neurosurgeon at NewYork-Presbyterian and NYP/Brooklyn Methodist. Neuroendovascular / cerebrovascular subspecialist. A DISTINCT person from Theodore H. Schwartz (note the different surname spelling).",
+    "bio": "Schwarz is a fellowship-trained neuroendovascular and cerebrovascular surgeon who joined the Weill Cornell faculty focusing on minimally invasive, catheter-based treatment of stroke, aneurysms, AVMs, and other vascular conditions (embolization, venous stenting, vertebroplasty/kyphoplasty). He trained entirely within the Cornell system and won the 2022 Philip E. Stieg Faculty Teaching Award for resident education. His practice is vascular/endovascular, not open cranial tumor or stereotactic ablation.",
+    "training": "Dartmouth College (BA, magna cum laude) · Weill Cornell Medical College (MD) · Neurosurgery residency at NewYork-Presbyterian/Weill Cornell · neuroendovascular (neurointerventional) fellowship at Weill Cornell — solid Cornell endovascular pedigree.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Not present in LITT/epilepsy/tumor claims; subspecialty is endovascular cerebrovascular surgery, which does not overlap with laser ablation.",
+    "wheelhouse": "Neuroendovascular / cerebrovascular: ischemic stroke thrombectomy, aneurysm & AVM embolization, venous stenting, spine augmentation.",
+    "kol": false,
+    "kol_note": "Early-career faculty; teaching-award recognition but not a LITT or neuro-oncology opinion leader.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Low fit",
+      "rationale": "Endovascular/cerebrovascular practice with no cranial-ablation or stereotactic footprint; not a realistic LITT adopter. Value, if any, is as a system colleague/referral relay to the epilepsy and neuro-oncology teams that actually perform LITT — not as a direct case-conversion target."
+    },
+    "confidence": "medium",
+    "flags": [
+      "DISAMBIGUATION: 'Justin Schwarz' is a separate individual from Theodore H. Schwartz — different spelling, different subspecialty (endovascular vs. epilepsy/skull-base). Do not merge.",
+      "No NPI supplied in packet and not in claims; identity confirmed via Weill Cornell faculty profile.",
+      "No individually verifiable peer-reviewed publications surfaced (junior faculty) — recent_papers left empty rather than fabricated."
+    ]
+  },
+  {
+    "name": "Michael G. Kaplitt",
+    "npi": null,
+    "identity": "Michael G. Kaplitt, MD, PhD — Professor and Executive Vice-Chairman, Department of Neurological Surgery, Weill Cornell Medicine / NewYork-Presbyterian. Functional/stereotactic neurosurgeon and molecular-neurosurgery researcher.",
+    "bio": "Kaplitt is an internationally recognized functional neurosurgeon and pioneer of CNS gene therapy — in 2003 he performed the first-ever in vivo brain gene therapy (AAV-GAD) for Parkinson's disease and led the subsequent Phase 1 (Lancet 2007) and randomized Phase 2 (Lancet Neurology 2011) trials. He was the first surgeon in New York to use MR-guided focused ultrasound for essential tremor (2016) and the first in NY to perform DBS for epilepsy, and he was lead investigator on the trial supporting FDA approval of bilateral focused ultrasound for advanced Parkinson's. His clinical wheelhouse is deep stereotactic targets treated by DBS and focused-ultrasound ablation.",
+    "training": "Princeton University (AB, molecular biology & Russian studies, magna cum laude, 1987) · Tri-Institutional MD-PhD Program — PhD in molecular neurobiology, The Rockefeller University (1993); MD, Cornell University Medical College (1995) · neurosurgery residency and functional/stereotactic fellowship training at Weill Cornell — elite MD-PhD physician-scientist pedigree.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No direct evidence of LITT case volume (not present in the LITT claims cohort). However, he owns a deep stereotactic/ablative skillset — his ablation modality of record is MR-guided focused ultrasound (Insightec), a competing minimally invasive ablation technology, plus DBS. Adjacent but not laser-based.",
+    "wheelhouse": "Functional/stereotactic neurosurgery: DBS for movement disorders & epilepsy, MR-guided focused ultrasound thalamotomy/pallidotomy, CNS gene therapy; molecular neurosurgery research.",
+    "kol": true,
+    "kol_note": "Bona fide functional-neurosurgery KOL — first-in-human brain gene therapy, multiple pivotal focused-ultrasound trials, executive vice-chair. Influential, but his public thought-leadership is anchored in focused ultrasound and gene therapy, i.e. modalities that partly compete with LITT for the ablation narrative.",
+    "recent_papers": [
+      {
+        "title": "AAV2-GAD gene therapy for advanced Parkinson's disease: a double-blind, sham-surgery controlled, randomised trial",
+        "journal": "The Lancet Neurology",
+        "year": 2011,
+        "affinity": "low",
+        "note": "Landmark Phase 2 stereotactic-delivery RCT; establishes his stereotactic/ablation-adjacent credibility, not LITT."
+      },
+      {
+        "title": "Safety and tolerability of gene therapy with an adeno-associated virus (AAV) borne GAD gene for Parkinson's disease: an open label, phase I trial",
+        "journal": "The Lancet",
+        "year": 2007,
+        "affinity": "low",
+        "note": "First-in-human brain gene therapy; foundational to his KOL status, unrelated to laser ablation."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Moderate / watch — modality conflict",
+      "rationale": "He is exactly the kind of high-volume stereotactic operator who could run NeuroBlate for lesional/deep epilepsy, and as executive vice-chair he carries institutional weight. The catch is competitive-modality alignment: his ablation franchise is MR-guided focused ultrasound (Insightec) plus DBS, so LITT would have to be positioned as complementary (open-skull-free thermal ablation for targets/indications FUS can't reach). Best approached as an influencer/co-adopter rather than a naive-craniotomy conversion."
+    },
+    "confidence": "high",
+    "flags": [
+      "Not in LITT claims — LITT case experience unconfirmed; ablation experience is via focused ultrasound (competing modality), a strategic consideration.",
+      "No NPI in packet; identity fully corroborated via Weill Cornell faculty profile.",
+      "Functional neurosurgeon — distinct role from the epilepsy-resection LITT champion (Theodore Schwartz) at the same institution."
+    ]
+  },
+  {
+    "name": "Philip E. Stieg",
+    "npi": "1124047857",
+    "identity": "Philip E. Stieg, PhD, MD — Professor, Chairman and founder of the Department of Neurological Surgery at Weill Cornell Medicine; Neurosurgeon-in-Chief at NewYork-Presbyterian/Weill Cornell. Cerebrovascular & skull-base surgeon.",
+    "bio": "Stieg built and has chaired the Weill Cornell neurosurgery department since 2000, recruited from Harvard/Brigham & Women's, and is internationally known for cerebrovascular disorders (aneurysms, AVMs, bypass) and skull-base surgery. He is a past chair of the AANS/CNS Cerebrovascular Section and hosts a neuroscience podcast. In this dataset he appears as a high-volume referring clinician (mets_rn 76), reflecting his role as department gatekeeper rather than an ablation operator.",
+    "training": "Medical College of Wisconsin (MD, 1983); PhD in anatomy/neuroscience, Albany Medical College of Union University (1980) · Neurosurgery residency at UT Southwestern · fellowship in cell transplantation/restorative neuroscience, Karolinska Institute (Stockholm); joined Harvard Medical School / Brigham & Women's & Boston Children's faculty in 1989 before Cornell in 2000 — chair-tier academic pedigree.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Classified as a 'Referring Clinician' in claims with substantial brain-metastasis referral volume (mets_rn 76); his personal surgical practice is cerebrovascular/skull-base, not laser ablation.",
+    "wheelhouse": "Cerebrovascular neurosurgery (aneurysms, AVMs, EC-IC bypass), skull-base surgery, brain tumors; department leadership.",
+    "kol": true,
+    "kol_note": "Senior KOL and leadership figure — founding chair, past national cerebrovascular-section chair, podcast host — but his influence and referral volume, not personal LITT operating, are what matter commercially.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Access / referral influence — not a direct operator",
+      "rationale": "As department chair and a high-volume mets referrer (76), Stieg is an economic-buyer influencer and gatekeeper who controls institutional access and can steer metastasis/epilepsy cases toward the LITT program. He does not personally perform laser ablation, so the play is executive relationship and program sponsorship (keep the NeuroBlate service line resourced and referred), not converting his own caseload."
+    },
+    "confidence": "high",
+    "flags": [
+      "Referring clinician only — no personal LITT operating; target for institutional access/sponsorship, not case conversion.",
+      "NPI 1124047857 confirmed via NewYork-Presbyterian directory.",
+      "No specific recent peer-reviewed titles independently verified for this pass — recent_papers left empty rather than fabricated (he has an extensive cerebrovascular record)."
+    ]
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "name": "Kristopher T. Kimmell",
+    "npi": "1902122203",
+    "identity": "Kristopher T. Kimmell, MD, FAANS — staff neurosurgeon at Rochester Regional Health (Rochester General Hospital) and clinical assistant professor of neurosurgery at the University of Rochester Medical Center, Rochester, NY.",
+    "bio": "Kimmell is a board-certified general adult neurosurgeon at Rochester Regional Health who practices the full breadth of cranial and spine neurosurgery, including neuro-oncology, cerebrovascular disease, complex spine, trauma, and pain/movement disorders. He is the ROC account's active LITT operator, with internal claims data documenting NeuroBlate ablation cases for intracranial lesions/metastases. His scholarly interests center on comparative-effectiveness research, health economics, quality improvement, and patient safety in neurosurgery.",
+    "training": "University of Oklahoma College of Medicine (MD, 2010) · Neurosurgery residency, Strong Memorial Hospital / University of Rochester · Fellowship not verified · Pedigree: URMC-trained, now dual-affiliated Rochester Regional Health + URMC clinical faculty",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (ours)",
+    "litt_exposure": "Direct LITT operator on our platform — internal claims show 6 LITT procedures on NeuroBlate plus 11 brain-metastasis resections; cohort tagged 'LITT — Our Equipment (NeuroBlate).' He is the established Monteris user at this account.",
+    "wheelhouse": "General adult neurosurgery — neuro-oncology (metastases, cranial tumors), cerebrovascular, complex/minimally invasive spine, trauma, pituitary and peripheral nerve; secondary academic focus on health economics and quality/safety research.",
+    "kol": false,
+    "kol_note": "Publication- and society-active (AANS involvement; systematic-review and quality/health-economics work), but not a national LITT thought leader. Best positioned as a loyal local champion and reference user for NeuroBlate rather than a podium KOL.",
+    "recent_papers": [
+      {
+        "title": "Statin use and risk of postoperative venous thromboembolism / VTE prophylaxis strategies in patients undergoing craniotomy for brain tumor (systematic review)",
+        "journal": "Journal of Neurosurgery / J Neurooncol",
+        "year": null,
+        "affinity": "med",
+        "note": "Neuro-oncology craniotomy population — adjacent to the LITT/tumor space. Exact year unverified; title paraphrased from search."
+      },
+      {
+        "title": "For the further training of individuals in neurosurgery: a history of the William P. Van Wagenen Fellowship",
+        "journal": "Journal of Neurosurgery",
+        "year": null,
+        "affinity": "low",
+        "note": "Historical/educational piece; reflects academic engagement, not LITT. Year unverified."
+      },
+      {
+        "title": "Risk factors associated with readmission and reoperation in patients undergoing spine surgery",
+        "journal": "World Neurosurgery (health-services research)",
+        "year": null,
+        "affinity": "low",
+        "note": "Spine outcomes/quality research; off-topic for LITT. Year unverified."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": [
+      "Account label ambiguity: packets.json tags ROC as 'Rochester General / Rochester Regional Health,' but the task framing referenced URMC. Kimmell is primarily Rochester Regional Health with URMC clinical-faculty appointment.",
+      "Publication years and exact titles not individually verified; listed low/med-affinity papers are approximate and off the LITT core."
+    ]
+  },
+  {
+    "name": "Vincent N. Nguyen",
+    "npi": "1912394438",
+    "identity": "Vincent N. Nguyen, MD — cerebrovascular/endovascular neurosurgeon and Assistant Professor, Department of Neurosurgery, University of Rochester Medical Center (Strong Memorial Hospital), Rochester, NY.",
+    "bio": "Nguyen is an early-career vascular neurosurgeon at URMC offering both open microsurgical and endovascular treatment of cerebrovascular disease, with particular focus on EC-IC bypass for ischemic disease/Moyamoya, complex aneurysms, and spinal ischemia. He joined URMC after endovascular fellowship in 2023 and is research-active, with a body of systematic-review and technique work on adult Moyamoya and bypass. In the claims data he appears as a LITT-naive craniotomy surgeon and low-volume metastasis referrer, consistent with a vascular rather than tumor/ablation practice.",
+    "training": "Lewis Katz School of Medicine at Temple University (MD) · Neurosurgery residency, University of Tennessee Health Science Center — Memphis (2015–2022) · Endovascular neurosurgery fellowship, Keck Hospital of USC (2022–2023) · Pedigree: UTHSC/Semmes-Murphey cerebrovascular training + USC endovascular",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Subspecialty is cerebrovascular/endovascular; claims show only 1 tumor craniotomy and 7 metastasis referrals with no LITT procedures (cohort 'LITT-Naive Craniotomy Surgeon').",
+    "wheelhouse": "Cerebrovascular and endovascular neurosurgery — Moyamoya, EC-IC/direct-indirect bypass, complex aneurysms, ischemic disease, spinal vascular pathology.",
+    "kol": false,
+    "kol_note": "Productive early-career academic with several peer-reviewed cerebrovascular papers, but no standing or publications in LITT/neuro-oncology ablation.",
+    "recent_papers": [
+      {
+        "title": "Direct, Indirect, and Combined Extracranial-to-Intracranial Bypass for Adult Moyamoya Disease: An Updated Systematic Review and Meta-Analysis",
+        "journal": "Stroke",
+        "year": 2023,
+        "affinity": "low",
+        "note": "Cerebrovascular meta-analysis; no LITT relevance but confirms academic output and subspecialty."
+      },
+      {
+        "title": "Surgical techniques and indications for treatment of adult moyamoya disease",
+        "journal": "Frontiers in Surgery",
+        "year": 2022,
+        "affinity": "low",
+        "note": "Review; vascular focus, off-topic for LITT."
+      },
+      {
+        "title": "Double-Barrel (2-Donor-2-Recipient) Bypass as Rescue Treatment for Patient with Occluded MCA Intracranial Stent and Recurrent Ischemia",
+        "journal": "World Neurosurgery",
+        "year": 2022,
+        "affinity": "low",
+        "note": "Case report; vascular, not LITT-relevant."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Low-priority development target / poor subspecialty fit",
+      "rationale": "Nguyen is a dedicated cerebrovascular-endovascular surgeon; his metastasis signal (7 referrals, 1 tumor cranio) reflects incidental vascular-adjacent volume, not a tumor/epilepsy ablation practice. Unlikely to personally adopt NeuroBlate. Value is as a potential intra-departmental referral source to the account's LITT operator rather than as a new user."
+    },
+    "confidence": "medium",
+    "flags": [
+      "Two distinct 'Vincent Nguyen' neurosurgeons exist in search (Rochester NY vs. Los Angeles/Memphis); this profile is disambiguated to the URMC Rochester NY practitioner (NPI 1912394438, Temple MD, UTHSC residency)."
+    ]
+  },
+  {
+    "name": "Kevin A. Walter",
+    "npi": "1326014770",
+    "identity": "Kevin A. Walter, MD — Professor of Neurosurgery and Oncology, Chief of Neurosurgery at UR Medicine's Highland Hospital, University of Rochester Medical Center; brain and spinal tumor surgeon, Rochester, NY.",
+    "bio": "Walter is a senior academic neuro-oncologic neurosurgeon at URMC and one of the region's highest-volume brain-tumor surgeons, operating at both Strong Memorial and Rochester General Hospitals with expertise in image-guided surgery, radiosurgery, and complex spinal tumor surgery. He directs a translational neuro-oncology laboratory (co-led with Eleanor Carson-Walter, PhD) and has published extensively on intracranial metastasis and high-grade glioma. Despite this deep tumor-metastasis practice, claims data flag him as LITT-naive — a high-value conversion opportunity for image-guided ablation.",
+    "training": "Johns Hopkins University School of Medicine (MD) · Neurosurgery residency, Johns Hopkins Hospital · NCI-sponsored neuro-oncology fellowship, Johns Hopkins · Faculty at University of Pittsburgh (director of adult neuro-oncology) before recruitment to University of Rochester in 2007 · Pedigree: Johns Hopkins neuro-oncology, top-tier",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience — cohort tagged 'LITT-Naive Craniotomy Surgeon.' However he is a high-volume metastasis/tumor surgeon (29 metastasis cases, tumor craniotomy) with established image-guided/stereotactic radiosurgery expertise, making him a strong latent LITT adopter.",
+    "wheelhouse": "Neuro-oncology — high-grade glioma, brain and spinal metastasis, image-guided/stereotactic tumor surgery, radiosurgery, complex spinal tumors; translational brain-tumor laboratory research.",
+    "kol": true,
+    "kol_note": "Academic leader: full Professor, division/hospital chief, former director of adult neuro-oncology at Pittsburgh, NCI-trained, laboratory director, and prolific author on glioma and metastasis. Carries real regional and academic weight in neuro-oncology — a marquee target whose adoption would validate NeuroBlate at the account.",
+    "recent_papers": [
+      {
+        "title": "Extracranial Glioblastoma Metastasis: A Neuropathological Case Report",
+        "journal": "Cureus (neuropathology case report)",
+        "year": 2023,
+        "affinity": "med",
+        "note": "GBM metastasis biology — core to his tumor wheelhouse and adjacent to LITT indications. Author attribution likely but not individually verified."
+      },
+      {
+        "title": "Body of work on treatment of intracranial metastasis and high-grade glioma",
+        "journal": "Various neuro-oncology journals",
+        "year": null,
+        "affinity": "med",
+        "note": "Aggregate; individual titles/years not verified in this pass. Confirms sustained metastasis/glioma focus directly relevant to LITT positioning."
+      }
+    ],
+    "candidacy": {
+      "assessment": "High-priority development target — best conversion opportunity in the ROC account",
+      "rationale": "Walter combines high metastasis/tumor volume (29 mets, tumor cranio), image-guided and radiosurgery expertise, academic authority (Professor/Chief, Hopkins/NCI pedigree), and LITT-naive status. Metastasis and radiation-necrosis ablation are precisely the NeuroBlate indications; converting him would add a credible academic user alongside the account's existing operator (Kimmell) and influence departmental referral patterns. Approach via the mets/radiation-necrosis and biopsy-plus-ablate value proposition."
+    },
+    "confidence": "medium",
+    "flags": [
+      "Recent-paper titles/years only partially verified; the aggregate neuro-oncology output is well established but specific citations should be confirmed before use in outreach.",
+      "Operates across both Strong Memorial and Rochester General — spans the URMC/Rochester Regional systems that both appear under the ROC account."
+    ]
+  },
+  {
+    "name": "Patrick J. Reid",
+    "npi": "1053323097",
+    "identity": "Patrick J. Reid, MD — neurosurgeon affiliated with Rochester Regional Health (Rochester General Hospital and Unity Hospital), Rochester, NY; practice oriented to spine surgery.",
+    "bio": "Reid is a long-practicing neurosurgeon (25+ years) at Rochester Regional Health whose publicly listed clinical emphasis is spinal surgery — fusion, stenosis, and spondylosis. In the claims data he appears solely as a referring clinician with a small metastasis signal (5 cases) and no LITT or tumor-craniotomy activity. There is limited published academic profile available for him.",
+    "training": "University College London / University of London School of Medicine (MD, 1998) · Residency and fellowship not verified · Pedigree: UK-trained; further training details unconfirmed",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Cohort is 'Referring Clinician'; practice profile is spine-focused with no cranial ablation or tumor-craniotomy volume.",
+    "wheelhouse": "Spine neurosurgery — spinal fusion, spinal stenosis, spondylosis; general neurosurgery.",
+    "kol": false,
+    "kol_note": "No identifiable academic or society leadership profile; no relevant publications surfaced.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Low-priority target — referral relationship only",
+      "rationale": "Reid's practice is spine-oriented with no cranial tumor/ablation volume; the only signal is 5 metastasis referrals. He is not a plausible LITT operator. Manage as a referral-source relationship (directing metastasis/tumor patients to the account's LITT surgeon) rather than a user-development target."
+    },
+    "confidence": "low",
+    "flags": [
+      "Identity confirmed via NPI 1053323097 (Rochester NY), but training beyond MD and any subspecialty detail are unverified; profile depth is limited.",
+      "Rochester Regional Health affiliation (Rochester General / Unity), consistent with the ROC account's Rochester Regional labeling."
+    ]
+  }
+]

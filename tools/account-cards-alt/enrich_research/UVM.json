@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Paul L Penar",
+    "npi": "1790705465",
+    "merges": ["Paul Penar", "Paul L Penar"],
+    "identity": "Professor of Neurosurgery, University of Vermont Larner College of Medicine / UVM Medical Center, Burlington, VT",
+    "bio": "Senior functional and stereotactic neurosurgeon and a longstanding leader of the UVM neurosurgery program (former division chief). Clinical focus spans epilepsy and seizure surgery, deep brain stimulation for movement disorders, and brain and spinal tumors, with pain surgery. Over four decades in practice, he anchors the adult stereotactic/oncology service at a NeuroBlate-equipped center.",
+    "training": "University of Michigan Medical School (MD, 1981) · General surgery internship and Neurosurgery residency, Yale-New Haven Medical Center (1981–1986) · Fellowship: none verified · Pedigree note: Yale-New Haven trained, FACS/FAANS",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate",
+    "litt_exposure": "Claims place him in the 'LITT — Our Equipment (NeuroBlate)' cohort at a NeuroBlate site (mets_rn 14), consistent with involvement in the metastasis/lesion caseload feeding LITT; however no coded LITT procedure count (litt_perf) is attached to his NPI, so direct hands-on NeuroBlate volume is inferred rather than documented. No peer-reviewed LITT publication verified.",
+    "wheelhouse": "Veteran functional/stereotactic + tumor surgeon at a NeuroBlate house",
+    "kol": false,
+    "kol_note": "Regionally established senior/academic figure and program builder, but no verified national LITT thought-leadership (society LITT lectures, pivotal-trial authorship) found.",
+    "recent_papers": [],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["Dedup: merges 'Paul Penar' (Performer) and 'Paul L Penar' (Development target, dup_of Paul Penar) — same NPI 1790705465; canonical role = Performer.", "No coded LITT procedure count on NPI; NeuroBlate hands-on volume inferred from cohort assignment.", "No specific recent peer-reviewed papers verifiable to this exact author with confidence; older CD44 glioma-adhesion and intracranial-pressure-model work attributed on ResearchGate but not citation-verified — omitted to avoid fabrication."]
+  },
+  {
+    "name": "Brandon D Liebelt",
+    "npi": "1477872398",
+    "merges": ["Brandon Liebelt", "Brandon D Liebelt"],
+    "identity": "Assistant Professor of Neurosurgery and Skull Base Director, University of Vermont Larner College of Medicine / UVM Medical Center, Burlington, VT",
+    "bio": "Cerebrovascular and skull base neurosurgeon who also carries neuro-oncology cases. Treats cerebral aneurysms, AVMs, skull base and pituitary tumors, and brain/spinal tumors, with expertise in minimally invasive craniotomy, endoscopic/skull base approaches, and neuroendoscopy. Serves as the institution's skull base director at a NeuroBlate-equipped center.",
+    "training": "University of Texas Health Science Center at San Antonio (MD, 2010) · Neurosurgery residency, Houston Methodist / Baylor (Houston, TX) — inferred from co-authorship with Blacklock, Steele, and Britz · Cerebrovascular & Skull Base fellowship, Barrow Neurological Institute (Phoenix) · Pedigree note: Barrow cerebrovascular/skull base fellowship",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate",
+    "litt_exposure": "Claims place him in the 'LITT — Our Equipment (NeuroBlate)' cohort at a NeuroBlate site (mets_rn 18), consistent with participation in the NeuroBlate metastasis/lesion caseload; no coded LITT procedure count (litt_perf) is attached to his NPI, so direct ablation volume is inferred, not documented. His published record is skull base/cerebrovascular/anatomic, with no LITT-specific paper found.",
+    "wheelhouse": "Cerebrovascular/skull base surgeon adding tumor-ablation work at a NeuroBlate house",
+    "kol": false,
+    "kol_note": "Active publisher in skull base/cerebrovascular anatomy and technique, but no evidence of LITT-specific thought leadership.",
+    "recent_papers": [
+      {"title": "Great Hospitals: The History of Neurosurgery at the University of Vermont Medical Center — A Macroscopic Examination of Microscope-Savvy Pioneers", "journal": "World Neurosurgery", "year": 2023, "affinity": "low", "note": "Institutional history; confirms current UVM affiliation. Not LITT-related."},
+      {"title": "A comparison of cerebellar retraction pressures in posterior fossa surgery: extended retrosigmoid versus traditional retrosigmoid approach", "journal": "World Neurosurgery", "year": 2018, "affinity": "low", "note": "Skull base/posterior fossa technique (Liebelt BD, Huang M, Britz GW); reflects open-surgery orientation, not ablation."},
+      {"title": "The Anterior Subcallosal Approach to the Third Ventricle: Anatomical Description and Technical Note", "journal": "World Neurosurgery", "year": 2016, "affinity": "low", "note": "Anatomic/technical note; deep-lesion access interest is tangentially relevant to LITT trajectory planning."},
+      {"title": "Spinal Schwannoma and Meningioma Mimicking a Single Mass at the Craniocervical Junction Subsequent to Remote Radiation Therapy for Acne Vulgaris", "journal": "World Neurosurgery", "year": 2016, "affinity": "low", "note": "Case report; tumor/skull base focus, not LITT."}
+    ],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["Dedup: merges 'Brandon Liebelt' and 'Brandon D Liebelt' — both Performer, same NPI 1477872398.", "No coded LITT procedure count on NPI; NeuroBlate hands-on volume inferred from cohort assignment.", "Residency program (Houston Methodist/Baylor) inferred from co-author affiliations, not from a primary bio source — verify."]
+  },
+  {
+    "name": "Katrina A Ducis",
+    "npi": "1629367354",
+    "merges": [],
+    "identity": "Pediatric Neurosurgeon, Golisano Children's Hospital at UVM; Associate Professor of Neurosurgery, UVM Larner College of Medicine, Burlington, VT",
+    "bio": "Pediatric neurosurgeon covering the full pediatric spectrum — hydrocephalus, Chiari malformation, tethered cord, craniosynostosis, spina bifida/myelomeningocele, brain and spinal cord tumors, pediatric epilepsy, and pediatric cerebrovascular disease (AVMs, cavernous malformations). Stated research interests are pediatric cerebrovascular disease and quality improvement.",
+    "training": "University of Toledo College of Medicine (MD) · Neurosurgery residency, University of Vermont Medical Center (2011–2018) · Pediatric Neurosurgery fellowship, Indiana University / Riley Hospital for Children (Goodman Campbell Brain & Spine), Indianapolis (2018–2019) · Pedigree note: Riley/Goodman Campbell pediatric fellowship",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Claims classify her as a 'Referring Clinician' (mets_rn 8) with no litt_perf count and no LITT authorship found. Her pediatric epilepsy and lesional caseload is a LITT-relevant domain, but there is no documented hands-on ablation activity.",
+    "wheelhouse": "General pediatric neurosurgeon; epilepsy/lesional referral source, not yet an ablator",
+    "kol": false,
+    "kol_note": "Early-to-mid-career pediatric neurosurgeon; no LITT thought-leadership evidence.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Warm development target — in-house referral pathway to convert to NeuroBlate adopter for pediatric cases.",
+      "rationale": "She practices at a center that already owns NeuroBlate and where Penar and Liebelt perform LITT, and her caseload (pediatric epilepsy, tethered/lesional and small deep tumors, cavernous malformations) maps directly onto pediatric LITT indications (mesial temporal/lesional epilepsy, hypothalamic hamartoma, deep tumors). She currently refers rather than ablates (Referring Clinician cohort), so the play is co-treatment/proctoring with the existing UVM NeuroBlate team to bring pediatric epilepsy/lesional cases onto our platform."
+    },
+    "confidence": "medium",
+    "flags": ["No dedup needed — single name variant.", "No specific peer-reviewed papers verifiable to this author with confidence (secondary sources cite Child's Nervous System / J Neurosurg pediatric cerebrovascular work, but no citation confirmed) — recent_papers left empty to avoid fabrication.", "litt_house set to NeuroBlate because UVM is coded as an 'Our Equipment (NeuroBlate)' account, though this individual has no LITT procedure evidence."]
+  }
+]

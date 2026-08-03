@@ -1,0 +1,168 @@
+[
+  {
+    "name": "Carrie Rebecca Muh",
+    "npi": "1558548719",
+    "identity": "Chief of Pediatric Neurosurgery & Surgical Director, Pediatric Epilepsy Program, Maria Fareri Children's Hospital / Westchester Medical Center; Associate Professor of Neurosurgery, New York Medical College (Valhalla, NY)",
+    "bio": "Muh is an internationally recognized pediatric epilepsy neurosurgeon recruited to Westchester Medical Center in 2019 to build and lead its pediatric neurosurgical service and NAEC Level 4 pediatric epilepsy program at Maria Fareri Children's Hospital. She spent roughly eight years on faculty at Duke before the move, and her practice centers on surgery for medically intractable epilepsy, including resective, disconnective, and minimally invasive (laser ablation) approaches. Claims data show her as the highest-volume LITT performer at the account (11 procedures) plus SEEG and epilepsy craniotomies, marking her as the clinical anchor of the program. She is active in national/international epilepsy-surgery leadership (AANS/CNS Pediatrics Section executive committee, ILAE surgery education taskforce).",
+    "training": "Columbia University College of Physicians & Surgeons (MD) · Neurosurgery residency, Emory University (2004-2010) · Pediatric Neurosurgery fellowship, Children's Healthcare of Atlanta (2010-2011) · Also SB/SM MIT and a master's from Duke; strong academic pedigree with prior Duke faculty appointment",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (ours)",
+    "litt_exposure": "Strong hands-on evidence: highest LITT volume at the account (11 laser-ablation procedures in claims) and surgical director of the pediatric epilepsy program that offers MR-guided laser ablation; SEEG-guided workup capability also documented.",
+    "wheelhouse": "Pediatric epilepsy surgeon / program-building LITT anchor",
+    "kol": true,
+    "kol_note": "Internationally recognized in pediatric epilepsy surgery; AANS/CNS Pediatric Section executive committee, ILAE Epilepsy Surgery Education Taskforce, NY Society of Neurosurgery board; frequent invited international speaker.",
+    "recent_papers": [
+      {
+        "title": "Cortical language areas and plasticity in pediatric patients with epilepsy (Chou N, Serafini S, Muh CR)",
+        "journal": "Pediatric Neurology",
+        "year": 2018,
+        "affinity": "low",
+        "note": "Presurgical language-mapping / epilepsy-surgery methodology; relevant to her epilepsy-surgery practice but not LITT-specific."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["publication list only partially verified individually; identity and LITT role high-confidence via claims + institutional bios"]
+  },
+  {
+    "name": "Vishad V. Sukul",
+    "npi": "1194985192",
+    "identity": "Section Chief, Functional & Epilepsy Neurosurgery, Westchester Medical Center Health Network; faculty, Dept. of Neurosurgery, New York Medical College (Valhalla, NY)",
+    "bio": "Sukul is a fellowship-trained, board-certified functional and epilepsy neurosurgeon who leads the adult functional/epilepsy neurosurgery section for the WMCHealth network. His practice spans epilepsy surgery, deep brain stimulation, responsive neurostimulation, movement disorders, chronic pain and spasticity/neuromodulation. Claims data confirm hands-on LITT (4 laser-ablation procedures) plus SEEG and epilepsy craniotomy, making him the adult-side operator complementing the pediatric program. He is a FAANS/FCNS fellow and publishes and lectures nationally on neuromodulation and refractory epilepsy.",
+    "training": "MD (allopathic) · Neurosurgery residency, Albany Medical Center · Fellowship in functional/epilepsy neurosurgery (stereotactic & functional); board-certified, FAANS/FCNS. Residency/fellowship specifics partially unverified in public sources.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (ours)",
+    "litt_exposure": "Direct hands-on evidence: 4 LITT laser-ablation procedures in claims plus SEEG and epilepsy craniotomy; runs the adult functional/epilepsy surgery section that offers laser ablation.",
+    "wheelhouse": "Adult functional/epilepsy & neuromodulation surgeon (DBS/RNS + LITT)",
+    "kol": true,
+    "kol_note": "Section chief with regional/national invited lectures; active neuromodulation and epilepsy-surgery author (RNS, thalamic stimulation). Emerging KOL rather than senior national figure.",
+    "recent_papers": [
+      {
+        "title": "Bilateral pulvinar responsive neurostimulation for bilateral multifocal posteriorly dominant drug-resistant epilepsy",
+        "journal": "Epilepsia Open",
+        "year": 2024,
+        "affinity": "med",
+        "note": "Co-authored case series; refractory-epilepsy neuromodulation, adjacent to the LITT patient population."
+      },
+      {
+        "title": "Deep brain stimulation of the thalamus for epilepsy",
+        "journal": "Seizure (Eur. J. Epilepsy)",
+        "year": 2023,
+        "affinity": "med",
+        "note": "Thalamic neuromodulation for drug-resistant epilepsy; same referral pool as LITT candidates. Author role as listed in his profile."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["residency/fellowship program names not fully confirmed in public sources"]
+  },
+  {
+    "name": "Jared M. Pisapia",
+    "npi": "1790099083",
+    "identity": "Attending Pediatric & Adult Neurosurgeon, Maria Fareri Children's Hospital / Westchester Medical Center; Section Chief of Peripheral Nerve Surgery; Associate Program Director, Neurosurgery Residency; Assistant Professor, New York Medical College (Valhalla, NY)",
+    "bio": "Pisapia is a dual board-certified (pediatric and adult) neurosurgeon at Maria Fareri Children's Hospital with clinical focus on pediatric brain and spine tumors, hydrocephalus, Chiari malformation, tethered cord, vascular malformations and peripheral nerve. He trained entirely at the University of Pennsylvania/CHOP and holds a master's in translational research, with research interests in connectomics/brain mapping and machine-learning applications to neurosurgical decision-making. Claims place him in the NeuroBlate cohort with a single laser-ablation case (metastasis/tumor), indicating early or occasional hands-on LITT use rather than a high-volume ablation practice. He also carries significant education/administrative roles (associate residency PD, clerkship director).",
+    "training": "University of Pennsylvania (BA, MSTR, MD) · Neurosurgery residency, Hospital of the University of Pennsylvania · Pediatric Neurosurgery fellowship (neuro-oncology focus), Children's Hospital of Philadelphia · Penn/CHOP pedigree",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (ours)",
+    "litt_exposure": "Limited hands-on evidence: appears in the NeuroBlate performer cohort with one laser-ablation case (metastasis/tumor). Early-stage or occasional LITT operator; tumor-oriented rather than epilepsy LITT.",
+    "wheelhouse": "Pediatric tumor / peripheral-nerve neurosurgeon; connectomics & ML researcher",
+    "kol": false,
+    "kol_note": "Academic and residency-education leadership (associate program director) and active tumor/connectomics researcher, but not yet an established LITT thought leader.",
+    "recent_papers": [
+      {
+        "title": "Novel Application of Connectomics to the Surgical Management of Pediatric Arteriovenous Malformations",
+        "journal": "Pediatric Neurosurgery (Karger)",
+        "year": 2025,
+        "affinity": "low",
+        "note": "Connectomics/brain-mapping for surgical planning; demonstrates image-guided/eloquent-area interest but not LITT-specific."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["only one LITT case in claims — hands-on depth uncertain"]
+  },
+  {
+    "name": "Rachana Tyagi",
+    "npi": "1437378080",
+    "identity": "Pediatric Neurosurgeon & Associate Director of Neurosurgery, Northern Division, Westchester Medical Center Health Network (Poughkeepsie / Vassar Brothers, NY)",
+    "bio": "Tyagi is an experienced pediatric neurosurgeon (20+ years in practice) covering the WMCHealth Northern Division, treating pediatric and adult brain/spinal tumors, epilepsy, hydrocephalus, Chiari, tethered cord, craniosynostosis and spasticity. Before WMC she was Director of Pediatric Neurosurgery at UMDNJ/Rutgers Robert Wood Johnson. Claims place her in the LITT-Naive Craniotomy Surgeon cohort with a tumor craniotomy but no laser-ablation cases, so she is a credible open-surgery counterpart who could be converted to minimally invasive ablation. She has 30+ publications, largely in pediatric hydrocephalus/spinal dysraphism and CNS evidence-based guideline work.",
+    "training": "University of Michigan Medical School (MD) · Neurosurgery residency, Temple University Hospital · Pediatric Neurosurgery fellowship, Cincinnati Children's Hospital Medical Center (plus a pediatric spinal-deformity fellowship, Shriners Hospital-Philadelphia); prior UMDNJ/Rutgers RWJ pediatric-neurosurgery director",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience; classified as a LITT-naive craniotomy surgeon (open tumor craniotomy in claims, no laser-ablation procedures).",
+    "wheelhouse": "Veteran pediatric tumor/hydrocephalus craniotomy surgeon",
+    "kol": false,
+    "kol_note": "Contributor to CNS systematic-review / evidence-based guidelines (myelomeningocele hydrocephalus, tethered cord); respected clinically but not a LITT or epilepsy-surgery KOL.",
+    "recent_papers": [
+      {
+        "title": "Congress of Neurological Surgeons Systematic Review and Evidence-Based Guideline on the Incidence of Shunt-Dependent Hydrocephalus in Infants with Myelomeningocele after Prenatal versus Postnatal Repair",
+        "journal": "Neurosurgery",
+        "year": 2019,
+        "affinity": "low",
+        "note": "Pediatric hydrocephalus guideline; reflects her pediatric focus, not ablation."
+      }
+    ],
+    "candidacy": {
+      "assessment": "moderate",
+      "rationale": "Established pediatric tumor/craniotomy surgeon inside an account that already owns NeuroBlate and runs an active laser-ablation program, so platform access and a natural case mix (pediatric tumors, DRE-adjacent pathology) exist. Tempering factors: she works in the geographically separate Northern Division and pediatric epilepsy/LITT cases already funnel to Muh at Valhalla, creating internal overlap; conversion would likely target tumor/lesional ablation on her own service rather than net-new program building."
+    },
+    "confidence": "high",
+    "flags": []
+  },
+  {
+    "name": "Avinash L. Mohan",
+    "npi": "1134258486",
+    "identity": "Pediatric & Adult Neurosurgeon, Brain & Spine Surgeons of New York (BSSNY); affiliated with Westchester Medical Center / Maria Fareri Children's Hospital; teaching faculty, New York Medical College (Valhalla / White Plains, NY)",
+    "bio": "Mohan is a dual board-certified (neurosurgery and pediatric neurosurgery) surgeon in the BSSNY private group with 25 years in practice, affiliated across WMC, Maria Fareri, White Plains, Stamford and Vassar Brothers. His clinical emphasis is meningioma and benign brain tumors, spina bifida, Chiari malformation, vascular malformations and hydrocephalus. Claims classify him as a Referring Clinician with a single metastasis/radiation-oncology-adjacent signal and no LITT procedures, so his relevance to the platform is as a potential referral source rather than an operator. His research record centers on pediatric hydrocephalus outcomes (e.g., VP shunt vs. ETV after posterior fossa tumor resection).",
+    "training": "Case Western Reserve University School of Medicine (MD) · Internship & Neurosurgery residency, New York Medical College · Pediatric Neurosurgery fellowship, Children's Memorial Hospital, Chicago; undergraduate at Johns Hopkins",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience; referring-clinician profile with tumor/benign-lesion practice, no laser-ablation procedures in claims.",
+    "wheelhouse": "Private-group tumor/pediatric neurosurgeon; potential referrer",
+    "kol": false,
+    "kol_note": "Long-tenured clinician and NYMC teaching faculty with a pediatric hydrocephalus research footprint; not a LITT or epilepsy-surgery opinion leader.",
+    "recent_papers": [
+      {
+        "title": "Outcomes of ventriculoperitoneal shunt versus endoscopic third ventriculostomy in pediatric hydrocephalus following posterior fossa tumor resection",
+        "journal": "Pediatric neurosurgery literature (institutional/ResearchGate-listed)",
+        "year": 2019,
+        "affinity": "low",
+        "note": "Tumor-adjacent pediatric hydrocephalus outcomes; exact journal/year not fully confirmed — treat as approximate."
+      }
+    ],
+    "candidacy": {
+      "assessment": "weak",
+      "rationale": "Profiled as a referring clinician, not a LITT operator: private-group tumor/benign-lesion and hydrocephalus practice with no ablation signal. Value to the platform is as a referral feeder of metastasis/tumor cases into the WMC NeuroBlate program rather than as a direct adopter; unlikely to build his own laser-ablation practice given case mix and practice setting."
+    },
+    "confidence": "high",
+    "flags": ["one supporting publication has unconfirmed journal/year"]
+  },
+  {
+    "name": "Michael E. Tobias",
+    "npi": "1528234788",
+    "identity": "Pediatric Neurosurgeon, Brain & Spine Surgeons of New York (BSSNY); affiliated with Westchester Medical Center / Maria Fareri Children's Hospital; Assistant Professor, New York Medical College (White Plains / Valhalla, NY)",
+    "bio": "Tobias is a dual board-certified pediatric and adult neurosurgeon in the BSSNY group with pediatric neurosurgery, craniofacial and pediatric neuro-endovascular interests, affiliated with WMC/Maria Fareri. As chief resident at Montefiore/Einstein he helped build a pediatric neurosurgery training curriculum, and he has published on pediatric endovascular thrombectomy for acute ischemic stroke. Claims list him only in the Referring Clinician cohort with no procedure signals and no LITT cases, so he registers as a potential referral relationship rather than an operator. His focus areas (craniofacial, endovascular) sit somewhat outside the core epilepsy/tumor-ablation LITT population.",
+    "training": "Brown University School of Medicine (MD, honors in neurosurgery) · Internship & Neurosurgery residency, Albert Einstein College of Medicine / Montefiore · Pediatric Neurosurgery fellowship, St. Jude Children's Research Hospital, Memphis",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience; referring-clinician profile with craniofacial/endovascular emphasis and no laser-ablation procedures in claims.",
+    "wheelhouse": "Pediatric craniofacial / neuro-endovascular surgeon; potential referrer",
+    "kol": false,
+    "kol_note": "Active pediatric neurosurgery presenter and educator with an endovascular-stroke publication footprint; not a LITT or epilepsy-surgery thought leader.",
+    "recent_papers": [
+      {
+        "title": "Endovascular Thrombectomy for Pediatric Acute Ischemic Stroke",
+        "journal": "Pediatric neurosurgery / stroke literature (profile-listed)",
+        "year": 2020,
+        "affinity": "low",
+        "note": "Pediatric neuro-endovascular topic outside the LITT patient population; journal/year approximate."
+      }
+    ],
+    "candidacy": {
+      "assessment": "weak",
+      "rationale": "Referring-clinician cohort with no procedural LITT signal and a craniofacial/endovascular focus that sits outside the epilepsy/tumor ablation core. Realistic value is as an occasional referral source into the WMC NeuroBlate program rather than as a direct LITT adopter; thin claims footprint (cohort tag only, no procedure counts) further limits operator potential."
+    },
+    "confidence": "medium",
+    "flags": ["thin claims (cohort tag only, no procedure signals)", "supporting publication journal/year unconfirmed"]
+  }
+]

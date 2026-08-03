@@ -1,0 +1,139 @@
+[
+  {
+    "name": "Charles B. Mikell III, MD",
+    "npi": "1124254917",
+    "identity": "Associate Professor and Vice Chair, Department of Neurosurgery, Stony Brook University / Renaissance School of Medicine (Stony Brook, NY). Functional and epilepsy neurosurgeon; joined Stony Brook in 2016.",
+    "bio": "Charles Mikell is a functional neurosurgeon at Stony Brook who treats epilepsy, movement disorders (Parkinson's, essential tremor, dystonia), spasticity, chronic pain, and brain tumors, using deep brain stimulation, stereo-EEG, and minimally invasive approaches. He came to Stony Brook from Columbia in 2016 and has built a program spanning functional, epilepsy, and tumor neurosurgery, rising to Vice Chair. His research centers on disorders of consciousness and return of consciousness after brain injury, cognitive-control mechanisms in the frontal lobe, and clinical trials for glioblastoma. He is an active academic surgeon with publications in high-impact venues (Nature Neuroscience, Stroke) and a substantial citation record.",
+    "training": "Columbia University Vagelos College of Physicians & Surgeons (MD) · Neurosurgery residency, Columbia University / NewYork-Presbyterian · Functional neurosurgery fellowship, University of Louisville · Pedigree note: trained in the Columbia functional/epilepsy group (McKhann/Sheth/Schevon), strong disorders-of-consciousness and human electrophysiology research lineage.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate",
+    "litt_exposure": "Claims signal shows LITT performance (litt_perf = 5) in the 'LITT — Our Equipment (NeuroBlate)' cohort, alongside SEEG (8) and epilepsy craniotomy (10) volume, consistent with an active NeuroBlate user for epilepsy/tumor ablation. Web sources confirm his epilepsy, functional, and tumor practice but do not independently name a specific LITT platform, so brand attribution rests on the claims cohort.",
+    "wheelhouse": "Epilepsy surgery (SEEG-guided), functional neurosurgery (DBS for Parkinson's/tremor/dystonia), disorders of consciousness, brain tumors including glioblastoma. LITT fits his epilepsy and deep-tumor practice.",
+    "kol": true,
+    "kol_note": "Academic thought leader in functional neurosurgery and disorders of consciousness (Vice Chair; Nature Neuroscience / Stroke publications; well-cited). His KOL standing is in DBS/consciousness/epilepsy neurophysiology rather than specifically in LITT.",
+    "recent_papers": [
+      {
+        "title": "Frontal networks associated with command following after hemorrhagic stroke",
+        "journal": "Stroke",
+        "year": 2015,
+        "affinity": "low",
+        "note": "First-author work on functional networks underlying consciousness/command-following; reflects his DoC research focus, not directly LITT."
+      },
+      {
+        "title": "Widespread temporal coding of cognitive control in the human prefrontal cortex",
+        "journal": "Nature Neuroscience",
+        "year": 2019,
+        "affinity": "low",
+        "note": "Single-neuron/LFP study of cognitive control in the human dACC/dlPFC from the Columbia group; core to his cognitive-control research line."
+      },
+      {
+        "title": "Deep structural brain lesions associated with consciousness impairment early after hemorrhagic stroke",
+        "journal": "Scientific Reports",
+        "year": 2019,
+        "affinity": "low",
+        "note": "Consciousness/DoC imaging work; consistent with his research program. Attribution reasonably confident but not independently confirmed line-by-line."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["LITT platform (NeuroBlate) attributed from claims cohort, not independently confirmed on the web", "Published record is DoC/cognitive-control focused; no LITT-authored papers found"]
+  },
+  {
+    "name": "David A. Chesler, MD, PhD",
+    "npi": "1801930573",
+    "identity": "Director of Pediatric Neurosurgery and Clinical Associate Professor of Neurosurgery and Pediatrics, Stony Brook University / Renaissance School of Medicine (Stony Brook, NY). Board-certified pediatric neurosurgeon (FAANS, FAAP); joined Stony Brook in 2014.",
+    "bio": "David Chesler directs pediatric neurosurgery at Stony Brook Children's and is one of the few pediatric neurosurgeons in Suffolk County. His clinical focus includes minimally invasive endoscopic repair of craniosynostosis, pediatric and adult epilepsy surgery, brain and spinal cord tumors, and cerebral revascularization for moyamoya disease. He is an MD/PhD with a research background in cerebral ischemia/edema and more than 50 publications. His pediatric-and-adult epilepsy and tumor practice places him squarely in the clinical territory where LITT is used, though the claims data classifies him as a LITT-naïve craniotomy surgeon.",
+    "training": "Albert Einstein College of Medicine of Yeshiva University (MD, PhD) · Neurosurgery residency (not independently verified) · Pediatric Neurosurgery fellowship, Johns Hopkins · Pedigree note: Johns Hopkins pediatric neurosurgery training; MD/PhD research background in cerebral ischemia/edema.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Claims cohort is 'LITT-Naïve Craniotomy Surgeon' with SEEG (2), epilepsy craniotomy (5), and mets/RN (10) volume but no LITT procedures. Web sources describe open/endoscopic and vascular practice, with no mention of laser ablation.",
+    "wheelhouse": "Pediatric neurosurgery; endoscopic craniosynostosis repair; pediatric and adult epilepsy surgery; brain and spinal cord tumors; moyamoya revascularization.",
+    "kol": false,
+    "kol_note": "Regional leader in pediatric neurosurgery on Long Island (department director, FAANS/FAAP, 50+ publications) but not a national LITT thought leader. Craniosynostosis and pediatric epilepsy are his visible niches.",
+    "recent_papers": [
+      {
+        "title": "Predictors of outcome in acute traumatic central cord syndrome due to spinal stenosis",
+        "journal": "Journal of Neurosurgery: Spine",
+        "year": 2011,
+        "affinity": "low",
+        "note": "Clinical outcomes study; reflects spine/trauma breadth, not LITT."
+      },
+      {
+        "title": "Initial multicenter technical experience with the Apollo device for minimally invasive intracerebral hematoma evacuation",
+        "journal": "Neurosurgery",
+        "year": 2015,
+        "affinity": "low",
+        "note": "Minimally invasive intracranial technology experience — shows openness to MIS platforms, adjacent to (not) LITT."
+      },
+      {
+        "title": "Chondromyxoid fibroma invasion of the transverse-sigmoid sinus junction causing posterior fossa hemorrhage",
+        "journal": "Journal of Clinical Neuroscience",
+        "year": 2016,
+        "affinity": "low",
+        "note": "Skull-base/tumor case report."
+      },
+      {
+        "title": "Colossal breakthrough: the callosal puncture as a precursor to third ventriculostomy",
+        "journal": "Minimally Invasive Neurosurgery",
+        "year": 2011,
+        "affinity": "low",
+        "note": "Endoscopic/MIS technique paper; consistent with his minimally invasive interest."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Strong development target",
+      "rationale": "He performs exactly the case mix that drives LITT adoption — pediatric and adult epilepsy surgery plus brain tumor work — yet is LITT-naïve, and Stony Brook already runs NeuroBlate through Mikell, giving an in-house platform and champion to onboard him. Pediatric epilepsy (mesial temporal, hypothalamic hamartoma, tubers) and deep/small tumors are premier NeuroBlate indications. His demonstrated adoption of other minimally invasive intracranial technologies (Apollo, endoscopic craniosynostosis) suggests receptivity. Modest SEEG/epilepsy craniotomy volume in the claims means the epilepsy pipeline exists but is not yet large; growth potential is real but should be sized against actual candidate volume."
+    },
+    "confidence": "medium",
+    "flags": ["Neurosurgery residency site not independently verified", "Listed publications are older (2011-2016); recent output not fully captured in available sources"]
+  },
+  {
+    "name": "Alexander Winkler-Schwartz, MD, PhD",
+    "npi": null,
+    "identity": "Neurosurgeon at Stony Brook University Hospital (Stony Brook, NY); Director of the Skull Base Tumor Center and Associate Director of the Cerebrovascular Center, with dual pediatric neurosurgery and skull-base/neuro-oncology training. Not present in the claims dataset (in_claims = false; NPI not provided).",
+    "bio": "Alexander Winkler-Schwartz is a McGill-trained neurosurgeon whose practice spans neuro-oncology, skull-base surgery, cerebrovascular surgery, and pediatric brain tumors across all ages. He holds a PhD in neuroscience from McGill's Neurosurgical Simulation and Artificial Intelligence Learning Centre (NeuroSim), where he became a leading contributor to machine-learning assessment of surgical expertise in virtual-reality simulation, with publications in JAMA Network Open and recognition via a Canadian Brain Star Award. He completed a sequence of subspecialty fellowships (skull base/cerebrovascular, pediatric neuro-oncology, pediatric neurosurgery) before joining Stony Brook. His tumor-heavy, multi-age practice overlaps meaningfully with LITT indications, but there is no evidence he currently performs laser ablation.",
+    "training": "McGill University Faculty of Medicine (MD) · PhD in neuroscience (AI / surgical simulation), McGill (NeuroSim) · Neurosurgery residency, McGill · Fellowships: Skull Base & Cerebrovascular Surgery (Salt Lake City, Utah); Pediatric Neuro-Oncology (Paris, France); Pediatric Neurosurgery (Cincinnati Children's) · Pedigree note: McGill NeuroSim / Del Maestro AI-in-surgery lineage; unusually broad fellowship pedigree spanning skull base, pediatric neuro-onc, and peds neurosurgery.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Not in the claims dataset (no NPI, no procedure signals). Web sources describe skull-base, cerebrovascular, and pediatric neuro-oncology practice plus AI/simulation research, with no mention of laser ablation.",
+    "wheelhouse": "Skull-base tumor surgery, neuro-oncology, cerebrovascular surgery, pediatric brain tumors; academic focus on AI and virtual-reality surgical simulation/education.",
+    "kol": true,
+    "kol_note": "Internationally recognized in AI and virtual-reality surgical simulation/education (JAMA Network Open, Brain Star Award, McGill NeuroSim). His KOL profile is in surgical-education AI, not LITT or ablation technology.",
+    "recent_papers": [
+      {
+        "title": "Machine Learning Identification of Surgical and Operative Factors Associated With Surgical Expertise in Virtual Reality Simulation",
+        "journal": "JAMA Network Open",
+        "year": 2019,
+        "affinity": "low",
+        "note": "High-visibility ML/surgical-expertise paper; core to his AI-simulation research, unrelated to LITT."
+      },
+      {
+        "title": "Effect of Artificial Intelligence Tutoring vs Expert Instruction on Learning Simulated Surgical Skills Among Medical Students: A Randomized Clinical Trial",
+        "journal": "JAMA Network Open",
+        "year": 2022,
+        "affinity": "low",
+        "note": "RCT of AI tutoring in surgical simulation; surgical-education research."
+      },
+      {
+        "title": "Artificial Intelligence in Medical Education: Best Practices Using Machine Learning to Assess Surgical Expertise in Virtual Reality Simulation",
+        "journal": "Journal of Surgical Education",
+        "year": 2019,
+        "affinity": "low",
+        "note": "Best-practices/methods paper on ML assessment of surgical skill."
+      },
+      {
+        "title": "Intelligent Tutoring Systems: Re-Envisioning Surgical Education in Response to COVID-19",
+        "journal": "Neurosurgery",
+        "year": 2020,
+        "affinity": "low",
+        "note": "Perspective on AI tutoring in neurosurgical education."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Moderate development target (watch)",
+      "rationale": "His tumor-focused practice — skull base, neuro-oncology, and pediatric brain tumors across all ages — includes deep-seated and radiation-necrosis/metastasis cases where LITT is a differentiated option, and Stony Brook already owns NeuroBlate with Mikell as an in-house champion. As newer, research-oriented faculty building the Skull Base Tumor Center, he could be receptive to adopting a minimally invasive tumor tool. Tempering factors: skull-base open surgery is his primary identity (less LITT-aligned than epilepsy), and he carries no claims signal or NPI in this dataset, so current cranial-ablation-relevant volume is unverified. Best treated as a relationship-building/education target rather than a near-term high-volume convert."
+    },
+    "confidence": "medium",
+    "flags": ["No NPI and not in claims dataset (in_claims = false) — identity confirmed via web (Stony Brook, NY; McGill MD/PhD) but procedure volume unverifiable", "LITT candidacy inferred from practice scope; no ablation evidence either way"]
+  }
+]

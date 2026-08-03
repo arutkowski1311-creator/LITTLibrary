@@ -1,0 +1,125 @@
+[
+  {
+    "name": "Veronica Chiang",
+    "npi": "1073594487",
+    "identity": "Professor of Neurosurgery and Director of the Gamma Knife Center / Stereotactic Radiosurgery, Yale New Haven Hospital and Yale School of Medicine.",
+    "bio": "Chiang leads Yale's multidisciplinary Brain Metastasis Program and is a neurosurgeon-scientist focused on the management of metastatic disease to the brain. Her practice pairs stereotactic radiosurgery (Gamma Knife) with LITT, and she is one of the earliest and most cited clinicians applying laser ablation to lesions failing radiosurgery. Case mix is heavily weighted toward brain metastases, radiation necrosis, and recurrent tumor after SRS (566 mets/RN claims).",
+    "training": "MD, University of Western Australia (1992) · Neurosurgery residency, Yale University School of Medicine · Fellowships at Johns Hopkins and Yale-New Haven (stereotactic/radiosurgery) · Career-long Yale faculty member and national/international KOL in radiosurgical and ablative management of brain metastases.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate (per claims cohort 'LITT — Our Equipment'); note she has published on LITT outcomes across the modality and is effectively platform-agnostic as a KOL.",
+    "litt_exposure": "Extensive, first-hand. 22 litt_perf claims plus a foundational publication record: first/senior author on Yale LITT-for-radiation-necrosis and recurrent-metastasis series dating to 2013, and co-investigator on the multicenter NeuroBlate radiation-necrosis dataset. She is a genuine LITT operator and thought leader, not merely a referrer.",
+    "wheelhouse": "LITT for radiation necrosis / recurrent brain metastases after SRS",
+    "kol": true,
+    "kol_note": "Nationally and internationally recognized authority on radiosurgery and LITT for brain metastases; among the earliest clinicians to publish LITT for post-radiosurgery lesion regrowth (2013) and a frequent multicenter co-author. Directs Yale's Gamma Knife/SRS program and SRS fellowship.",
+    "recent_papers": [
+      {
+        "title": "Efficacy of laser interstitial thermal therapy for biopsy-proven radiation necrosis in radiographically recurrent brain metastases",
+        "journal": "Neuro-Oncology Advances",
+        "year": 2023,
+        "affinity": "high",
+        "note": "Multicenter (NeuroBlate) 90-patient series; Chiang a listed co-author. LITT safe and effective for local control and symptom management in biopsy-proven radiation necrosis."
+      },
+      {
+        "title": "Laser-interstitial thermal therapy compared to craniotomy for treatment of radiation necrosis or recurrent tumor in brain metastases failing radiosurgery",
+        "journal": "Journal of Neuro-Oncology",
+        "year": 2019,
+        "affinity": "high",
+        "note": "Hong CS, Deng D, Vera A, Chiang VL (Yale). Comparative outcomes of LITT vs open craniotomy in the post-SRS failure population — directly on-message for NeuroBlate positioning."
+      },
+      {
+        "title": "Stereotactic laser induced thermotherapy (LITT): a novel treatment for brain lesions regrowing after radiosurgery",
+        "journal": "Journal of Neuro-Oncology",
+        "year": 2013,
+        "affinity": "high",
+        "note": "Torres-Reveron J, Tomasiewicz HC, Shetty A, Amankulor NM, Chiang VL. Early feasibility study establishing Chiang as a pioneer of LITT for post-radiosurgery lesion regrowth."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": "In claims (in_claims true), canonical profile, no duplicate. Strongest LITT credential on the Yale roster and the anchor NeuroBlate user at the account."
+  },
+  {
+    "name": "Sacit B Omay",
+    "npi": "1275704207",
+    "identity": "Associate Professor of Neurosurgery, Yale School of Medicine; Co-Director of the Yale Pituitary Program; skull base and neuro-oncologic neurosurgeon at Yale New Haven Hospital.",
+    "bio": "Omay is a skull base and brain tumor surgeon whose signature practice is endoscopic endonasal and open resection of pituitary, sellar/parasellar, and anterior skull base tumors, with additional Gamma Knife expertise. His operative identity is corridor-based, minimally invasive tumor removal rather than stereotactic ablation. The 74 mets/RN claims reflect a referring-clinician role, consistent with a high-volume tumor surgeon feeding the metastasis/radiation-necrosis pathway rather than performing LITT himself.",
+    "training": "MD, Istanbul University Cerrahpasa Faculty of Medicine · Neurosurgery residency, Yale University School of Medicine · Fellowships in surgical neuro-oncology (Cleveland Clinic) and minimally invasive endoscopic skull base & pituitary surgery (Weill Cornell, Schwartz/Anand group) · Strong endonasal skull base pedigree.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Publication record is entirely endoscopic endonasal / skull base (transsphenoidal technique, transorbital approaches, parasellar aneurysms, olfactory-groove meningioma outcomes); none involve laser ablation. His claims cohort is 'Referring Clinician,' not an operator. Honest read: no LITT footprint personally, though he practices inside a NeuroBlate-equipped institution (Chiang's program).",
+    "wheelhouse": "Endoscopic endonasal skull base and pituitary surgery",
+    "kol": true,
+    "kol_note": "Recognized skull base / pituitary KOL — co-directs Yale Pituitary, frequent author on endonasal technique and consensus statements. KOL status is in skull base, not in LITT.",
+    "recent_papers": [
+      {
+        "title": "Taste dysfunction after endoscopic endonasal resection of olfactory groove meningioma",
+        "journal": "American Journal of Otolaryngology",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Omay a co-author; skull base outcomes work, no LITT relevance."
+      },
+      {
+        "title": "The endoscopic diving technique in endonasal transsphenoidal surgery: how I do it",
+        "journal": "Acta Neurochirurgica",
+        "year": 2020,
+        "affinity": "low",
+        "note": "Wilson PJ, Omay SB, Kacker A, Anand VK, Schwartz TH. Technical/pituitary paper; illustrates his endonasal (non-ablative) focus."
+      },
+      {
+        "title": "Clinical features, management considerations and outcomes in a case series of patients with parasellar intracranial aneurysms undergoing anterior skull base surgery",
+        "journal": "World Neurosurgery",
+        "year": 2017,
+        "affinity": "low",
+        "note": "Omay co-author; skull base / vascular-adjacent, no LITT relevance."
+      }
+    ],
+    "candidacy": {
+      "assessment": "weak",
+      "rationale": "Omay is a high-volume tumor surgeon (74 mets/RN claims) but his operative wheelhouse is endonasal and open skull base resection, not frame- or robot-based stereotactic work, so LITT sits outside his technical corridor. With a mature NeuroBlate LITT program run by Chiang in the same department, he is far more likely to keep referring deep-seated metastasis and radiation-necrosis cases to that program than to convert into a personal LITT operator. Best value is as a referral engine, not a conversion target."
+    },
+    "confidence": "high",
+    "flags": "In claims (in_claims true), 'Referring Clinician' cohort, canonical profile, no duplicate."
+  },
+  {
+    "name": "Jacky T Yeung",
+    "npi": null,
+    "identity": "Assistant Professor of Neurosurgery, Yale School of Medicine (practicing at Yale New Haven and Lawrence + Memorial Hospital); minimally invasive / keyhole neurosurgery and neuro-oncology.",
+    "bio": "Yeung is an early-career, fellowship-trained neurosurgeon specializing in keyhole and minimally invasive approaches to brain and spine tumors, hydrocephalus, pituitary tumors, trigeminal neuralgia, and Chiari malformation. He runs a laboratory-backed research program in meningioma tumor immunology (CSF1/CSF1R axis, immune microenvironment) and has published in high-impact venues. His clinical philosophy — small-corridor, tissue-sparing surgery — is culturally aligned with ablative therapies, though his documented output is immunologic and open/keyhole rather than stereotactic.",
+    "training": "MD, Michigan State University College of Human Medicine · Neurosurgery residency, Yale New Haven Hospital (began 2013; AANS Tumor Section research award during training) · Fellowship at the Centre for Minimally Invasive Neurosurgery, Sydney, Australia (keyhole neurosurgery).",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. His verifiable record is meningioma immuno-oncology and minimally invasive/keyhole tumor surgery — no laser-ablation publications or program role identified. He also carries NO claims footprint (see flags), so procedural volume of any kind is unverified from the claims data.",
+    "wheelhouse": "Keyhole / minimally invasive tumor surgery + meningioma immuno-oncology research",
+    "kol": false,
+    "kol_note": "Rising academic with a genuine niche reputation in meningioma tumor immunology (first-author papers in Neuro-Oncology and J Neuropathol Exp Neurol), but early-career and not a LITT or ablation KOL.",
+    "recent_papers": [
+      {
+        "title": "Targeting the CSF1/CSF1R axis is a potential treatment strategy for malignant meningiomas",
+        "journal": "Neuro-Oncology",
+        "year": 2021,
+        "affinity": "low",
+        "note": "Yeung J first author (Gunel/Chen labs, Yale). Meningioma immunotherapy — tumor-relevant but not LITT."
+      },
+      {
+        "title": "Rethinking immunotherapy in meningiomas",
+        "journal": "Neuro-Oncology",
+        "year": 2021,
+        "affinity": "low",
+        "note": "Yeung-associated commentary/review on meningioma immunotherapy; no LITT relevance."
+      },
+      {
+        "title": "Spatially resolved and quantitative analysis of the immunological landscape in human meningiomas",
+        "journal": "Journal of Neuropathology & Experimental Neurology",
+        "year": 2021,
+        "affinity": "low",
+        "note": "Yeung J first author. Multiplex immunofluorescence of meningioma immune microenvironment; establishes his research niche, not a LITT credential."
+      }
+    ],
+    "candidacy": {
+      "assessment": "moderate",
+      "rationale": "Yeung's minimally invasive / keyhole surgical philosophy is a strong cultural fit for LITT, and as an early-career academic tumor surgeon he is at a receptive stage for adopting a new modality. However, he has no claims footprint (unverified case volume) and no evidence of any stereotactic or ablative practice today, so the conversion thesis rests on fit rather than demonstrated tumor throughput. Worth cultivating as a longer-horizon development target inside an already NeuroBlate-equipped institution, but qualify against thin volume evidence."
+    },
+    "confidence": "medium",
+    "flags": "NOT in claims (in_claims false) — no claims footprint at all, so no procedural or referral volume is verifiable from the dataset; NPI unknown/not provided. Identity, training, and research record verified via Yale and PubMed. No duplicate. Confidence reduced to medium on account of the missing claims data."
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Christopher S Ogilvy",
+    "npi": null,
+    "identity": "Professor of Neurosurgery, Harvard Medical School; Director, Endovascular & Operative Neurovascular Surgery, BIDMC Brain Aneurysm Institute (Boston, MA)",
+    "bio": "Ogilvy is one of the most senior cerebrovascular neurosurgeons in the United States, with a practice built almost entirely around intracranial aneurysms, AVMs, cavernous malformations, and other neurovascular disease. He co-directs the BIDMC Brain Aneurysm Institute and directs the Brain Aneurysm Foundation, and has authored several hundred manuscripts on open and endovascular vascular surgery. His case mix is cerebrovascular (clipping, coiling, flow diversion, bypass) rather than intra-axial tumor or epilepsy.",
+    "training": "Geisel School of Medicine at Dartmouth (MD, 1984) · Neurological Surgery residency, Massachusetts General Hospital / Harvard (1985-1991) · cerebrovascular focus · inaugural Robert G. and Jean A. Ojemann Professor of Neurosurgery, HMS; long MGH cerebrovascular career before BIDMC",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Not in the LITT claims set (in_claims=false, no claims). Entire published and clinical record is cerebrovascular (aneurysm/AVM/flow diversion); no LITT, thermal ablation, or stereotactic ablation authorship or case activity found.",
+    "wheelhouse": "Senior open/endovascular cerebrovascular surgeon (aneurysm/AVM)",
+    "kol": true,
+    "kol_note": "Major national KOL in cerebrovascular neurosurgery — director of the Brain Aneurysm Foundation, associate editor of Neurosurgery, hundreds of aneurysm/flow-diversion publications. KOL status is entirely in vascular, not LITT.",
+    "recent_papers": [
+      {"title": "Management of failed flow diversion for intracranial aneurysm beyond the first 6 months of follow-up: an international Delphi consensus", "journal": "J Neurointerv Surg / Journal of NeuroInterventional Surgery", "year": 2024, "affinity": "low", "note": "Cerebrovascular consensus; no LITT relevance — illustrates aneurysm/flow-diversion focus."},
+      {"title": "A novel scoring system predicting aneurysm incomplete occlusion after flow diversion: a 10-year experience", "journal": "World Neurosurgery", "year": 2024, "affinity": "low", "note": "Flow-diversion outcomes; vascular only."},
+      {"title": "Intracranial hemorrhagic events associated with flow diversion treatment: a retrospective analysis from a single academic institution", "journal": "Neurosurgical Review", "year": 2024, "affinity": "low", "note": "Vascular complication study; no ablation content."},
+      {"title": "Variability patterns in dual antiplatelet therapy following endovascular repair of intracranial aneurysms", "journal": "Acta Neurochirurgica", "year": 2024, "affinity": "low", "note": "Endovascular pharmacology; not LITT-adjacent."}
+    ],
+    "candidacy": {"assessment": "weak", "rationale": "Pure cerebrovascular (aneurysm/AVM/flow-diversion) practice with no intra-axial tumor ablation or epilepsy component. LITT is outside his clinical scope; a senior vascular-focused director is very unlikely to personally adopt NeuroBlate. Not in LITT claims. Any value is as an institutional referral node, not a performing adopter."},
+    "confidence": "high",
+    "flags": "No claims (in_claims=false); no NPI supplied in packet. Honest assessment per instruction: cerebrovascular/aneurysm surgeon, not a realistic LITT performer. Weak development target."
+  },
+  {
+    "name": "Ron L Alterman",
+    "npi": "1750357430",
+    "identity": "Professor of Neurosurgery, Harvard Medical School; Chief, Division of Neurosurgery, Beth Israel Deaconess Medical Center (Boston, MA)",
+    "bio": "Alterman is a functional/stereotactic neurosurgeon who has led the BIDMC neurosurgery division since 2011. His clinical and academic identity is deep brain stimulation for movement disorders — Parkinson's disease, dystonia, and essential tremor — built during faculty years at NYU and as Director of Functional and Restorative Neurosurgery at Mount Sinai (2004-2011). His practice centers on functional/DBS work; the packet shows him as a referring clinician (13 metastasis referrals), not a LITT performer.",
+    "training": "Albert Einstein College of Medicine (MD, distinction/AOA) · Neurological Surgery residency, Montefiore Medical Center / Albert Einstein (1989-1994) · first Stereotactic & Functional Neurosurgery fellow at NYU (1995) · strong functional/stereotactic pedigree",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Cohort is 'Referring Clinician' (mets_rn=13), not a LITT-performer cohort, and no litt_perf claims are attributed to him. His stereotactic skill set (DBS, frame/frameless targeting) is technically adjacent to LITT trajectory planning, but no LITT/thermal-ablation authorship or performed cases were found. Practice is DBS/neuromodulation, not ablation.",
+    "wheelhouse": "Functional/stereotactic neurosurgeon — DBS for movement disorders; division chief",
+    "kol": true,
+    "kol_note": "Recognized KOL in DBS/movement-disorder surgery (dystonia and PD outcome literature, expert-consensus author, division chief). KOL standing is in functional neuromodulation, not LITT.",
+    "recent_papers": [
+      {"title": "Deep brain stimulation for primary generalized dystonia: long-term outcomes", "journal": "Journal of Neurosurgery (movement-disorders DBS literature)", "year": 2011, "affinity": "med", "note": "Signature DBS work; functional/stereotactic adjacency to LITT targeting, but not ablation. Verify exact citation before use."},
+      {"title": "Deep brain stimulation for Parkinson disease: an expert consensus and review of key issues", "journal": "Archives of Neurology", "year": 2011, "affinity": "med", "note": "Co-authored consensus establishing functional-neurosurgery KOL status; DBS, not LITT."},
+      {"title": "Comparison of VIM and STN DBS for Parkinsonian resting and postural/action tremor", "journal": "Movement Disorders / DBS literature", "year": 2010, "affinity": "low", "note": "Stereotactic targeting study; adjacent skill set only. Confirm citation before quoting."}
+    ],
+    "candidacy": {"assessment": "moderate", "rationale": "Of the three BID targets he is the best LITT fit: as a stereotactic/functional surgeon and division chief he already owns the trajectory-planning and frame/frameless skills LITT requires, and functional programs are natural adopters of LITT for epilepsy. But his practice is firmly DBS/neuromodulation, not ablative tumor/epilepsy surgery, and he appears here only as a referrer. Moderate — credible technical adopter and gatekeeper, but no demonstrated ablation interest; would need a service-line/epilepsy driver to convert."},
+    "confidence": "high",
+    "flags": "In claims as Referring Clinician (no LITT-performed cases). Older paper citations listed with 'verify' notes — titles/journals approximate from search, not fabricated; confirm exact bibliographic details before external use."
+  },
+  {
+    "name": "Philipp Taussky",
+    "npi": "1982837084",
+    "identity": "Section Chief of Neurovascular Surgery & Chief Value Officer, Department of Neurosurgery, Beth Israel Deaconess Medical Center; Co-Director, Brain Aneurysm Institute (Boston, MA)",
+    "bio": "Taussky is a dual-trained open and endovascular cerebrovascular neurosurgeon focused on aneurysms, AVMs, stroke/thrombectomy, and flow diversion. He co-directs the BIDMC Brain Aneurysm Institute (with Ogilvy) and is surgical co-director of the comprehensive stroke center, having built his reputation on flow-diverter technology and minimally invasive neurovascular techniques. The packet shows him as a referring clinician with a single metastasis referral — no LITT activity.",
+    "training": "University of Basel, Switzerland (MD) · Neurosurgery residency (incl. Mayo Clinic training) · skull base/cerebrovascular fellowship, University of Utah · endovascular/neurointerventional fellowship, Mayo Clinic · vascular pedigree (prior University of Utah faculty)",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of direct LITT experience. Cohort 'Referring Clinician' (mets_rn=1); no litt_perf claims. Entire body of work is neurovascular (flow diversion, thrombectomy, aneurysm); no LITT/thermal-ablation authorship or cases found.",
+    "wheelhouse": "Open + endovascular cerebrovascular surgeon (aneurysm/stroke/flow diversion)",
+    "kol": true,
+    "kol_note": "KOL in flow diversion and endovascular aneurysm therapy (JNS flow-diversion reviews, SCENT trial participation, ~140 papers). KOL standing is vascular, not LITT.",
+    "recent_papers": [
+      {"title": "Flow diversion: a disruptive technology coming of age. Lessons learned and challenges for the future", "journal": "Journal of Neurosurgery", "year": 2023, "affinity": "low", "note": "Defines his flow-diversion KOL niche; no LITT relevance."},
+      {"title": "Matched-pair analysis of large-vessel occlusion thrombectomy using single-plane versus biplane angiography", "journal": "Stroke: Vascular and Interventional Neurology", "year": 2026, "affinity": "low", "note": "Stroke/thrombectomy; vascular only."},
+      {"title": "SCENT flow diverter study: impact of patient age on stroke risk and aneurysm occlusion", "journal": "flow-diverter trial analysis", "year": 2024, "affinity": "low", "note": "Device trial participation; endovascular, not ablation. Confirm exact citation before use."}
+    ],
+    "candidacy": {"assessment": "weak", "rationale": "Cerebrovascular/endovascular practice with no tumor-ablation or epilepsy component; LITT is outside his scope and he appears only as a one-off referrer. Additionally he publicly discloses consulting for Medtronic (and Cerenovus/Phenox) — a competitor relationship worth noting given Visualase is a Medtronic product. Weak LITT adopter; treat as a vascular referral contact, not a NeuroBlate prospect."},
+    "confidence": "high",
+    "flags": "In claims as Referring Clinician (single mets referral, no LITT). COMPETITOR-DISCLOSURE FLAG: disclosed Medtronic consultant relationship (Visualase = Medtronic). 2024/2026 paper citations approximate from search — verify before external use; not fabricated."
+  }
+]

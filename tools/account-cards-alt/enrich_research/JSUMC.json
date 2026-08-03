@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Nitesh V Patel",
+    "npi": "1326467408",
+    "identity": "Fellowship-trained neurosurgical oncologist and co-director of the Neurosurgical Oncology program at Jersey Shore University Medical Center (Hackensack Meridian Health), Neptune, NJ.",
+    "bio": "Dr. Nitesh V. Patel is a board-certified neurosurgeon specializing in the surgical treatment of primary and metastatic brain tumors, with a practice built around awake motor/language mapping, stereotactic techniques, intra-arterial chemotherapy for high-grade glioma, and laser interstitial thermal therapy (LITT). He co-directs neurosurgical oncology at Jersey Shore and has authored a large body of peer-reviewed work, including multiple LITT technique and outcomes papers. Critically for LITT context, he trained in laser ablation during his New Jersey Medical School residency alongside Shabbar F. Danish, the nationally known LITT KOL who has since also moved to Hackensack Meridian, making Patel a co-author on Danish's early LITT series. His research spans LITT dosimetry/volumetrics, enhanced recovery for brain-tumor patients, and superselective intra-arterial bevacizumab for glioblastoma.",
+    "training": "Rutgers Robert Wood Johnson Medical School (MD, AOA Honor Medical Society) · Neurosurgery residency, Rutgers New Jersey Medical School (2014–2021) · Fellowships: Surgical Neuro-Oncology, University of Miami Miller School of Medicine (under Ricardo Komotar); Skull Base & Neuro-Oncology, Lenox Hill Hospital (under David Langer and John Boockvar) · Pedigree: learned intracranial LITT under Shabbar F. Danish at NJMS — a direct line to a Monteris-era LITT KOL now his HMH colleague.",
+    "litt_house": "Visualase",
+    "litt_platform": "—",
+    "litt_exposure": "Strong, well-documented direct LITT operator. Co-authored the Danish-led Visualase single-center series (J Neurosurg 2016) and volumetric LITT dosimetry work (Lasers Surg Med 2013), and lists LITT as a core clinical procedure; claims show LITT performances on competitor (Visualase) equipment. Also authored an invited Neurosurgery commentary on the Monteris NeuroBlate LAANTERN registry — evidence of NeuroBlate familiarity despite currently operating on Visualase.",
+    "wheelhouse": "Neurosurgical oncology — metastatic and primary brain tumors, high-grade glioma, awake motor/language mapping, LITT, stereotactic radiosurgery planning, intra-arterial chemotherapy, skull base.",
+    "kol": true,
+    "kol_note": "High-value regional LITT KOL and program co-director with 100+ publications, including a substantive LITT research portfolio. Currently a Visualase user but with published NeuroBlate/LAANTERN awareness and a direct mentorship tie to Shabbar Danish — the single most strategically important conversion target at this account.",
+    "recent_papers": [
+      {
+        "title": "Intracranial MR-guided laser-induced thermal therapy: single-center experience with the Visualase thermal therapy system",
+        "journal": "Journal of Neurosurgery",
+        "year": 2016,
+        "affinity": "high",
+        "note": "Co-authored with Shabbar F. Danish; one of the largest early Visualase intracranial series — documents his hands-on LITT training lineage (competitor platform)."
+      },
+      {
+        "title": "Commentary: Laser Ablation of Abnormal Neurological Tissue Using Robotic NeuroBlate System (LAANTERN): Procedural Safety and Hospitalization",
+        "journal": "Neurosurgery",
+        "year": 2020,
+        "affinity": "high",
+        "note": "Invited commentary (with Danish) on the Monteris NeuroBlate LAANTERN registry — direct evidence of NeuroBlate/our-platform awareness."
+      },
+      {
+        "title": "Volumetric trends associated with MRI-guided laser-induced thermal therapy (LITT) for intracranial tumors",
+        "journal": "Lasers in Surgery and Medicine",
+        "year": 2013,
+        "affinity": "high",
+        "note": "Early LITT dosimetry/ablation-dynamics work with Danish; establishes technical depth in laser thermometry."
+      },
+      {
+        "title": "Repeated superselective intraarterial bevacizumab after blood-brain barrier disruption for newly diagnosed glioblastoma: a phase I/II clinical trial",
+        "journal": "Journal of Neuro-Oncology",
+        "year": 2021,
+        "affinity": "low",
+        "note": "Neuro-oncology trial work; shows glioma treatment ambition beyond ablation, relevant to overall oncology footprint."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["Currently operates on competitor (Visualase) equipment per claims", "Top conversion priority — NeuroBlate/LAANTERN publication history plus direct mentorship link to Shabbar Danish now co-located at HMH", "Program co-director — institutional decision influence"]
+  },
+  {
+    "name": "Aasim S Kazmi",
+    "npi": "1770612111",
+    "identity": "General/spine-focused neurosurgeon affiliated with Jersey Shore University Medical Center and Southern Ocean Medical Center (Hackensack Meridian Health), practicing in the Wall Township/Allenwood/Neptune, NJ area.",
+    "bio": "Dr. Aasim S. Kazmi is a board-certified neurosurgeon in practice for more than 20 years whose public profiles center on spinal disease — spinal fusion, spinal stenosis, and spondylosis — alongside general cranial neurosurgery. He is affiliated with Jersey Shore University Medical Center and Southern Ocean Medical Center within Hackensack Meridian Health. Claims data attribute a single LITT procedure and a modest brain-metastasis volume to him, on competitor equipment, indicating occasional cranial oncology involvement rather than a dedicated ablation practice. His limited publication footprint is in traumatic brain injury rather than laser ablation.",
+    "training": "Ross University School of Medicine (MD) · Neurosurgery residency, University of Louisville School of Medicine (2004–2009; transitional-year internship 2003–2004) · No subspecialty fellowship confirmed · Pedigree: community/general neurosurgical training; predominantly spine practice.",
+    "litt_house": "Visualase",
+    "litt_platform": "—",
+    "litt_exposure": "Minimal. Claims show a single LITT performance and low metastasis volume on competitor (Visualase) equipment; no LITT publications and a spine-dominant public practice profile. Limited direct LITT track record — likely an occasional or covering operator rather than a committed laser-ablation surgeon.",
+    "wheelhouse": "Spine — fusion, stenosis, spondylosis; general/community neurosurgery, with occasional cranial oncology.",
+    "kol": false,
+    "kol_note": "Not a LITT KOL; no laser-ablation research or teaching presence. Only identified publication is a co-authored review on severe traumatic brain injury (Medicina).",
+    "recent_papers": [
+      {
+        "title": "Current Management and Future Challenges in the Management of Severe Traumatic Brain Injury",
+        "journal": "Medicina",
+        "year": 2022,
+        "affinity": "low",
+        "note": "Co-authored TBI review (Russo, Kazmi, Ahmed); unrelated to LITT — included only to characterize scholarly focus."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["Spine-dominant practice — low cranial-ablation volume", "Single LITT case in claims on competitor equipment; direct LITT experience limited", "Year/journal of TBI paper verified but LITT-specific activity underdocumented"]
+  },
+  {
+    "name": "Lawrence Daniels",
+    "npi": null,
+    "identity": "Pediatric neurosurgeon; Director of Pediatric Neurosurgery at K. Hovnanian Children's Hospital at Jersey Shore (Hackensack Meridian Health) and President of New Neurons Neurosurgical Institute, NJ. (Full name Lawrence B. Daniels III.)",
+    "bio": "Dr. Lawrence B. Daniels III is a fellowship-trained pediatric neurosurgeon whose clinical profile spans pediatric neurosurgery, pediatric epilepsy, neuro-oncology, and pediatric craniomaxillofacial/craniofacial surgery. He directs pediatric neurosurgery at K. Hovnanian Children's Hospital within Hackensack Meridian Health and leads the private New Neurons Neurosurgical Institute, with additional affiliations at Atlantic Health. His research interests are in neuro-oncology and craniofacial surgery, dating to early work on a dendritic-cell vaccine for malignant brain tumors during a Washington Scholars Research Fellowship at the Maxine Dunitz Neurosurgical Institute. His pediatric fellowship at Children's Hospital of Philadelphia — a high-volume pediatric laser-ablation (epilepsy/tumor) center — places laser ablation plausibly within his scope, though no LITT procedures or publications were verified in this research.",
+    "training": "David Geffen School of Medicine at UCLA (MD, 2000–2004) · Neurosurgery residency, Albert Einstein College of Medicine · Pediatric Neurosurgery fellowship, Children's Hospital of Philadelphia (CHOP) · Pedigree: Washington Scholars Research Fellowship, Maxine Dunitz Neurosurgical Institute (Cedars-Sinai) — dendritic-cell brain-tumor vaccine research; CHOP training is a strong pediatric epilepsy/LITT lineage.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "No direct LITT experience verified. Not in claims; no LITT publications or documented procedures located. However, his pediatric-epilepsy and neuro-oncology focus plus CHOP pediatric fellowship (an institution where MR-guided laser ablation is standard for epilepsy foci and deep tumors) make LITT plausibly within his practice — unconfirmed and requiring direct verification.",
+    "wheelhouse": "Pediatric neurosurgery — pediatric epilepsy surgery, pediatric neuro-oncology, and pediatric craniomaxillofacial/craniofacial reconstruction.",
+    "kol": false,
+    "kol_note": "Institutional leader (peds neurosurgery director; institute president) rather than a published LITT research KOL; no identified laser-ablation literature.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Emerging / moderate development target — warm-intro path, unconfirmed current LITT volume.",
+      "rationale": "Pediatric epilepsy surgery and neuro-oncology are core LITT indications, and his CHOP pediatric-fellowship pedigree means he trained where laser ablation is routine — so the clinical rationale for a NeuroBlate conversation is strong even absent verified procedures. He is a colleague of Shabbar Danish and Nitesh Patel at Hackensack Meridian, giving a natural internal referral/champion route into the pediatric line. Key gap: confirm whether he currently performs pediatric LITT and on which platform before positioning; if he is not yet an ablation adopter, he is a green-field pediatric-epilepsy opportunity rather than a conversion."
+    },
+    "confidence": "medium",
+    "flags": ["No NPI in input and not surfaced in research — identity confirmed via HMH/Atlantic profiles (Lawrence B. Daniels III)", "No verified LITT procedures or publications — candidacy rests on subspecialty fit and CHOP pedigree, not documented activity", "Pediatric focus — evaluate against pediatric NeuroBlate indications/approvals"]
+  }
+]

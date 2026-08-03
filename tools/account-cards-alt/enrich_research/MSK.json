@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Mark M. Souweidane",
+    "npi": "1376527929",
+    "merges": [],
+    "identity": "Pediatric neurosurgeon; Vice Chairman, Dept. of Neurological Surgery, Weill Cornell Medicine, and Director of Pediatric Neurosurgery at NewYork-Presbyterian and Memorial Sloan Kettering Cancer Center (New York, NY).",
+    "bio": "Souweidane is an internationally recognized leader in pediatric neurosurgery whose career centers on CNS tumors of childhood. He helped define contemporary minimally invasive endoscopic surgery and pioneered convection-enhanced delivery (CED) of therapeutics into the brainstem for DIPG. He directs a translational laboratory focused on novel drug-delivery techniques for pediatric brain tumors and is a MRI-guided laser ablation (LITT) practitioner for select deep-seated pediatric lesions. Board-certified in both neurological surgery and pediatric neurological surgery (FACS, FAAP).",
+    "training": "Wayne State University School of Medicine (MD) · Neurosurgery residency, NYU Medical Center (mentor Fred Epstein) · Pediatric neurosurgery fellowship, Hospital for Sick Children, Toronto · BS University of Michigan; pedigree = Epstein pediatric-neurosurgery lineage.",
+    "litt_house": "NeuroBlate",
+    "litt_platform": "NeuroBlate",
+    "litt_exposure": "Active LITT practitioner in pediatric neuro-oncology; claims show 1 LITT procedure tagged to our NeuroBlate cohort. Co-author on peer-reviewed pediatric LITT work (radiation-sparing LITT for CNS tumors in cancer-predisposition syndromes). Note: Weill Cornell/MSK pediatric LITT literature also documents Visualase (Medtronic) use, so exposure spans both platforms.",
+    "wheelhouse": "Pediatric CNS tumors; DIPG/brainstem gliomas; convection-enhanced delivery; minimally invasive/endoscopic neurosurgery; MRI-guided laser ablation for deep-seated pediatric lesions.",
+    "kol": true,
+    "kol_note": "Major KOL in pediatric neuro-oncology and direct drug delivery (CED for DIPG); frequent invited faculty (e.g., ISPN). His KOL weight is in pediatric brain tumors and CED rather than LITT specifically, but he lends credibility to pediatric LITT adoption.",
+    "recent_papers": [
+      {
+        "title": "Laser interstitial thermal therapy as a radiation-sparing approach for CNS tumors in children with cancer predisposition syndromes: report of a child with Li-Fraumeni syndrome (illustrative case)",
+        "journal": "Journal of Neurosurgery (illustrative case)",
+        "year": 2024,
+        "affinity": "high",
+        "note": "Souweidane listed among authors (conception/design, data, drafting); directly demonstrates pediatric LITT use case."
+      },
+      {
+        "title": "Phase 1 dose-escalation trial using convection-enhanced delivery of radio-immunotheranostic 124I-omburtamab for diffuse intrinsic pontine glioma",
+        "journal": "Neuro-Oncology",
+        "year": 2025,
+        "affinity": "low",
+        "note": "Souweidane senior/lead author; signature CED brainstem work, not LITT but core to his minimally invasive delivery reputation."
+      },
+      {
+        "title": "Convection-enhanced delivery for diffuse intrinsic pontine glioma: a single-centre, dose-escalation, phase 1 trial",
+        "journal": "The Lancet Oncology",
+        "year": 2018,
+        "affinity": "low",
+        "note": "Souweidane lead author; landmark first-in-human CED DIPG trial establishing his innovation profile."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "high",
+    "flags": ["performer", "pediatric-focus", "mixed-platform-exposure(Visualase-publications)", "low-litt-volume(1)"]
+  },
+  {
+    "name": "Cameron W. Brennan",
+    "npi": "1689659963",
+    "merges": ["Cameron Brennan"],
+    "identity": "Attending neurosurgeon and laboratory investigator, Department of Neurosurgery, Memorial Sloan Kettering Cancer Center (New York, NY); Neurosurgical Oncology Fellowship Program Director.",
+    "bio": "Brennan is a neurosurgeon-scientist specializing in primary and metastatic brain tumors, with a high-volume brain-metastasis resection practice (claims show 94 metastasis cases). He is internationally known for computational and molecular profiling of gliomas, including leading TCGA-era genomic characterization of glioblastoma and discovery of receptor-tyrosine-kinase gene fusions. He is a member of MSK's Brain Tumor Center and the Human Oncology and Pathogenesis Program.",
+    "training": "Weill Cornell Medical College (MD) · Neurological Surgery residency, NewYork-Presbyterian/Weill Cornell (1995-2000) · Neurosurgical Oncology fellowship, MSK (2000-2001), plus post-doctoral fellowship, Dana-Farber Cancer Institute (2001-2004); pedigree = Cornell/MSK neuro-oncology.",
+    "litt_house": "unknown",
+    "litt_platform": "—",
+    "litt_exposure": "High-volume brain-metastasis resection surgeon (94 mets cases) at an MSK account tagged to our NeuroBlate cohort, but no direct evidence of personal LITT procedures in claims or literature. His footprint is open resection and tumor genomics, not laser ablation.",
+    "wheelhouse": "Glioblastoma and glioma genomics/molecular profiling; brain metastasis resection; translational neuro-oncology; extraneural GBM metastasis.",
+    "kol": true,
+    "kol_note": "Heavyweight KOL in glioblastoma genomics (lead author on the somatic genomic landscape of GBM); influence is in molecular neuro-oncology and surgical oncology rather than device/LITT advocacy.",
+    "recent_papers": [
+      {
+        "title": "The Somatic Genomic Landscape of Glioblastoma",
+        "journal": "Cell",
+        "year": 2013,
+        "affinity": "low",
+        "note": "Brennan first/lead author; landmark TCGA GBM genomic study, defining work of his career (verifiable, older)."
+      }
+    ],
+    "candidacy": null,
+    "confidence": "medium",
+    "flags": ["performer", "dedup-merge(Cameron Brennan)", "no-direct-litt-evidence", "high-mets-volume(94)", "litt-house-uncertain"]
+  },
+  {
+    "name": "Rabih Bou Nassif",
+    "npi": "1861105058",
+    "merges": [],
+    "identity": "Assistant Attending Neurosurgeon, Department of Neurosurgery, Memorial Sloan Kettering Cancer Center (New York, NY); primary and metastatic tumors of brain and spine.",
+    "bio": "Bou Nassif is a neurosurgeon at MSK focused on primary and metastatic brain and spine tumors, with a metastasis-referral footprint in claims (22 mets cases, tagged Referring Clinician). As a clinical researcher he is developing intraoperative AI applications to make complex brain and spine tumor surgery more precise. He received the AANS/CNS Charles Kuntz Award for excellence in neurosurgical research in 2024.",
+    "training": "Saint Joseph University Faculty of Medicine, Beirut (MD) · neurosurgical training and MSK neurosurgical-oncology pathway (fellowship-level oncology training at MSK); pedigree note = MSK neuro-oncology-trained. (Residency site not fully verified — see flags.)",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of performing LITT. Appears in claims as a referring clinician for metastasis cases (22). LITT-naive tumor surgeon at a NeuroBlate account.",
+    "wheelhouse": "Brain and spine tumors (primary + metastatic); intraoperative AI / surgical precision; neurosurgical oncology.",
+    "kol": false,
+    "kol_note": "Emerging academic surgeon (Kuntz research award 2024) but not an established LITT/device KOL; influence currently local/institutional.",
+    "recent_papers": [],
+    "candidacy": {
+      "assessment": "Moderate development target",
+      "rationale": "Metastasis-focused tumor surgeon (22 mets) embedded at a high-value NeuroBlate account, currently LITT-naive and in a referring posture. Research-oriented (AI in tumor surgery, Kuntz award) and early-to-mid career, so receptive to adopting a minimally invasive modality. Path is to convert a referrer into a NeuroBlate performer for deep/recurrent mets and radiation-necrosis cases; ceiling limited by MSK's existing LITT operators."
+    },
+    "confidence": "medium",
+    "flags": ["development-target", "referring-clinician", "no-litt-evidence", "residency-site-unverified"]
+  },
+  {
+    "name": "Viviane S. Tabar",
+    "npi": "1336123983",
+    "merges": [],
+    "identity": "Chair, Department of Neurosurgery, Memorial Sloan Kettering Cancer Center (since 2018); the Theresa C. Feng Chair; surgeon-scientist and stem-cell biologist (New York, NY).",
+    "bio": "Tabar is Chair of Neurosurgery at MSK and a distinguished surgeon-scientist whose lab pioneered use of human pluripotent stem cells for brain repair and brain-tumor modeling. She co-led the first-in-human Phase I trial of hES cell-derived dopaminergic neurons for Parkinson's disease (published in Nature, 2025) and studies glioma cell heterogeneity and the tumor microenvironment. In claims she appears as a referring clinician for metastasis cases (12).",
+    "training": "American University of Beirut (MD) · Neurosurgery residency, University of Massachusetts · Clinical + research fellowship at MSK; postdoctoral work at NIH/NINDS; pedigree note = MSK stem-cell/neuro-oncology, mentored alongside Lorenz Studer.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of personally performing LITT; her surgical practice and research center on tumor resection, stem-cell therapeutics, and glioma biology. Appears as referring clinician (12 mets). Strategic value is as department chair/gatekeeper rather than as an operator.",
+    "wheelhouse": "Stem cell biology (dopaminergic neurons for Parkinson's); glioma biology / cancer stem cells / tumor microenvironment; brain-tumor resection; department leadership.",
+    "kol": true,
+    "kol_note": "Top-tier KOL and institutional decision-maker: Chair of Neurosurgery at MSK, ASCI member, Nature-level publication record. Her endorsement/gatekeeping shapes MSK's device and capital decisions — high strategic influence on LITT program direction even though she is not a LITT operator.",
+    "recent_papers": [
+      {
+        "title": "Phase I trial of hES cell-derived dopaminergic neurons for Parkinson's disease",
+        "journal": "Nature",
+        "year": 2025,
+        "affinity": "low",
+        "note": "Tabar co-senior author; flagship translational stem-cell trial — relevant to her prestige/influence, not LITT."
+      },
+      {
+        "title": "Glioblastoma functional heterogeneity and enrichment of cancer stem cells with tumor recurrence",
+        "journal": "Neuron",
+        "year": 2024,
+        "affinity": "low",
+        "note": "Tabar lab glioma-biology work; establishes neuro-oncology credibility, no direct LITT tie."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Low direct candidacy / high strategic (institutional) value",
+      "rationale": "Not a LITT operator and unlikely to become one — her practice is stem-cell therapeutics, glioma biology, and department leadership. However, as MSK Chair of Neurosurgery she is the gatekeeper for capital equipment, program strategy, and which faculty champion LITT. Engage as an executive sponsor/relationship anchor to protect and grow the NeuroBlate footprint, not as a procedural target."
+    },
+    "confidence": "high",
+    "flags": ["development-target", "referring-clinician", "department-chair", "strategic-gatekeeper", "not-an-operator"]
+  },
+  {
+    "name": "Kenny Kwok Hei Yu",
+    "npi": "1467093898",
+    "merges": [],
+    "identity": "Neurosurgeon-scientist and Instructor, Department of Neurosurgery, Memorial Sloan Kettering Cancer Center (New York, NY); focus on malignant glioma.",
+    "bio": "Yu (MBBS, PhD, FRCS(SN)) is an early-career neurosurgeon-scientist at MSK whose clinical and research work centers on malignant glioma and the glioma immune microenvironment. He led a 2026 single-cell study with Viviane Tabar identifying malignancy-associated glioma macrophages (mGAMs) as a potential therapeutic target. In claims he carries a notably high metastasis footprint (69 mets cases) as a referring clinician.",
+    "training": "Imperial College London School of Medicine (MBBS) · PhD in cancer immunology, University of Manchester (mentor Brian Bigger) · neurosurgical training via North Western Deanery/Manchester, FRCS(SN); NIHR Academic Clinical Lectureship postdoc with Peter Dirks (SickKids, Toronto) · Neurosurgical Oncology fellowship, MSK (2019-2021); pedigree = UK academic neurosurgery + MSK neuro-oncology.",
+    "litt_house": "none",
+    "litt_platform": "—",
+    "litt_exposure": "No evidence of performing LITT; appears in claims as a referring clinician with a high metastasis volume (69). LITT-naive glioma/tumor surgeon at a NeuroBlate account.",
+    "wheelhouse": "Malignant glioma surgery; glioma immunology / tumor-associated macrophages; brain and spinal tumors; skull base; neurosurgical oncology research.",
+    "kol": false,
+    "kol_note": "Emerging KOL — neurosurgeon-scientist with high-profile glioma-immunology publications and MSK research spotlight (Jan 2026); not yet a device/LITT KOL but a rising academic voice to cultivate early.",
+    "recent_papers": [
+      {
+        "title": "Single-cell characterization of malignancy-associated glioma macrophages (mGAMs) in glioma",
+        "journal": "(journal not confirmed — MSK Research Highlights, Jan 2026)",
+        "year": 2026,
+        "affinity": "low",
+        "note": "Yu led with Tabar; glioma immune-microenvironment study. Exact journal unverified — treat title/venue as provisional."
+      }
+    ],
+    "candidacy": {
+      "assessment": "Strong development target",
+      "rationale": "Best conversion candidate of the MSK development set: very high metastasis volume (69), early-career (Instructor) and research-driven, currently LITT-naive and in a referring posture. Early adopters at his career stage are receptive to minimally invasive tools for deep/recurrent glioma and metastatic lesions; converting him to a NeuroBlate operator both grows volume and seeds a future academic advocate. Pair with Tabar (his research partner and Chair) for executive alignment."
+    },
+    "confidence": "medium",
+    "flags": ["development-target", "referring-clinician", "no-litt-evidence", "high-mets-volume(69)", "emerging-kol", "recent-paper-venue-unverified"]
+  }
+]
