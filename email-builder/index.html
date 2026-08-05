@@ -212,7 +212,7 @@
     </div>
   </div>
   <div class="telemetry">
-    <span class="chip"><span class="chip-k">Modules</span><span class="chip-v">10</span></span>
+    <span class="chip"><span class="chip-k">Modules</span><span class="chip-v">11</span></span>
     <span class="chip"><span class="chip-k">Compliance</span><span class="chip-v lock">Fair-balance</span></span>
     <span class="chip status" id="hdrStatus"><span class="dot"></span><span id="hdrStatusText">Incomplete</span></span>
   </div>
@@ -268,9 +268,11 @@
         <option value="verdana">Verdana — highly legible</option>
         <option value="helvetica">Helvetica Neue</option>
       </select>
+      <label>Highlight box color</label>
+      <div class="swatches" data-target="box_color" data-colors="#2f6b4f,#00529b,#0b7c74,#334155,#7a1f2b,#5a2a6b,#a8432c"></div>
       <label>Email background</label>
       <div class="swatches" data-target="bg_color" data-colors="#f2f4f6,#ffffff,#eef4fb,#f5f2ec,#eef7f4,#e9eef5"></div>
-      <div class="hint">Fonts are email-safe web stacks. Headline defaults to 24&nbsp;px — a readability best practice that keeps most headlines to one or two lines.</div>
+      <div class="hint">Colored boxes (Indication, callouts, Highlight-card template) use the box color. Fonts are email-safe web stacks. Headline defaults to 24&nbsp;px — a readability best practice.</div>
     </fieldset>
 
     <details class="opt">
@@ -404,6 +406,15 @@ function BF(){ return HFONTS[val('b_font')]||HFONTS.arial; }
 function headlineTag(text){ if(!text) return ""; const f=HFONTS[val('h_font')]||HFONTS.arial;
   const sz=parseInt(val('h_size'))||24; const col=esc(val('h_color')||'#1a2330'); const al=val('h_align')||'left'; const lh=Math.round(sz*1.25);
   return `<h1 style="margin:0 0 12px;font-family:${f};font-size:${sz}px;line-height:${lh}px;color:${col};font-weight:bold;text-align:${al};mso-line-height-rule:exactly;">${esc(text)}</h1>`; }
+/* ---- colored-box (highlight card) system ---- */
+function _hx(h){h=(h||'').replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return [parseInt(h.slice(0,2),16)||0,parseInt(h.slice(2,4),16)||0,parseInt(h.slice(4,6),16)||0];}
+function _to(r,g,b){return '#'+[r,g,b].map(x=>Math.max(0,Math.min(255,Math.round(x))).toString(16).padStart(2,'0')).join('');}
+function mixW(hex,t){const [r,g,b]=_hx(hex);return _to(r+(255-r)*t,g+(255-g)*t,b+(255-b)*t);}
+function boxBase(){return val('box_color')||'#2f6b4f';}
+function hcard(textVal,label){ if(!textVal) return ''; const base=boxBase(), bg=mixW(base,.9);
+  return `<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 12px;"><tr><td style="background:${bg};border-radius:18px;padding:17px 20px;font-family:${BF()};">${label?`<p style="margin:0 0 7px;font-size:12px;font-weight:bold;letter-spacing:.07em;text-transform:uppercase;color:${base};">${esc(label)}</p>`:''}<p style="margin:0;font-size:16px;line-height:24px;color:#23302a;">${esc(textVal).replace(/\n/g,'<br />')}</p></td></tr></table>`; }
+function bannerBox(textVal){ if(!textVal) return ''; const base=boxBase();
+  return `<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 12px;"><tr><td align="center" style="background:${base};border-radius:12px;padding:15px 20px;font-family:${BF()};font-size:16px;font-weight:bold;color:#ffffff;line-height:22px;">${esc(textVal)}</td></tr></table>`; }
 
 /* UTM tagging — content links only */
 function utmOn(){ const c=$('utmOn'); return c?c.checked:false; }
@@ -434,13 +445,16 @@ const H = {
       ? `<img src="${esc(logo)}" width="170" alt="${company()} logo" style="display:block;width:170px;max-width:170px;height:auto;" />`
       : `<span style="font-family:Arial,sans-serif;font-size:20px;font-weight:bold;color:${brand()};">${company()}</span>`;
     return `<tr><td align="left" class="px" style="padding:24px 32px;border-top:4px solid ${brand()};">${inner}</td></tr>`; },
-  indication(){ if(!val('indication')) return ''; return `<tr><td class="px" style="padding:20px 32px 0;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#5a6472;"><strong>Indication:</strong> ${esc(val('indication'))}</td></tr>`; },
-  isi(){ if(!val('isi') && !val('piUrl')) return ''; const mg = val('medGuideUrl')?` and <a href="${legal(val('medGuideUrl'))}" style="color:${cta()};text-decoration:underline;">Medication Guide</a>`:'';
-    return `<tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;margin-top:24px;"></div></td></tr>
-    <tr><td class="px" style="padding:18px 32px;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#3a4453;">
-      <p style="margin:0 0 8px;font-size:14px;font-weight:bold;color:#1a2330;">Important Safety Information</p>
-      ${paras(val('isi'),"margin:0 0 8px;")}
-      ${val('piUrl')?`<p style="margin:8px 0 0;">Please see the <a href="${legal(val('piUrl'))}" style="color:${cta()};text-decoration:underline;">full Prescribing Information</a>${mg}.</p>`:''}
+  indication(){ if(!val('indication')) return ''; return `<tr><td class="px" style="padding:18px 32px 0;">${hcard(val('indication'),'Indication')}</td></tr>`; },
+  isi(){ if(!val('isi') && !val('piUrl')) return ''; const HD='#a8432c', TN='#f7ece8'; const mg = val('medGuideUrl')?` and <a href="${legal(val('medGuideUrl'))}" style="color:${HD};text-decoration:underline;font-weight:bold;">Medication Guide</a>`:'';
+    return `<tr><td class="px" style="padding:10px 32px 0;">
+      <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:12px;">
+        <tr><td style="background:${HD};border-radius:12px 12px 0 0;padding:14px 20px;font-family:${BF()};font-size:16px;font-weight:bold;color:#ffffff;">Important Safety Information</td></tr>
+        <tr><td style="background:${TN};border-radius:0 0 12px 12px;padding:16px 20px;font-family:${BF()};font-size:13px;line-height:20px;color:#3a2b27;">
+          ${paras(val('isi'),"margin:0 0 8px;")}
+          ${val('piUrl')?`<p style="margin:8px 0 0;">Please see the <a href="${legal(val('piUrl'))}" style="color:${HD};text-decoration:underline;font-weight:bold;">full Prescribing Information</a>${mg}.</p>`:''}
+        </td></tr>
+      </table>
     </td></tr>`; },
   footer(){ return `<tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;"></div></td></tr>
     <tr><td class="px" style="padding:18px 32px 28px;font-family:Arial,sans-serif;font-size:12px;line-height:18px;color:#8a94a6;">
@@ -453,7 +467,7 @@ const H = {
 function contentTd(inner){ return `<tr><td class="px" style="padding:16px 32px 0;font-family:${BF()};">${inner}</td></tr>`; }
 function kicker(t){ return t?`<p style="margin:0 0 4px;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:.6px;color:${brand()};">${esc(t)}</p>`:''; }
 function block(label,textk){ const v=val(textk); return v?kicker(label)+paras(v,"margin:0 0 14px;font-size:15px;line-height:23px;color:#3a4453;"):''; }
-function callout(label,textk){ const v=val(textk); if(!v)return''; return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;"><tr><td style="background:#eef4fb;border-left:4px solid ${brand()};padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;line-height:21px;color:#1a2330;"><strong>${esc(label)}:</strong> ${esc(v)}</td></tr></table>`; }
+function callout(label,textk){ const v=val(textk); if(!v) return ''; return hcard(v,label); }
 function heroRow(k,altk){ const s=val(k); return s?`<tr><td align="center" style="padding:0;">${img(s,val(altk),600)}</td></tr>`:''; }
 function headBody(hk,bk){ let o=headlineTag(val(hk));
   o+=paras(val(bk),"margin:0 0 16px;font-size:16px;line-height:24px;color:#3a4453;"); return o?contentTd(o):''; }
@@ -557,7 +571,19 @@ const TEMPLATES = {
     middle(){ let o=headlineTag(val('t_h'));
       const mythBox=val('t_myth')?`<table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td style="background:#fbf0ee;border-left:4px solid #c0563f;padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;line-height:21px;color:#1a2330;"><strong>Common belief:</strong> ${esc(val('t_myth'))}</td></tr></table>`:'';
       o+=mythBox; o=o?contentTd(o):'';
-      return o+(val('t_ev')?contentTd(block('What the evidence shows','t_ev')):'')+(val('t_tk')?contentTd(callout('Practical takeaway','t_tk')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } }
+      return o+(val('t_ev')?contentTd(block('What the evidence shows','t_ev')):'')+(val('t_tk')?contentTd(callout('Practical takeaway','t_tk')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
+
+  highlight:{ name:'Highlight cards', desc:'Key points in sharp colored boxes.', cat:'story',
+    note:'Each point sits in its own rounded, color-tinted box — sharp and easy to scan. Set the box color under Design & typography.',
+    sections:[{lg:'Intro',fields:[['t_h','Headline','text'],['t_b','Intro body (optional)','textarea'],['t_bn','Banner statement (optional, solid box)','text']]},
+      ...[1,2,3,4,5,6].map(n=>({lg:'Box '+n,fields:[[`t_hc${n}l`,'Label (optional)','text'],[`t_hc${n}t`,'Text','textarea']]})),
+      {lg:'Call to action',fields:[['t_cl','Button label','text'],['t_cu','Button URL','url']]}],
+    middle(){ let head=headlineTag(val('t_h'))+paras(val('t_b'),"margin:0 0 14px;font-size:16px;line-height:24px;color:#3a4453;"); head=head?contentTd(head):'';
+      const banner=val('t_bn')?`<tr><td class="px" style="padding:6px 32px 2px;">${bannerBox(val('t_bn'))}</td></tr>`:'';
+      const cards=[1,2,3,4,5,6].map(n=>[`t_hc${n}l`,`t_hc${n}t`]).filter(c=>val(c[1]));
+      const boxes=cards.length?`<tr><td class="px" style="padding:8px 32px 2px;">${cards.map(([l,t])=>hcard(val(t),val(l))).join('')}</td></tr>`:'';
+      const cta_=(val('t_cl')&&val('t_cu'))?`<tr><td class="px" style="padding:6px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:'';
+      return head+banner+boxes+cta_; } }
 };
 
 /* ================= build full email ================= */
@@ -653,7 +679,9 @@ $('sample').addEventListener('click',()=>{ const s={indication:'PRODUCT (generic
   unsubUrl:'https://www.alembicpharma.com/unsubscribe',prefUrl:'https://www.alembicpharma.com/preferences',
   privacyUrl:'https://www.alembicpharma.com/privacy',jobCode:'US-XXX-0000',utm_campaign:'product-launch-2026',
   t_h:'A new option for your appropriate patients',t_b:'Introduce the key approved message here.\n\nAdd a second approved paragraph.',
-  t_cl:'Learn More',t_cu:'https://www.alembicpharma.com'};
+  t_cl:'Learn More',t_cu:'https://www.alembicpharma.com',
+  t_bn:'Dosing: [approved dosing statement]',
+  t_hc1t:'[Key point one — verbatim approved copy.]',t_hc2t:'[Key point two — verbatim approved copy.]',t_hc3t:'[Key point three — verbatim approved copy.]'};
   Object.entries(s).forEach(([k,v])=>{ store[k]=v; const el=$(k); if(el)el.value=v; }); render(); });
 
 /* ================= Clinical Story Engine ================= */
@@ -720,7 +748,7 @@ document.querySelectorAll('.vt').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.vt').forEach(x=>x.classList.toggle('on',x===b)); }));
 
 /* init */
-store.h_color='#1a2330'; store.bg_color='#f2f4f6';
+store.h_color='#1a2330'; store.bg_color='#f2f4f6'; store.box_color='#2f6b4f';
 buildTemplatePicker(); buildSlots(); buildSwatches(); updateRec(); render();
 </script>
 </body>

@@ -36,6 +36,24 @@ efficacy/safety line stays a placeholder for MLR-approved, verbatim language.
 > adoption-scoring — is documented in [`STRATEGY.md`](STRATEGY.md). Those are a
 > *future backend* (they need the sending platform's data); this file is step 1.
 
+## Colored highlight boxes (key feature)
+
+Sharp, tinted rounded boxes that make key content scannable — modeled on
+Alembic's own pharmacy-partner email:
+
+- **Highlight-cards template** — stack each key point in its own rounded,
+  color-tinted box, with an optional uppercase label and a solid **banner**
+  statement (e.g. a dosing line).
+- **Boxed Indication** — the Indication renders as a labeled tinted box.
+- **Boxed callouts** — Publication/Case/Guideline/Myth callouts use the same box.
+- **Boxed ISI** — Important Safety Information renders as a colored-header card
+  (rust header + tinted body) so required safety text is prominent *and* readable.
+- **Box color** control (Design & typography) themes every box; tints are derived
+  automatically. Defaults to Alembic green.
+
+Boxes use table + background-color with `border-radius` (rounded in Apple Mail,
+Gmail, and mobile; squared-but-intact in Outlook — a safe, standard degrade).
+
 ## Design controls & preview
 
 - **Desktop / Mobile preview toggle** — in the preview bezel, switch between the
