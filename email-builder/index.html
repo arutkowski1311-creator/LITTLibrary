@@ -83,12 +83,11 @@
     background:radial-gradient(700px 380px at 50% 0%, var(--accent-soft), transparent 70%)}
   @media(max-width:900px){
     .layout{flex-direction:column}
-    .form,.preview{max-width:100%;flex:1 1 auto;height:auto}
+    .form,.preview{max-width:100%;flex:1 1 auto;height:auto;overflow:visible}
     .telemetry{width:100%;margin-left:0}
-    /* On mobile: preview first + pinned to top so it's visible while you edit below */
-    .preview{order:-1;position:sticky;top:0;z-index:30;max-height:58vh;overflow:auto;
-      border-left:0;border-bottom:1px solid var(--line);padding:12px 12px 14px}
-    .preview iframe{height:40vh;min-height:0}
+    /* On mobile: preview first (visible on load), form flows normally below */
+    .preview{order:-1;border-left:0;border-bottom:1px solid var(--line);padding:12px}
+    .preview iframe{height:360px;min-height:0}
     .device-screen{padding:8px}
     .form{padding:16px 16px 24px}
   }
