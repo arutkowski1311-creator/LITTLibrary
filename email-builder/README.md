@@ -41,9 +41,13 @@ efficacy/safety line stays a placeholder for MLR-approved, verbatim language.
 Sharp, tinted rounded boxes that make key content scannable — modeled on
 Alembic's own pharmacy-partner email:
 
-- **Highlight-cards template** — stack each key point in its own rounded,
-  color-tinted box, with an optional uppercase label and a solid **banner**
-  statement (e.g. a dosing line).
+- **Colored-boxes template** — **add as many boxes as you want** (Add box /
+  Remove); each box sizes to its own content and they're spaced evenly. Optional
+  uppercase label per box and a solid **banner** statement (e.g. a dosing line).
+- **Box color + transparency** — pick the color and a transparency (soft tint →
+  solid). The fill is blended over the email background to a solid hex (so it
+  renders everywhere, including Outlook), and box text auto-switches to white or
+  dark for contrast.
 - **Boxed Indication** — the Indication renders as a labeled tinted box.
 - **Boxed callouts** — Publication/Case/Guideline/Myth callouts use the same box.
 - **Boxed ISI** — Important Safety Information renders as a colored-header card
