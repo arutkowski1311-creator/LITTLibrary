@@ -180,6 +180,20 @@
   details.opt fieldset{border:0;padding:0 0 14px;margin:0;box-shadow:none;background:transparent}
   details.opt fieldset legend{background:transparent;border:0;padding:0;margin:0 0 2px}
 
+  /* ===== Swatches ===== */
+  .swatches{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+  .sw{width:24px;height:24px;border-radius:6px;border:1px solid var(--line);cursor:pointer;padding:0}
+  .sw.on{box-shadow:0 0 0 2px var(--panel),0 0 0 3px var(--accent)}
+  .sw-custom{width:30px;height:26px;padding:1px;border:1px solid var(--line);border-radius:6px;background:var(--panel2);cursor:pointer}
+
+  /* ===== Desktop/mobile view toggle ===== */
+  .viewtoggle{display:inline-flex;gap:2px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:2px}
+  .vt{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:6px;background:transparent;color:var(--muted);font-weight:700;border:0;cursor:pointer}
+  .vt.on{background:var(--accent);color:var(--accent-ink)}
+  .device.mobile .device-screen{display:flex;justify-content:center}
+  .device.mobile iframe{width:390px;max-width:100%}
+  .device.desktop iframe{width:100%}
+
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -224,6 +238,39 @@
       <input type="url" id="logoUrl" class="imgurl" placeholder="https://cdn.alembic.com/logo.png" />
       <div class="img-drop" data-target="logoUrl">Drop logo image</div>
       <div class="hint">For real sends, host images and paste the URL. Dropped files embed as base64 — fine for preview, but Gmail/Outlook often block embedded images.</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Design &amp; typography</legend>
+      <label>Headline font</label>
+      <select id="h_font">
+        <option value="arial">Arial — clean sans (default)</option>
+        <option value="helvetica">Helvetica Neue</option>
+        <option value="georgia">Georgia — serif</option>
+        <option value="verdana">Verdana — highly legible</option>
+        <option value="trebuchet">Trebuchet MS</option>
+        <option value="times">Times New Roman — classic serif</option>
+      </select>
+      <div class="row">
+        <div><label>Headline size</label><select id="h_size"><option>20</option><option>22</option><option selected>24</option><option>28</option><option>32</option></select></div>
+        <div><label>Alignment</label><select id="h_align"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></div>
+      </div>
+      <label>Headline color</label>
+      <div class="swatches" data-target="h_color" data-colors="#1a2330,#00529b,#0b978b,#14224a,#3a4453,#7a1f2b,#1a6b3a,#5a2a6b"></div>
+      <div class="row" style="margin-top:11px">
+        <div><label>Button alignment</label><select id="cta_align"><option value="left">Left</option><option value="center">Center</option><option value="full">Full width</option></select></div>
+        <div><label>Button shape</label><select id="cta_shape"><option value="rounded">Rounded</option><option value="square">Square</option><option value="pill">Pill</option></select></div>
+      </div>
+      <label>Body font</label>
+      <select id="b_font">
+        <option value="arial">Arial (default)</option>
+        <option value="georgia">Georgia — serif</option>
+        <option value="verdana">Verdana — highly legible</option>
+        <option value="helvetica">Helvetica Neue</option>
+      </select>
+      <label>Email background</label>
+      <div class="swatches" data-target="bg_color" data-colors="#f2f4f6,#ffffff,#eef4fb,#f5f2ec,#eef7f4,#e9eef5"></div>
+      <div class="hint">Fonts are email-safe web stacks. Headline defaults to 24&nbsp;px — a readability best practice that keeps most headlines to one or two lines.</div>
     </fieldset>
 
     <details class="opt">
@@ -329,10 +376,13 @@
   </div>
 
   <div class="preview">
-    <div class="device">
+    <div class="device desktop">
       <div class="device-bar">
-        <span class="live"><span class="dot pulse"></span> Live preview</span>
-        <span class="dev-meta">renders exactly what downloads</span>
+        <span class="live"><span class="dot pulse"></span> Live</span>
+        <span class="viewtoggle" role="group" aria-label="Preview width">
+          <button type="button" class="vt on" data-view="desktop">Desktop</button>
+          <button type="button" class="vt" data-view="mobile">Mobile</button>
+        </span>
         <span class="size-chip" id="size">0 KB</span>
       </div>
       <div class="device-screen"><iframe id="frame" title="Email preview"></iframe></div>
@@ -349,6 +399,11 @@ const IMG = {};            // dropped-file data URLs by field id
 const store = {};          // persists values across template switches
 function val(k){ if(IMG[k]) return IMG[k]; const el=$(k); if(el) return (el.value||"").trim(); return (store[k]||"").trim(); }
 function paras(text,style){ if(!text||!text.trim())return""; return text.trim().split(/\n\s*\n/).map(b=>`<p style="${style}">${esc(b).replace(/\n/g,"<br />")}</p>`).join(""); }
+const HFONTS={arial:"Arial, Helvetica, sans-serif",helvetica:"'Helvetica Neue', Helvetica, Arial, sans-serif",georgia:"Georgia, 'Times New Roman', serif",verdana:"Verdana, Geneva, sans-serif",trebuchet:"'Trebuchet MS', Tahoma, sans-serif",times:"'Times New Roman', Times, serif"};
+function BF(){ return HFONTS[val('b_font')]||HFONTS.arial; }
+function headlineTag(text){ if(!text) return ""; const f=HFONTS[val('h_font')]||HFONTS.arial;
+  const sz=parseInt(val('h_size'))||24; const col=esc(val('h_color')||'#1a2330'); const al=val('h_align')||'left'; const lh=Math.round(sz*1.25);
+  return `<h1 style="margin:0 0 12px;font-family:${f};font-size:${sz}px;line-height:${lh}px;color:${col};font-weight:bold;text-align:${al};mso-line-height-rule:exactly;">${esc(text)}</h1>`; }
 
 /* UTM tagging — content links only */
 function utmOn(){ const c=$('utmOn'); return c?c.checked:false; }
@@ -364,9 +419,14 @@ function brand(){ return esc(val('brandColor')||'#00529b'); }
 function cta(){ return esc(val('ctaColor')||brand()); }
 function company(){ return esc(val('companyName')||'Alembic Pharmaceuticals'); }
 function img(src,alt,w){ return `<img src="${esc(src)}" width="${w}" alt="${esc(alt)}" class="fluid" style="display:block;width:100%;max-width:${w}px;height:auto;border:0;" />`; }
-function ctaBtn(label,url){ if(!label||!url) return ""; const c=cta(); return `
-  <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${link(url)}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="12%" strokecolor="${c}" fillcolor="${c}"><w:anchorlock/><center style="color:#fff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">${esc(label)}</center></v:roundrect><![endif]-->
-  <!--[if !mso]><!-- --><a href="${link(url)}" style="background-color:${c};border-radius:6px;color:#fff;display:inline-block;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:240px;">${esc(label)}</a><!--<![endif]-->`; }
+function ctaBtn(label,url){ if(!label||!url) return ""; const c=cta();
+  const shape=val('cta_shape')||'rounded', align=val('cta_align')||'left';
+  const rad={square:'3px',rounded:'6px',pill:'26px'}[shape]||'6px';
+  const arc={square:'4%',rounded:'12%',pill:'50%'}[shape]||'12%';
+  const full=align==='full', w=full?'100%':'240px', msow=full?'540':'240';
+  const wrap = align==='center'?'center':(align==='right'?'right':'left');
+  const btn=`<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${link(url)}" style="height:48px;v-text-anchor:middle;width:${msow}px;" arcsize="${arc}" strokecolor="${c}" fillcolor="${c}"><w:anchorlock/><center style="color:#fff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">${esc(label)}</center></v:roundrect><![endif]--><!--[if !mso]><!-- --><a href="${link(url)}" style="background-color:${c};border-radius:${rad};color:#fff;display:inline-block;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:${w};max-width:100%;">${esc(label)}</a><!--<![endif]-->`;
+  return `<table role="presentation" ${full?'width="100%"':''} border="0" cellpadding="0" cellspacing="0" align="${wrap}" style="${full?'width:100%;':''}"><tr><td align="${full?'center':wrap}">${btn}</td></tr></table>`; }
 function inlineLink(label,url){ if(!label||!url) return ""; return `<a href="${link(url)}" style="color:${cta()};font-weight:bold;text-decoration:none;font-family:Arial,sans-serif;font-size:14px;">${esc(label)} &rarr;</a>`; }
 
 const H = {
@@ -390,12 +450,12 @@ const H = {
       <p style="margin:0;color:#a4acb9;">${esc(val('jobCode'))} &nbsp;|&nbsp; &copy; ${esc(val('year'))} ${company()}. All rights reserved. Intended for ${esc(val('audience'))}.</p>
     </td></tr>`; }
 };
-function contentTd(inner){ return `<tr><td class="px" style="padding:16px 32px 0;font-family:Arial,sans-serif;">${inner}</td></tr>`; }
+function contentTd(inner){ return `<tr><td class="px" style="padding:16px 32px 0;font-family:${BF()};">${inner}</td></tr>`; }
 function kicker(t){ return t?`<p style="margin:0 0 4px;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:.6px;color:${brand()};">${esc(t)}</p>`:''; }
 function block(label,textk){ const v=val(textk); return v?kicker(label)+paras(v,"margin:0 0 14px;font-size:15px;line-height:23px;color:#3a4453;"):''; }
 function callout(label,textk){ const v=val(textk); if(!v)return''; return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;"><tr><td style="background:#eef4fb;border-left:4px solid ${brand()};padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;line-height:21px;color:#1a2330;"><strong>${esc(label)}:</strong> ${esc(v)}</td></tr></table>`; }
 function heroRow(k,altk){ const s=val(k); return s?`<tr><td align="center" style="padding:0;">${img(s,val(altk),600)}</td></tr>`:''; }
-function headBody(hk,bk){ let o=''; if(val(hk))o+=`<h1 style="margin:0 0 12px;font-size:26px;line-height:32px;color:#1a2330;font-weight:bold;">${esc(val(hk))}</h1>`;
+function headBody(hk,bk){ let o=headlineTag(val(hk));
   o+=paras(val(bk),"margin:0 0 16px;font-size:16px;line-height:24px;color:#3a4453;"); return o?contentTd(o):''; }
 
 /* ================= templates ================= */
@@ -471,7 +531,7 @@ const TEMPLATES = {
   publication:{ name:'Publication', desc:'Clinical story: key finding + one figure.', cat:'story',
     note:'Lead with the clinical finding, show one figure, say why it matters in practice, link to the paper.',
     sections:[{lg:'Story',fields:[['t_h','Clinical headline','text'],['t_kf','Key finding (one sentence)','text'],['t_fi','Figure image (one graph)','image'],['t_fa','Figure ALT text','text'],['t_b','Why it matters in practice','textarea'],['t_cl','CTA label','text'],['t_cu','Link to publication','url']]}],
-    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 10px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`;
+    middle(){ let o=headlineTag(val('t_h'));
       o+=callout('Key finding','t_kf'); o=o?contentTd(o):'';
       const fig=val('t_fi')?`<tr><td align="center" style="padding:6px 0;">${img(val('t_fi'),val('t_fa'),536)}</td></tr>`:'';
       return o+fig+(val('t_b')?contentTd(block('Why it matters','t_b')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
@@ -479,7 +539,7 @@ const TEMPLATES = {
   case:{ name:'Patient case', desc:'Presentation → decision → outcome → takeaway.', cat:'story',
     note:'A short, realistic case that models the clinical reasoning. Takeaway ties it to the reader’s practice.',
     sections:[{lg:'Case',fields:[['t_h','Case headline','text'],['t_img','Image (optional)','image'],['t_ia','Image ALT text','text'],['t_pp','Patient presentation','textarea'],['t_td','Treatment decision','textarea'],['t_oc','Outcome','textarea'],['t_tk','Practice takeaway','text'],['t_cl','CTA label','text'],['t_cu','CTA URL','url']]}],
-    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 12px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`; o=o?contentTd(o):'';
+    middle(){ let o=headlineTag(val('t_h')); o=o?contentTd(o):'';
       const im=val('t_img')?`<tr><td align="center" style="padding:0 0 6px;">${img(val('t_img'),val('t_ia'),536)}</td></tr>`:'';
       const body=block('Presentation','t_pp')+block('Treatment decision','t_td')+block('Outcome','t_oc');
       return o+im+(body?contentTd(body):'')+(val('t_tk')?contentTd(callout('Practice takeaway','t_tk')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
@@ -487,21 +547,21 @@ const TEMPLATES = {
   guideline:{ name:'Guideline update', desc:'What changed → evidence → implications.', cat:'story',
     note:'Frame it as a guideline/evidence update, not a product pitch. Name the patient population it affects.',
     sections:[{lg:'Update',fields:[['t_h','Headline (what changed)','text'],['t_wc','What changed','textarea'],['t_se','Supporting evidence','textarea'],['t_ci','Clinical implications','textarea'],['t_pop','Suggested patient population','text'],['t_cl','CTA label','text'],['t_cu','CTA URL','url']]}],
-    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 12px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`; o=o?contentTd(o):'';
+    middle(){ let o=headlineTag(val('t_h')); o=o?contentTd(o):'';
       const body=block('What changed','t_wc')+block('Supporting evidence','t_se')+block('Clinical implications','t_ci');
       return o+(body?contentTd(body):'')+(val('t_pop')?contentTd(callout('Suggested patient population','t_pop')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
 
   myth:{ name:'Myth vs evidence', desc:'Misconception → current evidence → takeaway.', cat:'story',
     note:'Name a common misconception, answer it with current evidence, end with a practical takeaway. Builds credibility.',
     sections:[{lg:'Contrast',fields:[['t_h','Headline','text'],['t_myth','The misconception','textarea'],['t_ev','Current evidence','textarea'],['t_tk','Practical takeaway','text'],['t_cl','CTA label','text'],['t_cu','CTA URL','url']]}],
-    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 12px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`;
+    middle(){ let o=headlineTag(val('t_h'));
       const mythBox=val('t_myth')?`<table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td style="background:#fbf0ee;border-left:4px solid #c0563f;padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;line-height:21px;color:#1a2330;"><strong>Common belief:</strong> ${esc(val('t_myth'))}</td></tr></table>`:'';
       o+=mythBox; o=o?contentTd(o):'';
       return o+(val('t_ev')?contentTd(block('What the evidence shows','t_ev')):'')+(val('t_tk')?contentTd(callout('Practical takeaway','t_tk')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } }
 };
 
 /* ================= build full email ================= */
-function buildEmail(){ const T=TEMPLATES[state.template];
+function buildEmail(){ const T=TEMPLATES[state.template]; const bg=esc(val('bg_color')||'#f2f4f6');
   return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -517,9 +577,9 @@ function buildEmail(){ const T=TEMPLATES[state.template];
     .stack-column{display:block!important;width:100%!important;padding:0 0 16px 0!important;} .fluid{width:100%!important;height:auto!important;}
   }
 </style></head>
-<body style="margin:0;padding:0;background-color:#f2f4f6;">
+<body style="margin:0;padding:0;background-color:${bg};">
 <div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">${esc(val('preheader'))}&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;</div>
-<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f2f4f6;"><tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:${bg};"><tr><td align="center" style="padding:24px 12px;">
 <table role="presentation" cellpadding="0" cellspacing="0" width="600" class="email-container" style="width:600px;max-width:600px;background-color:#ffffff;border-radius:8px;overflow:hidden;">
 ${H.header()}
 ${H.indication()}
@@ -644,8 +704,24 @@ function recommendStructureFor(stage,text){ const t=(text||'').toLowerCase();
 const _presetEl=$('preset'); if(_presetEl) _presetEl.addEventListener('change',e=>applyPreset(e.target.value));
 const _useRec=$('useRec'); if(_useRec) _useRec.addEventListener('click',()=>{ if(state.recommended&&TEMPLATES[state.recommended]){ saveDom(); state.template=state.recommended; buildTemplatePicker(); buildSlots(); render(); } });
 
+/* ================= swatches + view toggle ================= */
+function buildSwatches(){ document.querySelectorAll('.swatches').forEach(row=>{ if(row.dataset.wired) return; row.dataset.wired='1';
+  const target=row.dataset.target; const colors=(row.dataset.colors||'').split(',');
+  const cur=store[target]||colors[0];
+  row.innerHTML=colors.map(c=>`<button type="button" class="sw${c===cur?' on':''}" data-c="${c}" style="background:${c}" title="${c}" aria-label="${c}"></button>`).join('')
+    +`<input type="color" class="sw-custom" value="${cur}" title="Custom color" aria-label="Custom color" />`;
+  const cust=row.querySelector('.sw-custom');
+  function set(c){ store[target]=c; row.querySelectorAll('.sw').forEach(x=>x.classList.toggle('on',x.dataset.c===c)); if(cust)cust.value=c; render(); }
+  row.querySelectorAll('.sw').forEach(b=>b.addEventListener('click',()=>set(b.dataset.c)));
+  if(cust)cust.addEventListener('input',()=>set(cust.value));
+}); }
+document.querySelectorAll('.vt').forEach(b=>b.addEventListener('click',()=>{
+  const dev=document.querySelector('.device'); dev.classList.remove('desktop','mobile'); dev.classList.add(b.dataset.view);
+  document.querySelectorAll('.vt').forEach(x=>x.classList.toggle('on',x===b)); }));
+
 /* init */
-buildTemplatePicker(); buildSlots(); updateRec(); render();
+store.h_color='#1a2330'; store.bg_color='#f2f4f6';
+buildTemplatePicker(); buildSlots(); buildSwatches(); updateRec(); render();
 </script>
 </body>
 </html>

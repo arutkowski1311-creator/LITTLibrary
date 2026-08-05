@@ -36,6 +36,20 @@ efficacy/safety line stays a placeholder for MLR-approved, verbatim language.
 > adoption-scoring — is documented in [`STRATEGY.md`](STRATEGY.md). Those are a
 > *future backend* (they need the sending platform's data); this file is step 1.
 
+## Design controls & preview
+
+- **Desktop / Mobile preview toggle** — in the preview bezel, switch between the
+  full 600 px desktop render and a 390 px phone render (the email's responsive
+  rules kick in) to check both before sending.
+- **Headline styling** — 6 email-safe fonts, size (20–32 px; **default 24 px**, a
+  readability best practice), alignment (left/center/right), and standard color
+  swatches (plus a custom picker).
+- **Button** — alignment (left / center / full-width) and shape (rounded / square / pill).
+- **Body font** and **email background color**.
+
+All fonts are web-safe stacks (no webfont downloads), so they render consistently
+across Outlook, Gmail, and Apple Mail.
+
 ### "Promotional email" toggle
 
 On by default → requires Indication, ISI, and full PI (fair balance). Turn it off
