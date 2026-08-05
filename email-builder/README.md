@@ -7,11 +7,49 @@ buttons download or copy the final email HTML.
 
 ## The workflow ("teach a man to fish")
 
-1. In Canva, **export the images** (logo, hero, product shots) — unaltered.
-2. Open `index.html`. Drop each image in (or paste a hosted image URL).
-3. **Paste the approved copy** into each slot, verbatim.
-4. Watch the live preview. Fix anything.
-5. Click **Download email.html** — that file is what you hand to your ESP.
+1. **Pick a layout** from the gallery (see below).
+2. In Canva, **export the images** (logo, hero, product shots) — unaltered.
+3. Drop each image in (or paste a hosted image URL).
+4. **Paste the approved copy** into each slot, verbatim.
+5. Watch the live preview. Fix anything.
+6. Click **Download email.html** — that file is what you hand to your ESP.
+
+## Layouts (pick one, then fill its slots)
+
+| Layout | Use it for |
+|---|---|
+| **Single-column** | All-purpose: hero, headline, body, button. Renders identically everywhere. |
+| **Hero + two-column** | Two side-by-side messages/benefits; stacks on mobile. |
+| **Product-card grid** | A row of 2–3 product cards (image + caption + link). |
+| **Multi-story newsletter** | Stacked story blocks — a digest-style update. |
+| **Video (poster → link)** | A play-button thumbnail linking to a hosted video. |
+| **Swipe gallery** | A horizontal scroll strip of media. |
+
+Logo, Indication, ISI, and the compliant footer are present in **every** layout.
+
+### Two email-specific realities baked into these
+
+- **Video does not play inside email.** Only Apple Mail supports inline HTML5
+  video; Gmail/Outlook do not. The video layout uses a **poster image + ▶ button
+  that links out** to your hosted (MLR-approved) video page — the universal,
+  reliable pattern.
+- **True carousels don't work in email** (no JavaScript; Outlook ignores the CSS).
+  The swipe gallery is a horizontal scroll strip that **swipes in Apple Mail /
+  iOS / most webmail and gracefully stacks into a column in Outlook** — so it
+  never looks broken.
+
+## Metrics — UTM link tagging (and what the tool can't do)
+
+- The tool **auto-appends `utm_source` / `utm_medium` / `utm_campaign`** to your
+  content links (CTA, cards, gallery, video) so Google Analytics attributes site
+  traffic to the email. Legal links (unsubscribe, PI, privacy) are never tagged.
+- **Open/click pixels are NOT in this HTML.** A tracking pixel needs a *unique
+  URL per recipient*, which only the sending platform can generate — so your ESP
+  injects it (and rewrites links for click tracking) at send time. Note: since
+  Apple Mail Privacy Protection, *open* rates are unreliable industry-wide;
+  *click* rate is the metric to trust.
+- **Pharma/HCP caveat:** whether to track individual recipient behavior is a
+  privacy/MLR decision, not just a technical one.
 
 ## Why it's *not* "drop the whole Canva file in and go"
 

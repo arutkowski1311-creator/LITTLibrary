@@ -5,57 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Alembic Pharmaceuticals — Email Builder</title>
 <style>
-  :root{
-    --brand:#00529b;         /* Alembic default — set exact brand hex in the form */
-    --ink:#1a2330; --muted:#5a6472; --line:#e2e6ec; --bg:#f2f4f6; --white:#fff;
-    --ok:#1a7f43; --warn:#b45309;
-  }
+  :root{--brand:#00529b;--ink:#1a2330;--muted:#5a6472;--line:#e2e6ec;--bg:#f2f4f6;--ok:#1a7f43;--warn:#b45309;}
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
   header.app{background:var(--brand);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px}
-  header.app h1{font-size:16px;margin:0;font-weight:700;letter-spacing:.2px}
+  header.app h1{font-size:16px;margin:0;font-weight:700}
   header.app .tag{font-size:12px;opacity:.85;margin-left:auto}
-  .layout{display:flex;gap:0;align-items:stretch;min-height:calc(100vh - 50px)}
+  .layout{display:flex;min-height:calc(100vh - 50px)}
   .form{flex:0 0 46%;max-width:46%;padding:20px;overflow-y:auto;height:calc(100vh - 50px)}
   .preview{flex:1;background:#dfe3e8;padding:20px;overflow-y:auto;height:calc(100vh - 50px);border-left:1px solid var(--line)}
   @media(max-width:900px){.layout{flex-direction:column}.form,.preview{max-width:100%;flex:1 1 auto;height:auto}}
   fieldset{border:1px solid var(--line);border-radius:8px;margin:0 0 16px;padding:14px 16px;background:#fff}
   legend{font-weight:700;font-size:13px;padding:0 6px;color:var(--brand)}
   label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:10px 0 4px}
-  input[type=text],input[type=url],input[type=color],textarea,select{
-    width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-family:inherit;color:var(--ink)}
-  textarea{min-height:64px;resize:vertical;line-height:1.5}
+  input[type=text],input[type=url],input[type=color],textarea,select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-family:inherit;color:var(--ink)}
+  textarea{min-height:60px;resize:vertical;line-height:1.5}
   .row{display:flex;gap:10px}.row>*{flex:1}
   .hint{font-size:11px;color:var(--muted);margin:4px 0 0}
   .req legend::after{content:" *";color:#c0392b}
-  .img-drop{border:1.5px dashed #b8c0cc;border-radius:6px;padding:10px;text-align:center;font-size:12px;color:var(--muted);background:#fafbfc;cursor:pointer}
+  .img-drop{border:1.5px dashed #b8c0cc;border-radius:6px;padding:8px;text-align:center;font-size:11px;color:var(--muted);background:#fafbfc;cursor:pointer;margin-top:6px}
   .img-drop.has{border-color:var(--ok);color:var(--ok);background:#f2fbf5}
   .guard{background:#fff8ec;border:1px solid #f0dcae;border-radius:6px;padding:10px 12px;font-size:12px;color:var(--warn);margin-bottom:16px}
   .guard b{color:#8a5a00}
-  .bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px;display:flex;gap:10px;margin:16px -20px -20px}
+  .tpl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tpl{border:1.5px solid var(--line);border-radius:8px;padding:10px;cursor:pointer;background:#fff}
+  .tpl.sel{border-color:var(--brand);box-shadow:0 0 0 2px rgba(0,82,155,.15)}
+  .tpl b{display:block;font-size:13px}.tpl span{font-size:11px;color:var(--muted)}
+  .subsec{border-top:1px dashed var(--line);margin:12px 0 0;padding-top:8px}
+  .subsec .lg{font-size:12px;font-weight:700;color:var(--ink)}
+  .bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px;display:flex;gap:8px;flex-wrap:wrap;margin:16px -20px -20px}
   button{font-family:inherit;font-size:13px;font-weight:700;border:0;border-radius:6px;padding:10px 14px;cursor:pointer}
   .primary{background:var(--brand);color:#fff}.ghost{background:#eef1f5;color:var(--ink)}
   button:disabled{opacity:.5;cursor:not-allowed}
   .errs{color:#c0392b;font-size:12px;margin:8px 0 0}
   iframe{width:100%;height:calc(100vh - 110px);border:1px solid var(--line);border-radius:8px;background:#fff}
-  .previewhead{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px;color:var(--muted)}
+  .previewhead{display:flex;gap:10px;margin-bottom:10px;font-size:12px;color:var(--muted)}
   .previewhead b{color:var(--ink)}
+  .chk{display:flex;align-items:center;gap:8px;margin-top:8px}.chk input{width:auto}
 </style>
 </head>
 <body>
 <header class="app">
   <h1>Alembic Pharmaceuticals — Email Builder</h1>
-  <span class="tag">Drop in the Canva assets &amp; copy · out comes deliverability-safe HTML</span>
+  <span class="tag">Pick a layout · drop in Canva assets &amp; copy · out comes deliverability-safe HTML</span>
 </header>
 
 <div class="layout">
-  <!-- ============ FORM ============ -->
   <div class="form">
     <div class="guard">
-      <b>Legal guardrails, by design.</b> This tool places your text <b>exactly as pasted</b> — it never
-      rewrites, summarizes, or reflows the words. Paste the approved verbiage verbatim. Images are placed
-      <b>unaltered</b> (only scaled to fit width — never cropped, recolored, or distorted). Have MLR sign off
-      before any send.
+      <b>Legal guardrails, by design.</b> Text is placed <b>exactly as pasted</b> — never rewritten or reflowed.
+      Images are placed <b>unaltered</b> (scaled to fit width only). Export is blocked until the Indication, ISI,
+      full PI link, and compliant footer are present. MLR must approve content before any send.
     </div>
 
     <fieldset>
@@ -63,48 +63,42 @@
       <label>Company name</label>
       <input type="text" id="companyName" value="Alembic Pharmaceuticals" />
       <div class="row">
-        <div><label>Brand color (exact hex)</label><input type="color" id="brandColor" value="#00529b" /></div>
-        <div><label>Button / accent color</label><input type="color" id="ctaColor" value="#00529b" /></div>
+        <div><label>Brand color</label><input type="color" id="brandColor" value="#00529b" /></div>
+        <div><label>Button color</label><input type="color" id="ctaColor" value="#00529b" /></div>
       </div>
-      <label>Logo image — URL (hosted) or drop file</label>
-      <input type="url" id="logoUrl" placeholder="https://cdn.alembic.com/logo.png" />
-      <div class="img-drop" data-target="logoUrl">Drop logo image here (or use URL above)</div>
-      <div class="hint">For real sends, host images and paste the URL. Dropped files embed as base64 — great for preview, but some clients (Gmail, Outlook) block embedded images. Use hosted URLs for production.</div>
+      <label>Logo — URL (hosted) or drop file</label>
+      <input type="url" id="logoUrl" class="imgurl" placeholder="https://cdn.alembic.com/logo.png" />
+      <div class="img-drop" data-target="logoUrl">Drop logo image</div>
+      <div class="hint">For real sends, host images and paste the URL. Dropped files embed as base64 — fine for preview, but Gmail/Outlook often block embedded images.</div>
     </fieldset>
 
     <fieldset>
-      <legend>Preview snippet &amp; hero</legend>
+      <legend>1 · Choose a layout</legend>
+      <div class="tpl-grid" id="tplGrid"></div>
+      <div class="hint" id="tplNote" style="margin-top:8px"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Preview snippet</legend>
       <label>Preheader text (inbox preview line, ~40–100 chars)</label>
-      <input type="text" id="preheader" placeholder="One line that shows next to the subject in the inbox" />
-      <label>Hero image — URL or drop file</label>
-      <input type="url" id="heroUrl" placeholder="https://cdn.alembic.com/hero.png" />
-      <div class="img-drop" data-target="heroUrl">Drop hero image here</div>
-      <label>Hero image ALT text (accessibility + shown if images blocked)</label>
-      <input type="text" id="heroAlt" placeholder="Describe the image in words" />
+      <input type="text" id="preheader" placeholder="One line shown next to the subject in the inbox" />
+    </fieldset>
+
+    <fieldset id="contentFs">
+      <legend>3 · Content (verbatim)</legend>
+      <div id="templateSlots"></div>
     </fieldset>
 
     <fieldset class="req">
-      <legend>Indication</legend>
+      <legend>4 · Indication</legend>
       <label>Indication statement (verbatim)</label>
       <textarea id="indication" placeholder="PRODUCT is indicated for..."></textarea>
     </fieldset>
 
     <fieldset class="req">
-      <legend>Message</legend>
-      <label>Headline (verbatim)</label>
-      <input type="text" id="headline" placeholder="Approved headline" />
-      <label>Body copy (verbatim — blank line = new paragraph)</label>
-      <textarea id="body" style="min-height:120px" placeholder="Paragraph one.&#10;&#10;Paragraph two."></textarea>
-      <div class="row">
-        <div><label>Button label</label><input type="text" id="ctaLabel" placeholder="Learn More" /></div>
-        <div><label>Button link URL</label><input type="url" id="ctaUrl" placeholder="https://..." /></div>
-      </div>
-    </fieldset>
-
-    <fieldset class="req">
-      <legend>Important Safety Information (fair balance)</legend>
+      <legend>5 · Important Safety Information (fair balance)</legend>
       <label>ISI copy (verbatim — blank line = new paragraph)</label>
-      <textarea id="isi" style="min-height:140px" placeholder="Boxed warning / key risks.&#10;&#10;Contraindications & warnings.&#10;&#10;Common adverse reactions."></textarea>
+      <textarea id="isi" style="min-height:130px" placeholder="Boxed warning / key risks.&#10;&#10;Contraindications & warnings.&#10;&#10;Common adverse reactions."></textarea>
       <div class="row">
         <div><label>Full Prescribing Information URL</label><input type="url" id="piUrl" placeholder="https://..." /></div>
         <div><label>Medication Guide URL (optional)</label><input type="url" id="medGuideUrl" placeholder="https://..." /></div>
@@ -112,13 +106,11 @@
     </fieldset>
 
     <fieldset class="req">
-      <legend>Footer (CAN-SPAM &amp; bulk-sender compliance)</legend>
+      <legend>6 · Footer (compliance)</legend>
       <label>Why they’re receiving this (opt-in reason)</label>
       <input type="text" id="optIn" placeholder="requested information from Alembic Pharmaceuticals" />
-      <label>Street address</label>
-      <input type="text" id="street" placeholder="123 Example Ave, Suite 100" />
-      <label>City, State ZIP</label>
-      <input type="text" id="cityZip" placeholder="Bedminster, NJ 07921" />
+      <label>Street address</label><input type="text" id="street" placeholder="750 Route 202, Suite 402" />
+      <label>City, State ZIP</label><input type="text" id="cityZip" placeholder="Bridgewater, NJ 08807" />
       <div class="row">
         <div><label>Unsubscribe URL</label><input type="url" id="unsubUrl" placeholder="https://..." /></div>
         <div><label>Manage preferences URL</label><input type="url" id="prefUrl" placeholder="https://..." /></div>
@@ -133,6 +125,17 @@
       </div>
     </fieldset>
 
+    <fieldset>
+      <legend>7 · Metrics (UTM link tagging)</legend>
+      <div class="chk"><input type="checkbox" id="utmOn" checked /><label style="margin:0">Append UTM tags to content links (CTA, cards, gallery, video)</label></div>
+      <div class="row">
+        <div><label>utm_source</label><input type="text" id="utm_source" value="email" /></div>
+        <div><label>utm_medium</label><input type="text" id="utm_medium" value="email" /></div>
+        <div><label>utm_campaign</label><input type="text" id="utm_campaign" placeholder="product-launch-2026" /></div>
+      </div>
+      <div class="hint">UTM tags let Google Analytics attribute site traffic to this email. Legal links (unsubscribe, PI, privacy) are never tagged. Open/click pixels are added by your ESP at send time — not here.</div>
+    </fieldset>
+
     <div class="errs" id="errs"></div>
     <div class="bar">
       <button class="primary" id="download">⬇ Download email.html</button>
@@ -141,182 +144,228 @@
     </div>
   </div>
 
-  <!-- ============ PREVIEW ============ -->
   <div class="preview">
-    <div class="previewhead">
-      <b>Live preview</b> · renders exactly what downloads · <span id="size">0 KB</span>
-      <span style="margin-left:auto">Keep under ~102 KB (Gmail clips larger)</span>
-    </div>
+    <div class="previewhead"><b>Live preview</b> · renders exactly what downloads · <span id="size">0 KB</span>
+      <span style="margin-left:auto">Keep under ~102 KB (Gmail clips larger)</span></div>
     <iframe id="frame" title="Email preview"></iframe>
   </div>
 </div>
 
 <script>
-/* ---------- helpers ---------- */
+/* ================= helpers ================= */
 const $ = id => document.getElementById(id);
 const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-// verbatim text -> paragraphs; preserves single line breaks as <br>, blank line as new <p>
-function paras(text, style){
-  if(!text||!text.trim()) return "";
-  return text.trim().split(/\n\s*\n/).map(block=>{
-    const inner = esc(block).replace(/\n/g,"<br />");
-    return `<p style="${style}">${inner}</p>`;
-  }).join("");
-}
-const IMG = {}; // dropped-file data URLs by target id
-const val = id => (IMG[id] || ($(id) ? $(id).value.trim() : ""));
+const IMG = {};            // dropped-file data URLs by field id
+const store = {};          // persists values across template switches
+function val(k){ if(IMG[k]) return IMG[k]; const el=$(k); if(el) return (el.value||"").trim(); return (store[k]||"").trim(); }
+function paras(text,style){ if(!text||!text.trim())return""; return text.trim().split(/\n\s*\n/).map(b=>`<p style="${style}">${esc(b).replace(/\n/g,"<br />")}</p>`).join(""); }
 
-/* ---------- drag & drop images (base64 for preview) ---------- */
-document.querySelectorAll('.img-drop').forEach(zone=>{
-  const target = zone.dataset.target;
-  const handle = file=>{
-    if(!file || !/^image\//.test(file.type)) return;
-    const r = new FileReader();
-    r.onload = e=>{ IMG[target]=e.target.result; zone.classList.add('has');
-      zone.textContent = '✓ '+file.name+' embedded (preview). Use a hosted URL for production.'; render(); };
-    r.readAsDataURL(file);
-  };
-  ['dragover','dragenter'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();}));
-  zone.addEventListener('drop',e=>{e.preventDefault();handle(e.dataTransfer.files[0]);});
-  zone.addEventListener('click',()=>{const i=document.createElement('input');i.type='file';i.accept='image/*';
-    i.onchange=()=>handle(i.files[0]);i.click();});
-  // typing a URL clears the dropped file so URL wins
-  const urlInput = $(target);
-  if(urlInput) urlInput.addEventListener('input',()=>{ if(urlInput.value.trim()){ delete IMG[target];
-    zone.classList.remove('has'); zone.textContent='Drop image here (or use URL above)'; } render(); });
-});
+/* UTM tagging — content links only */
+function utmOn(){ const c=$('utmOn'); return c?c.checked:false; }
+function link(u){ u=(u||"").trim(); if(!u) return "#"; if(utmOn() && /^https?:/i.test(u)){
+  const p=[]; const s=val('utm_source'),m=val('utm_medium'),c=val('utm_campaign');
+  if(s)p.push('utm_source='+encodeURIComponent(s)); if(m)p.push('utm_medium='+encodeURIComponent(m)); if(c)p.push('utm_campaign='+encodeURIComponent(c));
+  if(p.length) u += (u.includes('?')?'&':'?')+p.join('&'); } return esc(u); }
+const legal = u => esc((u||"").trim()||"#");   // never UTM-tagged
 
-/* ---------- build the email HTML ---------- */
-function buildEmail(){
-  const brand = esc(val('brandColor')||'#00529b');
-  const cta   = esc(val('ctaColor')||brand);
-  const company = esc(val('companyName')||'Alembic Pharmaceuticals');
-  const logo = val('logoUrl');
-  const hero = val('heroUrl');
-  const medGuide = val('medGuideUrl') ? ` and <a href="${esc(val('medGuideUrl'))}" style="color:${cta};text-decoration:underline;">Medication Guide</a>` : '';
+/* ================= shared email pieces ================= */
+function brand(){ return esc(val('brandColor')||'#00529b'); }
+function cta(){ return esc(val('ctaColor')||brand()); }
+function company(){ return esc(val('companyName')||'Alembic Pharmaceuticals'); }
+function img(src,alt,w){ return `<img src="${esc(src)}" width="${w}" alt="${esc(alt)}" class="fluid" style="display:block;width:100%;max-width:${w}px;height:auto;border:0;" />`; }
+function ctaBtn(label,url){ if(!label||!url) return ""; const c=cta(); return `
+  <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${link(url)}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="12%" strokecolor="${c}" fillcolor="${c}"><w:anchorlock/><center style="color:#fff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">${esc(label)}</center></v:roundrect><![endif]-->
+  <!--[if !mso]><!-- --><a href="${link(url)}" style="background-color:${c};border-radius:6px;color:#fff;display:inline-block;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:240px;">${esc(label)}</a><!--<![endif]-->`; }
+function inlineLink(label,url){ if(!label||!url) return ""; return `<a href="${link(url)}" style="color:${cta()};font-weight:bold;text-decoration:none;font-family:Arial,sans-serif;font-size:14px;">${esc(label)} &rarr;</a>`; }
 
-  const heroBlock = hero ? `
-          <tr><td align="center" style="padding:0;">
-            <img src="${esc(hero)}" width="600" alt="${esc(val('heroAlt'))}" style="display:block;width:100%;max-width:600px;height:auto;" />
-          </td></tr>` : '';
-
-  const logoBlock = logo
-    ? `<img src="${esc(logo)}" width="170" alt="${company} logo" style="display:block;width:170px;max-width:170px;height:auto;" />`
-    : `<span style="font-family:Arial,sans-serif;font-size:20px;font-weight:bold;color:${brand};">${company}</span>`;
-
-  return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="color-scheme" content="light" />
-<title>${esc(val('headline')||company)}</title>
-<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
-<style>
-  body,table,td,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
-  table,td{mso-table-lspace:0pt;mso-table-rspace:0pt;}
-  img{-ms-interpolation-mode:bicubic;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;}
-  body{margin:0!important;padding:0!important;width:100%!important;}
-  @media screen and (max-width:600px){.email-container{width:100%!important;}.px{padding-left:20px!important;padding-right:20px!important;}}
-</style>
-</head>
-<body style="margin:0;padding:0;background-color:#f2f4f6;">
-<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">${esc(val('preheader'))}&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;</div>
-<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f2f4f6;"><tr>
-<td align="center" style="padding:24px 12px;">
-  <table role="presentation" cellpadding="0" cellspacing="0" width="600" class="email-container" style="width:600px;max-width:600px;background-color:#ffffff;border-radius:8px;overflow:hidden;">
-    <tr><td align="left" class="px" style="padding:24px 32px;border-top:4px solid ${brand};">${logoBlock}</td></tr>
-    ${heroBlock}
-    <tr><td class="px" style="padding:24px 32px 0;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#5a6472;"><strong>Indication:</strong> ${esc(val('indication'))}</td></tr>
-    <tr><td class="px" style="padding:16px 32px 0;font-family:Arial,sans-serif;">
-      <h1 style="margin:0 0 12px;font-size:26px;line-height:32px;color:#1a2330;font-weight:bold;">${esc(val('headline'))}</h1>
-      ${paras(val('body'),"margin:0 0 16px;font-size:16px;line-height:24px;color:#3a4453;")}
-    </td></tr>
-    ${ (val('ctaLabel')&&val('ctaUrl')) ? `<tr><td class="px" align="left" style="padding:4px 32px 28px;">
-      <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${esc(val('ctaUrl'))}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="12%" strokecolor="${cta}" fillcolor="${cta}"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">${esc(val('ctaLabel'))}</center></v:roundrect><![endif]-->
-      <!--[if !mso]><!-- --><a href="${esc(val('ctaUrl'))}" style="background-color:${cta};border-radius:6px;color:#ffffff;display:inline-block;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:240px;">${esc(val('ctaLabel'))}</a><!--<![endif]-->
-    </td></tr>` : '' }
-    <tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;"></div></td></tr>
-    <tr><td class="px" style="padding:20px 32px;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#3a4453;">
+const H = {
+  header(){ const logo=val('logoUrl'); const inner = logo
+      ? `<img src="${esc(logo)}" width="170" alt="${company()} logo" style="display:block;width:170px;max-width:170px;height:auto;" />`
+      : `<span style="font-family:Arial,sans-serif;font-size:20px;font-weight:bold;color:${brand()};">${company()}</span>`;
+    return `<tr><td align="left" class="px" style="padding:24px 32px;border-top:4px solid ${brand()};">${inner}</td></tr>`; },
+  indication(){ return `<tr><td class="px" style="padding:20px 32px 0;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#5a6472;"><strong>Indication:</strong> ${esc(val('indication'))}</td></tr>`; },
+  isi(){ const mg = val('medGuideUrl')?` and <a href="${legal(val('medGuideUrl'))}" style="color:${cta()};text-decoration:underline;">Medication Guide</a>`:'';
+    return `<tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;margin-top:24px;"></div></td></tr>
+    <tr><td class="px" style="padding:18px 32px;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#3a4453;">
       <p style="margin:0 0 8px;font-size:14px;font-weight:bold;color:#1a2330;">Important Safety Information</p>
       ${paras(val('isi'),"margin:0 0 8px;")}
-      ${ val('piUrl') ? `<p style="margin:8px 0 0;">Please see the <a href="${esc(val('piUrl'))}" style="color:${cta};text-decoration:underline;">full Prescribing Information</a>${medGuide}.</p>` : '' }
-    </td></tr>
-    <tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;"></div></td></tr>
-    <tr><td class="px" style="padding:20px 32px 28px;font-family:Arial,sans-serif;font-size:12px;line-height:18px;color:#8a94a6;">
+      ${val('piUrl')?`<p style="margin:8px 0 0;">Please see the <a href="${legal(val('piUrl'))}" style="color:${cta()};text-decoration:underline;">full Prescribing Information</a>${mg}.</p>`:''}
+    </td></tr>`; },
+  footer(){ return `<tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;"></div></td></tr>
+    <tr><td class="px" style="padding:18px 32px 28px;font-family:Arial,sans-serif;font-size:12px;line-height:18px;color:#8a94a6;">
       <p style="margin:0 0 8px;">You are receiving this email because you ${esc(val('optIn'))}.</p>
-      <p style="margin:0 0 8px;">${company} &bull; ${esc(val('street'))} &bull; ${esc(val('cityZip'))}</p>
-      <p style="margin:0 0 8px;">
-        <a href="${esc(val('unsubUrl'))}" style="color:#5a6472;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
-        <a href="${esc(val('prefUrl'))}" style="color:#5a6472;text-decoration:underline;">Manage email preferences</a> &nbsp;|&nbsp;
-        <a href="${esc(val('privacyUrl'))}" style="color:#5a6472;text-decoration:underline;">Privacy Policy</a>
-      </p>
-      <p style="margin:0;color:#a4acb9;">${esc(val('jobCode'))} &nbsp;|&nbsp; &copy; ${esc(val('year'))} ${company}. All rights reserved. Intended for ${esc(val('audience'))}.</p>
-    </td></tr>
-  </table>
-</td></tr></table>
-</body></html>`;
+      <p style="margin:0 0 8px;">${company()} &bull; ${esc(val('street'))} &bull; ${esc(val('cityZip'))}</p>
+      <p style="margin:0 0 8px;"><a href="${legal(val('unsubUrl'))}" style="color:#5a6472;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp; <a href="${legal(val('prefUrl'))}" style="color:#5a6472;text-decoration:underline;">Manage preferences</a> &nbsp;|&nbsp; <a href="${legal(val('privacyUrl'))}" style="color:#5a6472;text-decoration:underline;">Privacy Policy</a></p>
+      <p style="margin:0;color:#a4acb9;">${esc(val('jobCode'))} &nbsp;|&nbsp; &copy; ${esc(val('year'))} ${company()}. All rights reserved. Intended for ${esc(val('audience'))}.</p>
+    </td></tr>`; }
+};
+function contentTd(inner){ return `<tr><td class="px" style="padding:16px 32px 0;font-family:Arial,sans-serif;">${inner}</td></tr>`; }
+function heroRow(k,altk){ const s=val(k); return s?`<tr><td align="center" style="padding:0;">${img(s,val(altk),600)}</td></tr>`:''; }
+function headBody(hk,bk){ let o=''; if(val(hk))o+=`<h1 style="margin:0 0 12px;font-size:26px;line-height:32px;color:#1a2330;font-weight:bold;">${esc(val(hk))}</h1>`;
+  o+=paras(val(bk),"margin:0 0 16px;font-size:16px;line-height:24px;color:#3a4453;"); return o?contentTd(o):''; }
+
+/* ================= templates ================= */
+const TEMPLATES = {
+  single:{ name:'Single-column', desc:'Hero, headline, body, button. All-purpose.',
+    note:'The safe default — renders identically everywhere.',
+    sections:[{lg:'Hero',fields:[['t_hero','Hero image','image'],['t_heroAlt','Hero ALT text','text']]},
+      {lg:'Message',fields:[['t_h','Headline','text'],['t_b','Body copy (blank line = new paragraph)','textarea'],['t_cl','Button label','text'],['t_cu','Button link URL','url']]}],
+    middle(){ return heroRow('t_hero','t_heroAlt')+headBody('t_h','t_b')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
+
+  hero2col:{ name:'Hero + two-column', desc:'Hero, then two side-by-side blocks.',
+    note:'Columns sit side-by-side on desktop and stack on mobile.',
+    sections:[{lg:'Hero',fields:[['t_hero','Hero image','image'],['t_heroAlt','Hero ALT text','text'],['t_h','Headline','text'],['t_b','Intro body (optional)','textarea']]},
+      {lg:'Column 1',fields:[['t_c1i','Image','image'],['t_c1a','ALT text','text'],['t_c1h','Heading','text'],['t_c1t','Text','textarea'],['t_c1l','Link label','text'],['t_c1u','Link URL','url']]},
+      {lg:'Column 2',fields:[['t_c2i','Image','image'],['t_c2a','ALT text','text'],['t_c2h','Heading','text'],['t_c2t','Text','textarea'],['t_c2l','Link label','text'],['t_c2u','Link URL','url']]}],
+    middle(){ const col=(i,a,h,t,l,u)=>`<td class="stack-column" width="50%" valign="top" style="width:50%;padding:0 8px;vertical-align:top;">
+        ${val(i)?img(val(i),val(a),260):''}
+        ${val(h)?`<p style="margin:10px 0 6px;font-family:Arial,sans-serif;font-size:17px;font-weight:bold;color:#1a2330;">${esc(val(h))}</p>`:''}
+        ${paras(val(t),"margin:0 0 8px;font-family:Arial,sans-serif;font-size:14px;line-height:21px;color:#3a4453;")}
+        ${inlineLink(val(l),val(u))}</td>`;
+      return heroRow('t_hero','t_heroAlt')+headBody('t_h','t_b')+`<tr><td class="px" style="padding:12px 24px 8px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>${col('t_c1i','t_c1a','t_c1h','t_c1t','t_c1l','t_c1u')}${col('t_c2i','t_c2a','t_c2h','t_c2t','t_c2l','t_c2u')}</tr></table></td></tr>`; } },
+
+  cards:{ name:'Product-card grid', desc:'A row of 2–3 product cards.',
+    note:'Up to 3 cards side-by-side; empties are omitted; stacks on mobile.',
+    sections:[{lg:'Intro (optional)',fields:[['t_h','Headline','text'],['t_b','Body','textarea']]},
+      {lg:'Card 1',fields:[['t_k1i','Image','image'],['t_k1a','ALT text','text'],['t_k1c','Caption','text'],['t_k1l','Link label','text'],['t_k1u','Link URL','url']]},
+      {lg:'Card 2',fields:[['t_k2i','Image','image'],['t_k2a','ALT text','text'],['t_k2c','Caption','text'],['t_k2l','Link label','text'],['t_k2u','Link URL','url']]},
+      {lg:'Card 3',fields:[['t_k3i','Image','image'],['t_k3a','ALT text','text'],['t_k3c','Caption','text'],['t_k3l','Link label','text'],['t_k3u','Link URL','url']]}],
+    middle(){ const cards=[1,2,3].map(n=>[`t_k${n}i`,`t_k${n}a`,`t_k${n}c`,`t_k${n}l`,`t_k${n}u`]).filter(c=>val(c[0]));
+      if(!cards.length) return headBody('t_h','t_b');
+      const w=Math.floor(100/cards.length);
+      const cells=cards.map(([i,a,c,l,u])=>`<td class="stack-column" width="${w}%" valign="top" style="width:${w}%;padding:0 8px;vertical-align:top;">
+        ${img(val(i),val(a),260)}
+        ${val(c)?`<p style="margin:8px 0 6px;font-family:Arial,sans-serif;font-size:14px;line-height:20px;color:#3a4453;">${esc(val(c))}</p>`:''}
+        ${inlineLink(val(l),val(u))}</td>`).join("");
+      return headBody('t_h','t_b')+`<tr><td class="px" style="padding:12px 24px 8px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>${cells}</tr></table></td></tr>`; } },
+
+  newsletter:{ name:'Multi-story newsletter', desc:'Stacked story blocks (digest style).',
+    note:'Each story = image + heading + blurb + link, stacked vertically. Empties omitted.',
+    sections:[{lg:'Intro (optional)',fields:[['t_h','Headline','text'],['t_b','Body','textarea']]},
+      {lg:'Story 1',fields:[['t_s1i','Image','image'],['t_s1a','ALT text','text'],['t_s1h','Heading','text'],['t_s1b','Blurb','textarea'],['t_s1l','Link label','text'],['t_s1u','Link URL','url']]},
+      {lg:'Story 2',fields:[['t_s2i','Image','image'],['t_s2a','ALT text','text'],['t_s2h','Heading','text'],['t_s2b','Blurb','textarea'],['t_s2l','Link label','text'],['t_s2u','Link URL','url']]},
+      {lg:'Story 3',fields:[['t_s3i','Image','image'],['t_s3a','ALT text','text'],['t_s3h','Heading','text'],['t_s3b','Blurb','textarea'],['t_s3l','Link label','text'],['t_s3u','Link URL','url']]}],
+    middle(){ const stories=[1,2,3].map(n=>[`t_s${n}i`,`t_s${n}a`,`t_s${n}h`,`t_s${n}b`,`t_s${n}l`,`t_s${n}u`]).filter(s=>val(s[2])||val(s[0]));
+      const blocks=stories.map(([i,a,h,b,l,u])=>`<tr><td class="px" style="padding:16px 32px;border-top:1px solid #eef1f5;font-family:Arial,sans-serif;">
+        ${val(i)?img(val(i),val(a),536):''}
+        ${val(h)?`<p style="margin:12px 0 6px;font-size:19px;font-weight:bold;color:#1a2330;">${esc(val(h))}</p>`:''}
+        ${paras(val(b),"margin:0 0 8px;font-size:15px;line-height:22px;color:#3a4453;")}
+        ${inlineLink(val(l),val(u))}</td></tr>`).join("");
+      return headBody('t_h','t_b')+blocks; } },
+
+  video:{ name:'Video (poster → link)', desc:'Play-button thumbnail that links to a hosted video.',
+    note:'Video does NOT play inside email — the poster links out to your hosted (MLR-approved) video page.',
+    sections:[{lg:'Video',fields:[['t_vi','Poster image','image'],['t_va','Poster ALT text','text'],['t_vu','Video page URL','url'],['t_vl','Watch button label','text']]},
+      {lg:'Message',fields:[['t_h','Headline','text'],['t_b','Body copy','textarea']]}],
+    middle(){ const poster=val('t_vi'),url=val('t_vu');
+      const play=`<div style="text-align:center;padding:10px 0 0;"><a href="${link(url)}" style="font-family:Arial,sans-serif;font-size:15px;font-weight:bold;color:${cta()};text-decoration:none;">&#9654;&nbsp;${esc(val('t_vl')||'Watch the video')}</a></div>`;
+      const posterBlock = poster ? `<tr><td align="center" style="padding:0;"><a href="${link(url)}">${img(poster,val('t_va'),600)}</a></td></tr><tr><td>${play}</td></tr>` : '';
+      return posterBlock+headBody('t_h','t_b'); } },
+
+  gallery:{ name:'Swipe gallery', desc:'Horizontal scroll strip of media (stacks in Outlook).',
+    note:'Swipes left–right in Apple Mail / iOS / most webmail; gracefully stacks into a column in Outlook.',
+    sections:[{lg:'Intro (optional)',fields:[['t_h','Headline','text'],['t_b','Body','textarea']]},
+      ...[1,2,3,4,5].map(n=>({lg:'Item '+n,fields:[[`t_g${n}i`,'Image','image'],[`t_g${n}a`,'ALT text','text'],[`t_g${n}u`,'Link URL (optional)','url']]}))],
+    middle(){ const items=[1,2,3,4,5].map(n=>[`t_g${n}i`,`t_g${n}a`,`t_g${n}u`]).filter(g=>val(g[0]));
+      if(!items.length) return headBody('t_h','t_b');
+      const modern=items.map(([i,a,u])=>{ const im=img(val(i),val(a),220); const cell=`<div style="display:inline-block;white-space:normal;width:220px;vertical-align:top;margin-right:12px;">${u&&val(u)?`<a href="${link(val(u))}">${im}</a>`:im}</div>`; return cell; }).join("");
+      const stacked=items.map(([i,a,u])=>{ const im=img(val(i),val(a),536); return `<tr><td style="padding:0 0 12px;">${u&&val(u)?`<a href="${link(val(u))}">${im}</a>`:im}</td></tr>`; }).join("");
+      return headBody('t_h','t_b')+`<tr><td class="px" style="padding:12px 32px 4px;font-family:Arial,sans-serif;font-size:12px;color:#8a94a6;">Swipe to see more &rarr;</td></tr>
+        <!--[if !mso]><!-- --><tr><td style="padding:0 0 8px 32px;"><div style="overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;font-size:0;">${modern}</div></td></tr><!--<![endif]-->
+        <!--[if mso]><tr><td class="px" style="padding:0 32px 8px;"><table role="presentation" width="100%">${stacked}</table></td></tr><![endif]-->`; } }
+};
+
+/* ================= build full email ================= */
+function buildEmail(){ const T=TEMPLATES[state.template];
+  return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="color-scheme" content="light" />
+<title>${esc(val('t_h')||company())}</title>
+<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+<style>
+  body,table,td,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;} table,td{mso-table-lspace:0;mso-table-rspace:0;}
+  img{-ms-interpolation-mode:bicubic;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;}
+  body{margin:0!important;padding:0!important;width:100%!important;}
+  @media screen and (max-width:600px){
+    .email-container{width:100%!important;} .px{padding-left:20px!important;padding-right:20px!important;}
+    .stack-column{display:block!important;width:100%!important;padding:0 0 16px 0!important;} .fluid{width:100%!important;height:auto!important;}
+  }
+</style></head>
+<body style="margin:0;padding:0;background-color:#f2f4f6;">
+<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">${esc(val('preheader'))}&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;</div>
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f2f4f6;"><tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" cellpadding="0" cellspacing="0" width="600" class="email-container" style="width:600px;max-width:600px;background-color:#ffffff;border-radius:8px;overflow:hidden;">
+${H.header()}
+${H.indication()}
+${T.middle()}
+${H.isi()}
+${H.footer()}
+</table>
+</td></tr></table></body></html>`;
 }
 
-/* ---------- required-field validation (enforces fair balance is present) ---------- */
-const REQUIRED = [
-  ['indication','Indication statement'],
-  ['headline','Headline'],
-  ['body','Body copy'],
-  ['isi','Important Safety Information'],
-  ['piUrl','Full Prescribing Information URL'],
-  ['unsubUrl','Unsubscribe URL'],
-  ['street','Street address'],
-  ['cityZip','City, State ZIP'],
-  ['jobCode','Job / PI code'],
-];
-function validate(){
-  const missing = REQUIRED.filter(([id])=>!val(id)).map(([,label])=>label);
-  const ok = missing.length===0;
-  $('errs').textContent = ok ? '' : 'Required before export: '+missing.join(', ');
-  $('download').disabled = !ok; $('copy').disabled = !ok;
-  return ok;
+/* ================= dynamic form ================= */
+const state={template:'single'};
+function fieldHtml([k,label,type]){
+  if(type==='textarea') return `<label>${label}</label><textarea id="${k}"></textarea>`;
+  if(type==='image') return `<label>${label} — URL or drop file</label><input type="url" id="${k}" class="imgurl" placeholder="https://..." /><div class="img-drop" data-target="${k}">Drop image</div>`;
+  const t = type==='url'?'url':'text';
+  return `<label>${label}</label><input type="${t}" id="${k}" />`;
 }
+function buildTemplatePicker(){ $('tplGrid').innerHTML = Object.entries(TEMPLATES).map(([id,t])=>
+  `<div class="tpl${id===state.template?' sel':''}" data-id="${id}"><b>${t.name}</b><span>${t.desc}</span></div>`).join("");
+  $('tplGrid').querySelectorAll('.tpl').forEach(el=>el.addEventListener('click',()=>{ saveDom(); state.template=el.dataset.id; buildTemplatePicker(); buildSlots(); render(); }));
+  $('tplNote').textContent = TEMPLATES[state.template].note;
+}
+function buildSlots(){ const T=TEMPLATES[state.template];
+  $('templateSlots').innerHTML = T.sections.map(sec=>`<div class="subsec"><div class="lg">${sec.lg}</div>${sec.fields.map(fieldHtml).join("")}</div>`).join("");
+  // repopulate from store
+  $('templateSlots').querySelectorAll('input,textarea').forEach(el=>{ if(store[el.id]!==undefined) el.value=store[el.id];
+    if(IMG[el.id] && el.classList.contains('imgurl')){} });
+  wireImageZones();
+}
+function saveDom(){ document.querySelectorAll('.form input,.form textarea').forEach(el=>{ if(el.id) store[el.id]=el.value; }); }
+function wireImageZones(){ document.querySelectorAll('.img-drop').forEach(zone=>{ if(zone.dataset.wired)return; zone.dataset.wired='1';
+  const target=zone.dataset.target;
+  const handle=file=>{ if(!file||!/^image\//.test(file.type))return; const r=new FileReader();
+    r.onload=e=>{ IMG[target]=e.target.result; zone.classList.add('has'); zone.textContent='✓ '+file.name+' (preview only — host it for production)'; render(); };
+    r.readAsDataURL(file); };
+  ['dragover','dragenter'].forEach(ev=>zone.addEventListener(ev,e=>e.preventDefault()));
+  zone.addEventListener('drop',e=>{e.preventDefault();handle(e.dataTransfer.files[0]);});
+  zone.addEventListener('click',()=>{const i=document.createElement('input');i.type='file';i.accept='image/*';i.onchange=()=>handle(i.files[0]);i.click();});
+}); }
 
-/* ---------- render + wire up ---------- */
+/* ================= validation, render, actions ================= */
+const REQUIRED=[['indication','Indication'],['isi','ISI'],['piUrl','Full PI URL'],['unsubUrl','Unsubscribe URL'],['street','Street address'],['cityZip','City/State/ZIP'],['jobCode','Job code']];
+function validate(){ const miss=REQUIRED.filter(([id])=>!val(id)).map(([,l])=>l);
+  $('errs').textContent = miss.length?('Required before export: '+miss.join(', ')):'';
+  $('download').disabled=!!miss.length; $('copy').disabled=!!miss.length; return !miss.length; }
 let lastHtml='';
-function render(){
-  lastHtml = buildEmail();
-  $('frame').srcdoc = lastHtml;
-  const kb = (new Blob([lastHtml]).size/1024).toFixed(1);
-  $('size').textContent = kb+' KB';
-  $('size').style.color = kb>102 ? '#c0392b' : '#5a6472';
-  validate();
-}
-document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',render));
+function render(){ lastHtml=buildEmail(); $('frame').srcdoc=lastHtml;
+  const kb=(new Blob([lastHtml]).size/1024).toFixed(1); $('size').textContent=kb+' KB'; $('size').style.color=kb>102?'#c0392b':'#5a6472'; validate(); }
 
-$('download').addEventListener('click',()=>{
-  if(!validate())return;
-  const blob=new Blob([lastHtml],{type:'text/html'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download='alembic-email.html';a.click();URL.revokeObjectURL(a.href);
-});
-$('copy').addEventListener('click',async()=>{
-  if(!validate())return;
-  try{await navigator.clipboard.writeText(lastHtml);$('copy').textContent='✓ Copied';
-    setTimeout(()=>$('copy').textContent='⧉ Copy HTML',1500);}catch(e){alert('Copy failed — use Download instead.');}
-});
-$('sample').addEventListener('click',()=>{
-  const s={indication:'PRODUCT (generic) is indicated for the treatment of [condition] in adults.',
-    headline:'A new option for your appropriate patients',
-    body:'Introduce the key approved message here.\n\nAdd a second approved paragraph with supporting detail.',
-    ctaLabel:'Learn More',ctaUrl:'https://www.alembicpharma.com',
-    isi:'BOXED WARNING: [exact approved boxed-warning text].\n\nContraindications & Warnings: [exact approved text].\n\nMost common adverse reactions: [exact approved text].',
-    piUrl:'https://www.alembicpharma.com/pi.pdf',preheader:'A new option for your appropriate patients',
-    heroAlt:'Product packaging',optIn:'requested information from Alembic Pharmaceuticals',
-    street:'750 Route 202, Suite 402',cityZip:'Bridgewater, NJ 08807',
-    unsubUrl:'https://www.alembicpharma.com/unsubscribe',prefUrl:'https://www.alembicpharma.com/preferences',
-    privacyUrl:'https://www.alembicpharma.com/privacy',jobCode:'US-XXX-0000'};
-  Object.entries(s).forEach(([k,v])=>{ if($(k)) $(k).value=v; });
-  render();
-});
-render();
+document.querySelector('.form').addEventListener('input',e=>{ const t=e.target;
+  if(t.id){ store[t.id]=t.value; if(t.classList.contains('imgurl')&&t.value.trim()){ delete IMG[t.id];
+    const z=document.querySelector(`.img-drop[data-target="${t.id}"]`); if(z){z.classList.remove('has');z.textContent='Drop image';} } }
+  render(); });
+
+$('download').addEventListener('click',()=>{ if(!validate())return; const b=new Blob([lastHtml],{type:'text/html'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='alembic-email.html'; a.click(); URL.revokeObjectURL(a.href); });
+$('copy').addEventListener('click',async()=>{ if(!validate())return; try{await navigator.clipboard.writeText(lastHtml);
+  $('copy').textContent='✓ Copied'; setTimeout(()=>$('copy').textContent='⧉ Copy HTML',1500);}catch(e){alert('Copy failed — use Download.');} });
+$('sample').addEventListener('click',()=>{ const s={indication:'PRODUCT (generic) is indicated for the treatment of [condition] in adults.',
+  isi:'BOXED WARNING: [exact approved boxed-warning text].\n\nContraindications & Warnings: [exact approved text].\n\nMost common adverse reactions: [exact approved text].',
+  piUrl:'https://www.alembicpharma.com/pi.pdf',preheader:'A new option for your appropriate patients',
+  optIn:'requested information from Alembic Pharmaceuticals',street:'750 Route 202, Suite 402',cityZip:'Bridgewater, NJ 08807',
+  unsubUrl:'https://www.alembicpharma.com/unsubscribe',prefUrl:'https://www.alembicpharma.com/preferences',
+  privacyUrl:'https://www.alembicpharma.com/privacy',jobCode:'US-XXX-0000',utm_campaign:'product-launch-2026',
+  t_h:'A new option for your appropriate patients',t_b:'Introduce the key approved message here.\n\nAdd a second approved paragraph.',
+  t_cl:'Learn More',t_cu:'https://www.alembicpharma.com'};
+  Object.entries(s).forEach(([k,v])=>{ store[k]=v; const el=$(k); if(el)el.value=v; }); render(); });
+
+/* init */
+buildTemplatePicker(); buildSlots(); render();
 </script>
 </body>
 </html>
