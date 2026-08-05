@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alembic Pharmaceuticals — Email Builder</title>
+<style>
+  :root{
+    --brand:#00529b;         /* Alembic default — set exact brand hex in the form */
+    --ink:#1a2330; --muted:#5a6472; --line:#e2e6ec; --bg:#f2f4f6; --white:#fff;
+    --ok:#1a7f43; --warn:#b45309;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  header.app{background:var(--brand);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px}
+  header.app h1{font-size:16px;margin:0;font-weight:700;letter-spacing:.2px}
+  header.app .tag{font-size:12px;opacity:.85;margin-left:auto}
+  .layout{display:flex;gap:0;align-items:stretch;min-height:calc(100vh - 50px)}
+  .form{flex:0 0 46%;max-width:46%;padding:20px;overflow-y:auto;height:calc(100vh - 50px)}
+  .preview{flex:1;background:#dfe3e8;padding:20px;overflow-y:auto;height:calc(100vh - 50px);border-left:1px solid var(--line)}
+  @media(max-width:900px){.layout{flex-direction:column}.form,.preview{max-width:100%;flex:1 1 auto;height:auto}}
+  fieldset{border:1px solid var(--line);border-radius:8px;margin:0 0 16px;padding:14px 16px;background:#fff}
+  legend{font-weight:700;font-size:13px;padding:0 6px;color:var(--brand)}
+  label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:10px 0 4px}
+  input[type=text],input[type=url],input[type=color],textarea,select{
+    width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-family:inherit;color:var(--ink)}
+  textarea{min-height:64px;resize:vertical;line-height:1.5}
+  .row{display:flex;gap:10px}.row>*{flex:1}
+  .hint{font-size:11px;color:var(--muted);margin:4px 0 0}
+  .req legend::after{content:" *";color:#c0392b}
+  .img-drop{border:1.5px dashed #b8c0cc;border-radius:6px;padding:10px;text-align:center;font-size:12px;color:var(--muted);background:#fafbfc;cursor:pointer}
+  .img-drop.has{border-color:var(--ok);color:var(--ok);background:#f2fbf5}
+  .guard{background:#fff8ec;border:1px solid #f0dcae;border-radius:6px;padding:10px 12px;font-size:12px;color:var(--warn);margin-bottom:16px}
+  .guard b{color:#8a5a00}
+  .bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px;display:flex;gap:10px;margin:16px -20px -20px}
+  button{font-family:inherit;font-size:13px;font-weight:700;border:0;border-radius:6px;padding:10px 14px;cursor:pointer}
+  .primary{background:var(--brand);color:#fff}.ghost{background:#eef1f5;color:var(--ink)}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .errs{color:#c0392b;font-size:12px;margin:8px 0 0}
+  iframe{width:100%;height:calc(100vh - 110px);border:1px solid var(--line);border-radius:8px;background:#fff}
+  .previewhead{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px;color:var(--muted)}
+  .previewhead b{color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="app">
+  <h1>Alembic Pharmaceuticals — Email Builder</h1>
+  <span class="tag">Drop in the Canva assets &amp; copy · out comes deliverability-safe HTML</span>
+</header>
+
+<div class="layout">
+  <!-- ============ FORM ============ -->
+  <div class="form">
+    <div class="guard">
+      <b>Legal guardrails, by design.</b> This tool places your text <b>exactly as pasted</b> — it never
+      rewrites, summarizes, or reflows the words. Paste the approved verbiage verbatim. Images are placed
+      <b>unaltered</b> (only scaled to fit width — never cropped, recolored, or distorted). Have MLR sign off
+      before any send.
+    </div>
+
+    <fieldset>
+      <legend>Brand</legend>
+      <label>Company name</label>
+      <input type="text" id="companyName" value="Alembic Pharmaceuticals" />
+      <div class="row">
+        <div><label>Brand color (exact hex)</label><input type="color" id="brandColor" value="#00529b" /></div>
+        <div><label>Button / accent color</label><input type="color" id="ctaColor" value="#00529b" /></div>
+      </div>
+      <label>Logo image — URL (hosted) or drop file</label>
+      <input type="url" id="logoUrl" placeholder="https://cdn.alembic.com/logo.png" />
+      <div class="img-drop" data-target="logoUrl">Drop logo image here (or use URL above)</div>
+      <div class="hint">For real sends, host images and paste the URL. Dropped files embed as base64 — great for preview, but some clients (Gmail, Outlook) block embedded images. Use hosted URLs for production.</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Preview snippet &amp; hero</legend>
+      <label>Preheader text (inbox preview line, ~40–100 chars)</label>
+      <input type="text" id="preheader" placeholder="One line that shows next to the subject in the inbox" />
+      <label>Hero image — URL or drop file</label>
+      <input type="url" id="heroUrl" placeholder="https://cdn.alembic.com/hero.png" />
+      <div class="img-drop" data-target="heroUrl">Drop hero image here</div>
+      <label>Hero image ALT text (accessibility + shown if images blocked)</label>
+      <input type="text" id="heroAlt" placeholder="Describe the image in words" />
+    </fieldset>
+
+    <fieldset class="req">
+      <legend>Indication</legend>
+      <label>Indication statement (verbatim)</label>
+      <textarea id="indication" placeholder="PRODUCT is indicated for..."></textarea>
+    </fieldset>
+
+    <fieldset class="req">
+      <legend>Message</legend>
+      <label>Headline (verbatim)</label>
+      <input type="text" id="headline" placeholder="Approved headline" />
+      <label>Body copy (verbatim — blank line = new paragraph)</label>
+      <textarea id="body" style="min-height:120px" placeholder="Paragraph one.&#10;&#10;Paragraph two."></textarea>
+      <div class="row">
+        <div><label>Button label</label><input type="text" id="ctaLabel" placeholder="Learn More" /></div>
+        <div><label>Button link URL</label><input type="url" id="ctaUrl" placeholder="https://..." /></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="req">
+      <legend>Important Safety Information (fair balance)</legend>
+      <label>ISI copy (verbatim — blank line = new paragraph)</label>
+      <textarea id="isi" style="min-height:140px" placeholder="Boxed warning / key risks.&#10;&#10;Contraindications & warnings.&#10;&#10;Common adverse reactions."></textarea>
+      <div class="row">
+        <div><label>Full Prescribing Information URL</label><input type="url" id="piUrl" placeholder="https://..." /></div>
+        <div><label>Medication Guide URL (optional)</label><input type="url" id="medGuideUrl" placeholder="https://..." /></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="req">
+      <legend>Footer (CAN-SPAM &amp; bulk-sender compliance)</legend>
+      <label>Why they’re receiving this (opt-in reason)</label>
+      <input type="text" id="optIn" placeholder="requested information from Alembic Pharmaceuticals" />
+      <label>Street address</label>
+      <input type="text" id="street" placeholder="123 Example Ave, Suite 100" />
+      <label>City, State ZIP</label>
+      <input type="text" id="cityZip" placeholder="Bedminster, NJ 07921" />
+      <div class="row">
+        <div><label>Unsubscribe URL</label><input type="url" id="unsubUrl" placeholder="https://..." /></div>
+        <div><label>Manage preferences URL</label><input type="url" id="prefUrl" placeholder="https://..." /></div>
+      </div>
+      <div class="row">
+        <div><label>Privacy Policy URL</label><input type="url" id="privacyUrl" placeholder="https://..." /></div>
+        <div><label>Job / PI code</label><input type="text" id="jobCode" placeholder="US-XXX-0000" /></div>
+      </div>
+      <div class="row">
+        <div><label>Intended audience</label><input type="text" id="audience" value="US healthcare professionals" /></div>
+        <div><label>Year</label><input type="text" id="year" value="2026" /></div>
+      </div>
+    </fieldset>
+
+    <div class="errs" id="errs"></div>
+    <div class="bar">
+      <button class="primary" id="download">⬇ Download email.html</button>
+      <button class="ghost" id="copy">⧉ Copy HTML</button>
+      <button class="ghost" id="sample">Fill sample text</button>
+    </div>
+  </div>
+
+  <!-- ============ PREVIEW ============ -->
+  <div class="preview">
+    <div class="previewhead">
+      <b>Live preview</b> · renders exactly what downloads · <span id="size">0 KB</span>
+      <span style="margin-left:auto">Keep under ~102 KB (Gmail clips larger)</span>
+    </div>
+    <iframe id="frame" title="Email preview"></iframe>
+  </div>
+</div>
+
+<script>
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+// verbatim text -> paragraphs; preserves single line breaks as <br>, blank line as new <p>
+function paras(text, style){
+  if(!text||!text.trim()) return "";
+  return text.trim().split(/\n\s*\n/).map(block=>{
+    const inner = esc(block).replace(/\n/g,"<br />");
+    return `<p style="${style}">${inner}</p>`;
+  }).join("");
+}
+const IMG = {}; // dropped-file data URLs by target id
+const val = id => (IMG[id] || ($(id) ? $(id).value.trim() : ""));
+
+/* ---------- drag & drop images (base64 for preview) ---------- */
+document.querySelectorAll('.img-drop').forEach(zone=>{
+  const target = zone.dataset.target;
+  const handle = file=>{
+    if(!file || !/^image\//.test(file.type)) return;
+    const r = new FileReader();
+    r.onload = e=>{ IMG[target]=e.target.result; zone.classList.add('has');
+      zone.textContent = '✓ '+file.name+' embedded (preview). Use a hosted URL for production.'; render(); };
+    r.readAsDataURL(file);
+  };
+  ['dragover','dragenter'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();}));
+  zone.addEventListener('drop',e=>{e.preventDefault();handle(e.dataTransfer.files[0]);});
+  zone.addEventListener('click',()=>{const i=document.createElement('input');i.type='file';i.accept='image/*';
+    i.onchange=()=>handle(i.files[0]);i.click();});
+  // typing a URL clears the dropped file so URL wins
+  const urlInput = $(target);
+  if(urlInput) urlInput.addEventListener('input',()=>{ if(urlInput.value.trim()){ delete IMG[target];
+    zone.classList.remove('has'); zone.textContent='Drop image here (or use URL above)'; } render(); });
+});
+
+/* ---------- build the email HTML ---------- */
+function buildEmail(){
+  const brand = esc(val('brandColor')||'#00529b');
+  const cta   = esc(val('ctaColor')||brand);
+  const company = esc(val('companyName')||'Alembic Pharmaceuticals');
+  const logo = val('logoUrl');
+  const hero = val('heroUrl');
+  const medGuide = val('medGuideUrl') ? ` and <a href="${esc(val('medGuideUrl'))}" style="color:${cta};text-decoration:underline;">Medication Guide</a>` : '';
+
+  const heroBlock = hero ? `
+          <tr><td align="center" style="padding:0;">
+            <img src="${esc(hero)}" width="600" alt="${esc(val('heroAlt'))}" style="display:block;width:100%;max-width:600px;height:auto;" />
+          </td></tr>` : '';
+
+  const logoBlock = logo
+    ? `<img src="${esc(logo)}" width="170" alt="${company} logo" style="display:block;width:170px;max-width:170px;height:auto;" />`
+    : `<span style="font-family:Arial,sans-serif;font-size:20px;font-weight:bold;color:${brand};">${company}</span>`;
+
+  return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="color-scheme" content="light" />
+<title>${esc(val('headline')||company)}</title>
+<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+<style>
+  body,table,td,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt;mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;}
+  body{margin:0!important;padding:0!important;width:100%!important;}
+  @media screen and (max-width:600px){.email-container{width:100%!important;}.px{padding-left:20px!important;padding-right:20px!important;}}
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#f2f4f6;">
+<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">${esc(val('preheader'))}&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;</div>
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f2f4f6;"><tr>
+<td align="center" style="padding:24px 12px;">
+  <table role="presentation" cellpadding="0" cellspacing="0" width="600" class="email-container" style="width:600px;max-width:600px;background-color:#ffffff;border-radius:8px;overflow:hidden;">
+    <tr><td align="left" class="px" style="padding:24px 32px;border-top:4px solid ${brand};">${logoBlock}</td></tr>
+    ${heroBlock}
+    <tr><td class="px" style="padding:24px 32px 0;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#5a6472;"><strong>Indication:</strong> ${esc(val('indication'))}</td></tr>
+    <tr><td class="px" style="padding:16px 32px 0;font-family:Arial,sans-serif;">
+      <h1 style="margin:0 0 12px;font-size:26px;line-height:32px;color:#1a2330;font-weight:bold;">${esc(val('headline'))}</h1>
+      ${paras(val('body'),"margin:0 0 16px;font-size:16px;line-height:24px;color:#3a4453;")}
+    </td></tr>
+    ${ (val('ctaLabel')&&val('ctaUrl')) ? `<tr><td class="px" align="left" style="padding:4px 32px 28px;">
+      <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${esc(val('ctaUrl'))}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="12%" strokecolor="${cta}" fillcolor="${cta}"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">${esc(val('ctaLabel'))}</center></v:roundrect><![endif]-->
+      <!--[if !mso]><!-- --><a href="${esc(val('ctaUrl'))}" style="background-color:${cta};border-radius:6px;color:#ffffff;display:inline-block;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:center;text-decoration:none;width:240px;">${esc(val('ctaLabel'))}</a><!--<![endif]-->
+    </td></tr>` : '' }
+    <tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;"></div></td></tr>
+    <tr><td class="px" style="padding:20px 32px;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#3a4453;">
+      <p style="margin:0 0 8px;font-size:14px;font-weight:bold;color:#1a2330;">Important Safety Information</p>
+      ${paras(val('isi'),"margin:0 0 8px;")}
+      ${ val('piUrl') ? `<p style="margin:8px 0 0;">Please see the <a href="${esc(val('piUrl'))}" style="color:${cta};text-decoration:underline;">full Prescribing Information</a>${medGuide}.</p>` : '' }
+    </td></tr>
+    <tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;"></div></td></tr>
+    <tr><td class="px" style="padding:20px 32px 28px;font-family:Arial,sans-serif;font-size:12px;line-height:18px;color:#8a94a6;">
+      <p style="margin:0 0 8px;">You are receiving this email because you ${esc(val('optIn'))}.</p>
+      <p style="margin:0 0 8px;">${company} &bull; ${esc(val('street'))} &bull; ${esc(val('cityZip'))}</p>
+      <p style="margin:0 0 8px;">
+        <a href="${esc(val('unsubUrl'))}" style="color:#5a6472;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+        <a href="${esc(val('prefUrl'))}" style="color:#5a6472;text-decoration:underline;">Manage email preferences</a> &nbsp;|&nbsp;
+        <a href="${esc(val('privacyUrl'))}" style="color:#5a6472;text-decoration:underline;">Privacy Policy</a>
+      </p>
+      <p style="margin:0;color:#a4acb9;">${esc(val('jobCode'))} &nbsp;|&nbsp; &copy; ${esc(val('year'))} ${company}. All rights reserved. Intended for ${esc(val('audience'))}.</p>
+    </td></tr>
+  </table>
+</td></tr></table>
+</body></html>`;
+}
+
+/* ---------- required-field validation (enforces fair balance is present) ---------- */
+const REQUIRED = [
+  ['indication','Indication statement'],
+  ['headline','Headline'],
+  ['body','Body copy'],
+  ['isi','Important Safety Information'],
+  ['piUrl','Full Prescribing Information URL'],
+  ['unsubUrl','Unsubscribe URL'],
+  ['street','Street address'],
+  ['cityZip','City, State ZIP'],
+  ['jobCode','Job / PI code'],
+];
+function validate(){
+  const missing = REQUIRED.filter(([id])=>!val(id)).map(([,label])=>label);
+  const ok = missing.length===0;
+  $('errs').textContent = ok ? '' : 'Required before export: '+missing.join(', ');
+  $('download').disabled = !ok; $('copy').disabled = !ok;
+  return ok;
+}
+
+/* ---------- render + wire up ---------- */
+let lastHtml='';
+function render(){
+  lastHtml = buildEmail();
+  $('frame').srcdoc = lastHtml;
+  const kb = (new Blob([lastHtml]).size/1024).toFixed(1);
+  $('size').textContent = kb+' KB';
+  $('size').style.color = kb>102 ? '#c0392b' : '#5a6472';
+  validate();
+}
+document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',render));
+
+$('download').addEventListener('click',()=>{
+  if(!validate())return;
+  const blob=new Blob([lastHtml],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='alembic-email.html';a.click();URL.revokeObjectURL(a.href);
+});
+$('copy').addEventListener('click',async()=>{
+  if(!validate())return;
+  try{await navigator.clipboard.writeText(lastHtml);$('copy').textContent='✓ Copied';
+    setTimeout(()=>$('copy').textContent='⧉ Copy HTML',1500);}catch(e){alert('Copy failed — use Download instead.');}
+});
+$('sample').addEventListener('click',()=>{
+  const s={indication:'PRODUCT (generic) is indicated for the treatment of [condition] in adults.',
+    headline:'A new option for your appropriate patients',
+    body:'Introduce the key approved message here.\n\nAdd a second approved paragraph with supporting detail.',
+    ctaLabel:'Learn More',ctaUrl:'https://www.alembicpharma.com',
+    isi:'BOXED WARNING: [exact approved boxed-warning text].\n\nContraindications & Warnings: [exact approved text].\n\nMost common adverse reactions: [exact approved text].',
+    piUrl:'https://www.alembicpharma.com/pi.pdf',preheader:'A new option for your appropriate patients',
+    heroAlt:'Product packaging',optIn:'requested information from Alembic Pharmaceuticals',
+    street:'750 Route 202, Suite 402',cityZip:'Bridgewater, NJ 08807',
+    unsubUrl:'https://www.alembicpharma.com/unsubscribe',prefUrl:'https://www.alembicpharma.com/preferences',
+    privacyUrl:'https://www.alembicpharma.com/privacy',jobCode:'US-XXX-0000'};
+  Object.entries(s).forEach(([k,v])=>{ if($(k)) $(k).value=v; });
+  render();
+});
+render();
+</script>
+</body>
+</html>
