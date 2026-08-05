@@ -81,8 +81,17 @@
   .form{flex:0 0 46%;max-width:46%;padding:22px;overflow-y:auto;height:calc(100vh - 71px)}
   .preview{flex:1;padding:22px;overflow-y:auto;height:calc(100vh - 71px);border-left:1px solid var(--line);
     background:radial-gradient(700px 380px at 50% 0%, var(--accent-soft), transparent 70%)}
-  @media(max-width:900px){.layout{flex-direction:column}.form,.preview{max-width:100%;flex:1 1 auto;height:auto}
-    .telemetry{width:100%;margin-left:0}}
+  @media(max-width:900px){
+    .layout{flex-direction:column}
+    .form,.preview{max-width:100%;flex:1 1 auto;height:auto}
+    .telemetry{width:100%;margin-left:0}
+    /* On mobile: preview first + pinned to top so it's visible while you edit below */
+    .preview{order:-1;position:sticky;top:0;z-index:30;max-height:58vh;overflow:auto;
+      border-left:0;border-bottom:1px solid var(--line);padding:12px 12px 14px}
+    .preview iframe{height:40vh;min-height:0}
+    .device-screen{padding:8px}
+    .form{padding:16px 16px 24px}
+  }
 
   /* ===== Modules (fieldsets) ===== */
   fieldset{position:relative;border:1px solid var(--line);border-radius:var(--r);margin:0 0 15px;
