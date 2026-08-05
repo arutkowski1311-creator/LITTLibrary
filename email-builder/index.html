@@ -73,30 +73,50 @@
     </fieldset>
 
     <fieldset>
-      <legend>1 · Choose a layout</legend>
+      <legend>1 · Campaign (Clinical Story Engine)</legend>
+      <div class="row">
+        <div><label>Product starter</label>
+          <select id="preset"><option value="">— none —</option><option value="pivya">Pivya (pivmecillinam) — new-to-market</option><option value="cipro">Cipro (ciprofloxacin) — appropriate use</option></select></div>
+        <div><label>Target specialty</label>
+          <select id="specialty"><option>Primary care</option><option>Urgent care</option><option>Urology</option><option>Infectious disease</option><option>Emergency medicine</option><option>Other</option></select></div>
+      </div>
+      <div class="row">
+        <div><label>Journey stage</label>
+          <select id="stage"><option value="awareness">1 · Awareness</option><option value="consideration">2 · Consideration</option><option value="first-rx">3 · First prescription</option><option value="reinforcement">4 · Reinforcement</option></select></div>
+        <div><label>Campaign objective</label><input type="text" id="objective" placeholder="e.g. build awareness of an oral option" /></div>
+      </div>
+      <label>Evidence available (optional)</label>
+      <input type="text" id="evidence" placeholder="e.g. pivotal trial, IDSA guideline, real-world data" />
+      <div id="seRec" style="margin-top:10px;font-size:12px;line-height:1.5;padding:10px;border-radius:6px;background:#eef4fb;border:1px solid #cfe0f2;color:#234"></div>
+      <button class="ghost" id="useRec" style="margin-top:8px;padding:7px 12px">Use recommended structure</button>
+      <div class="hint">Stage sets the goal and how hard the CTA should push. Awareness earns attention with one clinical message; a prescribing ask belongs in later stages. This never invents clinical claims — it structures the story you approve.</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Choose a layout / story structure</legend>
       <div class="tpl-grid" id="tplGrid"></div>
       <div class="hint" id="tplNote" style="margin-top:8px"></div>
     </fieldset>
 
     <fieldset>
-      <legend>2 · Preview snippet</legend>
+      <legend>3 · Preview snippet</legend>
       <label>Preheader text (inbox preview line, ~40–100 chars)</label>
       <input type="text" id="preheader" placeholder="One line shown next to the subject in the inbox" />
     </fieldset>
 
     <fieldset id="contentFs">
-      <legend>3 · Content (verbatim)</legend>
+      <legend>4 · Content (verbatim)</legend>
       <div id="templateSlots"></div>
     </fieldset>
 
     <fieldset class="req">
-      <legend>4 · Indication</legend>
+      <legend>5 · Indication</legend>
       <label>Indication statement (verbatim)</label>
       <textarea id="indication" placeholder="PRODUCT is indicated for..."></textarea>
     </fieldset>
 
     <fieldset class="req">
-      <legend>5 · Important Safety Information (fair balance)</legend>
+      <legend>6 · Important Safety Information (fair balance)</legend>
       <label>ISI copy (verbatim — blank line = new paragraph)</label>
       <textarea id="isi" style="min-height:130px" placeholder="Boxed warning / key risks.&#10;&#10;Contraindications & warnings.&#10;&#10;Common adverse reactions."></textarea>
       <div class="row">
@@ -106,7 +126,7 @@
     </fieldset>
 
     <fieldset class="req">
-      <legend>6 · Footer (compliance)</legend>
+      <legend>7 · Footer (compliance)</legend>
       <label>Why they’re receiving this (opt-in reason)</label>
       <input type="text" id="optIn" placeholder="requested information from Alembic Pharmaceuticals" />
       <label>Street address</label><input type="text" id="street" placeholder="750 Route 202, Suite 402" />
@@ -126,7 +146,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>7 · Metrics (UTM link tagging)</legend>
+      <legend>8 · Metrics (UTM link tagging)</legend>
       <div class="chk"><input type="checkbox" id="utmOn" checked /><label style="margin:0">Append UTM tags to content links (CTA, cards, gallery, video)</label></div>
       <div class="row">
         <div><label>utm_source</label><input type="text" id="utm_source" value="email" /></div>
@@ -163,8 +183,9 @@ function paras(text,style){ if(!text||!text.trim())return""; return text.trim().
 /* UTM tagging — content links only */
 function utmOn(){ const c=$('utmOn'); return c?c.checked:false; }
 function link(u){ u=(u||"").trim(); if(!u) return "#"; if(utmOn() && /^https?:/i.test(u)){
-  const p=[]; const s=val('utm_source'),m=val('utm_medium'),c=val('utm_campaign');
+  const p=[]; const s=val('utm_source'),m=val('utm_medium'),c=val('utm_campaign'),st=val('stage');
   if(s)p.push('utm_source='+encodeURIComponent(s)); if(m)p.push('utm_medium='+encodeURIComponent(m)); if(c)p.push('utm_campaign='+encodeURIComponent(c));
+  if(st)p.push('utm_content='+encodeURIComponent(st));
   if(p.length) u += (u.includes('?')?'&':'?')+p.join('&'); } return esc(u); }
 const legal = u => esc((u||"").trim()||"#");   // never UTM-tagged
 
@@ -200,6 +221,9 @@ const H = {
     </td></tr>`; }
 };
 function contentTd(inner){ return `<tr><td class="px" style="padding:16px 32px 0;font-family:Arial,sans-serif;">${inner}</td></tr>`; }
+function kicker(t){ return t?`<p style="margin:0 0 4px;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:.6px;color:${brand()};">${esc(t)}</p>`:''; }
+function block(label,textk){ const v=val(textk); return v?kicker(label)+paras(v,"margin:0 0 14px;font-size:15px;line-height:23px;color:#3a4453;"):''; }
+function callout(label,textk){ const v=val(textk); if(!v)return''; return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;"><tr><td style="background:#eef4fb;border-left:4px solid ${brand()};padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;line-height:21px;color:#1a2330;"><strong>${esc(label)}:</strong> ${esc(v)}</td></tr></table>`; }
 function heroRow(k,altk){ const s=val(k); return s?`<tr><td align="center" style="padding:0;">${img(s,val(altk),600)}</td></tr>`:''; }
 function headBody(hk,bk){ let o=''; if(val(hk))o+=`<h1 style="margin:0 0 12px;font-size:26px;line-height:32px;color:#1a2330;font-weight:bold;">${esc(val(hk))}</h1>`;
   o+=paras(val(bk),"margin:0 0 16px;font-size:16px;line-height:24px;color:#3a4453;"); return o?contentTd(o):''; }
@@ -272,7 +296,38 @@ const TEMPLATES = {
       const stacked=items.map(([i,a,u])=>{ const im=img(val(i),val(a),536); return `<tr><td style="padding:0 0 12px;">${u&&val(u)?`<a href="${link(val(u))}">${im}</a>`:im}</td></tr>`; }).join("");
       return headBody('t_h','t_b')+`<tr><td class="px" style="padding:12px 32px 4px;font-family:Arial,sans-serif;font-size:12px;color:#8a94a6;">Swipe to see more &rarr;</td></tr>
         <!--[if !mso]><!-- --><tr><td style="padding:0 0 8px 32px;"><div style="overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;font-size:0;">${modern}</div></td></tr><!--<![endif]-->
-        <!--[if mso]><tr><td class="px" style="padding:0 32px 8px;"><table role="presentation" width="100%">${stacked}</table></td></tr><![endif]-->`; } }
+        <!--[if mso]><tr><td class="px" style="padding:0 32px 8px;"><table role="presentation" width="100%">${stacked}</table></td></tr><![endif]-->`; } },
+
+  publication:{ name:'Publication', desc:'Clinical story: key finding + one figure.', cat:'story',
+    note:'Lead with the clinical finding, show one figure, say why it matters in practice, link to the paper.',
+    sections:[{lg:'Story',fields:[['t_h','Clinical headline','text'],['t_kf','Key finding (one sentence)','text'],['t_fi','Figure image (one graph)','image'],['t_fa','Figure ALT text','text'],['t_b','Why it matters in practice','textarea'],['t_cl','CTA label','text'],['t_cu','Link to publication','url']]}],
+    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 10px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`;
+      o+=callout('Key finding','t_kf'); o=o?contentTd(o):'';
+      const fig=val('t_fi')?`<tr><td align="center" style="padding:6px 0;">${img(val('t_fi'),val('t_fa'),536)}</td></tr>`:'';
+      return o+fig+(val('t_b')?contentTd(block('Why it matters','t_b')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
+
+  case:{ name:'Patient case', desc:'Presentation → decision → outcome → takeaway.', cat:'story',
+    note:'A short, realistic case that models the clinical reasoning. Takeaway ties it to the reader’s practice.',
+    sections:[{lg:'Case',fields:[['t_h','Case headline','text'],['t_img','Image (optional)','image'],['t_ia','Image ALT text','text'],['t_pp','Patient presentation','textarea'],['t_td','Treatment decision','textarea'],['t_oc','Outcome','textarea'],['t_tk','Practice takeaway','text'],['t_cl','CTA label','text'],['t_cu','CTA URL','url']]}],
+    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 12px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`; o=o?contentTd(o):'';
+      const im=val('t_img')?`<tr><td align="center" style="padding:0 0 6px;">${img(val('t_img'),val('t_ia'),536)}</td></tr>`:'';
+      const body=block('Presentation','t_pp')+block('Treatment decision','t_td')+block('Outcome','t_oc');
+      return o+im+(body?contentTd(body):'')+(val('t_tk')?contentTd(callout('Practice takeaway','t_tk')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
+
+  guideline:{ name:'Guideline update', desc:'What changed → evidence → implications.', cat:'story',
+    note:'Frame it as a guideline/evidence update, not a product pitch. Name the patient population it affects.',
+    sections:[{lg:'Update',fields:[['t_h','Headline (what changed)','text'],['t_wc','What changed','textarea'],['t_se','Supporting evidence','textarea'],['t_ci','Clinical implications','textarea'],['t_pop','Suggested patient population','text'],['t_cl','CTA label','text'],['t_cu','CTA URL','url']]}],
+    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 12px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`; o=o?contentTd(o):'';
+      const body=block('What changed','t_wc')+block('Supporting evidence','t_se')+block('Clinical implications','t_ci');
+      return o+(body?contentTd(body):'')+(val('t_pop')?contentTd(callout('Suggested patient population','t_pop')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } },
+
+  myth:{ name:'Myth vs evidence', desc:'Misconception → current evidence → takeaway.', cat:'story',
+    note:'Name a common misconception, answer it with current evidence, end with a practical takeaway. Builds credibility.',
+    sections:[{lg:'Contrast',fields:[['t_h','Headline','text'],['t_myth','The misconception','textarea'],['t_ev','Current evidence','textarea'],['t_tk','Practical takeaway','text'],['t_cl','CTA label','text'],['t_cu','CTA URL','url']]}],
+    middle(){ let o=''; if(val('t_h'))o+=`<h1 style="margin:0 0 12px;font-size:24px;line-height:31px;color:#1a2330;font-weight:bold;">${esc(val('t_h'))}</h1>`;
+      const mythBox=val('t_myth')?`<table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td style="background:#fbf0ee;border-left:4px solid #c0563f;padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;line-height:21px;color:#1a2330;"><strong>Common belief:</strong> ${esc(val('t_myth'))}</td></tr></table>`:'';
+      o+=mythBox; o=o?contentTd(o):'';
+      return o+(val('t_ev')?contentTd(block('What the evidence shows','t_ev')):'')+(val('t_tk')?contentTd(callout('Practical takeaway','t_tk')):'')+(val('t_cl')&&val('t_cu')?`<tr><td class="px" style="padding:4px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:''); } }
 };
 
 /* ================= build full email ================= */
@@ -343,7 +398,7 @@ function validate(){ const miss=REQUIRED.filter(([id])=>!val(id)).map(([,l])=>l)
   $('download').disabled=!!miss.length; $('copy').disabled=!!miss.length; return !miss.length; }
 let lastHtml='';
 function render(){ lastHtml=buildEmail(); $('frame').srcdoc=lastHtml;
-  const kb=(new Blob([lastHtml]).size/1024).toFixed(1); $('size').textContent=kb+' KB'; $('size').style.color=kb>102?'#c0392b':'#5a6472'; validate(); }
+  const kb=(new Blob([lastHtml]).size/1024).toFixed(1); $('size').textContent=kb+' KB'; $('size').style.color=kb>102?'#c0392b':'#5a6472'; if(typeof updateRec==='function')updateRec(); validate(); }
 
 document.querySelector('.form').addEventListener('input',e=>{ const t=e.target;
   if(t.id){ store[t.id]=t.value; if(t.classList.contains('imgurl')&&t.value.trim()){ delete IMG[t.id];
@@ -364,8 +419,56 @@ $('sample').addEventListener('click',()=>{ const s={indication:'PRODUCT (generic
   t_cl:'Learn More',t_cu:'https://www.alembicpharma.com'};
   Object.entries(s).forEach(([k,v])=>{ store[k]=v; const el=$(k); if(el)el.value=v; }); render(); });
 
+/* ================= Clinical Story Engine ================= */
+const STAGE_GUIDE={
+  awareness:{goal:'“I wasn’t aware this was an option.”',cta:'Soft — invite to learn more; do NOT ask for a prescription yet.',one:'One clinical message only (disease burden, unmet need, new approval, or MOA).',rec:['guideline','publication','single']},
+  consideration:{goal:'“Maybe this deserves a look.”',cta:'Medium — invite to review the data or a case.',one:'Differentiation, safety profile, patient selection, or a case example.',rec:['publication','case','myth']},
+  'first-rx':{goal:'Remove friction for the first prescription.',cta:'Direct — access, dosing, coverage resources.',one:'Which patients are appropriate, dosing, coverage, pharmacy access.',rec:['single','guideline','cards']},
+  reinforcement:{goal:'Make the new behavior stick.',cta:'Reinforcing — new evidence, FAQs, expert commentary.',one:'Real-world evidence, new publications, guideline updates, FAQs.',rec:['newsletter','publication','myth']}
+};
+function recommendStructure(){ const stage=val('stage')||'awareness'; const t=(val('objective')+' '+val('evidence')).toLowerCase();
+  const kw=[['guideline',/guideline|idsa|stewardship|recommendation/],['case',/case|patient story|presentation/],['myth',/myth|misconception|resistance|overuse|appropriate use/],['publication',/trial|efficacy|study|publication|data|evidence|head-to-head|comparativ/]];
+  for(const [id,re] of kw){ if(re.test(t)) return id; }
+  return (STAGE_GUIDE[stage]||STAGE_GUIDE.awareness).rec[0]; }
+function updateRec(){ const stage=val('stage')||'awareness'; const g=STAGE_GUIDE[stage]||STAGE_GUIDE.awareness;
+  state.recommended=recommendStructure(); const rn=TEMPLATES[state.recommended]?TEMPLATES[state.recommended].name:state.recommended;
+  const el=$('seRec'); if(el) el.innerHTML=`<b>Stage goal:</b> ${g.goal}<br><b>Content rule:</b> ${g.one}<br><b>CTA posture:</b> ${g.cta}<br><b>Recommended structure:</b> ${rn}`; }
+
+const PRESETS={
+  pivya:{ specialty:'Primary care',stage:'awareness',objective:'Build awareness of an oral option for uncomplicated UTI',
+    evidence:'Pivotal trial data; IDSA uUTI guidance',preheader:'Are uncomplicated UTIs becoming harder to treat?',
+    utm_campaign:'pivya-awareness-2026',
+    indication:'PIVYA (pivmecillinam) is indicated for [confirm exact FDA-approved indication]. — replace with approved language',
+    isi:'[Insert PIVYA approved Important Safety Information verbatim — contraindications, warnings/precautions, and most common adverse reactions.]',
+    piUrl:'https://www.alembicpharma.com/pivya-pi.pdf',jobCode:'US-PIV-0000',
+    t_h:'Are uncomplicated UTIs becoming harder to treat?',
+    t_wc:'[Approved disease-burden / unmet-need message — verbatim.]',
+    t_se:'[Approved supporting evidence — verbatim.]',t_ci:'[Approved clinical implications — verbatim.]',
+    t_cl:'See the clinical context',t_cu:'https://www.alembicpharma.com/pivya' },
+  cipro:{ specialty:'Primary care',stage:'reinforcement',objective:'Reinforce appropriate patient selection and stewardship',
+    evidence:'FDA fluoroquinolone safety communications; resistance & stewardship data',preheader:'Right patient, right drug: ciprofloxacin appropriate use',
+    utm_campaign:'cipro-appropriate-use-2026',
+    indication:'[Confirm exact approved ciprofloxacin indication(s) relevant to this audience.]',
+    isi:'[Insert ciprofloxacin approved ISI verbatim — including the boxed warning regarding fluoroquinolone-associated disabling and potentially irreversible serious adverse reactions.]',
+    piUrl:'https://www.alembicpharma.com/cipro-pi.pdf',jobCode:'US-CIP-0000',
+    t_h:'Appropriate use of ciprofloxacin: matching the drug to the patient',
+    t_myth:'[Common belief to address — verbatim, e.g. a broad-use assumption.]',
+    t_ev:'[Current evidence / appropriate-use criteria — verbatim.]',t_tk:'[Practical takeaway on stewardship — verbatim.]',
+    t_cl:'Review appropriate-use criteria',t_cu:'https://www.alembicpharma.com/cipro' }
+};
+function applyPreset(key){ const p=PRESETS[key]; if(!p) return; saveDom();
+  Object.entries(p).forEach(([k,v])=>{ store[k]=v; const el=$(k); if(el) el.value=v; });
+  state.template = recommendStructureFor(p.stage,(p.objective+' '+(p.evidence||'')));
+  buildTemplatePicker(); buildSlots(); updateRec(); render(); }
+function recommendStructureFor(stage,text){ const t=(text||'').toLowerCase();
+  const kw=[['guideline',/guideline|idsa|stewardship|recommendation/],['case',/case|patient/],['myth',/myth|misconception|resistance|overuse|appropriate use/],['publication',/trial|efficacy|study|publication|data|evidence/]];
+  for(const [id,re] of kw){ if(re.test(t)) return id; } return (STAGE_GUIDE[stage]||STAGE_GUIDE.awareness).rec[0]; }
+
+const _presetEl=$('preset'); if(_presetEl) _presetEl.addEventListener('change',e=>applyPreset(e.target.value));
+const _useRec=$('useRec'); if(_useRec) _useRec.addEventListener('click',()=>{ if(state.recommended&&TEMPLATES[state.recommended]){ saveDom(); state.template=state.recommended; buildTemplatePicker(); buildSlots(); render(); } });
+
 /* init */
-buildTemplatePicker(); buildSlots(); render();
+buildTemplatePicker(); buildSlots(); updateRec(); render();
 </script>
 </body>
 </html>

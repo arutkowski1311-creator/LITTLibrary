@@ -5,6 +5,24 @@ A single-file, no-install tool that turns a Canva design + approved copy into
 browser (works offline). Left pane = slots to fill; right pane = live preview;
 buttons download or copy the final email HTML.
 
+> **This is step 1 of a physician behavior-change platform, not just an editor.**
+> See [`STRATEGY.md`](STRATEGY.md) for the prescribing-journey model, adaptive
+> sequencing, and the physician adoption-scoring blueprint.
+
+## Clinical Story Engine (campaign context)
+
+Before picking a layout, set the **campaign context**: product (with **Pivya** and
+**Cipro** starters), target specialty, **journey stage** (Awareness → Consideration
+→ First Rx → Reinforcement), objective, and available evidence. The engine then:
+
+- shows the **stage's goal, content rule, and correct CTA posture** (so an Awareness
+  email never over-asks for a prescription),
+- **recommends a story structure** from stage + objective + evidence,
+- tags links with `utm_content = journey stage` for stage-level analytics.
+
+It **never invents clinical claims** — it structures the story you approve; every
+efficacy/safety line stays a placeholder for MLR-approved, verbatim language.
+
 ## The workflow ("teach a man to fish")
 
 1. **Pick a layout** from the gallery (see below).
@@ -14,7 +32,9 @@ buttons download or copy the final email HTML.
 5. Watch the live preview. Fix anything.
 6. Click **Download email.html** — that file is what you hand to your ESP.
 
-## Layouts (pick one, then fill its slots)
+## Templates (pick one, then fill its slots)
+
+**Layouts** (control how it looks):
 
 | Layout | Use it for |
 |---|---|
@@ -25,7 +45,16 @@ buttons download or copy the final email HTML.
 | **Video (poster → link)** | A play-button thumbnail linking to a hosted video. |
 | **Swipe gallery** | A horizontal scroll strip of media. |
 
-Logo, Indication, ISI, and the compliant footer are present in **every** layout.
+**Clinical story structures** (control how it argues):
+
+| Structure | Shape |
+|---|---|
+| **Publication** | Clinical headline → key finding → one figure → why it matters → link to paper. |
+| **Patient case** | Presentation → treatment decision → outcome → practice takeaway. |
+| **Guideline update** | What changed → evidence → implications → suggested population. |
+| **Myth vs evidence** | Common misconception → current evidence → practical takeaway. |
+
+Logo, Indication, ISI, and the compliant footer are present in **every** template.
 
 ### Two email-specific realities baked into these
 
