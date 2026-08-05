@@ -293,6 +293,8 @@
       <div class="swatches" data-target="box_color" data-colors="#2f6b4f,#00529b,#0b7c74,#334155,#7a1f2b,#5a2a6b,#a8432c"></div>
       <label>Box transparency (softer ← → solid)</label>
       <div class="rangewrap"><input type="range" id="box_transp" min="0" max="94" value="86" /><output id="box_transp_out">86%</output></div>
+      <label>Box layout (Colored-boxes template)</label>
+      <select id="box_cols"><option value="1">Single column</option><option value="2">Two columns</option></select>
       <label>Email background</label>
       <div class="swatches" data-target="bg_color" data-colors="#f2f4f6,#ffffff,#eef4fb,#f5f2ec,#eef7f4,#e9eef5"></div>
       <div class="hint">Colored boxes (Indication, callouts, Highlight-card template) use the box color. Fonts are email-safe web stacks. Headline defaults to 24&nbsp;px — a readability best practice.</div>
@@ -439,8 +441,12 @@ function boxAlpha(){ let t=parseInt(val('box_transp')); if(isNaN(t)) t=86; t=Mat
 function blend(fg,bg,a){ const [r1,g1,b1]=_hx(fg),[r2,g2,b2]=_hx(bg); return _to(r1*a+r2*(1-a), g1*a+g2*(1-a), b1*a+b2*(1-a)); }
 function lum(hex){ const [r,g,b]=_hx(hex); return (0.299*r+0.587*g+0.114*b)/255; }
 function boxFill(){ return blend(boxBase(), val('bg_color')||'#f2f4f6', boxAlpha()); }
-function hcard(textVal,label){ if(!textVal) return ''; const fill=boxFill(), dark=lum(fill)<0.5, ink=dark?'#ffffff':'#23302a', labelCol=dark?'#ffffff':boxBase();
-  return `<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 12px;"><tr><td style="background:${fill};border-radius:18px;padding:17px 20px;font-family:${BF()};">${label?`<p style="margin:0 0 7px;font-size:12px;font-weight:bold;letter-spacing:.07em;text-transform:uppercase;color:${labelCol};">${esc(label)}</p>`:''}<p style="margin:0;font-size:16px;line-height:24px;color:${ink};">${esc(textVal).replace(/\n/g,'<br />')}</p></td></tr></table>`; }
+function hcard(textVal,label,mb){ if(!textVal) return ''; const fill=boxFill(), dark=lum(fill)<0.5, ink=dark?'#ffffff':'#23302a', labelCol=dark?'#ffffff':boxBase(); const m=(mb===undefined)?12:mb;
+  return `<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 ${m}px;"><tr><td style="background:${fill};border-radius:18px;padding:17px 20px;font-family:${BF()};">${label?`<p style="margin:0 0 7px;font-size:12px;font-weight:bold;letter-spacing:.07em;text-transform:uppercase;color:${labelCol};">${esc(label)}</p>`:''}<p style="margin:0;font-size:16px;line-height:24px;color:${ink};">${esc(textVal).replace(/\n/g,'<br />')}</p></td></tr></table>`; }
+function boxGrid(cards){ if((parseInt(val('box_cols'))||1)<2) return cards.map(b=>hcard(b.text,b.label)).join('');
+  let rows=''; for(let i=0;i<cards.length;i+=2){ const a=cards[i],b=cards[i+1];
+    rows+=`<tr><td class="stack-column" width="50%" valign="top" style="width:50%;padding:0 6px 12px 0;">${hcard(a.text,a.label,0)}</td>`+(b?`<td class="stack-column" width="50%" valign="top" style="width:50%;padding:0 0 12px 6px;">${hcard(b.text,b.label,0)}</td>`:`<td class="stack-column" width="50%" style="width:50%;"></td>`)+`</tr>`; }
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>`; }
 function bannerBox(textVal){ if(!textVal) return ''; const base=boxBase();
   return `<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 12px;"><tr><td align="center" style="background:${base};border-radius:12px;padding:15px 20px;font-family:${BF()};font-size:16px;font-weight:bold;color:#ffffff;line-height:22px;">${esc(textVal)}</td></tr></table>`; }
 
@@ -609,7 +615,7 @@ const TEMPLATES = {
     middle(){ let head=headlineTag(val('t_h'))+paras(val('t_b'),"margin:0 0 14px;font-size:16px;line-height:24px;color:#3a4453;"); head=head?contentTd(head):'';
       const banner=val('t_bn')?`<tr><td class="px" style="padding:6px 32px 2px;">${bannerBox(val('t_bn'))}</td></tr>`:'';
       const cards=boxesData.filter(b=>b.text&&b.text.trim());
-      const boxes=cards.length?`<tr><td class="px" style="padding:8px 32px 2px;">${cards.map(b=>hcard(b.text,b.label)).join('')}</td></tr>`:'';
+      const boxes=cards.length?`<tr><td class="px" style="padding:8px 32px 2px;">${boxGrid(cards)}</td></tr>`:'';
       const cta_=(val('t_cl')&&val('t_cu'))?`<tr><td class="px" style="padding:6px 32px 8px;">${ctaBtn(val('t_cl'),val('t_cu'))}</td></tr>`:'';
       return head+banner+boxes+cta_; } }
 };
