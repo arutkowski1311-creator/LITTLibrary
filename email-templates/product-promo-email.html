@@ -1,0 +1,218 @@
+<!--
+  ============================================================================
+  MASS-EMAIL / PROMOTIONAL HTML TEMPLATE
+  Built for maximum deliverability (low bounce + inbox placement).
+
+  WHY THIS TEMPLATE IS BUILT THE WAY IT IS
+  ----------------------------------------
+  1. Table-based layout + inline CSS. Outlook (Word rendering engine) and many
+     webmail clients strip <style> blocks and do not support flexbox/grid/float.
+     Tables + inline styles are the only reliably-supported layout method.
+  2. Fixed 600px content width. The de-facto safe maximum for desktop + mobile.
+  3. Real HTML text (not an all-image email). All-image emails are the #1
+     spam-filter trigger and break when images are blocked by default.
+  4. Preheader text. Controls the preview snippet and improves open rates.
+  5. Alt text on every image + bulletproof VML button for Outlook.
+  6. Visible unsubscribe link + physical postal address (CAN-SPAM required;
+     Gmail/Yahoo bulk-sender rules since Feb 2024 also require these).
+  7. Keep total HTML under ~102KB or Gmail clips the message ("[Message clipped]").
+
+  ⚠️ DELIVERABILITY IS MOSTLY *NOT* THE HTML. Before you send to a list:
+     - Send through a reputable ESP (SendGrid / Mailgun / Amazon SES / Salesforce
+       Marketing Cloud / Veeva for pharma). Do NOT bulk-send from raw SMTP.
+     - Authenticate the sending domain: SPF, DKIM, and DMARC DNS records.
+     - Include a text/plain alternative part (multipart/alternative) — your ESP
+       can auto-generate this, or supply one. Missing it raises your spam score.
+     - Only mail addresses that opted in. Scraped/purchased lists = hard bounces
+       + blocklisting. Keep spam-complaint rate < 0.3%.
+     - Support one-click unsubscribe (List-Unsubscribe + List-Unsubscribe-Post
+       headers) — set these at the ESP/header level, not in this HTML.
+
+  ⚕️ PHARMA-SPECIFIC (regulated promotional email — required for legality, and
+     omitting them also gets messages flagged/reported):
+     - Fair balance: benefit claims must be balanced with risk info.
+     - Important Safety Information (ISI) and a link to full Prescribing
+       Information / boxed warning where applicable.
+     - Indication statement. Job/PI code. Have your medical/legal/regulatory
+       (MLR) team review before any send.
+
+  Replace every {{PLACEHOLDER}} below.
+  ============================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="supported-color-schemes" content="light dark" />
+  <title>{{EMAIL_TITLE}}</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    /* Client resets */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    a { text-decoration: none; }
+
+    /* Mobile */
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; }
+      .fluid { width: 100% !important; max-width: 100% !important; height: auto !important; }
+      .stack-column { display: block !important; width: 100% !important; max-width: 100% !important; }
+      .px-24 { padding-left: 20px !important; padding-right: 20px !important; }
+    }
+
+    /* Dark mode hints (best-effort; Outlook/Gmail ignore) */
+    @media (prefers-color-scheme: dark) {
+      .dm-bg { background-color: #1a1a1a !important; }
+      .dm-text { color: #e6e6e6 !important; }
+    }
+  </style>
+</head>
+
+<!-- Body background is a solid color; avoid background images as sole content -->
+<body class="dm-bg" style="margin:0; padding:0; background-color:#f2f4f6;">
+
+  <!-- Preheader: shows in inbox preview, hidden in the body. Keep ~40–100 chars. -->
+  <div style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; font-family:sans-serif;">
+    {{PREHEADER_TEXT}}
+    &#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;&#8199;
+  </div>
+
+  <!-- Outer wrapper table -->
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f2f4f6;">
+    <tr>
+      <td align="center" style="padding:24px 12px;">
+
+        <!-- ================= VIEW-IN-BROWSER (helps when rendering fails) ================= -->
+        <table role="presentation" cellpadding="0" cellspacing="0" width="600" class="email-container" style="width:600px; max-width:600px;">
+          <tr>
+            <td align="center" style="padding:0 0 12px 0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#8a94a6;">
+              Trouble viewing this email?
+              <a href="{{VIEW_IN_BROWSER_URL}}" style="color:#5a6472; text-decoration:underline;">View it in your browser</a>.
+            </td>
+          </tr>
+        </table>
+
+        <!-- ================= MAIN CARD ================= -->
+        <table role="presentation" cellpadding="0" cellspacing="0" width="600" class="email-container dm-bg" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+
+          <!-- Header / logo -->
+          <tr>
+            <td align="left" class="px-24" style="padding:24px 32px; background-color:#ffffff;">
+              <img src="{{LOGO_URL}}" width="160" alt="{{COMPANY_NAME}} logo" style="display:block; width:160px; max-width:160px; height:auto;" />
+            </td>
+          </tr>
+
+          <!-- Hero image (optional). Always give it real text alongside. -->
+          <tr>
+            <td align="center" style="padding:0;">
+              <img src="{{HERO_IMAGE_URL}}" width="600" alt="{{HERO_ALT_TEXT}}" class="fluid" style="display:block; width:100%; max-width:600px; height:auto;" />
+            </td>
+          </tr>
+
+          <!-- Indication statement (pharma requirement) -->
+          <tr>
+            <td class="px-24 dm-text" style="padding:24px 32px 0 32px; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; color:#5a6472;">
+              <strong>Indication:</strong> {{INDICATION_STATEMENT}}
+            </td>
+          </tr>
+
+          <!-- Headline + body copy -->
+          <tr>
+            <td class="px-24 dm-text" style="padding:16px 32px 0 32px; font-family:Arial, Helvetica, sans-serif;">
+              <h1 style="margin:0 0 12px 0; font-size:26px; line-height:32px; color:#1a2330; font-weight:bold;">
+                {{HEADLINE}}
+              </h1>
+              <p style="margin:0 0 16px 0; font-size:16px; line-height:24px; color:#3a4453;">
+                {{BODY_PARAGRAPH_1}}
+              </p>
+              <p style="margin:0 0 24px 0; font-size:16px; line-height:24px; color:#3a4453;">
+                {{BODY_PARAGRAPH_2}}
+              </p>
+            </td>
+          </tr>
+
+          <!-- Bulletproof CTA button (works in Outlook via VML) -->
+          <tr>
+            <td class="px-24" align="left" style="padding:0 32px 28px 32px;">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="12%" strokecolor="#0b5cad" fillcolor="#0b5cad">
+                <w:anchorlock/>
+                <center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">{{CTA_LABEL}}</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <a href="{{CTA_URL}}" style="background-color:#0b5cad; border-radius:6px; color:#ffffff; display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:240px; -webkit-text-size-adjust:none;">
+                {{CTA_LABEL}}
+              </a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- ============ IMPORTANT SAFETY INFORMATION (fair balance) ============ -->
+          <tr>
+            <td class="px-24" style="padding:0 32px;">
+              <div style="border-top:1px solid #e2e6ec;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-24 dm-text" style="padding:20px 32px; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; color:#3a4453;">
+              <p style="margin:0 0 8px 0; font-size:14px; font-weight:bold; color:#1a2330;">Important Safety Information</p>
+              <p style="margin:0 0 8px 0;">{{ISI_BOXED_WARNING_OR_KEY_RISKS}}</p>
+              <p style="margin:0 0 8px 0;">{{ISI_CONTRAINDICATIONS_WARNINGS}}</p>
+              <p style="margin:0 0 8px 0;">{{ISI_COMMON_ADVERSE_REACTIONS}}</p>
+              <p style="margin:0;">
+                Please see the
+                <a href="{{FULL_PRESCRIBING_INFO_URL}}" style="color:#0b5cad; text-decoration:underline;">full Prescribing Information</a>{{OPTIONAL_MEDICATION_GUIDE_LINK}}.
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ FOOTER (CAN-SPAM / bulk-sender compliance) ============ -->
+          <tr>
+            <td class="px-24" style="padding:0 32px;">
+              <div style="border-top:1px solid #e2e6ec;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-24 dm-text" style="padding:20px 32px 28px 32px; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:18px; color:#8a94a6;">
+              <p style="margin:0 0 8px 0;">
+                You are receiving this email because you {{OPT_IN_REASON}}.
+              </p>
+              <p style="margin:0 0 8px 0;">
+                {{COMPANY_NAME}} &bull; {{STREET_ADDRESS}} &bull; {{CITY_STATE_ZIP}}
+              </p>
+              <p style="margin:0 0 8px 0;">
+                <a href="{{UNSUBSCRIBE_URL}}" style="color:#5a6472; text-decoration:underline;">Unsubscribe</a>
+                &nbsp;|&nbsp;
+                <a href="{{PREFERENCES_URL}}" style="color:#5a6472; text-decoration:underline;">Manage email preferences</a>
+                &nbsp;|&nbsp;
+                <a href="{{PRIVACY_URL}}" style="color:#5a6472; text-decoration:underline;">Privacy Policy</a>
+              </p>
+              <p style="margin:0; color:#a4acb9;">
+                {{JOB_CODE}} &nbsp;|&nbsp; &copy; {{YEAR}} {{COMPANY_NAME}}. All rights reserved.
+                This email is intended for {{INTENDED_AUDIENCE}}.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /MAIN CARD -->
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
