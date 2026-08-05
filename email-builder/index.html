@@ -42,6 +42,11 @@
   .previewhead{display:flex;gap:10px;margin-bottom:10px;font-size:12px;color:var(--muted)}
   .previewhead b{color:var(--ink)}
   .chk{display:flex;align-items:center;gap:8px;margin-top:8px}.chk input{width:auto}
+  details.opt{border:1px solid var(--line);border-radius:8px;background:#fff;margin:0 0 16px;padding:0 14px}
+  details.opt>summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:12px 0;list-style:none}
+  details.opt[open]>summary{color:var(--brand);border-bottom:1px dashed var(--line);margin-bottom:6px}
+  details.opt fieldset{border:0;padding:0 0 12px;margin:0}
+  code{background:#eef1f5;padding:1px 4px;border-radius:3px;font-size:11px}
 </style>
 </head>
 <body>
@@ -72,8 +77,10 @@
       <div class="hint">For real sends, host images and paste the URL. Dropped files embed as base64 — fine for preview, but Gmail/Outlook often block embedded images.</div>
     </fieldset>
 
-    <fieldset>
-      <legend>1 · Campaign (Clinical Story Engine)</legend>
+    <details class="opt">
+      <summary>Optional · Campaign strategy — journey stage, product starters &amp; structure recommendation</summary>
+      <fieldset style="margin-top:8px">
+      <legend>Clinical Story Engine</legend>
       <div class="row">
         <div><label>Product starter</label>
           <select id="preset"><option value="">— none —</option><option value="pivya">Pivya (pivmecillinam) — new-to-market</option><option value="cipro">Cipro (ciprofloxacin) — appropriate use</option></select></div>
@@ -90,33 +97,40 @@
       <div id="seRec" style="margin-top:10px;font-size:12px;line-height:1.5;padding:10px;border-radius:6px;background:#eef4fb;border:1px solid #cfe0f2;color:#234"></div>
       <button class="ghost" id="useRec" style="margin-top:8px;padding:7px 12px">Use recommended structure</button>
       <div class="hint">Stage sets the goal and how hard the CTA should push. Awareness earns attention with one clinical message; a prescribing ask belongs in later stages. This never invents clinical claims — it structures the story you approve.</div>
-    </fieldset>
+      </fieldset>
+    </details>
 
     <fieldset>
-      <legend>2 · Choose a layout / story structure</legend>
+      <legend>1 · Choose a template</legend>
       <div class="tpl-grid" id="tplGrid"></div>
       <div class="hint" id="tplNote" style="margin-top:8px"></div>
     </fieldset>
 
     <fieldset>
-      <legend>3 · Preview snippet</legend>
+      <legend>2 · Preview snippet</legend>
       <label>Preheader text (inbox preview line, ~40–100 chars)</label>
       <input type="text" id="preheader" placeholder="One line shown next to the subject in the inbox" />
     </fieldset>
 
     <fieldset id="contentFs">
-      <legend>4 · Content (verbatim)</legend>
+      <legend>3 · Content (verbatim)</legend>
       <div id="templateSlots"></div>
     </fieldset>
 
-    <fieldset class="req">
-      <legend>5 · Indication</legend>
+    <fieldset>
+      <legend>Email type</legend>
+      <div class="chk"><input type="checkbox" id="promo" checked /><label style="margin:0"><b>Promotional (branded) email</b> — require Indication, ISI &amp; full PI (fair balance)</label></div>
+      <div class="hint">Leave on for any branded promotional email. Turn off only for non-promotional/unbranded pieces (e.g. disease-state awareness) that legitimately carry no product claims — the Indication/ISI fields then become optional.</div>
+    </fieldset>
+
+    <fieldset class="req" id="fsIndication">
+      <legend>4 · Indication</legend>
       <label>Indication statement (verbatim)</label>
       <textarea id="indication" placeholder="PRODUCT is indicated for..."></textarea>
     </fieldset>
 
-    <fieldset class="req">
-      <legend>6 · Important Safety Information (fair balance)</legend>
+    <fieldset class="req" id="fsIsi">
+      <legend>5 · Important Safety Information (fair balance)</legend>
       <label>ISI copy (verbatim — blank line = new paragraph)</label>
       <textarea id="isi" style="min-height:130px" placeholder="Boxed warning / key risks.&#10;&#10;Contraindications & warnings.&#10;&#10;Common adverse reactions."></textarea>
       <div class="row">
@@ -126,7 +140,7 @@
     </fieldset>
 
     <fieldset class="req">
-      <legend>7 · Footer (compliance)</legend>
+      <legend>6 · Footer (compliance)</legend>
       <label>Why they’re receiving this (opt-in reason)</label>
       <input type="text" id="optIn" placeholder="requested information from Alembic Pharmaceuticals" />
       <label>Street address</label><input type="text" id="street" placeholder="750 Route 202, Suite 402" />
@@ -146,7 +160,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>8 · Metrics (UTM link tagging)</legend>
+      <legend>7 · Metrics (UTM link tagging) — optional</legend>
       <div class="chk"><input type="checkbox" id="utmOn" checked /><label style="margin:0">Append UTM tags to content links (CTA, cards, gallery, video)</label></div>
       <div class="row">
         <div><label>utm_source</label><input type="text" id="utm_source" value="email" /></div>
@@ -156,6 +170,7 @@
       <div class="hint">UTM tags let Google Analytics attribute site traffic to this email. Legal links (unsubscribe, PI, privacy) are never tagged. Open/click pixels are added by your ESP at send time — not here.</div>
     </fieldset>
 
+    <div class="hint" style="margin-top:8px">📎 <b>Handing off to a distribution partner?</b> Use <b>hosted image URLs</b> (not dropped files) so images render in their system, and send them the downloaded <code>.html</code> — it’s a complete, self-contained file they can drop into their campaign.</div>
     <div class="errs" id="errs"></div>
     <div class="bar">
       <button class="primary" id="download">⬇ Download email.html</button>
@@ -204,8 +219,8 @@ const H = {
       ? `<img src="${esc(logo)}" width="170" alt="${company()} logo" style="display:block;width:170px;max-width:170px;height:auto;" />`
       : `<span style="font-family:Arial,sans-serif;font-size:20px;font-weight:bold;color:${brand()};">${company()}</span>`;
     return `<tr><td align="left" class="px" style="padding:24px 32px;border-top:4px solid ${brand()};">${inner}</td></tr>`; },
-  indication(){ return `<tr><td class="px" style="padding:20px 32px 0;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#5a6472;"><strong>Indication:</strong> ${esc(val('indication'))}</td></tr>`; },
-  isi(){ const mg = val('medGuideUrl')?` and <a href="${legal(val('medGuideUrl'))}" style="color:${cta()};text-decoration:underline;">Medication Guide</a>`:'';
+  indication(){ if(!val('indication')) return ''; return `<tr><td class="px" style="padding:20px 32px 0;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#5a6472;"><strong>Indication:</strong> ${esc(val('indication'))}</td></tr>`; },
+  isi(){ if(!val('isi') && !val('piUrl')) return ''; const mg = val('medGuideUrl')?` and <a href="${legal(val('medGuideUrl'))}" style="color:${cta()};text-decoration:underline;">Medication Guide</a>`:'';
     return `<tr><td class="px" style="padding:0 32px;"><div style="border-top:1px solid #e2e6ec;margin-top:24px;"></div></td></tr>
     <tr><td class="px" style="padding:18px 32px;font-family:Arial,sans-serif;font-size:13px;line-height:20px;color:#3a4453;">
       <p style="margin:0 0 8px;font-size:14px;font-weight:bold;color:#1a2330;">Important Safety Information</p>
@@ -392,13 +407,18 @@ function wireImageZones(){ document.querySelectorAll('.img-drop').forEach(zone=>
 }); }
 
 /* ================= validation, render, actions ================= */
-const REQUIRED=[['indication','Indication'],['isi','ISI'],['piUrl','Full PI URL'],['unsubUrl','Unsubscribe URL'],['street','Street address'],['cityZip','City/State/ZIP'],['jobCode','Job code']];
-function validate(){ const miss=REQUIRED.filter(([id])=>!val(id)).map(([,l])=>l);
+const ALWAYS=[['unsubUrl','Unsubscribe URL'],['street','Street address'],['cityZip','City/State/ZIP']];
+const PROMO=[['indication','Indication'],['isi','ISI'],['piUrl','Full PI URL'],['jobCode','Job code']];
+function isPromo(){ const c=$('promo'); return c?c.checked:true; }
+function validate(){ const req = isPromo()?ALWAYS.concat(PROMO):ALWAYS;
+  const miss=req.filter(([id])=>!val(id)).map(([,l])=>l);
   $('errs').textContent = miss.length?('Required before export: '+miss.join(', ')):'';
   $('download').disabled=!!miss.length; $('copy').disabled=!!miss.length; return !miss.length; }
 let lastHtml='';
 function render(){ lastHtml=buildEmail(); $('frame').srcdoc=lastHtml;
-  const kb=(new Blob([lastHtml]).size/1024).toFixed(1); $('size').textContent=kb+' KB'; $('size').style.color=kb>102?'#c0392b':'#5a6472'; if(typeof updateRec==='function')updateRec(); validate(); }
+  const kb=(new Blob([lastHtml]).size/1024).toFixed(1); $('size').textContent=kb+' KB'; $('size').style.color=kb>102?'#c0392b':'#5a6472';
+  const pr=isPromo(); ['fsIndication','fsIsi'].forEach(id=>{const el=$(id); if(el)el.classList.toggle('req',pr);});
+  if(typeof updateRec==='function')updateRec(); validate(); }
 
 document.querySelector('.form').addEventListener('input',e=>{ const t=e.target;
   if(t.id){ store[t.id]=t.value; if(t.classList.contains('imgurl')&&t.value.trim()){ delete IMG[t.id];

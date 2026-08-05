@@ -5,23 +5,43 @@ A single-file, no-install tool that turns a Canva design + approved copy into
 browser (works offline). Left pane = slots to fill; right pane = live preview;
 buttons download or copy the final email HTML.
 
-> **This is step 1 of a physician behavior-change platform, not just an editor.**
-> See [`STRATEGY.md`](STRATEGY.md) for the prescribing-journey model, adaptive
-> sequencing, and the physician adoption-scoring blueprint.
+## The basic job (this must be fast and foolproof)
 
-## Clinical Story Engine (campaign context)
+**Pick a template → drop in the wording and images → download the HTML.** That's it.
 
-Before picking a layout, set the **campaign context**: product (with **Pivya** and
-**Cipro** starters), target specialty, **journey stage** (Awareness → Consideration
-→ First Rx → Reinforcement), objective, and available evidence. The engine then:
+1. **Choose a template** (section 1).
+2. Fill the **Content** slots — paste approved copy, drop in / paste images.
+3. Fill **Indication, ISI, Footer** (required for branded promotional email).
+4. Click **Download email.html**.
 
-- shows the **stage's goal, content rule, and correct CTA posture** (so an Awareness
-  email never over-asks for a prescription),
-- **recommends a story structure** from stage + objective + evidence,
-- tags links with `utm_content = journey stage` for stage-level analytics.
+The downloaded file is **complete and self-contained** — ready to hand to a
+**distribution partner** who runs it through their own email campaign. (Alembic
+doesn't send it; the partner does.) For handoff, use **hosted image URLs** so
+images render in the partner's system — dropped files are preview-only.
 
-It **never invents clinical claims** — it structures the story you approve; every
+Because partners control sending, **open/click tracking and any per-recipient
+sequencing live on their side, not here.** This tool just produces the email fast.
+
+## Optional: Clinical Story Engine (collapsed by default)
+
+Everyday use never needs this. When you want strategic help, expand the
+**"Campaign strategy"** panel: set product (with **Pivya** / **Cipro** starters),
+specialty, **journey stage** (Awareness → Consideration → First Rx → Reinforcement),
+objective, and evidence. It then shows the **stage's goal, content rule, and CTA
+posture**, **recommends a story structure**, and tags links with
+`utm_content = journey stage`. It **never invents clinical claims** — every
 efficacy/safety line stays a placeholder for MLR-approved, verbatim language.
+
+> The full behavior-change vision — adaptive sequencing and physician
+> adoption-scoring — is documented in [`STRATEGY.md`](STRATEGY.md). Those are a
+> *future backend* (they need the sending platform's data); this file is step 1.
+
+### "Promotional email" toggle
+
+On by default → requires Indication, ISI, and full PI (fair balance). Turn it off
+only for **non-promotional / unbranded** pieces (e.g. disease-state awareness) that
+legitimately carry no product claims — then those fields become optional and the
+Indication/ISI blocks drop out of the email automatically.
 
 ## The workflow ("teach a man to fish")
 
