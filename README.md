@@ -17,8 +17,24 @@ Two front-ends read the same `database.json`:
 - A **Physician View / Full View** toggle is in each dashboard's Quick Links.
 
 `index.html` is the live dashboard and reads `database.json` directly, so updating the data
-updates every view. `database.json` is the system of record: **144 findings** spanning
+updates every view. `database.json` is the system of record: **160 findings** spanning
 2012-2026, each dated, mapped to indications, and scored on two axes.
+
+### Physicians roster
+A **Physicians** tab ranks physicians/investigators by their prominence in **LITT publishing
+and citation impact**, backed by its own system of record, `physicians.json`. The ordering is
+a *best-effort estimate* assembled from public web sources and published bibliometric analyses
+(programmatic citation databases — OpenAlex, PubMed, Semantic Scholar, Crossref — were not
+reachable), so `rankingBasis` in the file states the method plainly: placements are firmest in
+the top ~10 (senior authorship of the field's registries and landmark trials) and softer below,
+and only `hardNumbers` fields carry a verified figure (currently two, from the 2025 Frontiers
+in Neurology epilepsy-LITT bibliometric). Each physician is mapped to `database.json` indication
+keys, which powers the "related findings" cross-links and indication chips on every card; a
+`signal` field records ranking confidence and `affiliationConfidence: "low"` marks an
+unconfirmed current institution (shown as an "affiliation unverified" badge). The hosted pages
+fetch `physicians.json`; the offline `*-standalone.html` builds embed the same roster as
+`window.__PHYS__`, so refreshing a standalone build means re-embedding the current
+`physicians.json`.
 
 ### The two scoring axes
 - **Clinical Impact (★1–5):** an editorial rating against a fixed rubric in the engine spec
@@ -34,3 +50,20 @@ updates every view. `database.json` is the system of record: **144 findings** sp
 `docs/clinical-intelligence-engine.md` is the spec; `.claude/commands/clinical-scan.md` is the
 `/clinical-scan` command (baseline since 2020 + recurring trailing-2-month surveillance that
 only adds new content, dedup by DOI/URL/title). Reports land in `reports/`.
+
+### Keeping the data fresh
+- **In-app "↻ Update" button + last-updated date.** Every dashboard shows when the data was
+  last updated and an **Update** button that re-pulls the latest `database.json` /
+  `physicians.json`. This works on the **hosted** site (GitHub Pages); the offline
+  `*-standalone.html` builds carry embedded data, so their Update button reports the embedded
+  snapshot date instead of fetching.
+- **The scan that produces new data runs in CI.** `.github/workflows/clinical-scan.yml` runs
+  the engine on a **weekly schedule** and on a manual **"Run workflow"** button (Actions tab),
+  then commits the refreshed `database.json`. GitHub runners have open internet, so the scan
+  reaches **PubMed E-utilities** (full-recall retrieval, per the spec's PubMed-first query) and
+  the **news outlets** (WSJ / NYT / CNN / Reuters / STAT / …) — hosts that are blocked in the
+  Claude Code web sandbox. One-time setup: add the `ANTHROPIC_API_KEY` repo secret and enable
+  read/write workflow permissions (details in the workflow file's header).
+
+> A static web page cannot run the AI scan itself; the Update button pulls the latest *published*
+> data, and the workflow is what publishes it. Together they are the "click to update" loop.

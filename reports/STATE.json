@@ -3,11 +3,22 @@
   "specVersion": "1.0",
   "baselineDate": "2026-06-29",
   "baselineStartDate": "2015-01-01",
-  "lastRunDate": "2026-06-29",
+  "lastRunDate": "2026-08-03",
   "lastMode": "surveillance",
   "baselineWindowMonths": null,
   "surveillanceWindowMonths": 2,
   "history": [
+    {
+      "date": "2026-08-03",
+      "mode": "surveillance",
+      "window": "2026-06-03 to 2026-08-03",
+      "found": 16,
+      "added": 16,
+      "updated": 0,
+      "skipped": 0,
+      "reportPath": "reports/2026-08-03-surveillance.md",
+      "note": "Trailing-2-month all-category sweep. NCBI/PubMed/publisher full-text proxy-blocked, so 12/16 items flagged partial (4 verified: Optune Gen-2 approval, GammaTile CoE, CMS CY2027 PFS rule, Zeta 510(k)). Adds LITT brain-met pooled review + HGG/AI review + pediatric extratemporal LITT; competitive/ecosystem cluster (NeuroOne OneRF/StereoCED, GammaTile CoE, second-gen Optune, NeuroPace RNS-IGE FDA setback, Zeta TMS & Cercare AI clearances, Datar TriNetra-Glio breakthrough); CMS CY2027 reimbursement; pediatric ependymoma immunotherapy. First run to use the new na business-direction value. Database 144 -> 160."
+    },
     {
       "date": "2026-06-29",
       "mode": "surveillance",

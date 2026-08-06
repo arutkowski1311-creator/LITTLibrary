@@ -1,0 +1,68 @@
+name: Clinical scan
+
+# Updates database.json by running the Clinical Intelligence Engine.
+#
+# Two triggers:
+#   - "Run workflow" button (repo -> Actions -> Clinical scan -> Run workflow) — on demand
+#   - weekly schedule (Mondays 12:00 UTC) — automatic trailing-2-month surveillance
+#
+# Why here and not the web app: GitHub-hosted runners have OPEN internet, so PubMed
+# E-utilities and the news outlets are reachable (they are blocked in the Claude Code
+# web sandbox). This is where the pull achieves full recall.
+#
+# One-time setup:
+#   1. Add repo secret ANTHROPIC_API_KEY
+#      (Settings -> Secrets and variables -> Actions -> New repository secret).
+#   2. Settings -> Actions -> General -> Workflow permissions -> "Read and write permissions".
+#
+# Note: the first run should be watched — confirm the engine commits updated data as
+# expected, and pin/adjust the action version below to whatever your org standardizes on.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Scan mode"
+        type: choice
+        options: [surveillance, baseline]
+        default: surveillance
+  schedule:
+    - cron: "0 12 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: clinical-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Clinical Intelligence Engine
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Run the Clinical Intelligence Engine by following the instructions in
+            .claude/commands/clinical-scan.md with argument "${{ inputs.mode || 'surveillance' }}".
+
+            This runner has open internet, so achieve FULL RECALL:
+            - Query PubMed E-utilities (eutils.ncbi.nlm.nih.gov) directly with the LITT and
+              per-domain queries in docs/clinical-intelligence-engine.md; reconcile every hit
+              against database.json and add any that are missing.
+            - Also query ClinicalTrials.gov, openFDA, and CMS.
+            - Run the news domain across the named outlets (NYT, WSJ, Washington Post, Reuters,
+              AP, Bloomberg, CNN, BBC, NPR, The Economist, STAT, Endpoints, Fierce, MedTech Dive,
+              Becker's).
+            - Never fabricate a record you could not fetch; carry the verified/partial/unverified flag.
+
+            When finished, update database.json, reports/, and reports/STATE.json, then commit
+            with a clear message and push to the current branch.
+          claude_args: "--allowedTools Bash,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Agent"
