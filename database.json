@@ -122,6 +122,16 @@
       "skipped": 0,
       "reportPath": "reports/2026-08-03-surveillance.md",
       "note": "Trailing-2-month deltas (all-category web sweep; NCBI/PubMed/publisher full-text proxy-blocked, so most clinical figures rest on cross-checked search metadata and are flagged partial). Adds: LITT brain-met pooled review + HGG/AI review + pediatric extratemporal LITT; competitive/ecosystem (2nd-gen Optune approval, NeuroOne OneRF/StereoCED, GammaTile CoE, NeuroPace RNS-IGE FDA setback, Zeta TMS & Cercare AI clearances, Datar TriNetra-Glio breakthrough); reimbursement (CMS CY2027 PFS proposed rule); and pediatric ependymoma immunotherapy (first item using the new 'na' business direction). First surveillance to exercise the na direction."
+    },
+    {
+      "date": "2026-08-03",
+      "mode": "gap-fill",
+      "window": "manual",
+      "found": 1,
+      "added": 1,
+      "updated": 0,
+      "skipped": 0,
+      "note": "Manual add of PMID 42340498 (pediatric LGG LITT series, Childs Nerv Syst, 2026-06-24) flagged by a user as missed by the web-search-only surveillance scan. Illustrates the recall gap from blocked scholarly databases (PubMed/OpenAlex/Crossref); a full-recall fix requires PubMed E-utilities access."
     }
   ],
   "items": [
@@ -8834,6 +8844,61 @@
       "changeNote": "",
       "firstSeenRun": "2026-08-03",
       "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "litt-pediatric-lgg-ablation-childsnervsyst-2026",
+      "dedupKey": "10.1007/s00381-026-07354-1",
+      "doi": "10.1007/s00381-026-07354-1",
+      "domain": "litt",
+      "title": "LITT for ablation of pediatric low-grade glioma: single-institution series of 13 patients",
+      "citation": "Mishra A, Golub D, Kashanian A, Unadkat P, Pruitt RM, Schneider SJ, Mittler MA, Rodgers SD. Childs Nerv Syst. 2026 Jun 24;42(1):262. doi:10.1007/s00381-026-07354-1. PMID 42340498.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42340498/",
+      "date": "2026-06-24",
+      "venue": "Child's Nervous System",
+      "studyDesign": "Retrospective single-institution case series",
+      "population": "Pediatric patients with low-grade glioma treated with MRI-guided LITT",
+      "sampleSize": "13 patients",
+      "endpoints": "Ablation feasibility/extent, tumor control, complications (specific outcome figures not extracted — abstract full text not retrievable in this environment)",
+      "results": "Outcome figures not verified (publisher/PubMed full text proxy-blocked); citation, cohort size (n=13), indication and date confirmed from the PubMed record.",
+      "significance": "Small single-center series",
+      "limitations": "Small (n=13), retrospective, single-institution; outcome details unverified here",
+      "evidenceStrength": "Low (small retrospective pediatric series)",
+      "clinicalBottomLine": "Adds early single-center evidence for LITT as a minimally invasive option in pediatric low-grade glioma — a thinly covered indication.",
+      "whyMatters": "Extends LITT into pediatric low-grade glioma and fills one of the corpus's thin indications (newly/recurrent LGG). Flagged by a user as missed by the automated scan — added manually.",
+      "indications": [
+        "newly_lgg",
+        "recurrent_lgg"
+      ],
+      "strategies": [
+        "deep_eloquent_access",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "referral"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Supports LITT expansion into pediatric low-grade glioma; platform-agnostic tailwind.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03",
+      "status": "new",
+      "changeNote": "Manually added after user flagged it as missed by the automated (web-search-only) scan."
     }
   ]
 }
