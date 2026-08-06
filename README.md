@@ -50,3 +50,20 @@ fetch `physicians.json`; the offline `*-standalone.html` builds embed the same r
 `docs/clinical-intelligence-engine.md` is the spec; `.claude/commands/clinical-scan.md` is the
 `/clinical-scan` command (baseline since 2020 + recurring trailing-2-month surveillance that
 only adds new content, dedup by DOI/URL/title). Reports land in `reports/`.
+
+### Keeping the data fresh
+- **In-app "↻ Update" button + last-updated date.** Every dashboard shows when the data was
+  last updated and an **Update** button that re-pulls the latest `database.json` /
+  `physicians.json`. This works on the **hosted** site (GitHub Pages); the offline
+  `*-standalone.html` builds carry embedded data, so their Update button reports the embedded
+  snapshot date instead of fetching.
+- **The scan that produces new data runs in CI.** `.github/workflows/clinical-scan.yml` runs
+  the engine on a **weekly schedule** and on a manual **"Run workflow"** button (Actions tab),
+  then commits the refreshed `database.json`. GitHub runners have open internet, so the scan
+  reaches **PubMed E-utilities** (full-recall retrieval, per the spec's PubMed-first query) and
+  the **news outlets** (WSJ / NYT / CNN / Reuters / STAT / …) — hosts that are blocked in the
+  Claude Code web sandbox. One-time setup: add the `ANTHROPIC_API_KEY` repo secret and enable
+  read/write workflow permissions (details in the workflow file's header).
+
+> A static web page cannot run the AI scan itself; the Update button pulls the latest *published*
+> data, and the workflow is what publishes it. Together they are the "click to update" loop.

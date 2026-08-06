@@ -56,6 +56,20 @@
   .top .org .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--blue));
     box-shadow:0 0 12px rgba(123,92,255,.5)}
   .crumbs{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .topright{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+  .updwhen{font-size:12px;color:var(--muted);white-space:nowrap}
+  .updwhen b{color:var(--ink2);font-weight:600}
+  .updbtn{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(43,212,255,.08);color:var(--ink);cursor:pointer;font-size:12.5px;font-weight:600;white-space:nowrap}
+  .updbtn:hover{border-color:var(--cyan);box-shadow:0 0 12px rgba(43,212,255,.18)}
+  .updbtn:disabled{opacity:.6;cursor:default}
+  .updspin{width:12px;height:12px;border-radius:50%;border:2px solid rgba(43,212,255,.35);border-top-color:var(--cyan);display:none}
+  .updbtn.busy .updspin{display:inline-block;animation:updspin .7s linear infinite}
+  .updbtn.busy .updlbl{opacity:.7}
+  @keyframes updspin{to{transform:rotate(360deg)}}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:50;max-width:min(90vw,560px);background:var(--panelAlt);color:var(--ink);border:1px solid var(--border);border-radius:12px;padding:11px 16px;font-size:13px;line-height:1.45;box-shadow:0 8px 30px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast.err{border-color:var(--danger)}
+  @media(prefers-reduced-motion:reduce){.updbtn.busy .updspin{animation:none}.toast{transition:none}}
 
   /* Panels */
   .grid{display:grid;gap:16px}
@@ -239,7 +253,11 @@
   <main class="main">
     <div class="top">
       <div class="crumbs" id="crumb">Dashboard</div>
-      <div class="org biz-only"><span>Monteris Medical</span><div class="dot"></div></div>
+      <div class="topright">
+        <span class="updwhen" id="updWhen"></span>
+        <button class="updbtn" id="updateBtn" title="Pull the latest published data"><span class="updspin" aria-hidden="true"></span><span class="updlbl">↻ Update</span></button>
+        <div class="org biz-only"><span>Monteris Medical</span><div class="dot"></div></div>
+      </div>
     </div>
 
     <!-- DASHBOARD VIEW -->
@@ -681,6 +699,7 @@ function hydrate(d){
   DATA=d||{items:[]};TAX=DATA.taxonomy||{indications:{},strategies:{}};
   if(PHYSICIAN&&DATA.items)DATA=Object.assign({},DATA,{items:DATA.items.filter(it=>(+it.clinicalImpactScore||0)>=2)});
   $("#lastUpd").textContent=DATA.lastUpdated||"—";
+  {var _uw=$("#updWhen");if(_uw)_uw.innerHTML=DATA.lastUpdated?("Updated <b>"+esc(DATA.lastUpdated)+"</b>"):"";}
   // populate filters
   const inds=[...new Set((DATA.items||[]).flatMap(i=>i.indications||[]))].sort((a,b)=>indName(a).localeCompare(indName(b)));
   $("#f-indication").innerHTML='<option value="">All indications</option>'+inds.map(k=>`<option value="${k}">${esc(indName(k))}</option>`).join("");
@@ -692,6 +711,23 @@ function hydrate(d){
 ["q","f-indication","f-strategy","f-direction","f-impact","f-biz"].forEach(id=>document.addEventListener("input",e=>{if(e.target.id===id)renderList();}));
 document.addEventListener("input",e=>{if(e.target&&e.target.id==="pq")renderPhysicians();});
 $("#f-sort").addEventListener("change",e=>{sortKey=e.target.value;sortDir=sortKey==="date"?-1:-1;renderList();});
+function toast(msg,isErr){var t=$("#toast");if(!t){t=document.createElement("div");t.id="toast";document.body.appendChild(t);}t.className="toast"+(isErr?" err":"");t.textContent=msg;requestAnimationFrame(function(){t.classList.add("show");});clearTimeout(window.__toastT);window.__toastT=setTimeout(function(){t.classList.remove("show");},6000);}
+async function updateData(){
+  var btn=$("#updateBtn");
+  if(window.__DB__){toast("This is the offline snapshot \u2014 its data is embedded"+(DATA.lastUpdated?(" (last updated "+DATA.lastUpdated+")"):"")+". Open the hosted site to pull live updates.");return;}
+  if(btn){btn.classList.add("busy");btn.disabled=true;}
+  var prevN=(DATA.items||[]).length;
+  try{
+    var db=await fetch("database.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw r.status;return r.json();});
+    var ph=await fetch("physicians.json",{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+    if(ph){var a=(ph.physicians||ph||[]);if(Array.isArray(a))PHYS=a.slice().sort(function(x,y){return (x.rank||999)-(y.rank||999);});}
+    hydrate(db);
+    var n=(DATA.items||[]).length,d=n-prevN;
+    toast("Up to date \u2014 "+n+" findings"+(d>0?(", "+d+" new since last load"):"")+" \u00b7 last updated "+(DATA.lastUpdated||"?"));
+  }catch(e){toast("Couldn't reach the data server (status "+e+"). Updates run on the hosted site; a downloaded file can't self-update.",true);}
+  finally{if(btn){btn.classList.remove("busy");btn.disabled=false;}}
+}
+if($("#updateBtn"))$("#updateBtn").onclick=updateData;
 $("#refresh").onclick=()=>$("#file").click();
 $("#file").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
   r.onload=()=>{try{hydrate(JSON.parse(r.result));}catch(err){alert("Invalid JSON: "+err.message);}};r.readAsText(f);});
