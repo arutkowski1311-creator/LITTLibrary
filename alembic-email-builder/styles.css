@@ -508,7 +508,7 @@ h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em}
 .inspector input:focus,.inspector select:focus,.inspector textarea:focus,
 .modal-field input:focus,.modal-field select:focus,.modal-field textarea:focus,
 .field-group input:focus,.field-group select:focus{border-color:var(--green);box-shadow:var(--focus)}
-.inspector input[type="range"]{height:auto;padding:0;border:0;background:none}
+.inspector input[type="range"]{height:4px;padding:0;border:0;width:100%;background:var(--n200)}
 .inspector input[type="color"]{padding:0}
 
 .two-field{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -569,24 +569,31 @@ input[type="range"]::-moz-range-thumb{
 
 /* Disclosure groups ------------------------------------------------------- */
 details.field-group{padding-bottom:0}
-details.field-group>summary{
+details.field-group>summary,
+.inspector details>summary{
   display:flex;align-items:center;gap:7px;cursor:pointer;list-style:none;
   padding:9px 10px;margin:0 -4px 0;border-radius:var(--r-sm);
   font-size:var(--fs-sm);font-weight:600;color:var(--n700);
   background:var(--n50);border:1px solid var(--line);
   transition:background .12s,border-color .12s;
 }
-details.field-group>summary::-webkit-details-marker{display:none}
-details.field-group>summary::after{
+details.field-group>summary::-webkit-details-marker,
+.inspector details>summary::-webkit-details-marker{display:none}
+details.field-group>summary::after,
+.inspector details>summary::after{
   content:"";width:8px;height:8px;margin-left:auto;flex:0 0 auto;
   border-right:1.7px solid var(--n400);border-bottom:1.7px solid var(--n400);
   transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s;
 }
-details.field-group[open]>summary{background:var(--n100);border-color:var(--line-strong);margin-bottom:11px}
-details.field-group[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
-details.field-group>summary:hover{background:var(--n100)}
+details.field-group[open]>summary,
+.inspector details[open]>summary{background:var(--n100);border-color:var(--line-strong);margin-bottom:11px}
+details.field-group[open]>summary::after,
+.inspector details[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+details.field-group>summary:hover,
+.inspector details>summary:hover{background:var(--n100)}
 details.field-group{border-bottom:1px solid var(--line);margin-bottom:15px;padding-bottom:15px}
 .advanced-spacing-body{padding-top:2px}
+.inspector details.advanced-spacing{margin-top:10px}
 
 /* Rich text editor -------------------------------------------------------- */
 .rich-toolbar{
