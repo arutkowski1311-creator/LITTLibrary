@@ -195,11 +195,12 @@ async function init(){
   fillTemplateSelect(); buildBlockGrid(); bindUI(); populateAssetFilters(); renderAssets(); loadTemplate(state.templateId, false);showStart(true);
 }
 function safeJSON(s){try{return JSON.parse(s)}catch{return null}}
+function selectValueFor(id){return isStarter(id)?'starter::'+id:id}
 function fillTemplateSelect(){
   const sel=$('#templateSelect'); sel.innerHTML='';
   if(state.projects.length){const mine=document.createElement('optgroup');mine.label='My Emails';state.projects.forEach(p=>{const o=document.createElement('option');o.value=p.id;o.textContent=p.name;mine.appendChild(o)});sel.appendChild(mine)}
   const starters=document.createElement('optgroup');starters.label='Starter Templates — selecting creates a copy';starterTemplates.forEach(t=>{const o=document.createElement('option');o.value='starter::'+t.id;o.textContent=t.name;starters.appendChild(o)});sel.appendChild(starters);
-  sel.value=state.templateId;
+  sel.value=selectValueFor(state.templateId);
 }
 function showStart(initial=false){const overlay=$('#startOverlay');overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');$('#startCloseBtn').style.display=state.projects.length?'block':'none';if(initial){state.projects.length?renderMyEmailsPanel():renderNewEmailPanel()}}
 function hideStart(){if(!state.projects.length||isStarter(state.templateId))return;$('#startOverlay').classList.remove('open');$('#startOverlay').setAttribute('aria-hidden','true')}
@@ -251,7 +252,7 @@ function buildBlockGrid(){
  $('#audienceHint').textContent=state.audience==='Pharmacy'?'Pharmacy mode: ordering information and patient-access blocks are highlighted.':'HCP mode: clinical, dosing, evidence and patient-access blocks are available. Switch to Pharmacy to highlight stocking tools.';
 }
 function bindUI(){
- $('#templateSelect').addEventListener('change',e=>{const id=e.target.value;if(id.startsWith('starter::')){e.target.value=state.templateId;openCreateFromStarter(id.slice(9));return}loadTemplate(id,true)});
+ $('#templateSelect').addEventListener('change',e=>{const id=e.target.value;if(id.startsWith('starter::')){e.target.value=selectValueFor(state.templateId);openCreateFromStarter(id.slice(9));return}loadTemplate(id,true)});
  $('#audienceSelect').addEventListener('change',e=>{state.audience=e.target.value;state.metadata[state.templateId].audience=state.audience;saveCurrent();buildBlockGrid();});
  $('#subjectInput').addEventListener('input',e=>{state.metadata[state.templateId].subject=e.target.value;saveMeta();});
  $('#preheaderInput').addEventListener('input',e=>{state.metadata[state.templateId].preheader=e.target.value;updateFramePreheader();saveMeta();});
@@ -281,7 +282,7 @@ function loadTemplate(id, saveBefore=true){
  if(saveBefore && state.templateId) saveCurrent();
  state.templateId=id;state.history=[];state.future=[];state.selectedEl=null;state.selectedSection=null;state.richRange=null;state.richEditHistoryPushed=false;
  const m=state.metadata[id];state.audience=m.audience||'Healthcare Professional';
- $('#templateSelect').value=id;$('#subjectInput').value=m.subject;$('#preheaderInput').value=m.preheader;$('#audienceSelect').value=state.audience;buildBlockGrid();populateAssetFilters();renderAssets();
+ $('#templateSelect').value=selectValueFor(id);$('#subjectInput').value=m.subject;$('#preheaderInput').value=m.preheader;$('#audienceSelect').value=state.audience;buildBlockGrid();populateAssetFilters();renderAssets();
  const frame=$('#emailFrame');frame.srcdoc=state.docs[id];
  frame.onload=()=>{prepareFrame();renderSections();renderInspector();resizeIframe();runQA(false);};
 }
@@ -308,7 +309,6 @@ function sectionLabel(row,i){
  const t=cleanText(row);
  const img=row.querySelector('img');
  if(t.includes('HEALTHCARE PROFESSIONAL')||t.includes('PHARMACY COMMUNICATION'))return 'Alembic header';
- if(i===1)return 'Green brand rule'; if(i===2)return 'Blue brand rule';
  if(row.hasAttribute('data-regulatory-legal-name'))return 'Product legal name (optional)';
  if(img&&(img.src.includes('pivya_logo')||img.src.includes('pivya-logo')))return 'PIVYA logo';
  if(img&&img.src.includes('ciprofloxacin-otic-packshot'))return 'Ciprofloxacin product pack';
@@ -321,8 +321,28 @@ function sectionLabel(row,i){
  if(t.includes('PIVYA Targeting'))return 'PIVYA targeting';
  if(img && !t)return `Image · ${img.getAttribute('alt')||img.getAttribute('src')?.split('/').pop()||'asset'}`;
  const h=row.querySelector('.h1,.h2,[style*="font-weight:700"],[style*="font-weight: 700"],strong');
- const ht=h?cleanText(h):''; return (ht||t||`Section ${i+1}`).slice(0,58);
+ const ht=h?cleanText(h):''; if(ht||t)return (ht||t).slice(0,58);
+ return emptyRowLabel(row,i);
 }
+function brandRuleLabel(row){
+ const cells=row.children;if(cells.length!==1)return '';
+ const td=cells[0];if(cleanText(td))return '';
+ const view=row.ownerDocument?.defaultView;if(!view)return '';
+ const cs=view.getComputedStyle(td),height=parseFloat(cs.height)||0;
+ if(!height||height>14)return '';
+ const bg=colorValue(cs.backgroundColor||'','').toUpperCase();
+ if(bg==='#249647')return 'Green brand rule';
+ if(bg==='#0878C9')return 'Blue brand rule';
+ return bg?'Brand rule':'';
+}
+function emptyRowLabel(row,i){
+ const rule=brandRuleLabel(row);if(rule)return rule;
+ if(row.querySelector('hr'))return 'Divider';
+ if(i===1)return 'Green brand rule';if(i===2)return 'Blue brand rule';
+ const inner=row.querySelector('table');
+ const cols=inner?inner.querySelectorAll(':scope>tbody>tr>td, :scope>tr>td').length:0;
+ if(cols>1)return `Empty ${cols}-column row`;
+ return 'Spacer'}
 function cleanText(el){return (el.textContent||'').replace(/\s+/g,' ').trim()}
 function getRows(){const doc=frameDoc(),shell=doc&&$('table.shell',doc);return shell?[...shell.tBodies[0].children].filter(x=>x.tagName==='TR'):[]}
 function renderSections(){
