@@ -1,0 +1,27 @@
+CIPROFLOXACIN OTIC TEMPLATE NOTES
+=================================
+
+Templates
+- Email 8: pharmacy availability / back-in-stock notice
+- Email 9: evergreen pharmacy stocking guide
+
+Product details used
+- Ciprofloxacin Otic Solution, 0.2%
+- NDC 62332-168-25
+- 14 single-dose containers per carton
+- 0.25 mL per container; equivalent to 0.5 mg ciprofloxacin
+- Store at 15 C to 25 C (59 F to 77 F); protect unused containers from light
+
+Regulatory approach
+- Indication, dosing, formulation, pack configuration, storage, contraindication,
+  warnings/precautions, and adverse-reaction language track the supplied concept
+  and current Ciprofloxacin Otic Solution, 0.2% labeling.
+- The unsupported concept wording about being an "excellent choice" and reducing
+  ototoxicity or ear-canal irritation was intentionally omitted.
+- The current PI link used in the templates is:
+  https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=51dde3f2-adb1-4ed8-83c6-1f63723a2529
+
+Before deployment
+- Medical/Legal/Regulatory should confirm the current approved product-specific PI
+  destination, availability claim, ordering details, job code, and footer copy.
+- The sending platform must add its required unsubscribe or preference-center link.

@@ -1,0 +1,9 @@
+PIVYA EMAIL BUILDER v3 — REFERENCE NOTES
+
+Resistance email (Email 6) uses:
+1. Hawser S, Morrissey I, Kothari N, Monti F, Santerre Henriksen A. Activity of mecillinam against USA urinary tract clinical isolates from 2017 to 2020 including isolates resistant to comparator antibiotics. Journal of Global Antimicrobial Resistance. 2024;39:137-143. doi:10.1016/j.jgar.2024.08.013.
+2. PIVYA (pivmecillinam) Prescribing Information. Current U.S. labeling should be checked before deployment. DailyMed label revised October 2025 at the time v3 was assembled.
+
+IMPORTANT: Email 6 includes in vitro susceptibility and ESBL-positive isolate data. It is intentionally qualified as in vitro evidence and should receive Alembic MLR review before external use.
+
+The pharmacy ordering module carries Cencora Entry/SAP #10307184 from the supplied Alembic materials. The NDC has been set to 62332-966-09, matching the current U.S. label reviewed while v3 was assembled. Confirm both values before deployment.

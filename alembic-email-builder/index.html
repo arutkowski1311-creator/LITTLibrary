@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alembic Email Builder v7.2</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg id="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs>
+  <g id="i-undo"><path d="M3 8h11a5 5 0 0 1 0 10H9"/><path d="M7 4 3 8l4 4"/></g>
+  <g id="i-redo"><path d="M21 8H10a5 5 0 0 0 0 10h5"/><path d="m17 4 4 4-4 4"/></g>
+  <g id="i-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></g>
+  <g id="i-package"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></g>
+  <g id="i-chevron-down"><path d="m6 9 6 6 6-6"/></g>
+  <g id="i-home"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></g>
+  <g id="i-copy"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></g>
+  <g id="i-restore"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></g>
+  <g id="i-download"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 21h16"/></g>
+  <g id="i-upload"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 21h16"/></g>
+  <g id="i-layers"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 16 9 5 9-5M3 12l9 5 9-5"/></g>
+  <g id="i-plus-square"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></g>
+  <g id="i-image"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m21 16-5-5-6.5 6.5L7 15l-4 4"/></g>
+  <g id="i-sliders"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></g>
+  <g id="i-shield-check"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6Z"/><path d="m9 12 2 2 4-4"/></g>
+  <g id="i-search"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></g>
+  <g id="i-x"><path d="M18 6 6 18M6 6l12 12"/></g>
+  <g id="i-eye"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6"/></g>
+  <g id="i-eye-off"><path d="M10.6 6.2A9.9 9.9 0 0 1 12 6c6.4 0 10 6 10 6a17 17 0 0 1-3.3 3.9M6.3 8.1A17 17 0 0 0 2 12s3.6 6 10 6a9.7 9.7 0 0 0 4-.8"/><path d="m3 3 18 18"/></g>
+  <g id="i-arrow-up"><path d="M12 20V5"/><path d="m6 11 6-6 6 6"/></g>
+  <g id="i-arrow-down"><path d="M12 4v15"/><path d="m6 13 6 6 6-6"/></g>
+  <g id="i-trash"><path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6 7v13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7"/><path d="M10 11v6M14 11v6"/></g>
+  <g id="i-monitor"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g>
+  <g id="i-smartphone"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></g>
+  <g id="i-unlock"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></g>
+  <g id="i-file-plus"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7Z"/><path d="M14 3v4h4"/><path d="M12 11v6M9 14h6"/></g>
+  <g id="i-template"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></g>
+  <g id="i-folder"><path d="M3 7a1 1 0 0 1 1-1h5l2 2.5h8a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/></g>
+  <g id="i-pill"><rect x="2.5" y="7.5" width="19" height="9" rx="4.5"/><path d="M12 7.5v9"/></g>
+  <g id="i-heading"><path d="M5 5v14M15 5v14M5 12h10"/><path d="M19 19v-7l-2 1.4"/></g>
+  <g id="i-text"><path d="M4 6h16M4 11h16M4 16h11"/></g>
+  <g id="i-columns-2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></g>
+  <g id="i-columns-3"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></g>
+  <g id="i-image-text"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/><circle cx="7.5" cy="9" r="1.3"/><path d="m3.6 15 3.4-3 2 1.8"/><path d="M15 9h3.5M15 12.5h3.5M15 16h2.5"/></g>
+  <g id="i-caption"><rect x="3" y="4" width="18" height="10" rx="2"/><path d="M4 18h16M4 21h10"/></g>
+  <g id="i-user"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></g>
+  <g id="i-cards-2"><rect x="2.5" y="6" width="8.5" height="12" rx="1.6"/><rect x="13" y="6" width="8.5" height="12" rx="1.6"/></g>
+  <g id="i-cards-3"><rect x="2" y="7" width="5.7" height="10" rx="1.4"/><rect x="9.2" y="7" width="5.7" height="10" rx="1.4"/><rect x="16.4" y="7" width="5.7" height="10" rx="1.4"/></g>
+  <g id="i-chart"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></g>
+  <g id="i-info"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></g>
+  <g id="i-arrow-right-circle"><circle cx="12" cy="12" r="9"/><path d="M9 12h6m-2.5-2.5L15 12l-2.5 2.5"/></g>
+  <g id="i-minus"><path d="M4 12h16"/></g>
+  <g id="i-truck"><path d="M2 7h11v10H2Z"/><path d="M13 10h4l4 3.5V17h-8Z"/><circle cx="6.5" cy="18.5" r="1.8"/><circle cx="17.5" cy="18.5" r="1.8"/></g>
+  <g id="i-tag"><path d="M3 11V4a1 1 0 0 1 1-1h7l9 9-8 8-9-9Z"/><circle cx="7.5" cy="7.5" r="1.4"/></g>
+  <g id="i-share"><circle cx="6" cy="12" r="2.6"/><circle cx="17" cy="6" r="2.6"/><circle cx="17" cy="18" r="2.6"/><path d="m8.3 10.8 6.4-3.6M8.3 13.2l6.4 3.6"/></g>
+  <g id="i-box"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5"/></g>
+  <g id="i-shield-alert"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6Z"/><path d="M12 8v4M12 15h.01"/></g>
+  <g id="i-target"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></g>
+  <g id="i-clock"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></g>
+  <g id="i-thermometer"><path d="M10 13.5V5a2 2 0 1 1 4 0v8.5a4.5 4.5 0 1 1-4 0Z"/><path d="M12 9v6"/></g>
+  <g id="i-alert"><path d="M12 3.5 22 20H2Z"/><path d="M12 10v4M12 17h.01"/></g>
+  <g id="i-book"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v18H5.5A1.5 1.5 0 0 1 4 19.5Z"/><path d="M8 3v18"/></g>
+  <g id="i-list-ordered"><path d="M10 6h11M10 12h11M10 18h11"/><path d="M4 6h1.6M4.8 6v4M4 10h1.6"/><path d="M3.8 14.5a1.2 1.2 0 1 1 2 .9L3.8 18h2.4"/></g>
+  <g id="i-scale"><path d="M12 4v16M7 20h10"/><path d="m5 8 3-4h8l3 4"/><path d="M2.5 13a3 3 0 0 0 5 0L5 8Z"/><path d="M16.5 13a3 3 0 0 0 5 0L19 8Z"/></g>
+  <g id="i-sparkle"><path d="m12 3 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/></g>
+  <g id="i-link"><path d="M10 13a4 4 0 0 0 5.7.4l3-3A4 4 0 0 0 13 4.7l-1.7 1.7"/><path d="M14 11a4 4 0 0 0-5.7-.4l-3 3A4 4 0 0 0 11 19.3L12.7 17.6"/></g>
+  <g id="i-square-btn"><rect x="3" y="8" width="18" height="8" rx="4"/></g>
+</defs></svg>
+
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand-lockup">
+      <div class="brand-mark">A</div>
+      <div class="brand-copy">
+        <div class="app-name">Alembic Email Builder</div>
+        <div class="app-subtitle"><span class="version-pill">v7.2</span><span class="subtitle-text">Multi-product pharmacy email workspace</span></div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="history-actions" aria-label="History controls">
+        <button class="icon-btn" id="undoBtn" title="Undo last change" aria-label="Undo"><svg class="icon" viewBox="0 0 24 24"><use href="#i-undo"/></svg></button>
+        <button class="icon-btn" id="redoBtn" title="Redo last change" aria-label="Redo"><svg class="icon" viewBox="0 0 24 24"><use href="#i-redo"/></svg></button>
+      </div>
+
+      <div class="topbar-divider" role="presentation"></div>
+
+      <div class="menu-wrap">
+        <button class="secondary-btn menu-trigger" id="fileMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="fileMenu" title="Open, create, and transfer emails">
+          File
+          <svg class="icon icon-sm chev" viewBox="0 0 24 24"><use href="#i-chevron-down"/></svg>
+        </button>
+        <div class="menu-panel" id="fileMenu" role="menu" aria-labelledby="fileMenuBtn">
+          <div class="menu-section-label">This email</div>
+          <button class="menu-item" role="menuitem" id="saveAsBtn">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#i-copy"/></svg>
+            <span class="menu-item-copy">Save As<small>Create a separate copy</small></span>
+          </button>
+          <button class="menu-item" role="menuitem" id="resetBtn">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#i-restore"/></svg>
+            <span class="menu-item-copy">Restore starter<small>Undo all edits back to the template</small></span>
+          </button>
+          <div class="menu-sep" role="separator"></div>
+          <div class="menu-section-label">Move between computers</div>
+          <button class="menu-item" role="menuitem" id="projectBtn">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#i-download"/></svg>
+            <span class="menu-item-copy">Download Project<small>Portable .alembic-email file</small></span>
+          </button>
+          <button class="menu-item" role="menuitem" id="importBtn">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#i-upload"/></svg>
+            <span class="menu-item-copy">Open Project<small>Import a portable file as a new copy</small></span>
+          </button>
+          <div class="menu-sep" role="separator"></div>
+          <button class="menu-item" role="menuitem" id="homeBtn">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#i-home"/></svg>
+            <span class="menu-item-copy">Home<small>Create, open, or manage emails</small></span>
+          </button>
+        </div>
+      </div>
+
+      <button class="primary-btn save-action" id="saveBtn" title="Save the current working email">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-save"/></svg>Save
+      </button>
+      <button class="primary-btn package-action" id="packageBtn" title="Create one complete folder for the sending partner">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-package"/></svg>Create Send Folder
+      </button>
+    </div>
+  </header>
+
+  <section class="controlbar">
+    <label class="control-field template-field"><span>Working email</span><select id="templateSelect"></select></label>
+    <label class="control-field audience-field"><span>Audience</span><select id="audienceSelect"><option>Healthcare Professional</option><option>Pharmacy</option></select></label>
+    <label class="control-field subject-field" title="Lead with the disease state, product availability, useful data point, or practical takeaway."><span>Subject line</span><input id="subjectInput" type="text"></label>
+    <label class="control-field preheader-field"><span>Preheader</span><input id="preheaderInput" type="text"></label>
+  </section>
+
+  <main class="workspace">
+    <aside class="sidebar">
+      <nav class="tabs" aria-label="Builder panels">
+        <button class="tab active" data-tab="structure"><svg class="icon" viewBox="0 0 24 24"><use href="#i-layers"/></svg>Structure</button>
+        <button class="tab" data-tab="add"><svg class="icon" viewBox="0 0 24 24"><use href="#i-plus-square"/></svg>Add</button>
+        <button class="tab" data-tab="assets"><svg class="icon" viewBox="0 0 24 24"><use href="#i-image"/></svg>Assets</button>
+        <button class="tab" data-tab="edit"><svg class="icon" viewBox="0 0 24 24"><use href="#i-sliders"/></svg>Edit</button>
+        <button class="tab" data-tab="qa"><svg class="icon" viewBox="0 0 24 24"><use href="#i-shield-check"/></svg>QA<span class="tab-badge" id="qaTabBadge"></span></button>
+      </nav>
+
+      <section class="tab-panel active" id="panel-structure">
+        <div class="panel-heading"><div><h2>Email sections</h2><p>Click a section to edit it. Hover a row for reorder, hide, duplicate, and remove.</p></div></div>
+        <div id="sectionList" class="section-list"></div>
+      </section>
+
+      <section class="tab-panel" id="panel-add">
+        <div class="panel-heading"><div><h2>Add a section</h2><p>Every block is email-safe and responsive.</p></div></div>
+        <div class="block-search">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-search"/></svg>
+          <input id="blockSearch" type="search" placeholder="Search sections" autocomplete="off" aria-label="Search sections">
+          <button type="button" class="block-search-clear" id="blockSearchClear" aria-label="Clear search"><svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
+        </div>
+        <div id="audienceHint" class="audience-hint"></div>
+        <div class="block-grid" id="blockGrid"></div>
+        <div class="empty-state" id="blockEmpty" hidden>No sections match that search.</div>
+      </section>
+
+      <section class="tab-panel" id="panel-assets">
+        <div class="panel-heading asset-heading"><div><h2>Asset library</h2><p>Approved, reusable PNG visuals optimized for reliable email use.</p></div><button type="button" class="tiny-btn primary" id="addAssetBtn">Add PNG</button></div>
+        <div class="asset-tools"><input id="assetSearch" type="search" placeholder="Search assets"><select id="assetCategory"><option value="all">All categories</option></select></div>
+        <div class="asset-library-note" id="assetLibraryNote">Select an image in the email, then choose <strong>Replace</strong>, or insert an asset as a new responsive image section. Add PNG stores a reusable asset on this computer.</div>
+        <div id="assetGrid" class="asset-grid"></div>
+      </section>
+
+      <section class="tab-panel" id="panel-edit">
+        <div class="panel-heading"><div><h2>Edit selection</h2><p id="selectionHelp">Click text, an image, or a button in the preview.</p></div></div>
+        <div id="inspector" class="inspector empty-state">Nothing selected yet.</div>
+      </section>
+
+      <section class="tab-panel" id="panel-qa">
+        <div class="panel-heading"><div><h2>Preflight QA</h2><p>Check links, assets, responsive structure, and deployment readiness.</p></div></div>
+        <div class="qa-actions">
+          <button type="button" class="secondary-btn full" id="runQaBtn">Run QA checks</button>
+          <button type="button" class="primary-btn package-action full" id="qaPackageBtn">Create Send Folder</button>
+        </div>
+        <div id="qaSummary" class="qa-summary"></div>
+        <div id="qaList" class="qa-list"></div>
+        <details class="field-group production-settings" id="productionSettings">
+          <summary>Production image hosting <span class="field-label-soft">optional</span></summary>
+          <label class="field-label">Asset hosting base URL</label>
+          <input id="assetBaseUrl" type="url" placeholder="https://cdn.example.com/campaign-assets">
+          <div class="note">Use this when the email platform preserves the asset folder structure. Production export will rewrite local <code>assets/…</code> image paths to this HTTPS host.</div>
+          <label class="field-label" style="margin-top:14px">Per-image URL overrides</label>
+          <div class="note" style="padding-top:0">If the email platform gives each uploaded image its own unique URL, paste those URLs here. A per-image URL overrides the base URL above.</div>
+          <div id="assetUrlMap" class="asset-url-map"></div>
+        </details>
+        <div class="qa-callout"><strong>Browser preview is not an Outlook/Gmail emulator.</strong> This preflight checks the HTML and common failure points. Final campaigns should still be render-tested in actual email clients or a service such as Litmus or Email on Acid.</div>
+      </section>
+
+      <div class="regulatory-toggle">
+        <label><svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-unlock"/></svg>Open section editing</label>
+        <span>Every section can be added, duplicated, moved, edited, hidden, or removed. Preflight checks email production quality, not required legal content.</span>
+      </div>
+    </aside>
+
+    <section class="preview-pane">
+      <div class="preview-toolbar">
+        <div class="view-switch">
+          <div class="view-segment" role="group" aria-label="Preview size">
+            <button class="view-btn active" data-width="720" data-mode="desktop"><svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-monitor"/></svg>Desktop</button>
+            <button class="view-btn" data-width="390" data-mode="mobile"><svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-smartphone"/></svg>Mobile</button>
+          </div>
+          <select id="mobileWidthSelect" title="Mobile preview width"><option value="375">375 px</option><option value="390" selected>390 px</option><option value="430">430 px</option></select>
+        </div>
+        <div class="preview-meta"><span id="saveStatus">Saved locally</span><span class="dot">•</span><span id="previewSize">Desktop preview</span></div>
+      </div>
+      <div class="canvas-wrap" id="canvasWrap">
+        <div class="device-frame desktop" id="deviceFrame">
+          <iframe id="emailFrame" title="Email preview"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="start-overlay" id="startOverlay" aria-hidden="true">
+  <div class="start-card">
+    <div class="start-heading"><div><div class="start-kicker">ALEMBIC PHARMACEUTICALS</div><h1>What would you like to do?</h1><p>Start cleanly, keep starter templates protected, and let the builder handle the email production details.</p></div><button type="button" class="overlay-close" id="startCloseBtn" aria-label="Close">&times;</button></div>
+    <div class="start-grid">
+      <button type="button" class="start-choice featured" id="newBlankBtn"><span class="start-icon"><svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#i-file-plus"/></svg></span><strong>Create a New Email</strong><small>Use the optimized Alembic pharmacy framework.</small></button>
+      <button type="button" class="start-choice" id="starterBtn"><span class="start-icon"><svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#i-template"/></svg></span><strong>Use a Starter Template</strong><small>Create a new copy from an existing PIVYA or ciprofloxacin email.</small></button>
+      <button type="button" class="start-choice" id="myEmailsBtn"><span class="start-icon"><svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#i-folder"/></svg></span><strong>Open My Emails</strong><small>Continue, rename, duplicate, download, or delete saved work.</small></button>
+      <button type="button" class="start-choice" id="productsBtn"><span class="start-icon"><svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#i-pill"/></svg></span><strong>Manage Products</strong><small>Add and maintain reusable product information without AI.</small></button>
+    </div>
+    <div class="start-panel" id="startPanel"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-heading"><div><div class="start-kicker" id="modalKicker">ALEMBIC EMAIL BUILDER</div><h2 id="modalTitle">Create Email</h2></div><button type="button" class="overlay-close" id="modalCloseBtn" aria-label="Close">&times;</button></div>
+    <div id="modalBody"></div>
+    <div class="modal-actions" id="modalActions"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<input type="file" id="projectFile" accept="application/json,.alembic-email" hidden>
+<script src="assets.js"></script>
+<script src="asset_data.js"></script>
+<script src="ciprofloxacin_assets.js"></script>
+<script src="templates.js"></script>
+<script src="pharmacy_template.js"></script>
+<script src="ciprofloxacin_templates.js"></script>
+<script src="master_defaults.js"></script>
+<script src="product_profiles.js"></script>
+<script src="blank_email.js"></script>
+<script src="app.js"></script>
+<script src="ui_shell.js"></script>
+</body>
+</html>

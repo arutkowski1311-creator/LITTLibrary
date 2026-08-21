@@ -1,0 +1,29 @@
+ALEMBIC PRODUCT-NAMING STANDARD
+===============================
+
+For a branded medicine, use the full legal product name once per email page,
+at the first or most prominent use:
+
+  BRAND® (generic name)
+
+After that first legal-name use, use the brand name alone. Do not repeat the
+registered mark or the generic-name pairing unless Regulatory instructs you to.
+Generic names remain lower case when paired with a brand name.
+
+The builder initially places the legal product name in a compact two-line block.
+That block is optional and can be removed when an approved product logo or
+another most-prominent use already provides the full legal name. It can be added
+again from the Add tab.
+
+The builder provides this treatment as an editable design option. It does not
+enforce product naming, count brand/generic pairings, or block handoff based on
+the presence or absence of this block.
+
+The product-name block, Indication, Important Safety Information, and legal
+footer can all be added repeatedly, duplicated, edited, moved, or removed.
+
+For a generic-only medicine, the blank framework creates an optional compact
+product-name row without adding a trademark symbol.
+
+Preflight verifies technical email production and rendering safeguards only.
+Business and legal reviewers remain responsible for the final campaign content.
