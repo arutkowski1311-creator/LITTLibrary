@@ -1,0 +1,1 @@
+ALTER TABLE `projects` ADD `customer_email` text DEFAULT '' NOT NULL;

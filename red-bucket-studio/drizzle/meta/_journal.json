@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1787231297750,
+      "tag": "0000_wise_kronos",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1787231591957,
+      "tag": "0001_woozy_madame_masque",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1787240747396,
+      "tag": "0002_greedy_grandmaster",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1787255288194,
+      "tag": "0003_many_stark_industries",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1787258818775,
+      "tag": "0004_closed_hedge_knight",
+      "breakpoints": true
+    }
+  ]
+}
