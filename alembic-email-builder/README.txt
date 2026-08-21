@@ -74,6 +74,11 @@ BUILDING AN EMAIL
 - Edit provides prominent whole-box typography presets plus direct font, size,
   weight, italic, underline, color, and alignment controls. Selected-word
   formatting remains available in a separate expandable control.
+- Double-click any text in the preview to type directly into the email.
+- Color pickers lead with the current product's approved brand colors, so the
+  brand green and blue are always the first two swatches.
+- Position in section moves the selected element above or below its neighbour
+  without touching the surrounding table structure.
 - Any section can use no fill, square, rounded, or capsule backgrounds with
   controlled tint/transparency. Styled inline elements can be converted to and
   edited as pills. Solid fallbacks preserve the design in older Outlook versions.
@@ -94,6 +99,17 @@ Home > Manage Products stores reusable product information locally. Add the
 brand name, lower-case generic name, trademark status, strength, dosage form,
 colors, product image, links, and current approved Regulatory text. The builder
 does not use AI and does not independently approve promotional claims.
+
+REGULATORY / MLR REVIEW
+Click Review PDF at any point, finished or not. One ZIP downloads with:
+- REVIEW.pdf — the email rendered at desktop width, then again at mobile width
+- desktop_720px.png and mobile_<width>px.png — flat images for slide decks
+- COPY_AND_LINKS.txt — subject, preheader, every link destination, every image
+  and its alt text, the full copy in reading order, and the preflight status at
+  the moment of export
+Preflight never blocks this. Reviewers usually need to see the draft while
+placeholders are still in it, so the copy sheet states plainly how many items
+were still open. Only the Send Folder is gated.
 
 CREATE SEND FOLDER
 After the email is complete, click Create Send Folder. One ZIP is downloaded

@@ -634,6 +634,8 @@ details.field-group{border-bottom:1px solid var(--line);margin-bottom:15px;paddi
 .button-inspector-note{margin-top:9px}
 .locked-icon{color:var(--faint)}
 .choose-library-btn{width:100%;margin-top:7px}
+.move-row{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.move-row .soft-btn{gap:6px}
 
 /* ==========================================================================
    QA panel
@@ -668,6 +670,8 @@ details.field-group{border-bottom:1px solid var(--line);margin-bottom:15px;paddi
 .qa-dot.error{background:var(--danger)}
 .qa-label{font-size:var(--fs-md);font-weight:600;color:var(--ink)}
 .qa-detail{font-size:var(--fs-sm);line-height:1.5;color:var(--muted);margin-top:4px;padding-left:16px}
+.note.gate-blocked{color:var(--danger);background:var(--danger-wash);border:1px solid var(--danger-line);border-radius:var(--r-md);padding:9px 11px}
+.note.gate-ready{color:var(--green-ink);background:var(--green-wash);border:1px solid var(--green-line);border-radius:var(--r-md);padding:9px 11px}
 .production-settings{margin-top:2px}
 .asset-url-map{display:grid;gap:7px;margin-top:9px}
 .asset-url-row{border:1px solid var(--line);border-radius:var(--r-md);background:var(--n25);padding:9px 10px}

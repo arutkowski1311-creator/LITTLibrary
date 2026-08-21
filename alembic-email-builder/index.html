@@ -66,6 +66,9 @@
   <g id="i-sparkle"><path d="m12 3 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/></g>
   <g id="i-link"><path d="M10 13a4 4 0 0 0 5.7.4l3-3A4 4 0 0 0 13 4.7l-1.7 1.7"/><path d="M14 11a4 4 0 0 0-5.7-.4l-3 3A4 4 0 0 0 11 19.3L12.7 17.6"/></g>
   <g id="i-square-btn"><rect x="3" y="8" width="18" height="8" rx="4"/></g>
+  <g id="i-review"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7Z"/><path d="M14 3v4h4"/><path d="M9.5 14.5 11 16l3.5-3.5"/></g>
+  <g id="i-move-up"><path d="M12 19V7"/><path d="m7 12 5-5 5 5"/><path d="M4 4h16"/></g>
+  <g id="i-move-down"><path d="M12 5v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></g>
 </defs></svg>
 
 <div class="app-shell">
@@ -122,6 +125,9 @@
       <button class="primary-btn save-action" id="saveBtn" title="Save the current working email">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-save"/></svg>Save
       </button>
+      <button class="secondary-btn" id="reviewBtn" title="PDF and PNG proofs for Regulatory/MLR review — works at any stage">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-review"/></svg>Review PDF
+      </button>
       <button class="primary-btn package-action" id="packageBtn" title="Create one complete folder for the sending partner">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><use href="#i-package"/></svg>Create Send Folder
       </button>
@@ -170,7 +176,7 @@
       </section>
 
       <section class="tab-panel" id="panel-edit">
-        <div class="panel-heading"><div><h2>Edit selection</h2><p id="selectionHelp">Click text, an image, or a button in the preview.</p></div></div>
+        <div class="panel-heading"><div><h2>Edit selection</h2><p id="selectionHelp">Click anything in the preview to style it. Double-click text to type straight into the email.</p></div></div>
         <div id="inspector" class="inspector empty-state">Nothing selected yet.</div>
       </section>
 
@@ -178,7 +184,9 @@
         <div class="panel-heading"><div><h2>Preflight QA</h2><p>Check links, assets, responsive structure, and deployment readiness.</p></div></div>
         <div class="qa-actions">
           <button type="button" class="secondary-btn full" id="runQaBtn">Run QA checks</button>
+          <button type="button" class="secondary-btn full" id="qaReviewBtn">Download review pack (PDF + PNG)</button>
           <button type="button" class="primary-btn package-action full" id="qaPackageBtn">Create Send Folder</button>
+          <div class="note" id="packageGateNote"></div>
         </div>
         <div id="qaSummary" class="qa-summary"></div>
         <div id="qaList" class="qa-list"></div>
