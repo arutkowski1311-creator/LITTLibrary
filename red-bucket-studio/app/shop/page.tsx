@@ -9,7 +9,7 @@ import type { CatalogProduct } from "../lib/catalog";
 import { ShopExperience } from "./shop-experience";
 
 export const metadata: Metadata = {
-  title: "Shop Custom Gifts, Signs & Objects | Red Bucket Design Co",
+  title: "Shop Custom Gifts, Signs & Objects",
   description: "Shop ready-made and customizable Red Bucket pieces, from engraved guitar hangers and serving boards to shotskis and illuminated signs.",
 };
 

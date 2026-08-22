@@ -5,7 +5,7 @@ import { SiteHeader } from "../components/site-header";
 import { ShareButton } from "../components/share-button";
 import { featuredWork } from "../lib/catalog";
 
-export const metadata: Metadata = { title: "Custom Builds | Red Bucket Design Co", description: "Explore custom signs, gifts, furniture and one-of-one objects made by Red Bucket Design Co." };
+export const metadata: Metadata = { title: "Custom Builds", description: "Explore custom signs, gifts, furniture and one-of-one objects made by Red Bucket Design Co." };
 
 export default function WorkPage() {
   return <main id="main"><SiteHeader />

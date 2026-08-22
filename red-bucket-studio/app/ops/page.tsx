@@ -10,7 +10,7 @@ import type { StudioProject } from "../lib/ops-data";
 import { OpsDashboard } from "./ops-dashboard";
 import type { CustomerRecord, IdeaRecord, PaymentRecord } from "./ops-dashboard";
 
-export const metadata: Metadata = { title: "Red Bucket Ops | Studio Dashboard", description: "Production, capacity, financial and project control for the Red Bucket workshop." };
+export const metadata: Metadata = { title: "Studio Dashboard", description: "Production, capacity, financial and project control for the Red Bucket workshop." };
 export const dynamic = "force-dynamic";
 export default async function OpsPage() {
   await requireChatGPTUser("/ops");

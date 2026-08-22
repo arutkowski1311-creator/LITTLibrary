@@ -7,7 +7,7 @@ import { studioProjects } from "../lib/ops-data";
 import type { StudioProject } from "../lib/ops-data";
 import { Shopboard } from "./shopboard";
 
-export const metadata: Metadata = { title: "Red Bucket Shopboard", description: "Full-screen daily production board for the Red Bucket workshop." };
+export const metadata: Metadata = { title: "Shopboard", description: "Full-screen daily production board for the Red Bucket workshop." };
 export default async function ShopboardPage() {
   await requireChatGPTUser("/shopboard");
   let boardProjects: StudioProject[] = studioProjects;
