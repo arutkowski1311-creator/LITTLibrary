@@ -142,9 +142,10 @@ body.owner .ph .add{display:inline-flex}
 /* hero */
 .hero{position:relative;height:min(88vh,860px);min-height:520px;display:flex;align-items:flex-end;color:#fff}
 .hero .ph{position:absolute;inset:0}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.58) 100%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.08) 35%,rgba(0,0,0,.62) 100%);pointer-events:none}
 .hero-inner{position:relative;z-index:2;padding-bottom:clamp(40px,6vw,80px);padding-top:clamp(120px,14vw,220px);width:100%}
-.hero .eyebrow{color:rgba(255,255,255,.8)}
+.hero .eyebrow,.unit-hero .eyebrow{color:rgba(255,255,255,.88);text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.hero .lede,.hero-foot,.band .s{text-shadow:0 1px 14px rgba(0,0,0,.45)}
 .hero h1{color:#fff;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.25)}
 .hero .lede{color:rgba(255,255,255,.9);margin-top:22px;max-width:52ch}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
@@ -777,8 +778,8 @@ function toast(msg){
    or by the owner in-page. Nothing generated ever stands in for the place.
    ===================================================================== */
 var PHOTOS = {
-  "hero":        { subject:"Whiteface Mountain from Wilmington", alt:"Whiteface Mountain rising above the Wilmington valley" },
-  "river":       { subject:"West Branch of the Ausable River, Wilmington", alt:"The West Branch of the Ausable River running over boulders" },
+  "hero":        { subject:"The Adirondack High Peaks in autumn", alt:"Lower Ausable Lake from Indian Head in autumn" },
+  "river":       { subject:"The Ausable River", alt:"The Ausable River through its sandstone chasm" },
   "notch":       { subject:"Wilmington Notch on NY-86", alt:"Cliffs of Wilmington Notch above the road and river" },
   "stay-H":      { subject:"Main house exterior (owner photograph)", alt:"The main house" },
   "stay-A":      { subject:"Apartment entrance (owner photograph)", alt:"The apartment" },
@@ -810,7 +811,7 @@ var PHOTOS = {
   "winter":      { subject:"Wilmington in winter", alt:"Snow on the High Peaks" },
   "spring":      { subject:"Mud season on the Ausable", alt:"Spring melt on the Ausable" },
   "summer":      { subject:"Summer on the West Branch", alt:"Summer on the river" },
-  "autumn":      { subject:"Foliage in the Wilmington valley", alt:"Autumn colour below Whiteface" }
+  "autumn":      { subject:"Autumn in the High Peaks", alt:"Autumn colour in the Adirondack High Peaks" }
 };
 var GUIDE_PHOTO = { "Whiteface Mountain":"whiteface", "Mt Van Hoevenberg (Nordic)":"nordic", "Whiteface via the Wilmington Trail":"whiteface", "Cooper Kiln Pond":"kiln", "Copperas & Owen Ponds":"ponds", "Flume Trails":"flume", "Hardy Road Trails":"hardy", "West Branch of the Ausable River":"river", "Whiteface Veterans' Memorial Highway":"highway", "High Falls Gorge":"gorge", "Ausable Chasm":"chasm", "Lake Placid & the Olympic sites":"placid", "Jay Covered Bridge":"jay", "Santa's Workshop":"santa", "Adirondack Wildlife Refuge":"refuge", "Lake Placid Olympic Museum":"museum", "The Wild Center":"wild" };
 
@@ -904,7 +905,7 @@ function stayCard(code){
 /* ---------- HOME ---------- */
 TITLES.home = "Ausable House";
 PAGES.home = function(){
-  var places = [["whiteface","Whiteface Mountain","Skiing · In town"],["river","The West Branch","Fly fishing · Through the village"],["gorge","High Falls Gorge","Four falls · 5 min"],["flume","Flume Trails","Mountain biking · In town"]];
+  var places = [["whiteface","Whiteface Mountain","Skiing · summit highway · in town"],["river","The Ausable River","Fly fishing · through the village"],["chasm","Ausable Chasm","Gorge walks · 45 min"],["autumn","Autumn in the High Peaks","Foliage peaks late September"]];
   return '' +
   '<section class="hero">' + ph("hero", "", { eager:true }) +
     '<div class="wrap hero-inner"><div class="eyebrow">Wilmington · Adirondack High Peaks</div>' +
@@ -918,10 +919,10 @@ PAGES.home = function(){
     '<div class="stays">' + OFFER_ORDER.map(stayCard).join("") + '</div>' +
     '<p class="muted" style="font-size:.84rem;margin-top:16px;max-width:70ch">The house and the apartment are separate units and are sold separately, so booking one may mean neighbours in the other. Only the whole-property booking promises no one else on site.</p></section>' +
 
-  '<section class="band">' + ph("river", "") + '<div class="wrap"><p class="q">The river is the sound you fall asleep to.</p><p class="s">Wilmington sits where the West Branch of the Ausable leaves the Notch. Whiteface is a few minutes up the road; Lake Placid is twenty minutes the other way.</p></div></section>' +
+  '<section class="band">' + ph("river", "") + '<div class="wrap"><p class="q">The river is the sound you fall asleep to.</p><p class="s">The Ausable runs from the High Peaks past Wilmington to Lake Champlain, carving the chasm at Keeseville on its way. Whiteface is a few minutes up the road; Lake Placid is twenty minutes the other way.</p></div></section>' +
 
   '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">The area</div><h2 class="h-l">Skiing, the river, and a great deal of quiet</h2></div><a class="btn ghost sm" href="#/area">Everything nearby</a></div>' +
-    '<div class="places">' + places.map(function(p){ return '<a class="place fade" href="#/area">' + ph(p[0], "") + '<div class="t">' + esc(p[1]) + '</div><div class="d">' + esc(p[2]) + '</div></a>'; }).join("") + '</div></section>' +
+    '<div class="places">' + places.map(function(p){ return '<a class="place fade" href="' + (p[0] === "autumn" ? "#/seasons" : "#/area") + '">' + ph(p[0], "") + '<div class="t">' + esc(p[1]) + '</div><div class="d">' + esc(p[2]) + '</div></a>'; }).join("") + '</div></section>' +
 
   '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">How booking works</div><h2 class="h-l">Three steps, no surprises</h2></div></div>' +
     '<div class="how"><div><div class="n">01</div><h3>Pick your nights</h3><p>Choose dates and party size. All three stays are checked against the same calendar at once.</p></div>' +
@@ -1117,7 +1118,7 @@ MOUNTS.book = renderBook; MOUNTS.availability = renderBook; MOUNTS.request = ren
 TITLES.area = "The area · Ausable House";
 PAGES.area = function(params){
   var cat = params.cat && GUIDE_CATS.indexOf(params.cat) >= 0 ? params.cat : "All";
-  return '<section class="unit-hero" style="height:min(56vh,520px);min-height:360px">' + ph("notch", "", { eager:true }) + '<div class="wrap"><div class="eyebrow">The area</div><h1 class="h-xl">Wilmington and the High Peaks</h1></div></section>' +
+  return '<section class="unit-hero" style="height:min(56vh,520px);min-height:360px">' + ph("whiteface", "", { eager:true }) + '<div class="wrap"><div class="eyebrow">The area</div><h1 class="h-xl">Wilmington and the High Peaks</h1></div></section>' +
   '<section class="sec wrap"><p class="lede">Whiteface is a few minutes up the road, the West Branch runs through the village, and Lake Placid is twenty minutes west. Each entry below carries its season, cost band and source; anything unverified says so rather than guessing at hours.</p>' +
   '<div class="filters" id="gFilters" style="margin-top:30px">' + ["All"].concat(GUIDE_CATS).map(function(c){ return '<button type="button" data-cat="' + esc(c) + '"' + (c === cat ? ' class="on"' : '') + '>' + esc(c) + '</button>'; }).join("") + '</div>' +
   '<div class="grid-3" id="gGrid"></div></section>' +
@@ -1305,6 +1306,7 @@ PAGES.verify = function(){
   ];
   var missing = Object.keys(PHOTOS).filter(function(s){ return !photoFor(s); });
   rows.push({ k:"WEB-03", v:"Photography", n: missing.length ? missing.length + " of " + Object.keys(PHOTOS).length + " photograph slots still empty: " + missing.map(function(s){ return PHOTOS[s].subject; }).join("; ") : "All photograph slots filled. Confirm usage rights are recorded." });
+  Object.keys(PHOTO_MAP).forEach(function(s){ var m = PHOTO_MAP[s]; if (m && /confirm/i.test(m.license || "")) rows.push({ k:"PHOTO RIGHTS", v:(PHOTOS[s] || {}).subject || s, n:"Usage rights not yet recorded" + (m.credit ? " (" + m.credit + ")" : "") + ". Confirm the photographer's permission or licence before launch (WEB-03)." }); });
   OFFER_ORDER.forEach(function(c){ Object.keys(UNITS[c].facts).forEach(function(k){ var f = UNITS[c].facts[k]; if (!f.ok) rows.push({ k:c + " · " + k, v:f.v, n:f.note }); }); });
   AMENITIES.forEach(function(cat){ cat.items.forEach(function(it){ if (it.status !== "ok") rows.push({ k:"AMENITY", v:it.name, n:it.note, s:it.status }); }); });
   GUIDE.forEach(function(g){ if (!g.verified) rows.push({ k:"GUIDE", v:g.name, n:"Verify " + (g.placeholder ? "entries and sources" : "hours, season, cost and official link") + "." }); });
