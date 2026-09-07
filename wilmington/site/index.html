@@ -1,86 +1,59 @@
 <title>Ausable House</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,200;1,6..72,300&display=swap">
 <style>
 /* =====================================================================
-   AUSABLE HOUSE — direct-booking site (preview build)
-   Light-first token system; dark via prefers-color-scheme and data-theme.
+   AUSABLE HOUSE — direct-booking site (preview build, photo-first)
    ===================================================================== */
 :root{
-  --paper:#EEF0EB;
-  --paper-2:#F8F9F6;
-  --paper-3:#E3E7E0;
-  --ink:#16241F;
-  --ink-2:#3B4A44;
-  --muted:#697A72;
-  --muted-2:#8E9C95;
-  --line:#D2D8D0;
-  --line-2:#C0C8BF;
-  --river:#2E6F7D;
-  --river-deep:#1E5462;
-  --river-tint:#DCE9EC;
-  --river-ink:#FFFFFF;
-  --amber:#A96F17;
-  --amber-tint:#F3E7CF;
-  --moss:#3D7A55;
-  --moss-tint:#DCEBDF;
-  --rust:#B2523A;
-  --rust-tint:#F2DDD6;
-  --shadow:0 18px 40px -22px rgba(22,36,31,.35);
-
-  --ridge-1:#C9D6D2; --ridge-2:#A9BFBA; --ridge-3:#82A19C; --ridge-4:#5D837F; --ridge-5:#3D6663;
-  --sky-a:#F2F4F0; --sky-b:#DCE7E7; --mist:rgba(238,240,235,.85);
-
+  --paper:#F1F1EC; --paper-2:#FAFAF7; --paper-3:#E6E7E0;
+  --ink:#1B211E; --ink-2:#414945; --muted:#6E7772; --muted-2:#98A09B;
+  --line:#D9DBD4; --line-2:#C5C9C1;
+  --river:#2B5F6B; --river-deep:#1E4650; --river-tint:#DCE7E9; --river-ink:#FFFFFF;
+  --amber:#A66D18; --amber-tint:#F2E6CF;
+  --moss:#3D7A55; --moss-tint:#DCEBDF;
+  --rust:#B2523A; --rust-tint:#F2DDD6;
+  --shadow:0 24px 50px -30px rgba(27,33,30,.45);
+  --plate-a:#B9C7C6; --plate-b:#7F9A9B; --plate-c:#4C6C70;
   --f-display:"Newsreader",Georgia,"Times New Roman",serif;
   --f-sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --wrap:1180px;
-  --pad:clamp(18px,4vw,52px);
-  --measure:66ch;
+  --wrap:1240px; --pad:clamp(18px,4vw,56px); --measure:62ch;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#0F1614; --paper-2:#16201C; --paper-3:#1D2925;
-    --ink:#E8EBE6; --ink-2:#C4CBC5; --muted:#8E9A93; --muted-2:#6F7B75;
-    --line:#26312C; --line-2:#334039;
-    --river:#74B8C6; --river-deep:#93CCD8; --river-tint:#15303A; --river-ink:#0F1614;
-    --amber:#D6A24E; --amber-tint:#2E2412;
-    --moss:#77B38F; --moss-tint:#15281C;
-    --rust:#D77A5E; --rust-tint:#331A13;
-    --shadow:0 18px 40px -22px rgba(0,0,0,.7);
-    --ridge-1:#1B2A28; --ridge-2:#203431; --ridge-3:#264140; --ridge-4:#2C4E4F; --ridge-5:#325B5E;
-    --sky-a:#0F1614; --sky-b:#14252A; --mist:rgba(15,22,20,.85);
+    --paper:#0F1413; --paper-2:#151B19; --paper-3:#1D2522;
+    --ink:#EBEDE8; --ink-2:#C6CCC7; --muted:#8F988F; --muted-2:#6C746F;
+    --line:#252D2A; --line-2:#333D39;
+    --river:#7DBAC6; --river-deep:#9CCDD6; --river-tint:#15292E; --river-ink:#0F1413;
+    --amber:#D6A24E; --amber-tint:#2C2311; --moss:#77B38F; --moss-tint:#15281C; --rust:#D77A5E; --rust-tint:#331A13;
+    --shadow:0 24px 50px -30px rgba(0,0,0,.8);
+    --plate-a:#243230; --plate-b:#1B2726; --plate-c:#121A19;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#0F1614; --paper-2:#16201C; --paper-3:#1D2925;
-  --ink:#E8EBE6; --ink-2:#C4CBC5; --muted:#8E9A93; --muted-2:#6F7B75;
-  --line:#26312C; --line-2:#334039;
-  --river:#74B8C6; --river-deep:#93CCD8; --river-tint:#15303A; --river-ink:#0F1614;
-  --amber:#D6A24E; --amber-tint:#2E2412;
-  --moss:#77B38F; --moss-tint:#15281C;
-  --rust:#D77A5E; --rust-tint:#331A13;
-  --shadow:0 18px 40px -22px rgba(0,0,0,.7);
-  --ridge-1:#1B2A28; --ridge-2:#203431; --ridge-3:#264140; --ridge-4:#2C4E4F; --ridge-5:#325B5E;
-  --sky-a:#0F1614; --sky-b:#14252A; --mist:rgba(15,22,20,.85);
+  --paper:#0F1413; --paper-2:#151B19; --paper-3:#1D2522;
+  --ink:#EBEDE8; --ink-2:#C6CCC7; --muted:#8F988F; --muted-2:#6C746F;
+  --line:#252D2A; --line-2:#333D39;
+  --river:#7DBAC6; --river-deep:#9CCDD6; --river-tint:#15292E; --river-ink:#0F1413;
+  --amber:#D6A24E; --amber-tint:#2C2311; --moss:#77B38F; --moss-tint:#15281C; --rust:#D77A5E; --rust-tint:#331A13;
+  --shadow:0 24px 50px -30px rgba(0,0,0,.8);
+  --plate-a:#243230; --plate-b:#1B2726; --plate-c:#121A19;
   color-scheme:dark;
 }
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--f-sans);font-size:16.5px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3,h4{margin:0;font-weight:400;text-wrap:balance}
 p{margin:0}
 a{color:var(--river);text-decoration:none}
 a:hover{text-decoration:underline;text-underline-offset:3px}
 button{font:inherit;color:inherit}
+img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--river);outline-offset:3px;border-radius:2px}
 table{border-collapse:collapse;width:100%}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
@@ -90,26 +63,22 @@ table{border-collapse:collapse;width:100%}
 .muted{color:var(--muted)}
 .tnum{font-variant-numeric:tabular-nums}
 [hidden]{display:none!important}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* ---------- preview banner ---------- */
-.banner{
-  background:var(--amber-tint);color:var(--ink);border-bottom:1px solid var(--line);
-  font-size:.82rem;
-}
-.banner .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+/* ---------- banner ---------- */
+.banner{background:var(--amber-tint);border-bottom:1px solid var(--line);font-size:.8rem;color:var(--ink)}
+.banner .wrap{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding-top:7px;padding-bottom:7px}
 .banner .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);white-space:nowrap}
 .banner a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
+.nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:18px;min-height:68px}
 .brand{display:flex;align-items:baseline;gap:10px;color:var(--ink);white-space:nowrap;flex:none}
 .brand:hover{text-decoration:none}
-.brand .n{font-family:var(--f-display);font-size:1.45rem;font-weight:500;letter-spacing:-.01em;line-height:1}
+.brand .n{font-family:var(--f-display);font-size:1.5rem;font-weight:400;letter-spacing:-.01em;line-height:1}
 .brand .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .links{display:flex;gap:2px;margin-left:auto}
-.links a{padding:8px 10px;font-size:.88rem;color:var(--ink-2);border-radius:3px;white-space:nowrap}
+.links a{padding:8px 12px;font-size:.9rem;color:var(--ink-2);border-radius:3px;white-space:nowrap}
 .links a:hover{text-decoration:none;background:var(--paper-3);color:var(--ink)}
 .links a.on{color:var(--river);font-weight:500}
 .nav-tools{display:flex;align-items:center;gap:8px}
@@ -118,96 +87,141 @@ table{border-collapse:collapse;width:100%}
 .icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 #menuBtn{display:none}
 @media (max-width:980px){
+  .nav-tools{margin-left:auto}
+  .brand .l{display:none}
   .links{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper-2);border-bottom:1px solid var(--line);flex-direction:column;padding:10px var(--pad) 16px;box-shadow:var(--shadow)}
   .links.open{display:flex}
-  .links a{padding:11px 8px;font-size:1rem;border-bottom:1px solid var(--line)}
+  .links a{padding:12px 8px;font-size:1.02rem;border-bottom:1px solid var(--line)}
   #menuBtn{display:inline-flex}
 }
 
 /* ---------- buttons ---------- */
-.btn{
-  white-space:nowrap;
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:11px 18px;border-radius:3px;border:1px solid var(--river);
-  background:var(--river);color:var(--river-ink);font-weight:500;font-size:.93rem;
-  cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .15s ease;
-  text-decoration:none;
-}
-.btn:hover{background:var(--river-deep);border-color:var(--river-deep);text-decoration:none}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:500;font-size:.92rem;letter-spacing:.01em;cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease,transform .15s ease;text-decoration:none}
+.btn:hover{background:var(--river-deep);border-color:var(--river-deep);color:#fff;text-decoration:none}
 .btn:active{transform:translateY(1px)}
-.btn.ghost{background:transparent;color:var(--river);border-color:var(--line-2)}
-.btn.ghost:hover{background:var(--river-tint);border-color:var(--river)}
-.btn.sm{padding:7px 12px;font-size:.84rem}
-.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn.ghost:hover{background:var(--paper-3);border-color:var(--ink);color:var(--ink)}
+.btn.light{background:rgba(255,255,255,.92);color:#1B211E;border-color:transparent}
+.btn.light:hover{background:#fff;color:#1B211E}
+.btn.sm{padding:8px 14px;font-size:.84rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
 .btn.block{width:100%}
 
 /* ---------- type ---------- */
-.eyebrow{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--river);margin-bottom:12px}
-.h-xl{font-family:var(--f-display);font-size:clamp(2.5rem,6.2vw,4.6rem);line-height:1.02;letter-spacing:-.02em;font-weight:300}
-.h-l{font-family:var(--f-display);font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.1;letter-spacing:-.015em;font-weight:300}
-.h-m{font-family:var(--f-display);font-size:clamp(1.45rem,2.4vw,1.85rem);line-height:1.2;font-weight:400}
-.h-s{font-family:var(--f-sans);font-weight:600;font-size:1rem}
-.lede{font-size:1.1rem;color:var(--ink-2);max-width:var(--measure)}
+.eyebrow{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--river);margin-bottom:14px}
+.h-xl{font-family:var(--f-display);font-size:clamp(2.6rem,6.4vw,5rem);line-height:1;letter-spacing:-.022em;font-weight:200}
+.h-l{font-family:var(--f-display);font-size:clamp(2rem,3.8vw,3rem);line-height:1.08;letter-spacing:-.018em;font-weight:200}
+.h-m{font-family:var(--f-display);font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.18;font-weight:300}
+.lede{font-size:1.12rem;color:var(--ink-2);max-width:var(--measure);line-height:1.6}
 .prose{max-width:var(--measure);color:var(--ink-2)}
 .prose p + p{margin-top:12px}
 .prose ul{padding-left:20px;margin:10px 0}
 .prose li + li{margin-top:5px}
-.prose h3{margin:26px 0 8px;font-family:var(--f-sans);font-weight:600;font-size:1.02rem;color:var(--ink)}
-em.i{font-family:var(--f-display);font-style:italic}
+.prose h3{margin:28px 0 8px;font-family:var(--f-sans);font-weight:600;font-size:1.02rem;color:var(--ink)}
+em.i{font-family:var(--f-display);font-style:italic;font-weight:200}
 
-/* ---------- section scaffolding ---------- */
-.sec{padding-top:clamp(44px,6vw,80px);padding-bottom:clamp(20px,3vw,36px)}
-.sec-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;flex-wrap:wrap;margin-bottom:clamp(22px,3vw,34px)}
-.sec-head .lede{margin-top:10px}
-.page-head{padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(20px,3vw,32px);border-bottom:1px solid var(--line)}
-.page-head .lede{margin-top:16px}
-.divider{height:1px;background:var(--line);margin:clamp(40px,5vw,64px) 0}
+/* ---------- sections ---------- */
+.sec{padding-top:clamp(52px,7vw,104px);padding-bottom:clamp(16px,2vw,28px)}
+.sec-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;flex-wrap:wrap;margin-bottom:clamp(24px,3.4vw,40px)}
+.sec-head .lede{margin-top:12px}
 
-/* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--sky-a),var(--sky-b))}
-.hero .scene{position:absolute;inset:0;z-index:0}
-.hero .scene svg{width:100%;height:100%;display:block}
-.hero .scene .mist{position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,transparent,var(--mist) 70%,var(--paper))}
-.hero .disc{position:absolute;right:14%;top:12%;width:clamp(90px,12vw,160px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 40%,var(--paper-2),var(--river-tint));opacity:.9;filter:blur(.5px)}
-.hero-inner{position:relative;z-index:1;padding-top:clamp(64px,10vw,140px);padding-bottom:clamp(40px,6vw,72px)}
-.hero h1{max-width:14ch}
-.hero .lede{margin-top:20px;color:var(--ink)}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.hero-notes{margin-top:30px;display:flex;gap:8px 22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;color:var(--muted)}
-@media (prefers-reduced-motion:no-preference){
-  .ridge{animation:drift linear infinite alternate}
-  .ridge-1{animation-duration:70s}.ridge-2{animation-duration:58s}.ridge-3{animation-duration:46s}.ridge-4{animation-duration:38s}.ridge-5{animation-duration:30s}
-  @keyframes drift{from{transform:translateX(-1.2%)}to{transform:translateX(1.2%)}}
-}
+/* ---------- photographs ---------- */
+.ph{position:relative;overflow:hidden;background:var(--paper-3);margin:0}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.ph .plate{position:absolute;inset:0;background:linear-gradient(160deg,var(--plate-a),var(--plate-b) 55%,var(--plate-c));display:flex;align-items:flex-end;padding:16px}
+.ph .plate::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 70% 20%,rgba(255,255,255,.18),transparent 60%);pointer-events:none}
+.hero .plate span,.unit-hero .plate span,.band .plate span{position:absolute;right:18px;top:18px;text-align:right}
+.ph .plate span{position:relative;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);line-height:1.6;max-width:32ch}
+.ph .credit{position:absolute;right:10px;bottom:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.06em;color:rgba(255,255,255,.78);background:rgba(0,0,0,.3);padding:2px 7px;border-radius:2px;pointer-events:none;z-index:2}
+.ph .add{position:absolute;left:10px;top:10px;z-index:3;display:none}
+body.owner .ph .add{display:inline-flex}
+.ph .add label{cursor:pointer;background:rgba(27,33,30,.85);color:#fff;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:2px}
+.ph .add label:hover{background:var(--river-deep)}
+.ph .add input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 
-/* ---------- offers ---------- */
-.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media (max-width:900px){.offers{grid-template-columns:1fr}}
-.offer{
-  background:var(--paper-2);border:1px solid var(--line);border-radius:4px;
-  display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .25s ease,transform .25s ease;
-}
-.offer:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-.offer .art{height:170px;position:relative;background:var(--paper-3);overflow:hidden}
-.offer .art canvas,.offer .art svg{width:100%;height:100%;display:block}
-.offer .art .code{position:absolute;left:14px;top:12px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;color:var(--river);background:var(--paper-2);padding:3px 8px;border-radius:2px}
-.offer .body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.offer .name{font-family:var(--f-display);font-size:1.55rem;font-weight:400;line-height:1.15}
-.offer .kick{font-size:.86rem;color:var(--muted)}
-.offer .sum{font-size:.94rem;color:var(--ink-2);flex:1}
-.offer .from{display:flex;align-items:baseline;gap:8px;padding-top:12px;border-top:1px solid var(--line);margin-top:6px}
-.offer .from .p{font-family:var(--f-display);font-size:1.5rem;font-weight:500;letter-spacing:-.01em}
-.offer .from .u{font-size:.8rem;color:var(--muted)}
-.offer .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+/* hero */
+.hero{position:relative;height:min(88vh,860px);min-height:520px;display:flex;align-items:flex-end;color:#fff}
+.hero .ph{position:absolute;inset:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.58) 100%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;padding-bottom:clamp(40px,6vw,80px);padding-top:clamp(120px,14vw,220px);width:100%}
+.hero .eyebrow{color:rgba(255,255,255,.8)}
+.hero h1{color:#fff;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hero .lede{color:rgba(255,255,255,.9);margin-top:22px;max-width:52ch}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.55)}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+.hero-foot{display:flex;gap:10px 26px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:34px}
 
-/* ---------- facts & chips ---------- */
-.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 28px;margin:0;border-top:1px solid var(--line)}
-.facts > div{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.93rem}
-.facts dt{color:var(--muted);font-size:.82rem;padding-top:2px}
+/* band */
+.band{position:relative;height:min(62vh,560px);min-height:380px;display:flex;align-items:center;color:#fff;margin-top:clamp(52px,7vw,104px)}
+.band .ph{position:absolute;inset:0}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.08) 70%);pointer-events:none}
+.band .wrap{position:relative;z-index:2;width:100%}
+.band .q{font-family:var(--f-display);font-weight:200;font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.15;max-width:22ch;text-shadow:0 2px 24px rgba(0,0,0,.3)}
+.band .s{margin-top:16px;font-size:1rem;color:rgba(255,255,255,.85);max-width:44ch}
+
+/* stay cards */
+.stays{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.stays{grid-template-columns:1fr}}
+.stay{display:block;color:var(--ink);background:var(--paper-2);border:1px solid var(--line);border-radius:3px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+.stay:hover{text-decoration:none;transform:translateY(-3px);box-shadow:var(--shadow)}
+.stay .ph{aspect-ratio:4/3}
+.stay .ph img{transition:transform .8s ease}
+.stay:hover .ph img{transform:scale(1.03)}
+.stay .body{padding:20px 22px 22px}
+.stay .code{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--river)}
+.stay .name{font-family:var(--f-display);font-size:1.7rem;font-weight:300;line-height:1.1;margin-top:8px}
+.stay .kick{font-size:.88rem;color:var(--muted);margin-top:6px}
+.stay .row2{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.stay .from{font-family:var(--f-display);font-size:1.35rem;font-weight:400}
+.stay .from small{font-family:var(--f-sans);font-size:.78rem;color:var(--muted);margin-left:6px}
+.stay .go{font-size:.86rem;color:var(--river);font-weight:500}
+
+/* place grid */
+.places{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:980px){.places{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.places{grid-template-columns:1fr}}
+.place{display:block;color:var(--ink)}
+.place:hover{text-decoration:none}
+.place .ph{aspect-ratio:4/5;border-radius:3px}
+.place .ph img{transition:transform .8s ease}
+.place:hover .ph img{transform:scale(1.03)}
+.place .t{font-family:var(--f-display);font-size:1.25rem;margin-top:12px;line-height:1.2}
+.place .d{font-size:.84rem;color:var(--muted);margin-top:3px}
+
+/* how it works */
+.how{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.how div{padding:26px 26px 28px 0;border-left:1px solid var(--line)}
+.how div:first-child{border-left:0}
+.how div:not(:first-child){padding-left:26px}
+@media (max-width:760px){.how{grid-template-columns:1fr}.how div{border-left:0;border-top:1px solid var(--line);padding:22px 0}.how div:first-child{border-top:0}}
+.how .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--river)}
+.how h3{font-family:var(--f-display);font-size:1.5rem;font-weight:300;margin:10px 0 8px}
+.how p{font-size:.93rem;color:var(--ink-2)}
+
+/* unit page */
+.unit-hero{position:relative;height:min(70vh,680px);min-height:420px;display:flex;align-items:flex-end;color:#fff}
+.unit-hero .ph{position:absolute;inset:0}
+.unit-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.58));pointer-events:none}
+.unit-hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:clamp(30px,5vw,60px)}
+.unit-hero .eyebrow{color:rgba(255,255,255,.8)}
+.unit-hero h1{color:#fff}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.8fr);gap:40px;align-items:start}
+@media (max-width:980px){.two{grid-template-columns:1fr}}
+.side{position:sticky;top:88px;display:flex;flex-direction:column;gap:14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0 28px;margin:0;border-top:1px solid var(--line)}
+.facts > div{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.facts dt{color:var(--muted);font-size:.8rem;padding-top:2px}
 .facts dd{margin:0;color:var(--ink)}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:640px){.strip{grid-template-columns:repeat(2,1fr)}}
+.strip .ph{aspect-ratio:4/3;border-radius:3px}
+.strip .cap{position:absolute;left:10px;bottom:8px;z-index:2;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(0,0,0,.3);padding:2px 7px;border-radius:2px}
+
+/* pending marks & chips */
 .pending{border-bottom:1px dotted var(--amber);cursor:help}
 .pending::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--amber);margin-left:6px;vertical-align:middle}
-body.show-marks .pending{background:var(--amber-tint);border-bottom-style:solid;padding:0 3px}
+body.owner .pending{background:var(--amber-tint);border-bottom-style:solid;padding:0 3px}
 .chip{display:inline-block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid transparent;white-space:nowrap;line-height:1.6}
 .chip.ok{color:var(--moss);background:var(--moss-tint)}
 .chip.tbc{color:var(--amber);background:var(--amber-tint)}
@@ -215,59 +229,49 @@ body.show-marks .pending{background:var(--amber-tint);border-bottom-style:solid;
 .chip.info{color:var(--river);background:var(--river-tint)}
 .chip.neutral{color:var(--muted);border-color:var(--line)}
 
-/* ---------- notices ---------- */
+/* notices / cards / tables */
 .notice{border:1px solid var(--line);border-left:3px solid var(--river);background:var(--paper-2);padding:16px 18px;border-radius:0 3px 3px 0;font-size:.93rem;color:var(--ink-2)}
 .notice.warn{border-left-color:var(--amber)}
 .notice.bad{border-left-color:var(--rust)}
 .notice.good{border-left-color:var(--moss)}
 .notice b{color:var(--ink);font-weight:600}
 .notice + .notice{margin-top:10px}
-
-/* ---------- grids / cards ---------- */
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media (max-width:960px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
-.card{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:18px 20px}
+@media (max-width:960px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:18px 20px}
 .card h3{font-family:var(--f-sans);font-weight:600;font-size:1rem;margin-bottom:6px}
 .card p{font-size:.92rem;color:var(--ink-2)}
-.card .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.tile{display:block;padding:20px;border:1px solid var(--line);border-radius:4px;background:var(--paper-2);color:var(--ink);transition:border-color .2s ease,transform .2s ease}
-.tile:hover{border-color:var(--river);text-decoration:none;transform:translateY(-2px)}
-.tile .t{font-family:var(--f-display);font-size:1.3rem}
-.tile .d{font-size:.88rem;color:var(--muted);margin-top:4px}
-
-/* ---------- tables ---------- */
 .tbl{font-size:.92rem;min-width:600px}
 .tbl th{text-align:left;font-family:var(--f-mono);font-weight:400;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line-2);padding:0 16px 10px 0;vertical-align:bottom}
 .tbl td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
 .tbl td:first-child{color:var(--ink)}
 .tbl tr:last-child td{border-bottom:0}
 .tbl .c{text-align:center}
+.page-head{padding-top:clamp(40px,6vw,80px);padding-bottom:clamp(22px,3vw,36px);border-bottom:1px solid var(--line)}
+.page-head .lede{margin-top:16px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.9rem}
+.kv b{font-family:var(--f-mono);font-weight:400;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
-/* ---------- calendar ---------- */
-.avail{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.9fr);gap:28px;align-items:start}
-@media (max-width:980px){.avail{grid-template-columns:1fr}}
+/* ---------- booking ---------- */
+.book{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.9fr);gap:36px;align-items:start}
+@media (max-width:980px){.book{grid-template-columns:1fr}}
 .cal-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.cal-tools .mon{font-family:var(--f-display);font-size:1.35rem}
 .cal-months{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 @media (max-width:760px){.cal-months{grid-template-columns:1fr}}
-.cal{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:14px}
-.cal .mname{font-family:var(--f-display);font-size:1.15rem;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline}
+.cal{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:14px}
+.cal .mname{font-family:var(--f-display);font-size:1.2rem;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline}
 .cal .mname span{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
 .cal .dow{display:grid;grid-template-columns:repeat(7,1fr);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted-2);text-align:center;margin-bottom:6px}
 .cal .days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
-.day{
-  aspect-ratio:1;border:1px solid transparent;border-radius:3px;background:transparent;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  font-family:var(--f-mono);font-size:12px;cursor:pointer;color:var(--ink);padding:0;
-  transition:background .15s ease,border-color .15s ease;
-}
+.day{aspect-ratio:1;border:1px solid transparent;border-radius:3px;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:var(--f-mono);font-size:12px;cursor:pointer;color:var(--ink);padding:0;transition:background .15s ease,border-color .15s ease}
 .day:hover{background:var(--paper-3)}
 .day.past,.day.notopen{color:var(--muted-2);cursor:not-allowed}
 .day.notopen{background:repeating-linear-gradient(135deg,transparent 0 4px,var(--paper-3) 4px 6px)}
-.day.sel{background:var(--river);color:var(--river-ink);border-color:var(--river)}
+.day.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .day.inrange{background:var(--river-tint)}
 .day.today{border-color:var(--line-2)}
 .day .lamps{display:flex;gap:2px}
@@ -275,81 +279,39 @@ body.show-marks .pending{background:var(--amber-tint);border-bottom-style:solid;
 .day .lamps i.o{background:var(--moss)}
 .day .lamps i.b{background:var(--rust)}
 .day .lamps i.m{background:var(--amber)}
-.day.sel .lamps i{opacity:.85}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:12px;align-items:center}
 .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
 .legend .hatch{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:middle;border:1px solid var(--line);background:repeating-linear-gradient(135deg,transparent 0 4px,var(--paper-3) 4px 6px)}
-
-/* ---------- quote panel ---------- */
-.qpanel{position:sticky;top:80px;display:flex;flex-direction:column;gap:14px}
-.qcard{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:18px}
-.qcard .qh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
-.qcard .qh .n{font-family:var(--f-display);font-size:1.3rem}
-.field{display:flex;flex-direction:column;gap:6px;font-size:.86rem;color:var(--muted)}
-.field input,.field select,.field textarea{
-  font:inherit;font-size:.95rem;color:var(--ink);background:var(--paper);border:1px solid var(--line-2);
-  border-radius:3px;padding:9px 11px;width:100%;
-}
-.field textarea{min-height:110px;resize:vertical}
+.qcard{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:20px}
+.qcard .qh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+.qcard .qh .n{font-family:var(--f-display);font-size:1.35rem;font-weight:300}
+.field{display:flex;flex-direction:column;gap:6px;font-size:.84rem;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--paper);border:1px solid var(--line-2);border-radius:2px;padding:10px 12px;width:100%}
+.field textarea{min-height:100px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--river);outline-offset:1px;border-color:var(--river)}
 .fields{display:grid;gap:12px}
-.fields.two{grid-template-columns:1fr 1fr}
-@media (max-width:560px){.fields.two{grid-template-columns:1fr}}
-.qrows{border-top:1px solid var(--line);margin-top:10px}
-.qrow{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.9rem;font-variant-numeric:tabular-nums}
+.fields.two2{grid-template-columns:1fr 1fr}
+@media (max-width:560px){.fields.two2{grid-template-columns:1fr}}
+.qrows{border-top:1px solid var(--line);margin-top:12px}
+.qrow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem;font-variant-numeric:tabular-nums}
 .qrow .l{color:var(--ink-2)}
 .qrow .l small{display:block;color:var(--muted);font-size:.78rem}
 .qrow.total{font-weight:600;font-size:1rem;border-bottom:0;padding-top:12px}
-.qrow.total .v{font-family:var(--f-display);font-size:1.4rem;font-weight:500}
-.offer-state{display:flex;flex-direction:column;gap:8px}
-.ostate{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:3px;background:var(--paper);font-size:.9rem;cursor:pointer;text-align:left;width:100%}
+.qrow.total .v{font-family:var(--f-display);font-size:1.5rem;font-weight:400}
+.ostate{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:2px;background:var(--paper);font-size:.92rem;cursor:pointer;text-align:left;width:100%;transition:border-color .15s ease,background .15s ease}
+.ostate + .ostate{margin-top:8px}
 .ostate:hover{border-color:var(--line-2)}
-.ostate.on{border-color:var(--river);background:var(--river-tint)}
-.ostate.off{opacity:.6;cursor:not-allowed}
+.ostate.on{border-color:var(--ink);background:var(--paper-2)}
+.ostate.off{opacity:.55;cursor:not-allowed}
 .ostate .why{display:block;font-size:.78rem;color:var(--muted);margin-top:2px}
-
-/* ---------- guide ---------- */
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.filters button{background:transparent;border:1px solid var(--line);border-radius:20px;padding:6px 13px;font-size:.84rem;cursor:pointer;color:var(--ink-2)}
-.filters button:hover{border-color:var(--line-2)}
-.filters button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.gcard{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px}
-.gcard .cat{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--river)}
-.gcard .name{font-family:var(--f-display);font-size:1.3rem;line-height:1.15}
-.gcard .where{font-size:.86rem;color:var(--muted)}
-.gcard .desc{font-size:.92rem;color:var(--ink-2)}
-.gcard .reg{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:.8rem;margin-top:6px;padding-top:10px;border-top:1px dashed var(--line)}
-.gcard .reg b{font-family:var(--f-mono);font-weight:400;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);padding-top:3px}
-.gcard .reg span{color:var(--ink-2)}
-.gcard .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
-
-/* ---------- gallery ---------- */
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.slot{aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;position:relative;overflow:hidden;background:var(--paper-3)}
-.slot canvas{width:100%;height:100%;display:block}
-.slot .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--paper) 92%,transparent));font-size:.8rem;color:var(--ink-2)}
-.slot .cap b{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:400;margin-bottom:2px}
-.video{aspect-ratio:16/9;border:1px solid var(--line);border-radius:4px;position:relative;overflow:hidden;background:var(--paper-3);display:flex;align-items:center;justify-content:center}
-.video canvas{position:absolute;inset:0;width:100%;height:100%}
-.video .play{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--ink-2);font-size:.9rem;text-align:center;padding:20px}
-.video .play .ring{width:64px;height:64px;border-radius:50%;border:1px solid var(--ink-2);display:flex;align-items:center;justify-content:center}
-.video .play .ring svg{width:22px;height:22px;fill:var(--ink-2);margin-left:3px}
-
-/* ---------- faq ---------- */
-.faq details{border-bottom:1px solid var(--line);padding:4px 0}
-.faq summary{cursor:pointer;padding:14px 0;font-weight:500;font-size:1rem;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--muted);font-size:1.1rem;flex:none}
-.faq details[open] summary::after{content:"–"}
-.faq .a{padding:0 0 16px;color:var(--ink-2);font-size:.95rem;max-width:var(--measure)}
-
-/* ---------- steps ---------- */
-.steps{display:flex;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:24px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--ink-2);padding:8px 0}
+.check input{margin-top:4px;accent-color:var(--river)}
+.steps{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-bottom:24px}
 .step{flex:1;padding:12px 14px;font-size:.82rem;color:var(--muted);border-right:1px solid var(--line);display:flex;gap:9px;align-items:center;background:var(--paper-2)}
 .step:last-child{border-right:0}
 .step i{font-family:var(--f-mono);font-style:normal;font-size:10px;width:20px;height:20px;border-radius:50%;border:1px solid var(--line-2);display:inline-flex;align-items:center;justify-content:center;flex:none}
 .step.on{color:var(--ink);font-weight:500}
-.step.on i{background:var(--river);color:var(--river-ink);border-color:var(--river)}
+.step.on i{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .step.done i{background:var(--moss);color:#fff;border-color:var(--moss)}
 @media (max-width:700px){.steps{flex-direction:column}.step{border-right:0;border-bottom:1px solid var(--line)}}
 .state-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:20px;background:var(--amber-tint);color:var(--amber);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
@@ -360,7 +322,43 @@ body.show-marks .pending{background:var(--amber-tint);border-bottom-style:solid;
 .lifecycle span.done{color:var(--moss);border-color:var(--moss)}
 .lifecycle em{font-style:normal}
 
-/* ---------- checklist / register ---------- */
+/* ---------- area / guide ---------- */
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{background:transparent;border:1px solid var(--line);border-radius:20px;padding:6px 13px;font-size:.84rem;cursor:pointer;color:var(--ink-2)}
+.filters button:hover{border-color:var(--line-2)}
+.filters button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.gcard{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;overflow:hidden;display:flex;flex-direction:column}
+.gcard .ph{aspect-ratio:3/2}
+.gcard .gb{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
+.gcard .cat{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--river)}
+.gcard .name{font-family:var(--f-display);font-size:1.35rem;line-height:1.15;font-weight:300}
+.gcard .where{font-size:.84rem;color:var(--muted)}
+.gcard .desc{font-size:.92rem;color:var(--ink-2)}
+.gcard details{margin-top:6px;border-top:1px dashed var(--line);padding-top:8px}
+.gcard summary{cursor:pointer;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);list-style:none}
+.gcard summary::-webkit-details-marker{display:none}
+.gcard .reg{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:.8rem;margin-top:8px}
+.gcard .reg b{font-family:var(--f-mono);font-weight:400;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);padding-top:3px}
+.gcard .reg span{color:var(--ink-2)}
+.seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:980px){.seasons{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.seasons{grid-template-columns:1fr}}
+.season{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.season .ph{aspect-ratio:4/3}
+.season .sb{padding:16px 18px 18px}
+.season .sb h3{font-family:var(--f-display);font-weight:300;font-size:1.5rem}
+.season .sb .m{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--river);margin-bottom:6px}
+.season .sb p{font-size:.88rem;color:var(--ink-2);margin-top:8px}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;padding:14px 0;font-weight:500;font-size:1rem;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--muted);font-size:1.1rem;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .a{padding:0 0 16px;color:var(--ink-2);font-size:.95rem;max-width:var(--measure)}
+
+/* register, plan */
 .register{border-top:1px solid var(--line-2)}
 .reg-row{display:grid;grid-template-columns:140px 1fr auto;gap:10px 18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.9rem;align-items:start}
 .reg-row .k{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em;padding-top:2px}
@@ -369,59 +367,47 @@ body.show-marks .pending{background:var(--amber-tint);border-bottom-style:solid;
 @media (max-width:640px){.reg-row{grid-template-columns:1fr;gap:4px}}
 .progressbar{height:6px;background:var(--paper-3);border-radius:3px;overflow:hidden;margin:10px 0 4px}
 .progressbar i{display:block;height:100%;background:var(--moss);width:0}
-
-/* ---------- checkbox rows ---------- */
-.check{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--ink-2);padding:8px 0}
-.check input{margin-top:4px;accent-color:var(--river)}
 .choices{display:flex;flex-wrap:wrap;gap:8px}
 .choices label{border:1px solid var(--line);border-radius:20px;padding:6px 12px;font-size:.86rem;cursor:pointer;display:inline-flex;gap:6px;align-items:center;color:var(--ink-2);background:var(--paper-2)}
-.choices label:has(input:checked){border-color:var(--river);color:var(--river);background:var(--river-tint)}
+.choices label:has(input:checked){border-color:var(--ink);color:var(--ink);background:var(--paper-3)}
 .choices input{accent-color:var(--river)}
-
-/* ---------- itinerary ---------- */
 .itin{border-top:1px solid var(--line-2)}
 .itin-day{display:grid;grid-template-columns:110px 1fr;gap:10px 22px;padding:16px 0;border-bottom:1px solid var(--line)}
 .itin-day .d{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--river);padding-top:4px}
-.itin-day .d small{display:block;color:var(--muted);letter-spacing:.06em;margin-top:3px}
 .itin-day ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
 .itin-day li{font-size:.93rem;color:var(--ink-2)}
 .itin-day li b{color:var(--ink);font-weight:500}
 @media (max-width:600px){.itin-day{grid-template-columns:1fr}}
 
-/* ---------- footer ---------- */
-footer{margin-top:clamp(60px,8vw,110px);border-top:1px solid var(--line);background:var(--paper-2)}
-.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;padding:44px 0 26px}
+/* footer */
+footer{margin-top:clamp(64px,9vw,120px);border-top:1px solid var(--line);background:var(--paper-2)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:48px 0 28px}
 @media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.foot{grid-template-columns:1fr}}
 .foot h4{font-family:var(--f-mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
 .foot a{color:var(--ink-2);font-size:.9rem}
 .foot .about{font-size:.9rem;color:var(--ink-2);max-width:36ch}
-.foot .about .n{font-family:var(--f-display);font-size:1.5rem;color:var(--ink);margin-bottom:8px}
-.legal{border-top:1px solid var(--line);padding:18px 0 30px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.foot .about .n{font-family:var(--f-display);font-size:1.6rem;color:var(--ink);margin-bottom:8px;font-weight:300}
+.legal{border-top:1px solid var(--line);padding:18px 0 30px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
 .legal label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
-
-/* ---------- misc ---------- */
-.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.9rem}
-.kv b{font-family:var(--f-mono);font-weight:400;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);padding-top:3px}
-.stack{display:flex;flex-direction:column;gap:12px}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:4px;font-size:.88rem;z-index:80;transition:all .3s ease;pointer-events:none;box-shadow:var(--shadow)}
+.credits{font-size:.78rem;color:var(--muted);padding:0 0 22px;line-height:1.6}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:3px;font-size:.88rem;z-index:80;transition:all .3s ease;pointer-events:none;box-shadow:var(--shadow)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.compare th:first-child,.compare td:first-child{width:180px}
-
-@media print{
-  .banner,.nav,footer,.hero .scene,.btn,.filters,.cal-tools{display:none!important}
-  body{background:#fff;color:#000}
-  .hero{background:none;border:0}
-  .card,.gcard,.qcard,.offer{break-inside:avoid}
-}
+.owner-bar{display:none;background:var(--ink);color:var(--paper);font-size:.82rem;padding:8px 0}
+body.owner .owner-bar{display:block}
+.owner-bar .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.owner-bar b{font-family:var(--f-mono);font-weight:400;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+@media (prefers-reduced-motion:reduce){.stay .ph img,.place .ph img,.gcard .ph img{transition:none}}
+@media print{.banner,.nav,footer,.btn,.filters,.cal-tools,.owner-bar{display:none!important}body{background:#fff;color:#000}}
 </style>
+
+<script id="photoMap" type="application/json">{}</script>
 
 <div class="banner" role="status">
   <div class="wrap">
     <span class="tag">Preview build</span>
-    <span>Property facts, rates, taxes and terms shown here are placeholders pending verification. No reservation is created and no card is charged on this site. <a href="#/verify">See what still needs confirming</a>.</span>
+    <span>Property facts, rates, taxes and terms are placeholders pending verification. No reservation is created and no card is charged here. <a href="#/verify">What still needs confirming</a>.</span>
   </div>
 </div>
 
@@ -431,69 +417,43 @@ footer{margin-top:clamp(60px,8vw,110px);border-top:1px solid var(--line);backgro
     <nav class="links" id="links" aria-label="Main">
       <a href="#/house" data-nav="house">The House</a>
       <a href="#/apartment" data-nav="apartment">The Apartment</a>
-      <a href="#/entire-property" data-nav="entire-property">Entire Property</a>
-      <a href="#/compare" data-nav="compare">Compare</a>
-      <a href="#/guide" data-nav="guide">Area Guide</a>
-      <a href="#/offers" data-nav="offers">Offers</a>
-      <a href="#/faq" data-nav="faq">FAQ</a>
+      <a href="#/entire-property" data-nav="entire-property">Whole Property</a>
+      <a href="#/area" data-nav="area">The Area</a>
+      <a href="#/contact" data-nav="contact">Contact</a>
     </nav>
     <div class="nav-tools">
-      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle colour theme" title="Theme">
-        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.4A5.5 5.5 0 0 1 13.4 3.1C13 3 12.5 3 12 3z"/></svg>
-      </button>
-      <a class="btn sm" href="#/availability">Check dates</a>
-      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle colour theme" title="Theme"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.4A5.5 5.5 0 0 1 13.4 3.1C13 3 12.5 3 12 3z"/></svg></button>
+      <a class="btn sm" href="#/book">Book</a>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </div>
 
-<main id="app" aria-live="polite"></main>
+<div class="owner-bar"><div class="wrap"><b>Owner tools</b><span id="ownerStatus">Pending facts are highlighted. Use “Add photo” on any image to place a real photograph.</span></div></div>
+
+<main id="app"></main>
 
 <footer>
   <div class="wrap">
     <div class="foot">
       <div class="about">
         <div class="n">Ausable House</div>
-        <p>A main house and a separate apartment in Wilmington, New York, at the foot of Whiteface Mountain on the West Branch of the Ausable River. Book either on its own, or the whole property together.</p>
+        <p>A main house and a separate apartment in Wilmington, New York, at the foot of Whiteface Mountain on the West Branch of the Ausable River.</p>
       </div>
-      <div>
-        <h4>Stay</h4>
-        <ul>
-          <li><a href="#/house">The Main House</a></li>
-          <li><a href="#/apartment">The Apartment</a></li>
-          <li><a href="#/entire-property">Entire Property</a></li>
-          <li><a href="#/compare">Compare the three</a></li>
-          <li><a href="#/availability">Availability &amp; quotes</a></li>
-          <li><a href="#/amenities">Amenities</a></li>
-          <li><a href="#/gallery">Gallery &amp; video</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Plan</h4>
-        <ul>
-          <li><a href="#/guide">Area guide</a></li>
-          <li><a href="#/seasons">Seasonal guides</a></li>
-          <li><a href="#/plan">Plan your stay</a></li>
-          <li><a href="#/offers">Offers</a></li>
-          <li><a href="#/faq">Practical FAQs</a></li>
-          <li><a href="#/contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Policies</h4>
-        <ul>
-          <li><a href="#/policies">Booking policies</a></li>
-          <li><a href="#/privacy">Privacy notice</a></li>
-          <li><a href="#/accessibility">Accessibility</a></li>
-          <li><a href="#/verify">Publishing register</a></li>
-        </ul>
-      </div>
+      <div><h4>Stay</h4><ul>
+        <li><a href="#/house">The Main House</a></li><li><a href="#/apartment">The Apartment</a></li><li><a href="#/entire-property">The Whole Property</a></li><li><a href="#/compare">Compare the three</a></li><li><a href="#/book">Check dates &amp; book</a></li><li><a href="#/amenities">Amenities</a></li>
+      </ul></div>
+      <div><h4>Plan</h4><ul>
+        <li><a href="#/area">The area</a></li><li><a href="#/seasons">Seasons</a></li><li><a href="#/plan">Plan your stay</a></li><li><a href="#/offers">Offers</a></li><li><a href="#/faq">FAQs</a></li><li><a href="#/contact">Contact</a></li>
+      </ul></div>
+      <div><h4>Policies</h4><ul>
+        <li><a href="#/policies">Booking policies</a></li><li><a href="#/privacy">Privacy</a></li><li><a href="#/accessibility">Accessibility</a></li><li><a href="#/verify">Publishing register</a></li>
+      </ul></div>
     </div>
+    <div class="credits" id="credits"></div>
     <div class="legal">
-      <span id="legalEntity">Operated by <span class="pending" title="Legal entity pending attorney reconciliation">[contracting entity — pending]</span> · Town of Wilmington STR licence <span class="pending" title="Licence number pending">[pending]</span> · Essex County registration <span class="pending" title="Registration pending">[pending]</span></span>
-      <label><input type="checkbox" id="marksToggle"> Show verification marks</label>
+      <span>Operated by <span class="pending" title="Legal entity pending attorney reconciliation">[contracting entity — pending]</span> · Town of Wilmington STR licence <span class="pending" title="Licence number pending">[pending]</span> · Essex County registration <span class="pending" title="Registration pending">[pending]</span></span>
+      <label><input type="checkbox" id="ownerToggle"> Owner tools</label>
     </div>
   </div>
 </footer>
@@ -564,7 +524,7 @@ var UNITS = {
     shared: "When the main house is separately occupied, expect neighbouring guests on the property. Apartment guests never receive a house access code, and the house is not part of an apartment stay."
   },
   HA: {
-    code: "HA", slug: "entire-property", name: "The Entire Property", short: "Entire property",
+    code: "HA", slug: "entire-property", name: "The Whole Property", short: "Whole property",
     kicker: "House + apartment · whole property to yourselves",
     summary: "Both units together. This is the only booking that can promise you the whole property with no other guests — because it is the only one that actually reserves both physical units.",
     needs: ["H", "A"],
@@ -810,751 +770,589 @@ function toast(msg){
   clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove("show"); }, 2800);
 }
 
+
 /* =====================================================================
-   PAGES — each returns HTML; `mounts` wires interactivity after render.
+   PHOTOGRAPHS — slot manifest, map, placeholder plates, owner uploads
+   Real photographs are placed by the build script (photos/ → data URIs)
+   or by the owner in-page. Nothing generated ever stands in for the place.
+   ===================================================================== */
+var PHOTOS = {
+  "hero":        { subject:"Whiteface Mountain from Wilmington", alt:"Whiteface Mountain rising above the Wilmington valley" },
+  "river":       { subject:"West Branch of the Ausable River, Wilmington", alt:"The West Branch of the Ausable River running over boulders" },
+  "notch":       { subject:"Wilmington Notch on NY-86", alt:"Cliffs of Wilmington Notch above the road and river" },
+  "stay-H":      { subject:"Main house exterior (owner photograph)", alt:"The main house" },
+  "stay-A":      { subject:"Apartment entrance (owner photograph)", alt:"The apartment" },
+  "stay-HA":     { subject:"The whole property (owner photograph)", alt:"The property with both units" },
+  "H-living":    { subject:"Main house — living room", alt:"Main house living room" },
+  "H-kitchen":   { subject:"Main house — kitchen", alt:"Main house kitchen" },
+  "H-bed":       { subject:"Main house — bedroom", alt:"Main house bedroom" },
+  "A-main":      { subject:"Apartment — main room", alt:"Apartment main room" },
+  "A-kitchen":   { subject:"Apartment — kitchen", alt:"Apartment kitchen" },
+  "A-bath":      { subject:"Apartment — bathroom", alt:"Apartment bathroom" },
+  "HA-grounds":  { subject:"Property — grounds", alt:"The grounds" },
+  "HA-river":    { subject:"Property — river side", alt:"The river side of the property" },
+  "HA-winter":   { subject:"Property — in winter", alt:"The property in snow" },
+  "whiteface":   { subject:"Whiteface summit", alt:"The summit of Whiteface Mountain" },
+  "gorge":       { subject:"High Falls Gorge", alt:"Waterfalls in High Falls Gorge" },
+  "flume":       { subject:"Flume Trails, Wilmington", alt:"Singletrack through the Flume Trails" },
+  "placid":      { subject:"Mirror Lake, Lake Placid", alt:"Mirror Lake in Lake Placid" },
+  "jay":         { subject:"Jay Covered Bridge", alt:"The Jay covered bridge over the East Branch" },
+  "chasm":       { subject:"Ausable Chasm", alt:"The sandstone walls of Ausable Chasm" },
+  "highway":     { subject:"Whiteface Veterans' Memorial Highway", alt:"The Memorial Highway near the summit" },
+  "nordic":      { subject:"Mt Van Hoevenberg trails", alt:"Cross-country ski trails at Mt Van Hoevenberg" },
+  "ponds":       { subject:"Copperas Pond", alt:"Copperas Pond under the cliffs of the Notch" },
+  "kiln":        { subject:"Cooper Kiln Pond", alt:"Cooper Kiln Pond" },
+  "santa":       { subject:"Santa's Workshop, North Pole NY", alt:"Santa's Workshop" },
+  "refuge":      { subject:"Adirondack Wildlife Refuge", alt:"Adirondack Wildlife Refuge" },
+  "museum":      { subject:"Lake Placid Olympic Museum", alt:"Lake Placid Olympic Museum" },
+  "wild":        { subject:"The Wild Center, Tupper Lake", alt:"The Wild Center's Wild Walk" },
+  "hardy":       { subject:"Hardy Road Trails", alt:"Hardy Road trails" },
+  "winter":      { subject:"Wilmington in winter", alt:"Snow on the High Peaks" },
+  "spring":      { subject:"Mud season on the Ausable", alt:"Spring melt on the Ausable" },
+  "summer":      { subject:"Summer on the West Branch", alt:"Summer on the river" },
+  "autumn":      { subject:"Foliage in the Wilmington valley", alt:"Autumn colour below Whiteface" }
+};
+var GUIDE_PHOTO = { "Whiteface Mountain":"whiteface", "Mt Van Hoevenberg (Nordic)":"nordic", "Whiteface via the Wilmington Trail":"whiteface", "Cooper Kiln Pond":"kiln", "Copperas & Owen Ponds":"ponds", "Flume Trails":"flume", "Hardy Road Trails":"hardy", "West Branch of the Ausable River":"river", "Whiteface Veterans' Memorial Highway":"highway", "High Falls Gorge":"gorge", "Ausable Chasm":"chasm", "Lake Placid & the Olympic sites":"placid", "Jay Covered Bridge":"jay", "Santa's Workshop":"santa", "Adirondack Wildlife Refuge":"refuge", "Lake Placid Olympic Museum":"museum", "The Wild Center":"wild" };
+
+var PHOTO_MAP = {};
+try { PHOTO_MAP = JSON.parse(document.getElementById("photoMap").textContent || "{}") || {}; } catch(e){ PHOTO_MAP = {}; }
+var LOCAL_PHOTOS = load("photos", {});
+function photoFor(slot){ return PHOTO_MAP[slot] || LOCAL_PHOTOS[slot] || null; }
+function ph(slot, cls, opts){
+  opts = opts || {};
+  var meta = PHOTOS[slot] || { subject: slot, alt: slot };
+  var p = photoFor(slot);
+  var inner = p
+    ? '<img src="' + p.src + '" alt="' + esc(p.alt || meta.alt) + '"' + (opts.eager ? '' : ' loading="lazy"') + ' decoding="async">' + (p.credit ? '<span class="credit">' + esc(p.credit) + '</span>' : '')
+    : '<div class="plate"><span>Photograph to come<br>' + esc(meta.subject) + '</span></div>';
+  var add = '<span class="add"><label>' + (p ? "Replace photo" : "Add photo") + '<input type="file" accept="image/*" data-slot="' + esc(slot) + '"></label></span>';
+  return '<figure class="ph ' + (cls || "") + '" data-ph="' + esc(slot) + '">' + inner + add + (opts.extra || "") + '</figure>';
+}
+function renderCredits(){
+  var el = document.getElementById("credits"); if (!el) return;
+  var seen = {}, list = [];
+  Object.keys(PHOTO_MAP).forEach(function(k){ var p = PHOTO_MAP[k]; if (p && p.credit && !seen[p.credit]){ seen[p.credit] = 1; list.push(p.credit + (p.license ? " (" + p.license + ")" : "")); } });
+  el.innerHTML = list.length ? "Photographs: " + esc(list.join(" · ")) : "";
+}
+
+/* owner in-page photo placement */
+function resizeImage(file, max){
+  return new Promise(function(resolve, reject){
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function(){
+      var s = Math.min(1, max / Math.max(img.width, img.height));
+      var c = document.createElement("canvas"); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL("image/jpeg", 0.82));
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); reject(new Error("Could not read that image.")); };
+    img.src = url;
+  });
+}
+function buildDocument(){
+  var root = document.documentElement.cloneNode(true);
+  var map = root.querySelector("#photoMap"); var merged = {};
+  Object.keys(PHOTO_MAP).forEach(function(k){ merged[k] = PHOTO_MAP[k]; });
+  Object.keys(LOCAL_PHOTOS).forEach(function(k){ merged[k] = LOCAL_PHOTOS[k]; });
+  if (map) map.textContent = JSON.stringify(merged);
+  var app = root.querySelector("#app"); if (app) app.innerHTML = "";
+  root.querySelector("body").classList.remove("owner");
+  var t = root.querySelector("#toast"); if (t){ t.className = "toast"; t.textContent = ""; }
+  root.querySelectorAll(".links.open").forEach(function(l){ l.classList.remove("open"); });
+  return "<!DOCTYPE html>\n" + root.outerHTML;
+}
+document.addEventListener("change", function(e){
+  var input = e.target;
+  if (!(input && input.matches && input.matches("input[type=file][data-slot]"))) return;
+  var slot = input.getAttribute("data-slot"), file = input.files && input.files[0];
+  if (!file) return;
+  var status = document.getElementById("ownerStatus");
+  if (status) status.textContent = "Preparing photograph…";
+  resizeImage(file, 1800).then(function(dataUrl){
+    var credit = window.prompt("Photo credit to show (e.g. “Photo: A. Rutkowski”). Leave blank for none.", "") || "";
+    LOCAL_PHOTOS[slot] = { src: dataUrl, credit: credit.trim(), alt: (PHOTOS[slot] || {}).alt || slot };
+    try { store("photos", LOCAL_PHOTOS); } catch(err){}
+    render();
+    if (status) status.textContent = "Photograph placed on this device. Publishing to everyone…";
+    if (!(window.claude && typeof window.claude.use === "function")){ if (status) status.textContent = "Photograph placed on this device only. Send the file to be built into the site."; toast("Saved on this device."); return; }
+    window.claude.use("artifact").then(function(art){
+      if (!art){ if (status) status.textContent = "Photograph placed on this device only (publishing is not available in this view)."; toast("Saved on this device."); return; }
+      return art.publish(buildDocument()).then(function(){ if (status) status.textContent = "Published. Everyone who opens the site now sees this photograph."; toast("Published."); })
+        .catch(function(err){
+          var code = err && err.code;
+          if (status) status.textContent = code === "conflict" ? "Someone published a newer version; reloading to it." : code === "too_large" ? "That photograph makes the page too large — try a smaller file." : code === "not_writer" || code === "not_granted" ? "You can view this page but not publish to it. Saved on this device only." : "Could not publish (" + (code || "error") + "). Saved on this device.";
+          toast("Not published: " + (code || "error"));
+        });
+    });
+  }).catch(function(err){ toast(err.message || "Could not read that image."); if (status) status.textContent = err.message || "Could not read that image."; });
+});
+
+/* =====================================================================
+   PAGES
    ===================================================================== */
 var PAGES = {}, MOUNTS = {}, TITLES = {};
+function fromPrice(code){ return code === "HA" ? Math.round((RATES.H.base + RATES.A.base) * RATES.HA.bundle) : RATES[code].base; }
 
-function offerCard(code, from, to){
+function stayCard(code){
   var u = UNITS[code];
-  var priceFrom = code === "HA" ? Math.round((RATES.H.base + RATES.A.base) * RATES.HA.bundle) : RATES[code].base;
-  var q = (from && to) ? '&from=' + from + '&to=' + to : '';
-  return '<article class="offer">' +
-    '<div class="art"><canvas data-art="' + code + '" aria-hidden="true"></canvas><span class="code">' + esc(u.code) + '</span></div>' +
-    '<div class="body">' +
-      '<div class="name">' + esc(u.name) + '</div>' +
-      '<div class="kick">' + esc(u.kicker) + '</div>' +
-      '<p class="sum">' + esc(u.summary) + '</p>' +
-      '<div class="from"><span class="p tnum">' + money(priceFrom) + '</span><span class="u">/ night from · <span class="pending" title="Sample rate. Actual starting rates require current comparable quotes and verified property costs.">sample rate</span></span></div>' +
-      '<div class="acts"><a class="btn sm" href="#/availability?offer=' + code + q + '">Check dates</a><a class="btn sm ghost" href="#/' + u.slug + '">Details</a></div>' +
-    '</div></article>';
+  return '<a class="stay fade" href="#/' + u.slug + '">' + ph("stay-" + code, "") +
+    '<div class="body"><div class="code">' + esc(code) + '</div><div class="name">' + esc(u.name) + '</div><div class="kick">' + esc(u.kicker) + '</div>' +
+    '<div class="row2"><span class="from tnum">' + money(fromPrice(code)) + '<small>/ night · <span class="pending" title="Sample rate. Actual rates need current comparable quotes and verified costs.">sample</span></small></span><span class="go">See the ' + esc(u.short.toLowerCase()) + ' →</span></div></div></a>';
 }
 
 /* ---------- HOME ---------- */
 TITLES.home = "Ausable House";
 PAGES.home = function(){
+  var places = [["whiteface","Whiteface Mountain","Skiing · In town"],["river","The West Branch","Fly fishing · Through the village"],["gorge","High Falls Gorge","Four falls · 5 min"],["flume","Flume Trails","Mountain biking · In town"]];
   return '' +
-  '<section class="hero">' +
-    '<div class="scene"><svg id="ridges" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg><div class="disc"></div><div class="mist"></div></div>' +
-    '<div class="wrap hero-inner">' +
-      '<div class="eyebrow">Wilmington · Adirondack High Peaks · ' + esc(BRAND.coords) + '</div>' +
-      '<h1 class="h-xl">A house and an apartment <em class="i">below Whiteface</em></h1>' +
-      '<p class="lede">Two separate places to stay on one property beside the West Branch of the Ausable. Take the house, take the apartment, or take both and have the whole place to yourselves.</p>' +
-      '<div class="hero-cta"><a class="btn" href="#/availability">Check availability</a><a class="btn ghost" href="#/compare">Compare the three</a></div>' +
-      '<div class="hero-notes"><span>Direct booking · no booking fee</span><span>Itemised total before you commit</span><span>Request-to-book · nothing charged until confirmed</span></div>' +
-    '</div>' +
+  '<section class="hero">' + ph("hero", "", { eager:true }) +
+    '<div class="wrap hero-inner"><div class="eyebrow">Wilmington · Adirondack High Peaks</div>' +
+    '<h1 class="h-xl">A house and an apartment <em class="i">below Whiteface</em></h1>' +
+    '<p class="lede">Two places to stay on one quiet property beside the West Branch of the Ausable. Take the house, take the apartment, or take both and have the whole place to yourselves.</p>' +
+    '<div class="hero-cta"><a class="btn light" href="#/book">Check dates</a><a class="btn ghost" href="#/compare">Which stay is right?</a></div>' +
+    '<div class="hero-foot"><span>Book direct · no booking fee</span><span>Full price before you commit</span><span>Nothing charged until confirmed</span></div></div>' +
   '</section>' +
 
-  '<section class="sec wrap">' +
-    '<div class="sec-head"><div><div class="eyebrow">Three ways to stay</div><h2 class="h-l">One property, three honest bookings</h2><p class="lede">Every unit is described on its own terms. The comparison page shows what is shared and what is exclusive, so nothing surprises you in the arrival email.</p></div></div>' +
-    '<div class="offers">' + OFFER_ORDER.map(function(c){ return offerCard(c); }).join("") + '</div>' +
-  '</section>' +
+  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Choose your stay</div><h2 class="h-l">One property. Three ways to have it.</h2></div><a class="btn ghost sm" href="#/compare">Compare the three</a></div>' +
+    '<div class="stays">' + OFFER_ORDER.map(stayCard).join("") + '</div>' +
+    '<p class="muted" style="font-size:.84rem;margin-top:16px;max-width:70ch">The house and the apartment are separate units and are sold separately, so booking one may mean neighbours in the other. Only the whole-property booking promises no one else on site.</p></section>' +
 
-  '<section class="sec wrap">' +
-    '<div class="grid-2">' +
-      '<div class="card"><div class="eyebrow">Know before you book</div><h3>Neighbouring guests</h3><p>The house and the apartment are sold separately. Book one, and the other may be occupied. Only an Entire Property booking promises no other guests, because it is the only booking that reserves both units.</p><div class="meta">' + chip("info","INV-05") + '</div></div>' +
-      '<div class="card"><div class="eyebrow">Winter access</div><h3>NY-86 through the Notch</h3><p>Wilmington is a real mountain town. Winter driving is winter driving; the Memorial Highway closes; some amenities are seasonal. <a href="#/seasons">Seasonal guides</a> say what to expect month by month.</p><div class="meta">' + chip("info","WEB-04") + '</div></div>' +
-    '</div>' +
-  '</section>' +
+  '<section class="band">' + ph("river", "") + '<div class="wrap"><p class="q">The river is the sound you fall asleep to.</p><p class="s">Wilmington sits where the West Branch of the Ausable leaves the Notch. Whiteface is a few minutes up the road; Lake Placid is twenty minutes the other way.</p></div></section>' +
 
-  '<section class="sec wrap">' +
-    '<div class="sec-head"><div><div class="eyebrow">Area guide</div><h2 class="h-l">Skiing, the river, and a lot of quiet</h2><p class="lede">A maintained guide, not a pile of links: each entry carries its source, season and the date it was last checked.</p></div><a class="btn ghost" href="#/guide">Open the guide</a></div>' +
-    '<div class="grid-4">' +
-      ['Whiteface Mountain','West Branch of the Ausable River','High Falls Gorge','Flume Trails'].map(function(n){
-        var g = GUIDE.filter(function(x){ return x.name === n; })[0];
-        return '<a class="tile" href="#/guide?cat=' + encodeURIComponent(g.cat) + '"><div class="eyebrow" style="margin-bottom:6px">' + esc(g.cat) + '</div><div class="t">' + esc(g.name) + '</div><div class="d">' + esc(g.where) + (g.drive ? ' · ' + esc(g.drive) : '') + '</div></a>';
-      }).join("") +
-    '</div>' +
-  '</section>' +
+  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">The area</div><h2 class="h-l">Skiing, the river, and a great deal of quiet</h2></div><a class="btn ghost sm" href="#/area">Everything nearby</a></div>' +
+    '<div class="places">' + places.map(function(p){ return '<a class="place fade" href="#/area">' + ph(p[0], "") + '<div class="t">' + esc(p[1]) + '</div><div class="d">' + esc(p[2]) + '</div></a>'; }).join("") + '</div></section>' +
 
-  '<section class="sec wrap">' +
-    '<div class="notice"><b>How booking works here.</b> Choose dates and party size; compare the three offers; see the full itemised price. Submit a request. It stays <em>pending</em> until confirmed through the reservation system, and nothing is charged before that. <a href="#/policies">Booking policies</a>.</div>' +
-  '</section>';
+  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">How booking works</div><h2 class="h-l">Three steps, no surprises</h2></div></div>' +
+    '<div class="how"><div><div class="n">01</div><h3>Pick your nights</h3><p>Choose dates and party size. All three stays are checked against the same calendar at once.</p></div>' +
+    '<div><div class="n">02</div><h3>See the whole price</h3><p>Nightly rate, cleaning, taxes and the security arrangement, itemised before you decide.</p></div>' +
+    '<div><div class="n">03</div><h3>Send your request</h3><p>It stays pending until confirmed. Nothing is charged before that, and you are told plainly when it is.</p></div></div>' +
+    '<div class="row" style="margin-top:30px"><a class="btn" href="#/book">Check dates</a></div></section>';
 };
-MOUNTS.home = function(){ drawRidges(); drawArt(); };
 
 /* ---------- UNIT PAGES ---------- */
 function unitPage(code){
   var u = UNITS[code];
-  var others = OFFER_ORDER.filter(function(c){ return c !== code; });
-  var facts = Object.keys(u.facts).map(function(k){
-    return '<div><dt>' + esc(k) + '</dt><dd>' + fact(u.facts[k]) + '</dd></div>';
-  }).join("");
-  var am = AMENITIES.map(function(cat){
-    var items = cat.items.filter(function(it){
-      return it.units.indexOf(code) >= 0 || it.units.indexOf("shared") >= 0 || (code === "HA" && it.units.length) || it.status === "no";
-    });
-    if (!items.length) return "";
-    return '<div class="card"><h3>' + esc(cat.cat) + '</h3>' + items.map(function(it){
-      var who = it.units.indexOf("shared") >= 0 ? "shared" : (it.units.length ? it.units.join(" + ") : "—");
-      return '<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line);font-size:.9rem">' +
-        '<span>' + esc(it.name) + '<small class="muted" style="display:block;font-size:.78rem">' + esc(it.note || "") + '</small></span>' +
-        '<span style="display:flex;gap:6px;flex:none">' + chip("neutral", who) + (it.status === "no" ? chip("no","Not offered") : it.status === "ok" ? chip("ok","Verified") : chip("tbc","To verify")) + '</span></div>';
-    }).join("") + '</div>';
-  }).join("");
-  var slots = [["Exterior","Approach & entrance"],["Living","Main living room"],["Kitchen","Kitchen"],["Sleeping","Bedroom"],["Bath","Bathroom"],["Outdoor","Outdoor space"]];
+  var strip = code === "H" ? ["H-living","H-kitchen","H-bed"] : code === "A" ? ["A-main","A-kitchen","A-bath"] : ["HA-grounds","HA-river","HA-winter"];
+  var factsKeys = Object.keys(u.facts).slice(0, 8);
+  var facts = factsKeys.map(function(k){ return '<div><dt>' + esc(k) + '</dt><dd>' + fact(u.facts[k]) + '</dd></div>'; }).join("");
+  var am = [];
+  AMENITIES.forEach(function(cat){ cat.items.forEach(function(it){
+    var mine = it.units.indexOf(code) >= 0 || it.units.indexOf("shared") >= 0 || (code === "HA" && it.units.length);
+    if (mine && it.status !== "no") am.push(it.name);
+  }); });
   return '' +
-  '<section class="page-head wrap"><div class="eyebrow">' + esc(u.kicker) + '</div><h1 class="h-xl">' + esc(u.name) + '</h1><p class="lede">' + esc(u.summary) + '</p>' +
-    '<div class="row" style="margin-top:22px"><a class="btn" href="#/availability?offer=' + code + '">Check dates for ' + esc(u.short.toLowerCase()) + '</a><a class="btn ghost" href="#/compare">Compare with ' + others.map(function(c){ return UNITS[c].short.toLowerCase(); }).join(" and ") + '</a></div></section>' +
-
-  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Verified facts</div><h2 class="h-m">What you are actually booking</h2></div></div>' +
-    '<dl class="facts">' + facts + '</dl>' +
-    '<p class="muted" style="font-size:.82rem;margin-top:12px">Dotted items are pending the owner\'s inspection and occupancy approval. They are shown so you can see what is still unconfirmed; nothing here is a promise until the mark is gone.</p>' +
-  '</section>' +
-
-  '<section class="sec wrap"><div class="grid-2">' +
-    '<div class="notice warn"><b>Shared spaces.</b> ' + esc(u.shared) + '</div>' +
-    '<div class="notice"><b>Access.</b> Time-limited access for this unit only is sent privately before arrival. ' + (code === "A" ? "Apartment guests never receive a house code." : code === "H" ? "House guests do not receive apartment access." : "You receive access to both units.") + '</div>' +
-  '</div></section>' +
-
-  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Amenities</div><h2 class="h-m">Included with this booking</h2><p class="lede">Assigned per unit from the owner\'s register. Anything not yet inspected is marked, and nothing is listed that is not actually available.</p></div><a class="btn ghost sm" href="#/amenities">Full register</a></div>' +
-    '<div class="grid-2">' + am + '</div></section>' +
-
-  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Gallery</div><h2 class="h-m">Photographs</h2><p class="lede">Real, current photographs of this unit go here. Slots are shown so the owner can see exactly which rooms still need media; nothing generated stands in for the property.</p></div><a class="btn ghost sm" href="#/gallery">All media</a></div>' +
-    '<div class="gallery">' + slots.map(function(s){ return '<div class="slot"><canvas data-slot="' + esc(s[0]) + '" aria-hidden="true"></canvas><div class="cap"><b>Awaiting owner media</b>' + esc(u.short) + ' — ' + esc(s[1]) + '</div></div>'; }).join("") + '</div></section>' +
-
-  '<section class="sec wrap"><div class="notice good"><b>Ready to check dates?</b> The availability page resolves all three offers at once, so if this unit is taken on your dates you will see immediately whether the other is free. <a href="#/availability?offer=' + code + '">Check dates</a>.</div></section>';
+  '<section class="unit-hero">' + ph("stay-" + code, "", { eager:true }) + '<div class="wrap"><div class="eyebrow">' + esc(u.kicker) + '</div><h1 class="h-xl">' + esc(u.name) + '</h1></div></section>' +
+  '<section class="sec wrap"><div class="two"><div>' +
+    '<p class="lede">' + esc(u.summary) + '</p>' +
+    '<div class="strip" style="margin-top:34px">' + strip.map(function(s){ return ph(s, "", { extra:'<span class="cap">' + esc((PHOTOS[s] || {}).subject.split(" — ")[1] || (PHOTOS[s] || {}).subject) + '</span>' }); }).join("") + '</div>' +
+    '<h2 class="h-m" style="margin-top:44px">What you are booking</h2>' +
+    '<dl class="facts" style="margin-top:16px">' + facts + '</dl>' +
+    '<p class="muted" style="font-size:.82rem;margin-top:10px">Dotted items are pending the owner\'s inspection and occupancy approval; nothing here is a promise until the mark is gone.</p>' +
+    '<h2 class="h-m" style="margin-top:44px">Included</h2><p class="prose" style="margin-top:10px">' + esc(am.join(" · ")) + '.</p><p class="muted" style="font-size:.84rem;margin-top:8px">Everything listed is being inspected and assigned. <a href="#/amenities">Full register</a>.</p>' +
+    '<div class="notice warn" style="margin-top:34px"><b>Shared spaces.</b> ' + esc(u.shared) + '</div>' +
+  '</div><aside class="side"><div class="qcard"><div class="qh"><span class="n">From ' + money(fromPrice(code)) + '</span><span class="muted" style="font-size:.8rem">/ night · sample</span></div>' +
+    '<div class="kv"><b>Minimum</b><span>' + RATES[code].minStay + ' nights</span><b>Sleeps</b><span>' + fact(u.facts.Sleeps) + '</span><b>Access</b><span>' + (code === "A" ? "Own entrance; no house access" : code === "H" ? "Own entrance; no apartment access" : "Both units, every entrance") + '</span></div>' +
+    '<a class="btn block" style="margin-top:16px" href="#/book?offer=' + code + '">Check dates</a><p class="muted" style="font-size:.78rem;margin-top:10px">Request to book. Nothing is charged until confirmed.</p></div>' +
+    '<div class="notice"><b>Not sure which?</b> <a href="#/compare">Compare the three stays</a> side by side.</div></aside></div></section>';
 }
-OFFER_ORDER.forEach(function(c){
-  var slug = UNITS[c].slug;
-  TITLES[slug] = UNITS[c].name + " · Ausable House";
-  PAGES[slug] = function(){ return unitPage(c); };
-  MOUNTS[slug] = function(){ drawSlots(); };
-});
+OFFER_ORDER.forEach(function(c){ var slug = UNITS[c].slug; TITLES[slug] = UNITS[c].name + " · Ausable House"; PAGES[slug] = function(){ return unitPage(c); }; });
 
 /* ---------- COMPARE ---------- */
 TITLES.compare = "Compare · Ausable House";
 PAGES.compare = function(){
   var rows = [
-    ["Physical units reserved", "House", "Apartment", "House + apartment"],
     ["Other guests on the property?", "Possible (apartment)", "Possible (house)", "No — exclusive"],
-    ["Whole-property exclusivity", "No", "No", "Yes"],
     ["Sleeps", fact(UNITS.H.facts.Sleeps), fact(UNITS.A.facts.Sleeps), fact(UNITS.HA.facts.Sleeps)],
     ["Own entrance", fact(UNITS.H.facts.Entrance), fact(UNITS.A.facts.Entrance), "Both"],
     ["Kitchen", fact(UNITS.H.facts.Kitchen), fact(UNITS.A.facts.Kitchen), fact(UNITS.HA.facts.Kitchens)],
     ["Parking", fact(UNITS.H.facts.Parking), fact(UNITS.A.facts.Parking), fact(UNITS.HA.facts.Parking)],
-    ["Sample nightly rate from", money(RATES.H.base), money(RATES.A.base), money(Math.round((RATES.H.base + RATES.A.base) * RATES.HA.bundle)) + ' <small class="muted">H + A − 8%</small>'],
-    ["Sample cleaning fee", money(RATES.H.cleaning), money(RATES.A.cleaning), money(RATES.HA.cleaning)],
+    ["From (sample)", money(RATES.H.base) + " / night", money(RATES.A.base) + " / night", money(fromPrice("HA")) + ' / night <small class="muted">H + A − 8%</small>'],
+    ["Cleaning (sample)", money(RATES.H.cleaning), money(RATES.A.cleaning), money(RATES.HA.cleaning)],
     ["Minimum stay", RATES.H.minStay + " nights", RATES.A.minStay + " nights", RATES.HA.minStay + " nights"],
     ["Pets", fact(UNITS.H.facts.Pets), fact(UNITS.A.facts.Pets), fact(UNITS.HA.facts.Pets)]
   ];
-  return '<section class="page-head wrap"><div class="eyebrow">Compare</div><h1 class="h-xl">Which booking is right?</h1><p class="lede">The three offers are not three sizes of the same thing. Two are physical units; the third is both of them, and it is the only one that keeps the property to yourselves.</p></section>' +
-  '<section class="sec wrap"><div class="scroll-x"><table class="tbl compare"><thead><tr><th></th><th>The House</th><th>The Apartment</th><th>Entire Property</th></tr></thead><tbody>' +
-    rows.map(function(r){ return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td>' + r[2] + '</td><td>' + r[3] + '</td></tr>'; }).join("") +
-  '</tbody></table></div>' +
-  '<p class="muted" style="font-size:.82rem;margin-top:12px">Rates marked sample are placeholders until comparable quotes and property costs are approved. Dotted values are pending verification.</p></section>' +
-  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">How availability resolves</div><h2 class="h-m">Why one booking can close another</h2></div></div>' +
-    '<div class="scroll-x"><table class="tbl"><thead><tr><th>If this is booked</th><th class="c">House</th><th class="c">Apartment</th><th class="c">Entire property</th></tr></thead><tbody>' +
-    '<tr><td>Nothing</td><td class="c">' + chip("ok","Open") + '</td><td class="c">' + chip("ok","Open") + '</td><td class="c">' + chip("ok","Open") + '</td></tr>' +
-    '<tr><td>House only</td><td class="c">' + chip("no","Taken") + '</td><td class="c">' + chip("ok","Open") + '</td><td class="c">' + chip("no","Closed") + '</td></tr>' +
-    '<tr><td>Apartment only</td><td class="c">' + chip("ok","Open") + '</td><td class="c">' + chip("no","Taken") + '</td><td class="c">' + chip("no","Closed") + '</td></tr>' +
-    '<tr><td>Entire property</td><td class="c">' + chip("no","Taken") + '</td><td class="c">' + chip("no","Taken") + '</td><td class="c">' + chip("no","Taken") + '</td></tr>' +
-    '<tr><td>House maintenance</td><td class="c">' + chip("no","Closed") + '</td><td class="c">' + chip("tbc","Open*") + '</td><td class="c">' + chip("no","Closed") + '</td></tr>' +
-    '</tbody></table></div><p class="muted" style="font-size:.82rem;margin-top:10px">*Unless the work affects shared utilities, parking, safety or the guest experience. A property-wide hazard closes both.</p>' +
-    '<div class="row" style="margin-top:22px"><a class="btn" href="#/availability">Check your dates</a></div></section>';
+  return '<section class="page-head wrap"><div class="eyebrow">Compare</div><h1 class="h-xl">Which stay is right?</h1><p class="lede">Two of these are physical units. The third is both of them, and it is the only one that keeps the property to yourselves.</p></section>' +
+  '<section class="sec wrap"><div class="stays">' + OFFER_ORDER.map(stayCard).join("") + '</div>' +
+  '<div class="scroll-x" style="margin-top:40px"><table class="tbl"><thead><tr><th></th><th>The House</th><th>The Apartment</th><th>Whole Property</th></tr></thead><tbody>' +
+    rows.map(function(r){ return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td>' + r[2] + '</td><td>' + r[3] + '</td></tr>'; }).join("") + '</tbody></table></div>' +
+  '<p class="muted" style="font-size:.82rem;margin-top:12px">Dotted values are pending verification; sample rates are placeholders until comparable quotes and costs are approved.</p>' +
+  '<div class="row" style="margin-top:28px"><a class="btn" href="#/book">Check dates</a></div></section>';
 };
 
-/* ---------- AVAILABILITY & QUOTE ---------- */
-TITLES.availability = "Availability · Ausable House";
-var AV = { offer:"H", from:null, to:null, guests:2, view:null };
-PAGES.availability = function(params){
-  if (params.offer && UNITS[params.offer]) AV.offer = params.offer;
-  if (params.from && params.to && params.from < params.to){ AV.from = params.from; AV.to = params.to; }
-  if (params.guests) AV.guests = Math.max(1, Math.min(16, +params.guests || 2));
-  if (!AV.view){ var t = parse(TODAY); AV.view = { y:t.getFullYear(), m:t.getMonth() }; }
-  return '<section class="page-head wrap"><div class="eyebrow">Availability &amp; quotes</div><h1 class="h-xl">Choose your nights</h1><p class="lede">Pick check-in and check-out. All three offers are resolved at once from the same inventory, and the quote shows the full required price before anything else happens.</p></section>' +
-  '<section class="sec wrap"><div class="avail">' +
-    '<div>' +
-      '<div class="cal-tools"><button class="btn ghost sm" type="button" id="calPrev">← Earlier</button><span class="muted" style="font-size:.84rem">Showing two months · dates beyond ' + fmt(OPEN_UNTIL) + ' are not yet open</span><button class="btn ghost sm" type="button" id="calNext">Later →</button></div>' +
-      '<div class="cal-months" id="calMonths"></div>' +
-      '<div class="legend"><span><i style="background:var(--moss)"></i>open</span><span><i style="background:var(--rust)"></i>booked</span><span><i style="background:var(--amber)"></i>owner / maintenance</span><span><span class="hatch"></span>not yet open</span><span class="muted">· three dots per day = House · Apartment · Entire property</span></div>' +
-    '</div>' +
-    '<aside class="qpanel" id="qpanel"></aside>' +
-  '</div></section>' +
-  '<section class="sec wrap"><div class="grid-2">' +
-    '<div class="notice"><b>Nothing is charged here.</b> This preview cannot confirm a reservation, so every offer uses request-to-book. Your request becomes a pending reservation only in the booking system; you will be told plainly when it is confirmed.</div>' +
-    '<div class="notice warn"><b>Sample rates.</b> Nightly rates, cleaning fees and the ' + Math.round(TAX_SAMPLE * 100) + '% tax line are placeholders. Actual rates need current comparable quotes; the tax matrix comes from a qualified adviser.</div>' +
-  '</div></section>';
+/* ---------- BOOK (dates → details → pending) ---------- */
+TITLES.book = "Book · Ausable House";
+var BK = { offer:"H", from:null, to:null, guests:2, view:null, step:1, name:"", email:"", phone:"", note:"", ref:null };
+PAGES.book = function(params){
+  if (params.offer && UNITS[params.offer]) BK.offer = params.offer;
+  if (params.from && params.to && params.from < params.to){ BK.from = params.from; BK.to = params.to; }
+  if (params.guests) BK.guests = Math.max(1, Math.min(12, +params.guests || 2));
+  if (!BK.view){ var t = parse(TODAY); BK.view = { y:t.getFullYear(), m:t.getMonth() }; }
+  if (params.offer || params.from) BK.step = 1;
+  return '<section class="page-head wrap"><div class="eyebrow">Book</div><h1 class="h-xl">Choose your nights</h1><p class="lede">Pick check-in and check-out. Every stay is checked against the same calendar, and the full price is shown before anything else happens.</p></section><section class="sec wrap" id="bookBody"></section>';
 };
-MOUNTS.availability = function(){
-  renderCalendar(); renderQuote();
-  document.getElementById("calPrev").addEventListener("click", function(){ shiftMonth(-1); });
-  document.getElementById("calNext").addEventListener("click", function(){ shiftMonth(1); });
-};
+PAGES.availability = PAGES.book; TITLES.availability = TITLES.book;
+PAGES.request = PAGES.book; TITLES.request = TITLES.book;
+
 function shiftMonth(n){
-  var d = new Date(AV.view.y, AV.view.m + n, 1);
+  var d = new Date(BK.view.y, BK.view.m + n, 1);
   var lo = parse(TODAY); lo = new Date(lo.getFullYear(), lo.getMonth(), 1);
-  var hi = parse(OPEN_UNTIL);
-  if (d < lo || d > hi) return;
-  AV.view = { y:d.getFullYear(), m:d.getMonth() };
-  renderCalendar();
+  if (d < lo || d > parse(OPEN_UNTIL)) return;
+  BK.view = { y:d.getFullYear(), m:d.getMonth() }; renderCalendar();
 }
 function monthHTML(y, m){
-  var first = new Date(y, m, 1), startDow = first.getDay();
-  var count = new Date(y, m + 1, 0).getDate();
+  var startDow = new Date(y, m, 1).getDay(), count = new Date(y, m + 1, 0).getDate();
   var h = '<div class="cal"><div class="mname">' + MONTHS[m] + ' ' + y + '<span>' + esc(BRAND.tz) + '</span></div><div class="dow"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div><div class="days">';
   for (var i = 0; i < startDow; i++) h += '<span></span>';
+  function lamp(st){ return '<i class="' + (st === "open" ? "o" : st === "booked" ? "b" : st === "closed" ? "m" : "") + '"></i>'; }
   for (var d = 1; d <= count; d++){
-    var s = y + "-" + pad(m + 1) + "-" + pad(d);
-    var sH = nightState("H", s), sA = nightState("A", s), sHA = nightState("HA", s);
-    var cls = "day";
-    if (s < TODAY) cls += " past";
-    else if (s >= OPEN_UNTIL) cls += " notopen";
-    if (s === TODAY) cls += " today";
-    if (AV.from && s === AV.from) cls += " sel";
-    if (AV.to && s === AV.to) cls += " sel";
-    if (AV.from && AV.to && s > AV.from && s < AV.to) cls += " inrange";
-    function lamp(st){ return '<i class="' + (st === "open" ? "o" : st === "booked" ? "b" : st === "closed" ? "m" : "") + '"></i>'; }
-    var lamps = (s < TODAY || s >= OPEN_UNTIL) ? '<span class="lamps"><i></i><i></i><i></i></span>' : '<span class="lamps">' + lamp(sH) + lamp(sA) + lamp(sHA) + '</span>';
-    h += '<button type="button" class="' + cls + '" data-day="' + s + '" aria-label="' + fmtLong(s) + '"' + ((s < TODAY || s >= OPEN_UNTIL) ? ' disabled' : '') + '>' + d + lamps + '</button>';
+    var s = y + "-" + pad(m + 1) + "-" + pad(d), dead = (s < TODAY || s >= OPEN_UNTIL);
+    var cls = "day" + (s < TODAY ? " past" : s >= OPEN_UNTIL ? " notopen" : "") + (s === TODAY ? " today" : "") + ((BK.from === s || BK.to === s) ? " sel" : "") + ((BK.from && BK.to && s > BK.from && s < BK.to) ? " inrange" : "");
+    var lamps = dead ? '<span class="lamps"><i></i><i></i><i></i></span>' : '<span class="lamps">' + lamp(nightState("H", s)) + lamp(nightState("A", s)) + lamp(nightState("HA", s)) + '</span>';
+    h += '<button type="button" class="' + cls + '" data-day="' + s + '" aria-label="' + fmtLong(s) + '"' + (dead ? ' disabled' : '') + '>' + d + lamps + '</button>';
   }
   return h + '</div></div>';
 }
 function renderCalendar(){
   var el = document.getElementById("calMonths"); if (!el) return;
-  var y = AV.view.y, m = AV.view.m;
-  var n = new Date(y, m + 1, 1);
-  el.innerHTML = monthHTML(y, m) + monthHTML(n.getFullYear(), n.getMonth());
-  el.querySelectorAll(".day:not([disabled])").forEach(function(b){
-    b.addEventListener("click", function(){ pickDay(this.getAttribute("data-day")); });
-  });
+  var n = new Date(BK.view.y, BK.view.m + 1, 1);
+  el.innerHTML = monthHTML(BK.view.y, BK.view.m) + monthHTML(n.getFullYear(), n.getMonth());
+  el.querySelectorAll(".day:not([disabled])").forEach(function(b){ b.addEventListener("click", function(){ pickDay(this.getAttribute("data-day")); }); });
 }
 function pickDay(s){
-  if (!AV.from || (AV.from && AV.to)){ AV.from = s; AV.to = null; }
-  else if (s <= AV.from){ AV.from = s; AV.to = null; }
-  else { AV.to = s; }
-  renderCalendar(); renderQuote();
+  if (!BK.from || (BK.from && BK.to)){ BK.from = s; BK.to = null; }
+  else if (s <= BK.from){ BK.from = s; BK.to = null; }
+  else BK.to = s;
+  renderCalendar(); renderPanel();
 }
-function renderQuote(){
-  var el = document.getElementById("qpanel"); if (!el) return;
-  var u = UNITS[AV.offer];
-  var h = '<div class="qcard"><div class="qh"><span class="n">Your stay</span>' + chip("neutral","request to book") + '</div>' +
-    '<div class="fields two" style="margin-top:8px">' +
-      '<label class="field">Check-in<input type="text" readonly value="' + (AV.from ? fmt(AV.from) : "Pick a date") + '"></label>' +
-      '<label class="field">Check-out<input type="text" readonly value="' + (AV.to ? fmt(AV.to) : "Pick a date") + '"></label>' +
-    '</div>' +
-    '<label class="field" style="margin-top:10px">Guests<select id="guestSel">' + [1,2,3,4,5,6,7,8,9,10,11,12].map(function(n){ return '<option value="' + n + '"' + (n === AV.guests ? ' selected' : '') + '>' + n + (n === 1 ? ' guest' : ' guests') + '</option>'; }).join("") + '</select></label>' +
-    (AV.from && !AV.to ? '<p class="muted" style="font-size:.82rem;margin-top:10px">Now pick a check-out date.</p>' : '') +
-    (AV.from && AV.to ? '<button class="btn ghost sm" type="button" id="clearDates" style="margin-top:10px">Clear dates</button>' : '') +
-  '</div>';
-
-  if (AV.from && AV.to){
-    h += '<div class="qcard"><div class="qh"><span class="n">Offers on these dates</span><span class="muted" style="font-size:.8rem">' + nights(AV.from, AV.to) + ' nights</span></div><div class="offer-state">';
-    OFFER_ORDER.forEach(function(c){
-      var r = checkOffer(c, AV.from, AV.to);
-      var on = c === AV.offer;
-      h += '<button type="button" class="ostate' + (on ? " on" : "") + (r.ok ? "" : " off") + '" data-pick="' + c + '"' + (r.ok ? '' : ' disabled') + '>' +
-        '<span><b style="font-weight:500">' + esc(UNITS[c].name) + '</b><span class="why">' + (r.ok ? esc(money(quote(c, AV.from, AV.to, AV.guests).total)) + " total · " + esc(money(quote(c, AV.from, AV.to, AV.guests).avgNight)) + " avg night" : esc(r.reasons[0])) + '</span></span>' +
-        (r.ok ? chip("ok","available") : (r.state === "minstay" ? chip("tbc","min stay") : r.state === "notopen" ? chip("neutral","not open") : chip("no","unavailable"))) +
-      '</button>';
+function quoteRows(q){
+  return '<div class="qrows"><div class="qrow"><span class="l">' + q.nights + ' nights × avg ' + money(q.avgNight) + '<small>Fri/Sat nights carry a weekend rate</small></span><span class="v">' + money(q.accommodation) + '</span></div>' +
+    '<div class="qrow"><span class="l">Cleaning</span><span class="v">' + money(q.cleaning) + '</span></div>' +
+    '<div class="qrow"><span class="l">Taxes<small>Sample ' + Math.round(TAX_SAMPLE * 100) + '% — real matrix pending</small></span><span class="v">' + money(q.tax) + '</span></div>' +
+    '<div class="qrow total"><span class="l">Total</span><span class="v">' + money(q.total) + '</span></div></div>';
+}
+function renderBook(){
+  var el = document.getElementById("bookBody"); if (!el) return;
+  var steps = '<div class="steps">' + ["Dates & price","Your details","Pending"].map(function(s, i){ var n = i + 1; return '<div class="step' + (n === BK.step ? " on" : n < BK.step ? " done" : "") + '"><i>' + (n < BK.step ? "✓" : n) + '</i>' + s + '</div>'; }).join("") + '</div>';
+  if (BK.step === 1){
+    el.innerHTML = steps + '<div class="book"><div>' +
+      '<div class="cal-tools"><button class="btn ghost sm" type="button" id="calPrev">← Earlier</button><span class="muted" style="font-size:.82rem">Dates beyond ' + fmt(OPEN_UNTIL) + ' open once rates are reviewed</span><button class="btn ghost sm" type="button" id="calNext">Later →</button></div>' +
+      '<div class="cal-months" id="calMonths"></div>' +
+      '<div class="legend"><span><i style="background:var(--moss)"></i>open</span><span><i style="background:var(--rust)"></i>booked</span><span><i style="background:var(--amber)"></i>owner / maintenance</span><span><span class="hatch"></span>not yet open</span><span class="muted">· dots = House · Apartment · Whole</span></div>' +
+      '</div><aside class="side" id="panel"></aside></div>';
+    renderCalendar(); renderPanel();
+    document.getElementById("calPrev").addEventListener("click", function(){ shiftMonth(-1); });
+    document.getElementById("calNext").addEventListener("click", function(){ shiftMonth(1); });
+    return;
+  }
+  var q = quote(BK.offer, BK.from, BK.to, BK.guests), u = UNITS[BK.offer];
+  var summary = '<div class="qcard"><div class="qh"><span class="n">' + esc(u.name) + '</span>' + chip("tbc","sample rates") + '</div><div class="kv"><b>Dates</b><span>' + fmt(BK.from) + ' → ' + fmt(BK.to) + '</span><b>Guests</b><span>' + BK.guests + '</span></div>' + quoteRows(q) + '<div class="kv" style="margin-top:12px"><b>Security</b><span>' + fact(SECURITY) + '</span></div></div>';
+  if (BK.step === 2){
+    el.innerHTML = steps + '<div class="book"><form id="bkForm" class="stack" novalidate>' +
+      '<div class="fields two2"><label class="field">Full name<input name="name" required value="' + esc(BK.name) + '" autocomplete="name"></label><label class="field">Email<input name="email" type="email" required value="' + esc(BK.email) + '" autocomplete="email"></label></div>' +
+      '<div class="fields two2"><label class="field">Phone (optional)<input name="phone" type="tel" value="' + esc(BK.phone) + '" autocomplete="tel"></label><label class="field">Guests<select name="guests">' + [1,2,3,4,5,6,7,8,9,10,11,12].map(function(n){ return '<option' + (n === BK.guests ? ' selected' : '') + '>' + n + '</option>'; }).join("") + '</select></label></div>' +
+      '<label class="field">Anything we should know (optional)<textarea name="note" placeholder="Arrival time, questions, access needs you would like planned for.">' + esc(BK.note) + '</textarea></label>' +
+      '<div class="card"><h3>Terms for this stay</h3><p>The rental agreement, house rules for <b>' + esc(u.short) + '</b>, shared-space disclosure, damage / payment authorisation, cancellation summary and privacy notice. Version <span class="mono">0.0-draft</span> · ' + chip("tbc","pending attorney approval") + '</p></div>' +
+      '<label class="check"><input type="checkbox" name="accept" required> I accept the agreement and its schedules for these dates and this unit. My acceptance, the version shown, the quote and the time are recorded.</label>' +
+      '<label class="check"><input type="checkbox" name="marketing"> Optional: occasional offers and seasonal news. Never a condition of booking.</label>' +
+      '<div class="row"><button class="btn" type="submit">Send request</button><button class="btn ghost" type="button" id="bkBack">Back to dates</button></div>' +
+      '<p class="muted" style="font-size:.8rem">Your request goes to the owner as pending. No card is charged and no hold is placed by this preview.</p>' +
+      '</form><aside class="side">' + summary + '</aside></div>';
+    var f = document.getElementById("bkForm");
+    document.getElementById("bkBack").addEventListener("click", function(){ BK.step = 1; renderBook(); window.scrollTo({ top:0, behavior:"smooth" }); });
+    f.addEventListener("submit", function(e){
+      e.preventDefault(); var fd = new FormData(f);
+      BK.name = (fd.get("name") || "").trim(); BK.email = (fd.get("email") || "").trim(); BK.phone = (fd.get("phone") || "").trim(); BK.note = (fd.get("note") || "").trim(); BK.guests = +fd.get("guests") || BK.guests;
+      if (!BK.name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(BK.email)){ toast("A name and a valid email are needed."); return; }
+      if (!fd.get("accept")){ toast("Please accept the agreement to send your request."); return; }
+      store("draft", { name:BK.name, email:BK.email, phone:BK.phone });
+      BK.ref = "AH-" + BK.from.replace(/-/g, "").slice(2) + "-" + Math.random().toString(36).slice(2, 6).toUpperCase();
+      BK.step = 3; renderBook(); window.scrollTo({ top:0, behavior:"smooth" });
     });
-    h += '</div></div>';
-
-    var r0 = checkOffer(AV.offer, AV.from, AV.to);
+    return;
+  }
+  el.innerHTML = steps + '<div class="book"><div class="stack">' +
+    '<div class="row"><span class="state-pill">Pending · awaiting confirmation</span><span class="mono muted" style="font-size:.8rem">Ref ' + esc(BK.ref) + '</span></div>' +
+    '<div class="lifecycle"><span class="done">Quote</span><em>→</em><span class="on">Pending</span><em>→</em><span>Confirmed</span><em>→</em><span>In-house</span><em>→</em><span>Departed</span></div>' +
+    '<div class="notice good"><b>Request received (preview).</b> Thank you, ' + esc(BK.name.split(" ")[0] || "guest") + '. Nothing has been charged. In the live system the owner confirms through the reservation system, your signed copy is issued, and the welcome message follows.</div>' +
+    '<div class="grid-2"><div class="card"><h3>Accepted at</h3><p class="mono">' + esc(new Date().toLocaleString("en-US", { timeZone: BRAND.tz })) + '</p><p class="muted" style="font-size:.82rem;margin-top:6px">Agreement 0.0-draft · quote preserved</p></div><div class="card"><h3>While you wait</h3><p><a href="#/plan">Plan your stay</a>, or read about <a href="#/seasons">the season</a> you are coming in.</p></div></div>' +
+    '<div class="row"><a class="btn ghost" href="#/">Back to the start</a></div></div><aside class="side">' + summary + '</aside></div>';
+}
+function renderPanel(){
+  var el = document.getElementById("panel"); if (!el) return;
+  var u = UNITS[BK.offer];
+  var h = '<div class="qcard"><div class="qh"><span class="n">Your stay</span>' + chip("neutral","request to book") + '</div>' +
+    '<div class="fields two2"><label class="field">Check-in<input type="text" readonly value="' + (BK.from ? fmt(BK.from) : "Pick a date") + '"></label><label class="field">Check-out<input type="text" readonly value="' + (BK.to ? fmt(BK.to) : "Pick a date") + '"></label></div>' +
+    '<label class="field" style="margin-top:10px">Guests<select id="guestSel">' + [1,2,3,4,5,6,7,8,9,10,11,12].map(function(n){ return '<option value="' + n + '"' + (n === BK.guests ? ' selected' : '') + '>' + n + (n === 1 ? ' guest' : ' guests') + '</option>'; }).join("") + '</select></label>' +
+    (BK.from && !BK.to ? '<p class="muted" style="font-size:.82rem;margin-top:10px">Now pick a check-out date.</p>' : '') +
+    (BK.from && BK.to ? '<button class="btn ghost sm" type="button" id="clearDates" style="margin-top:12px">Clear dates</button>' : '') + '</div>';
+  if (BK.from && BK.to){
+    h += '<div class="qcard"><div class="qh"><span class="n">Which stay?</span><span class="muted" style="font-size:.8rem">' + nights(BK.from, BK.to) + ' nights</span></div>';
+    OFFER_ORDER.forEach(function(c){
+      var r = checkOffer(c, BK.from, BK.to), on = c === BK.offer;
+      h += '<button type="button" class="ostate' + (on ? " on" : "") + (r.ok ? "" : " off") + '" data-pick="' + c + '"' + (r.ok ? '' : ' disabled') + '><span><b style="font-weight:500">' + esc(UNITS[c].name) + '</b><span class="why">' + (r.ok ? esc(money(quote(c, BK.from, BK.to, BK.guests).total)) + " total" : esc(r.reasons[0])) + '</span></span>' + (r.ok ? chip("ok","available") : r.state === "minstay" ? chip("tbc","min stay") : r.state === "notopen" ? chip("neutral","not open") : chip("no","taken")) + '</button>';
+    });
+    h += '</div>';
+    var r0 = checkOffer(BK.offer, BK.from, BK.to);
     if (r0.ok){
-      var q = quote(AV.offer, AV.from, AV.to, AV.guests);
-      h += '<div class="qcard"><div class="qh"><span class="n">' + esc(u.name) + '</span>' + chip("tbc","sample rates") + '</div>' +
-        '<div class="qrows">' +
-          '<div class="qrow"><span class="l">' + q.nights + ' nights × avg ' + money(q.avgNight) + '<small>Fri/Sat nights carry a weekend rate</small></span><span class="v">' + money(q.accommodation) + '</span></div>' +
-          '<div class="qrow"><span class="l">Cleaning<small>Mandatory, shown before you commit</small></span><span class="v">' + money(q.cleaning) + '</span></div>' +
-          '<div class="qrow"><span class="l">Taxes<small>Sample ' + Math.round(TAX_SAMPLE * 100) + '% — real matrix pending (COM-02)</small></span><span class="v">' + money(q.tax) + '</span></div>' +
-          '<div class="qrow total"><span class="l">Total required</span><span class="v">' + money(q.total) + '</span></div>' +
-        '</div>' +
-        '<div class="kv" style="margin-top:12px"><b>Security</b><span>' + fact(SECURITY) + '</span><b>Refunds</b><span><span class="pending" title="Cancellation and refund terms pending attorney approval (LEG-01)">Cancellation summary pending counsel</span></span><b>Extras</b><span>None offered yet</span></div>' +
-        '<a class="btn block" style="margin-top:16px" href="#/request?offer=' + AV.offer + '&from=' + AV.from + '&to=' + AV.to + '&guests=' + AV.guests + '">Request to book</a>' +
-        '<p class="muted" style="font-size:.78rem;margin-top:10px">This quote is preserved with your request. Nothing is charged until the reservation is confirmed.</p>' +
-      '</div>';
+      var q = quote(BK.offer, BK.from, BK.to, BK.guests);
+      h += '<div class="qcard"><div class="qh"><span class="n">' + esc(u.name) + '</span>' + chip("tbc","sample rates") + '</div>' + quoteRows(q) +
+        '<div class="kv" style="margin-top:12px"><b>Security</b><span>' + fact(SECURITY) + '</span><b>Refunds</b><span><span class="pending" title="Cancellation and refund terms pending attorney approval">Terms pending counsel</span></span></div>' +
+        '<button class="btn block" type="button" id="toDetails" style="margin-top:16px">Continue</button><p class="muted" style="font-size:.78rem;margin-top:10px">Nothing is charged until confirmed.</p></div>';
     } else {
-      h += '<div class="notice bad"><b>' + esc(u.name) + ' is not available on these dates.</b> ' + esc(r0.reasons.join(" ")) + (OFFER_ORDER.some(function(c){ return c !== AV.offer && checkOffer(c, AV.from, AV.to).ok; }) ? ' Another offer above is free — select it to see its quote.' : '') + '</div>';
+      h += '<div class="notice bad"><b>' + esc(u.name) + ' is not free on these dates.</b> ' + esc(r0.reasons.join(" ")) + (OFFER_ORDER.some(function(c){ return c !== BK.offer && checkOffer(c, BK.from, BK.to).ok; }) ? ' Another stay above is free — select it.' : '') + '</div>';
     }
   } else {
-    h += '<div class="qcard"><div class="qh"><span class="n">' + esc(u.name) + '</span></div><p class="muted" style="font-size:.9rem">' + esc(u.kicker) + '. From ' + money(AV.offer === "HA" ? Math.round((RATES.H.base + RATES.A.base) * RATES.HA.bundle) : RATES[AV.offer].base) + ' a night (sample), ' + RATES[AV.offer].minStay + '-night minimum.</p>' +
-      '<div class="offer-state" style="margin-top:12px">' + OFFER_ORDER.map(function(c){ return '<button type="button" class="ostate' + (c === AV.offer ? " on" : "") + '" data-pick="' + c + '"><span>' + esc(UNITS[c].name) + '</span>' + chip("neutral", c) + '</button>'; }).join("") + '</div></div>';
+    h += '<div class="qcard"><div class="qh"><span class="n">' + esc(u.name) + '</span></div><p class="muted" style="font-size:.9rem">' + esc(u.kicker) + '. From ' + money(fromPrice(BK.offer)) + ' a night (sample), ' + RATES[BK.offer].minStay + '-night minimum.</p><div style="margin-top:12px">' + OFFER_ORDER.map(function(c){ return '<button type="button" class="ostate' + (c === BK.offer ? " on" : "") + '" data-pick="' + c + '"><span>' + esc(UNITS[c].name) + '</span>' + chip("neutral", c) + '</button>'; }).join("") + '</div></div>';
   }
   el.innerHTML = h;
-  el.querySelectorAll("[data-pick]").forEach(function(b){ b.addEventListener("click", function(){ AV.offer = this.getAttribute("data-pick"); renderQuote(); }); });
-  var g = document.getElementById("guestSel"); if (g) g.addEventListener("change", function(){ AV.guests = +this.value; renderQuote(); });
-  var c = document.getElementById("clearDates"); if (c) c.addEventListener("click", function(){ AV.from = AV.to = null; renderCalendar(); renderQuote(); });
+  el.querySelectorAll("[data-pick]").forEach(function(b){ b.addEventListener("click", function(){ BK.offer = this.getAttribute("data-pick"); renderPanel(); }); });
+  var g = document.getElementById("guestSel"); if (g) g.addEventListener("change", function(){ BK.guests = +this.value; renderPanel(); });
+  var c = document.getElementById("clearDates"); if (c) c.addEventListener("click", function(){ BK.from = BK.to = null; renderCalendar(); renderPanel(); });
+  var d = document.getElementById("toDetails"); if (d) d.addEventListener("click", function(){ var dr = load("draft", null); if (dr && !BK.name){ BK.name = dr.name || ""; BK.email = dr.email || ""; BK.phone = dr.phone || ""; } BK.step = 2; renderBook(); window.scrollTo({ top:0, behavior:"smooth" }); });
 }
+MOUNTS.book = renderBook; MOUNTS.availability = renderBook; MOUNTS.request = renderBook;
 
-/* ---------- REQUEST FLOW (BOOK-02/03, LEG-03) ---------- */
-TITLES.request = "Request to book · Ausable House";
-var RQ = { step:1, offer:null, from:null, to:null, guests:2, name:"", email:"", phone:"", note:"", accept:false, marketing:false, ref:null };
-PAGES.request = function(params){
-  if (params.offer && UNITS[params.offer]){ RQ.offer = params.offer; RQ.from = params.from; RQ.to = params.to; RQ.guests = +params.guests || 2; RQ.step = 1; RQ.ref = null; }
-  var draft = load("draft", null);
-  if (draft && !RQ.name){ RQ.name = draft.name || ""; RQ.email = draft.email || ""; RQ.phone = draft.phone || ""; }
-  return '<section class="page-head wrap"><div class="eyebrow">Request to book</div><h1 class="h-xl">Your request</h1><p class="lede">Three short steps. Your quote is preserved exactly as shown, the terms you accept are recorded with a timestamp, and the reservation stays pending until confirmed.</p></section><section class="sec wrap" id="rqBody"></section>';
+/* ---------- AREA (guide + seasons) ---------- */
+TITLES.area = "The area · Ausable House";
+PAGES.area = function(params){
+  var cat = params.cat && GUIDE_CATS.indexOf(params.cat) >= 0 ? params.cat : "All";
+  return '<section class="unit-hero" style="height:min(56vh,520px);min-height:360px">' + ph("notch", "", { eager:true }) + '<div class="wrap"><div class="eyebrow">The area</div><h1 class="h-xl">Wilmington and the High Peaks</h1></div></section>' +
+  '<section class="sec wrap"><p class="lede">Whiteface is a few minutes up the road, the West Branch runs through the village, and Lake Placid is twenty minutes west. Each entry below carries its season, cost band and source; anything unverified says so rather than guessing at hours.</p>' +
+  '<div class="filters" id="gFilters" style="margin-top:30px">' + ["All"].concat(GUIDE_CATS).map(function(c){ return '<button type="button" data-cat="' + esc(c) + '"' + (c === cat ? ' class="on"' : '') + '>' + esc(c) + '</button>'; }).join("") + '</div>' +
+  '<div class="grid-3" id="gGrid"></div></section>' +
+  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Seasons</div><h2 class="h-l">What it is like when you come</h2></div><a class="btn ghost sm" href="#/seasons">Season by season</a></div>' +
+  '<div class="seasons">' + SEASONS.map(function(s){ return '<div class="season fade">' + ph(s.key, "") + '<div class="sb"><div class="m">' + esc(s.months) + '</div><h3>' + esc(s.name) + '</h3><p>' + esc(s.expect) + '</p></div></div>'; }).join("") + '</div>' +
+  '<div class="notice" style="margin-top:30px"><b>Personal details stay private.</b> Access codes and your itinerary never appear on this public page. <a href="#/plan">Plan your stay</a> builds a private itinerary from these verified entries.</div></section>';
 };
-function renderRequest(){
-  var el = document.getElementById("rqBody"); if (!el) return;
-  if (!RQ.offer || !RQ.from || !RQ.to){
-    el.innerHTML = '<div class="notice warn"><b>No dates selected.</b> Start from the <a href="#/availability">availability page</a> to build a quote first.</div>'; return;
-  }
-  var r = checkOffer(RQ.offer, RQ.from, RQ.to);
-  if (!r.ok){ el.innerHTML = '<div class="notice bad"><b>Those dates are no longer available for ' + esc(UNITS[RQ.offer].name) + '.</b> ' + esc(r.reasons.join(" ")) + ' <a href="#/availability?offer=' + RQ.offer + '">Choose other dates</a>.</div>'; return; }
-  var q = quote(RQ.offer, RQ.from, RQ.to, RQ.guests);
-  var steps = '<div class="steps">' + [["Review quote"],["Your details"],["Accept terms"],["Pending"]].map(function(s, i){
-    var n = i + 1; return '<div class="step' + (n === RQ.step ? " on" : n < RQ.step ? " done" : "") + '"><i>' + (n < RQ.step ? "✓" : n) + '</i>' + s[0] + '</div>';
-  }).join("") + '</div>';
-  var summary = '<div class="qcard"><div class="qh"><span class="n">' + esc(UNITS[RQ.offer].name) + '</span>' + chip("tbc","sample rates") + '</div>' +
-    '<div class="kv"><b>Dates</b><span>' + fmt(RQ.from) + ' → ' + fmt(RQ.to) + ' · ' + q.nights + ' nights</span><b>Guests</b><span>' + RQ.guests + '</span><b>Unit</b><span>' + esc(UNITS[RQ.offer].kicker) + '</span></div>' +
-    '<div class="qrows"><div class="qrow"><span class="l">Accommodation</span><span class="v">' + money(q.accommodation) + '</span></div><div class="qrow"><span class="l">Cleaning</span><span class="v">' + money(q.cleaning) + '</span></div><div class="qrow"><span class="l">Taxes (sample)</span><span class="v">' + money(q.tax) + '</span></div><div class="qrow total"><span class="l">Total required</span><span class="v">' + money(q.total) + '</span></div></div>' +
-    '<div class="kv" style="margin-top:12px"><b>Security</b><span>' + fact(SECURITY) + '</span></div></div>';
-  var body = "";
-  if (RQ.step === 1){
-    body = '<div class="stack"><div class="notice"><b>Check the quote.</b> This is the complete required price. The accepted quote is stored with your request and does not change afterwards (BOOK-01).</div>' +
-      '<div class="notice warn"><b>Shared spaces.</b> ' + esc(UNITS[RQ.offer].shared) + '</div>' +
-      '<div class="row"><button class="btn" type="button" data-step="2">Continue to your details</button><a class="btn ghost" href="#/availability?offer=' + RQ.offer + '&from=' + RQ.from + '&to=' + RQ.to + '">Change dates</a></div></div>';
-  } else if (RQ.step === 2){
-    body = '<form id="rqForm" class="stack" novalidate>' +
-      '<div class="fields two"><label class="field">Full name<input name="name" required value="' + esc(RQ.name) + '" autocomplete="name"></label><label class="field">Email<input name="email" type="email" required value="' + esc(RQ.email) + '" autocomplete="email"></label></div>' +
-      '<div class="fields two"><label class="field">Phone<input name="phone" type="tel" value="' + esc(RQ.phone) + '" autocomplete="tel"></label><label class="field">Party<select name="guests">' + [1,2,3,4,5,6,7,8,9,10,11,12].map(function(n){ return '<option' + (n === RQ.guests ? ' selected' : '') + '>' + n + '</option>'; }).join("") + '</select></label></div>' +
-      '<label class="field">Anything we should know (optional)<textarea name="note" placeholder="Arrival time, questions about the property, access needs you would like us to plan for.">' + esc(RQ.note) + '</textarea></label>' +
-      '<p class="muted" style="font-size:.8rem">Only what is needed to handle the reservation is collected (DATA-02). Marketing consent is asked separately and is never a condition of booking.</p>' +
-      '<div class="row"><button class="btn" type="submit">Continue to terms</button><button class="btn ghost" type="button" data-step="1">Back</button></div></form>';
-  } else if (RQ.step === 3){
-    body = '<form id="rqTerms" class="stack" novalidate>' +
-      '<div class="card"><h3>Rental agreement · version <span class="mono">0.0-draft</span></h3><p>The attorney-approved agreement, house rules for <b>' + esc(UNITS[RQ.offer].short) + '</b>, amenity-use instructions, shared-space disclosure, damage / payment authorisation, cancellation summary and privacy notice are presented here — only the schedules relevant to this unit (LEG-02).</p><p style="margin-top:8px">' + chip("tbc","Pending attorney approval") + '</p></div>' +
-      '<label class="check"><input type="checkbox" name="accept" required> I have read and accept the rental agreement and its schedules for these dates and this unit. My acceptance, the exact version shown, the quote, and the date and time are recorded (LEG-03).</label>' +
-      '<label class="check"><input type="checkbox" name="marketing"> Optional: send me occasional offers and seasonal news. Separate from this booking; unsubscribe any time (LOY-02).</label>' +
-      '<div class="notice"><b>What happens next.</b> Your request goes to the owner as <em>pending</em>. No card is charged and no hold is placed by this preview. When the reservation system confirms it, you receive your signed copy and the arrival sequence begins.</div>' +
-      '<div class="row"><button class="btn" type="submit">Submit request</button><button class="btn ghost" type="button" data-step="2">Back</button></div></form>';
-  } else {
-    body = '<div class="stack">' +
-      '<div class="row"><span class="state-pill">Pending · awaiting confirmation</span><span class="mono muted" style="font-size:.8rem">Ref ' + esc(RQ.ref) + '</span></div>' +
-      '<div class="lifecycle"><span class="done">Quote</span><em>→</em><span class="on">Pending</span><em>→</em><span>Confirmed</span><em>→</em><span>In-house</span><em>→</em><span>Departed</span><em>→</em><span>Closed</span></div>' +
-      '<div class="notice good"><b>Request received (preview).</b> Thank you, ' + esc(RQ.name.split(" ")[0] || "guest") + '. Nothing has been charged. In the live system the owner confirms through the booking core, your signed copy is issued, and the welcome message with the guide link and preference form follows.</div>' +
-      '<div class="grid-2"><div class="card"><h3>Accepted at</h3><p class="mono">' + esc(new Date().toLocaleString("en-US", { timeZone: BRAND.tz })) + ' ' + esc(BRAND.tz) + '</p><p class="muted" style="font-size:.82rem;margin-top:6px">Agreement version 0.0-draft · quote preserved</p></div>' +
-      '<div class="card"><h3>While you wait</h3><p><a href="#/plan">Plan your stay</a> — optional preferences that shape your itinerary. Or read the <a href="#/seasons">seasonal guide</a> for your dates.</p></div></div>' +
-      '<div class="row"><a class="btn ghost" href="#/">Back to the start</a></div></div>';
-  }
-  el.innerHTML = steps + '<div class="avail"><div>' + body + '</div><aside class="qpanel">' + summary + '</aside></div>';
-  el.querySelectorAll("[data-step]").forEach(function(b){ b.addEventListener("click", function(){ RQ.step = +this.getAttribute("data-step"); renderRequest(); window.scrollTo({ top: 0, behavior: "smooth" }); }); });
-  var f = document.getElementById("rqForm");
-  if (f) f.addEventListener("submit", function(e){
-    e.preventDefault();
-    var fd = new FormData(f);
-    RQ.name = (fd.get("name") || "").trim(); RQ.email = (fd.get("email") || "").trim(); RQ.phone = (fd.get("phone") || "").trim(); RQ.note = (fd.get("note") || "").trim(); RQ.guests = +fd.get("guests") || RQ.guests;
-    if (!RQ.name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(RQ.email)){ toast("Please give a name and a valid email address."); return; }
-    store("draft", { name:RQ.name, email:RQ.email, phone:RQ.phone });
-    RQ.step = 3; renderRequest(); window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-  var t = document.getElementById("rqTerms");
-  if (t) t.addEventListener("submit", function(e){
-    e.preventDefault();
-    var fd = new FormData(t);
-    if (!fd.get("accept")){ toast("Please accept the agreement to continue."); return; }
-    RQ.accept = true; RQ.marketing = !!fd.get("marketing");
-    RQ.ref = "AH-" + RQ.from.replace(/-/g, "").slice(2) + "-" + Math.random().toString(36).slice(2, 6).toUpperCase();
-    RQ.step = 4; renderRequest(); window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+function guideCard(g){
+  var slot = GUIDE_PHOTO[g.name];
+  var reg = g.placeholder ? '' : '<details><summary>Season · cost · source</summary><div class="reg">' +
+    (g.drive ? '<b>Drive</b><span>' + esc(g.drive) + '</span>' : '') + (g.season ? '<b>Season</b><span>' + esc(g.season) + '</span>' : '') + (g.cost ? '<b>Cost</b><span>' + esc(g.cost) + '</span>' : '') +
+    (g.booking ? '<b>Booking</b><span>' + esc(g.booking) + '</span>' : '') + (g.access ? '<b>Access</b><span>' + esc(g.access) + '</span>' : '') +
+    '<b>Source</b><span>' + esc(g.source) + '</span><b>Checked</b><span>' + (g.verified ? "Universal" : "Not yet — link added after verification") + '</span></div></details>';
+  return '<article class="gcard fade">' + (slot ? ph(slot, "") : '') + '<div class="gb"><span class="cat">' + esc(g.cat) + '</span><span class="name">' + esc(g.name) + '</span><span class="where">' + esc(g.where) + (g.drive ? ' · ' + esc(g.drive) : '') + '</span><p class="desc">' + esc(g.desc) + '</p>' + reg +
+    '<div class="row" style="justify-content:space-between;margin-top:auto;padding-top:8px">' + (g.verified ? chip("ok","verified") : g.placeholder ? chip("tbc","entries pending") : chip("tbc","verify before publishing")) + '</div></div></article>';
 }
-MOUNTS.request = renderRequest;
+function renderGuide(cat){
+  var grid = document.getElementById("gGrid"); if (!grid) return;
+  grid.innerHTML = GUIDE.filter(function(g){ return cat === "All" || g.cat === cat; }).map(guideCard).join("");
+  document.querySelectorAll("#gFilters button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-cat") === cat); });
+  observeFades();
+}
+MOUNTS.area = function(params){
+  renderGuide(params.cat && GUIDE_CATS.indexOf(params.cat) >= 0 ? params.cat : "All");
+  document.querySelectorAll("#gFilters button").forEach(function(b){ b.addEventListener("click", function(){ renderGuide(this.getAttribute("data-cat")); }); });
+};
+PAGES.guide = PAGES.area; MOUNTS.guide = MOUNTS.area; TITLES.guide = TITLES.area;
+
+/* ---------- SEASONS ---------- */
+TITLES.seasons = "Seasons · Ausable House";
+PAGES.seasons = function(){
+  return '<section class="page-head wrap"><div class="eyebrow">Seasons</div><h1 class="h-xl">Season by season</h1><p class="lede">Long-range seasonal information, not a forecast. A valid forecast with its issue time is sent seven days before arrival.</p></section>' +
+  '<section class="sec wrap"><div class="grid-2">' + SEASONS.map(function(s){
+    return '<div class="season fade">' + ph(s.key, "") + '<div class="sb"><div class="m">' + esc(s.months) + '</div><h3>' + esc(s.name) + '</h3><p>' + esc(s.expect) + '</p><div class="kv" style="margin-top:14px"><b>Access</b><span>' + esc(s.access) + '</span><b>Pack</b><span>' + esc(s.pack) + '</span><b>Limits</b><span>' + esc(s.limits) + '</span></div></div></div>';
+  }).join("") + '</div>' +
+  '<div class="notice warn" style="margin-top:24px"><b>Winter driveway and snow clearing.</b> Who clears the drive, how often, and whom to call about ice will be stated on each unit page before checkout.</div></section>';
+};
 
 /* ---------- AMENITIES ---------- */
 TITLES.amenities = "Amenities · Ausable House";
 PAGES.amenities = function(){
   var total = 0, tbc = 0, no = 0;
   AMENITIES.forEach(function(c){ c.items.forEach(function(i){ total++; if (i.status === "tbc") tbc++; if (i.status === "no") no++; }); });
-  return '<section class="page-head wrap"><div class="eyebrow">Amenities</div><h1 class="h-xl">What is actually here</h1><p class="lede">Every amenity is assigned to the house, the apartment, a shared area, or marked not offered. Nothing is listed until it has been inspected, and closing one updates the listings and your arrival information.</p></section>' +
-  '<section class="sec wrap"><div class="row" style="margin-bottom:22px">' + chip("tbc", tbc + " of " + total + " awaiting inspection") + chip("no", no + " not offered") + chip("neutral", "last verified: —") + '</div>' +
+  return '<section class="page-head wrap"><div class="eyebrow">Amenities</div><h1 class="h-xl">What is actually here</h1><p class="lede">Every amenity is assigned to the house, the apartment, a shared area, or marked not offered. Nothing is listed until inspected.</p></section>' +
+  '<section class="sec wrap"><div class="row" style="margin-bottom:22px">' + chip("tbc", tbc + " of " + total + " awaiting inspection") + chip("no", no + " not offered") + '</div>' +
   '<div class="scroll-x"><table class="tbl"><thead><tr><th>Amenity</th><th>Available to</th><th>Status</th><th>Notes</th></tr></thead><tbody>' +
-  AMENITIES.map(function(cat){
-    return '<tr><td colspan="4" style="padding-top:22px"><span class="eyebrow" style="margin:0">' + esc(cat.cat) + '</span></td></tr>' + cat.items.map(function(it){
-      var who = it.units.indexOf("shared") >= 0 ? "Shared area" : it.units.length ? it.units.map(function(u){ return UNITS[u] ? UNITS[u].short : u; }).join(" + ") : "—";
-      return '<tr><td>' + esc(it.name) + '</td><td>' + esc(who) + '</td><td>' + (it.status === "no" ? chip("no","Not offered") : it.status === "ok" ? chip("ok","Verified") : chip("tbc","To verify")) + '</td><td>' + esc(it.note || "") + '</td></tr>';
-    }).join("");
-  }).join("") + '</tbody></table></div>' +
-  '<p class="muted" style="font-size:.82rem;margin-top:14px">Each record in the owner register also carries quantity, location, included / paid status, season, hours, an instruction link, a safety note, the last verified date and temporary-closure status.</p></section>';
+  AMENITIES.map(function(cat){ return '<tr><td colspan="4" style="padding-top:22px"><span class="eyebrow" style="margin:0">' + esc(cat.cat) + '</span></td></tr>' + cat.items.map(function(it){
+    var who = it.units.indexOf("shared") >= 0 ? "Shared area" : it.units.length ? it.units.map(function(u){ return UNITS[u] ? UNITS[u].short : u; }).join(" + ") : "—";
+    return '<tr><td>' + esc(it.name) + '</td><td>' + esc(who) + '</td><td>' + (it.status === "no" ? chip("no","Not offered") : it.status === "ok" ? chip("ok","Verified") : chip("tbc","To verify")) + '</td><td>' + esc(it.note || "") + '</td></tr>'; }).join(""); }).join("") +
+  '</tbody></table></div></section>';
 };
 
-/* ---------- GALLERY ---------- */
-TITLES.gallery = "Gallery & video · Ausable House";
-PAGES.gallery = function(){
-  var slots = [["H","Exterior","House — approach"],["H","Living","House — living room"],["H","Kitchen","House — kitchen"],["H","Sleeping","House — bedroom"],["A","Exterior","Apartment — entrance"],["A","Living","Apartment — main room"],["A","Kitchen","Apartment — kitchen"],["A","Bath","Apartment — bathroom"],["HA","Outdoor","Property — grounds"],["HA","Outdoor","Property — river side"],["HA","Winter","Property — winter"],["HA","Exterior","Property — parking"]];
-  return '<section class="page-head wrap"><div class="eyebrow">Gallery &amp; video</div><h1 class="h-xl">Real rooms, current photographs</h1><p class="lede">Only real, current media of the property is published here: no generated amenities, no misleading wide angles. Each image carries a unit and room caption and alternative text; the introductory film carries captions and a transcript.</p></section>' +
-  '<section class="sec wrap"><div class="video"><canvas data-video aria-hidden="true"></canvas><div class="play"><span class="ring"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span><b>Introductory film — awaiting owner footage</b><br><span class="muted" style="font-size:.8rem">Short, captioned, with a transcript. Filmed on the property, in the season it shows.</span></span></div></div></section>' +
-  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Photograph slots</div><h2 class="h-m">Twelve rooms still to shoot</h2></div>' + chip("tbc","0 of 12 delivered") + '</div>' +
-  '<div class="gallery">' + slots.map(function(s){ return '<div class="slot"><canvas data-slot="' + esc(s[1]) + '" aria-hidden="true"></canvas><div class="cap"><b>Awaiting owner media · ' + esc(s[0]) + '</b>' + esc(s[2]) + '</div></div>'; }).join("") + '</div>' +
-  '<p class="muted" style="font-size:.82rem;margin-top:14px">Image usage rights are recorded for every file before it is published.</p></section>';
-};
-MOUNTS.gallery = function(){ drawSlots(); drawVideoTile(); };
-
-/* ---------- GUIDE ---------- */
-TITLES.guide = "Area guide · Ausable House";
-PAGES.guide = function(params){
-  var cat = params.cat && GUIDE_CATS.indexOf(params.cat) >= 0 ? params.cat : "All";
-  return '<section class="page-head wrap"><div class="eyebrow">Area guide</div><h1 class="h-xl">Wilmington and the High Peaks</h1><p class="lede">A maintained guide, not a one-time list. Each entry records its source, season, cost band and the date it was last checked. Anything unverified says so rather than guessing at hours.</p></section>' +
-  '<section class="sec wrap"><div class="filters" id="gFilters">' + ["All"].concat(GUIDE_CATS).map(function(c){ return '<button type="button" data-cat="' + esc(c) + '"' + (c === cat ? ' class="on"' : '') + '>' + esc(c) + '</button>'; }).join("") + '</div>' +
-  '<div class="grid-3" id="gGrid"></div>' +
-  '<div class="notice" style="margin-top:28px"><b>Personal details stay private.</b> Access codes, your itinerary and anything about your party never appear on this public page. <a href="#/plan">Plan your stay</a> builds a private itinerary from these verified entries.</div></section>';
-};
-function guideCard(g){
-  var reg = g.placeholder ? '' : '<div class="reg">' +
-    (g.drive ? '<b>Drive</b><span>' + esc(g.drive) + '</span>' : '') +
-    (g.season ? '<b>Season</b><span>' + esc(g.season) + '</span>' : '') +
-    (g.cost ? '<b>Cost</b><span>' + esc(g.cost) + '</span>' : '') +
-    (g.booking ? '<b>Booking</b><span>' + esc(g.booking) + '</span>' : '') +
-    (g.access ? '<b>Access</b><span>' + esc(g.access) + '</span>' : '') +
-    '<b>Source</b><span>' + esc(g.source) + '</span><b>Checked</b><span>' + (g.verified ? "Universal" : "Not yet — link added after verification") + '</span></div>';
-  return '<article class="gcard"><span class="cat">' + esc(g.cat) + '</span><span class="name">' + esc(g.name) + '</span><span class="where">' + esc(g.where) + '</span><p class="desc">' + esc(g.desc) + '</p>' + reg +
-    '<div class="foot">' + (g.verified ? chip("ok","verified") : g.placeholder ? chip("tbc","entries pending") : chip("tbc","verify before publishing")) + '<span class="muted" style="font-size:.76rem">' + (g.suits || []).join(" · ") + '</span></div></article>';
-}
-function renderGuide(cat){
-  var grid = document.getElementById("gGrid"); if (!grid) return;
-  var list = GUIDE.filter(function(g){ return cat === "All" || g.cat === cat; });
-  grid.innerHTML = list.map(guideCard).join("");
-  document.querySelectorAll("#gFilters button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-cat") === cat); });
-}
-MOUNTS.guide = function(params){
-  var cat = params.cat && GUIDE_CATS.indexOf(params.cat) >= 0 ? params.cat : "All";
-  renderGuide(cat);
-  document.querySelectorAll("#gFilters button").forEach(function(b){ b.addEventListener("click", function(){ renderGuide(this.getAttribute("data-cat")); }); });
-};
-
-/* ---------- SEASONS ---------- */
-TITLES.seasons = "Seasonal guides · Ausable House";
-PAGES.seasons = function(){
-  return '<section class="page-head wrap"><div class="eyebrow">Seasonal guides</div><h1 class="h-xl">What Wilmington is like when you come</h1><p class="lede">Long-range seasonal information, not a forecast. A valid forecast with its issue time is sent seven days before arrival; nothing here extrapolates the weather.</p></section>' +
-  '<section class="sec wrap"><div class="grid-2">' + SEASONS.map(function(s){
-    return '<div class="card"><div class="eyebrow">' + esc(s.months) + '</div><h3 style="font-family:var(--f-display);font-weight:400;font-size:1.6rem">' + esc(s.name) + '</h3><p>' + esc(s.expect) + '</p>' +
-      '<div class="kv" style="margin-top:14px"><b>Access</b><span>' + esc(s.access) + '</span><b>Pack</b><span>' + esc(s.pack) + '</span><b>Limits</b><span>' + esc(s.limits) + '</span></div></div>';
-  }).join("") + '</div>' +
-  '<div class="notice warn" style="margin-top:24px"><b>Winter driveway and snow clearing.</b> Who clears the drive, how often, and whom to call about ice are being confirmed and will be stated on each unit page before checkout, not discovered on arrival (WEB-04).</div></section>';
-};
-
-/* ---------- OFFERS (MKT-02 availability-aware) ---------- */
+/* ---------- OFFERS ---------- */
 TITLES.offers = "Offers · Ausable House";
 PAGES.offers = function(){
   function windowState(o){
     if (!o.window) return { live:false, text:"Not yet live" };
     if (o.window.to < TODAY) return { live:false, text:"Expired" };
-    var anyOpen = false;
-    for (var d = (o.window.from > TODAY ? o.window.from : TODAY); d < o.window.to; d = addDays(d, 1)){
-      for (var i = 0; i < o.units.length; i++){ if (nightState(o.units[i], d) === "open"){ anyOpen = true; break; } }
-      if (anyOpen) break;
-    }
-    return anyOpen ? { live:true, text:"Dates still open" } : { live:false, text:"Withdrawn — advertised dates have sold" };
+    for (var d = (o.window.from > TODAY ? o.window.from : TODAY); d < o.window.to; d = addDays(d, 1)) for (var i = 0; i < o.units.length; i++) if (nightState(o.units[i], d) === "open") return { live:true, text:"Dates still open" };
+    return { live:false, text:"Withdrawn — dates have sold" };
   }
-  return '<section class="page-head wrap"><div class="eyebrow">Offers</div><h1 class="h-xl">Offers that check their own dates</h1><p class="lede">An offer is shown only while its dates are actually open. When they sell, or an amenity it mentions closes, it withdraws itself rather than advertising something you cannot book.</p></section>' +
+  return '<section class="page-head wrap"><div class="eyebrow">Offers</div><h1 class="h-xl">Offers that check their own dates</h1><p class="lede">An offer shows only while its dates are actually open. When they sell, it withdraws itself.</p></section>' +
   '<section class="sec wrap"><div class="grid-3">' + OFFERS.map(function(o){
-    var s = windowState(o);
-    return '<div class="card" style="' + (s.live ? '' : 'opacity:.72') + '"><div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="eyebrow" style="margin:0">' + esc(o.phase) + '</span>' + (s.live ? chip("ok", s.text) : chip("neutral", s.text)) + '</div>' +
-      '<h3 style="font-family:var(--f-display);font-weight:400;font-size:1.45rem">' + esc(o.name) + '</h3><p><b style="color:var(--ink);font-weight:500">' + esc(o.offer) + '</b></p><p style="margin-top:8px">' + esc(o.rule) + '</p>' +
+    var s = windowState(o), start = o.window ? (o.window.from > TODAY ? o.window.from : TODAY) : null;
+    return '<div class="card" style="' + (s.live ? '' : 'opacity:.7') + '"><div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="eyebrow" style="margin:0">' + esc(o.phase) + '</span>' + (s.live ? chip("ok", s.text) : chip("neutral", s.text)) + '</div><h3 style="font-family:var(--f-display);font-weight:300;font-size:1.5rem">' + esc(o.name) + '</h3><p><b style="color:var(--ink);font-weight:500">' + esc(o.offer) + '</b></p><p style="margin-top:8px">' + esc(o.rule) + '</p>' +
       '<div class="kv" style="margin-top:12px"><b>Applies to</b><span>' + o.units.map(function(u){ return UNITS[u].short; }).join(", ") + '</span>' + (o.window ? '<b>Window</b><span>' + fmt(o.window.from) + ' – ' + fmt(o.window.to) + '</span>' : '') + '</div>' +
-      (s.live ? '<div class="row" style="margin-top:14px"><a class="btn sm" href="#/availability?offer=' + o.units[0] + '&from=' + (o.window.from > TODAY ? o.window.from : TODAY) + '&to=' + addDays((o.window.from > TODAY ? o.window.from : TODAY), 2) + '">See these dates</a></div>' : '') +
-    '</div>';
-  }).join("") + '</div>' +
-  '<p class="muted" style="font-size:.82rem;margin-top:16px">Offers are sample entries from the approved content queue. Each carries target dates, product, audience, media rights, tracking code, approval, publication time and expiry before it can appear (MKT-01).</p></section>';
+      (s.live ? '<div class="row" style="margin-top:14px"><a class="btn sm" href="#/book?offer=' + o.units[0] + '&from=' + start + '&to=' + addDays(start, 2) + '">See these dates</a></div>' : '') + '</div>';
+  }).join("") + '</div></section>';
 };
 
 /* ---------- FAQ ---------- */
-TITLES.faq = "Practical FAQs · Ausable House";
+TITLES.faq = "FAQs · Ausable House";
 PAGES.faq = function(){
   return '<section class="page-head wrap"><div class="eyebrow">Practical FAQs</div><h1 class="h-xl">Straight answers</h1><p class="lede">Where a policy is not yet approved, the answer says so instead of guessing.</p></section>' +
-  '<section class="sec wrap"><div class="faq measure" style="max-width:76ch">' + FAQ.map(function(f){ return '<details><summary>' + esc(f.q) + '</summary><div class="a">' + esc(f.a) + '</div></details>'; }).join("") + '</div>' +
-  '<div class="row" style="margin-top:28px"><a class="btn ghost" href="#/contact">Ask something else</a></div></section>';
+  '<section class="sec wrap"><div class="faq" style="max-width:76ch">' + FAQ.map(function(f){ return '<details><summary>' + esc(f.q) + '</summary><div class="a">' + esc(f.a) + '</div></details>'; }).join("") + '</div><div class="row" style="margin-top:28px"><a class="btn ghost" href="#/contact">Ask something else</a></div></section>';
 };
 
 /* ---------- CONTACT ---------- */
 TITLES.contact = "Contact · Ausable House";
 PAGES.contact = function(){
-  return '<section class="page-head wrap"><div class="eyebrow">Contact</div><h1 class="h-xl">Ask before you book</h1><p class="lede">Questions about the units, access needs, or whether a date can flex. A person answers. Emergencies during a stay use the private help contact in your arrival details, never this form.</p></section>' +
-  '<section class="sec wrap"><div class="avail"><form id="cForm" class="stack" novalidate>' +
-    '<div class="fields two"><label class="field">Name<input name="name" required autocomplete="name"></label><label class="field">Email<input name="email" type="email" required autocomplete="email"></label></div>' +
-    '<label class="field">Which stay are you asking about?<select name="unit"><option>Not sure yet</option><option>The Main House</option><option>The Apartment</option><option>The Entire Property</option></select></label>' +
+  return '<section class="page-head wrap"><div class="eyebrow">Contact</div><h1 class="h-xl">Ask before you book</h1><p class="lede">Questions about the units, access needs, or whether a date can flex. A person answers. Emergencies during a stay use the private help contact in your arrival details.</p></section>' +
+  '<section class="sec wrap"><div class="two"><form id="cForm" class="stack" novalidate>' +
+    '<div class="fields two2"><label class="field">Name<input name="name" required autocomplete="name"></label><label class="field">Email<input name="email" type="email" required autocomplete="email"></label></div>' +
+    '<label class="field">Which stay?<select name="unit"><option>Not sure yet</option><option>The Main House</option><option>The Apartment</option><option>The Whole Property</option></select></label>' +
     '<label class="field">Message<textarea name="msg" required></textarea></label>' +
-    '<label class="check"><input type="checkbox" name="mk"> Optional: occasional offers and seasonal news. Never a condition of a reply.</label>' +
+    '<label class="check"><input type="checkbox" name="mk"> Optional: occasional offers and seasonal news.</label>' +
     '<div class="row"><button class="btn" type="submit">Send</button><span class="muted" style="font-size:.8rem">Preview: this form does not transmit anything.</span></div></form>' +
-    '<aside class="qpanel"><div class="qcard"><div class="qh"><span class="n">Ausable House</span></div><div class="kv"><b>Where</b><span>' + esc(BRAND.place) + '<br>' + esc(BRAND.coords) + '</span><b>Email</b><span><span class="pending" title="Contact address pending">[pending]</span></span><b>Phone</b><span><span class="pending" title="Contact number pending">[pending]</span></span><b>Hours</b><span>Replies within one business day (target)</span></div></div>' +
-    '<div class="notice warn"><b>Booking through Airbnb, Vrbo or Booking.com?</b> Please keep questions about that reservation inside that platform\'s messaging, as its rules require. This form is for direct enquiries.</div></aside></div></section>';
+    '<aside class="side"><div class="qcard"><div class="qh"><span class="n">Ausable House</span></div><div class="kv"><b>Where</b><span>' + esc(BRAND.place) + '</span><b>Email</b><span><span class="pending" title="Contact address pending">[pending]</span></span><b>Phone</b><span><span class="pending" title="Contact number pending">[pending]</span></span><b>Replies</b><span>Within one business day (target)</span></div></div>' +
+    '<div class="notice warn"><b>Booked through Airbnb, Vrbo or Booking.com?</b> Keep questions about that reservation inside that platform\'s messaging, as its rules require.</div></aside></div></section>';
 };
 MOUNTS.contact = function(){
   var f = document.getElementById("cForm");
-  f.addEventListener("submit", function(e){
-    e.preventDefault();
-    var fd = new FormData(f);
+  f.addEventListener("submit", function(e){ e.preventDefault(); var fd = new FormData(f);
     if (!(fd.get("name") || "").trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.get("email") || "") || !(fd.get("msg") || "").trim()){ toast("Name, a valid email and a message are needed."); return; }
-    f.innerHTML = '<div class="notice good"><b>Received (preview).</b> Nothing was transmitted from this preview build. In the live site your message goes to the owner\'s work queue with a deadline for reply.</div>';
-  });
+    f.innerHTML = '<div class="notice good"><b>Received (preview).</b> Nothing was transmitted from this preview build. In the live site your message goes to the owner\'s work queue with a reply deadline.</div>'; });
 };
 
-/* ---------- POLICIES ---------- */
+/* ---------- POLICIES / PRIVACY / ACCESSIBILITY ---------- */
 TITLES.policies = "Booking policies · Ausable House";
 PAGES.policies = function(){
-  return '<section class="page-head wrap"><div class="eyebrow">Booking policies</div><h1 class="h-xl">How a reservation works</h1><p class="lede">The plain-language version. The attorney-approved agreement and its schedules are what you accept at booking; where they are not yet approved, this page says so.</p></section>' +
+  return '<section class="page-head wrap"><div class="eyebrow">Booking policies</div><h1 class="h-xl">How a reservation works</h1><p class="lede">The plain-language version. The attorney-approved agreement is what you accept at booking; where it is not yet approved, this page says so.</p></section>' +
   '<section class="sec wrap"><div class="prose">' +
-  '<h3>Reservation states</h3><div class="lifecycle" style="margin:10px 0 16px"><span>Quote</span><em>→</em><span>Hold</span><em>→</em><span>Pending payment / signature</span><em>→</em><span>Confirmed</span><em>→</em><span>In-house</span><em>→</em><span>Departed</span><em>→</em><span>Closed</span></div>' +
-  '<p>A request is <b>pending</b> until the reservation system confirms it. You are told which state you are in at every step. Expired holds release automatically. A failed payment or an unsigned agreement never leaves you charged with no reservation: the step is retried, reviewed by a person, or cancelled and refunded, and you are told which.</p>' +
-  '<h3>Price</h3><p>The quote shows the total required price — nightly rate, mandatory cleaning, applicable taxes, the security arrangement and any optional extras — before you commit. The accepted quote is preserved with your reservation and does not change.</p>' +
-  '<h3>Payment schedule</h3><p><span class="pending" title="Deposit / balance timing pending">Deposit and balance timing, accepted currencies, off-session charge consent and failed-payment handling are pending approval</span>. Cards are handled by the booking platform\'s tokenised processor; full card numbers are never stored here.</p>' +
-  '<h3>Security arrangement</h3><p>' + fact(SECURITY) + '. It is scheduled around your arrival, not at booking, and inspected promptly after departure.</p>' +
-  '<h3>Cancellation and refunds</h3><p><span class="pending" title="Cancellation terms pending attorney approval">Cancellation and refund terms are pending attorney approval and are not published yet.</span> Bookings through Airbnb, Vrbo or Booking.com follow that channel\'s policy.</p>' +
-  '<h3>Occupancy, visitors, pets, smoking, parties, quiet hours</h3><p>Per-product occupancy limits, visitor rules, the pet policy, smoking, party and quiet-hour rules are in the house-rules schedule for the unit you book. <span class="pending" title="Schedules pending">Schedules pending approval.</span> The prior draft\'s eight-guest limit, 4 p.m. / 11 a.m. times and $500 hold are legacy values and not the limits for every product.</p>' +
-  '<h3>Access and entry</h3><p>Time-limited access for your booked unit only. Owner or service entry during a stay follows the agreement\'s notice terms. <span class="pending" title="Entry terms pending">Entry terms pending counsel.</span></p>' +
-  '<h3>Shared spaces</h3><p>House-only and apartment-only stays may have neighbouring guests. Which entrance, parking spaces, outdoor areas and amenities are exclusive or shared is stated per unit before checkout. Whole-property exclusivity is promised only with an Entire Property booking.</p>' +
-  '<h3>Liability</h3><p>Releases, indemnities and adult / guardian signatures are under attorney review. One primary guest is not assumed to bind every adult or to waive claims of a minor; New York law limits certain negligence waivers.</p>' +
-  '<h3>Taxes</h3><p>New York\'s short-term-rental sales-tax provisions took effect 1 March 2025. Which taxes apply to direct bookings and who remits them is set by a qualified adviser\'s matrix, <span class="pending" title="Tax matrix pending">pending</span>. A channel collecting tax does not mean this site does.</p>' +
-  '</div></section>';
+  '<h3>Reservation states</h3><div class="lifecycle" style="margin:10px 0 16px"><span>Quote</span><em>→</em><span>Hold</span><em>→</em><span>Pending</span><em>→</em><span>Confirmed</span><em>→</em><span>In-house</span><em>→</em><span>Departed</span><em>→</em><span>Closed</span></div>' +
+  '<p>A request is <b>pending</b> until the reservation system confirms it. Expired holds release automatically. A failed payment or an unsigned agreement never leaves you charged with no reservation: the step is retried, reviewed by a person, or cancelled and refunded, and you are told which.</p>' +
+  '<h3>Price</h3><p>The quote shows the total required price — nightly rate, cleaning, applicable taxes, the security arrangement and any extras — before you commit. The accepted quote is preserved with your reservation.</p>' +
+  '<h3>Payment schedule</h3><p><span class="pending" title="Deposit / balance timing pending">Deposit and balance timing, currencies, off-session charge consent and failed-payment handling are pending approval</span>. Cards are handled by the booking platform\'s tokenised processor; full card numbers are never stored here.</p>' +
+  '<h3>Security arrangement</h3><p>' + fact(SECURITY) + '. Scheduled around arrival, not at booking, and inspected promptly after departure.</p>' +
+  '<h3>Cancellation and refunds</h3><p><span class="pending" title="Cancellation terms pending attorney approval">Cancellation and refund terms are pending attorney approval.</span> Channel bookings follow that channel\'s policy.</p>' +
+  '<h3>Occupancy, visitors, pets, smoking, quiet hours</h3><p>In the house-rules schedule for the unit you book. <span class="pending" title="Schedules pending">Schedules pending approval.</span> The prior draft\'s eight-guest limit, 4 p.m. / 11 a.m. times and $500 hold are legacy values, not the limits for every product.</p>' +
+  '<h3>Shared spaces</h3><p>House-only and apartment-only stays may have neighbouring guests. Which spaces are exclusive or shared is stated per unit before checkout. Whole-property exclusivity comes only with a whole-property booking.</p>' +
+  '<h3>Liability</h3><p>Releases, indemnities and adult / guardian signatures are under attorney review. New York law limits certain negligence waivers.</p>' +
+  '<h3>Taxes</h3><p>New York\'s short-term-rental sales-tax provisions took effect 1 March 2025. Which taxes apply to direct bookings is set by a qualified adviser\'s matrix, <span class="pending" title="Tax matrix pending">pending</span>.</p></div></section>';
 };
-
-/* ---------- PRIVACY ---------- */
-TITLES.privacy = "Privacy notice · Ausable House";
+TITLES.privacy = "Privacy · Ausable House";
 PAGES.privacy = function(){
-  return '<section class="page-head wrap"><div class="eyebrow">Privacy notice</div><h1 class="h-xl">What we keep, and why</h1><p class="lede">Draft for counsel review. Written to match how the site actually behaves.</p></section>' +
-  '<section class="sec wrap"><div class="prose">' +
-  '<h3>Who is responsible</h3><p>The contracting entity is being reconciled by counsel and will be named here: <span class="pending" title="Legal entity pending">[entity pending]</span>.</p>' +
-  '<h3>What is collected</h3><ul><li><b>To handle a reservation:</b> name, contact details, party size, dates, the accepted quote, the agreement version you accepted with its timestamp, payment status from the processor (never full card numbers), and messages you send.</li><li><b>Optional, only if you give it:</b> travel purpose, interests, budget band, children\'s age bands, pace, and any dietary or access needs you choose to share to shape your itinerary.</li><li><b>Analytics:</b> campaign clicks, date searches and checkout starts with consistent identifiers, reconciled to actual paid bookings and refunds.</li></ul>' +
-  '<h3>What is not done</h3><ul><li>Marketing consent is separate from booking acceptance and never a condition of it. Unsubscribe lists are honoured.</li><li>Guest details from Airbnb, Vrbo or Booking.com are not reused for marketing contrary to that channel\'s rules.</li><li>Access codes and personal details never appear on public pages or in broadly shared documents.</li></ul>' +
-  '<h3>Who sees it</h3><p>The owner / administrator controls finances and inventory. Cleaners see only the operational details for a turnover. Content editors cannot see prices, access codes or guest records. Privileged users use multi-factor authentication.</p>' +
-  '<h3>Retention</h3><p>Retention periods are agreed with counsel and the payment processor: <span class="pending" title="Retention schedule pending">[schedule pending]</span>. Signed agreements are kept as evidence for the period the law and the dispute terms require.</p>' +
-  '<h3>Your choices</h3><p>Ask for a copy of your signed agreement, correct your details, or withdraw marketing consent at any time via the <a href="#/contact">contact page</a>.</p>' +
-  '</div></section>';
+  return '<section class="page-head wrap"><div class="eyebrow">Privacy notice</div><h1 class="h-xl">What we keep, and why</h1><p class="lede">Draft for counsel review, written to match how the site actually behaves.</p></section>' +
+  '<section class="sec wrap"><div class="prose"><h3>Who is responsible</h3><p>The contracting entity is being reconciled by counsel: <span class="pending" title="Legal entity pending">[entity pending]</span>.</p>' +
+  '<h3>What is collected</h3><ul><li><b>To handle a reservation:</b> name, contact details, party size, dates, the accepted quote, the agreement version and timestamp, payment status from the processor (never full card numbers), and messages you send.</li><li><b>Optional:</b> travel purpose, interests, budget band, children\'s age bands, pace, and any dietary or access needs you choose to share.</li><li><b>Analytics:</b> campaign clicks, date searches and checkout starts, reconciled to actual paid bookings and refunds.</li></ul>' +
+  '<h3>What is not done</h3><ul><li>Marketing consent is separate from booking and never a condition of it.</li><li>Guest details from Airbnb, Vrbo or Booking.com are not reused for marketing contrary to that channel\'s rules.</li><li>Access codes and personal details never appear on public pages.</li></ul>' +
+  '<h3>Who sees it</h3><p>The owner controls finances and inventory. Cleaners see only turnover details. Editors cannot see prices, codes or guest records. Privileged users use multi-factor authentication.</p>' +
+  '<h3>Retention</h3><p>Agreed with counsel and the processor: <span class="pending" title="Retention schedule pending">[schedule pending]</span>.</p>' +
+  '<h3>Your choices</h3><p>Ask for your signed agreement, correct your details, or withdraw marketing consent via the <a href="#/contact">contact page</a>.</p></div></section>';
 };
-
-/* ---------- ACCESSIBILITY ---------- */
 TITLES.accessibility = "Accessibility · Ausable House";
 PAGES.accessibility = function(){
-  var rows = [["Approach & parking","Surface, gradient, distance from parking to each entrance"],["Entrances","Steps at each door, step height, handrails, door widths"],["Inside the house","Levels, stairs to bedrooms and bathrooms, doorway widths, turning space"],["Inside the apartment","Whether it is single-level; bathroom layout; door widths"],["Bathrooms","Shower vs. tub, grab rails, seat, floor space"],["Kitchen","Counter heights, reach, appliance controls"],["Lighting & alarms","Visual alarms, lighting levels, contrast"],["Outdoors","Path surfaces, lighting, winter conditions"]];
-  return '<section class="page-head wrap"><div class="eyebrow">Accessibility</div><h1 class="h-xl">Facts, not a promise</h1><p class="lede">We do not describe the property as accessible in general. We publish measured facts so you can judge for your own needs — and until they are measured, we say they are pending.</p></section>' +
+  var rows = [["Approach & parking","Surface, gradient, distance from parking to each entrance"],["Entrances","Steps at each door, step height, handrails, door widths"],["Inside the house","Levels, stairs to bedrooms and bathrooms, doorway widths"],["Inside the apartment","Single-level or not; bathroom layout; door widths"],["Bathrooms","Shower vs. tub, grab rails, seat, floor space"],["Kitchen","Counter heights, reach, appliance controls"],["Lighting & alarms","Visual alarms, lighting levels, contrast"],["Outdoors","Path surfaces, lighting, winter conditions"]];
+  return '<section class="page-head wrap"><div class="eyebrow">Accessibility</div><h1 class="h-xl">Facts, not a promise</h1><p class="lede">We publish measured facts so you can judge for your own needs. Until they are measured, we say they are pending.</p></section>' +
   '<section class="sec wrap"><div class="scroll-x"><table class="tbl"><thead><tr><th>Area</th><th>What will be published</th><th>Status</th></tr></thead><tbody>' + rows.map(function(r){ return '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td><td>' + chip("tbc","to measure") + '</td></tr>'; }).join("") + '</tbody></table></div>' +
-  '<div class="grid-2" style="margin-top:28px"><div class="notice"><b>Tell us what you need.</b> If you share access needs when you plan your stay or in a message, we plan around them and answer honestly if the property will not work for you.</div><div class="notice"><b>This website.</b> Built to be usable by keyboard and screen reader, with visible focus, labelled controls, captions on video and contrast checked in both colour themes. Report anything that fails via the <a href="#/contact">contact page</a>.</div></div></section>';
+  '<div class="grid-2" style="margin-top:28px"><div class="notice"><b>Tell us what you need.</b> Share access needs when you book or message us; we plan around them and answer honestly if the property will not work for you.</div><div class="notice"><b>This website</b> is built for keyboard and screen-reader use, with visible focus, labelled controls and contrast checked in both themes. Report anything that fails via <a href="#/contact">contact</a>.</div></div></section>';
 };
 
-/* ---------- PLAN YOUR STAY (GUE-03 / GUE-04) ---------- */
+/* ---------- PLAN YOUR STAY ---------- */
 TITLES.plan = "Plan your stay · Ausable House";
 var INTERESTS = [["active","Hiking & biking"],["winter","Skiing"],["quiet","Quiet & the river"],["sightseeing","Sightseeing"],["families","With children"],["rain-ok","Indoor options"]];
 PAGES.plan = function(){
   var p = load("prefs", { purpose:"", interests:[], pace:"balanced", kids:[], budget:"", needs:"" });
-  return '<section class="page-head wrap"><div class="eyebrow">Plan your stay</div><h1 class="h-xl">A private itinerary, if you want one</h1><p class="lede">Everything here is optional. Skip it and you still get a useful default. Answer a few questions and the itinerary is built from the verified guide entries that fit. It lives on a private link, and a printable summary is one click away.</p></section>' +
-  '<section class="sec wrap"><div class="avail"><form id="pForm" class="stack">' +
-    '<label class="field">Purpose of the trip<select name="purpose"><option value="">Prefer not to say</option>' + ["Ski trip","Hiking / outdoors","Family holiday","Quiet break","Event or wedding nearby","Working remotely"].map(function(o){ return '<option' + (p.purpose === o ? ' selected' : '') + '>' + o + '</option>'; }).join("") + '</select></label>' +
+  return '<section class="page-head wrap"><div class="eyebrow">Plan your stay</div><h1 class="h-xl">A private itinerary, if you want one</h1><p class="lede">Everything here is optional. Skip it and you still get a useful default. It lives on a private link; a printable summary is one click away.</p></section>' +
+  '<section class="sec wrap"><div class="two"><form id="pForm" class="stack">' +
+    '<label class="field">Purpose<select name="purpose"><option value="">Prefer not to say</option>' + ["Ski trip","Hiking / outdoors","Family holiday","Quiet break","Event or wedding nearby","Working remotely"].map(function(o){ return '<option' + (p.purpose === o ? ' selected' : '') + '>' + o + '</option>'; }).join("") + '</select></label>' +
     '<div class="field"><span>Interests</span><div class="choices">' + INTERESTS.map(function(i){ return '<label><input type="checkbox" name="int" value="' + i[0] + '"' + (p.interests.indexOf(i[0]) >= 0 ? ' checked' : '') + '>' + i[1] + '</label>'; }).join("") + '</div></div>' +
     '<div class="field"><span>Pace</span><div class="choices">' + [["easy","Easy"],["balanced","Balanced"],["full","Full days"]].map(function(i){ return '<label><input type="radio" name="pace" value="' + i[0] + '"' + (p.pace === i[0] ? ' checked' : '') + '>' + i[1] + '</label>'; }).join("") + '</div></div>' +
-    '<div class="field"><span>Children (age bands, optional)</span><div class="choices">' + ["Under 5","5–11","12–17"].map(function(k){ return '<label><input type="checkbox" name="kids" value="' + k + '"' + (p.kids.indexOf(k) >= 0 ? ' checked' : '') + '>' + k + '</label>'; }).join("") + '</div></div>' +
-    '<label class="field">Budget band<select name="budget"><option value="">Prefer not to say</option>' + ["Keep it free / cheap","Moderate","Not a constraint"].map(function(o){ return '<option' + (p.budget === o ? ' selected' : '') + '>' + o + '</option>'; }).join("") + '</select></label>' +
-    '<label class="field">Dietary or access needs you would like planned for (voluntary)<textarea name="needs" placeholder="Only if you want us to know.">' + esc(p.needs) + '</textarea></label>' +
-    '<div class="row"><button class="btn" type="submit">Build my itinerary</button><button class="btn ghost" type="button" id="pSkip">Skip — show the default</button><button class="btn ghost" type="button" id="pPrint">Print summary</button></div>' +
-    '<p class="muted" style="font-size:.8rem">Preferences are kept only in this browser for the preview. Nothing is sent.</p>' +
-  '</form><aside class="qpanel"><div class="qcard" id="itin"></div></aside></div></section>';
+    '<div class="field"><span>Children (optional)</span><div class="choices">' + ["Under 5","5–11","12–17"].map(function(k){ return '<label><input type="checkbox" name="kids" value="' + k + '"' + (p.kids.indexOf(k) >= 0 ? ' checked' : '') + '>' + k + '</label>'; }).join("") + '</div></div>' +
+    '<label class="field">Budget<select name="budget"><option value="">Prefer not to say</option>' + ["Keep it free / cheap","Moderate","Not a constraint"].map(function(o){ return '<option' + (p.budget === o ? ' selected' : '') + '>' + o + '</option>'; }).join("") + '</select></label>' +
+    '<label class="field">Dietary or access needs (voluntary)<textarea name="needs" placeholder="Only if you want us to know.">' + esc(p.needs) + '</textarea></label>' +
+    '<div class="row"><button class="btn" type="submit">Build my itinerary</button><button class="btn ghost" type="button" id="pSkip">Show the default</button><button class="btn ghost" type="button" id="pPrint">Print</button></div>' +
+    '<p class="muted" style="font-size:.8rem">Kept only in this browser for the preview. Nothing is sent.</p></form>' +
+    '<aside class="side"><div class="qcard" id="itin"></div></aside></div></section>';
 };
 function buildItinerary(p){
   var month = parse(TODAY).getMonth();
-  var seasonKey = (month >= 11 || month <= 2) ? "winter" : (month <= 4) ? "spring" : (month <= 7) ? "summer" : "autumn";
-  var ints = p.interests && p.interests.length ? p.interests.slice() : ["sightseeing", "quiet", "active"];
+  var seasonKey = (month >= 11 || month <= 2) ? "winter" : month <= 4 ? "spring" : month <= 7 ? "summer" : "autumn";
+  var ints = p.interests && p.interests.length ? p.interests.slice() : ["sightseeing","quiet","active"];
   if (seasonKey !== "winter") ints = ints.filter(function(i){ return i !== "winter"; });
   if (p.kids && p.kids.length && ints.indexOf("families") < 0) ints.push("families");
   var pool = GUIDE.filter(function(g){ return !g.placeholder && g.cat !== "Emergency" && g.suits.some(function(s){ return ints.indexOf(s) >= 0; }); });
-  if (seasonKey === "winter") pool = pool.filter(function(g){ return !/summer/.test(g.season.toLowerCase()) || /winter/.test(g.season.toLowerCase()); });
-  if (p.budget === "Keep it free / cheap") pool = pool.filter(function(g){ return /free|\$$/.test(g.cost) || g.cost === "$" || g.cost === "Free" || g.cost === "Licence required"; });
-  var perDay = p.pace === "easy" ? 1 : p.pace === "full" ? 3 : 2;
-  var days = [], i = 0;
-  var labels = ["Arrival day","Day 2","Day 3","Departure day"];
-  for (var d = 0; d < 4; d++){
-    var items = [];
-    var n = d === 0 ? 1 : d === 3 ? 1 : perDay;
-    for (var k = 0; k < n && pool.length; k++){ items.push(pool[i % pool.length]); i++; }
-    days.push({ label:labels[d], items:items });
-  }
+  if (p.budget === "Keep it free / cheap") pool = pool.filter(function(g){ return /Free|^\$$|Licence/.test(g.cost); });
+  var perDay = p.pace === "easy" ? 1 : p.pace === "full" ? 3 : 2, i = 0, days = [], labels = ["Arrival day","Day 2","Day 3","Departure day"];
+  for (var d = 0; d < 4; d++){ var items = [], n = (d === 0 || d === 3) ? 1 : perDay; for (var k = 0; k < n && pool.length; k++){ items.push(pool[i % pool.length]); i++; } days.push({ label:labels[d], items:items }); }
   var rain = GUIDE.filter(function(g){ return g.suits.indexOf("rain-ok") >= 0 && !g.placeholder; })[0];
-  var h = '<div class="qh"><span class="n">Your itinerary</span>' + chip("info", SEASONS.filter(function(s){ return s.key === seasonKey; })[0].name) + '</div>' +
-    '<p class="muted" style="font-size:.82rem">Built from verified guide entries only. Hours and prices are confirmed 48 hours before arrival, not here.</p><div class="itin" style="margin-top:12px">';
-  days.forEach(function(day){
-    h += '<div class="itin-day"><div class="d">' + esc(day.label.toUpperCase()) + (day.label === "Arrival day" ? '<small>Settle in · groceries · short walk</small>' : '') + '</div><ul>' +
-      (day.items.length ? day.items.map(function(g){ return '<li><b>' + esc(g.name) + '</b> — ' + esc(g.where) + (g.drive ? ' · ' + esc(g.drive) : '') + '<br><span class="muted" style="font-size:.82rem">' + esc(g.season) + '</span></li>'; }).join("") : '<li class="muted">Rest day.</li>') + '</ul></div>';
-  });
-  h += '</div>' + (rain ? '<div class="notice" style="margin-top:14px"><b>If it rains:</b> ' + esc(rain.name) + ' — ' + esc(rain.where) + '.</div>' : '') +
-    '<p class="muted" style="font-size:.78rem;margin-top:12px">Private to you. Access details for the property are sent separately and never in this document.</p>';
-  return h;
+  var h = '<div class="qh"><span class="n">Your itinerary</span>' + chip("info", SEASONS.filter(function(s){ return s.key === seasonKey; })[0].name) + '</div><p class="muted" style="font-size:.82rem">Built from verified guide entries only. Hours and prices are confirmed 48 hours before arrival.</p><div class="itin" style="margin-top:12px">';
+  days.forEach(function(day){ h += '<div class="itin-day"><div class="d">' + esc(day.label.toUpperCase()) + '</div><ul>' + (day.items.length ? day.items.map(function(g){ return '<li><b>' + esc(g.name) + '</b> — ' + esc(g.where) + (g.drive ? ' · ' + esc(g.drive) : '') + '</li>'; }).join("") : '<li class="muted">Rest day.</li>') + '</ul></div>'; });
+  return h + '</div>' + (rain ? '<div class="notice" style="margin-top:14px"><b>If it rains:</b> ' + esc(rain.name) + ' — ' + esc(rain.where) + '.</div>' : '');
 }
 MOUNTS.plan = function(){
-  var out = document.getElementById("itin");
-  var f = document.getElementById("pForm");
-  function read(){
-    var fd = new FormData(f);
-    return { purpose:fd.get("purpose") || "", interests:fd.getAll("int"), pace:fd.get("pace") || "balanced", kids:fd.getAll("kids"), budget:fd.get("budget") || "", needs:(fd.get("needs") || "").trim() };
-  }
+  var out = document.getElementById("itin"), f = document.getElementById("pForm");
+  function read(){ var fd = new FormData(f); return { purpose:fd.get("purpose") || "", interests:fd.getAll("int"), pace:fd.get("pace") || "balanced", kids:fd.getAll("kids"), budget:fd.get("budget") || "", needs:(fd.get("needs") || "").trim() }; }
   out.innerHTML = buildItinerary(load("prefs", {}));
   f.addEventListener("submit", function(e){ e.preventDefault(); var p = read(); store("prefs", p); out.innerHTML = buildItinerary(p); toast("Itinerary updated."); });
-  document.getElementById("pSkip").addEventListener("click", function(){ out.innerHTML = buildItinerary({}); toast("Showing the default itinerary."); });
+  document.getElementById("pSkip").addEventListener("click", function(){ out.innerHTML = buildItinerary({}); });
   document.getElementById("pPrint").addEventListener("click", function(){ window.print(); });
 };
 
-/* ---------- PUBLISHING REGISTER (owner-facing) ---------- */
+/* ---------- PUBLISHING REGISTER ---------- */
 TITLES.verify = "Publishing register · Ausable House";
 PAGES.verify = function(){
-  var rows = [];
-  rows.push({ k:"BRAND", v:"Public brand", s:BRAND.workingName ? "tbc" : "ok", n:"Working name Ausable House; prior statements used Pine Haven Retreat, Little Pine Loft, Whispering Pines. Select one and preserve old URLs." });
-  rows.push({ k:"LEGAL", v:"Contracting entity", s:"tbc", n:"RUTNY LLC vs. Ausable House LLC vs. RŌM Life, LLC — reconcile owner, operator, permit holder, insured entity, merchant." });
-  rows.push({ k:"COM-01", v:"Town of Wilmington STR licence · county registration", s:"tbc", n:"Confirm H, A and HA, occupancy, parking, septic capacity, renewal / inspection." });
-  rows.push({ k:"COM-02", v:"Tax matrix", s:"tbc", n:"Sample " + Math.round(TAX_SAMPLE * 100) + "% is a placeholder. Adviser to set taxes, taxable fees, registrations and remittance per channel." });
-  rows.push({ k:"COM-03", v:"Insurance confirmation", s:"tbc", n:"Direct + channel, separate + simultaneous rentals, every advertised amenity." });
-  rows.push({ k:"LEG-01", v:"Rental agreement & schedules", s:"tbc", n:"Attorney approval; per-product occupancy; narrowed releases; cancellation & refund terms." });
-  rows.push({ k:"PAY-02", v:"Security arrangement", s:"tbc", n:SECURITY.note });
-  rows.push({ k:"REV-06", v:"Rate plan", s:"tbc", n:"All rates on this site are samples. Floors, comps and the HA method need approval." });
-  rows.push({ k:"WEB-03", v:"Photography & film", s:"tbc", n:"0 of 12 photograph slots delivered; introductory film pending; usage rights to record." });
-  OFFER_ORDER.forEach(function(c){
-    Object.keys(UNITS[c].facts).forEach(function(k){
-      var f = UNITS[c].facts[k];
-      if (!f.ok) rows.push({ k:c + " · " + k, v:f.v, s:"tbc", n:f.note });
-    });
-  });
-  AMENITIES.forEach(function(cat){ cat.items.forEach(function(it){ if (it.status !== "ok") rows.push({ k:"AMENITY", v:it.name, s:it.status, n:it.note }); }); });
-  GUIDE.forEach(function(g){ if (!g.verified) rows.push({ k:"GUIDE", v:g.name, s:"tbc", n:"Verify " + (g.placeholder ? "entries and sources" : "hours, season, cost and official link") + "." }); });
-  var done = 0, total = rows.length + 2; /* +2 for the two verified facts already counted */
-  var pct = Math.round((done + 2) / total * 100);
-  return '<section class="page-head wrap"><div class="eyebrow">Owner · publishing register</div><h1 class="h-xl">What still needs confirming</h1><p class="lede">Every pending mark on this site rolls up here. Nothing on this list is a promise to a guest until it is cleared. This page is not indexed and not linked from guest navigation.</p></section>' +
-  '<section class="sec wrap"><div class="row" style="justify-content:space-between"><span>' + chip("tbc", rows.length + " open items") + ' ' + chip("ok", "2 verified") + '</span><span class="muted" style="font-size:.82rem">Launch is blocked by failed P0 gates, not by this list alone — but every item here is a guest-facing claim.</span></div>' +
-  '<div class="progressbar"><i style="width:' + pct + '%"></i></div>' +
+  var rows = [
+    { k:"BRAND", v:"Public brand", n:"Working name Ausable House; prior statements used Pine Haven Retreat, Little Pine Loft, Whispering Pines." },
+    { k:"LEGAL", v:"Contracting entity", n:"RUTNY LLC vs. Ausable House LLC vs. RŌM Life, LLC — reconcile owner, operator, permit holder, insured entity, merchant." },
+    { k:"COM-01", v:"Town of Wilmington STR licence · county registration", n:"Confirm H, A and HA, occupancy, parking, septic, renewal / inspection." },
+    { k:"COM-02", v:"Tax matrix", n:"Sample " + Math.round(TAX_SAMPLE * 100) + "% is a placeholder." },
+    { k:"COM-03", v:"Insurance confirmation", n:"Direct + channel, separate + simultaneous rentals, every advertised amenity." },
+    { k:"LEG-01", v:"Rental agreement & schedules", n:"Attorney approval; per-product occupancy; cancellation & refund terms." },
+    { k:"PAY-02", v:"Security arrangement", n:SECURITY.note },
+    { k:"REV-06", v:"Rate plan", n:"All rates on this site are samples." }
+  ];
+  var missing = Object.keys(PHOTOS).filter(function(s){ return !photoFor(s); });
+  rows.push({ k:"WEB-03", v:"Photography", n: missing.length ? missing.length + " of " + Object.keys(PHOTOS).length + " photograph slots still empty: " + missing.map(function(s){ return PHOTOS[s].subject; }).join("; ") : "All photograph slots filled. Confirm usage rights are recorded." });
+  OFFER_ORDER.forEach(function(c){ Object.keys(UNITS[c].facts).forEach(function(k){ var f = UNITS[c].facts[k]; if (!f.ok) rows.push({ k:c + " · " + k, v:f.v, n:f.note }); }); });
+  AMENITIES.forEach(function(cat){ cat.items.forEach(function(it){ if (it.status !== "ok") rows.push({ k:"AMENITY", v:it.name, n:it.note, s:it.status }); }); });
+  GUIDE.forEach(function(g){ if (!g.verified) rows.push({ k:"GUIDE", v:g.name, n:"Verify " + (g.placeholder ? "entries and sources" : "hours, season, cost and official link") + "." }); });
+  return '<section class="page-head wrap"><div class="eyebrow">Owner · publishing register</div><h1 class="h-xl">What still needs confirming</h1><p class="lede">Every pending mark on this site rolls up here. Nothing on this list is a promise to a guest until it is cleared.</p></section>' +
+  '<section class="sec wrap"><div class="row">' + chip("tbc", rows.length + " open items") + chip("ok", "2 verified") + '</div><div class="progressbar"><i style="width:' + Math.round(2 / (rows.length + 2) * 100) + '%"></i></div>' +
   '<div class="register" style="margin-top:22px">' + rows.map(function(r){ return '<div class="reg-row"><span class="k">' + esc(r.k) + '</span><span class="v">' + esc(r.v) + '<small>' + esc(r.n) + '</small></span>' + (r.s === "no" ? chip("no","not offered") : chip("tbc","pending")) + '</div>'; }).join("") + '</div>' +
-  '<div class="notice" style="margin-top:26px"><b>Source.</b> This register is generated from the same content model that renders the guest pages, so clearing an item here clears the mark everywhere it appears. <a href="https://claude.ai/code/artifact/8b67de26-113c-431e-b292-613b6b8b2628">Read the full requirements specification</a>.</div></section>';
+  '<div class="notice" style="margin-top:26px"><b>Photographs.</b> Turn on Owner tools in the footer and use “Add photo” on any image to place a real photograph; it publishes to everyone when this page is opened as a shared artifact. <a href="https://claude.ai/code/artifact/8b67de26-113c-431e-b292-613b6b8b2628">Full requirements specification</a>.</div></section>';
 };
 
-/* ---------- 404 ---------- */
-PAGES.missing = function(){ return '<section class="page-head wrap"><div class="eyebrow">Not found</div><h1 class="h-xl">No page here</h1><p class="lede">That link does not lead anywhere on this site. <a href="#/">Back to the start</a>.</p></section>'; };
+PAGES.missing = function(){ return '<section class="page-head wrap"><div class="eyebrow">Not found</div><h1 class="h-xl">No page here</h1><p class="lede"><a href="#/">Back to the start</a>.</p></section>'; };
 TITLES.missing = "Not found · Ausable House";
 
 /* =====================================================================
-   GENERATIVE GRAPHICS — stand-ins that never pretend to be the property.
-   Ridgelines and contour tiles are drawn from noise, tinted by theme tokens.
+   ROUTER & CHROME
    ===================================================================== */
 var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-function token(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888"; }
-function hash1(x, s){ var n = Math.sin(x * 127.1 + s * 74.7) * 43758.5453; return n - Math.floor(n); }
-function noise1(x, s){ var xi = Math.floor(x), f = x - xi, u = f * f * (3 - 2 * f); return hash1(xi, s) * (1 - u) + hash1(xi + 1, s) * u; }
-function fbm1(x, s){ var v = 0, a = .5, fq = 1; for (var i = 0; i < 4; i++){ v += a * noise1(x * fq, s + i * 11.3); fq *= 2; a *= .5; } return v; }
-function hash2(x, y, s){ var n = Math.sin(x * 127.1 + y * 311.7 + s * 74.7) * 43758.5453; return n - Math.floor(n); }
-function noise2(x, y, s){ var xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi, u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
-  return hash2(xi, yi, s) * (1 - u) * (1 - v) + hash2(xi + 1, yi, s) * u * (1 - v) + hash2(xi, yi + 1, s) * (1 - u) * v + hash2(xi + 1, yi + 1, s) * u * v; }
-function fbm2(x, y, s){ var v = 0, a = .5, fq = 1; for (var i = 0; i < 4; i++){ v += a * noise2(x * fq, y * fq, s + i * 13.1); fq *= 2; a *= .5; } return v; }
-
-function drawRidges(){
-  var svg = document.getElementById("ridges"); if (!svg) return;
-  var W = 1600, H = 600, layers = 5, h = "";
-  for (var L = 1; L <= layers; L++){
-    var base = 250 + L * 62, amp = 150 - L * 14, freq = 0.0016 + L * 0.0005, seed = 3.3 * L;
-    var d = "M-120," + H + " ";
-    for (var x = -120; x <= W + 120; x += 12){
-      var y = base - fbm1(x * freq * 4, seed) * amp + Math.sin(x * freq * 1.7 + L) * 12;
-      d += "L" + x + "," + y.toFixed(1) + " ";
-    }
-    d += "L" + (W + 120) + "," + H + " Z";
-    h += '<path class="ridge ridge-' + L + '" d="' + d + '" fill="var(--ridge-' + L + ')"/>';
-  }
-  svg.innerHTML = h;
-}
-
-function contourTile(cv, seed, opts){
-  opts = opts || {};
-  var r = cv.getBoundingClientRect(); var W = Math.max(60, Math.round(r.width)), H = Math.max(60, Math.round(r.height));
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
-  cv.width = W * dpr; cv.height = H * dpr;
-  var ctx = cv.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.fillStyle = token("--paper-3"); ctx.fillRect(0, 0, W, H);
-  var STEP = 8, cols = Math.ceil(W / STEP) + 1, rows = Math.ceil(H / STEP) + 1, f = new Float32Array(cols * rows);
-  var sc = opts.scale || 0.06;
-  for (var j = 0; j < rows; j++) for (var i = 0; i < cols; i++) f[j * cols + i] = fbm2(i * sc, j * sc, seed);
-  var levels = opts.levels || 9;
-  function ip(a, b, lv){ var d = b - a; return d === 0 ? .5 : (lv - a) / d; }
-  for (var L = 0; L < levels; L++){
-    var lv = 0.2 + (L / levels) * 0.6;
-    ctx.beginPath(); ctx.lineWidth = L % 3 === 0 ? 1 : .6;
-    ctx.strokeStyle = L % 3 === 0 ? (opts.strong || token("--river")) : token("--line-2");
-    ctx.globalAlpha = L % 3 === 0 ? (opts.alphaStrong || .5) : .7;
-    for (var jj = 0; jj < rows - 1; jj++) for (var ii = 0; ii < cols - 1; ii++){
-      var k = jj * cols + ii, v1 = f[k], v2 = f[k + 1], v3 = f[k + cols + 1], v4 = f[k + cols];
-      var c = 0; if (v1 > lv) c |= 8; if (v2 > lv) c |= 4; if (v3 > lv) c |= 2; if (v4 > lv) c |= 1;
-      if (c === 0 || c === 15) continue;
-      var x = ii * STEP, y = jj * STEP;
-      var tx = x + STEP * ip(v1, v2, lv), ty = y, rx = x + STEP, ry = y + STEP * ip(v2, v3, lv), bx = x + STEP * ip(v4, v3, lv), by = y + STEP, lx = x, ly = y + STEP * ip(v1, v4, lv);
-      switch (c){
-        case 1: case 14: ctx.moveTo(lx, ly); ctx.lineTo(bx, by); break;
-        case 2: case 13: ctx.moveTo(bx, by); ctx.lineTo(rx, ry); break;
-        case 3: case 12: ctx.moveTo(lx, ly); ctx.lineTo(rx, ry); break;
-        case 4: case 11: ctx.moveTo(tx, ty); ctx.lineTo(rx, ry); break;
-        case 6: case 9:  ctx.moveTo(tx, ty); ctx.lineTo(bx, by); break;
-        case 7: case 8:  ctx.moveTo(lx, ly); ctx.lineTo(tx, ty); break;
-        case 5:  ctx.moveTo(lx, ly); ctx.lineTo(tx, ty); ctx.moveTo(bx, by); ctx.lineTo(rx, ry); break;
-        case 10: ctx.moveTo(tx, ty); ctx.lineTo(rx, ry); ctx.moveTo(lx, ly); ctx.lineTo(bx, by); break;
-      }
-    }
-    ctx.stroke();
-  }
-  ctx.globalAlpha = 1;
-  if (opts.corners !== false){
-    ctx.strokeStyle = token("--muted-2"); ctx.lineWidth = 1; var m = 10, l = 12;
-    [[m, m, 1, 1], [W - m, m, -1, 1], [m, H - m, 1, -1], [W - m, H - m, -1, -1]].forEach(function(cn){
-      ctx.beginPath(); ctx.moveTo(cn[0], cn[1] + cn[3] * l); ctx.lineTo(cn[0], cn[1]); ctx.lineTo(cn[0] + cn[2] * l, cn[1]); ctx.stroke();
-    });
-  }
-}
-function drawArt(){
-  document.querySelectorAll("canvas[data-art]").forEach(function(cv){
-    var code = cv.getAttribute("data-art");
-    contourTile(cv, code === "H" ? 7.1 : code === "A" ? 21.4 : 44.9, { scale: code === "HA" ? .045 : .06, levels: code === "HA" ? 12 : 9, corners:false, alphaStrong:.55 });
-  });
-}
-function drawSlots(){
-  var i = 0;
-  document.querySelectorAll("canvas[data-slot]").forEach(function(cv){ contourTile(cv, 3 + (i++) * 5.7, { scale:.05, levels:8, strong: token("--muted"), alphaStrong:.45 }); });
-}
-function drawVideoTile(){
-  var cv = document.querySelector("canvas[data-video]"); if (!cv) return;
-  contourTile(cv, 61.2, { scale:.035, levels:14, alphaStrong:.4 });
-}
-function redrawGraphics(){ drawRidges(); drawArt(); drawSlots(); drawVideoTile(); }
-
-/* =====================================================================
-   ROUTER
-   ===================================================================== */
 var app = document.getElementById("app");
 function parseHash(){
-  var h = location.hash.replace(/^#\/?/, "");
-  var q = {}, i = h.indexOf("?"), path = h;
+  var h = location.hash.replace(/^#\/?/, ""), q = {}, i = h.indexOf("?"), path = h;
   if (i >= 0){ path = h.slice(0, i); h.slice(i + 1).split("&").forEach(function(p){ if (!p) return; var kv = p.split("="); q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || ""); }); }
   return { path: path.replace(/\/$/, "") || "home", params: q };
 }
+var fadeObs = ("IntersectionObserver" in window && !reduceMotion) ? new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); fadeObs.unobserve(e.target); } }); }, { rootMargin:"0px 0px -6% 0px", threshold:.05 }) : null;
+function observeFades(){ document.querySelectorAll(".fade:not(.in)").forEach(function(el){ if (fadeObs) fadeObs.observe(el); else el.classList.add("in"); }); }
 var lastPath = null;
 function render(){
-  var r = parseHash();
-  var page = PAGES[r.path] ? r.path : "missing";
+  var r = parseHash(), page = PAGES[r.path] ? r.path : "missing";
   app.innerHTML = PAGES[page](r.params);
   document.title = TITLES[page] || "Ausable House";
   document.querySelectorAll("[data-nav]").forEach(function(a){ a.classList.toggle("on", a.getAttribute("data-nav") === page); });
   document.getElementById("links").classList.remove("open");
   document.getElementById("menuBtn").setAttribute("aria-expanded", "false");
   if (MOUNTS[page]) MOUNTS[page](r.params);
-  if (lastPath !== page || page !== "availability") window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  observeFades(); renderCredits();
+  if (lastPath !== page) window.scrollTo({ top: 0, behavior: "auto" });
   lastPath = page;
 }
 window.addEventListener("hashchange", render);
 
-/* ---------- theme ---------- */
-var THEME_ORDER = ["system", "light", "dark"];
-function applyTheme(t){
-  if (t === "system") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", t);
-  store("theme", t);
-  var b = document.getElementById("themeBtn"); if (b) b.title = "Theme: " + t;
-}
+var THEME_ORDER = ["system","light","dark"];
+function applyTheme(t){ if (t === "system") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", t); store("theme", t); var b = document.getElementById("themeBtn"); if (b) b.title = "Theme: " + t; }
 applyTheme(load("theme", "system"));
-document.getElementById("themeBtn").addEventListener("click", function(){
-  var cur = load("theme", "system"); var next = THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % THEME_ORDER.length];
-  applyTheme(next); toast("Theme: " + next); requestAnimationFrame(redrawGraphics);
-});
-if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){ requestAnimationFrame(redrawGraphics); });
-
-/* ---------- menu, marks ---------- */
-document.getElementById("menuBtn").addEventListener("click", function(){
-  var l = document.getElementById("links"); var open = l.classList.toggle("open"); this.setAttribute("aria-expanded", open ? "true" : "false");
-});
-var marks = document.getElementById("marksToggle");
-marks.checked = !!load("marks", false);
-document.body.classList.toggle("show-marks", marks.checked);
-marks.addEventListener("change", function(){ document.body.classList.toggle("show-marks", this.checked); store("marks", this.checked); });
-
-var rt = null;
-window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(function(){ drawArt(); drawSlots(); drawVideoTile(); }, 200); });
+document.getElementById("themeBtn").addEventListener("click", function(){ var cur = load("theme", "system"); var next = THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % 3]; applyTheme(next); toast("Theme: " + next); });
+document.getElementById("menuBtn").addEventListener("click", function(){ var l = document.getElementById("links"); var open = l.classList.toggle("open"); this.setAttribute("aria-expanded", open ? "true" : "false"); });
+var ownerT = document.getElementById("ownerToggle");
+ownerT.checked = !!load("owner", false);
+document.body.classList.toggle("owner", ownerT.checked);
+ownerT.addEventListener("change", function(){ document.body.classList.toggle("owner", this.checked); store("owner", this.checked); });
 
 render();
 })();
