@@ -1,7 +1,7 @@
 <title>Ausable House</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,200;1,6..72,300&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,200;1,6..72,300;1,6..72,500&display=swap">
 <style>
 /* =====================================================================
    AUSABLE HOUSE — direct-booking site (preview build, photo-first)
@@ -146,7 +146,8 @@ body.owner .ph .add{display:inline-flex}
 .hero-inner{position:relative;z-index:2;padding-bottom:clamp(40px,6vw,80px);padding-top:clamp(120px,14vw,220px);width:100%}
 .hero .eyebrow,.unit-hero .eyebrow{color:rgba(255,255,255,.88);text-shadow:0 1px 12px rgba(0,0,0,.55)}
 .hero .lede,.hero-foot,.band .s{text-shadow:0 1px 14px rgba(0,0,0,.45)}
-.hero h1{color:#fff;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hero h1{color:#fff;max-width:14ch;font-weight:600;letter-spacing:-.025em;font-size:clamp(2.7rem,6.8vw,5.4rem);text-shadow:0 3px 34px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.25)}
+.hero h1 em.i{font-weight:500}
 .hero .lede{color:rgba(255,255,255,.9);margin-top:22px;max-width:52ch}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.55)}
@@ -447,7 +448,7 @@ body.owner .owner-bar{display:block}
         <li><a href="#/house">The Main House</a></li><li><a href="#/apartment">The Apartment</a></li><li><a href="#/entire-property">The Whole Property</a></li><li><a href="#/compare">Compare the three</a></li><li><a href="#/book">Check dates &amp; book</a></li><li><a href="#/amenities">Amenities</a></li>
       </ul></div>
       <div><h4>Plan</h4><ul>
-        <li><a href="#/area">The area</a></li><li><a href="#/seasons">Seasons</a></li><li><a href="#/plan">Plan your stay</a></li><li><a href="#/offers">Offers</a></li><li><a href="#/faq">FAQs</a></li><li><a href="#/emergency">Emergency &amp; essentials</a></li><li><a href="#/contact">Contact</a></li>
+        <li><a href="#/area">The area</a></li><li><a href="#/seasons">Seasons</a></li><li><a href="#/plan">Plan your stay</a></li><li><a href="#/offers">Offers</a></li><li><a href="#/faq">FAQs</a></li><li><a href="#/emergency">Emergency &amp; essentials</a></li><li><a href="#/contact">Contact</a></li><li><a href="#/hosts">Host with us</a></li>
       </ul></div>
       <div><h4>Policies</h4><ul>
         <li><a href="#/policies">Booking policies</a></li><li><a href="#/privacy">Privacy</a></li><li><a href="#/accessibility">Accessibility</a></li><li><a href="#/verify">Publishing register</a></li>
@@ -909,8 +910,8 @@ PAGES.home = function(){
   return '' +
   '<section class="hero">' + ph("hero", "", { eager:true }) +
     '<div class="wrap hero-inner"><div class="eyebrow">Wilmington · Adirondack High Peaks</div>' +
-    '<h1 class="h-xl">A house and an apartment <em class="i">below Whiteface</em></h1>' +
-    '<p class="lede">Two places to stay on one quiet property beside the West Branch of the Ausable. Take the house, take the apartment, or take both and have the whole place to yourselves.</p>' +
+    '<h1 class="h-xl">Classic Adirondack cabin life, <em class="i">made modern</em></h1>' +
+    '<p class="lede">A house and a separate apartment on one quiet property below Whiteface, beside the West Branch of the Ausable. Take one, or take both and have the whole place to yourselves.</p>' +
     '<div class="hero-cta"><a class="btn light" href="#/book">Check dates</a><a class="btn ghost" href="#/compare">Which stay is right?</a></div>' +
     '<div class="hero-foot"><span>Book direct · no booking fee</span><span>Full price before you commit</span><span>Nothing charged until confirmed</span></div></div>' +
   '</section>' +
@@ -1374,6 +1375,46 @@ PAGES.emergency = function(){
   '<div class="sec-head" style="margin-top:44px"><div><div class="eyebrow">Essentials</div><h2 class="h-m">Pharmacy, groceries, fuel</h2></div></div><div class="grid-3">' + es.map(guideCard).join("") + '</div></section>';
 };
 MOUNTS.emergency = function(){ observeFades(); };
+TITLES.hosts = "Host with us · Ausable House";
+PAGES.hosts = function(){
+  return '<section class="page-head wrap"><div class="eyebrow">For local owners</div><h1 class="h-xl">List your place alongside ours</h1><p class="lede">We built this site, the booking flow and the concierge library for one property. There is room for a handful of good houses in the Whiteface region. You keep your own calendar and your own booking system; guests find you here, book direct, and we take 3% of completed stays instead of the 14–20% the big platforms take.</p></section>' +
+  '<section class="sec wrap"><div class="grid-3">' +
+    '<div class="card"><div class="eyebrow">What you get</div><h3>A page as good as ours</h3><p>Your house, presented with the same photography standard, the same honest facts and the same shared-space disclosures. Guests compare across the network and book the one that fits.</p></div>' +
+    '<div class="card"><div class="eyebrow">What you get</div><h3>The concierge, maintained</h3><p>Ninety-plus vetted dining, hiking, family and emergency entries, rechecked monthly. Your guests get it as their arrival guide without you maintaining a word of it.</p></div>' +
+    '<div class="card"><div class="eyebrow">What you get</div><h3>Direct bookings, your system</h3><p>Guests request or book through your own OwnerRez, Lodgify or channel-manager link. We never hold your inventory or your money. Your calendar stays the single source of truth.</p></div>' +
+  '</div>' +
+  '<div class="scroll-x" style="margin-top:40px"><table class="tbl"><thead><tr><th>Where a guest books</th><th>Typical cost to you</th><th>Who owns the guest relationship</th></tr></thead><tbody>' +
+    '<tr><td>Airbnb</td><td>≈ 3% host fee plus ≈ 14% charged to the guest, or ≈ 15% host-only <span class="pending" title="Verify against your account">verify</span></td><td>Airbnb</td></tr>' +
+    '<tr><td>Vrbo</td><td>≈ 8% per booking (5% commission + 3% processing) <span class="pending" title="Verify against your account">verify</span></td><td>Vrbo</td></tr>' +
+    '<tr><td>Booking.com</td><td>≈ 15% commission <span class="pending" title="Verify against your account">verify</span></td><td>Booking.com</td></tr>' +
+    '<tr><td><b>This network</b></td><td><b>3% of completed direct stays</b>, invoiced monthly. No listing fee, no minimum.</td><td><b>You</b></td></tr>' +
+  '</tbody></table></div>' +
+  '<div class="notice" style="margin-top:24px"><b>How the 3% works.</b> Every network property gets a tracked link to its own booking page. Once a month you send the list of completed stays that came through it; we invoice 3% of the accommodation total, excluding cleaning and taxes. Cancellations and refunds owe nothing. That number is set to cover hosting, the concierge upkeep and the monthly vetting, not to make a margin on you.</div>' +
+  '</section>' +
+  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Optional</div><h2 class="h-l">Pool the advertising</h2><p class="lede">One property can\'t buy meaningful ads. Five can. If you opt in, your budget joins ours in a single regional campaign and traffic lands on the network page where guests compare all of us.</p></div></div>' +
+  '<div class="grid-3">' +
+    '<div class="card"><div class="eyebrow">Included · $0</div><h3>Listed</h3><p>Your page on the network, the concierge guide for your guests, a mention in the seasonal email when we send one.</p></div>' +
+    '<div class="card"><div class="eyebrow">Co-op · $150 / month <span class="pending" title="Proposed; to be set against real campaign costs">proposed</span></div><h3>Shared campaign</h3><p>Your money goes into the pooled Google and Meta campaign. Reporting shows the network\'s clicks, date searches and bookings, and your share of them. Pause any month.</p></div>' +
+    '<div class="card"><div class="eyebrow">Co-op Plus · $350 / month <span class="pending" title="Proposed">proposed</span></div><h3>Featured</h3><p>Everything above plus a featured slot on the home page in rotation, a dedicated seasonal push for your open dates, and a half-day photography session at cost.</p></div>' +
+  '</div>' +
+  '<div class="notice warn" style="margin-top:24px"><b>What we ask of you.</b> A current Town of Wilmington or town-of-record STR permit and county registration; insurance that covers short-term rental; real, current photographs; honest facts on beds, baths, occupancy and shared spaces; and a named local responder. The same standard we hold ourselves to.</div>' +
+  '</section>' +
+  '<section class="sec wrap"><div class="two"><form id="hForm" class="stack" novalidate>' +
+    '<div class="eyebrow">Tell us about your place</div>' +
+    '<div class="fields two2"><label class="field">Your name<input name="name" required></label><label class="field">Email<input name="email" type="email" required></label></div>' +
+    '<div class="fields two2"><label class="field">Property town<select name="town"><option>Wilmington</option><option>Jay / Upper Jay</option><option>Keene / Keene Valley</option><option>Lake Placid</option><option>Saranac Lake</option><option>Other</option></select></label><label class="field">Sleeps<input name="sleeps" type="number" min="1" max="30"></label></div>' +
+    '<label class="field">Current listing link (Airbnb, Vrbo or your own site)<input name="link" type="url" placeholder="https://"></label>' +
+    '<label class="field">Booking system you use<select name="system"><option>OwnerRez</option><option>Lodgify</option><option>Guesty / Hospitable / other manager</option><option>Airbnb only</option><option>Not sure</option></select></label>' +
+    '<label class="check"><input type="checkbox" name="adv"> I\'m interested in the pooled advertising too.</label>' +
+    '<div class="row"><button class="btn" type="submit">Send</button><span class="muted" style="font-size:.8rem">Preview: nothing is transmitted.</span></div></form>' +
+    '<aside class="side"><div class="qcard"><div class="qh"><span class="n">What happens next</span></div><ol style="margin:0;padding-left:18px;font-size:.92rem;color:var(--ink-2);display:flex;flex-direction:column;gap:8px"><li>We look at your listing and reply within a few days.</li><li>A short call about facts, photos and permits.</li><li>A one-page partner agreement, reviewed by counsel.</li><li>Your page goes live; your booking link is tracked from day one.</li></ol></div><div class="notice"><b>Not a marketplace.</b> We never take a guest\'s payment for your property or hold your dates. That keeps you the operator of record for tax, licensing and the guest contract.</div></aside></div></section>';
+};
+MOUNTS.hosts = function(){
+  var f = document.getElementById("hForm");
+  f.addEventListener("submit", function(e){ e.preventDefault(); var fd = new FormData(f);
+    if (!(fd.get("name") || "").trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.get("email") || "")){ toast("A name and a valid email are needed."); return; }
+    f.innerHTML = '<div class="notice good"><b>Received (preview).</b> Nothing was transmitted from this preview build.</div>'; });
+};
 PAGES.missing = function(){ return '<section class="page-head wrap"><div class="eyebrow">Not found</div><h1 class="h-xl">No page here</h1><p class="lede"><a href="#/">Back to the start</a>.</p></section>'; };
 TITLES.missing = "Not found · Ausable House";
 
