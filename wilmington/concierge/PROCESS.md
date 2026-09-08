@@ -10,7 +10,8 @@ own checks both land here, and nothing reaches a guest that is not in this file.
 
 | Field | Meaning |
 | --- | --- |
-| `category`, `subcategory`, `area`, `drive` | Where it sits in the guide and how far from the property |
+| `category`, `subcategory`, `area`, `drive` | Where it sits in the guide and how far from the property. Hikes also carry `tier`, `miles`, `climbFt`, `duration`, `fitness`, `children`, `payoff` |
+| `links` | Everything we can link: AllTrails for every hike, official and regional sources, a map link for every address |
 | `rank`, `areaRank`, `rankScope`, `occasionPick` | Editorial ranking from owner research; `occasionPick` powers the "fast picks" |
 | `review`, `bestFor`, `order`, `knowBefore` | The recommendation itself, in our words |
 | `signals` | Third-party snapshot: Google rating, review count, and the date it was read |
