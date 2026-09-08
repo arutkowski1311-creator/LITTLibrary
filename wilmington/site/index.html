@@ -466,7 +466,7 @@ body.owner .owner-bar{display:block}
 <div class="banner" role="status">
   <div class="wrap">
     <span class="tag">Preview build</span>
-    <span>Property facts, rates, taxes and terms are placeholders pending verification. No reservation is created and no card is charged here. <a href="#/verify">What still needs confirming</a>.</span>
+    <span>Property facts, rates, taxes and terms are placeholders pending verification. No reservation is created and no card is charged here.</span>
   </div>
 </div>
 
@@ -714,6 +714,7 @@ var OPEN_UNTIL = addDays(TODAY, HORIZON_DAYS);
    ===================================================================== */
 function blocksOn(resource, day){
   var out = [];
+  (typeof FEEDS !== "undefined" ? FEEDS : []).forEach(function(f){ if (f.unit !== resource && f.unit !== "HA") return; f.blocks.forEach(function(b){ if (day >= b.from && day < b.to) out.push({ id:f.id + ":" + b.from, res:[resource], from:b.from, to:b.to, kind:"guest", label:((CHANNEL_META && CHANNEL_META[f.channel]) || { label:f.channel }).label + " (calendar feed)" }); }); });
   for (var i = 0; i < RESERVATIONS.length; i++){
     var r = RESERVATIONS[i];
     if (r.res.indexOf(resource) < 0) continue;
@@ -855,6 +856,7 @@ function toast(msg){
    ===================================================================== */
 var PHOTOS = {
   "hero":        { subject:"The Adirondack High Peaks in autumn", alt:"Lower Ausable Lake from Indian Head in autumn" },
+  "host-hero":   { subject:"Inside an Adirondack cabin (owner photograph)", alt:"The interior of an Adirondack cabin" },
   "river":       { subject:"The Ausable River", alt:"The Ausable River through its sandstone chasm" },
   "notch":       { subject:"Wilmington Notch on NY-86", alt:"Cliffs of Wilmington Notch above the road and river" },
   "stay-H":      { subject:"The Wild Pines — main house (owner photograph)", alt:"The Wild Pines main house" },
@@ -894,6 +896,8 @@ var GUIDE_PHOTO = { "Whiteface Mountain":"whiteface", "Mt Van Hoevenberg (Nordic
 function readJSON(id, dflt){ try { var v = JSON.parse(document.getElementById(id).textContent || ""); return v == null ? dflt : v; } catch(e){ return dflt; } }
 var NN_CONFIG = readJSON("nnconfig", {}), TAXES = readJSON("taxes", { lines:[] }), PRICING = readJSON("pricing", { seasons:[], events:[], weekend:{ days:[5,6], mult:1.15 }, floors:{} });
 var PROPERTIES = [];
+var CHANNEL_META = { airbnb:{ label:"Airbnb", color:"#C4453B" }, vrbo:{ label:"Vrbo", color:"#2E6F7D" }, booking:{ label:"Booking.com", color:"#1F4E9C" }, direct:{ label:"Own website", color:"#6E7772" }, other:{ label:"Other", color:"#A66D18" }, nn:{ label:"Northern Notch", color:"#B4451C" } };
+var FEEDS = load("feeds", []);
 try { PROPERTIES = JSON.parse(document.getElementById("properties").textContent || "[]") || []; } catch(e){ PROPERTIES = []; }
 var PHOTO_MAP = {};
 try { PHOTO_MAP = JSON.parse(document.getElementById("photoMap").textContent || "{}") || {}; } catch(e){ PHOTO_MAP = {}; }
@@ -998,7 +1002,7 @@ PAGES.home = function(){
 
   '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Our homes</div><h2 class="h-l">Browse our partner homes and find your peace in the mountains of NY.</h2></div><a class="btn ghost sm" href="#/homes">Map &amp; all homes</a></div>' +
     '<div class="homes"><div id="homeMapHome" class="mapwrap"></div><div class="stack" id="homeList">' + live.map(homeCard).join("") +
-    '<a class="home-card" href="#/hosts" style="grid-template-columns:1fr"><div><div class="n">Your home here?</div><div class="f">Owners in Wilmington, Jay, Keene, Lake Placid and Saranac Lake can list alongside The Wild Pines. 3% of direct stays, your own booking system, our concierge for your guests.</div><div class="row" style="margin-top:10px"><span class="btn sm">Host with us</span></div></div></a></div></div></section>' +
+    '<a class="home-card" href="#/hosts" style="grid-template-columns:1fr"><div><div class="n">Your home here?</div><div class="f">Owners in Wilmington, Jay, Keene, Lake Placid and Saranac Lake can list alongside The Wild Pines: a local team, honest listings, and our concierge for your guests.</div><div class="row" style="margin-top:10px"><span class="btn sm">Host with us</span></div></div></a></div></div></section>' +
 
   '<section class="band">' + ph("river", "") + '<div class="wrap"><p class="q">The river is the sound you fall asleep to.</p><p class="s">The Ausable runs from the High Peaks past Wilmington to Lake Champlain, carving the chasm at Keeseville on its way. Whiteface is a few minutes up the road; Lake Placid is twenty minutes the other way.</p></div></section>' +
 
@@ -1464,6 +1468,7 @@ MOUNTS.plan = function(){
 /* ---------- PUBLISHING REGISTER ---------- */
 TITLES.verify = "Publishing register · Northern Notch";
 PAGES.verify = function(){
+  if (!isHost()) return '<section class="page-head wrap"><div class="eyebrow">Hosts</div><h1 class="h-xl">Host sign-in required</h1><p class="lede">The publishing register is for Northern Notch and its hosts. <a href="#/host">Sign in</a>.</p></section>';
   var rows = [
     { k:"BRAND", v:"Public brand", n:"Working name Ausable House; prior statements used Pine Haven Retreat, Little Pine Loft, Whispering Pines." },
     { k:"LEGAL", v:"Contracting entity", n:"RUTNY LLC vs. Ausable House LLC vs. RŌM Life, LLC — reconcile owner, operator, permit holder, insured entity, merchant." },
@@ -1503,44 +1508,38 @@ PAGES.emergency = function(){
 };
 MOUNTS.emergency = function(){ observeFades(); };
 TITLES.hosts = "Host with us · Northern Notch";
+var PLATFORMS = [["airbnb","Airbnb"],["vrbo","Vrbo"],["booking","Booking.com"],["direct","My own website"],["other","Another platform"],["none","Not listed yet"]];
 PAGES.hosts = function(){
-  return '<section class="page-head wrap"><div class="eyebrow">For local owners</div><h1 class="h-xl">List your place with Northern Notch</h1><p class="lede">We built this site, the booking flow and the concierge library for our own property, The Wild Pines. There is room for a handful of good houses in the Whiteface region. You keep every channel you already use. Guests who find you here book through our checkout; 3% comes off that booking automatically and the rest is paid straight to you. Bookings you take anywhere else owe nothing.</p></section>' +
-  '<section class="sec wrap"><div class="grid-3">' +
-    '<div class="card"><div class="eyebrow">What you get</div><h3>A page as good as ours</h3><p>Your house, presented with the same photography standard, the same honest facts and the same shared-space disclosures. Guests compare across the network and book the one that fits.</p></div>' +
-    '<div class="card"><div class="eyebrow">What you get</div><h3>The concierge, maintained</h3><p>Ninety-plus vetted dining, hiking, family and emergency entries, rechecked monthly. Your guests get it as their arrival guide without you maintaining a word of it.</p></div>' +
-    '<div class="card"><div class="eyebrow">What you get</div><h3>Every channel, one calendar</h3><p>Airbnb, Vrbo, Booking.com, your own site: connect each one\'s calendar feed and we merge them. Network bookings pay you through Stripe; we never hold your money. Your tax and fee breakdown is in your host dashboard, never on a guest page.</p></div>' +
-  '</div>' +
-  '<div class="scroll-x" style="margin-top:40px"><table class="tbl"><thead><tr><th>Where a guest books</th><th>Typical cost to you</th><th>Who owns the guest relationship</th></tr></thead><tbody>' +
-    '<tr><td>Airbnb</td><td>≈ 3% host fee plus ≈ 14% charged to the guest, or ≈ 15% host-only <span class="pending" title="Verify against your account">verify</span></td><td>Airbnb</td></tr>' +
-    '<tr><td>Vrbo</td><td>≈ 8% per booking (5% commission + 3% processing) <span class="pending" title="Verify against your account">verify</span></td><td>Vrbo</td></tr>' +
-    '<tr><td>Booking.com</td><td>≈ 15% commission <span class="pending" title="Verify against your account">verify</span></td><td>Booking.com</td></tr>' +
-    '<tr><td><b>Northern Notch</b></td><td><b>3% on bookings made here</b>, deducted automatically through Stripe. Nothing on bookings you take elsewhere. No listing fee.</td><td><b>You</b></td></tr>' +
-  '</tbody></table></div>' +
-  '<div class="notice" style="margin-top:24px"><b>How the 3% works.</b> Guests who book on Northern Notch pay through Stripe. The 3% is deducted on the transaction and the balance lands in your Stripe account on your payout schedule; nothing to report, nothing to invoice. Your Airbnb, Vrbo, Booking.com and direct calendars are merged from their iCal feeds so we never show a taken night as open, and anything booked there stays entirely yours.</div>' +
-  '</section>' +
-  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Optional</div><h2 class="h-l">Pool the advertising</h2><p class="lede">One property can\'t buy meaningful ads. Five can. If you opt in, your budget joins ours in a single regional campaign and traffic lands on the network page where guests compare all of us.</p></div></div>' +
+  return '<section class="unit-hero" style="height:min(74vh,720px)">' + ph("host-hero", "", { eager:true }) + '<div class="wrap"><div class="eyebrow">For owners in the Whiteface region</div><h1 class="h-xl" style="font-weight:800;text-shadow:0 3px 34px rgba(0,0,0,.45)">Host with <em class="i">Northern Notch</em></h1><p class="lede" style="color:rgba(255,255,255,.92);margin-top:16px;max-width:58ch">A local team that raises the guest experience and takes the work out of owning and running a rental in the North Country. You keep your home, your channels and your calendar. We bring the guests, the pricing and the people who answer the phone.</p></div></section>' +
+  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Why a local network</div><h2 class="h-l">Service that only comes from living here</h2></div></div>' +
   '<div class="grid-3">' +
-    '<div class="card"><div class="eyebrow">Included · $0</div><h3>Listed</h3><p>Your page on the network, the concierge guide for your guests, a mention in the seasonal email when we send one.</p></div>' +
-    '<div class="card"><div class="eyebrow">Co-op · $150 / month <span class="pending" title="Proposed; to be set against real campaign costs">proposed</span></div><h3>Your home + the network</h3><p>$100 buys ads for your home, landing on your own page. $50 joins the network campaign that lifts everyone. Reporting shows both. Pause any month.</p></div>' +
-    '<div class="card"><div class="eyebrow">Co-op Plus · $350 / month <span class="pending" title="Proposed">proposed</span></div><h3>Featured</h3><p>$225 on your home, $125 network, plus the featured slot on the home page in rotation, a seasonal push for your open dates, and a half-day photography session at cost.</p></div>' +
+    '<div class="card"><div class="eyebrow">Local knowledge</div><h3>We live where your guests visit</h3><p>A concierge guide of ninety-plus vetted places to eat, hike, ski and hide from the rain, rechecked every month. A named local responder for lockouts, snow and plumbing at 11 p.m. Guests feel looked after; you are not the one driving over.</p></div>' +
+    '<div class="card"><div class="eyebrow">Optimized pricing</div><h3>Priced for Ironman weekend and mud-season Tuesdays</h3><p>Nightly rates that follow the season, the event calendar and licensed comparable data, with floors you set. Foliage, Whiteface race weekends, the Horse Shows and the holidays are priced before they arrive, not after.</p></div>' +
+    '<div class="card"><div class="eyebrow">North Country know-how</div><h3>A team that understands renting here</h3><p>Town STR permits, Essex County occupancy tax, winter access, septic limits, seasonal closures, the hours that change without notice. We keep the facts current so your listing is honest and your guests are never surprised.</p></div>' +
   '</div>' +
-  '<div class="notice warn" style="margin-top:24px"><b>What we ask of you.</b> A current Town of Wilmington or town-of-record STR permit and county registration; insurance that covers short-term rental; real, current photographs; honest facts on beds, baths, occupancy and shared spaces; and a named local responder. The same standard we hold ourselves to.</div>' +
-  '</section>' +
-  '<section class="sec wrap"><div class="two"><form id="hForm" class="stack" novalidate>' +
-    '<div class="eyebrow">Tell us about your place</div>' +
-    '<div class="fields two2"><label class="field">Your name<input name="name" required></label><label class="field">Email<input name="email" type="email" required></label></div>' +
-    '<div class="fields two2"><label class="field">Property town<select name="town"><option>Wilmington</option><option>Jay / Upper Jay</option><option>Keene / Keene Valley</option><option>Lake Placid</option><option>Saranac Lake</option><option>Other</option></select></label><label class="field">Sleeps<input name="sleeps" type="number" min="1" max="30"></label></div>' +
-    '<label class="field">Current listing link (Airbnb, Vrbo or your own site)<input name="link" type="url" placeholder="https://"></label>' +
-    '<label class="field">Booking system you use<select name="system"><option>OwnerRez</option><option>Lodgify</option><option>Guesty / Hospitable / other manager</option><option>Airbnb only</option><option>Not sure</option></select></label>' +
-    '<label class="check"><input type="checkbox" name="adv"> I\'m interested in the pooled advertising too.</label>' +
-    '<div class="row"><button class="btn" type="submit">Send</button><a class="btn ghost" href="#/host">Request a host account</a><span class="muted" style="font-size:.8rem">Preview: nothing is transmitted.</span></div></form>' +
-    '<aside class="side"><div class="qcard"><div class="qh"><span class="n">What happens next</span></div><ol style="margin:0;padding-left:18px;font-size:.92rem;color:var(--ink-2);display:flex;flex-direction:column;gap:8px"><li>We look at your listing and reply within a few days.</li><li>A short call about facts, photos and permits.</li><li>A one-page partner agreement, reviewed by counsel.</li><li>Your page goes live; your booking link is tracked from day one.</li></ol></div><div class="notice"><b>Not a marketplace.</b> We never take a guest\'s payment for your property or hold your dates. That keeps you the operator of record for tax, licensing and the guest contract.</div></aside></div></section>';
+  '<div class="grid-3" style="margin-top:16px">' +
+    '<div class="card"><div class="eyebrow">Simpler operations</div><h3>One calendar across every platform</h3><p>Most owners list on Airbnb, Vrbo and Booking.com at once. Connect each one and we merge them so a night taken anywhere is never shown open here, and our bookings flow back to each platform.</p></div>' +
+    '<div class="card"><div class="eyebrow">Direct bookings</div><h3>Guests who book with you, not a marketplace</h3><p>A curated network of a few good homes, presented honestly with real photographs, draws a different guest than a listing among ten thousand. They book direct, and they come back.</p></div>' +
+    '<div class="card"><div class="eyebrow">Your standards, kept</div><h3>Every home visited, permitted and insured</h3><p>We only list homes we have seen, with a current permit, insurance and a local responder. That standard protects the guest, the town and every other host in the network.</p></div>' +
+  '</div></section>' +
+  '<section class="sec wrap"><div class="two"><form id="hostRequest" class="stack" novalidate>' +
+    '<div class="eyebrow">Tell us about your place</div><h2 class="h-m">Request a host account</h2><p class="prose" style="margin-top:8px">We review every request personally and reply within a few days. Approved hosts get the full picture: how bookings and payouts work, pricing tools, advertising options and the listing form.</p>' +
+    '<div class="fields two2" style="margin-top:14px"><label class="field">Your name<input name="name" required autocomplete="name"></label><label class="field">Email<input name="email" type="email" required autocomplete="email"></label></div>' +
+    '<label class="field">Property address<input name="address" required autocomplete="street-address" placeholder="Street, town, NY"></label>' +
+    '<div class="fields two2"><label class="field">Phone<input name="phone" type="tel" required autocomplete="tel"></label><label class="field">Choose a username<input name="username" required autocomplete="username"></label></div>' +
+    '<label class="field">Choose a password<input name="password" type="password" required autocomplete="new-password" minlength="10" placeholder="At least 10 characters"></label>' +
+    '<div class="field"><span>Where is your home listed today? (choose all that apply)</span><div class="choices">' + PLATFORMS.map(function(pl){ return '<label><input type="checkbox" name="platforms" value="' + pl[0] + '">' + esc(pl[1]) + '</label>'; }).join("") + '</div></div>' +
+    '<div class="row"><button class="btn" type="submit">Request account</button><span class="muted" style="font-size:.8rem">Preview: nothing is transmitted and no password is stored.</span></div>' +
+    '<p class="muted" style="font-size:.84rem">Already approved? <a href="#/host">Sign in</a>.</p></form>' +
+    '<aside class="side"><div class="qcard"><div class="qh"><span class="n">What happens next</span></div><ol style="margin:0;padding-left:18px;font-size:.92rem;color:var(--ink-2);display:flex;flex-direction:column;gap:8px"><li>We look at your home and reply within a few days.</li><li>A short call about the property, your permit and your channels.</li><li>Your account is activated and you see the full host guide: bookings, payouts, pricing and advertising.</li><li>You complete the listing; we verify and take you live.</li></ol></div>' +
+    '<div class="notice"><b>Nothing changes on your other platforms.</b> Keep Airbnb, Vrbo and Booking.com exactly as they are. Northern Notch is an addition, not a replacement.</div></aside></div></section>';
 };
 MOUNTS.hosts = function(){
-  var f = document.getElementById("hForm");
-  f.addEventListener("submit", function(e){ e.preventDefault(); var fd = new FormData(f);
-    if (!(fd.get("name") || "").trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.get("email") || "")){ toast("A name and a valid email are needed."); return; }
-    f.innerHTML = '<div class="notice good"><b>Received (preview).</b> Nothing was transmitted from this preview build.</div>'; });
+  var rf = document.getElementById("hostRequest"); if (!rf) return;
+  rf.addEventListener("submit", function(e){ e.preventDefault(); var fd = new FormData(rf);
+    if (!(fd.get("name") || "").trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.get("email") || "") || !(fd.get("address") || "").trim() || !(fd.get("phone") || "").trim() || !(fd.get("username") || "").trim() || (fd.get("password") || "").length < 10){ toast("All fields are needed; password at least 10 characters."); return; }
+    var reqs = load("hostRequests", []); reqs.push({ name:fd.get("name"), email:fd.get("email"), address:fd.get("address"), phone:fd.get("phone"), username:fd.get("username"), platforms:fd.getAll("platforms"), at:new Date().toISOString() }); store("hostRequests", reqs);
+    rf.innerHTML = '<div class="notice good"><b>Request received (preview).</b> Thank you. In production this creates a pending host request for Northern Notch to approve; you would hear from us within a few days.</div>'; });
 };
 PAGES.missing = function(){ return '<section class="page-head wrap"><div class="eyebrow">Not found</div><h1 class="h-xl">No page here</h1><p class="lede"><a href="#/">Back to the start</a>.</p></section>'; };
 TITLES.missing = "Not found · Northern Notch"; TITLES.property = "Northern Notch";
@@ -1717,28 +1716,19 @@ function isHost(){ return document.body.classList.contains("owner") || !!load("h
 TITLES.host = "Host sign-in · Northern Notch";
 PAGES.host = function(){
   if (isHost()) return hostDashboard();
-  return '<section class="page-head wrap"><div class="eyebrow">Hosts</div><h1 class="h-xl">Host sign-in</h1><p class="lede">Listing tools, pricing, payouts and the tax breakdown live behind this door. Guests never see them.</p></section>' +
-  '<section class="sec wrap"><div class="two"><div class="qcard"><div class="qh"><span class="n">Sign in</span></div>' +
+  return '<section class="page-head wrap"><div class="eyebrow">Hosts</div><h1 class="h-xl">Host sign-in</h1><p class="lede">For approved hosts. Bookings, payouts, pricing, advertising and the listing form are behind this door; guests never see them.</p></section>' +
+  '<section class="sec wrap"><div class="two"><div class="qcard" style="max-width:520px"><div class="qh"><span class="n">Sign in</span></div>' +
     '<div class="stack"><button class="btn ghost block" type="button" data-sso="google"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.7h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path fill="currentColor" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1a6 6 0 0 1-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="currentColor" d="M6.4 13.9a6 6 0 0 1 0-3.8V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="currentColor" d="M12 6a5.4 5.4 0 0 1 3.8 1.5l2.9-2.9A9.7 9.7 0 0 0 12 2a10 10 0 0 0-8.9 5.5l3.3 2.6A6 6 0 0 1 12 6z"/></svg> Continue with Google</button>' +
     '<button class="btn ghost block" type="button" data-sso="apple"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5a4.3 4.3 0 0 0-3.4-1.8c-1.4-.1-2.8.9-3.5.9-.7 0-1.9-.9-3.1-.8a4.6 4.6 0 0 0-3.9 2.4c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.1.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.7-1-2.7-4.1zM14.1 5.5A4 4 0 0 0 15 2.6a4.1 4.1 0 0 0-2.7 1.4 3.8 3.8 0 0 0-1 2.8 3.4 3.4 0 0 0 2.8-1.3z"/></svg> Continue with Apple</button>' +
     '<div class="muted" style="text-align:center;font-size:.8rem">or</div>' +
     '<form id="hostLogin" class="stack" novalidate><label class="field">Username or email<input name="user" autocomplete="username"></label><label class="field">Password<input name="pass" type="password" autocomplete="current-password"></label><button class="btn block" type="submit">Sign in</button></form>' +
-    '<p class="muted" style="font-size:.78rem">Sign-in connects when the auth provider is configured (Google and Apple through Supabase Auth). In this preview, accounts are activated by Northern Notch after review.</p></div></div>' +
-  '<div class="qcard"><div class="qh"><span class="n">Request a host account</span></div><form id="hostRequest" class="stack" novalidate>' +
-    '<div class="fields two2"><label class="field">Name<input name="name" required autocomplete="name"></label><label class="field">Email<input name="email" type="email" required autocomplete="email"></label></div>' +
-    '<label class="field">Property address<input name="address" required autocomplete="street-address"></label>' +
-    '<div class="fields two2"><label class="field">Phone<input name="phone" type="tel" required autocomplete="tel"></label><label class="field">Username<input name="username" required autocomplete="username"></label></div>' +
-    '<label class="field">Password<input name="password" type="password" required autocomplete="new-password" minlength="10" placeholder="At least 10 characters"></label>' +
-    '<button class="btn block" type="submit">Request account</button><p class="muted" style="font-size:.78rem">We review every request. Approved hosts get the listing form, pricing tools and payouts.</p></form></div></div></section>';
+    '<p class="muted" style="font-size:.78rem">Sign-in connects when the auth provider is configured (Google and Apple through Supabase Auth). Accounts are activated by Northern Notch after review.</p></div></div>' +
+  '<aside class="side"><div class="notice"><b>Not a host yet?</b> <a href="#/hosts">Tell us about your place</a> and request an account.</div></aside></div></section>';
 };
 MOUNTS.host = function(){
   if (isHost()){ mountHostDashboard(); return; }
   document.querySelectorAll("[data-sso]").forEach(function(b){ b.addEventListener("click", function(){ toast((this.getAttribute("data-sso") === "google" ? "Google" : "Apple") + " sign-in connects when the auth provider is configured."); }); });
   var lf = document.getElementById("hostLogin"); if (lf) lf.addEventListener("submit", function(e){ e.preventDefault(); toast("Accounts are activated by Northern Notch after review."); });
-  var rf = document.getElementById("hostRequest"); if (rf) rf.addEventListener("submit", function(e){ e.preventDefault(); var fd = new FormData(rf);
-    if (!(fd.get("name") || "").trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.get("email") || "") || !(fd.get("address") || "").trim() || !(fd.get("phone") || "").trim() || !(fd.get("username") || "").trim() || (fd.get("password") || "").length < 10){ toast("All fields are needed; password at least 10 characters."); return; }
-    var reqs = load("hostRequests", []); reqs.push({ name:fd.get("name"), email:fd.get("email"), address:fd.get("address"), phone:fd.get("phone"), username:fd.get("username"), at:new Date().toISOString() }); store("hostRequests", reqs);
-    rf.innerHTML = '<div class="notice good"><b>Request received (preview).</b> Nothing was transmitted and no password was stored. In production this creates a pending host request for Northern Notch to approve.</div>'; });
 };
 function hostDashboard(){
   var today = TODAY, days = [];
@@ -1747,7 +1737,21 @@ function hostDashboard(){
   var q = quote("H", addDays(today, 30), addDays(today, 33), 4);
   var proc = TAXES.processing || { pct:2.9, fixed:0.3 }, plat = (TAXES.platform || { pct:3 }).pct;
   var gross = q.total, procFee = Math.round((gross * proc.pct / 100 + proc.fixed) * 100) / 100, platFee = Math.round(q.accommodation * plat) / 100, taxesOwed = q.tax, net = Math.round((gross - taxesOwed - procFee - platFee) * 100) / 100;
-  return '<section class="page-head wrap"><div class="eyebrow">Host dashboard · The Wild Pines</div><h1 class="h-xl">Pricing, taxes and channels</h1><p class="lede">Everything on this page is host-only. Guests see one nightly price, a cleaning line if you itemise it, and a single taxes line in their total.</p></section>' +
+  return '<section class="page-head wrap"><div class="eyebrow">Host dashboard · The Wild Pines</div><h1 class="h-xl">Your home on Northern Notch</h1><p class="lede">Everything on this page is host-only. Guests see one nightly price, a cleaning line if you itemise it, and a single taxes line in their total.</p></section>' +
+  '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">How it works</div><h2 class="h-m">Bookings, payouts and the 3%</h2></div></div><div class="grid-3">' +
+    '<div class="card"><h3>Bookings made here</h3><p>Guests pay on our checkout through Stripe. 3% comes off the transaction automatically and the balance is paid to your connected Stripe account on your payout schedule. Nothing to report or invoice.</p></div>' +
+    '<div class="card"><h3>Bookings made anywhere else</h3><p>Airbnb, Vrbo, Booking.com, your own site: entirely yours, no fee to us. We only ask that their calendars are connected so we never show a taken night as open.</p></div>' +
+    '<div class="card"><h3>What the 3% covers</h3><p>Hosting, the concierge library and its monthly vetting, photography standards, the map and compare pages, and reporting. It is set to cover cost, not to make a margin on you.</p></div></div>' +
+  '<div class="scroll-x" style="margin-top:22px"><table class="tbl"><thead><tr><th>Where a guest books</th><th>Typical cost to you</th><th>Who owns the guest relationship</th></tr></thead><tbody>' +
+    '<tr><td>Airbnb</td><td>≈ 3% host fee plus ≈ 14% charged to the guest, or ≈ 15% host-only <span class="pending" title="Verify against your account">verify</span></td><td>Airbnb</td></tr>' +
+    '<tr><td>Vrbo</td><td>≈ 8% per booking <span class="pending" title="Verify against your account">verify</span></td><td>Vrbo</td></tr>' +
+    '<tr><td>Booking.com</td><td>≈ 15% commission <span class="pending" title="Verify against your account">verify</span></td><td>Booking.com</td></tr>' +
+    '<tr><td><b>Northern Notch</b></td><td><b>3% on bookings made here</b>, deducted through Stripe. Nothing on other channels. No listing fee.</td><td><b>You</b></td></tr></tbody></table></div>' +
+  '<div class="sec-head" style="margin-top:44px"><div><div class="eyebrow">Advertising</div><h2 class="h-m">Your home, and the network that lifts it</h2></div></div><div class="grid-3">' +
+    '<div class="card"><div class="eyebrow">Included · $0</div><h3>Listed</h3><p>Your page on the network, the concierge guide for your guests, a mention in the seasonal email.</p></div>' +
+    '<div class="card"><div class="eyebrow">Co-op · $150 / month <span class="pending" title="Proposed">proposed</span></div><h3>Your home + the network</h3><p>$100 buys ads for your home, landing on your own page. $50 joins the network campaign. Reporting shows both. Pause any month.</p></div>' +
+    '<div class="card"><div class="eyebrow">Co-op Plus · $350 / month <span class="pending" title="Proposed">proposed</span></div><h3>Featured</h3><p>$225 on your home, $125 network, plus the featured slot on the home page in rotation, a seasonal push for your open dates, and a half-day photography session at cost.</p></div></div></section>' +
+  calendarManagerHTML() +
   '<section class="sec wrap"><div class="grid-3">' +
     '<a class="tile" href="#/onboard"><div class="eyebrow" style="margin-bottom:6px">Listing</div><div class="t">Edit or add a home</div><div class="d">The nine-step listing form</div></a>' +
     '<div class="tile"><div class="eyebrow" style="margin-bottom:6px">Payouts</div><div class="t">Stripe: not connected</div><div class="d">3% platform fee on network bookings; nothing on other channels</div></div>' +
@@ -1768,7 +1772,52 @@ function hostDashboard(){
   '<div class="scroll-x" style="max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:3px"><table class="tbl" style="min-width:640px"><thead><tr><th>Night</th><th class="c">House</th><th class="c">Apartment</th><th class="c">Whole</th><th>Why</th></tr></thead><tbody>' + days.map(row).join("") + '</tbody></table></div>' +
   '<div class="sec-head" style="margin-top:44px"><div><div class="eyebrow">Event registry</div><h2 class="h-m">Demand drivers we price against</h2></div></div><div class="scroll-x"><table class="tbl"><thead><tr><th>Event</th><th>Typical timing</th><th class="c">Uplift</th><th>Status</th></tr></thead><tbody>' + (PRICING.events || []).map(function(ev){ return '<tr><td>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">' + esc(ev.name) + '</a>' : esc(ev.name)) + '</td><td>' + esc(ev.typical || "") + '</td><td class="c">×' + ev.mult + '</td><td>' + (ev.verify ? chip("tbc","verify dates yearly") : chip("ok","fixed dates")) + '</td></tr>'; }).join("") + '</tbody></table></div></section>';
 }
-function mountHostDashboard(){}
+/* ---------- multi-platform calendar manager ---------- */
+/* CHANNEL_META and FEEDS are defined with the data blocks above */
+function parseICS(text){
+  var out = [], lines = text.replace(/\r\n[ \t]/g, "").split(/\r?\n/), ev = null;
+  function d8(v){ v = v.replace(/^[^:]*:/, ""); var m = v.match(/^(\d{4})(\d{2})(\d{2})/); return m ? m[1] + "-" + m[2] + "-" + m[3] : null; }
+  lines.forEach(function(l){
+    if (l === "BEGIN:VEVENT") ev = {};
+    else if (l === "END:VEVENT"){ if (ev && ev.from && ev.to) out.push(ev); ev = null; }
+    else if (ev){ if (/^DTSTART/.test(l)) ev.from = d8(l); else if (/^DTEND/.test(l)) ev.to = d8(l); else if (/^SUMMARY/.test(l)) ev.summary = l.replace(/^SUMMARY[^:]*:/, ""); }
+  });
+  return out.filter(function(e){ return e.to > e.from; });
+}
+function externalBlocks(unit, day){ var hits = []; FEEDS.forEach(function(f){ if (f.unit !== unit && !(f.unit === "HA")) return; f.blocks.forEach(function(b){ if (day >= b.from && day < b.to) hits.push({ feed:f, block:b }); }); }); return hits; }
+function calendarManagerHTML(){
+  var y = parse(TODAY).getFullYear(), m = parse(TODAY).getMonth();
+  function month(y, m){
+    var startDow = new Date(y, m, 1).getDay(), count = new Date(y, m + 1, 0).getDate();
+    var h = '<div class="cal"><div class="mname">' + MONTHS[m] + ' ' + y + '<span>merged</span></div><div class="dow"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div><div class="days">';
+    for (var i = 0; i < startDow; i++) h += '<span></span>';
+    for (var d = 1; d <= count; d++){ var s = y + "-" + pad(m + 1) + "-" + pad(d); var dots = ["H","A"].map(function(u){ var ext = externalBlocks(u, s), nn = blocksOn(u, s).length; var col = ext.length ? (CHANNEL_META[ext[0].feed.channel] || CHANNEL_META.other).color : nn ? CHANNEL_META.nn.color : null; return '<i style="' + (col ? 'background:' + col : '') + '"></i>'; }).join("");
+      h += '<span class="day" style="cursor:default">' + d + '<span class="lamps">' + dots + '</span></span>'; }
+    return h + '</div></div>';
+  }
+  var n = new Date(y, m + 1, 1);
+  return '<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">Calendars</div><h2 class="h-m">Every platform, one merged calendar</h2><p class="lede">Add each listing\'s calendar export. Anything blocked anywhere becomes blocked here; anything booked here is published back on a Northern Notch feed you import into each platform. In production the feeds refresh automatically every few minutes; here you can paste or upload an .ics file to see the merge work.</p></div></div>' +
+  '<div class="two"><div>' +
+    '<div class="card"><h3>Connected calendar feeds</h3>' + (FEEDS.length ? '<table class="tbl" style="min-width:0;margin-top:8px"><tbody>' + FEEDS.map(function(f, i){ var cm = CHANNEL_META[f.channel] || CHANNEL_META.other; return '<tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + cm.color + ';margin-right:8px;vertical-align:middle"></span>' + esc(cm.label) + ' → ' + esc(UNITS[f.unit] ? UNITS[f.unit].short : f.unit) + '<small class="muted" style="display:block">' + esc(f.name) + ' · ' + f.count + ' blocks · added ' + esc(fmt(f.added)) + '</small></td><td style="text-align:right"><button class="btn ghost sm" type="button" data-rmfeed="' + i + '">Remove</button></td></tr>'; }).join("") + '</tbody></table>' : '<p class="muted" style="margin-top:6px">No external calendars connected yet. Only Northern Notch bookings are shown.</p>') + '</div>' +
+    '<form id="feedForm" class="card stack" style="margin-top:14px" novalidate><h3>Add a calendar</h3>' +
+      '<div class="fields two2"><label class="field">Platform<select name="channel">' + Object.keys(CHANNEL_META).filter(function(k){ return k !== "nn"; }).map(function(k){ return '<option value="' + k + '">' + CHANNEL_META[k].label + '</option>'; }).join("") + '</select></label><label class="field">Which listing does it cover?<select name="unit"><option value="H">The Main House</option><option value="A">The Apartment</option><option value="HA">Whole property (blocks both)</option></select></label></div>' +
+      '<label class="field">Calendar export URL (used by the sync job in production)<input name="url" type="url" placeholder="https://www.airbnb.com/calendar/ical/…ics"></label>' +
+      '<label class="field">Upload the .ics file<input name="file" type="file" accept=".ics,text/calendar"></label>' +
+      '<label class="field">…or paste its contents<textarea name="ics" placeholder="BEGIN:VCALENDAR …" style="min-height:80px"></textarea></label>' +
+      '<div class="row"><button class="btn" type="submit">Merge this calendar</button><span class="muted" style="font-size:.8rem">Kept in this browser for the preview.</span></div></form>' +
+    '<div class="notice" style="margin-top:14px"><b>Two-way, without waiting on anyone\'s API.</b> Every platform can import an external calendar. Import <span class="mono">northernnotch.com/ical/wild-pines-house.ics</span> into Airbnb, Vrbo and Booking.com and our bookings block those calendars too. Platforms refresh imported calendars every one to three hours, so Northern Notch stays request-to-book, and every request is revalidated against all feeds before it is confirmed (INV-04). Where your channel manager has an API (OwnerRez, Lodgify, Hospitable, Hostaway) we push blocks instantly instead.</div>' +
+  '</div><aside class="side"><div class="cal-months" style="grid-template-columns:1fr">' + month(y, m) + month(n.getFullYear(), n.getMonth()) + '</div><div class="legend">' + Object.keys(CHANNEL_META).map(function(k){ return '<span><i style="background:' + CHANNEL_META[k].color + '"></i>' + CHANNEL_META[k].label + '</span>'; }).join("") + '<span class="muted">· dots = House · Apartment</span></div></aside></div></section>';
+}
+function mountHostDashboard(){
+  var f = document.getElementById("feedForm"); if (!f) return;
+  document.querySelectorAll("[data-rmfeed]").forEach(function(b){ b.addEventListener("click", function(){ FEEDS.splice(+this.getAttribute("data-rmfeed"), 1); store("feeds", FEEDS); render(); }); });
+  f.addEventListener("submit", function(e){ e.preventDefault(); var fd = new FormData(f); var file = fd.get("file");
+    function finish(text, name){ var blocks = parseICS(text || ""); if (!blocks.length){ toast("No events found in that calendar."); return; }
+      FEEDS.push({ id:"f" + Date.now(), channel:fd.get("channel"), unit:fd.get("unit"), url:fd.get("url") || "", name:name, blocks:blocks, count:blocks.length, added:TODAY }); store("feeds", FEEDS); toast(blocks.length + " blocks merged."); render(); }
+    if (file && file.size){ var r = new FileReader(); r.onload = function(){ finish(String(r.result), file.name); }; r.readAsText(file); }
+    else if ((fd.get("ics") || "").trim()) finish(fd.get("ics"), "pasted calendar");
+    else toast("Upload or paste an .ics calendar to merge it."); });
+}
 TITLES.onboard = "List your home · Northern Notch";
 PAGES.onboard = function(){
   if (!isHost()) return '<section class="page-head wrap"><div class="eyebrow">Hosts</div><h1 class="h-xl">Sign in to list a home</h1><p class="lede">The listing form is for approved hosts. <a href="#/host">Sign in or request a host account</a>.</p></section>';
@@ -1791,7 +1840,7 @@ function renderOnboard(){
     '<label class="field">Add photographs (resized in your browser; nothing uploads until you send the file)<input type="file" id="obPhotos" accept="image/*" multiple></label><div class="thumbs" id="obThumbs">' + d.photos.map(function(ph, i){ return '<div class="th"><img src="' + ph.src + '" alt=""><button type="button" data-rm="' + i + '">×</button></div>'; }).join("") + '</div>' +
     '<div class="fields two2">' + obField("Photographer / credit","photoCredit","text") + obField("Video URL (YouTube or Vimeo, with captions)","videoUrl","url") + '</div><label class="check"><input type="checkbox" name="photoRights"' + (d.photoRights ? ' checked' : '') + '> I own these photographs or hold a licence to publish them.</label>';
   if (st === 7) body = obField("House rules (quiet hours, guests, smoking, pets, parties)","rules","textarea") + obField("Shared spaces or neighbours guests should expect","shared","textarea",{ph:"Shared driveway? Owner on site? Another unit?"}) + '<div class="fields two2">' + obField("Wi-Fi speed (measured, Mbps)","wifiSpeed","number",{min:0}) + obField("Cell coverage note","cell","text",{ph:"e.g. Verizon fine, AT&T weak"}) + obField("Winter access & snow clearing","winter","text",{ph:"Who plows, how often, 4WD needed?"}) + obField("Trash & recycling","trash","text",{ph:"Pickup day or transfer station"}) + obField("Accessibility facts","accessibility","text",{ph:"Steps at entry, door widths, ground-floor bath"}) + obField("Advertising tier","adTier","select",{options:["Listed ($0)","Co-op ($150/mo, proposed)","Co-op Plus ($350/mo, proposed)"]}) + '</div>' +
-    '<label class="check"><input type="checkbox" name="agreeFacts"' + (d.agreeFacts ? ' checked' : '') + '> The facts above are true and I will keep them current.</label><label class="check"><input type="checkbox" name="agreeFee"' + (d.agreeFee ? ' checked' : '') + '> I understand the 3% referral fee on completed direct stays and that Northern Notch never takes guest payment for my home.</label>';
+    '<label class="check"><input type="checkbox" name="agreeFacts"' + (d.agreeFacts ? ' checked' : '') + '> The facts above are true and I will keep them current.</label><label class="check"><input type="checkbox" name="agreeFee"' + (d.agreeFee ? ' checked' : '') + '> I understand that bookings made on Northern Notch carry a 3% fee deducted through Stripe, and that bookings I take on other platforms owe nothing.</label>';
   if (st === 8){
     var sub = buildSubmission();
     body = '<div class="notice good"><b>Ready to send.</b> Save the file and email it to us, or copy the text below. We reply within a few days with what is verified and what is still needed.</div>' +
