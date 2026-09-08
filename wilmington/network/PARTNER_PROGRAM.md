@@ -1,27 +1,27 @@
 # Northern Notch partner programme — internal economics
 
-## Model: referral network, not marketplace
-Guests discover a home on Northern Notch and book on the owner's own system through a tracked link.
-The owner remains operator of record for the guest contract, taxes, permit and insurance. Northern Notch
-invoices 3% of completed accommodation revenue monthly. This avoids becoming a booking facilitator under
-New York's 2025 short-term-rental sales-tax rules, avoids a payments/refunds/chargeback stack, and keeps the
-partner's calendar as its single source of truth (ARC-01 in the platform spec).
+## Model: network bookings through Stripe Connect; everything else stays the host's
+A self-reported referral fee will not get paid. Instead, bookings placed on Northern Notch are charged
+through Stripe Connect: the guest pays on our checkout, the 3% application fee is deducted automatically,
+and the balance is paid to the host's connected account. Hosts keep taking bookings on Airbnb, Vrbo,
+Booking.com and their own site and owe nothing on those. Calendars are merged from every channel's iCal so
+our site never shows a taken night as open. Counsel and the tax adviser confirm the facilitator position
+under New York's 2025 short-term-rental sales-tax law before the first network booking.
 
 ## What 3% buys
 Hosting and domain; the concierge library and its monthly vetting; photography standards and a shared
 photo brief; the compare and map pages; monthly reporting. Set to cover cost, not to make a margin on partners.
 
 ## Attribution
-Each property gets a tracked outbound link (`?ref=northernnotch&prop=<id>`). Owners send a monthly list
-of completed stays that originated from it; where the booking system supports referral codes, the code is
-the evidence. Disputes resolve in the owner's favour in year one; the goal is trust, not audit.
+None needed: the fee is taken on the transaction itself. If bookings are slow, an optional flat monthly
+platform fee covers hosting (`config.platformFee`, currently 0).
 
 ## Advertising co-op (proposed; price after one quarter of real spend)
 | Tier | Monthly | Gets |
 | --- | --- | --- |
 | Listed | $0 | Network page, concierge guide for guests, seasonal email mention |
-| Co-op | $150 | Share of one pooled Google + Meta campaign landing on the compare page; shared reporting |
-| Co-op Plus | $350 | Above plus rotating featured slot on home, a seasonal push for open dates, photography half-day at cost |
+| Co-op | $150 | $100 spent on ads for the host's own home (its page as landing), $50 into the network campaign; shared reporting |
+| Co-op Plus | $350 | $225 on the home's own ads, $125 network, plus the rotating featured slot on the home page, a seasonal push for open dates, photography half-day at cost |
 Rules: one campaign, never split; landing page shows only homes open for the searched dates; reporting shows
 network totals and each partner's share of clicks, date searches and bookings.
 

@@ -1,0 +1,19 @@
+{
+ "googleMapsKey": "",
+ "mapsNote": "Add a Google Maps JavaScript API key (restricted to your domain) to use Google Maps; without one the schematic map is shown. The artifact preview always shows the schematic because its sandbox blocks Google scripts.",
+ "auth": {
+  "provider": "supabase",
+  "googleSso": true,
+  "appleSso": true,
+  "note": "Host accounts require a backend: Supabase Auth (or Firebase/Clerk) with Google and Apple providers. The static preview shows the flow only."
+ },
+ "payments": {
+  "provider": "stripe-connect",
+  "platformFeePct": 3.0,
+  "note": "Bookings placed on Northern Notch are charged through Stripe Connect; the 3% application fee is deducted automatically and the balance is paid to the host's connected account. Bookings a host takes elsewhere owe nothing."
+ },
+ "platformFee": {
+  "monthly": 0,
+  "note": "Optional flat monthly platform fee; 0 while the network is small."
+ }
+}

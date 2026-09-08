@@ -1,0 +1,48 @@
+{
+ "note": "Host-only. Guest quotes show one 'Taxes' line computed from the applicable rates; hosts see the breakdown here. Every rate must be confirmed by a tax adviser before launch (COM-02).",
+ "jurisdiction": "Wilmington, Essex County, NY",
+ "lines": [
+  {
+   "key": "nys-sales",
+   "label": "New York State sales tax",
+   "pct": 4.0,
+   "appliesTo": [
+    "accommodation",
+    "cleaning"
+   ],
+   "remitTo": "NYS Dept. of Taxation and Finance",
+   "verified": false
+  },
+  {
+   "key": "essex-sales",
+   "label": "Essex County sales tax",
+   "pct": 4.0,
+   "appliesTo": [
+    "accommodation",
+    "cleaning"
+   ],
+   "remitTo": "NYS DTF (collected with state)",
+   "verified": false
+  },
+  {
+   "key": "essex-occupancy",
+   "label": "Essex County occupancy tax",
+   "pct": 5.0,
+   "appliesTo": [
+    "accommodation"
+   ],
+   "remitTo": "Essex County Treasurer",
+   "verified": false
+  }
+ ],
+ "processing": {
+  "label": "Card processing (Stripe)",
+  "pct": 2.9,
+  "fixed": 0.3,
+  "verified": true
+ },
+ "platform": {
+  "label": "Northern Notch fee (network bookings only)",
+  "pct": 3.0
+ }
+}

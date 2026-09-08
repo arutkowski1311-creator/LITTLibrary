@@ -67,6 +67,12 @@ def main():
                       lambda m: '<script id="concierge" type="application/json">' + cjson + '</script>', html, count=1, flags=re.S)
         open(SRC, "w", encoding="utf-8").write(html)
         print(f"concierge: {len(json.loads(cjson)['places'])} places embedded")
+    # network config / taxes / pricing blocks
+    for fn, sid in (("config.json","nnconfig"),("taxes.json","taxes"),("pricing.json","pricing")):
+        fp = os.path.join(HERE, "..", "network", fn)
+        if os.path.exists(fp):
+            j = json.dumps(json.load(open(fp, encoding="utf-8")), ensure_ascii=False).replace("</", "<\\/")
+            html = re.sub(r'<script id="' + sid + r'" type="application/json">.*?</script>', lambda m: '<script id="' + sid + '" type="application/json">' + j + '</script>', html, count=1, flags=re.S)
     # network properties: merge properties/*.json (status live or pending-review) into the page
     pdir = os.path.join(HERE, "..", "network", "properties")
     if os.path.isdir(pdir):

@@ -1,0 +1,233 @@
+{
+ "note": "Proposed rule set for dynamic pricing (REV-05..12). Multipliers stack: base \u00d7 season \u00d7 strongest event \u00d7 weekend, then floor. Market adjustment comes from licensed comparable data (PriceLabs or equivalent), never scraping. Every event window must be verified each year against the organiser's calendar. Total multiplier is capped at maxMult so stacked uplifts stay defensible.",
+ "weekend": {
+  "days": [
+   5,
+   6
+  ],
+  "mult": 1.15
+ },
+ "changeFlagPct": 15,
+ "floors": {
+  "H": 300,
+  "A": 110,
+  "HA": 400
+ },
+ "marketAdjust": {
+  "note": "Monthly index from licensed comp data; 1.0 = no adjustment",
+  "values": {}
+ },
+ "seasons": [
+  {
+   "name": "Mud season",
+   "from": "03-23",
+   "to": "05-21",
+   "mult": 0.8
+  },
+  {
+   "name": "Late spring",
+   "from": "05-22",
+   "to": "06-19",
+   "mult": 1.0
+  },
+  {
+   "name": "Peak summer",
+   "from": "06-20",
+   "to": "09-07",
+   "mult": 1.15
+  },
+  {
+   "name": "Early fall",
+   "from": "09-08",
+   "to": "09-19",
+   "mult": 1.05
+  },
+  {
+   "name": "Foliage",
+   "from": "09-20",
+   "to": "10-15",
+   "mult": 1.25
+  },
+  {
+   "name": "Late fall",
+   "from": "10-16",
+   "to": "12-18",
+   "mult": 0.85
+  },
+  {
+   "name": "Holidays",
+   "from": "12-19",
+   "to": "01-03",
+   "mult": 1.35
+  },
+  {
+   "name": "Ski season",
+   "from": "01-04",
+   "to": "03-22",
+   "mult": 1.1
+  }
+ ],
+ "events": [
+  {
+   "name": "Ironman Lake Placid",
+   "rule": {
+    "month": 7,
+    "weekday": 0,
+    "nth": 4,
+    "before": 3,
+    "after": 1
+   },
+   "mult": 1.5,
+   "typical": "Late July, Sunday",
+   "verify": true,
+   "url": "https://www.ironman.com/im-lake-placid"
+  },
+  {
+   "name": "Ironman 70.3 Lake Placid",
+   "rule": {
+    "month": 9,
+    "weekday": 0,
+    "nth": 2,
+    "before": 2,
+    "after": 1
+   },
+   "mult": 1.3,
+   "typical": "Mid-September, Sunday",
+   "verify": true,
+   "url": "https://www.ironman.com/im703-lake-placid"
+  },
+  {
+   "name": "Lake Placid Horse Shows",
+   "dates": [
+    {
+     "from": "2026-06-23",
+     "to": "2026-07-05"
+    }
+   ],
+   "mult": 1.2,
+   "typical": "Two weeks, late June to early July",
+   "verify": true,
+   "url": "https://www.lakeplacidhorseshow.com/"
+  },
+  {
+   "name": "Wilmington Whiteface Bike Fest",
+   "rule": {
+    "month": 6,
+    "weekday": 6,
+    "nth": 3,
+    "before": 1,
+    "after": 1
+   },
+   "mult": 1.25,
+   "typical": "Mid-June weekend",
+   "verify": true,
+   "url": "https://www.whitefaceregion.com/"
+  },
+  {
+   "name": "Lake Placid Marathon",
+   "rule": {
+    "month": 6,
+    "weekday": 0,
+    "nth": 2,
+    "before": 2,
+    "after": 0
+   },
+   "mult": 1.2,
+   "typical": "Mid-June, Sunday",
+   "verify": true,
+   "url": "https://lakeplacidmarathon.com/"
+  },
+  {
+   "name": "Empire State Winter Games",
+   "rule": {
+    "month": 2,
+    "weekday": 6,
+    "nth": 1,
+    "before": 2,
+    "after": 1
+   },
+   "mult": 1.2,
+   "typical": "Early February weekend",
+   "verify": true,
+   "url": "https://www.empirestatewintergames.com/"
+  },
+  {
+   "name": "Whiteface ski races / FIS events",
+   "dates": [],
+   "mult": 1.2,
+   "typical": "Winter; dates vary by year",
+   "verify": true,
+   "url": "https://whiteface.com/events/"
+  },
+  {
+   "name": "Independence Day",
+   "dates": [
+    {
+     "from": "2026-07-02",
+     "to": "2026-07-05"
+    },
+    {
+     "from": "2027-07-02",
+     "to": "2027-07-05"
+    }
+   ],
+   "mult": 1.3,
+   "typical": "July 4 weekend",
+   "verify": false
+  },
+  {
+   "name": "Columbus / Indigenous Peoples' weekend",
+   "dates": [
+    {
+     "from": "2026-10-09",
+     "to": "2026-10-12"
+    },
+    {
+     "from": "2027-10-08",
+     "to": "2027-10-11"
+    }
+   ],
+   "mult": 1.3,
+   "typical": "Second Monday of October",
+   "verify": false
+  },
+  {
+   "name": "Presidents' week",
+   "dates": [
+    {
+     "from": "2027-02-13",
+     "to": "2027-02-21"
+    }
+   ],
+   "mult": 1.25,
+   "typical": "Third Monday of February and the school week",
+   "verify": true
+  },
+  {
+   "name": "MLK weekend",
+   "dates": [
+    {
+     "from": "2027-01-15",
+     "to": "2027-01-18"
+    }
+   ],
+   "mult": 1.2,
+   "typical": "Third Monday of January",
+   "verify": false
+  },
+  {
+   "name": "Can-Am Rugby Tournament",
+   "rule": {
+    "month": 8,
+    "weekday": 6,
+    "nth": 1,
+    "before": 1,
+    "after": 1
+   },
+   "mult": 1.15,
+   "typical": "Early August weekend, Saranac Lake / Lake Placid",
+   "verify": true
+  }
+ ],
+ "maxMult": 1.75
+}

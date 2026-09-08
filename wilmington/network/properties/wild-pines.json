@@ -1,22 +1,119 @@
 {
-  "id": "wild-pines",
-  "name": "The Wild Pines",
-  "tagline": "Classic Adirondack cabin life, made modern",
-  "summary": "A house and a separate apartment on one quiet property below Whiteface, beside the West Branch of the Ausable. Take one, or take both and have the whole place to yourselves.",
+ "id": "wild-pines",
+ "name": "The Wild Pines",
+ "tagline": "Classic Adirondack cabin life, made modern",
+ "summary": "A house and a separate apartment on one quiet property below Whiteface, beside the West Branch of the Ausable. Take one, or take both and have the whole place to yourselves.",
+ "town": "Wilmington",
+ "address": {
+  "public": "Haselton Road, Wilmington, NY 12997",
+  "full": "1749 Haselton Rd, Wilmington, NY 12997",
+  "approximate": false
+ },
+ "location": {
+  "lat": 44.402,
+  "lng": -73.803,
+  "approximate": true,
+  "note": "Placed along Haselton Road from the street address; replace with geocoded coordinates when Google Maps is connected"
+ },
+ "owner": {
+  "entity": "[contracting entity — pending]",
+  "network": true
+ },
+ "permit": {
   "town": "Wilmington",
-  "address": { "public": "Wilmington, NY 12997", "full": "[pending owner confirmation]", "approximate": true },
-  "location": { "lat": 44.393, "lng": -73.820, "approximate": true, "note": "Village-centre pin until the property address is confirmed" },
-  "owner": { "entity": "[contracting entity — pending]", "network": true },
-  "permit": { "town": "Wilmington", "number": null, "status": "pending", "countyRegistration": null, "insurance": null },
-  "sleeps": null, "bedrooms": null, "bathrooms": null,
-  "units": ["H", "A", "HA"],
-  "amenities": [],
-  "rates": { "mode": "sample", "note": "Sample rates live in the site's RATES table until approved" },
-  "booking": { "mode": "network-request", "url": null, "system": "OwnerRez (under evaluation)" },
-  "calendar": { "ical": [], "source": "booking core — not yet connected" },
-  "media": { "hero": "stay-HA", "photos": ["stay-H", "stay-A", "stay-HA", "H-living", "H-kitchen", "H-bed", "A-main", "A-kitchen", "A-bath", "HA-grounds", "HA-river", "HA-winter"], "video": null },
-  "responder": { "name": null, "phone": null },
-  "advertising": "network-owner",
-  "status": "live",
-  "verification": { "lastVerified": null, "nextReview": "2026-09-08", "status": "unverified" }
+  "number": null,
+  "status": "pending",
+  "countyRegistration": null,
+  "insurance": null
+ },
+ "sleeps": 8,
+ "bedrooms": null,
+ "bathrooms": null,
+ "units": [
+  "H",
+  "A",
+  "HA"
+ ],
+ "amenities": [],
+ "rates": {
+  "mode": "sample",
+  "note": "Sample rates live in the site's RATES table until approved"
+ },
+ "booking": {
+  "mode": "network-request",
+  "url": null,
+  "system": "OwnerRez (under evaluation)"
+ },
+ "calendar": {
+  "ical": [],
+  "source": "booking core — not yet connected"
+ },
+ "media": {
+  "hero": "stay-HA",
+  "photos": [
+   "stay-H",
+   "stay-A",
+   "stay-HA",
+   "H-living",
+   "H-kitchen",
+   "H-bed",
+   "A-main",
+   "A-kitchen",
+   "A-bath",
+   "HA-grounds",
+   "HA-river",
+   "HA-winter"
+  ],
+  "video": null
+ },
+ "responder": {
+  "name": null,
+  "phone": null
+ },
+ "advertising": "network-owner",
+ "status": "live",
+ "verification": {
+  "lastVerified": "2026-09-08",
+  "verifiedBy": "owner",
+  "nextReview": "2026-10-08",
+  "status": "verified"
+ },
+ "sleepsNote": "Main house 8 · apartment 2–3",
+ "pricing": {
+  "mode": "owner",
+  "currency": "USD",
+  "cleaningIncluded": false,
+  "units": {
+   "H": {
+    "base": 450,
+    "cleaning": 200,
+    "minStay": 2,
+    "sleeps": "8"
+   },
+   "A": {
+    "base": 150,
+    "cleaning": 100,
+    "minStay": 2,
+    "sleeps": "2–3"
+   },
+   "HA": {
+    "base": 575,
+    "cleaning": 250,
+    "minStay": 2,
+    "sleeps": "10–11"
+   }
+  },
+  "pets": "On request; may incur an additional cleaning fee",
+  "dynamic": true
+ },
+ "channels": [
+  {
+   "type": "direct",
+   "label": "Northern Notch (request to book)",
+   "url": null,
+   "ical": null
+  }
+ ],
+ "parking": "Ample driveway parking for all guests",
+ "entrances": "Each unit has its own entrance"
 }
