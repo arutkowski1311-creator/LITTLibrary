@@ -58,6 +58,21 @@ Drop the document next to `places.json`, add a source key under `meta.sources`, 
 with `source.ref` pointing at it. Rankings go in `rank` / `areaRank` with `rankScope` naming the list
 they belong to (`dining-overall`, `activities-overall`, …). Ratings and counts always carry an `asOf` date.
 
+## Owner colour commentary
+
+Every entry has a `commentary` field. It is the owner's voice ("get the French toast", "go up an hour before sunset") and
+renders to guests as **From your host** on guide cards and in the stay guide. The loop:
+
+1. `python3 vet.py commentary-sheet` writes `reviews/commentary-worksheet.md`, one block per entry grouped by category and town.
+2. The owner writes under **Commentary:** in any block (plain sentences), or `REMOVE`, `RENAME: …`, `FIX: …`.
+3. `python3 vet.py commentary reviews/commentary-worksheet.md` stores the notes, flags the entry `owner-recommended`,
+   applies removes/renames, records `FIX` requests as `owner-fix-pending` for the next vetting pass, and appends to `reviews/log.jsonl`.
+4. `python3 build.py` in `site/` republishes.
+
+The 2026-09-08 library seed (`seeds/2026-09-library-expansion.py`) added 174 entries across bars, breweries, Olympic sites,
+events, shops & outfitters, antiques, leaf-peeping, fishing, boat rentals, ski shops and ski areas. All carry source `[G2]`
+and `verification.status = unverified`; nothing seeded shows to guests without the ⚠ mark until it passes a vetting cycle.
+
 ## Automation
 
 A monthly Routine wakes the build session on the 1st, runs the worksheet, checks each due entry with

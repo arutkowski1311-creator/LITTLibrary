@@ -7,6 +7,8 @@ Concierge vetting — the monthly cycle that keeps every recommendation current.
   python3 vet.py apply results.json  record review results and roll nextReview forward
   python3 vet.py report              one-screen health summary (counts by status, freshness)
   python3 vet.py lint                schema sanity: ids unique, required fields, dates parse
+  python3 vet.py commentary-sheet    write reviews/commentary-worksheet.md: every entry teed up for the owner's colour commentary
+  python3 vet.py commentary FILE.md  read a filled-in worksheet and store each note in that entry's `commentary` field
 
 results.json is a list of objects:
   {"id": "salt-of-the-earth-bistro",
@@ -149,7 +151,67 @@ def cmd_lint(d):
             except ValueError: print(f"! {p['id']}: bad date in {k}"); ok = False
     print("lint ok" if ok else "lint FAILED"); return ok
 
+CATEGORY_ORDER = ["Dining", "Bars & nightlife", "Breweries, cider & spirits", "Hiking", "Biking", "Skiing", "Water & boating", "Fishing",
+                  "Olympic sites", "Sightseeing & foliage", "Family fun", "Rainy day", "Arts & culture", "Events & festivals", "Shops & outfitters",
+                  "Antiques & vintage", "Farms & local life", "Golf", "Guides & outfitters", "Essentials", "Emergency"]
+
+def cmd_commentary_sheet(d):
+    """One block per entry. The owner writes under 'Commentary:'; everything else is context and is ignored on apply."""
+    os.makedirs(REVIEWS, exist_ok=True); path = os.path.join(REVIEWS, "commentary-worksheet.md")
+    order = {c: i for i, c in enumerate(CATEGORY_ORDER)}
+    places = [p for p in d["places"] if p["status"] not in ("removed",)]
+    places.sort(key=lambda p: (order.get(p["category"], 99), p.get("area") or "", p["name"].lower()))
+    out = ["# Concierge library — colour commentary worksheet", "",
+           f"Generated {TODAY.isoformat()} · {len(places)} entries · {sum(1 for p in places if p.get('commentary'))} already have commentary.", "",
+           "How to use: write your note on the line(s) after **Commentary:** in any block. One to three sentences in your own voice is perfect",
+           "(what you order, when to go, who it suits, what to skip). Leave a block blank to skip it. Type `REMOVE` to drop an entry,",
+           "`RENAME: New name` to fix a name, or `FIX: ...` for any fact that is wrong. Then run:", "",
+           "    python3 vet.py commentary reviews/commentary-worksheet.md", "",
+           "Entries marked ⚠ unverified have never been checked; your note is also a signal that the place is real and worth vetting first.", ""]
+    cat = None; area = None
+    for p in places:
+        if p["category"] != cat:
+            cat = p["category"]; area = None; out += ["", f"## {cat}", ""]
+        if (p.get("area") or "") != area:
+            area = p.get("area") or ""; out += [f"### {area or 'Region-wide'}", ""]
+        flag = "" if p["verification"].get("lastVerified") else " ⚠ unverified"
+        extra = " · ".join(x for x in [p.get("subcategory") if p.get("subcategory") != p["category"] else "", p.get("drive", ""), p.get("cost", "")] if x and x != "Verify")
+        out += [f"**{p['name']}**  `{p['id']}`{flag}", f"_{extra}_" if extra else "", (p.get("review") or "")[:220], "",
+                "Commentary:", p.get("commentary") or "", "", "---", ""]
+    open(path, "w", encoding="utf-8").write("\n".join(out)); print("wrote", os.path.relpath(path, HERE), f"({len(places)} entries)")
+
+def cmd_commentary(d, path):
+    import re
+    text = open(path, encoding="utf-8").read()
+    blocks = re.split(r"\n---\n", text)
+    by_id = {p["id"]: p for p in d["places"]}; n = 0; log = []
+    for b in blocks:
+        m = re.search(r"`([a-z0-9][a-z0-9\-]*)`", b)
+        if not m or m.group(1) not in by_id: continue
+        cm = re.search(r"Commentary:\s*\n(.*)$", b, re.S)
+        if not cm: continue
+        note = cm.group(1).strip()
+        p = by_id[m.group(1)]
+        if not note or note == (p.get("commentary") or ""): continue
+        if note.upper().startswith("REMOVE"):
+            p["status"] = "removed"; log.append({"id": p["id"], "action": "removed", "date": TODAY.isoformat(), "by": "owner worksheet"}); n += 1; continue
+        rn = re.match(r"RENAME:\s*(.+)", note)
+        if rn:
+            log.append({"id": p["id"], "action": "renamed", "from": p["name"], "to": rn.group(1).strip(), "date": TODAY.isoformat()}); p["name"] = rn.group(1).strip(); n += 1; continue
+        if note.upper().startswith("FIX:"):
+            p.setdefault("flags", []); p["flags"] = sorted(set(p["flags"] + ["owner-fix-pending"])); p["ownerFix"] = note[4:].strip()
+            log.append({"id": p["id"], "action": "fix-requested", "note": note[4:].strip(), "date": TODAY.isoformat()}); n += 1; continue
+        p["commentary"] = note; p.setdefault("flags", [])
+        if "owner-recommended" not in p["flags"]: p["flags"].append("owner-recommended")
+        log.append({"id": p["id"], "action": "commentary", "date": TODAY.isoformat(), "by": "owner worksheet"}); n += 1
+    if n:
+        save(d)
+        with open(os.path.join(REVIEWS, "log.jsonl"), "a", encoding="utf-8") as f:
+            for e in log: f.write(json.dumps(e, ensure_ascii=False) + "\n")
+    print(f"applied {n} change(s)")
+
 if __name__ == "__main__":
     d = load(); cmd = sys.argv[1] if len(sys.argv) > 1 else "report"
     {"due": lambda: cmd_due(d), "worksheet": lambda: cmd_worksheet(d), "apply": lambda: cmd_apply(d, sys.argv[2]),
-     "report": lambda: cmd_report(d), "lint": lambda: sys.exit(0 if cmd_lint(d) else 1)}.get(cmd, lambda: print(__doc__))()
+     "report": lambda: cmd_report(d), "lint": lambda: sys.exit(0 if cmd_lint(d) else 1),
+     "commentary-sheet": lambda: cmd_commentary_sheet(d), "commentary": lambda: cmd_commentary(d, sys.argv[2])}.get(cmd, lambda: print(__doc__))()
