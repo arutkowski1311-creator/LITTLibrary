@@ -29,7 +29,8 @@
    "[R1]": "Lake_Placid_Wilmington_Saranac_Lake_Restaurant_Guide_2026.docx — owner research, ratings snapshot 2026-09-07",
    "[G]": "Site guide seed entries — real places, details unverified until the first vetting cycle",
    "[H1]": "Wilmington_Adirondack_Hikes_and_Activities_Guide_2026.docx — owner research checked 2026-09-07 (web only; operators not telephoned, routes not field-inspected)",
-   "[V]": "Verified by web search on 2026-09-08 against official sites (Claude)"
+   "[V]": "Verified by web search on 2026-09-08 against official sites (Claude)",
+   "[O]": "Owner go-to recommendations given 2026-09-08 — verify each before it shows to guests"
   },
   "occasions": [
    "Best special dinner",
@@ -242,6 +243,77 @@
     "label": "Wilmington beach & parks operations",
     "url": "https://www.townofwilmington.org/parks/"
    }
+  ],
+  "clusters": [
+   {
+    "key": "wilmington",
+    "name": "Around Wilmington",
+    "towns": [
+     "Wilmington",
+     "Wilmington (NY-86)",
+     "Wilmington Notch",
+     "Wilmington Notch (NY-86)",
+     "North Pole, Wilmington"
+    ],
+    "drive": "minutes from the house"
+   },
+   {
+    "key": "jay",
+    "name": "Jay, Upper Jay & Au Sable Forks",
+    "towns": [
+     "Jay",
+     "Upper Jay",
+     "Au Sable Forks"
+    ],
+    "drive": "10–25 min north and east"
+   },
+   {
+    "key": "placid",
+    "name": "Lake Placid",
+    "towns": [
+     "Lake Placid",
+     "Lake Placid / Olympic Sports Complex",
+     "Adirondak Loj / High Peaks area",
+     "North Elba"
+    ],
+    "drive": "15 beautiful minutes down the road"
+   },
+   {
+    "key": "keene",
+    "name": "Keene, Keene Valley & Cascade Pass",
+    "towns": [
+     "Keene",
+     "Keene Valley",
+     "Keene Valley / High Peaks",
+     "High Peaks / Cascade Pass",
+     "Cascade Pass, Route 73"
+    ],
+    "drive": "30–45 min via NY-73"
+   },
+   {
+    "key": "saranac",
+    "name": "Saranac Lake & Ray Brook",
+    "towns": [
+     "Saranac Lake",
+     "Ray Brook",
+     "Saranac Lake / Route 3",
+     "Bloomingdale / Saranac Lake area",
+     "Saranac Lake (Upper Saranac)"
+    ],
+    "drive": "35 min west"
+   },
+   {
+    "key": "far",
+    "name": "Farther afield",
+    "towns": [
+     "Keeseville",
+     "Tupper Lake",
+     "Paul Smiths",
+     "Elizabethtown",
+     "Plattsburgh"
+    ],
+    "drive": "45 min and more"
+   }
   ]
  },
  "places": [
@@ -299,7 +371,12 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "goTo": true,
+   "meal": [
+    "dinner"
+   ],
+   "kids": false
   },
   {
    "id": "smoke-signals",
@@ -355,7 +432,12 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "goTo": true,
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "caff-rustica",
@@ -410,7 +492,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "lisa-g-s",
@@ -467,7 +553,12 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "goTo": true,
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "top-of-the-park",
@@ -522,7 +613,12 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "goTo": true,
+   "meal": [
+    "drinks"
+   ],
+   "kids": false
   },
   {
    "id": "heritage-indian-grill",
@@ -579,7 +675,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "big-mountain-deli-cr-perie",
@@ -635,7 +735,12 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "breakfast",
+    "lunch"
+   ],
+   "kids": true
   },
   {
    "id": "jimmy-s-21-lake-side-italian-restaurant",
@@ -689,7 +794,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "country-bear-restaurant",
@@ -746,7 +855,13 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "goTo": true,
+   "meal": [
+    "breakfast"
+   ],
+   "kids": true,
+   "tip": "Low-key. Try the French toast."
   },
   {
    "id": "the-hungry-trout-restaurant",
@@ -803,7 +918,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "twisted-raven",
@@ -860,7 +979,13 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner",
+    "drinks"
+   ],
+   "kids": true,
+   "brewery": false
   },
   {
    "id": "up-a-creek-restaurant",
@@ -916,7 +1041,12 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "breakfast",
+    "lunch"
+   ],
+   "kids": true
   },
   {
    "id": "our-plates-pan-caribbean",
@@ -973,7 +1103,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "red-fox-restaurant",
@@ -1028,7 +1162,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "rivertrail-beerworks",
@@ -1084,7 +1222,13 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner",
+    "drinks"
+   ],
+   "kids": true,
+   "brewery": true
   },
   {
    "id": "bitters-bones",
@@ -1138,7 +1282,13 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner",
+    "drinks"
+   ],
+   "kids": false,
+   "brewery": true
   },
   {
    "id": "blue-moon-caf",
@@ -1192,7 +1342,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "breakfast"
+   ],
+   "kids": true
   },
   {
    "id": "donnelly-s-soft-ice-cream",
@@ -1250,7 +1404,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dessert"
+   ],
+   "kids": true
   },
   {
    "id": "tail-o-the-pup",
@@ -1309,7 +1467,11 @@
     "nextReview": "2026-10-07",
     "status": "verified"
    },
-   "status": "active"
+   "status": "active",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true
   },
   {
    "id": "whiteface-mountain",
@@ -5892,6 +6054,376 @@
     "status": "verified"
    },
    "status": "placeholder"
+  },
+  {
+   "id": "noon-mark-diner",
+   "name": "Noon Mark Diner",
+   "category": "Dining",
+   "subcategory": "Classic diner · pies",
+   "iconic": false,
+   "area": "Keene Valley",
+   "address": "1770 NYS Route 73, Keene Valley, NY 12943",
+   "phone": "518-576-4499",
+   "website": "https://www.noonmarkdiner.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A small-town diner on Route 73 in Keene Valley, known far beyond the valley for its pies. The breakfast stop when your day is heading toward Cascade, Giant or the Keene side.",
+   "bestFor": [
+    "Breakfast on a Keene or Keene Valley day",
+    "Pie"
+   ],
+   "order": "Pancakes or eggs, then a slice of pie to take away.",
+   "knowBefore": "Small and busy on hiking mornings; hours vary by season — confirm. The owner remembers this as “the little diner in Keene”; confirm it is the right place.",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify hours and season",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "food"
+   ],
+   "flags": [],
+   "drive": "≈ 30–40 min via Jay and NY-73",
+   "source": {
+    "name": "Owner go-to (to verify)",
+    "ref": "[O]",
+    "url": "https://www.noonmarkdiner.com/"
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active",
+   "meal": [
+    "breakfast"
+   ],
+   "kids": true,
+   "goTo": true
+  },
+  {
+   "id": "lake-placid-pub-brewery",
+   "name": "Lake Placid Pub & Brewery",
+   "category": "Dining",
+   "subcategory": "Brewpub · Ubu Ale",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "813 Mirror Lake Drive, Lake Placid, NY 12946",
+   "phone": "518-523-3813",
+   "website": "https://www.ubuale.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "The village brewpub above Mirror Lake and the home of Ubu Ale. Casual, loud in a good way, and easy with a group.",
+   "bestFor": [
+    "Beer",
+    "Groups",
+    "Casual dinner"
+   ],
+   "order": "Ubu Ale, a flight, pub food.",
+   "knowBefore": "Busy on event weekends; confirm hours.",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify hours and season",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "food"
+   ],
+   "flags": [],
+   "drive": "15 min down the road · 13 mi via NY-86",
+   "source": {
+    "name": "Owner go-to (to verify)",
+    "ref": "[O]",
+    "url": "https://www.ubuale.com/"
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active",
+   "meal": [
+    "dinner",
+    "drinks"
+   ],
+   "kids": true,
+   "brewery": true
+  },
+  {
+   "id": "big-slide-brewery-public-house",
+   "name": "Big Slide Brewery & Public House",
+   "category": "Dining",
+   "subcategory": "Brewery · wood-fired kitchen",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "5686 Cascade Road, Lake Placid, NY 12946",
+   "phone": "518-523-7844",
+   "website": "https://www.bigslidebrewery.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A newer brewery on the edge of the village with a proper kitchen and wood-fired pizza. The pick when the beer matters as much as dinner.",
+   "bestFor": [
+    "Beer",
+    "Couples",
+    "Groups"
+   ],
+   "order": "A flight and a wood-fired pizza.",
+   "knowBefore": "Confirm hours and reservations.",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify hours and season",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "food"
+   ],
+   "flags": [],
+   "drive": "15 min down the road · 13 mi via NY-86",
+   "source": {
+    "name": "Owner go-to (to verify)",
+    "ref": "[O]",
+    "url": "https://www.bigslidebrewery.com/"
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active",
+   "meal": [
+    "dinner",
+    "drinks"
+   ],
+   "kids": true,
+   "brewery": true
+  },
+  {
+   "id": "great-adirondack-brewing-company",
+   "name": "Great Adirondack Brewing Company",
+   "category": "Dining",
+   "subcategory": "Brewery · steakhouse",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "2442 Main Street, Lake Placid, NY 12946",
+   "phone": "518-523-1629",
+   "website": "https://www.greatadirondacksteakandseafood.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Main Street brewery and steakhouse in one, with a patio on the street. Dependable for a mixed group.",
+   "bestFor": [
+    "Beer",
+    "Steak",
+    "Main Street"
+   ],
+   "order": "House beers; steaks and the fish fry.",
+   "knowBefore": "Confirm hours.",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify hours and season",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "food"
+   ],
+   "flags": [],
+   "drive": "15 min down the road · 13 mi via NY-86",
+   "source": {
+    "name": "Owner go-to (to verify)",
+    "ref": "[O]",
+    "url": "https://www.greatadirondacksteakandseafood.com/"
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active",
+   "meal": [
+    "dinner",
+    "drinks"
+   ],
+   "kids": true,
+   "brewery": true
+  },
+  {
+   "id": "ausable-brewing-company",
+   "name": "Ausable Brewing Company",
+   "category": "Dining",
+   "subcategory": "Farm brewery · outdoor",
+   "iconic": false,
+   "area": "Keeseville",
+   "address": "765 Mace Chasm Road, Keeseville, NY 12944",
+   "phone": "",
+   "website": "https://www.ausablebrewing.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A farm brewery on the Ausable outside Keeseville: outdoor tables, food trucks, live music in summer. Pairs naturally with an Ausable Chasm day.",
+   "bestFor": [
+    "Beer",
+    "Summer afternoons",
+    "Ausable Chasm day"
+   ],
+   "order": "Whatever is on; ask what the food truck is.",
+   "knowBefore": "Seasonal and outdoors; confirm days.",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify hours and season",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "food"
+   ],
+   "flags": [],
+   "drive": "≈ 45 min",
+   "source": {
+    "name": "Owner go-to (to verify)",
+    "ref": "[O]",
+    "url": "https://www.ausablebrewing.com/"
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active",
+   "meal": [
+    "drinks"
+   ],
+   "kids": true,
+   "brewery": true
+  },
+  {
+   "id": "46er-owner-go-to-confirm-which-venue",
+   "name": "46er (owner go-to — confirm which venue)",
+   "category": "Dining",
+   "subcategory": "Dinner go-to",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Named by the owner as a dinner go-to. Not yet matched to a listing; confirm the exact venue before it is shown to guests.",
+   "bestFor": [
+    "Dinner"
+   ],
+   "order": "",
+   "knowBefore": "Owner to confirm name and address.",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify hours and season",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "food"
+   ],
+   "flags": [],
+   "drive": "15 min down the road · 13 mi via NY-86",
+   "source": {
+    "name": "Owner go-to (to verify)",
+    "ref": "[O]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "placeholder",
+   "meal": [
+    "dinner"
+   ],
+   "kids": true,
+   "goTo": true
+  },
+  {
+   "id": "rooftop-bar-lake-placid-owner-go-to-confirm-which-venue",
+   "name": "Rooftop bar, Lake Placid (owner go-to — confirm which venue)",
+   "category": "Dining",
+   "subcategory": "Rooftop bar · summer",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A rooftop bar in the village that the owner recommends for summer evenings. Confirm the venue; Top of the Park is already listed separately.",
+   "bestFor": [
+    "Summer cocktails"
+   ],
+   "order": "",
+   "knowBefore": "Owner to confirm name and address.",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify hours and season",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "food"
+   ],
+   "flags": [],
+   "drive": "15 min down the road · 13 mi via NY-86",
+   "source": {
+    "name": "Owner go-to (to verify)",
+    "ref": "[O]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "placeholder",
+   "meal": [
+    "drinks"
+   ],
+   "kids": false,
+   "goTo": true,
+   "seasonal": "summer"
   }
  ]
 }
