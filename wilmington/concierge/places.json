@@ -1,0 +1,2053 @@
+{
+ "meta": {
+  "schema": 1,
+  "updated": "2026-09-08",
+  "timezone": "America/New_York",
+  "cadence": {
+   "reviewEveryDays": 30,
+   "staleAfterDays": 45,
+   "hideAfterDays": 90
+  },
+  "categories": [
+   "Dining",
+   "Skiing",
+   "Hiking",
+   "Biking",
+   "Fishing",
+   "Sightseeing",
+   "Children",
+   "Rainy day",
+   "Groceries",
+   "Emergency",
+   "Guides & outfitters"
+  ],
+  "sources": {
+   "[R1]": "Lake_Placid_Wilmington_Saranac_Lake_Restaurant_Guide_2026.docx — owner research, ratings snapshot 2026-09-07",
+   "[G]": "Site guide seed entries — real places, details unverified until the first vetting cycle"
+  },
+  "occasions": [
+   "Best special dinner",
+   "Best casual crowd-pleaser",
+   "Best view + cocktails",
+   "Best breakfast in Wilmington",
+   "Best Saranac food discovery",
+   "Best classic steak / prime rib",
+   "Best brewpub hang",
+   "Best dessert stop",
+   "Best old-school Adirondack atmosphere"
+  ]
+ },
+ "places": [
+  {
+   "id": "salt-of-the-earth-bistro",
+   "name": "Salt of the Earth Bistro",
+   "category": "Dining",
+   "subcategory": "Creative bistro / destination dinner",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "5956 Sentinel Road, Lake Placid, NY 12946",
+   "phone": "518-523-5956",
+   "website": "https://www.saltoftheearthbistro.com/",
+   "websiteKind": "official",
+   "rank": 1,
+   "areaRank": 1,
+   "rankScope": "dining-overall",
+   "review": "The strongest all-around food-first recommendation in the area. It is tiny (nine tables), intimate and chef-driven, with global flavors layered onto familiar dishes. Service is personal and the menu changes enough to reward repeat visits.",
+   "bestFor": [
+    "Date night",
+    "Anniversary",
+    "Serious food people"
+   ],
+   "order": "Follow the seasonal menu; duck, pork, salmon and unusual starters are recurring strengths.",
+   "knowBefore": "Reservations are strongly encouraged; no children’s menu; not the choice for a fast or inexpensive dinner.",
+   "occasionPick": "Best special dinner",
+   "signals": {
+    "googleRating": 4.7,
+    "reviewCount": "365+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$$",
+   "booking": "Reservations strongly encouraged",
+   "access": "Verify",
+   "suits": [
+    "couples",
+    "quiet",
+    "food"
+   ],
+   "flags": [
+    "no-kids-menu"
+   ],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.saltoftheearthbistro.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "smoke-signals",
+   "name": "Smoke Signals",
+   "category": "Dining",
+   "subcategory": "BBQ / American / lake-view bar",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "2489 Main Street, Lake Placid, NY 12946",
+   "phone": "518-523-2271",
+   "website": "https://www.smokesignalsq.com/",
+   "websiteKind": "official",
+   "rank": 4,
+   "areaRank": 2,
+   "rankScope": "dining-overall",
+   "review": "One of the safest recommendations for visitors because it combines genuinely good barbecue, a lively bar and one of the better Mirror Lake deck settings. The huge review volume matters: this is a proven crowd-pleaser, not a tiny high-rated outlier.",
+   "bestFor": [
+    "Groups",
+    "Families",
+    "Après-hike",
+    "Casual dinner with a view"
+   ],
+   "order": "Brisket, smoked wings, BBQ plates and loaded starters.",
+   "knowBefore": "Peak dinner times can mean waits. Ask for the deck when weather cooperates.",
+   "occasionPick": "Best casual crowd-pleaser",
+   "signals": {
+    "googleRating": 4.5,
+    "reviewCount": "3,100+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "Walk-in; expect waits at peak",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "groups",
+    "active",
+    "view"
+   ],
+   "flags": [],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.smokesignalsq.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "caff-rustica",
+   "name": "Caffè Rustica",
+   "category": "Dining",
+   "subcategory": "Italian / Mediterranean / wood-fired pizza",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "1936 Saranac Avenue, Lake Placid, NY 12946",
+   "phone": "518-523-7511",
+   "website": "https://www.rusticalp.com/",
+   "websiteKind": "official",
+   "rank": 5,
+   "areaRank": 3,
+   "rankScope": "dining-overall",
+   "review": "A food-driven choice away from the Main Street tourist strip. The room is small and cozy, the cooking leans Italian/Mediterranean, and it is a strong alternative when you want a real dinner without the downtown scene.",
+   "bestFor": [
+    "Couples",
+    "Quieter dinner",
+    "Italian food",
+    "Food-over-view diners"
+   ],
+   "order": "Wood-fired pizza, seafood, veal/short-rib style specials and tiramisu.",
+   "knowBefore": "Limited seating makes reservations important; seasonal specials can differ from online menus.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.6,
+    "reviewCount": "450+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$$",
+   "booking": "Reservations important",
+   "access": "Verify",
+   "suits": [
+    "couples",
+    "quiet",
+    "food"
+   ],
+   "flags": [],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.rusticalp.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "lisa-g-s",
+   "name": "Lisa G's",
+   "category": "Dining",
+   "subcategory": "Creative American / neighborhood bar",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "6125 Sentinel Road, Lake Placid, NY 12946",
+   "phone": "518-523-2093",
+   "website": "https://www.lisags.com/",
+   "websiteKind": "official",
+   "rank": 6,
+   "areaRank": 4,
+   "rankScope": "dining-overall",
+   "review": "A fun, energetic local favorite that does comfort food with more personality than a standard pub. The menu has enough variety for a mixed group, and the patio/deck is a major plus.",
+   "bestFor": [
+    "Families",
+    "Groups",
+    "Lively casual nights",
+    "Dog-friendly patio"
+   ],
+   "order": "Wings, calamari, creative appetizers, fish-and-fries and rotating comfort-food specials.",
+   "knowBefore": "Can be loud and busy; service pacing varies at peak times. Reservations are smart.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.6,
+    "reviewCount": "2,000+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "Reservations smart",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "groups",
+    "dogs"
+   ],
+   "flags": [
+    "dog-friendly-patio"
+   ],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.lisags.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "top-of-the-park",
+   "name": "Top of the Park",
+   "category": "Dining",
+   "subcategory": "Cocktail bar / tapas / view",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "2407 Main Street, Lake Placid, NY 12946",
+   "phone": "518-523-3632",
+   "website": "https://www.topofthepark.bar/",
+   "websiteKind": "official",
+   "rank": 8,
+   "areaRank": 5,
+   "rankScope": "dining-overall",
+   "review": "The recommendation here is experience-first: creative cocktails, a spectacular Mirror Lake vantage point and polished small plates. It is excellent when you want to linger rather than simply eat a large dinner.",
+   "bestFor": [
+    "Cocktails",
+    "Sunset",
+    "Date night",
+    "Pre- or post-dinner stop"
+   ],
+   "order": "A signature cocktail plus several small plates to share.",
+   "knowBefore": "Portions are intentionally small and prices can feel premium. Treat it as tapas, not a steakhouse.",
+   "occasionPick": "Best view + cocktails",
+   "signals": {
+    "googleRating": 4.6,
+    "reviewCount": "500+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "couples",
+    "view",
+    "adults"
+   ],
+   "flags": [],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.topofthepark.bar/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "heritage-indian-grill",
+   "name": "Heritage Indian Grill",
+   "category": "Dining",
+   "subcategory": "Modern Indian / Punjabi / Indo-Chinese",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "45 Hadjis Way, Suite 6, Lake Placid, NY 12946",
+   "phone": "518-241-5568",
+   "website": "https://www.heritageindiangrill.com/",
+   "websiteKind": "official",
+   "rank": 7,
+   "areaRank": 6,
+   "rankScope": "dining-overall",
+   "review": "One of the most useful “change of pace” restaurants in Lake Placid. It has a modern interior, a broad menu, strong vegetarian choices and flavors that stand apart from the area’s burger/BBQ concentration.",
+   "bestFor": [
+    "Groups",
+    "Vegetarians",
+    "Families",
+    "Anyone tired of pub food"
+   ],
+   "order": "Butter chicken, tikka masala, tandoori items, biryani, chana masala and garlic naan.",
+   "knowBefore": "Medium spice can run hot; service can slow when the room is slammed.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.7,
+    "reviewCount": "500+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "groups",
+    "vegetarian"
+   ],
+   "flags": [
+    "vegetarian-strong"
+   ],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.heritageindiangrill.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "big-mountain-deli-cr-perie",
+   "name": "Big Mountain Deli & Crêperie",
+   "category": "Dining",
+   "subcategory": "Deli / crêperie / breakfast-lunch",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "2475 Main Street, Lake Placid, NY 12946",
+   "phone": "518-523-3222",
+   "website": "http://www.eatlakeplacid.com/location/big-mountain-deli/",
+   "websiteKind": "listing",
+   "rank": 11,
+   "areaRank": 7,
+   "rankScope": "dining-overall",
+   "review": "A very good daytime answer when you want something fast but not generic. The enormous sandwich/crêpe menu and central location make it especially useful before or after outdoor activities.",
+   "bestFor": [
+    "Breakfast",
+    "Lunch",
+    "Hikers",
+    "Quick family meal",
+    "Takeout"
+   ],
+   "order": "One of the “46” sandwiches, a savory crêpe or a sweet crêpe to share.",
+   "knowBefore": "Small dining room and lots of choices; takeout or ordering ahead can be easier at rush hour.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.5,
+    "reviewCount": "1,000+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$",
+   "booking": "Order ahead at rush hour",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "active",
+    "quick"
+   ],
+   "flags": [],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "http://www.eatlakeplacid.com/location/big-mountain-deli/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "jimmy-s-21-lake-side-italian-restaurant",
+   "name": "Jimmy's 21 Lake Side Italian Restaurant",
+   "category": "Dining",
+   "subcategory": "Italian-American / steak / seafood",
+   "iconic": false,
+   "area": "Lake Placid",
+   "address": "2425 Main Street, Lake Placid, NY 12946",
+   "phone": "518-523-2353",
+   "website": "http://jimmys21lp.com/",
+   "websiteKind": "official",
+   "rank": 15,
+   "areaRank": 8,
+   "rankScope": "dining-overall",
+   "review": "A classic, old-school Lake Placid option with a very good setting and a broad Italian-American menu. It is especially appealing to groups who want familiar food and a lake view rather than adventurous cooking.",
+   "bestFor": [
+    "Traditional Italian",
+    "Families",
+    "Lake-view dinner"
+   ],
+   "order": "Homemade pasta dishes, seafood, chicken/veal classics and steak.",
+   "knowBefore": "Reviews are less consistent than the top tier; you are partly paying for location and atmosphere.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.3,
+    "reviewCount": "1,200+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "groups",
+    "view"
+   ],
+   "flags": [],
+   "drive": "≈ 20 min · 13 mi via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "http://jimmys21lp.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "country-bear-restaurant",
+   "name": "Country Bear Restaurant",
+   "category": "Dining",
+   "subcategory": "Old-school breakfast diner",
+   "iconic": false,
+   "area": "Wilmington",
+   "address": "5830 NY-86, Wilmington, NY 12997",
+   "phone": "518-946-2691",
+   "website": "https://thecountrybear.netwaiter.com/",
+   "websiteKind": "listing",
+   "rank": 10,
+   "areaRank": 1,
+   "rankScope": "dining-overall",
+   "review": "The best breakfast-specific recommendation in Wilmington. It is tiny, unfussy and beloved for exactly what it is: a classic mountain-town diner serving hearty breakfast without tourist polish.",
+   "bestFor": [
+    "Breakfast before Whiteface",
+    "Families",
+    "Local diner experience"
+   ],
+   "order": "French toast, pancakes, eggs/home fries and homemade breads or muffins.",
+   "knowBefore": "Cash-only is commonly reported; hours are limited and waits can build quickly.",
+   "occasionPick": "Best breakfast in Wilmington",
+   "signals": {
+    "googleRating": 4.7,
+    "reviewCount": "340+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "breakfast",
+    "quick"
+   ],
+   "flags": [
+    "cash-only-reported",
+    "limited-hours"
+   ],
+   "drive": "In Wilmington",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://thecountrybear.netwaiter.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "the-hungry-trout-restaurant",
+   "name": "The Hungry Trout Restaurant",
+   "category": "Dining",
+   "subcategory": "American / trout / steak / resort dining",
+   "iconic": false,
+   "area": "Wilmington",
+   "address": "5239 NY-86, Wilmington, NY 12997",
+   "phone": "518-946-2217",
+   "website": "https://hungrytrout.com/",
+   "websiteKind": "official",
+   "rank": 12,
+   "areaRank": 2,
+   "rankScope": "dining-overall",
+   "review": "The best Wilmington answer when you want a more complete sit-down dinner rather than pub food. Its long association with the Ausable River and Whiteface area gives it a classic Adirondack feel.",
+   "bestFor": [
+    "A nicer Wilmington dinner",
+    "Anglers",
+    "Couples",
+    "Guests staying near Whiteface"
+   ],
+   "order": "Trout and other fish preparations, steak and seasonal Adirondack-style entrées.",
+   "knowBefore": "Hours and restaurant concepts can be seasonal; verify before driving.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.5,
+    "reviewCount": "650+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Seasonal concepts and hours — verify",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$$",
+   "booking": "Reservations advised",
+   "access": "Verify",
+   "suits": [
+    "couples",
+    "quiet",
+    "food"
+   ],
+   "flags": [
+    "seasonal-hours"
+   ],
+   "drive": "In Wilmington",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://hungrytrout.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "twisted-raven",
+   "name": "Twisted Raven",
+   "category": "Dining",
+   "subcategory": "Bar & grill / BBQ / live music",
+   "iconic": false,
+   "area": "Wilmington",
+   "address": "8 Whiteface Memorial Highway, Wilmington, NY 12997",
+   "phone": "518-946-6160",
+   "website": "https://www.whitefaceregion.com/dining/twisted-raven",
+   "websiteKind": "listing",
+   "rank": 16,
+   "areaRank": 3,
+   "rankScope": "dining-overall",
+   "review": "A lively local hangout at the base of Whiteface Memorial Highway. The draw is generous pub food, events and a relaxed bar atmosphere rather than refined dining.",
+   "bestFor": [
+    "Après-ski",
+    "Casual groups",
+    "Live music",
+    "Big portions"
+   ],
+   "order": "Burgers, wings, smoked foods, fries and pub specials.",
+   "knowBefore": "Can get busy around events; expect a pub pace, not fine-dining service.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.5,
+    "reviewCount": "200+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "groups",
+    "winter",
+    "active"
+   ],
+   "flags": [
+    "live-music"
+   ],
+   "drive": "In Wilmington",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.whitefaceregion.com/dining/twisted-raven"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "up-a-creek-restaurant",
+   "name": "Up a Creek Restaurant",
+   "category": "Dining",
+   "subcategory": "Casual diner / comfort food",
+   "iconic": false,
+   "area": "Wilmington",
+   "address": "5545 NY-86, Wilmington, NY 12997",
+   "phone": "518-946-2013",
+   "website": "https://www.whitefaceregion.com/do/dining",
+   "websiteKind": "listing",
+   "rank": 17,
+   "areaRank": 4,
+   "rankScope": "dining-overall",
+   "review": "A solid, no-drama local choice when convenience and comfort food matter more than destination dining. It fills the “easy breakfast or casual meal” role well in Wilmington.",
+   "bestFor": [
+    "Casual breakfast/lunch",
+    "Families",
+    "Easy local meal"
+   ],
+   "order": "Stuffed French toast, pancakes and other breakfast/comfort-food specials.",
+   "knowBefore": "Not a special-occasion restaurant; hours can be seasonal, so check first.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.5,
+    "reviewCount": "280+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Hours can be seasonal — check first",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "breakfast",
+    "quick"
+   ],
+   "flags": [
+    "seasonal-hours"
+   ],
+   "drive": "In Wilmington",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.whitefaceregion.com/do/dining"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "our-plates-pan-caribbean",
+   "name": "Our Plates | Pan-Caribbean",
+   "category": "Dining",
+   "subcategory": "Pan-Caribbean / Dominican / Cuban",
+   "iconic": false,
+   "area": "Saranac Lake",
+   "address": "7-B Broadway, Saranac Lake, NY 12983",
+   "phone": "518-354-5517",
+   "website": "https://www.saranaclake.com/eat-drink",
+   "websiteKind": "listing",
+   "rank": 2,
+   "areaRank": 1,
+   "rankScope": "dining-overall",
+   "review": "One of the most distinctive meals in the whole three-town area. It is owner-driven, flavor-forward and refreshingly different from the Adirondacks’ dominant pub/steak/Italian mix.",
+   "bestFor": [
+    "Food explorers",
+    "Casual dinner",
+    "Big flavor",
+    "Something genuinely different"
+   ],
+   "order": "Cubano, jerk or stewed chicken, tostones and empanadas.",
+   "knowBefore": "Smaller operation; menu and hours may shift, so confirm before a dedicated drive.",
+   "occasionPick": "Best Saranac food discovery",
+   "signals": {
+    "googleRating": 4.8,
+    "reviewCount": "170+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "Confirm hours before a dedicated drive",
+   "access": "Verify",
+   "suits": [
+    "food",
+    "couples",
+    "groups"
+   ],
+   "flags": [
+    "small-operation"
+   ],
+   "drive": "≈ 35 min via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.saranaclake.com/eat-drink"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "red-fox-restaurant",
+   "name": "Red Fox Restaurant",
+   "category": "Dining",
+   "subcategory": "Steakhouse / seafood / Italian",
+   "iconic": false,
+   "area": "Saranac Lake",
+   "address": "5034 State Route 3, Saranac Lake, NY 12983",
+   "phone": "518-891-2127",
+   "website": "https://www.redfoxrestaurantsaranaclake.com/",
+   "websiteKind": "official",
+   "rank": 3,
+   "areaRank": 2,
+   "rankScope": "dining-overall",
+   "review": "A dependable traditional dinner with a loyal following. Red Fox is the recommendation when someone wants a real steak-and-seafood meal, generous portions and old-school hospitality rather than a trendy concept.",
+   "bestFor": [
+    "Traditional special occasion",
+    "Steak",
+    "Prime rib",
+    "Seafood"
+   ],
+   "order": "Prime rib, steaks, seafood and Italian-American classics.",
+   "knowBefore": "Prime rib can sell out; reservations are a good idea on busy nights.",
+   "occasionPick": "Best classic steak / prime rib",
+   "signals": {
+    "googleRating": 4.7,
+    "reviewCount": "500+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$$",
+   "booking": "Reservations on busy nights",
+   "access": "Verify",
+   "suits": [
+    "couples",
+    "groups",
+    "food"
+   ],
+   "flags": [],
+   "drive": "≈ 35 min via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.redfoxrestaurantsaranaclake.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "rivertrail-beerworks",
+   "name": "RiverTrail Beerworks",
+   "category": "Dining",
+   "subcategory": "Riverfront brewpub / pizza",
+   "iconic": false,
+   "area": "Saranac Lake",
+   "address": "79 Woodruff Street, Saranac Lake, NY 12983",
+   "phone": "518-891-3765",
+   "website": "https://rivertrailbeerworks.com/",
+   "websiteKind": "official",
+   "rank": 9,
+   "areaRank": 3,
+   "rankScope": "dining-overall",
+   "review": "A very strong modern-casual option: riverfront setting, good beer, pizza and plenty of room to socialize. It is especially useful for mixed-age groups or a low-pressure evening.",
+   "bestFor": [
+    "Groups",
+    "Beer",
+    "Families",
+    "Patio",
+    "Casual night out"
+   ],
+   "order": "Detroit-style pizza, brewpub snacks and house beer.",
+   "knowBefore": "Weekend crowds can slow things down; go for the total brewpub experience rather than culinary formality.",
+   "occasionPick": "Best brewpub hang",
+   "signals": {
+    "googleRating": 4.6,
+    "reviewCount": "290+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "groups",
+    "families",
+    "view"
+   ],
+   "flags": [],
+   "drive": "≈ 35 min via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://rivertrailbeerworks.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "bitters-bones",
+   "name": "Bitters & Bones",
+   "category": "Dining",
+   "subcategory": "Downtown brewery / tavern / cocktails",
+   "iconic": false,
+   "area": "Saranac Lake",
+   "address": "65 Broadway, Saranac Lake, NY 12983",
+   "phone": "518-354-8270",
+   "website": "https://www.bittersandbones.com/",
+   "websiteKind": "official",
+   "rank": 13,
+   "areaRank": 4,
+   "rankScope": "dining-overall",
+   "review": "A polished but still casual downtown tavern with more energy than a standard brewpub. It works especially well for adults who want good drinks and enough food variety to stay for dinner.",
+   "bestFor": [
+    "Friends",
+    "Drinks",
+    "Lively dinner",
+    "Downtown Saranac Lake"
+   ],
+   "order": "Burgers, tacos, fry plates, rotating pub dishes and house beer/cocktails.",
+   "knowBefore": "Can be loud and social; not the first choice for a quiet romantic meal.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.5,
+    "reviewCount": "1,000+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "groups",
+    "adults"
+   ],
+   "flags": [],
+   "drive": "≈ 35 min via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.bittersandbones.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "blue-moon-caf",
+   "name": "Blue Moon Café",
+   "category": "Dining",
+   "subcategory": "Breakfast / brunch café",
+   "iconic": false,
+   "area": "Saranac Lake",
+   "address": "55 Main Street, Saranac Lake, NY 12983",
+   "phone": "518-891-1310",
+   "website": "https://www.bluemoonadk.com/",
+   "websiteKind": "official",
+   "rank": 14,
+   "areaRank": 5,
+   "rankScope": "dining-overall",
+   "review": "A reliable Saranac Lake breakfast institution with enough review volume to make it a safe bet. It is not fancy; it is the kind of place you use repeatedly during a stay.",
+   "bestFor": [
+    "Breakfast",
+    "Brunch",
+    "Coffee",
+    "Families"
+   ],
+   "order": "Corned beef hash, eggs, pancakes and house-baked breads/English muffins.",
+   "knowBefore": "Popular breakfast hours bring waits. Go early if you have a schedule.",
+   "occasionPick": null,
+   "signals": {
+    "googleRating": 4.4,
+    "reviewCount": "900+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "breakfast"
+   ],
+   "flags": [],
+   "drive": "≈ 35 min via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.bluemoonadk.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "donnelly-s-soft-ice-cream",
+   "name": "Donnelly's Soft Ice Cream",
+   "category": "Dining",
+   "subcategory": "Seasonal roadside soft serve",
+   "iconic": true,
+   "area": "Saranac Lake",
+   "address": "1564 NY-86, Saranac Lake, NY 12983",
+   "phone": "518-891-1404",
+   "website": "https://www.facebook.com/pages/Donnellys-Ice-Cream/219558278055451",
+   "websiteKind": "social",
+   "rank": null,
+   "areaRank": null,
+   "rankScope": "dining-overall",
+   "review": "A genuine must-stop, not merely “good ice cream.” The soft serve is exceptionally light and creamy, and the one-flavor-per-day ritual is part of the tradition. It is worth a short detour even if you are staying in Lake Placid.",
+   "bestFor": [
+    "Dessert",
+    "Kids",
+    "Post-hike stop",
+    "Adirondack tradition"
+   ],
+   "order": "Whatever the flavor of the day is, twisted with vanilla. That is essentially the point.",
+   "knowBefore": "Seasonal, typically Memorial Day through Labor Day, and cash-only is commonly reported. Check the daily flavor and opening status before driving.",
+   "occasionPick": "Best dessert stop",
+   "signals": {
+    "googleRating": 4.8,
+    "reviewCount": "570+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Seasonal — typically Memorial Day to Labor Day",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "summer",
+    "active"
+   ],
+   "flags": [
+    "seasonal",
+    "cash-only-reported"
+   ],
+   "drive": "≈ 35 min via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://www.facebook.com/pages/Donnellys-Ice-Cream/219558278055451"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "tail-o-the-pup",
+   "name": "Tail O' the Pup",
+   "category": "Dining",
+   "subcategory": "Seasonal outdoor BBQ / seafood / live music",
+   "iconic": true,
+   "area": "Ray Brook",
+   "address": "1152 State Route 86, Ray Brook, NY 12977",
+   "phone": "518-891-0777",
+   "website": "https://tailofthepupbbq.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": null,
+   "rankScope": "dining-overall",
+   "review": "Go for the experience as much as the food: picnic-table dining under the pines, live music, kids running around and an unmistakably Adirondack summer-roadside atmosphere. The Google score is notably lower than the top food destinations, and reviews show real inconsistency, so it should not be sold as the area’s best barbecue on food alone.",
+   "bestFor": [
+    "Families",
+    "Dogs",
+    "Live music",
+    "Classic Adirondack roadside experience"
+   ],
+   "order": "BBQ staples, clam chowder, lobster/seafood and cornbread when available.",
+   "knowBefore": "Service and food execution can be uneven when busy. Seasonal (roughly May–October); check hours and arrive with a relaxed schedule.",
+   "occasionPick": "Best old-school Adirondack atmosphere",
+   "signals": {
+    "googleRating": 3.7,
+    "reviewCount": "1,200+",
+    "asOf": "2026-09-07"
+   },
+   "season": "Seasonal — roughly May to October",
+   "hours": "Verify same-day hours before a long drive",
+   "cost": "$$",
+   "booking": "",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "dogs",
+    "summer"
+   ],
+   "flags": [
+    "seasonal",
+    "live-music",
+    "inconsistent-reviews"
+   ],
+   "drive": "≈ 25 min via NY-86",
+   "source": {
+    "name": "Adirondack Restaurant Guide 2026 (owner research)",
+    "ref": "[R1]",
+    "url": "https://tailofthepupbbq.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-07",
+    "verifiedBy": "owner research",
+    "method": "Google + official/tourism sites",
+    "nextReview": "2026-10-07",
+    "status": "verified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "whiteface-mountain",
+   "name": "Whiteface Mountain",
+   "category": "Skiing",
+   "subcategory": "Skiing",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "The Olympic mountain, with the greatest vertical drop in the East. The reason most winter guests come to Wilmington.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Winter alpine season; summer gondola rides",
+   "hours": "Verify",
+   "cost": "$$$",
+   "booking": "Lift tickets sold online; verify current pass options",
+   "access": "Adaptive programme exists — verify",
+   "suits": [
+    "active",
+    "families",
+    "winter"
+   ],
+   "flags": [],
+   "drive": "In town, on NY-86",
+   "photo": "whiteface",
+   "source": {
+    "name": "Olympic Regional Development Authority (official site)",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "mt-van-hoevenberg-nordic",
+   "name": "Mt Van Hoevenberg (Nordic)",
+   "category": "Skiing",
+   "subcategory": "Skiing",
+   "area": "Lake Placid",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Cross-country trails, biathlon range and the bobsled track on the same site.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Winter",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "Day passes; rentals on site — verify",
+   "access": "Verify",
+   "suits": [
+    "active",
+    "winter",
+    "quiet"
+   ],
+   "flags": [],
+   "drive": "≈ 20 min west",
+   "photo": "nordic",
+   "source": {
+    "name": "ORDA (official site)",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "whiteface-via-the-wilmington-trail",
+   "name": "Whiteface via the Wilmington Trail",
+   "category": "Hiking",
+   "subcategory": "Hiking",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A full-day climb from the Wilmington side to the summit. Long, steep, and worth every step on a clear day.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Summer and autumn; winter for equipped hikers only",
+   "hours": "Verify",
+   "cost": "Free",
+   "booking": "None",
+   "access": "Strenuous; not step-free",
+   "suits": [
+    "active",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "Trailhead in town — verify parking",
+   "photo": "whiteface",
+   "source": {
+    "name": "NYS DEC trail information",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "cooper-kiln-pond",
+   "name": "Cooper Kiln Pond",
+   "category": "Hiking",
+   "subcategory": "Hiking",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A quieter walk to a backcountry pond on the shoulder of Whiteface.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Three seasons",
+   "hours": "Verify",
+   "cost": "Free",
+   "booking": "None",
+   "access": "Moderate",
+   "suits": [
+    "active",
+    "quiet",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "Short drive — verify trailhead",
+   "photo": "kiln",
+   "source": {
+    "name": "NYS DEC",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "copperas-owen-ponds",
+   "name": "Copperas & Owen Ponds",
+   "category": "Hiking",
+   "subcategory": "Hiking",
+   "area": "Wilmington Notch (NY-86)",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Two small ponds under the cliffs of the Notch. Good for a half-day with children who can manage roots and rocks.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Three seasons",
+   "hours": "Verify",
+   "cost": "Free",
+   "booking": "None",
+   "access": "Moderate, rooty",
+   "suits": [
+    "families",
+    "quiet",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "≈ 10 min toward Lake Placid",
+   "photo": "ponds",
+   "source": {
+    "name": "NYS DEC",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "flume-trails",
+   "name": "Flume Trails",
+   "category": "Biking",
+   "subcategory": "Biking",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Wilmington's mountain-bike network, built for it. Rentals in town — verify which shops currently operate.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Late spring to autumn",
+   "hours": "Verify",
+   "cost": "Free",
+   "booking": "None",
+   "access": "Purpose-built singletrack",
+   "suits": [
+    "active",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "In town, off NY-86",
+   "photo": "flume",
+   "source": {
+    "name": "Barkeater Trails Alliance / Town of Wilmington",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "hardy-road-trails",
+   "name": "Hardy Road Trails",
+   "category": "Biking",
+   "subcategory": "Biking",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A second local network with a different character to the Flume.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Late spring to autumn",
+   "hours": "Verify",
+   "cost": "Free",
+   "booking": "None",
+   "access": "Verify",
+   "suits": [
+    "active",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "Short drive",
+   "photo": "hardy",
+   "source": {
+    "name": "Barkeater Trails Alliance",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "west-branch-of-the-ausable-river",
+   "name": "West Branch of the Ausable River",
+   "category": "Fishing",
+   "subcategory": "Fishing",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "One of the most famous trout rivers in the Northeast runs through the village. Guides are worth it if you are new to it.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify current regulations and catch-and-release sections",
+   "hours": "Verify",
+   "cost": "Licence required",
+   "booking": "NYS fishing licence",
+   "access": "Bank access varies",
+   "suits": [
+    "quiet",
+    "active",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "Through town",
+   "photo": "river",
+   "source": {
+    "name": "NYS DEC regulations",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "whiteface-veterans-memorial-highway",
+   "name": "Whiteface Veterans' Memorial Highway",
+   "category": "Sightseeing",
+   "subcategory": "Sightseeing",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Drive nearly to the summit of Whiteface, then take the tunnel and elevator the rest of the way.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Seasonal — typically closed in winter; verify dates",
+   "hours": "Verify",
+   "cost": "$$ toll",
+   "booking": "Verify timed entry",
+   "access": "Elevator to the summit from the castle — verify",
+   "suits": [
+    "families",
+    "sightseeing",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "Toll road from town",
+   "photo": "highway",
+   "source": {
+    "name": "ORDA (official site)",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "high-falls-gorge",
+   "name": "High Falls Gorge",
+   "category": "Sightseeing",
+   "subcategory": "Sightseeing",
+   "area": "Wilmington (NY-86)",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Four waterfalls in a short walk of bridges and boardwalks over the Ausable.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Year-round; winter walks with ice cleats — verify",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "Verify",
+   "access": "Bridges and walkways; verify step-free sections",
+   "suits": [
+    "families",
+    "sightseeing",
+    "rain-ok"
+   ],
+   "flags": [],
+   "drive": "≈ 5 min",
+   "photo": "gorge",
+   "source": {
+    "name": "Official site",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "ausable-chasm",
+   "name": "Ausable Chasm",
+   "category": "Sightseeing",
+   "subcategory": "Sightseeing",
+   "area": "Keeseville",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "The sandstone gorge near Lake Champlain. Rafting and rim walks.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Seasonal — verify",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "Verify",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "sightseeing",
+    "summer"
+   ],
+   "flags": [],
+   "drive": "≈ 45 min east",
+   "photo": "chasm",
+   "source": {
+    "name": "Official site",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "lake-placid-the-olympic-sites",
+   "name": "Lake Placid & the Olympic sites",
+   "category": "Sightseeing",
+   "subcategory": "Sightseeing",
+   "area": "Lake Placid",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Main Street, Mirror Lake and the Olympic venues from 1932 and 1980.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Year-round",
+   "hours": "Verify",
+   "cost": "Free to $$",
+   "booking": "Site passes — verify",
+   "access": "Village is walkable",
+   "suits": [
+    "families",
+    "sightseeing",
+    "rain-ok"
+   ],
+   "flags": [],
+   "drive": "≈ 13 mi west via NY-86",
+   "photo": "placid",
+   "source": {
+    "name": "ORDA / Lake Placid tourism (official)",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "jay-covered-bridge",
+   "name": "Jay Covered Bridge",
+   "category": "Sightseeing",
+   "subcategory": "Sightseeing",
+   "area": "Jay",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A restored covered bridge over the East Branch, with a swimming hole below in summer.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Year-round",
+   "hours": "Verify",
+   "cost": "Free",
+   "booking": "None",
+   "access": "Level walk",
+   "suits": [
+    "quiet",
+    "sightseeing",
+    "families"
+   ],
+   "flags": [],
+   "drive": "≈ 15 min north",
+   "photo": "jay",
+   "source": {
+    "name": "Town of Jay",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "santa-s-workshop",
+   "name": "Santa's Workshop",
+   "category": "Children",
+   "subcategory": "Children",
+   "area": "North Pole, Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "A small, old-fashioned theme park that has been here since 1949.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Seasonal — verify calendar",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "Verify",
+   "access": "Verify",
+   "suits": [
+    "families"
+   ],
+   "flags": [],
+   "drive": "On the Memorial Highway road",
+   "photo": "santa",
+   "source": {
+    "name": "Official site",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "adirondack-wildlife-refuge",
+   "name": "Adirondack Wildlife Refuge",
+   "category": "Children",
+   "subcategory": "Children",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Wolves, raptors and rehabilitation animals. Check current opening before you go.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify",
+   "hours": "Verify",
+   "cost": "Donation — verify",
+   "booking": "Verify",
+   "access": "Verify",
+   "suits": [
+    "families",
+    "quiet"
+   ],
+   "flags": [],
+   "drive": "In town",
+   "photo": "refuge",
+   "source": {
+    "name": "Official site",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "lake-placid-olympic-museum",
+   "name": "Lake Placid Olympic Museum",
+   "category": "Rainy day",
+   "subcategory": "Rainy day",
+   "area": "Lake Placid",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Small, well done, and next to the rink where the 1980 hockey game was played.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Year-round — verify hours",
+   "hours": "Verify",
+   "cost": "$",
+   "booking": "None",
+   "access": "Indoor, accessible — verify",
+   "suits": [
+    "rain-ok",
+    "families",
+    "sightseeing"
+   ],
+   "flags": [],
+   "drive": "≈ 20 min",
+   "photo": "museum",
+   "source": {
+    "name": "ORDA",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "the-wild-center",
+   "name": "The Wild Center",
+   "category": "Rainy day",
+   "subcategory": "Rainy day",
+   "area": "Tupper Lake",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Natural-history museum with the Wild Walk treetop trail. A full day; go on a genuinely wet one.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Verify seasonal hours",
+   "hours": "Verify",
+   "cost": "$$",
+   "booking": "Timed tickets — verify",
+   "access": "Accessible — verify",
+   "suits": [
+    "rain-ok",
+    "families"
+   ],
+   "flags": [],
+   "drive": "≈ 1 h 15 min",
+   "photo": "wild",
+   "source": {
+    "name": "Official site",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "nearest-hospitals",
+   "name": "Nearest hospitals",
+   "category": "Emergency",
+   "subcategory": "Emergency",
+   "area": "Lake Placid / Saranac Lake / Elizabethtown",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Adirondack Medical Center sites in Lake Placid and Saranac Lake, and Elizabethtown Community Hospital. Confirm which has 24-hour emergency care before publishing.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Always",
+   "hours": "Verify",
+   "cost": "",
+   "booking": "",
+   "access": "",
+   "suits": [],
+   "flags": [],
+   "drive": "Verify drive times",
+   "photo": null,
+   "source": {
+    "name": "Adirondack Health; Elizabethtown Community Hospital — verify",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "active"
+  },
+  {
+   "id": "fly-fishing-guides",
+   "name": "Fly-fishing guides",
+   "category": "Guides & outfitters",
+   "subcategory": "Guides & outfitters",
+   "area": "Wilmington",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Licensed local guides for the West Branch. Names are listed only after verification; this may link to RŌM or other approved providers.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Spring to autumn",
+   "hours": "Verify",
+   "cost": "$$$",
+   "booking": "Book ahead",
+   "access": "",
+   "suits": [
+    "quiet",
+    "active"
+   ],
+   "flags": [],
+   "drive": "",
+   "photo": null,
+   "source": {
+    "name": "Pending — licensed NYS guides only",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "placeholder"
+  },
+  {
+   "id": "grocery-supplies",
+   "name": "Grocery & supplies",
+   "category": "Groceries",
+   "subcategory": "Groceries",
+   "area": "Wilmington & Lake Placid",
+   "address": "",
+   "phone": "",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Nearest full grocery, pharmacy, hardware and fuel will be listed with drive times once verified.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "",
+   "hours": "Verify",
+   "cost": "",
+   "booking": "",
+   "access": "",
+   "suits": [],
+   "flags": [],
+   "drive": "",
+   "photo": null,
+   "source": {
+    "name": "Pending owner verification",
+    "ref": "[G]",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": null,
+    "verifiedBy": null,
+    "method": null,
+    "nextReview": "2026-09-08",
+    "status": "unverified"
+   },
+   "status": "placeholder"
+  },
+  {
+   "id": "emergency-911",
+   "name": "Emergency: 911",
+   "category": "Emergency",
+   "subcategory": "Emergency",
+   "area": "—",
+   "address": "",
+   "phone": "911",
+   "website": null,
+   "websiteKind": null,
+   "rank": null,
+   "areaRank": null,
+   "rankScope": null,
+   "review": "Fire, police and ambulance. The property's posted instructions and the local responder's number are provided privately with your arrival details, never on this public page.",
+   "bestFor": [],
+   "order": "",
+   "knowBefore": "",
+   "occasionPick": null,
+   "signals": {},
+   "season": "Always",
+   "hours": "Always",
+   "cost": "",
+   "booking": "",
+   "access": "",
+   "suits": [],
+   "flags": [],
+   "drive": "",
+   "source": {
+    "name": "Universal",
+    "ref": "—",
+    "url": null
+   },
+   "verification": {
+    "lastVerified": "2026-09-08",
+    "verifiedBy": "universal",
+    "method": "n/a",
+    "nextReview": "2099-01-01",
+    "status": "verified"
+   },
+   "status": "active"
+  }
+ ]
+}

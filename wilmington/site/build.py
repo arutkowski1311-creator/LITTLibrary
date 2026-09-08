@@ -59,6 +59,14 @@ def main():
                 print(f"  {slot:12s} {size[0]}x{size[1]}  {len(data)/1024:6.0f} KB  {os.path.basename(p)}")
                 break
     missing = [s for s in known if s not in photo_map]
+    # concierge data: refresh the in-page block in the source file too, so index.html is never stale
+    cpath = os.path.join(HERE, "..", "concierge", "places.json")
+    if os.path.exists(cpath):
+        cjson = json.dumps(json.load(open(cpath, encoding="utf-8")), ensure_ascii=False).replace("</", "<\\/")
+        html = re.sub(r'<script id="concierge" type="application/json">.*?</script>',
+                      lambda m: '<script id="concierge" type="application/json">' + cjson + '</script>', html, count=1, flags=re.S)
+        open(SRC, "w", encoding="utf-8").write(html)
+        print(f"concierge: {len(json.loads(cjson)['places'])} places embedded")
     out = html.replace('<script id="photoMap" type="application/json">{}</script>',
                        '<script id="photoMap" type="application/json">' + json.dumps(photo_map).replace("</", "<\\/") + '</script>', 1)
     open(os.path.join(DIST, "index.html"), "w", encoding="utf-8").write(out)
