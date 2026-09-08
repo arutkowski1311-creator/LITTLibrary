@@ -1,0 +1,22 @@
+{
+  "id": "wild-pines",
+  "name": "The Wild Pines",
+  "tagline": "Classic Adirondack cabin life, made modern",
+  "summary": "A house and a separate apartment on one quiet property below Whiteface, beside the West Branch of the Ausable. Take one, or take both and have the whole place to yourselves.",
+  "town": "Wilmington",
+  "address": { "public": "Wilmington, NY 12997", "full": "[pending owner confirmation]", "approximate": true },
+  "location": { "lat": 44.393, "lng": -73.820, "approximate": true, "note": "Village-centre pin until the property address is confirmed" },
+  "owner": { "entity": "[contracting entity — pending]", "network": true },
+  "permit": { "town": "Wilmington", "number": null, "status": "pending", "countyRegistration": null, "insurance": null },
+  "sleeps": null, "bedrooms": null, "bathrooms": null,
+  "units": ["H", "A", "HA"],
+  "amenities": [],
+  "rates": { "mode": "sample", "note": "Sample rates live in the site's RATES table until approved" },
+  "booking": { "mode": "network-request", "url": null, "system": "OwnerRez (under evaluation)" },
+  "calendar": { "ical": [], "source": "booking core — not yet connected" },
+  "media": { "hero": "stay-HA", "photos": ["stay-H", "stay-A", "stay-HA", "H-living", "H-kitchen", "H-bed", "A-main", "A-kitchen", "A-bath", "HA-grounds", "HA-river", "HA-winter"], "video": null },
+  "responder": { "name": null, "phone": null },
+  "advertising": "network-owner",
+  "status": "live",
+  "verification": { "lastVerified": null, "nextReview": "2026-09-08", "status": "unverified" }
+}

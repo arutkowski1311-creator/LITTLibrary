@@ -67,6 +67,18 @@ def main():
                       lambda m: '<script id="concierge" type="application/json">' + cjson + '</script>', html, count=1, flags=re.S)
         open(SRC, "w", encoding="utf-8").write(html)
         print(f"concierge: {len(json.loads(cjson)['places'])} places embedded")
+    # network properties: merge properties/*.json (status live or pending-review) into the page
+    pdir = os.path.join(HERE, "..", "network", "properties")
+    if os.path.isdir(pdir):
+        props = []
+        for fn in sorted(os.listdir(pdir)):
+            if fn.endswith(".json"):
+                props.append(json.load(open(os.path.join(pdir, fn), encoding="utf-8")))
+        pjson = json.dumps(props, ensure_ascii=False).replace("</", "<\\/")
+        html = re.sub(r'<script id="properties" type="application/json">.*?</script>',
+                      lambda m: '<script id="properties" type="application/json">' + pjson + '</script>', html, count=1, flags=re.S)
+        open(SRC, "w", encoding="utf-8").write(html)
+        print(f"properties: {len(props)} embedded")
     out = html.replace('<script id="photoMap" type="application/json">{}</script>',
                        '<script id="photoMap" type="application/json">' + json.dumps(photo_map).replace("</", "<\\/") + '</script>', 1)
     open(os.path.join(DIST, "index.html"), "w", encoding="utf-8").write(out)
