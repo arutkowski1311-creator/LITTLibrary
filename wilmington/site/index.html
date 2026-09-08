@@ -432,6 +432,11 @@ body.owner .pending{background:var(--amber-tint);border-bottom-style:solid;paddi
 .lockup .r{height:3px;width:100%;background:var(--brand-rust);margin:8px 0 6px;border-radius:2px}
 .lockup .s{font-family:var(--f-display);font-weight:600;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--forest)}
 pre.json{font-family:var(--f-mono);font-size:.76rem;background:var(--paper-3);padding:14px;border-radius:3px;max-height:320px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.logo-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo-light{display:none}:root:not([data-theme="light"]) .logo-dark{display:block}}
+:root[data-theme="dark"] .logo-light{display:none}
+:root[data-theme="dark"] .logo-dark{display:block}
+.foot-logo .nnlogo{width:min(340px,80vw)}
 /* footer */
 footer{margin-top:clamp(64px,9vw,120px);border-top:1px solid var(--line);background:var(--paper-2)}
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:48px 0 28px}
@@ -472,7 +477,7 @@ body.owner .owner-bar{display:block}
 
 <div class="nav">
   <div class="wrap">
-    <a class="brand" href="#/"><svg class="nnlogo" viewBox="0 0 1000 470" role="img" aria-label="Northern Notch — Adirondack Vacation Homes"><path fill="var(--forest)" d="M36 262 L118 242 L196 216 L262 198 L326 176 L392 152 L446 116 L486 70 L510 36 L518 40 L542 62 L580 94 L626 124 L684 154 L746 182 L816 206 L888 230 L964 256 L964 264 L36 268 Z"/><path fill="var(--cream)" d="M512 48 L528 72 L520 86 L538 104 L528 118 L550 140 L542 156 L564 176 L554 186 L578 206 L588 200 L568 178 L576 168 L554 146 L564 132 L542 108 L550 96 L532 74 L522 60 Z"/><path fill="var(--cream)" d="M560 92 L578 114 L570 126 L592 148 L584 162 L610 186 L618 180 L596 158 L604 146 L582 122 L590 110 L572 90 Z"/><path fill="var(--cream)" d="M628 140 L650 160 L644 172 L668 194 L676 188 L654 166 L660 154 L640 136 Z"/><path fill="var(--cream)" d="M720 190 L742 206 L738 216 L760 232 L768 226 L748 210 L752 200 L732 186 Z"/><path fill="var(--cream)" d="M300 190 L340 176 L372 168 L400 174 L376 186 L342 196 L316 210 L290 216 Z"/><path fill="var(--cream)" d="M410 152 L436 142 L456 128 L466 132 L448 148 L426 160 Z"/><text x="500" y="372" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="800" font-size="120" fill="var(--forest)" textLength="900" lengthAdjust="spacingAndGlyphs">NORTHERN NOTCH</text><path fill="var(--brand-rust)" d="M60 392 Q500 404 940 392 L940 398 Q500 412 60 400 Z"/><text x="500" y="452" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="36" letter-spacing="6" fill="var(--forest)" textLength="740" lengthAdjust="spacingAndGlyphs">ADIRONDACK VACATION HOMES</text></svg></a>
+    <a class="brand" href="#/"><img class="nnlogo logo-light" src="brand/northern-notch-900.png" alt="Northern Notch — Adirondack Vacation Homes"><img class="nnlogo logo-dark" src="brand/northern-notch-900-dark.png" alt=""></a>
     <nav class="links" id="links" aria-label="Main">
       <a href="#/homes" data-nav="homes">Homes</a>
       <a href="#/p/wild-pines" data-nav="property">The Wild Pines</a>
@@ -496,7 +501,7 @@ body.owner .owner-bar{display:block}
   <div class="wrap">
     <div class="foot">
       <div class="about">
-        <div class="lockup"><svg class="nnlogo" style="width:min(340px,80vw)" viewBox="0 0 1000 470" role="img" aria-label="Northern Notch — Adirondack Vacation Homes"><path fill="var(--forest)" d="M36 262 L118 242 L196 216 L262 198 L326 176 L392 152 L446 116 L486 70 L510 36 L518 40 L542 62 L580 94 L626 124 L684 154 L746 182 L816 206 L888 230 L964 256 L964 264 L36 268 Z"/><path fill="var(--cream)" d="M512 48 L528 72 L520 86 L538 104 L528 118 L550 140 L542 156 L564 176 L554 186 L578 206 L588 200 L568 178 L576 168 L554 146 L564 132 L542 108 L550 96 L532 74 L522 60 Z"/><path fill="var(--cream)" d="M560 92 L578 114 L570 126 L592 148 L584 162 L610 186 L618 180 L596 158 L604 146 L582 122 L590 110 L572 90 Z"/><path fill="var(--cream)" d="M628 140 L650 160 L644 172 L668 194 L676 188 L654 166 L660 154 L640 136 Z"/><path fill="var(--cream)" d="M720 190 L742 206 L738 216 L760 232 L768 226 L748 210 L752 200 L732 186 Z"/><path fill="var(--cream)" d="M300 190 L340 176 L372 168 L400 174 L376 186 L342 196 L316 210 L290 216 Z"/><path fill="var(--cream)" d="M410 152 L436 142 L456 128 L466 132 L448 148 L426 160 Z"/><text x="500" y="372" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="800" font-size="120" fill="var(--forest)" textLength="900" lengthAdjust="spacingAndGlyphs">NORTHERN NOTCH</text><path fill="var(--brand-rust)" d="M60 392 Q500 404 940 392 L940 398 Q500 412 60 400 Z"/><text x="500" y="452" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="36" letter-spacing="6" fill="var(--forest)" textLength="740" lengthAdjust="spacingAndGlyphs">ADIRONDACK VACATION HOMES</text></svg></div></div>
+        <div class="lockup foot-logo"><img class="nnlogo logo-light" src="brand/northern-notch-900.png" alt="Northern Notch — Adirondack Vacation Homes"><img class="nnlogo logo-dark" src="brand/northern-notch-900-dark.png" alt=""></div></div>
         <p style="margin-top:16px">A small network of well-kept vacation homes in the Whiteface region, booked direct, with a concierge guide we maintain ourselves.</p>
       </div>
       <div><h4>Homes</h4><ul>

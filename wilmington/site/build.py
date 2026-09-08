@@ -85,6 +85,12 @@ def main():
                       lambda m: '<script id="properties" type="application/json">' + pjson + '</script>', html, count=1, flags=re.S)
         open(SRC, "w", encoding="utf-8").write(html)
         print(f"properties: {len(props)} embedded")
+    # brand images -> data URIs for the single-file artifact (source keeps relative paths for GitHub Pages)
+    def inline_brand(m):
+        fp = os.path.join(HERE, m.group(1))
+        if not os.path.exists(fp): return m.group(0)
+        return 'src="data:image/png;base64,' + base64.b64encode(open(fp, "rb").read()).decode("ascii") + '"'
+    html = re.sub(r'src="(brand/[^"]+\.png)"', inline_brand, html)
     out = html.replace('<script id="photoMap" type="application/json">{}</script>',
                        '<script id="photoMap" type="application/json">' + json.dumps(photo_map).replace("</", "<\\/") + '</script>', 1)
     open(os.path.join(DIST, "index.html"), "w", encoding="utf-8").write(out)
