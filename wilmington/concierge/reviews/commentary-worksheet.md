@@ -1,6 +1,6 @@
 # Concierge library — colour commentary worksheet
 
-Generated 2026-09-09 · 274 entries · 0 already have commentary.
+Generated 2026-09-09 · 275 entries · 0 already have commentary.
 
 How to use: write your note on the line(s) after **Commentary:** in any block. One to three sentences in your own voice is perfect
 (what you order, when to go, who it suits, what to skip). Leave a block blank to skip it. Type `REMOVE` to drop an entry,
@@ -496,6 +496,17 @@ Commentary:
 **RiverTrail Beerworks**  `rivertrail-beerworks`
 _Riverfront brewpub / pizza · ≈ 35 min via NY-86 · $$_
 A very strong modern-casual option: riverfront setting, good beer, pizza and plenty of room to socialize. It is especially useful for mixed-age groups or a low-pressure evening.
+
+Commentary:
+
+
+---
+
+### Upper Jay
+
+**Ice Jam Inn & Restaurant**  `ice-jam-inn`
+_Comfort classics / creative American / inn · 15 min north via NY-86 & NY-9N · $$_
+A small country inn on Route 9N in Upper Jay with a restaurant downstairs: comfort classics done with care (burgers and 'sammies', mussels, changing entrées) and proper vegan and vegetarian choices. An airy dining room u
 
 Commentary:
 

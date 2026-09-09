@@ -15437,6 +15437,87 @@
    "kids": true,
    "tip": "Owner go-to. Sits at the Keene end of Route 73, so pair it with Baxter Mountain or a Cascade Pass foliage drive and finish dinner here.",
    "commentary": ""
+  },
+  {
+   "id": "ice-jam-inn",
+   "name": "Ice Jam Inn & Restaurant",
+   "category": "Dining",
+   "subcategory": "Comfort classics / creative American / inn",
+   "iconic": false,
+   "area": "Upper Jay",
+   "address": "12134 NYS Route 9N, Upper Jay, NY 12987",
+   "phone": "518-946-6079",
+   "website": "https://www.icejaminnadk.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": 1,
+   "rankScope": "dining-overall",
+   "review": "A small country inn on Route 9N in Upper Jay with a restaurant downstairs: comfort classics done with care (burgers and 'sammies', mussels, changing entrées) and proper vegan and vegetarian choices. An airy dining room under the guest rooms and an open-air porch for summer. Fifteen minutes from the house and far calmer than Lake Placid on a Saturday night.",
+   "bestFor": [
+    "Couples",
+    "Families",
+    "Quiet dinners close to home",
+    "Special diets"
+   ],
+   "order": "",
+   "knowBefore": "Open Wednesday to Sunday, roughly 3:30–8:30 pm. Reservations strongly recommended and taken by phone only during opening hours.",
+   "occasionPick": null,
+   "signals": {
+    "asOf": "2026-09-09"
+   },
+   "season": "Year-round (verify seasonal days)",
+   "hours": "Wed–Sun 3:30–8:30 pm (per website, verify)",
+   "cost": "$$",
+   "booking": "Reservations recommended · phone only",
+   "access": "Verify",
+   "suits": [
+    "couples",
+    "families",
+    "quiet",
+    "hikers"
+   ],
+   "flags": [
+    "owner-recommended"
+   ],
+   "drive": "15 min north via NY-86 & NY-9N",
+   "photo": null,
+   "links": [
+    {
+     "label": "Menu",
+     "url": "https://www.icejaminnadk.com/",
+     "kind": "info"
+    },
+    {
+     "label": "Whiteface Region listing",
+     "url": "https://www.whitefaceregion.com/dining/ice-jam-inn",
+     "kind": "source"
+    },
+    {
+     "label": "Tripadvisor",
+     "url": "https://www.tripadvisor.com/Restaurant_Review-g48755-d23551344-Reviews-Ice_Jam_Inn-Upper_Jay_New_York.html",
+     "kind": "reviews"
+    }
+   ],
+   "source": {
+    "name": "Owner recommendation (2026-09-09) · official site icejaminnadk.com, Whiteface Region and Tripadvisor checked 2026-09-09",
+    "ref": "[O]",
+    "url": "https://www.icejaminnadk.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-09",
+    "verifiedBy": "Claude (web)",
+    "method": "official site + regional listing + review sites",
+    "nextReview": "2026-10-09",
+    "status": "verified"
+   },
+   "status": "active",
+   "goTo": true,
+   "meal": [
+    "dinner"
+   ],
+   "kids": true,
+   "tip": "Owner recommendation. Book by phone during their hours; the porch is the seat in summer.",
+   "commentary": ""
   }
  ]
 }
