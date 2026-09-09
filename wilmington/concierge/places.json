@@ -6445,58 +6445,6 @@
    "commentary": ""
   },
   {
-   "id": "46er-owner-go-to-confirm-which-venue",
-   "name": "46er (owner go-to — confirm which venue)",
-   "category": "Dining",
-   "subcategory": "Dinner go-to",
-   "iconic": false,
-   "area": "Lake Placid",
-   "address": "",
-   "phone": "",
-   "website": null,
-   "websiteKind": null,
-   "rank": null,
-   "areaRank": null,
-   "rankScope": null,
-   "review": "Named by the owner as a dinner go-to. Not yet matched to a listing; confirm the exact venue before it is shown to guests.",
-   "bestFor": [
-    "Dinner"
-   ],
-   "order": "",
-   "knowBefore": "OWNER TO CONFIRM: no venue named '46er' was found in Lake Placid or Wilmington. The 46'er Pale Ale is Lake Placid Pub & Brewery's flagship beer, so this may mean the Pub & Brewery. Confirm which restaurant is meant.",
-   "occasionPick": null,
-   "signals": {},
-   "season": "Verify hours and season",
-   "hours": "Verify",
-   "cost": "$$",
-   "booking": "",
-   "access": "Verify",
-   "suits": [
-    "food"
-   ],
-   "flags": [],
-   "drive": "15 min down the road · 13 mi via NY-86",
-   "source": {
-    "name": "Owner go-to (to verify)",
-    "ref": "[O]",
-    "url": null
-   },
-   "verification": {
-    "lastVerified": null,
-    "verifiedBy": null,
-    "method": null,
-    "nextReview": "2026-09-08",
-    "status": "unverified"
-   },
-   "status": "placeholder",
-   "meal": [
-    "dinner"
-   ],
-   "kids": true,
-   "goTo": true,
-   "commentary": ""
-  },
-  {
    "id": "rooftop-bar-lake-placid-owner-go-to-confirm-which-venue",
    "name": "Rooftop bar, Lake Placid (owner go-to — confirm which venue)",
    "category": "Dining",
@@ -15413,6 +15361,82 @@
    "status": "active",
    "commentary": "",
    "rainOk": false
+  },
+  {
+   "id": "forty-six-keene",
+   "name": "Forty Six",
+   "category": "Dining",
+   "subcategory": "Farm-to-table bistro / New American",
+   "iconic": false,
+   "area": "Keene",
+   "address": "2837 NYS Route 73, Keene, NY 12942",
+   "phone": "518-576-4646",
+   "website": "https://www.fortysixer.com/",
+   "websiteKind": "official",
+   "rank": null,
+   "areaRank": 1,
+   "rankScope": "dining-overall",
+   "review": "Bistro-style farm-to-table cooking in the heart of the High Peaks, open since 2018: seasonal Adirondack-inspired plates, a good bar and gluten-free, vegetarian and vegan options that are real dishes rather than afterthoughts. The owner's go-to for dinner on the Keene side.",
+   "bestFor": [
+    "Couples",
+    "Post-hike dinners",
+    "Special-diet friendly"
+   ],
+   "order": "",
+   "knowBefore": "Closed Wednesdays. Small room; book ahead on summer and foliage weekends.",
+   "occasionPick": null,
+   "signals": {
+    "tripadvisor": 4.5,
+    "asOf": "2026-09-09"
+   },
+   "season": "Year-round (verify seasonal hours)",
+   "hours": "Mon–Tue & Thu–Sat 11:30 am – 9 pm; closed Wed (per website, verify)",
+   "cost": "$$–$$$",
+   "booking": "Reservations recommended",
+   "access": "Verify",
+   "suits": [
+    "couples",
+    "hikers",
+    "foodies"
+   ],
+   "flags": [
+    "owner-recommended"
+   ],
+   "drive": "30 min via NY-9N",
+   "photo": null,
+   "links": [
+    {
+     "label": "Menu",
+     "url": "https://www.fortysixer.com/",
+     "kind": "info"
+    },
+    {
+     "label": "Tripadvisor",
+     "url": "https://www.tripadvisor.com/Restaurant_Review-g47986-d14784689-Reviews-Forty_Six-Keene_New_York.html",
+     "kind": "reviews"
+    }
+   ],
+   "source": {
+    "name": "Owner go-to (2026-09-08) · official site fortysixer.com and Tripadvisor checked 2026-09-09",
+    "ref": "[O]",
+    "url": "https://www.fortysixer.com/"
+   },
+   "verification": {
+    "lastVerified": "2026-09-09",
+    "verifiedBy": "Claude (web)",
+    "method": "official site + Tripadvisor + Yelp",
+    "nextReview": "2026-10-09",
+    "status": "verified"
+   },
+   "status": "active",
+   "goTo": true,
+   "meal": [
+    "lunch",
+    "dinner"
+   ],
+   "kids": true,
+   "tip": "Owner go-to. Sits at the Keene end of Route 73, so pair it with Baxter Mountain or a Cascade Pass foliage drive and finish dinner here.",
+   "commentary": ""
   }
  ]
 }

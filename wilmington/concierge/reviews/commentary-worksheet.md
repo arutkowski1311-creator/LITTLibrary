@@ -1,6 +1,6 @@
 # Concierge library — colour commentary worksheet
 
-Generated 2026-09-08 · 274 entries · 0 already have commentary.
+Generated 2026-09-09 · 274 entries · 0 already have commentary.
 
 How to use: write your note on the line(s) after **Commentary:** in any block. One to three sentences in your own voice is perfect
 (what you order, when to go, who it suits, what to skip). Leave a block blank to skip it. Type `REMOVE` to drop an entry,
@@ -42,6 +42,15 @@ Commentary:
 
 ---
 
+**Forty Six**  `forty-six-keene`
+_Farm-to-table bistro / New American · 30 min via NY-9N · $$–$$$_
+Bistro-style farm-to-table cooking in the heart of the High Peaks, open since 2018: seasonal Adirondack-inspired plates, a good bar and gluten-free, vegetarian and vegan options that are real dishes rather than afterthou
+
+Commentary:
+
+
+---
+
 ### Keene Valley
 
 **Ausable Inn**  `ausable-inn-keene-valley` ⚠ unverified
@@ -74,15 +83,6 @@ Commentary:
 ---
 
 ### Lake Placid
-
-**46er (owner go-to — confirm which venue)**  `46er-owner-go-to-confirm-which-venue` ⚠ unverified
-_Dinner go-to · 15 min down the road · 13 mi via NY-86 · $$_
-Named by the owner as a dinner go-to. Not yet matched to a listing; confirm the exact venue before it is shown to guests.
-
-Commentary:
-
-
----
 
 **Big Mountain Deli & Crêperie**  `big-mountain-deli-cr-perie`
 _Deli / crêperie / breakfast-lunch · 15 min down the road · 13 mi via NY-86 · $_
