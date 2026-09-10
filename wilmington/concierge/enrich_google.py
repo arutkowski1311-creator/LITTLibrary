@@ -47,8 +47,8 @@ def call(url, body=None, mask=None):
     with urllib.request.urlopen(req, timeout=30) as r: return json.load(r)
 
 def resolve(p):
-    q = p.get("address") or f'{p["name"]}, {p.get("area","")}, NY'
-    res = call("https://places.googleapis.com/v1/places:searchText", {"textQuery": q, "locationBias": {"circle": {"center": {"latitude": 44.39, "longitude": -73.83}, "radius": 60000}}, "maxResultCount": 1}, "places.id,places.displayName,places.formattedAddress")
+    q = p["name"] + ", " + (p.get("address") or f'{p.get("area","")}, NY')
+    res = call("https://places.googleapis.com/v1/places:searchText", {"textQuery": q, "locationBias": {"circle": {"center": {"latitude": 44.39, "longitude": -73.83}, "radius": 50000}}, "maxResultCount": 1}, "places.id,places.displayName,places.formattedAddress")
     return (res.get("places") or [None])[0]
 
 def details(pid): return call(f"https://places.googleapis.com/v1/places/{pid}", mask=FIELDS)
@@ -68,10 +68,12 @@ def main():
         if dry: print("would enrich", p["id"]); done += 1; continue
         try:
             hit = resolve(p)
-            if not hit: log.append({"id": p["id"], "result": "no-match"}); continue
+            if not hit: log.append({"id": p["id"], "result": "no-match"}); done += 1; continue
             det = details(hit["id"])
         except urllib.error.HTTPError as e:
-            log.append({"id": p["id"], "result": f"http {e.code}", "body": e.read()[:300].decode(errors="ignore")}); continue
+            log.append({"id": p["id"], "result": f"http {e.code}", "body": e.read()[:300].decode(errors="ignore")}); done += 1
+            if sum(1 for e in log if e["result"].startswith("http")) >= 5: print("stopping after 5 HTTP errors; see the log"); break
+            continue
         p["google"] = {"placeId": det.get("id"), "name": (det.get("displayName") or {}).get("text"), "address": det.get("formattedAddress"),
                        "location": det.get("location"), "rating": det.get("rating"), "userRatingCount": det.get("userRatingCount"),
                        "website": det.get("websiteUri"), "phone": det.get("nationalPhoneNumber"), "priceLevel": det.get("priceLevel"),
@@ -79,6 +81,9 @@ def main():
                        "editorialSummary": (det.get("editorialSummary") or {}).get("text"),
                        "reviewSummary": ((det.get("reviewSummary") or {}).get("text") or {}).get("text"),
                        "generativeSummary": ((det.get("generativeSummary") or {}).get("overview") or {}).get("text"),
+                       "reviewSummaryFlagUri": (det.get("reviewSummary") or {}).get("flagContentUri"),
+                       "generativeSummaryFlagUri": (det.get("generativeSummary") or {}).get("overviewFlagContentUri"),
+                       "summaryDisclosure": (((det.get("generativeSummary") or {}).get("disclosureText") or {}).get("text")) or (((det.get("reviewSummary") or {}).get("disclosureText") or {}).get("text")),
                        "photos": [{"name": ph.get("name"), "width": ph.get("widthPx"), "height": ph.get("heightPx"),
                                    "attribution": ", ".join(a.get("displayName", "") for a in ph.get("authorAttributions", []))} for ph in (det.get("photos") or [])[:5]],
                        "refreshed": TODAY}

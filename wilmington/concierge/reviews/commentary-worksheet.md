@@ -1,6 +1,6 @@
 # Concierge library — colour commentary worksheet
 
-Generated 2026-09-09 · 275 entries · 0 already have commentary.
+Generated 2026-09-10 · 275 entries · 0 already have commentary.
 
 How to use: write your note on the line(s) after **Commentary:** in any block. One to three sentences in your own voice is perfect
 (what you order, when to go, who it suits, what to skip). Leave a block blank to skip it. Type `REMOVE` to drop an entry,
@@ -33,7 +33,7 @@ Commentary:
 
 ---
 
-**Cedar Run Bakery & Market**  `cedar-run-bakery-market` ⚠ unverified
+**Cedar Run Bakery & Market**  `cedar-run-bakery-market`
 _Bakery / market / lunch · 30 min via NY-9N · $_
 The trailhead pantry for the High Peaks: fresh bread and pastries, made-to-order sandwiches, soups, take-and-bake dinners and good coffee. Grab trail lunches here on the way to Cascade or Giant.
 
@@ -53,7 +53,7 @@ Commentary:
 
 ### Keene Valley
 
-**Ausable Inn**  `ausable-inn-keene-valley` ⚠ unverified
+**Ausable Inn**  `ausable-inn-keene-valley`
 _Pub / pizza / American · 40 min via NY-9N & NY-73 · $$_
 Keene Valley's village pub-restaurant: pizza, burgers, pasta and a bar full of climbers and hikers swapping stories. Sits a few doors from The Mountaineer.
 
@@ -62,7 +62,7 @@ Commentary:
 
 ---
 
-**Noon Mark Diner**  `noon-mark-diner` ⚠ unverified
+**Noon Mark Diner**  `noon-mark-diner`
 _Classic diner · pies · ≈ 30–40 min via Jay and NY-73 · $$_
 A small-town diner on Route 73 in Keene Valley, known far beyond the valley for its pies. The breakfast stop when your day is heading toward Cascade, Giant or the Keene side.
 
@@ -73,7 +73,7 @@ Commentary:
 
 ### Keeseville
 
-**Ausable Brewing Company**  `ausable-brewing-company` ⚠ unverified
+**Ausable Brewing Company**  `ausable-brewing-company`
 _Farm brewery · outdoor · ≈ 45 min · $$_
 A farm brewery on the Ausable outside Keeseville: outdoor tables, food trucks, live music in summer. Pairs naturally with an Ausable Chasm day.
 
@@ -93,7 +93,7 @@ Commentary:
 
 ---
 
-**Big Slide Brewery & Public House**  `big-slide-brewery-public-house` ⚠ unverified
+**Big Slide Brewery & Public House**  `big-slide-brewery-public-house`
 _Brewery · wood-fired kitchen · 15 min down the road · 13 mi via NY-86 · $$_
 A newer brewery on the edge of the village with a proper kitchen and wood-fired pizza. The pick when the beer matters as much as dinner.
 
@@ -102,7 +102,7 @@ Commentary:
 
 ---
 
-**Bluesberry Bakery**  `bluesberry-bakery` ⚠ unverified
+**Bluesberry Bakery**  `bluesberry-bakery`
 _Bakery · 15 min down the road · 13 mi via NY-86 · $_
 Tiny Main Street bakery with scones, croissants, cookies and pies that sell out. Grab a box for the cabin.
 
@@ -138,7 +138,7 @@ Commentary:
 
 ---
 
-**Emma's Lake Placid Creamery**  `emmas-lake-placid-creamery` ⚠ unverified
+**Emma's Lake Placid Creamery**  `emmas-lake-placid-creamery`
 _Ice cream · 15 min down the road · 13 mi via NY-86 · $_
 Main Street ice cream window with dozens of flavours and a queue on summer nights; the after-dinner walk-to.
 
@@ -147,7 +147,7 @@ Commentary:
 
 ---
 
-**Generations Tap & Grill (Golden Arrow)**  `generations-golden-arrow` ⚠ unverified
+**Generations Tap & Grill (Golden Arrow)**  `generations-golden-arrow`
 _American / hotel dining · 15 min down the road · 13 mi via NY-86 · $$–$$$_
 Hotel restaurant on Main Street with a lake-view dining room and a broad, crowd-pleasing menu. Reliable for a mixed group when the small rooms are full.
 
@@ -165,7 +165,7 @@ Commentary:
 
 ---
 
-**Green Goddess Natural Market**  `green-goddess-market` ⚠ unverified
+**Green Goddess Natural Market**  `green-goddess-market`
 _Natural market / café · 15 min down the road · 13 mi via NY-86 · $–$$_
 Natural-foods market with a smoothie and salad bar and a hot case: the healthy lunch and the place for special diets. Also a good grocery top-up.
 
@@ -192,7 +192,7 @@ Commentary:
 
 ---
 
-**KANU Restaurant & Lounge (Whiteface Lodge)**  `kanu-whiteface-lodge` ⚠ unverified
+**KANU Restaurant & Lounge (Whiteface Lodge)**  `kanu-whiteface-lodge`
 _Fine dining / lodge lounge · 15 min down the road · 13 mi via NY-86 · $$$–$$$$_
 Timber-and-stone lodge dining with a big fireplace lounge, cocktails and a menu built for celebrations. A step up in price, matched by the room.
 
@@ -201,7 +201,7 @@ Commentary:
 
 ---
 
-**Lake Placid Lodge — Artisans & Maggie's Pub**  `lake-placid-lodge-dining` ⚠ unverified
+**Lake Placid Lodge — Artisans & Maggie's Pub**  `lake-placid-lodge-dining`
 _Fine dining / Great Camp pub · 15 min down the road · 13 mi via NY-86 · $$$$_
 Great Camp atmosphere on the shore of Lake Placid itself: Artisans for a serious dinner, Maggie's Pub for a fireside drink and a simpler plate. A special-occasion drive out Whiteface Inn Lane.
 
@@ -210,7 +210,7 @@ Commentary:
 
 ---
 
-**Lake Placid Pub & Brewery**  `lake-placid-pub-brewery` ⚠ unverified
+**Lake Placid Pub & Brewery**  `lake-placid-pub-brewery`
 _Brewpub · Ubu Ale · 15 min down the road · 13 mi via NY-86 · $$_
 The village brewpub above Mirror Lake and the home of Ubu Ale. Casual, loud in a good way, and easy with a group.
 
@@ -246,7 +246,7 @@ Commentary:
 
 ---
 
-**Origin Coffee Co.**  `origin-coffee-lake-placid` ⚠ unverified
+**Origin Coffee Co.**  `origin-coffee-lake-placid`
 _Coffee / café · 15 min down the road · 13 mi via NY-86 · $_
 Specialty coffee with a chef-driven breakfast and lunch menu and rotating local art. Locations in Lake Placid and Saranac Lake; the one to pick for a good flat white.
 
@@ -273,7 +273,7 @@ Commentary:
 
 ---
 
-**Saranac Sourdough**  `saranac-sourdough` ⚠ unverified
+**Saranac Sourdough**  `saranac-sourdough`
 _Bakery / sandwiches · 15 min down the road · 13 mi via NY-86 · $_
 Bread-first bakery-café on the Saranac Avenue strip: sourdough loaves, big sandwiches and soups for a trail day. Handy on the way west.
 
@@ -282,7 +282,7 @@ Commentary:
 
 ---
 
-**Simply Gourmet**  `simply-gourmet-lake-placid` ⚠ unverified
+**Simply Gourmet**  `simply-gourmet-lake-placid`
 _Sandwiches / take-out · 15 min down the road · 13 mi via NY-86 · $_
 The famous 46-sandwich menu, one named for each High Peak. Order ahead, drive to a trailhead or the beach.
 
@@ -300,7 +300,7 @@ Commentary:
 
 ---
 
-**The Breakfast Club, Etc.**  `breakfast-club-etc` ⚠ unverified
+**The Breakfast Club, Etc.**  `breakfast-club-etc`
 _Breakfast / brunch · 15 min down the road · 13 mi via NY-86 · $–$$_
 Lake Placid's breakfast institution: huge pancakes, eggs every way, mimosas and a line out the door on weekends. Worth the wait once; go early.
 
@@ -309,7 +309,7 @@ Commentary:
 
 ---
 
-**The Cottage (Mirror Lake Inn)**  `the-cottage-mirror-lake-inn` ⚠ unverified
+**The Cottage (Mirror Lake Inn)**  `the-cottage-mirror-lake-inn`
 _Casual / lakeside deck / bar · 15 min down the road · 13 mi via NY-86 · $$_
 Casual lakeside café and bar across the road from the Inn, with a deck right on Mirror Lake. Sandwiches, salads, nachos and a drink at sunset; one of the best warm-evening seats in town.
 
@@ -318,7 +318,7 @@ Commentary:
 
 ---
 
-**The Dack Shack**  `dack-shack` ⚠ unverified
+**The Dack Shack**  `dack-shack`
 _Casual / patio · 15 min down the road · 13 mi via NY-86 · $_
 Counter-service burgers, wings, tacos and beer with a big patio on Saranac Avenue. Loud, cheap, kid-proof.
 
@@ -327,7 +327,7 @@ Commentary:
 
 ---
 
-**The Pickled Pig**  `pickled-pig-lake-placid` ⚠ unverified
+**The Pickled Pig**  `pickled-pig-lake-placid`
 _BBQ / bar · 15 min down the road · 13 mi via NY-86 · $$_
 Barbecue and a bourbon-heavy bar on Saranac Avenue: brisket, ribs, pulled pork and a smoker out back. The casual alternative when Smoke Signals has a wait.
 
@@ -336,7 +336,7 @@ Commentary:
 
 ---
 
-**The View at Mirror Lake Inn**  `the-view-mirror-lake-inn` ⚠ unverified
+**The View at Mirror Lake Inn**  `the-view-mirror-lake-inn`
 _Fine dining / lake view · 15 min down the road · 13 mi via NY-86 · $$$$_
 The area's formal dining room: AAA Four Diamond, white tablecloths, a wall of windows over Mirror Lake. Book it for the anniversary dinner, not for a night with toddlers.
 
@@ -385,7 +385,7 @@ Commentary:
 
 ---
 
-**Campfire Adirondack Grill + Bar (Hotel Saranac)**  `campfire-hotel-saranac` ⚠ unverified
+**Campfire Adirondack Grill + Bar (Hotel Saranac)**  `campfire-hotel-saranac`
 _Grill / hotel bar · ≈35 min via NY-86 · $$–$$$_
 The restored 1927 Hotel Saranac's grill: wood-fired plates, a handsome bar and the Great Hall upstairs for a drink under the painted ceiling.
 
@@ -394,7 +394,7 @@ Commentary:
 
 ---
 
-**Casa del Sol**  `casa-del-sol` ⚠ unverified
+**Casa del Sol**  `casa-del-sol`
 _Mexican · ≈35 min via NY-86 · $$_
 Long-running Mexican cantina with a shaded patio and strong margaritas; a Saranac Lake summer fixture.
 
@@ -457,7 +457,7 @@ Commentary:
 
 ---
 
-**Nori's Village Market**  `noris-village-market` ⚠ unverified
+**Nori's Village Market**  `noris-village-market`
 _Natural market / deli · ≈35 min via NY-86 · $–$$_
 The Adirondacks' biggest natural-and-local grocer, with a deli and prepared foods; stock the cabin here if you are coming from the west.
 
@@ -466,7 +466,7 @@ Commentary:
 
 ---
 
-**Origin Coffee Co. — Saranac Lake**  `origin-coffee-saranac-lake` ⚠ unverified
+**Origin Coffee Co. — Saranac Lake**  `origin-coffee-saranac-lake`
 _Coffee / café · ≈35 min via NY-86 · $_
 The Saranac Lake outpost of the specialty roaster-café: breakfast plates, pastries and the best espresso in the village.
 
@@ -524,7 +524,7 @@ Commentary:
 
 ---
 
-**R.F. McDougall's Pub (at the Hungry Trout)**  `rf-mcdougalls-pub` ⚠ unverified
+**R.F. McDougall's Pub (at the Hungry Trout)**  `rf-mcdougalls-pub`
 _Pub / casual · 5–10 min · $$_
 The Hungry Trout's casual sibling: a proper pub room with burgers, fish and chips and a solid tap list, right above the West Branch. Easier and cheaper than the dining room next door.
 
@@ -578,7 +578,7 @@ Commentary:
 
 ---
 
-**Wilderness Inn II**  `wilderness-inn-wilmington` ⚠ unverified
+**Wilderness Inn II**  `wilderness-inn-wilmington`
 _Classic Adirondack steakhouse · 5–10 min · $$–$$$_
 Old-school Adirondack steak-and-seafood house with a log-cabin dining room and a bar that locals have used for decades. The kind of place for prime rib after a Whiteface day.
 
@@ -592,7 +592,7 @@ Commentary:
 
 ### Lake Placid
 
-**Cloudsplitter Rooftop Bar (Grand Adirondack Hotel)**  `cloudsplitter-rooftop-bar` ⚠ unverified
+**Cloudsplitter Rooftop Bar (Grand Adirondack Hotel)**  `cloudsplitter-rooftop-bar`
 _Rooftop cocktail bar · 15 min down the road · 13 mi via NY-86 · $$–$$$_
 The rooftop bar in town: cocktails, small plates and a 360° look at the High Peaks and Mirror Lake from above Main Street. Reopens each May; the place for a summer sunset drink and Fourth-of-July fireworks.
 
@@ -601,7 +601,7 @@ Commentary:
 
 ---
 
-**Dancing Bears Restaurant & Lounge (Golden Arrow)**  `dancing-bears-golden-arrow` ⚠ unverified
+**Dancing Bears Restaurant & Lounge (Golden Arrow)**  `dancing-bears-golden-arrow`
 _Hotel lounge / deck · 15 min down the road · 13 mi via NY-86 · $$_
 Hotel lounge and bar on Main Street with a lake-view deck; a calmer drink than the pubs, with food until late.
 
@@ -619,7 +619,7 @@ Commentary:
 
 ---
 
-**Roomers**  `roomers-lake-placid` ⚠ unverified
+**Roomers**  `roomers-lake-placid`
 _Bar / nightclub · 15 min down the road · 13 mi via NY-86 · $$_
 Main Street bar and nightclub that fills after 10 pm in season; DJs, dancing, not for quiet conversation.
 
@@ -637,7 +637,7 @@ Commentary:
 
 ---
 
-**Wiseguys Sports Bar & Grill**  `wiseguys-sports-bar` ⚠ unverified
+**Wiseguys Sports Bar & Grill**  `wiseguys-sports-bar`
 _Sports bar · 15 min down the road · 13 mi via NY-86 · $–$$_
 Screens, wings and pitchers on Saranac Avenue; the game-day bar, easy with a group.
 
@@ -646,7 +646,7 @@ Commentary:
 
 ---
 
-**Zig Zags Pub**  `zig-zags-pub` ⚠ unverified
+**Zig Zags Pub**  `zig-zags-pub`
 _Pub / live music · 15 min down the road · 13 mi via NY-86 · $_
 Lake Placid's dive-bar-with-heart: darts, live music, cheap pints and a local crowd. The late stop.
 
@@ -657,7 +657,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Downhill Grill**  `downhill-grill-saranac-lake` ⚠ unverified
+**Downhill Grill**  `downhill-grill-saranac-lake`
 _Bar & grill · ≈35 min via NY-86 · $$_
 Neighbourhood bar-restaurant on Broadway with a deck, tacos and a big beer list; where locals actually go.
 
@@ -666,7 +666,7 @@ Commentary:
 
 ---
 
-**Great Hall Bar (Hotel Saranac)**  `great-hall-bar-hotel-saranac` ⚠ unverified
+**Great Hall Bar (Hotel Saranac)**  `great-hall-bar-hotel-saranac`
 _Hotel bar / cocktails · ≈35 min via NY-86 · $$–$$$_
 Cocktails under the restored painted ceiling of a 1927 grand hotel; the most elegant drink in Saranac Lake.
 
@@ -675,7 +675,7 @@ Commentary:
 
 ---
 
-**The Waterhole**  `the-waterhole-saranac-lake` ⚠ unverified
+**The Waterhole**  `the-waterhole-saranac-lake`
 _Music venue / bar · ≈35 min via NY-86 · $–$$ plus tickets_
 Saranac Lake's music venue and bar since forever: touring bands upstairs, a raucous downstairs, a summer concert series. Check the calendar.
 
@@ -686,7 +686,7 @@ Commentary:
 
 ### Upper Jay
 
-**Recovery Lounge (Upper Jay Art Center)**  `recovery-lounge-upper-jay` ⚠ unverified
+**Recovery Lounge (Upper Jay Art Center)**  `recovery-lounge-upper-jay`
 _Arts venue / bar · 15 min north · Tickets vary_
 Concerts, theatre and cabaret in a former car dealership, with a bar. Small, odd and wonderful; check the season's programme.
 
@@ -700,7 +700,7 @@ Commentary:
 
 ### Bloomingdale
 
-**Hex & Hop Brewing**  `hex-and-hop-brewing` ⚠ unverified
+**Hex & Hop Brewing**  `hex-and-hop-brewing`
 _Farm brewery · 40 min · $_
 Small honey-forward brewery on a Bloomingdale side road with a big lawn and food trucks in summer; worth the detour on a Bloomingdale Bog day.
 
@@ -711,7 +711,7 @@ Commentary:
 
 ### Lake Placid
 
-**High Peaks Distilling (Lake Placid Spirits)**  `high-peaks-distilling` ⚠ unverified
+**High Peaks Distilling (Lake Placid Spirits)**  `high-peaks-distilling`
 _Craft distillery · 15 min down the road · 13 mi via NY-86 · $$_
 Small-batch gin, vodka and whiskey distilled in Lake Placid, with a tasting room and cocktails. The bottle to take home.
 
@@ -742,7 +742,7 @@ Commentary:
 
 ### Ray Brook
 
-**Ray Brook Brewhouse**  `ray-brook-brewhouse` ⚠ unverified
+**Ray Brook Brewhouse**  `ray-brook-brewhouse`
 _Brewpub · 25 min via NY-86 · $$_
 Roadside brewpub on NY-86 between Lake Placid and Saranac Lake with a long list of its own beers, pub food and a deck. An easy stop on the way home from the west.
 
@@ -753,7 +753,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Blue Line Brewery**  `blue-line-brewery` ⚠ unverified
+**Blue Line Brewery**  `blue-line-brewery`
 _Brewery taproom · ≈35 min via NY-86 · $_
 Saranac Lake's first modern brewery, in a converted car wash on Lake Flower Avenue; a broad tap list and a low-key taproom.
 
@@ -764,7 +764,7 @@ Commentary:
 
 ### Tupper Lake
 
-**Raquette River Brewing**  `raquette-river-brewing` ⚠ unverified
+**Raquette River Brewing**  `raquette-river-brewing`
 _Brewery taproom · 1 h 10 min · $_
 Tupper Lake brewery with a live-edge bar, a patio of Adirondack chairs and rotating food trucks; combine with The Wild Center.
 
@@ -780,16 +780,16 @@ Commentary:
 
 **Mount Jo via the Long Trail**  `mount-jo-via-the-long-trail`
 _Medium · 40–50 min · Free_
-A classic small mountain with a much bigger view than its size suggests. The Long Trail is the preferred family approach, but roots, rocks and sustained climbing keep this out of the toddler-stroll category.
+The classic first High Peaks-area summit: a small mountain above Heart Lake with a straight-on view of the MacIntyre Range and Marcy that reviewers describe as the best payoff per mile in the region. Two routes reach the
 
 Commentary:
 
 
 ---
 
-**Mount Marcy via the Van Hoevenberg Trail**  `mount-marcy-via-van-hoevenberg` ⚠ unverified
+**Mount Marcy via the Van Hoevenberg Trail**  `mount-marcy-via-van-hoevenberg`
 _Difficult · 30 min via Adirondak Loj Rd · Parking fee (verify)_
-New York's highest point, a 14.8-mile round trip from Heart Lake. Start before dawn, carry more than you think, and check the forecast; above the trees it is a different climate. For fit adults with a full day and good w
+New York's highest point by its shortest and busiest route: 7.4 miles each way from Heart Lake past Marcy Dam and Indian Falls to an alpine summit where the wind and cold surprise people every summer. Reviewers say the d
 
 Commentary:
 
@@ -798,18 +798,18 @@ Commentary:
 
 ### Black Brook / Silver Lake
 
-**Catamount Mountain**  `catamount-mountain` ⚠ unverified
+**Catamount Mountain**  `catamount-mountain`
 _Difficult · 20–25 min north · Free_
-Short mileage, big character: open rock, a chimney scramble and a bald summit with 360° views over Taylor Pond and Whiteface. Not for small children or wet days.
+Short mileage, big character: the last 0.8 miles are mostly bare rock with sustained scrambling, including a narrow rock chimney at 1.4 miles that Adirondack Explorer calls high-peak scrambling on a low peak. The reward 
 
 Commentary:
 
 
 ---
 
-**Silver Lake Mountain**  `silver-lake-mountain` ⚠ unverified
+**Silver Lake Mountain**  `silver-lake-mountain`
 _Small children · 20–25 min north · Free_
-Under a mile up to open ledges over Silver Lake, Taylor Pond and Whiteface; one of the best view-for-effort climbs in the region and almost unknown.
+A gem that almost nobody outside the area knows: under a mile of steady climbing to open ledges over Silver Lake, Taylor Pond and Catamount with Whiteface behind, rated almost as highly as Cobble Lookout by the eleven hu
 
 Commentary:
 
@@ -820,7 +820,7 @@ Commentary:
 
 **Bloomingdale Bog: short out-and-back**  `bloomingdale-bog-short-out-and-back`
 _Leisurely / easy · 30–45 min · Free_
-A nearly level former rail corridor through an unusual wetland landscape. Choose a turnaround point based on the group rather than aiming for the full trail.
+A dead-flat old railroad bed through open bog, tamaracks and ponds between Saranac Lake and Bloomingdale, famous for the hand-tame Canada jays that will land on an outstretched hand at the northern end. Reviewers prize t
 
 Commentary:
 
@@ -829,9 +829,9 @@ Commentary:
 
 ### Cascade Pass, Route 73
 
-**Pitchoff Mountain: Balanced Rocks**  `pitchoff-balanced-rocks` ⚠ unverified
+**Pitchoff Mountain: Balanced Rocks**  `pitchoff-balanced-rocks`
 _Medium · 25 min via Lake Placid · Free_
-Across the road from Cascade's trailhead, a steep climb to the Balanced Rocks ledge looking down on the Cascade Lakes and across to Cascade and Porter; far quieter than its famous neighbour.
+Across the road from Cascade's trailhead, a steep set of stairs leads into a worn but lightly marked trail up to the Balanced Rocks: giant boulders on a cliff-top ledge looking down on the Cascade Lakes and across to Cas
 
 Commentary:
 
@@ -840,9 +840,9 @@ Commentary:
 
 ### Chesterfield / Keeseville
 
-**Poke-O-Moonshine fire tower**  `poke-o-moonshine-fire-tower` ⚠ unverified
+**Poke-O-Moonshine fire tower**  `poke-o-moonshine-fire-tower`
 _Medium · 40 min via NY-9N · Parking fee (verify)_
-A restored fire tower above the Champlain Valley with a view from Whiteface to Vermont's Greens; the Observers' Trail is the gentler route. Superb in foliage season.
+A restored fire tower above the Champlain Valley with views to Vermont's Green Mountains and back to Whiteface, on a peak famous with climbers for its cliffs. The Observers Path is the longer, gentler way up, past a beav
 
 Commentary:
 
@@ -853,7 +853,7 @@ Commentary:
 
 **Cascade Mountain from Route 73**  `cascade-mountain-from-route-73`
 _Difficult · 35–45 min · Free_
-A genuine Adirondack High Peak and a reasonable first choice for a fit, prepared mountain hiker. The rocky ascent ends on an exposed summit; “one of the easier High Peaks” does not mean easy.
+The most-climbed of the 46 High Peaks and the easiest way to stand on a bare 4,000-footer, with a rocky open summit and views in every direction. Reviewers rate it highly and describe it plainly: crowded on any fine week
 
 Commentary:
 
@@ -864,7 +864,7 @@ Commentary:
 
 **Jay Mountain: first summit**  `jay-mountain-first-summit`
 _Difficult · 20–30 min · Free_
-A substantial climb to an open ridge with a less crowded-feeling, rugged mountain setting. The recommended turnaround is the first summit at the end of the marked trail, not an automatic traverse of the entire ridge.
+A steady switchbacked climb through shade to an open rocky spine that reviewers on the Adirondack forums call an under-appreciated wonder: a 'highway in the sky' of bare ridge with 360-degree views toward Whiteface and t
 
 Commentary:
 
@@ -873,9 +873,9 @@ Commentary:
 
 ### Keene
 
-**Baxter Mountain**  `baxter-mountain` ⚠ unverified
+**Baxter Mountain**  `baxter-mountain`
 _Small children · 30 min via NY-9N · Free_
-The easy classic of the Keene area: a gentle climb to open ledges with the Great Range laid out to the south. Then the tavern at the bottom.
+The easy classic of the Keene area, and the trail regional guides recommend first for families and new hikers: gentle switchbacks for the first half, then granite slabs to open ledges with the Great Range laid out to the
 
 Commentary:
 
@@ -884,7 +884,7 @@ Commentary:
 
 **Hurricane Mountain from Route 9N**  `hurricane-mountain-from-route-9n`
 _More ambitious alternatives · 30–40 min · Free_
-A full mountain day with a fire tower and broad views, useful for fit guests who want an alternative to a 46er.
+A restored fire tower on a huge bald summit with a 360-degree view from the High Peaks to Lake Champlain and Vermont. The southern approach from the height of land on Route 9N starts gently, then climbs steadily on a wel
 
 Commentary:
 
@@ -893,7 +893,7 @@ Commentary:
 
 **Owls Head in Keene: weekdays only**  `owls-head-in-keene-weekdays-only`
 _More family favorites · 30–40 min · Free_
-A short climb with scrambling and open ledges. Its small distance is appealing, but it needs a more careful family suitability label than “easy for everyone.”
+A one-mile climb through private land to open ledges with an outsized view down the Keene valley to the Great Range; reviewers rate it among the highest in the region for effort. The catch that matters: the landowner per
 
 Commentary:
 
@@ -902,27 +902,27 @@ Commentary:
 
 ### Keene Valley
 
-**Indian Head & Rainbow Falls (Adirondack Mountain Reserve)**  `indian-head-rainbow-falls-amr` ⚠ unverified
+**Indian Head & Rainbow Falls (Adirondack Mountain Reserve)**  `indian-head-rainbow-falls-amr`
 _Difficult · 40 min via NY-9N & NY-73 · Free; reservation required_
-Perhaps the most photographed view in the Adirondacks: the Lower Ausable Lake from Indian Head's cliff, plus Rainbow Falls on the way. Access is through the private AMR, which requires a free advance parking reservation 
+Possibly the most photographed view in the Adirondacks: Lower Ausable Lake from the cliff of Indian Head, with Rainbow Falls on the way and Fish Hawk Cliffs next door. Reviewers love that it is long but mostly gentle, wi
 
 Commentary:
 
 
 ---
 
-**Roaring Brook Falls**  `roaring-brook-falls` ⚠ unverified
+**Roaring Brook Falls**  `roaring-brook-falls`
 _Leisurely / easy · 40 min via NY-9N & NY-73 · Free_
-A ten-minute walk from Route 73 to the base of a 300-foot cascade, or a longer climb to the top of the falls; the easiest big-payoff stop in the valley.
+Ten minutes on a flat path from Route 73 brings you to the base of a 300-foot cascade; a steeper spur climbs to the top of the falls and a lookout over the Keene valley. Reviewers call it the quickest big payoff in the H
 
 Commentary:
 
 
 ---
 
-**Rooster Comb**  `rooster-comb` ⚠ unverified
+**Rooster Comb**  `rooster-comb`
 _Medium · 40 min via NY-9N & NY-73 · Free_
-From the village of Keene Valley to a rocky summit over the Ausable valley with Giant and the Great Range around you; a proper half-day.
+From the village of Keene Valley, a steady, well-marked climb past a beaver pond to a rocky summit and a ledge looking straight down the Ausable valley with Giant and the Great Range around you. Reviewers rate it highly 
 
 Commentary:
 
@@ -933,7 +933,7 @@ Commentary:
 
 **Giant Mountain: Ridge / Zander Scott Trail**  `giant-mountain-ridge-zander-scott-trail`
 _Difficult · 40–50 min · Free_
-A steep, sustained climb with open rock, large views and a serious physical commitment. The mileage looks modest beside the amount of elevation gained.
+The most direct way up a High Peak: the Ridge (Zander Scott) Trail climbs 3,050 feet in a little over three miles, with a lookout over Chapel Pond at 0.7 miles, the Giant's Washbowl pond just beyond, then long stretches 
 
 Commentary:
 
@@ -944,7 +944,7 @@ Commentary:
 
 **Brewster Peninsula: short lake-and-woods walk**  `brewster-peninsula-short-lake-and-woods-walk`
 _Small children · 15 min down the road · 13 mi via NY-86 · Free_
-A flexible network of short woodland trails beside Lake Placid. Choose a small out-and-back or linked loop rather than feeling obliged to complete every trail.
+A nearly flat network of lake-and-woods loops on the peninsula that juts into Lake Placid, with water views, mossy forest and well-marked junctions. Two thousand reviewers rate it an easy family favourite; the only consi
 
 Commentary:
 
@@ -953,7 +953,7 @@ Commentary:
 
 **Heaven Hill: Big Field Loop**  `heaven-hill-big-field-loop`
 _Small children · 15 min down the road · 13 mi via NY-86 · Free_
-A short meadow-and-woods outing rather than a mountain climb. The Big Field Loop is the best starting point for children who want to explore at their own pace; do not confuse it with the longer trail network.
+Three flat, free, beautifully kept loops on a former farm outside Lake Placid: the 0.9-mile Big Field Loop through woods to an open meadow, the 1.4-mile Old Orchard loop with the widest mountain views, and the 1.5-mile B
 
 Commentary:
 
@@ -962,7 +962,7 @@ Commentary:
 
 **Mirror Lake village loop**  `mirror-lake-village-loop`
 _Leisurely / easy · 15 min down the road · 13 mi via NY-86 · Free_
-A paved village walk around Mirror Lake, not a wilderness hike. Shops and lake views make it easy to turn a walk into a relaxed morning or afternoon.
+The sidewalk loop around Mirror Lake in the middle of Lake Placid: benches, beaches, boat rentals and Main Street's ice cream all on the way round. Reviewers recommend it for strollers, wheelchairs, grandparents and dogs
 
 Commentary:
 
@@ -982,7 +982,7 @@ Commentary:
 
 **Mt Van Hoevenberg: East Trail**  `mt-van-hoevenberg-east-trail`
 _Medium · 15 min down the road · 13 mi via NY-86 · Free_
-A purpose-built mountain trail with extensive stonework and a summit ledge looking toward the High Peaks. A strong option for active families who want a proper half-day hike.
+A modern, stair-built trail from the Olympic Sports Complex to a rocky summit with a wide view of the High Peaks, rated among the highest of any hike near Lake Placid. Four thousand reviewers praise the immaculate trail 
 
 Commentary:
 
@@ -993,7 +993,7 @@ Commentary:
 
 **Paul Smith's VIC: Barnum Brook Trail**  `paul-smith-s-vic-barnum-brook-trail`
 _Leisurely / easy · 45–60 min · Parking / access fee — verify_
-A short interpretive nature walk at the Paul Smith's College Visitor Interpretive Center. A worthwhile farther-afield outing for guests who prefer nature observation over climbing.
+A wheelchair-accessible boardwalk-and-gravel loop along Barnum Brook to a beaver lodge and Heron Marsh overlook at the Paul Smith's College Visitor Interpretive Center, with 25 miles of longer trails, a butterfly house a
 
 Commentary:
 
@@ -1002,9 +1002,9 @@ Commentary:
 
 ### Ray Brook
 
-**Haystack Mountain (Saranac Lake 6er)**  `haystack-mountain-saranac` ⚠ unverified
+**Haystack Mountain (Saranac Lake 6er)**  `haystack-mountain-saranac`
 _Medium · 25 min via NY-86 · Free_
-A pleasant climb from Route 86 to open ledges with McKenzie and the High Peaks in view; one of the Saranac Lake 6ers and much quieter than Cascade.
+A Saranac Lake 6er from Route 86 near Ray Brook: a long, gentle approach through changing forest, a stream crossing, then a short, wet, rocky scramble to a partly wooded summit with views over the Saranac lakes and towar
 
 Commentary:
 
@@ -1015,7 +1015,7 @@ Commentary:
 
 **Baker Mountain**  `baker-mountain`
 _Medium · 35–45 min · Free_
-A compact climb above Saranac Lake with a substantial amount of uphill packed into a short distance. Convenient for pairing a hike with a village visit.
+Saranac Lake's town mountain and the easiest of the Saranac Lake 6ers: a short, steep climb from Moody Pond to open ledges over the village, McKenzie Wilderness and the High Peaks. Reviewers call it quick and rewarding a
 
 Commentary:
 
@@ -1035,7 +1035,7 @@ Commentary:
 
 **Ampersand Mountain**  `ampersand-mountain`
 _More ambitious alternatives · 45–55 min · Free_
-A Saranac Lake-area mountain hike that becomes markedly steeper on the upper climb. It belongs with the strenuous options despite its popularity.
+One of the highest-rated hikes in the Saranac Lake area for a reason: a gentle first half through old forest, then a relentless, rocky, stair-and-scramble climb to a bald summit with a full circle of lakes and High Peaks
 
 Commentary:
 
@@ -1044,9 +1044,9 @@ Commentary:
 
 ### Wilmington
 
-**Bear Den Mountain**  `bear-den-mountain-wilmington` ⚠ unverified
+**Bear Den Mountain**  `bear-den-mountain-wilmington`
 _Medium · 5–10 min · Free_
-A moderate climb from the Whiteface ski area's Bear Den lot to a rocky summit with a straight-on look at Whiteface and the Notch. Quiet, local and close.
+Short and steep, straight out of the Whiteface ski area's Bear Den lot to a rocky summit that reviewers call a great lunch spot with a straight-on view of Whiteface and the Notch. Expect hard work for its length, a few f
 
 Commentary:
 
@@ -1055,34 +1055,34 @@ Commentary:
 
 **Cobble Lookout**  `cobble-lookout`
 _Small children · 10–15 min · Free_
-The best nearby view-to-effort choice for a family that can manage a couple of miles. A gently rolling forest trail reaches a broad open lookout over the valley and surrounding mountains.
+Built in 2014 and already the most-walked trail in Wilmington: a gently rolling forest path to a broad open ledge with Whiteface, Esther and the High Peaks laid out in front of you. Thousands of reviewers call it the bes
 
 Commentary:
 
 
 ---
 
-**Cooper Kiln Pond**  `cooper-kiln-pond` ⚠ unverified
+**Cooper Kiln Pond**  `cooper-kiln-pond`
 _Medium · Short drive — verify trailhead · Free_
-A quieter walk to a backcountry pond on the shoulder of Whiteface.
+A quieter walk to a backcountry pond tucked between Morgan Mountain and Wilmington Peak on the shoulder of Whiteface, with a mostly wooded shoreline, a lean-to and real solitude on weekdays. Reviewers describe a steady c
 
 Commentary:
 
 
 ---
 
-**Flume Knob**  `flume-knob` ⚠ unverified
+**Flume Knob**  `flume-knob`
 _Medium · 5–10 min · Free_
-From the Flume trailhead on NY-86, a steady climb to a knob with a fine view of Whiteface and the Notch; the hike locals do after work.
+From the Flume trailhead on NY-86, a steady uphill that gets steep and scrambly right below the knob, then a ledge with Whiteface across the valley that locals treat as their after-work hike. Reviewers praise the view an
 
 Commentary:
 
 
 ---
 
-**Whiteface via the Wilmington Trail**  `whiteface-via-the-wilmington-trail` ⚠ unverified
+**Whiteface via the Wilmington Trail**  `whiteface-via-the-wilmington-trail`
 _Difficult · Trailhead in town — verify parking · Free_
-A full-day climb from the Wilmington side to the summit. Long, steep, and worth every step on a clear day.
+The big local climb: from the Wilmington trailhead over Marble Mountain and Esther's shoulder to the 4,867-foot summit, nearly ten miles round trip with the most sustained elevation gain of any hike in this guide. Review
 
 Commentary:
 
@@ -1093,7 +1093,7 @@ Commentary:
 
 **Copperas Pond: direct northern approach**  `copperas-owen-ponds`
 _More family favorites · 15–20 min · Free_
-A short, steep woodland approach to a peaceful mountain pond. A good family outing when children already handle roots and uphill walking.
+A short, sharp climb from NY-86 in the Notch to a hidden pond with a lean-to, campsites and a mountain backdrop that reviewers rate the best lake trail in the Sentinel Range Wilderness. The write-ups agree on two things:
 
 Commentary:
 
@@ -1105,7 +1105,7 @@ Commentary:
 
 ### Lake Placid
 
-**Adirondack Rail Trail: Lake Placid to Tupper Lake**  `adirondack-rail-trail-full` ⚠ unverified
+**Adirondack Rail Trail: Lake Placid to Tupper Lake**  `adirondack-rail-trail-full`
 _Rail trail · 15 min down the road · 13 mi via NY-86 · Free_
 The 34-mile converted rail line from Lake Placid through Saranac Lake to Tupper Lake, flat and gravel-surfaced; ride a section out and back or arrange a shuttle. Also groomed for skiing and snowmobiles in winter.
 
@@ -1136,7 +1136,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Dewey Mountain trails (summer)**  `dewey-mountain-bike-trails` ⚠ unverified
+**Dewey Mountain trails (summer)**  `dewey-mountain-bike-trails`
 _Trail network · ≈35 min via NY-86 · Free (donations)_
 Dewey's ski trails double as a lift-free mountain-bike and hiking network in summer with a mix of grades and a view from the top.
 
@@ -1156,7 +1156,7 @@ Commentary:
 
 ---
 
-**Flume Trails**  `flume-trails` ⚠ unverified
+**Flume Trails**  `flume-trails`
 _In town, off NY-86 · Free_
 Wilmington's mountain-bike network, built for it. Rentals in town — verify which shops currently operate.
 
@@ -1165,7 +1165,7 @@ Commentary:
 
 ---
 
-**Hardy Road Trails**  `hardy-road-trails` ⚠ unverified
+**Hardy Road Trails**  `hardy-road-trails`
 _Short drive · Free_
 A second local network with a different character to the Flume.
 
@@ -1192,7 +1192,7 @@ Commentary:
 
 ---
 
-**Wilmington Bike Park**  `wilmington-bike-park` ⚠ unverified
+**Wilmington Bike Park**  `wilmington-bike-park`
 _Skills park / pump track · 5–10 min · Free_
 The town's free skills park behind the visitor centre: pump track, dirt jumps and a progression of features that keeps kids busy for an hour while the adults ride the Flume.
 
@@ -1226,7 +1226,7 @@ Commentary:
 
 ---
 
-**Jackrabbit Ski Trail**  `jackrabbit-ski-trail` ⚠ unverified
+**Jackrabbit Ski Trail**  `jackrabbit-ski-trail`
 _Backcountry ski trail · 15 min down the road · 13 mi via NY-86 · Free_
 A 35-mile backcountry ski route linking Keene, Lake Placid, Saranac Lake and Paul Smiths through the woods; ski a section from Whiteface Inn Lane or the Cascade area. Ungroomed in places; ask BETA for conditions.
 
@@ -1235,7 +1235,7 @@ Commentary:
 
 ---
 
-**Mt Van Hoevenberg (Nordic)**  `mt-van-hoevenberg-nordic` ⚠ unverified
+**Mt Van Hoevenberg (Nordic)**  `mt-van-hoevenberg-nordic`
 _15 min down the road · 13 mi via NY-86 · $$_
 Cross-country trails, biathlon range and the bobsled track on the same site.
 
@@ -1244,7 +1244,7 @@ Commentary:
 
 ---
 
-**Snowshoe & winter walks: Heaven Hill, Henry's Woods & Peninsula Trails**  `whiteface-snowshoe-heaven-hill` ⚠ unverified
+**Snowshoe & winter walks: Heaven Hill, Henry's Woods & Peninsula Trails**  `whiteface-snowshoe-heaven-hill`
 _Snowshoe · 15 min down the road · 13 mi via NY-86 · Free_
 Three free, gentle trail networks around Lake Placid that are made for snowshoes and small legs; Henry's Woods off Bear Cub Lane has a lovely lookout loop.
 
@@ -1255,7 +1255,7 @@ Commentary:
 
 ### Malone
 
-**Titus Mountain Family Ski Center**  `titus-mountain` ⚠ unverified
+**Titus Mountain Family Ski Center**  `titus-mountain`
 _Ski area · 1 h 15 min · $$ tickets (verify)_
 Family-run mountain north of the Park with easier terrain, night skiing and lower prices; a good change of pace on a busy Whiteface holiday weekend.
 
@@ -1266,7 +1266,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Dewey Mountain Recreation Center**  `dewey-mountain-recreation-center` ⚠ unverified
+**Dewey Mountain Recreation Center**  `dewey-mountain-recreation-center`
 _Cross-country / snowshoe · ≈35 min via NY-86 · $ trail pass (verify)_
 Saranac Lake's community Nordic centre: groomed and lit lower trails for night skiing, snowshoe loops, rentals and lessons, all for very little money. The relaxed alternative to Mt Van Hoevenberg.
 
@@ -1275,7 +1275,7 @@ Commentary:
 
 ---
 
-**Mount Pisgah Recreation Center**  `mount-pisgah-saranac-lake` ⚠ unverified
+**Mount Pisgah Recreation Center**  `mount-pisgah-saranac-lake`
 _Small ski hill / tubing · ≈35 min via NY-86 · $ tickets (verify)_
 A small village-owned ski hill with a T-bar, night skiing, a tubing park and a lodge; perfect for first-timers and small children at a fraction of Whiteface's price.
 
@@ -1300,7 +1300,7 @@ Commentary:
 
 ### Black Brook / Silver Lake
 
-**Taylor Pond & Silver Lake: swimming and boat launch**  `taylor-pond-campground` ⚠ unverified
+**Taylor Pond & Silver Lake: swimming and boat launch**  `taylor-pond-campground`
 _Lake / campground · 20–25 min north · Day-use fee (verify)_
 DEC campground with a beach, boat launch and quiet water under Catamount; combine with the Silver Lake Mountain hike for a full, uncrowded day.
 
@@ -1311,7 +1311,7 @@ Commentary:
 
 ### Keene Valley
 
-**Chapel Pond paddle**  `chapel-pond-paddle` ⚠ unverified
+**Chapel Pond paddle**  `chapel-pond-paddle`
 _Flatwater paddling · 40 min via NY-9N & NY-73 · Free_
 A small roadside pond under cliffs where a kayak feels like an alpine lake; twenty minutes of paddling with climbers overhead.
 
@@ -1331,7 +1331,7 @@ Commentary:
 
 ---
 
-**Ausable Chasm: raft & tube float**  `ausable-chasm-rafting` ⚠ unverified
+**Ausable Chasm: raft & tube float**  `ausable-chasm-rafting`
 _Gentle rafting / tubing · 35 min via NY-9N · Included in pass options (verify)_
 The Chasm's own raft and inner-tube float through the lower gorge is the gentlest whitewater in the region and the best part of a visit for most kids; included with certain passes.
 
@@ -1351,7 +1351,7 @@ Commentary:
 
 ---
 
-**Downstairs Boat Rental**  `downstairs-boat-rental` ⚠ unverified
+**Downstairs Boat Rental**  `downstairs-boat-rental`
 _Paddle rental · 15 min down the road · 13 mi via NY-86 · $ hourly (verify)_
 Main Street kayak, canoe, paddleboard, hydrobike and pedal-boat rental on Mirror Lake, plus a Duffy electric launch for a lazy cruise.
 
@@ -1360,7 +1360,7 @@ Commentary:
 
 ---
 
-**Lake Placid Public Beach (Mirror Lake)**  `lake-placid-public-beach` ⚠ unverified
+**Lake Placid Public Beach (Mirror Lake)**  `lake-placid-public-beach`
 _Beach · 15 min down the road · 13 mi via NY-86 · Free_
 The village beach on Mirror Lake with lifeguards, a roped swimming area and a lawn; free, central and the classic hot-afternoon fix.
 
@@ -1369,7 +1369,7 @@ Commentary:
 
 ---
 
-**Mirror Lake Boat Rentals**  `mirror-lake-boat-rentals` ⚠ unverified
+**Mirror Lake Boat Rentals**  `mirror-lake-boat-rentals`
 _Paddle & electric boat rental · 15 min down the road · 13 mi via NY-86 · $$ hourly (verify)_
 Family-run rental on the shore of Mirror Lake: kayaks, canoes, paddleboards, pedal boats and electric boats by the hour, no reservation needed, dogs welcome. The simplest water hour in town.
 
@@ -1378,7 +1378,7 @@ Commentary:
 
 ---
 
-**Placid Boat Rentals**  `placid-boat-rentals` ⚠ unverified
+**Placid Boat Rentals**  `placid-boat-rentals`
 _Motor & pontoon rental · 15 min down the road · 13 mi via NY-86 · $$$ per day (verify)_
 Pontoons, fishing boats and paddle craft on Lake Placid itself, for a day among the islands and Great Camps.
 
@@ -1421,7 +1421,7 @@ Commentary:
 
 ---
 
-**Ice fishing on Lake Placid & the Saranacs**  `ice-fishing-lake-placid-saranac` ⚠ unverified
+**Ice fishing on Lake Placid & the Saranacs**  `ice-fishing-lake-placid-saranac`
 _Ice fishing · 15 min down the road · 13 mi via NY-86 · Guide fee (verify)_
 From January the lakes freeze hard enough for tip-ups and shanties; go with a guide the first time, and never trust ice you have not checked.
 
@@ -1441,7 +1441,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Adirondack TrOutfitters**  `adirondack-troutfitters` ⚠ unverified
+**Adirondack TrOutfitters**  `adirondack-troutfitters`
 _Fishing guide · ≈35 min via NY-86 · $$$ (verify)_
 Half- and full-day guided trips for trout, bass and pike on Upper Saranac, Lake Placid and nearby waters.
 
@@ -1450,7 +1450,7 @@ Commentary:
 
 ---
 
-**Battlefish Charters**  `battlefish-charters` ⚠ unverified
+**Battlefish Charters**  `battlefish-charters`
 _Lake & ice-fishing charters · ≈35 min via NY-86 · $$$ (verify)_
 Guided lake fishing, kayak fishing and winter ice-fishing trips on the Saranac chain.
 
@@ -1461,7 +1461,7 @@ Commentary:
 
 ### Wilmington
 
-**Ausable River Association (AsRA)**  `ausable-river-association` ⚠ unverified
+**Ausable River Association (AsRA)**  `ausable-river-association`
 _River information · 5–10 min · Free_
 The river's stewardship group: flow and temperature data, river-access maps, clean-boots guidance and events. Their site tells you when the West Branch is too warm to fish responsibly.
 
@@ -1479,7 +1479,7 @@ Commentary:
 
 ---
 
-**Hungry Trout Fly Shop & guide service**  `hungry-trout-fly-shop` ⚠ unverified
+**Hungry Trout Fly Shop & guide service**  `hungry-trout-fly-shop`
 _Fly shop / guides · 5–10 min · $$$ guided day (verify)_
 Full-service fly shop on the West Branch with half- and full-day guided trips, casting schools and a youth programme, plus two miles of private water for guests. The obvious first call for a fly-fishing day from the hous
 
@@ -1499,7 +1499,7 @@ Commentary:
 
 ### —
 
-**New York fishing licence & regulations**  `nys-fishing-license` ⚠ unverified
+**New York fishing licence & regulations**  `nys-fishing-license`
 _Licence / rules · Online · Licence fee_
 Everyone 16 and over needs a licence (one-day, seven-day and annual options for non-residents, bought online in minutes). The West Branch has special catch-and-release stretches; check the DEC regulations before wading i
 
@@ -1513,7 +1513,7 @@ Commentary:
 
 ### Lake Placid
 
-**James C. Sheffield Speed Skating Oval**  `sheffield-speed-skating-oval` ⚠ unverified
+**James C. Sheffield Speed Skating Oval**  `sheffield-speed-skating-oval`
 _Outdoor skating · 15 min down the road · 13 mi via NY-86 · $ admission + rentals (verify)_
 The outdoor oval in front of the high school where Eric Heiden won five golds in 1980. Public skating under the lights in winter; a lovely, cheap evening with kids.
 
@@ -1522,7 +1522,7 @@ Commentary:
 
 ---
 
-**Olympic Center & Herb Brooks Arena**  `olympic-center-herb-brooks-arena` ⚠ unverified
+**Olympic Center & Herb Brooks Arena**  `olympic-center-herb-brooks-arena`
 _Arena / tours · 15 min down the road · 13 mi via NY-86 · Tour fee (verify)_
 Where the 1980 'Miracle on Ice' happened. Guided tours take you into the 1980 rink and the 1932 arena; public skating, hockey tournaments and figure-skating shows fill the calendar. Combine with the Olympic Museum next d
 
@@ -1531,7 +1531,7 @@ Commentary:
 
 ---
 
-**Olympic Jumping Complex: tower, zipline & aerials**  `olympic-jumping-complex-visit` ⚠ unverified
+**Olympic Jumping Complex: tower, zipline & aerials**  `olympic-jumping-complex-visit`
 _Ski jumps · 15 min down the road · 13 mi via NY-86 · Admission (verify)_
 Beyond the Skyride: the glass elevator to the top of the 120-metre jump, a zipline off the 90-metre tower, and summer freestyle-aerial shows where athletes flip into the pool. Watch for training days.
 
@@ -1540,7 +1540,7 @@ Commentary:
 
 ---
 
-**Olympic Legacy Sites Passport**  `legacy-sites-passport` ⚠ unverified
+**Olympic Legacy Sites Passport**  `legacy-sites-passport`
 _Multi-venue pass · 15 min down the road · 13 mi via NY-86 · Pass price (verify)_
 One ticket that bundles the Olympic Museum, Jumping Complex, Mt Van Hoevenberg and the Whiteface Cloudsplitter Gondola over several days. Usually cheaper than three separate tickets for a family.
 
@@ -1560,7 +1560,7 @@ Commentary:
 
 ### Lake Placid / Olympic Sports Complex
 
-**Bobsled Experience at Mt Van Hoevenberg**  `bobsled-experience-mt-van-hoevenberg` ⚠ unverified
+**Bobsled Experience at Mt Van Hoevenberg**  `bobsled-experience-mt-van-hoevenberg`
 _Bobsled ride · 25 min via NY-86 & NY-73 · $$$ per rider (verify)_
 Ride a real bobsled with a professional driver and brakeman from the half-mile start: on ice in winter, on wheels down the concrete track in summer, up to about 50 mph through the Olympic turns. The signature Lake Placid
 
@@ -1569,7 +1569,7 @@ Commentary:
 
 ---
 
-**Mt Van Hoevenberg: Mountain Pass Lodge, biathlon & Nordic**  `mt-van-hoevenberg-lodge-biathlon` ⚠ unverified
+**Mt Van Hoevenberg: Mountain Pass Lodge, biathlon & Nordic**  `mt-van-hoevenberg-lodge-biathlon`
 _Nordic centre · 25 min via NY-86 & NY-73 · Trail pass / rentals (verify)_
 The 1980 cross-country and biathlon venue rebuilt for 2023's World University Games: 50 km of trails with snowmaking, a biathlon range where you can try shooting, a café and the indoor climbing wall. The winter hub.
 
@@ -1578,7 +1578,7 @@ Commentary:
 
 ---
 
-**Skeleton Experience at Mt Van Hoevenberg**  `skeleton-experience-mt-van-hoevenberg` ⚠ unverified
+**Skeleton Experience at Mt Van Hoevenberg**  `skeleton-experience-mt-van-hoevenberg`
 _Skeleton ride · 25 min via NY-86 & NY-73 · $$$ (verify)_
 Head-first, solo, from a lower start on the sliding track after a briefing. Rarer than the bobsled and genuinely hair-raising.
 
@@ -1645,7 +1645,7 @@ Commentary:
 
 ### Keene Valley
 
-**Chapel Pond & Giant's Washbowl**  `chapel-pond-viewpoint` ⚠ unverified
+**Chapel Pond & Giant's Washbowl**  `chapel-pond-viewpoint`
 _Viewpoint / short hike · 40 min via NY-9N & NY-73 · Free_
 Roadside pond beneath cliffs on Route 73 south of Keene Valley, ringed with colour in autumn and busy with climbers all summer. A five-minute stop or a short, steep hike up to the Washbowl.
 
@@ -1656,7 +1656,7 @@ Commentary:
 
 ### Lake Placid
 
-**Lake Placid & the Olympic sites**  `lake-placid-the-olympic-sites` ⚠ unverified
+**Lake Placid & the Olympic sites**  `lake-placid-the-olympic-sites`
 _15 min down the road · 13 mi via NY-86 · Free to $$_
 Main Street, Mirror Lake and the Olympic venues from 1932 and 1980.
 
@@ -1665,7 +1665,7 @@ Commentary:
 
 ---
 
-**Lake Placid Marina & Boat Tours**  `lake-placid-boat-tour` ⚠ unverified
+**Lake Placid Marina & Boat Tours**  `lake-placid-boat-tour`
 _Scenic boat tour · 15 min down the road · 13 mi via NY-86 · $$ per person (verify)_
 Narrated hour-long cruises around Lake Placid's islands past the Great Camps, with Whiteface over the water; a restful foliage or rainy-drizzle option that still gets everyone outside.
 
@@ -1718,7 +1718,7 @@ Commentary:
 
 ---
 
-**Wilmington Notch: NY-86 to Lake Placid**  `wilmington-notch-drive` ⚠ unverified
+**Wilmington Notch: NY-86 to Lake Placid**  `wilmington-notch-drive`
 _Leaf-peeping drive · 5–10 min south · Free_
 Your daily commute is one of the great short drives in the Northeast: the West Branch cutting through the Notch under Whiteface's cliffs, with pull-offs at Monument Falls (the postcard Whiteface reflection) and High Fall
 
@@ -1772,7 +1772,7 @@ Commentary:
 
 ### Pottersville
 
-**Natural Stone Bridge & Caves**  `natural-stone-bridge-and-caves` ⚠ unverified
+**Natural Stone Bridge & Caves**  `natural-stone-bridge-and-caves`
 _Caves / geology park · 1 h 15 min · $$ admission (verify)_
 Self-guided trails over the largest marble cave entrance in the East, with caves, potholes and a gem-panning station; snowshoeing in winter. Worth combining with a Schroon Lake lunch.
 
@@ -1869,7 +1869,7 @@ Commentary:
 
 ---
 
-**Public skating at the Olympic Center**  `olympic-center-public-skating` ⚠ unverified
+**Public skating at the Olympic Center**  `olympic-center-public-skating`
 _Indoor skating · 15 min down the road · 13 mi via NY-86 · $ + rentals (verify)_
 Skate on a real Olympic rink inside the Olympic Center on scheduled public sessions, with rentals; a rainy or bitter-cold-day certainty.
 
@@ -1880,7 +1880,7 @@ Commentary:
 
 ### Lake Placid / Olympic Sports Complex
 
-**Indoor climbing wall at Mt Van Hoevenberg**  `mt-van-hoevenberg-climbing-wall` ⚠ unverified
+**Indoor climbing wall at Mt Van Hoevenberg**  `mt-van-hoevenberg-climbing-wall`
 _Indoor climbing · 25 min via NY-86 & NY-73 · $$ (verify)_
 A 30-foot top-rope wall and bouldering cave inside the Mountain Pass Lodge with rentals and staff who teach beginners; a couple of hours of wet-weather adventure for anyone over about five.
 
@@ -1900,7 +1900,7 @@ Commentary:
 
 ---
 
-**Saranac Lake Civic Center**  `saranac-lake-civic-center` ⚠ unverified
+**Saranac Lake Civic Center**  `saranac-lake-civic-center`
 _Indoor skating · ≈35 min via NY-86 · $ (verify)_
 Community ice rink with public skating sessions and rentals; cheaper and quieter than Lake Placid.
 
@@ -1925,7 +1925,7 @@ Commentary:
 
 ### Blue Mountain Lake
 
-**Adirondack Experience, the Museum on Blue Mountain Lake**  `adirondack-experience-museum` ⚠ unverified
+**Adirondack Experience, the Museum on Blue Mountain Lake**  `adirondack-experience-museum`
 _Regional museum · 1 h 45 min · $$ admission (verify)_
 The Park's great museum: 121 acres of exhibits on boats, logging, Great Camps and Adirondack life, with a lakeside café and plenty for children. A long drive that fills a whole day; leave early.
 
@@ -1936,7 +1936,7 @@ Commentary:
 
 ### Keene
 
-**Keene Arts**  `keene-arts` ⚠ unverified
+**Keene Arts**  `keene-arts`
 _Gallery / performances · 30 min via NY-9N · Free gallery; tickets vary_
 Gallery and performance space in a converted church in Keene with summer exhibitions, concerts and talks.
 
@@ -2014,7 +2014,7 @@ Commentary:
 
 ### Tupper Lake
 
-**Adirondack Sky Center & Observatory**  `adirondack-sky-center` ⚠ unverified
+**Adirondack Sky Center & Observatory**  `adirondack-sky-center`
 _Observatory / stargazing · 1 h 10 min · Donation (verify)_
 Public stargazing nights under some of the darkest skies in the East, with a roll-off-roof observatory and volunteer astronomers. Pair with a Wild Center day and stay for dark.
 
@@ -2057,7 +2057,7 @@ Commentary:
 
 ---
 
-**Ironman Lake Placid**  `ironman-lake-placid` ⚠ unverified
+**Ironman Lake Placid**  `ironman-lake-placid`
 _Triathlon · 15 min down the road · 13 mi via NY-86 · Free to watch_
 One of the oldest Ironman races in North America, late July: swim in Mirror Lake, bike loops through Wilmington on NY-86 (our road), run to the Olympic Oval finish. Electric to watch, and traffic control affects Wilmingt
 
@@ -2075,7 +2075,7 @@ Commentary:
 
 ---
 
-**Lake Placid Horse Show Grounds**  `lake-placid-horse-show-grounds` ⚠ unverified
+**Lake Placid Horse Show Grounds**  `lake-placid-horse-show-grounds`
 _Horse shows · 15 min down the road · 13 mi via NY-86 · Free admission (verify)_
 Two weeks of top-level show jumping each late June and early July, free to watch from the rail, with food vendors and a shaded lawn.
 
@@ -2084,7 +2084,7 @@ Commentary:
 
 ---
 
-**Lake Placid Sinfonietta**  `lake-placid-sinfonietta` ⚠ unverified
+**Lake Placid Sinfonietta**  `lake-placid-sinfonietta`
 _Summer orchestra · 15 min down the road · 13 mi via NY-86 · Free outdoors; tickets indoors_
 The village's professional summer chamber orchestra: Sunday concerts at the Lake Placid Center for the Arts and free Wednesday nights in Mid's Park.
 
@@ -2104,7 +2104,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Saranac Lake Winter Carnival**  `saranac-lake-winter-carnival` ⚠ unverified
+**Saranac Lake Winter Carnival**  `saranac-lake-winter-carnival`
 _Winter festival · ≈35 min via NY-86 · Mostly free_
 The oldest winter carnival in the eastern US: an Ice Palace built from lake ice, parades, fireworks, ski races and a week of small-town joy every February.
 
@@ -2115,7 +2115,7 @@ Commentary:
 
 ### Wilmington
 
-**Whiteface Mountain Uphill Bike Race**  `whiteface-uphill-bike-race` ⚠ unverified
+**Whiteface Mountain Uphill Bike Race**  `whiteface-uphill-bike-race`
 _Cycling race · 5–10 min · Free to watch_
 Riders race the Veterans' Memorial Highway to the summit each June; a dramatic morning to watch from the toll house or the top.
 
@@ -2129,7 +2129,7 @@ Commentary:
 
 ### Jay
 
-**Young's Studio & Gallery**  `young-studio-gallery-jay` ⚠ unverified
+**Young's Studio & Gallery**  `young-studio-gallery-jay`
 _Pottery / gallery · 12 min north · $$_
 Stoneware pottery made on site since the 1970s, plus regional art, in a gallery by the Jay covered bridge.
 
@@ -2140,7 +2140,7 @@ Commentary:
 
 ### Keene
 
-**Dartbrook Rustic Goods**  `dartbrook-rustic-goods` ⚠ unverified
+**Dartbrook Rustic Goods**  `dartbrook-rustic-goods`
 _Rustic furniture / décor · 30 min via NY-9N · $$$_
 Adirondack Great Camp style for the home: rustic furniture, antiques, lighting and textiles in a barn on Route 73 in Keene.
 
@@ -2151,7 +2151,7 @@ Commentary:
 
 ### Keene Valley
 
-**The Birch Store**  `the-birch-store` ⚠ unverified
+**The Birch Store**  `the-birch-store`
 _Boutique / gifts · 40 min via NY-9N & NY-73 · $$–$$$_
 Keene Valley's stylish general store: clothing, jewellery, home goods and gifts with taste. Pair with The Mountaineer across the road.
 
@@ -2160,7 +2160,7 @@ Commentary:
 
 ---
 
-**The Mountaineer**  `the-mountaineer-keene-valley` ⚠ unverified
+**The Mountaineer**  `the-mountaineer-keene-valley`
 _Outdoor specialty store · 40 min via NY-9N & NY-73 · $$–$$$_
 The great Adirondack gear store, in a hand-built wooden shop in Keene Valley since 1975. Climbing, backcountry ski, fly-fishing, trail-running and hiking kit chosen by people who use it, plus maps, guidebooks and the bes
 
@@ -2171,7 +2171,7 @@ Commentary:
 
 ### Lake Placid
 
-**Adirondack Popcorn Co.**  `adirondack-popcorn-co` ⚠ unverified
+**Adirondack Popcorn Co.**  `adirondack-popcorn-co`
 _Snacks / gifts · 15 min down the road · 13 mi via NY-86 · $_
 Small-batch popcorn in dozens of flavours on Main Street; the kids' souvenir.
 
@@ -2180,7 +2180,7 @@ Commentary:
 
 ---
 
-**Cunningham's Ski Barn**  `cunninghams-ski-barn-lake-placid` ⚠ unverified
+**Cunningham's Ski Barn**  `cunninghams-ski-barn-lake-placid`
 _Ski shop / rentals · 15 min down the road · 13 mi via NY-86 · Rentals $$ (verify)_
 Long-standing ski and snowboard shop on Main Street with rentals, demos and end-of-season deals.
 
@@ -2189,7 +2189,7 @@ Commentary:
 
 ---
 
-**Eastern Mountain Sports — Lake Placid**  `ems-lake-placid` ⚠ unverified
+**Eastern Mountain Sports — Lake Placid**  `ems-lake-placid`
 _Outdoor retailer · 15 min down the road · 13 mi via NY-86 · $$_
 Chain outfitter on Main Street with a deep selection of hiking, camping and winter gear; open late, good for the forgotten rain shell.
 
@@ -2198,7 +2198,7 @@ Commentary:
 
 ---
 
-**High Peaks Cyclery**  `high-peaks-cyclery` ⚠ unverified
+**High Peaks Cyclery**  `high-peaks-cyclery`
 _Bike & Nordic shop / rentals · 15 min down the road · 13 mi via NY-86 · Rentals $$ (verify)_
 Bikes, Nordic skis, snowshoes and camping gear with rentals across the seasons; also runs guided rides and rents cross-country packages for Mt Van Hoevenberg.
 
@@ -2207,7 +2207,7 @@ Commentary:
 
 ---
 
-**Lake Placid Ski & Board**  `lake-placid-ski-and-board` ⚠ unverified
+**Lake Placid Ski & Board**  `lake-placid-ski-and-board`
 _Ski shop / rentals / tuning · 15 min down the road · 13 mi via NY-86 · Rentals $$ (verify)_
 The full-service ski shop on Main Street: rental fleet, expert boot fitting and a Wintersteiger tuning room. Rent here the evening before a Whiteface day and skip the mountain queue.
 
@@ -2225,7 +2225,7 @@ Commentary:
 
 ---
 
-**Placid Planet Bicycles**  `placid-planet-bicycles` ⚠ unverified
+**Placid Planet Bicycles**  `placid-planet-bicycles`
 _Bike shop / rentals / ski tuning · 15 min down the road · 13 mi via NY-86 · Rentals $$ (verify)_
 Bike shop and rental on Saranac Avenue with mountain, road and e-bikes, plus ski tuning and waxing in winter.
 
@@ -2234,7 +2234,7 @@ Commentary:
 
 ---
 
-**Ruthie's Run**  `ruthies-run` ⚠ unverified
+**Ruthie's Run**  `ruthies-run`
 _Gifts / cabin décor · 15 min down the road · 13 mi via NY-86 · $$_
 Main Street gift shop for Adirondack-y things: Woolrich, moose everything, candles, cabin décor.
 
@@ -2252,7 +2252,7 @@ Commentary:
 
 ---
 
-**The Bookstore Plus**  `bookstore-plus` ⚠ unverified
+**The Bookstore Plus**  `bookstore-plus`
 _Bookshop · 15 min down the road · 13 mi via NY-86 · $_
 Independent bookshop on Main Street with a serious Adirondack section, kids' books and puzzles; a rainy-afternoon anchor.
 
@@ -2263,7 +2263,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Adirondack Lakes & Trails Outfitters**  `adirondack-lakes-and-trails-outfitters` ⚠ unverified
+**Adirondack Lakes & Trails Outfitters**  `adirondack-lakes-and-trails-outfitters`
 _Paddling outfitter · ≈35 min via NY-86 · Rentals $$ (verify)_
 Kayak, canoe and paddleboard rentals plus gear and guided paddles from Saranac Lake.
 
@@ -2281,7 +2281,7 @@ Commentary:
 
 ---
 
-**St. Regis Canoe Outfitters**  `st-regis-canoe-outfitters` ⚠ unverified
+**St. Regis Canoe Outfitters**  `st-regis-canoe-outfitters`
 _Paddling outfitter · ≈35 min via NY-86 · Rentals $$ (verify)_
 The paddling outfitter for the Saranac chain and the St. Regis Canoe Area: canoe and kayak rentals, shuttles, guided trips and a shop full of maps. Start any multi-lake day here.
 
@@ -2292,7 +2292,7 @@ Commentary:
 
 ### Wilmington
 
-**Leepoff Cycles**  `leepoff-cycles-wilmington` ⚠ unverified
+**Leepoff Cycles**  `leepoff-cycles-wilmington`
 _Bike shop / rentals · 5–10 min · Rentals $$ (verify)_
 Wilmington's own bike shop, steps from the Flume and Hardy Road trails: rentals, repairs and the local word on which trails are dry.
 
@@ -2301,7 +2301,7 @@ Commentary:
 
 ---
 
-**Whiteface Mountain rental & repair shop**  `whiteface-rental-shop` ⚠ unverified
+**Whiteface Mountain rental & repair shop**  `whiteface-rental-shop`
 _On-mountain rentals · 5–10 min · Rentals $$–$$$ (verify)_
 On-mountain rentals, lessons and tuning at the base lodge; convenient, but book online and expect a queue on holiday mornings.
 
@@ -2315,7 +2315,7 @@ Commentary:
 
 ### Keene
 
-**Lakeview Antiques**  `lakeview-antiques-keene` ⚠ unverified
+**Lakeview Antiques**  `lakeview-antiques-keene`
 _Antiques · 30 min via NY-9N · $–$$_
 A small shop in an old garage at the end of a driveway in Keene; hit-or-miss and all the better for it.
 
@@ -2326,7 +2326,7 @@ Commentary:
 
 ### Lake Placid
 
-**Traditions**  `traditions-antiques-lake-placid` ⚠ unverified
+**Traditions**  `traditions-antiques-lake-placid`
 _Antiques / rustic · 15 min down the road · 13 mi via NY-86 · $$–$$$_
 Antiques and rustic goods with a Great Camp flavour on Saranac Avenue: snowshoes, camp furniture, prints and taxidermy.
 
@@ -2335,7 +2335,7 @@ Commentary:
 
 ---
 
-**Twigs**  `twigs-rustic-gallery` ⚠ unverified
+**Twigs**  `twigs-rustic-gallery`
 _Antiques / crafts · 15 min down the road · 13 mi via NY-86 · $$_
 Multi-vendor rustic gallery with antiques, crafts and locally made Adirondack chairs.
 
@@ -2346,7 +2346,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Red Canoe Antiques**  `red-canoe-antiques` ⚠ unverified
+**Red Canoe Antiques**  `red-canoe-antiques`
 _Antiques barn · ≈35 min via NY-86 · $–$$$_
 Roadside antiques barn on Route 3 outside Saranac Lake: fishing creels, camp blankets, old postcards, paintings and the occasional gem.
 
@@ -2357,7 +2357,7 @@ Commentary:
 
 ### Willsboro / Essex
 
-**Champlain Valley antiques run: Keeseville · Willsboro · Essex · Westport**  `champlain-valley-antique-trail` ⚠ unverified
+**Champlain Valley antiques run: Keeseville · Willsboro · Essex · Westport**  `champlain-valley-antique-trail`
 _Antiques day trip · 55 min · Free to browse_
 An hour east the lake towns along Routes 9N and 22 have barns, group shops and Essex's preserved 19th-century main street. Make a day of it with lunch in Essex and the Ausable Chasm on the way back. Shop names change; th
 
@@ -2393,7 +2393,7 @@ Commentary:
 
 ### Keene Valley
 
-**Rivermede Farm Market**  `rivermede-farm-market` ⚠ unverified
+**Rivermede Farm Market**  `rivermede-farm-market`
 _Farm store · 40 min via NY-9N & NY-73 · $_
 Working farm and farm store in Keene Valley: vegetables, eggs, maple, baked goods and flowers. A pretty stop on the way back from a High Peaks day.
 
@@ -2404,7 +2404,7 @@ Commentary:
 
 ### Keeseville
 
-**Mace Chasm Farm**  `mace-chasm-farm` ⚠ unverified
+**Mace Chasm Farm**  `mace-chasm-farm`
 _Farm store / butcher · 35 min via NY-9N · $$_
 Pasture-raised meats, a butcher counter and a farm store minutes from Ausable Brewing; the two make a natural pairing.
 
@@ -2413,7 +2413,7 @@ Commentary:
 
 ---
 
-**North Country Creamery (Clover Mead Café)**  `north-country-creamery` ⚠ unverified
+**North Country Creamery (Clover Mead Café)**  `north-country-creamery`
 _Dairy / farm café · 35 min via NY-9N · $_
 Grass-fed dairy with yogurt, cheese and a small farm café; combine with Ausable Chasm for a Keeseville day.
 
@@ -2424,7 +2424,7 @@ Commentary:
 
 ### Lake Placid
 
-**Uihlein Maple Research Forest (Cornell)**  `uihlein-maple-forest` ⚠ unverified
+**Uihlein Maple Research Forest (Cornell)**  `uihlein-maple-forest`
 _Maple / sugaring · 15 min down the road · 13 mi via NY-86 · Free; syrup for sale_
 Cornell's maple research station on Bear Cub Lane sells its own syrup and opens for demonstrations in sugaring season (March); a sweet, short stop.
 
@@ -2435,7 +2435,7 @@ Commentary:
 
 ### Saranac Lake
 
-**Saranac Lake Farmers' Market**  `saranac-lake-farmers-market` ⚠ unverified
+**Saranac Lake Farmers' Market**  `saranac-lake-farmers-market`
 _Farmers' market · ≈35 min via NY-86 · Free entry_
 Saturday-morning market at Riverside Park with produce, cheese, bread, maple and music in summer. Pairs with the carousel two blocks away.
 
@@ -2494,7 +2494,7 @@ Commentary:
 
 ### Adirondak Loj / High Peaks area
 
-**ADK High Peaks Information Center (Heart Lake)**  `adk-high-peaks-information-center` ⚠ unverified
+**ADK High Peaks Information Center (Heart Lake)**  `adk-high-peaks-information-center`
 _Trail information / gear · 30 min via Adirondak Loj Rd · Parking fee (verify)_
 The Adirondack Mountain Club's trailhead hub at Heart Lake: current trail conditions, maps, rentals, a small shop and snacks. Stop here before Mount Jo or any Loj-based hike; parking fills by 7 am on summer weekends.
 
@@ -2505,7 +2505,7 @@ Commentary:
 
 ### Keene
 
-**Adirondack Rock and River Guide Service**  `adirondack-rock-and-river` ⚠ unverified
+**Adirondack Rock and River Guide Service**  `adirondack-rock-and-river`
 _Climbing / ice guides · 30 min via NY-9N · $$$ per day (verify)_
 Keene's climbing and ice-climbing guide service and lodge, with beginner days on real rock and ice. The safe way to try the sport.
 
@@ -2525,7 +2525,7 @@ Commentary:
 
 ### Keene Valley
 
-**Cloudsplitter Mountain Guides**  `cloudsplitter-mountain-guides` ⚠ unverified
+**Cloudsplitter Mountain Guides**  `cloudsplitter-mountain-guides`
 _Hiking / climbing / ski guides · 40 min via NY-9N & NY-73 · $$$ (verify)_
 Keene Valley-based guides for High Peaks hikes, winter ascents, ice climbing and backcountry skiing; a strong choice for a guided Marcy or Algonquin day.
 
@@ -2561,7 +2561,7 @@ Commentary:
 
 ### Keene Valley
 
-**AMR hiker parking reservations (Route 73 trailheads)**  `amr-hiker-parking-reservations` ⚠ unverified
+**AMR hiker parking reservations (Route 73 trailheads)**  `amr-hiker-parking-reservations`
 _Trailhead reservations · Online · Free_
 Free but mandatory advance reservations for the Adirondack Mountain Reserve lot in St. Huberts from May through October; without one you cannot park for Indian Head, Noonmark or the Ausable Lakes.
 
@@ -2599,7 +2599,7 @@ Commentary:
 
 ---
 
-**Terry Robards Wines & Spirits**  `terry-robards-wines` ⚠ unverified
+**Terry Robards Wines & Spirits**  `terry-robards-wines`
 _Wine & spirits · 15 min down the road · 13 mi via NY-86 · $$_
 The well-stocked wine and liquor shop on Saranac Avenue; New York state law keeps wine and spirits out of supermarkets, so this is the stop.
 
@@ -2619,7 +2619,7 @@ Commentary:
 
 ---
 
-**Whiteface Mountain webcams & summit weather**  `whiteface-webcams-weather` ⚠ unverified
+**Whiteface Mountain webcams & summit weather**  `whiteface-webcams-weather`
 _Webcams / weather · Online · Free_
 Live cameras from the summit and base plus the mountain forecast; the quickest way to decide between the Memorial Highway and a rainy-day plan.
 
@@ -2628,7 +2628,7 @@ Commentary:
 
 ---
 
-**Whiteface Region Visitor Center (Wilmington)**  `wilmington-visitor-center` ⚠ unverified
+**Whiteface Region Visitor Center (Wilmington)**  `wilmington-visitor-center`
 _Visitor information · 5–10 min · Free_
 The town's visitor bureau on NY-86 by the bike park: maps, event listings, restrooms and staff who know the trails. Its website is the Whiteface Region calendar.
 
