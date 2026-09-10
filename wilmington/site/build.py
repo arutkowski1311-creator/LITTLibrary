@@ -71,7 +71,10 @@ def main():
     for fn, sid in (("config.json","nnconfig"),("taxes.json","taxes"),("pricing.json","pricing")):
         fp = os.path.join(HERE, "..", "network", fn)
         if os.path.exists(fp):
-            j = json.dumps(json.load(open(fp, encoding="utf-8")), ensure_ascii=False).replace("</", "<\\/")
+            cfg = json.load(open(fp, encoding="utf-8"))
+            if fn == "config.json" and os.environ.get("GOOGLE_MAPS_BROWSER_KEY"):
+                cfg["googleMapsKey"] = os.environ["GOOGLE_MAPS_BROWSER_KEY"]; print("config: Google browser key injected from GOOGLE_MAPS_BROWSER_KEY (dist only)")
+            j = json.dumps(cfg, ensure_ascii=False).replace("</", "<\\/")
             html = re.sub(r'<script id="' + sid + r'" type="application/json">.*?</script>', lambda m: '<script id="' + sid + '" type="application/json">' + j + '</script>', html, count=1, flags=re.S)
     # network properties: merge properties/*.json (status live or pending-review) into the page
     pdir = os.path.join(HERE, "..", "network", "properties")

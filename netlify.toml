@@ -1,0 +1,17 @@
+# Northern Notch — static site build for Netlify
+# Site settings > Environment variables: GOOGLE_MAPS_BROWSER_KEY = a Google Maps Platform key restricted to
+# this site's domain (HTTP referrers) and to the Places API (New) + Maps JavaScript API.
+[build]
+  base    = "wilmington/site"
+  publish = "dist"
+  command = "pip install -r requirements.txt && python3 build.py"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
