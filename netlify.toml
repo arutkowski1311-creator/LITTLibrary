@@ -10,6 +10,8 @@
   PYTHON_VERSION = "3.11"
   # The browser key is meant to be public: it is restricted to this site's domain and to two Google APIs.
   SECRETS_SCAN_OMIT_KEYS = "GOOGLE_MAPS_BROWSER_KEY"
+  # Netlify's pattern-based "smart" scanner flags any Google key regardless of the line above.
+  SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
 
 [[headers]]
   for = "/*"
