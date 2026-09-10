@@ -13981,14 +13981,15 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "rainOk": false,
    "meal": [
     "breakfast",
     "lunch"
    ],
-   "kids": true
+   "kids": true,
+   "removedReason": "Owner 2026-09-10: no Google listing or photo came back; presumed closed or not a real venue"
   },
   {
    "id": "origin-coffee-lake-placid",
@@ -14544,7 +14545,7 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "closed",
    "commentary": "",
    "rainOk": false,
    "meal": [
@@ -14557,7 +14558,8 @@
     "address": "6115 Sentinel Rd, Lake Placid, NY 12946, USA",
     "refreshed": "2026-09-10"
    },
-   "googleNote": "Google lists 'Sentinel & Station' at this address; Liquids & Solids may have been renamed or replaced"
+   "googleNote": "Google lists 'Sentinel & Station' at this address; Liquids & Solids may have been renamed or replaced",
+   "removedReason": "Owner: Liquids & Solids has closed"
   },
   {
    "id": "nicolas-on-main",
@@ -14605,7 +14607,7 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "rainOk": false,
    "meal": [
@@ -14616,7 +14618,8 @@
     "unmatched": "Main Street Pizza",
     "address": "2673 Main St, Lake Placid, NY 12946, USA",
     "refreshed": "2026-09-10"
-   }
+   },
+   "removedReason": "Owner 2026-09-10: no Google listing or photo came back; presumed closed or not a real venue"
   },
   {
    "id": "delta-blue-lake-placid",
@@ -15652,7 +15655,7 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "rainOk": false,
    "meal": [
@@ -15664,7 +15667,8 @@
     "address": "23 River St, Saranac Lake, NY 12983, USA",
     "refreshed": "2026-09-10"
    },
-   "googleNote": "Google shows 'Lakeview Catering' as permanently closed at this address; confirm whether the deli still trades"
+   "googleNote": "Google shows 'Lakeview Catering' as permanently closed at this address; confirm whether the deli still trades",
+   "removedReason": "Owner 2026-09-10: no Google listing or photo came back; presumed closed or not a real venue"
   },
   {
    "id": "casa-del-sol",
@@ -15842,7 +15846,7 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "rainOk": false,
    "meal": [
@@ -15854,7 +15858,8 @@
     "address": "151 River St, Saranac Lake, NY 12983, USA",
     "refreshed": "2026-09-10"
    },
-   "googleNote": "Google shows \"Nonna Fina's Pizzeria\" as permanently closed; confirm"
+   "googleNote": "Google shows \"Nonna Fina's Pizzeria\" as permanently closed; confirm",
+   "removedReason": "Owner 2026-09-10: no Google listing or photo came back; presumed closed or not a real venue"
   },
   {
    "id": "noris-village-market",
@@ -17487,7 +17492,7 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "rainOk": false,
    "meal": [
@@ -17499,7 +17504,8 @@
     "address": "2405 Main St, Lake Placid, NY 12946, USA",
     "refreshed": "2026-09-10"
    },
-   "googleNote": "Google lists 'Players Waterfront Eatery' at 2405 Main St; confirm it is the same bar"
+   "googleNote": "Google lists 'Players Waterfront Eatery' at 2405 Main St; confirm it is the same bar",
+   "removedReason": "Owner 2026-09-10: no Google listing or photo came back; presumed closed or not a real venue"
   },
   {
    "id": "great-hall-bar-hotel-saranac",
@@ -18546,7 +18552,7 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "rainOk": false,
    "meal": [
@@ -18558,7 +18564,8 @@
     "unmatched": "The Boat Tasting Room",
     "address": "2617 Main St Ste 4, Lake Placid, NY 12946, USA",
     "refreshed": "2026-09-10"
-   }
+   },
+   "removedReason": "Owner 2026-09-10: no Google listing or photo came back; presumed closed or not a real venue"
   },
   {
    "id": "high-peaks-distilling",
@@ -18730,7 +18737,7 @@
     "nextReview": "2026-10-08",
     "status": "unverified"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "rainOk": false,
    "meal": [
@@ -18742,7 +18749,8 @@
     "unmatched": "RiverTrail Beerworks",
     "address": "79 Woodruff St, Saranac Lake, NY 12983, USA",
     "refreshed": "2026-09-10"
-   }
+   },
+   "removedReason": "Owner 2026-09-10: no Google listing or photo came back; presumed closed or not a real venue"
   },
   {
    "id": "olympic-center-herb-brooks-arena",

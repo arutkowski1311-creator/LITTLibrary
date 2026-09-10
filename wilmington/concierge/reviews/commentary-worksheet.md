@@ -1,6 +1,6 @@
 # Concierge library — colour commentary worksheet
 
-Generated 2026-09-10 · 274 entries · 0 already have commentary.
+Generated 2026-09-10 · 267 entries · 0 already have commentary.
 
 How to use: write your note on the line(s) after **Commentary:** in any block. One to three sentences in your own voice is perfect
 (what you order, when to go, who it suits, what to skip). Leave a block blank to skip it. Type `REMOVE` to drop an entry,
@@ -120,15 +120,6 @@ Commentary:
 
 ---
 
-**Chair 6**  `chair-6-lake-placid` ⚠ unverified
-_Breakfast / lunch / bakery · 15 min down the road · 13 mi via NY-86 · $–$$_
-Small, chef-run breakfast-and-lunch room on Sentinel Road with inventive specials and very good baked goods. Quieter than Main Street.
-
-Commentary:
-
-
----
-
 **Delta Blue**  `delta-blue-lake-placid` ⚠ unverified
 _Cajun / live music bar · 15 min down the road · 13 mi via NY-86 · $$_
 Cajun-Creole cooking and live blues on Main Street; gumbo, po'boys and a bar that stays lively late.
@@ -231,15 +222,6 @@ Commentary:
 **Lisa G's**  `lisa-g-s`
 _Creative American / neighborhood bar · 15 min down the road · 13 mi via NY-86 · $$_
 A fun, energetic local favorite that does comfort food with more personality than a standard pub. The menu has enough variety for a mixed group, and the patio/deck is a major plus.
-
-Commentary:
-
-
----
-
-**Nicola's on Main**  `nicolas-on-main` ⚠ unverified
-_Italian / pizza · 15 min down the road · 13 mi via NY-86 · $$–$$$_
-Wood-fired pizza, pasta and Italian-Mediterranean plates on Main Street from the family behind Caffè Rustica. A dependable middle ground for groups.
 
 Commentary:
 
@@ -412,15 +394,6 @@ Commentary:
 
 ---
 
-**Lakeview Deli**  `lakeview-deli` ⚠ unverified
-_Deli / sandwiches · ≈35 min via NY-86 · $_
-Beloved sandwich shop across from Lake Flower: overstuffed subs, wraps and salads, best eaten at the picnic tables by the water.
-
-Commentary:
-
-
----
-
 **Left Bank Café**  `left-bank-cafe` ⚠ unverified
 _French bistro / café · ≈35 min via NY-86 · $$_
 French-leaning bistro in downtown Saranac Lake: crêpes, tartines, quiche and a short wine list. Reopened as a proper bistro; an unexpected pleasure.
@@ -433,15 +406,6 @@ Commentary:
 **Mountain Mist Custard**  `mountain-mist-custard` ⚠ unverified
 _Frozen custard · ≈35 min via NY-86 · $_
 Roadside frozen-custard stand on Lake Flower with picnic tables at the water and a paddleboat view. Summer only.
-
-Commentary:
-
-
----
-
-**Nonna Fina**  `nonna-fina` ⚠ unverified
-_Italian-American · ≈35 min via NY-86 · $$_
-Family Italian on Lake Flower Avenue: red-sauce classics, big portions and a warm room.
 
 Commentary:
 
@@ -601,15 +565,6 @@ Commentary:
 
 ---
 
-**Player's Sports Bar & Grill**  `players-sports-bar` ⚠ unverified
-_Sports bar / pool · 15 min down the road · 13 mi via NY-86 · $_
-Pool tables, pub food and a Saranac Avenue location away from the Main Street crowds.
-
-Commentary:
-
-
----
-
 **Roomers**  `roomers-lake-placid`
 _Bar / nightclub · 15 min down the road · 13 mi via NY-86 · $$_
 Main Street bar and nightclub that fills after 10 pm in season; DJs, dancing, not for quiet conversation.
@@ -705,26 +660,6 @@ Commentary:
 **High Peaks Distilling (Lake Placid Spirits)**  `high-peaks-distilling`
 _Craft distillery · 15 min down the road · 13 mi via NY-86 · $$_
 Small-batch gin, vodka and whiskey distilled in Lake Placid, with a tasting room and cocktails. The bottle to take home.
-
-Commentary:
-
-
----
-
-**Main Street tasting rooms (Prison City · The Boat · Raquette River)**  `main-street-tasting-rooms-lake-placid` ⚠ unverified
-_Tasting rooms · 15 min down the road · 13 mi via NY-86 · $_
-Three satellite tasting rooms from upstate breweries along Main Street let you do a walking beer tour without a car. Names and openings change; check the current list.
-
-Commentary:
-
-
----
-
-### Lake Placid / Ray Brook / Saranac Lake
-
-**Adirondack Craft Beverage Trail**  `adirondack-beer-trail` ⚠ unverified
-_Trail / passport · Varies · Free_
-The regional passport programme linking breweries, cideries and distilleries across the Park; good for planning a designated-driver day.
 
 Commentary:
 
