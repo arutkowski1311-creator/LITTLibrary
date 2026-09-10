@@ -1,6 +1,6 @@
 # Concierge library — colour commentary worksheet
 
-Generated 2026-09-10 · 275 entries · 0 already have commentary.
+Generated 2026-09-10 · 274 entries · 0 already have commentary.
 
 How to use: write your note on the line(s) after **Commentary:** in any block. One to three sentences in your own voice is perfect
 (what you order, when to go, who it suits, what to skip). Leave a block blank to skip it. Type `REMOVE` to drop an entry,
@@ -249,15 +249,6 @@ Commentary:
 **Origin Coffee Co.**  `origin-coffee-lake-placid`
 _Coffee / café · 15 min down the road · 13 mi via NY-86 · $_
 Specialty coffee with a chef-driven breakfast and lunch menu and rotating local art. Locations in Lake Placid and Saranac Lake; the one to pick for a good flat white.
-
-Commentary:
-
-
----
-
-**Rooftop bar, Lake Placid (owner go-to — confirm which venue)**  `rooftop-bar-lake-placid-owner-go-to-confirm-which-venue` ⚠ unverified
-_Rooftop bar · summer · 15 min down the road · 13 mi via NY-86 · $$_
-A rooftop bar in the village that the owner recommends for summer evenings. Confirm the venue; Top of the Park is already listed separately.
 
 Commentary:
 

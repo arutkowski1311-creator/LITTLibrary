@@ -12235,59 +12235,6 @@
    }
   },
   {
-   "id": "rooftop-bar-lake-placid-owner-go-to-confirm-which-venue",
-   "name": "Rooftop bar, Lake Placid (owner go-to — confirm which venue)",
-   "category": "Dining",
-   "subcategory": "Rooftop bar · summer",
-   "iconic": false,
-   "area": "Lake Placid",
-   "address": "",
-   "phone": "",
-   "website": null,
-   "websiteKind": null,
-   "rank": null,
-   "areaRank": null,
-   "rankScope": null,
-   "review": "A rooftop bar in the village that the owner recommends for summer evenings. Confirm the venue; Top of the Park is already listed separately.",
-   "bestFor": [
-    "Summer cocktails"
-   ],
-   "order": "",
-   "knowBefore": "Likely Cloudsplitter Rooftop Bar at the Grand Adirondack Hotel (2520 Main St), now in the library as its own entry; confirm and this placeholder will be removed.",
-   "occasionPick": null,
-   "signals": {},
-   "season": "Verify hours and season",
-   "hours": "Verify",
-   "cost": "$$",
-   "booking": "",
-   "access": "Verify",
-   "suits": [
-    "food"
-   ],
-   "flags": [],
-   "drive": "15 min down the road · 13 mi via NY-86",
-   "source": {
-    "name": "Owner go-to (to verify)",
-    "ref": "[O]",
-    "url": null
-   },
-   "verification": {
-    "lastVerified": null,
-    "verifiedBy": null,
-    "method": null,
-    "nextReview": "2026-09-08",
-    "status": "unverified"
-   },
-   "status": "placeholder",
-   "meal": [
-    "drinks"
-   ],
-   "kids": false,
-   "goTo": true,
-   "seasonal": "summer",
-   "commentary": ""
-  },
-  {
    "id": "wilderness-inn-wilmington",
    "name": "Wilderness Inn II",
    "category": "Dining",
@@ -16775,8 +16722,9 @@
     "sunset"
    ],
    "flags": [
-    "rooftop",
-    "prose-unreviewed"
+    "owner-recommended",
+    "prose-unreviewed",
+    "rooftop"
    ],
    "drive": "15 min down the road · 13 mi via NY-86",
    "photo": {
@@ -16786,8 +16734,8 @@
    },
    "links": [],
    "source": {
-    "name": "Library seed 2026-09-08 — regional tourism guides, official sites and general knowledge; not yet vetted",
-    "ref": "[G2]",
+    "name": "Owner go-to (confirmed 2026-09-10) · Grand Adirondack Hotel / Marcy Restaurant site",
+    "ref": "[O]",
     "url": "https://www.marcyrestaurant.com/cloudsplitter-rooftop-bar/"
    },
    "verification": {
