@@ -20,6 +20,8 @@ For every entry with an address or a name+area it:
 
 Usage:
   GOOGLE_MAPS_KEY=... python3 enrich_google.py [--only category] [--limit N] [--dry-run]
+  or, in a Claude Code cloud environment with an API credential for places.googleapis.com
+  (header X-Goog-Api-Key, no prefix), simply:  python3 enrich_google.py ...
 
 Cost note: Text Search + Place Details (Pro/Enterprise field masks) bill per call; ~280 entries
 is roughly two calls each, well inside the monthly free credit. Re-runs skip entries refreshed
@@ -39,7 +41,8 @@ TODAY = dt.date.today().isoformat()
 
 def call(url, body=None, mask=None):
     req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None, method="POST" if body else "GET")
-    req.add_header("Content-Type", "application/json"); req.add_header("X-Goog-Api-Key", KEY)
+    req.add_header("Content-Type", "application/json")
+    if KEY: req.add_header("X-Goog-Api-Key", KEY)   # otherwise the environment's API credential (agent proxy) attaches it
     if mask: req.add_header("X-Goog-FieldMask", mask)
     with urllib.request.urlopen(req, timeout=30) as r: return json.load(r)
 
@@ -54,7 +57,7 @@ def main():
     args = sys.argv[1:]; dry = "--dry-run" in args; force = "--force" in args
     only = args[args.index("--only") + 1] if "--only" in args else None
     limit = int(args[args.index("--limit") + 1]) if "--limit" in args else 10**9
-    if not KEY and not dry: sys.exit("GOOGLE_MAPS_KEY not set")
+    if not KEY and not dry: print("no GOOGLE_MAPS_KEY in the environment; relying on an API credential attached by the proxy for places.googleapis.com")
     d = json.load(open(DATA)); done = 0; log = []
     for p in d["places"]:
         if p["category"] in ("Emergency",) or p["status"] in ("removed", "placeholder"): continue
