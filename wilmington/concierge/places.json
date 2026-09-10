@@ -37,7 +37,8 @@
    "[H1]": "Wilmington_Adirondack_Hikes_and_Activities_Guide_2026.docx — owner research checked 2026-09-07 (web only; operators not telephoned, routes not field-inspected)",
    "[V]": "Verified by web search on 2026-09-08 against official sites (Claude)",
    "[O]": "Owner go-to recommendations given 2026-09-08 — verify each before it shows to guests",
-   "[G2]": "Library seed 2026-09-08 — real places drawn from regional tourism sites (lakeplacid.com, whitefaceregion.com, saranaclake.com, visitadirondacks.com), official sites and general knowledge; every detail unverified until its first vetting cycle"
+   "[G2]": "Library seed 2026-09-08 — real places drawn from regional tourism sites (lakeplacid.com, whitefaceregion.com, saranaclake.com, visitadirondacks.com), official sites and general knowledge; every detail unverified until its first vetting cycle",
+   "[AT]": "AllTrails trail pages and community reviews, read via web search on 2026-09-10 (ratings, counts and distances as published that day; not scraped)"
   },
   "occasions": [
    "Best special dinner",
@@ -1621,12 +1622,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "A full-day climb from the Wilmington side to the summit. Long, steep, and worth every step on a clear day.",
+   "review": "The big local climb: from the Wilmington trailhead over Marble Mountain and Esther's shoulder to the 4,867-foot summit, nearly ten miles round trip with the most sustained elevation gain of any hike in this guide. Reviewers love the workout and the views from the summit ridge, and they are candid about the drawbacks: steep, muddy sections, an unmaintained Esther spur, and a summit you share with the crowd who drove up the Memorial Highway. Start early, carry more water than you think, and treat it as a full day for fit adults.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead at the top of the Wilmington Reservoir road. Alpine summit: pack layers even in July. The Memorial Highway crowd means the summit is busy from late morning.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "1,700+",
+    "asOf": "2026-09-10"
+   },
    "season": "Summer and autumn; winter for equipped hikers only",
    "hours": "Verify",
    "cost": "Free",
@@ -1645,11 +1650,11 @@
     "url": null
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": null,
-    "method": null,
-    "nextReview": "2026-09-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "tier": "Difficult",
@@ -1666,9 +1671,23 @@
     }
    ],
    "miles": 9.8,
-   "climbFt": 3664,
-   "duration": "7–8 hours",
-   "commentary": ""
+   "climbFt": 3600,
+   "duration": "6–8 hours",
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "challenging",
+     "summit crowds",
+     "muddy",
+     "start early"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/whiteface-mountain-summit-trail",
+     "https://www.alltrails.com/trail/us/new-york/whiteface-lookout-and-esther-mountains"
+    ]
+   }
   },
   {
    "id": "cooper-kiln-pond",
@@ -1683,12 +1702,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "A quieter walk to a backcountry pond on the shoulder of Whiteface.",
+   "review": "A quieter walk to a backcountry pond tucked between Morgan Mountain and Wilmington Peak on the shoulder of Whiteface, with a mostly wooded shoreline, a lean-to and real solitude on weekdays. Reviewers describe a steady climb rewarded by a peaceful pond rather than a summit view, and warn about mud after rain and ice in the shoulder seasons; microspikes and a packed lunch are the two most common tips. A 6.2-mile alternative starts from Bonnieview Road.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "From the Whiteface Memorial Highway lot or Bonnieview Road. Muddy after rain; eroded in places; microspikes from November to May.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.5,
+    "alltrailsReviews": "130+",
+    "asOf": "2026-09-10"
+   },
    "season": "Three seasons",
    "hours": "Verify",
    "cost": "Free",
@@ -1708,11 +1731,11 @@
     "url": null
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": null,
-    "method": null,
-    "nextReview": "2026-09-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "tier": "Medium",
@@ -1725,8 +1748,23 @@
    ],
    "miles": 5.1,
    "climbFt": 1158,
-   "duration": "2.5–3 hours",
-   "commentary": ""
+   "duration": "2.5–3.5 hours",
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "solitude",
+     "pond",
+     "muddy",
+     "microspikes"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/cooper-kiln-pond-trail",
+     "https://www.alltrails.com/trail/us/new-york/cooper-kiln-pond-from-bonnieview-road",
+     "https://pureadirondacks.com/blogs/adirondack-hiking/cooper-kiln-pond-trail"
+    ]
+   }
   },
   {
    "id": "copperas-owen-ponds",
@@ -1741,12 +1779,16 @@
    "rank": 1,
    "areaRank": null,
    "rankScope": "hiking-more-family-favorites",
-   "review": "A short, steep woodland approach to a peaceful mountain pond. A good family outing when children already handle roots and uphill walking.",
+   "review": "A short, sharp climb from NY-86 in the Notch to a hidden pond with a lean-to, campsites and a mountain backdrop that reviewers rate the best lake trail in the Sentinel Range Wilderness. The write-ups agree on two things: the swimming and the view are worth it, and the first half-mile is steeper and slipperier than the distance suggests. Bring bug spray in June; the trail continues to Owen and Winch ponds if the group wants more.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Roughly one mile round trip from the direct northern Route 86 trailhead. It is not the longer Owen–Copperas–Winch itinerary. Follow the marked route and avoid turning a short visit into an unplanned road walk.",
+   "knowBefore": "Two trailheads on NY-86 in Wilmington Notch; the northern one is the direct, steeper approach. Steep, slippery descents; no stroller. Swim from the rocks by the lean-to.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.5,
+    "alltrailsReviews": "480+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -1790,14 +1832,28 @@
      "kind": "source"
     }
    ],
-   "miles": 1.0,
+   "miles": 1.3,
    "climbFt": 450,
-   "duration": "1–1.5 hours",
+   "duration": "45–90 minutes",
    "fitness": "Basic-to-moderate fitness with sure footing; about 450 feet of climbing is concentrated into a short approach.",
    "children": "Better for capable school-age walkers than toddlers. Close supervision near the water; no stroller.",
    "payoff": "A quiet pond, mountain backdrop and reflective water rather than a summit.",
    "tier": "More family favorites",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "swimming",
+     "hidden pond",
+     "steep start",
+     "bugs"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/copperas-pond",
+     "https://www.lakeplacid.com/story/2012/09/hiking-copperas-pond-trail"
+    ]
+   }
   },
   {
    "id": "flume-trails",
@@ -2673,12 +2729,16 @@
    "rank": 1,
    "areaRank": null,
    "rankScope": "hiking-small-children",
-   "review": "A short meadow-and-woods outing rather than a mountain climb. The Big Field Loop is the best starting point for children who want to explore at their own pace; do not confuse it with the longer trail network.",
+   "review": "Three flat, free, beautifully kept loops on a former farm outside Lake Placid: the 0.9-mile Big Field Loop through woods to an open meadow, the 1.4-mile Old Orchard loop with the widest mountain views, and the 1.5-mile Bear Cub loop with cross-trails to shorten or stretch it. Reviewers use the same words again and again: easy, well-marked, stroller-able, dog-friendly, and a perfect first walk with small children or on a winter afternoon.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Use the trailhead map to stay on the 0.9-mile Big Field Loop. Wet ground and uneven surfaces can occur; this is not a guaranteed smooth stroller route.",
+   "knowBefore": "Bear Cub Lane, Lake Placid. Free; dogs welcome (off-leash areas). Doubles as a snowshoe and cross-country loop in winter.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.6,
+    "alltrailsReviews": "790+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -2718,13 +2778,28 @@
    },
    "status": "active",
    "miles": 0.9,
-   "climbFt": "Low / rolling",
-   "duration": "30–75 min",
+   "climbFt": 60,
+   "duration": "30–45 minutes",
    "fitness": "Basic walking ability on a natural path. Ideal when the group has mixed stamina or wants frequent stops.",
    "children": "Top choice for preschoolers and young walkers. Let the shortest-legged person set the pace; bring a carrier when needed.",
    "payoff": "Open High Peaks views without having to climb a High Peak.",
    "tier": "Small children",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "stroller",
+     "toddlers",
+     "dogs",
+     "winter walk",
+     "free"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/heaven-hills-trail",
+     "https://www.lakeplacid.com/hiking/heaven-hill-trails"
+    ]
+   }
   },
   {
    "id": "cobble-lookout",
@@ -2739,12 +2814,16 @@
    "rank": 2,
    "areaRank": null,
    "rankScope": "hiking-small-children",
-   "review": "The best nearby view-to-effort choice for a family that can manage a couple of miles. A gently rolling forest trail reaches a broad open lookout over the valley and surrounding mountains.",
+   "review": "Built in 2014 and already the most-walked trail in Wilmington: a gently rolling forest path to a broad open ledge with Whiteface, Esther and the High Peaks laid out in front of you. Thousands of reviewers call it the best view-for-effort hike in the area and rate it near-perfect; the recurring notes are that it is family- and dog-friendly, that beginners manage it easily, and that October colour from the lookout is spectacular. Expect company on weekends.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Trailhead is on Gillespie Drive / County Route 18A near Whiteface Memorial Highway. The published route is about 2.4 miles; some maps round it differently. Not stroller-friendly.",
+   "knowBefore": "Trailhead on Gillespie Drive off the Whiteface Memorial Highway approach. Roots, rocks and a little mud; not stroller-friendly. Keep small children back from the unguarded edge.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "2,800+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -2784,14 +2863,29 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": 2.4,
+   "miles": 2.5,
    "climbFt": 280,
-   "duration": "1.5–2.5 hours",
+   "duration": "1–1.5 hours",
    "fitness": "Comfort walking two-plus miles on roots, rocks and occasional mud. Much less climbing than a summit hike, but still a real trail.",
    "children": "Good for capable younger children with patient adults; toddlers may need a carrier. Hold small children close at the unguarded lookout and stay well back from the edge.",
    "payoff": "A big Adirondack panorama for comparatively little climbing.",
    "tier": "Small children",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "family-friendly",
+     "dog-friendly",
+     "beginner",
+     "fall colour",
+     "view for effort"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/cobble-lookout-wilmington",
+     "https://pureadirondacks.com/blogs/adirondack-hiking/cobble-lookout"
+    ]
+   }
   },
   {
    "id": "brewster-peninsula-short-lake-and-woods-walk",
@@ -2806,12 +2900,16 @@
    "rank": 3,
    "areaRank": null,
    "rankScope": "hiking-small-children",
-   "review": "A flexible network of short woodland trails beside Lake Placid. Choose a small out-and-back or linked loop rather than feeling obliged to complete every trail.",
+   "review": "A nearly flat network of lake-and-woods loops on the peninsula that juts into Lake Placid, with water views, mossy forest and well-marked junctions. Two thousand reviewers rate it an easy family favourite; the only consistent complaints are mud after rain, roots and rocks underfoot, and ferocious mosquitoes in early summer. Leashed dogs welcome.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "The suggested 1–2 miles is a selected outing, not the official length of the whole network. Consult the junction map; the Lakeshore Trail is rockier than the gentler interior sections.",
+   "knowBefore": "Off Whiteface Inn Lane by the golf course. Bug spray and long sleeves in June and July; some muddy stretches.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.6,
+    "alltrailsReviews": "2,100+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -2850,14 +2948,28 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": "1–2",
-   "climbFt": "Low / rolling",
-   "duration": "0.75–1.5 hours",
+   "miles": 2.1,
+   "climbFt": 98,
+   "duration": "45–75 minutes",
    "fitness": "Basic walking stamina with enough balance for roots and uneven lakeside rock.",
    "children": "Good for younger children who enjoy woods and water. The shoreline requires close supervision; a carrier is more useful than a stroller.",
    "payoff": "A real lakeshore outing with forest shade and water views, close to the village.",
    "tier": "Small children",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "family",
+     "lake views",
+     "mud",
+     "mosquitoes"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/peninsula-loop",
+     "https://www.tripadvisor.com/Attraction_Review-g48023-d1513795-Reviews-Brewster_Peninsula_Nature_Trails-Lake_Placid_New_York.html"
+    ]
+   }
   },
   {
    "id": "mirror-lake-village-loop",
@@ -2872,12 +2984,16 @@
    "rank": 1,
    "areaRank": null,
    "rankScope": "hiking-leisurely-easy",
-   "review": "A paved village walk around Mirror Lake, not a wilderness hike. Shops and lake views make it easy to turn a walk into a relaxed morning or afternoon.",
+   "review": "The sidewalk loop around Mirror Lake in the middle of Lake Placid: benches, beaches, boat rentals and Main Street's ice cream all on the way round. Reviewers recommend it for strollers, wheelchairs, grandparents and dogs, and for the views of Whiteface across the water in evening light. It is a stroll rather than a hike, which is the point.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Allow extra time for stops and parking. Follow sidewalks and crossings; a paved route is not a promise of step-free access at every business or side path.",
+   "knowBefore": "Start anywhere; free street parking is easiest at the beach end. Fully paved. Ice-covered stretches in winter.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.6,
+    "alltrailsReviews": "2,200+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -2918,14 +3034,28 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": 2.7,
-   "climbFt": "Low / rolling",
-   "duration": "1–1.5 hours",
+   "miles": 2.6,
+   "climbFt": 60,
+   "duration": "45–60 minutes",
    "fitness": "Comfortable walking on pavement; shorten it to an out-and-back whenever the group has had enough.",
    "children": "Good for all ages with adult supervision at road crossings. The most practical core choice for a stroller; benches and shorter turnaround options help mixed-mobility groups.",
    "payoff": "Lake reflections, mountain backdrops and easy access to the village.",
    "tier": "Leisurely / easy",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "stroller",
+     "accessible",
+     "dogs",
+     "evening"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/mirror-lake-loop",
+     "https://www.lakeplacid.com/story/2010/10/walk-around-lake-placids-mirror-lake"
+    ]
+   }
   },
   {
    "id": "bloomingdale-bog-short-out-and-back",
@@ -2940,12 +3070,16 @@
    "rank": 2,
    "areaRank": null,
    "rankScope": "hiking-leisurely-easy",
-   "review": "A nearly level former rail corridor through an unusual wetland landscape. Choose a turnaround point based on the group rather than aiming for the full trail.",
+   "review": "A dead-flat old railroad bed through open bog, tamaracks and ponds between Saranac Lake and Bloomingdale, famous for the hand-tame Canada jays that will land on an outstretched hand at the northern end. Reviewers prize the peace and the wildlife (moose sightings are reported), and warn about deer flies in summer and the occasional beaver flooding. Turn around whenever you like; most families go a mile or two.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "The full trail is approximately 3.7 miles one way; this recommendation is only a 1–3-mile total outing. Northern access is generally the better stroller choice. Beaver flooding can affect the southern portion.",
+   "knowBefore": "Two ends: NY-86 near Saranac Lake or Bigelow Road at the Bloomingdale end (best for the jays; bring unsalted seeds). Deer flies in July; a head net helps. Great cross-country ski in winter.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.5,
+    "alltrailsReviews": "170+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -2984,14 +3118,30 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": "1–3",
-   "climbFt": 25,
-   "duration": "0.5–1.5 hours",
+   "miles": "1–5",
+   "climbFt": 0,
+   "duration": "1–2 hours",
    "fitness": "Basic walking fitness. The main challenge is distance, not climbing.",
    "children": "Suitable for children who enjoy birds, plants and a quiet nature walk. Bring insect protection in season and supervise near water or flooded sections.",
    "payoff": "Wide-open bog scenery and a different Adirondack habitat from the mountain trails.",
    "tier": "Leisurely / easy",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "birding",
+     "gray jays",
+     "flat",
+     "deer flies",
+     "winter ski"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/the-bloomingdale-bog-trail",
+     "https://www.saranaclake.com/story/2018/07/hiking-and-birding-bloomingdale-bog",
+     "https://www.adirondackexplorer.org/recreation/bloomingdale-bog-outing-in-any-season/"
+    ]
+   }
   },
   {
    "id": "paul-smith-s-vic-barnum-brook-trail",
@@ -3006,12 +3156,16 @@
    "rank": 3,
    "areaRank": null,
    "rankScope": "hiking-leisurely-easy",
-   "review": "A short interpretive nature walk at the Paul Smith's College Visitor Interpretive Center. A worthwhile farther-afield outing for guests who prefer nature observation over climbing.",
+   "review": "A wheelchair-accessible boardwalk-and-gravel loop along Barnum Brook to a beaver lodge and Heron Marsh overlook at the Paul Smith's College Visitor Interpretive Center, with 25 miles of longer trails, a butterfly house and naturalist programmes behind it. Reviewers note easy parking, no crowds and a calm, birdy walk that works for grandparents and toddlers alike.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "The selected trail is 0.6 mile, not the larger VIC network. Check lodge hours and seasonal programs; the butterfly house is a seasonal, weather-dependent extra, not a guaranteed indoor rainy-day attraction.",
+   "knowBefore": "Route 30, Paul Smiths; about 50 minutes from the house. Free trails; check the VIC for programme times. Leashed dogs.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.5,
+    "alltrailsReviews": "75+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Parking / access fee — verify",
@@ -3055,14 +3209,28 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": 0.6,
-   "climbFt": "Low / rolling",
-   "duration": "30–60 min",
+   "miles": 0.7,
+   "climbFt": 30,
+   "duration": "20–40 minutes",
    "fitness": "Low exertion. The college describes Barnum Brook as ADA-accessible; confirm current surface and access conditions for specific mobility needs.",
    "children": "Good for young children and multigenerational groups. The visitor center makes it easier to pair a small walk with a longer nature-focused visit.",
    "payoff": "Marsh, forest and water-level scenery in a compact outing.",
    "tier": "Leisurely / easy",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "accessible",
+     "boardwalk",
+     "birding",
+     "quiet"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/barnum-brook-trail-blue",
+     "https://www.adirondackvic.org/TrailMap.html"
+    ]
+   }
   },
   {
    "id": "mount-jo-via-the-long-trail",
@@ -3077,12 +3245,16 @@
    "rank": 1,
    "areaRank": null,
    "rankScope": "hiking-medium",
-   "review": "A classic small mountain with a much bigger view than its size suggests. The Long Trail is the preferred family approach, but roots, rocks and sustained climbing keep this out of the toddler-stroll category.",
+   "review": "The classic first High Peaks-area summit: a small mountain above Heart Lake with a straight-on view of the MacIntyre Range and Marcy that reviewers describe as the best payoff per mile in the region. Two routes reach the top; almost every parent in nearly six thousand reviews says take the Long Trail up and down with children, because the Short Trail is a steep rock scramble. Arrive early: the Loj lot fills by 7 am on summer weekends and charges a daily fee.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Start at the Adirondak Loj / Heart Lake trailhead. Allow for paid parking and busy weekends. About 2.6 miles round trip via the Long Trail; the shorter route is steeper, not automatically easier. Apps may still show the old routing — ADK is correcting it.",
+   "knowBefore": "Adirondak Loj, Heart Lake. Paid parking; check availability before driving out. Long Trail both ways for small children.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "5,700+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3127,12 +3299,26 @@
    "status": "active",
    "miles": 2.6,
    "climbFt": 700,
-   "duration": "2–3 hours",
+   "duration": "1.5–2.5 hours",
    "fitness": "Moderate fitness and comfort walking uphill on uneven ground; the descent still takes concentration.",
    "children": "Best for school-age children who already manage rocky hikes. A fit adult with a carrier may choose it, but carrying a child does not make the footing easier.",
    "payoff": "Heart Lake framed by major High Peaks: one of the strongest shorter-hike payoffs.",
    "tier": "Medium",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "family",
+     "iconic view",
+     "parking fills early",
+     "Long Trail with kids"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/mount-jo-loop-trail",
+     "https://www.tripadvisor.com/Attraction_Review-g48023-d1948212-Reviews-Mount_Jo-Lake_Placid_New_York.html"
+    ]
+   }
   },
   {
    "id": "baker-mountain",
@@ -3147,12 +3333,16 @@
    "rank": 2,
    "areaRank": null,
    "rankScope": "hiking-medium",
-   "review": "A compact climb above Saranac Lake with a substantial amount of uphill packed into a short distance. Convenient for pairing a hike with a village visit.",
+   "review": "Saranac Lake's town mountain and the easiest of the Saranac Lake 6ers: a short, steep climb from Moody Pond to open ledges over the village, McKenzie Wilderness and the High Peaks. Reviewers call it quick and rewarding and bring dogs and children, with three warnings that repeat: mosquitoes, slick rock after rain, and a poorly marked descent on the loop variant. Parking at the trailhead is tight; Berkeley Green in the village is the overflow.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Use the Moody Pond trailhead and respect the residential neighborhood and posted parking. Published mileage varies slightly with starting point; this guide uses the regional 1.6-mile round trip.",
+   "knowBefore": "Trailhead on Forest Hill Avenue at Moody Pond. Steep for its length; older toddlers will need a hand. Take the same trail down if the loop is unclear.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.6,
+    "alltrailsReviews": "2,400+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3190,14 +3380,28 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": 1.6,
-   "climbFt": 884,
-   "duration": "1.5–2.5 hours",
+   "miles": 1.7,
+   "climbFt": 882,
+   "duration": "1–1.5 hours",
    "fitness": "Moderate fitness, steady uphill effort and confidence descending rocks and roots.",
    "children": "Good for capable school-age children who like a summit goal. Not an effortless walk simply because it is under two miles.",
    "payoff": "Views over Saranac Lake, Lake Flower and surrounding mountains.",
    "tier": "Medium",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "short and steep",
+     "views over village",
+     "mosquitoes",
+     "parking"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/baker-mountain",
+     "https://www.saranaclake.com/hiking/baker-mountain"
+    ]
+   }
   },
   {
    "id": "mt-van-hoevenberg-east-trail",
@@ -3212,12 +3416,16 @@
    "rank": 3,
    "areaRank": null,
    "rankScope": "hiking-medium",
-   "review": "A purpose-built mountain trail with extensive stonework and a summit ledge looking toward the High Peaks. A strong option for active families who want a proper half-day hike.",
+   "review": "A modern, stair-built trail from the Olympic Sports Complex to a rocky summit with a wide view of the High Peaks, rated among the highest of any hike near Lake Placid. Four thousand reviewers praise the immaculate trail work, clear marking and family-friendly grade; the honest downsides are hundreds of steps on the way up and weekend crowds, so an early start is the standard advice. A good warm-up hike, or the easy day after a big one.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "This entry is specifically the East Trail from the Mountain Pass Lodge area, not the West Trail. The regional guide lists 3.6 miles round trip. Check venue access, parking and current trail information before leaving.",
+   "knowBefore": "Park at Mt Van Hoevenberg's Mountain Pass Lodge (fee may apply); trail leaves from behind the lodge. Many stairs; fine for school-age children.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.8,
+    "alltrailsReviews": "4,000+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3260,14 +3468,28 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": 3.6,
-   "climbFt": 1000,
-   "duration": "2.5–4 hours",
+   "miles": 3.8,
+   "climbFt": 974,
+   "duration": "2–2.5 hours",
    "fitness": "Moderate fitness with the ability to handle about 1,000 feet of climbing and many uneven steps.",
    "children": "Best for school-age children with established hiking stamina. Keep children well back from the exposed summit edge.",
    "payoff": "Expansive High Peaks views and an attractive, deliberately built trail.",
    "tier": "Medium",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "stairs",
+     "well built",
+     "family",
+     "crowds"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/mt-van-hoevenberg-easttrail",
+     "https://www.lakeplacid.com/story/2022/mt-van-hoevenberg-faq"
+    ]
+   }
   },
   {
    "id": "cascade-mountain-from-route-73",
@@ -3282,12 +3504,16 @@
    "rank": 1,
    "areaRank": null,
    "rankScope": "hiking-difficult",
-   "review": "A genuine Adirondack High Peak and a reasonable first choice for a fit, prepared mountain hiker. The rocky ascent ends on an exposed summit; “one of the easier High Peaks” does not mean easy.",
+   "review": "The most-climbed of the 46 High Peaks and the easiest way to stand on a bare 4,000-footer, with a rocky open summit and views in every direction. Reviewers rate it highly and describe it plainly: crowded on any fine weekend, muddy for much of the year, with bare-rock scrambles near the top. The consistent advice is to arrive before 8 am (the three roadside lots on Route 73 fill fast) or go late on a long summer evening. Porter is a short add-on from the col.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "This distance is for the Route 73 route, without adding Porter. Parking fills early and no-parking zones are enforced. Check DEC for current access and conditions; do not improvise roadside parking.",
+   "knowBefore": "Roadside parking on Route 73 at Cascade Pass; shuttles run on peak weekends. Above treeline: wind layers and water. Not a small-children hike.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "6,600+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3331,12 +3557,26 @@
    "status": "active",
    "miles": 4.8,
    "climbFt": 1940,
-   "duration": "4–6 hours",
+   "duration": "3.5–5 hours",
    "fitness": "Strong day-hiking fitness, sustained uphill ability and stable footing on rock. Be prepared for a demanding descent and rapidly changing summit weather.",
    "children": "Only for children or teenagers who already hike comparable terrain and distance. Not a default family outing or first mountain walk.",
    "payoff": "A broad, above-treeline panorama and a true High Peak summit.",
    "tier": "Difficult",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "crowded",
+     "parking fills",
+     "muddy",
+     "first 46er"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/cascade-mountain--2",
+     "https://www.tripadvisor.com/Attraction_Review-g28953-d7363424-Reviews-Cascade_Mountain-New_York.html"
+    ]
+   }
   },
   {
    "id": "jay-mountain-first-summit",
@@ -3351,12 +3591,16 @@
    "rank": 2,
    "areaRank": null,
    "rankScope": "hiking-difficult",
-   "review": "A substantial climb to an open ridge with a less crowded-feeling, rugged mountain setting. The recommended turnaround is the first summit at the end of the marked trail, not an automatic traverse of the entire ridge.",
+   "review": "A steady switchbacked climb through shade to an open rocky spine that reviewers on the Adirondack forums call an under-appreciated wonder: a 'highway in the sky' of bare ridge with 360-degree views toward Whiteface and the High Peaks, wild blueberries in August, and far fewer people than Route 73. The first summit makes a satisfying half-day; the full ridge to the eastern peak is eight miles and adds navigation over cairned rock. Wind and weather change fast up there, so pack a shell.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "The true summit extension is about 7.3 miles round trip with roughly 2,675 feet of gain; beyond the marked route, navigation and slab travel are more demanding. Jay is not one of the 46 High Peaks. Use the western trailhead near Jay Mountain Road and Upland Meadows Road.",
+   "knowBefore": "Trailhead on Upland Road (Jay Mountain Road) out of Upper Jay. Ridge is exposed and sparsely marked beyond the first summit; carry a map and GPS. No water on route.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "1,700+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3399,13 +3643,27 @@
    },
    "status": "active",
    "miles": 4.6,
-   "climbFt": 2000,
-   "duration": "4–6 hours",
+   "climbFt": 1900,
+   "duration": "4–5 hours",
    "fitness": "Strong hiking fitness and comfort on exposed rock. Ridge travel requires particular care in wind, rain and poor visibility.",
    "children": "Experienced hiking families with older children or teenagers only. Not a small-child recommendation.",
    "payoff": "Open ridgeline views and a distinctive mountain landscape close to Wilmington.",
    "tier": "Difficult",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "open ridge",
+     "blueberries",
+     "navigation",
+     "exposed"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/jay-mountain-trail",
+     "https://www.adkforum.com/forum/the-adirondack-forum/hiking-in-the-adirondacks/21444-jay-mountain-ridge-trail-%E2%80%93-under-appreciated-wonder"
+    ]
+   }
   },
   {
    "id": "giant-mountain-ridge-zander-scott-trail",
@@ -3420,12 +3678,16 @@
    "rank": 3,
    "areaRank": null,
    "rankScope": "hiking-difficult",
-   "review": "A steep, sustained climb with open rock, large views and a serious physical commitment. The mileage looks modest beside the amount of elevation gained.",
+   "review": "The most direct way up a High Peak: the Ridge (Zander Scott) Trail climbs 3,050 feet in a little over three miles, with a lookout over Chapel Pond at 0.7 miles, the Giant's Washbowl pond just beyond, then long stretches of open rock slab with the Great Range across the valley. Reviewers describe it as relentless from the first step, exposed and spectacular, and usually busy. For fit hikers with good footwear and a whole day; not one for wet rock or thunderstorms.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "This is the Ridge / Zander Scott route from Route 73, approximately 5.4 miles round trip with 3,050 feet of gain. Do not substitute Roaring Brook route statistics. Start early and allow more than eight hours for a slower party.",
+   "knowBefore": "Trailhead on Route 73 at Chapel Pond; roadside parking fills early. Open slab is dangerous when wet or icy. Rocky Peak Ridge is a serious add-on.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "4,100+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3469,12 +3731,26 @@
    "status": "active",
    "miles": 5.4,
    "climbFt": 3050,
-   "duration": "6–8 hours",
+   "duration": "5–7 hours",
    "fitness": "Very good mountain-hiking fitness, strong legs and experience with steep rock on both ascent and descent. This is the hardest core recommendation.",
    "children": "Experienced, fit older teenagers and adults are the best match. Not a general family hike and not the place to test whether a child enjoys mountains.",
    "payoff": "A major High Peak summit with dramatic views and frequent scenery along the climb.",
    "tier": "Difficult",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "steep",
+     "open rock",
+     "exposed",
+     "busy"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/giant-mountain-via-ridge-trail",
+     "https://www.lakeplacid.com/hiking/giant-mountain"
+    ]
+   }
   },
   {
    "id": "owls-head-in-keene-weekdays-only",
@@ -3489,12 +3765,16 @@
    "rank": 2,
    "areaRank": null,
    "rankScope": "hiking-more-family-favorites",
-   "review": "A short climb with scrambling and open ledges. Its small distance is appealing, but it needs a more careful family suitability label than “easy for everyone.”",
+   "review": "A one-mile climb through private land to open ledges with an outsized view down the Keene valley to the Great Range; reviewers rate it among the highest in the region for effort. The catch that matters: the landowner permits access on weekdays only, and it is closed Friday through Sunday. Park on Route 73 and walk in; do not block driveways or wander off the trail. Rocky near the top, but capable school-age children manage it.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Private land: DEC currently permits weekday hiking only; weekend hiking and parking are prohibited. Follow posted restrictions. This is Keene's Owls Head, not Owl Head Lookout in Giant Mountain Wilderness or the Long Lake mountain.",
+   "knowBefore": "Weekdays only, strictly. Park on Route 73 and walk up Owls Head Lane. Please respect the private land that makes this hike possible.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.8,
+    "alltrailsReviews": "1,400+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3539,12 +3819,26 @@
    "status": "active",
    "miles": 1.2,
    "climbFt": 460,
-   "duration": "1–2 hours",
+   "duration": "1 hour",
    "fitness": "Basic-to-moderate fitness and confidence on uneven rock; hands may be useful on steeper sections.",
    "children": "Capable school-age children with close adult supervision. Not a stroller walk, and exposed edges make it a poor default for toddlers.",
    "payoff": "A rewarding mountain view from a relatively short outing.",
    "tier": "More family favorites",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "weekdays only",
+     "private land",
+     "big view",
+     "short"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/owls-head-trail",
+     "https://www.townofkeeneny.com/hiking-information/"
+    ]
+   }
   },
   {
    "id": "hurricane-mountain-from-route-9n",
@@ -3559,12 +3853,16 @@
    "rank": 1,
    "areaRank": null,
    "rankScope": "hiking-more-ambitious-alternatives",
-   "review": "A full mountain day with a fire tower and broad views, useful for fit guests who want an alternative to a 46er.",
+   "review": "A restored fire tower on a huge bald summit with a 360-degree view from the High Peaks to Lake Champlain and Vermont. The southern approach from the height of land on Route 9N starts gently, then climbs steadily on a well-marked trail with a little easy bouldering near the top that reviewers say novices handle fine. Steep, rocky and muddy in places, so wear real boots; the tower is open to climb.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "The Route 9N approach is 6.8 miles round trip, not the shorter alternative from another trailhead. Check DEC tower and trail notices. Not one of the 46 High Peaks.",
+   "knowBefore": "Free trailhead on Route 9N between Keene and Elizabethtown. Tower stairs need supervision with children. Exposed summit: layers.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "3,100+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3606,14 +3904,28 @@
     "status": "verified"
    },
    "status": "active",
-   "miles": 6.8,
+   "miles": 6.5,
    "climbFt": 2000,
-   "duration": "5–7 hours",
+   "duration": "4–5.5 hours",
    "fitness": "Strong day-hiking fitness and several hours of uphill and downhill stamina.",
    "children": "Experienced older children or teenagers only; no need to climb the tower to enjoy the summit landscape.",
    "payoff": "An open summit and fire-tower setting with wide-ranging views.",
    "tier": "More ambitious alternatives",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "fire tower",
+     "360 view",
+     "steady climb",
+     "rocky"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/hurricane-mountain-trail-southern-approach",
+     "https://www.hurricanefiretower.org/hiking/"
+    ]
+   }
   },
   {
    "id": "ampersand-mountain",
@@ -3628,12 +3940,16 @@
    "rank": 2,
    "areaRank": null,
    "rankScope": "hiking-more-ambitious-alternatives",
-   "review": "A Saranac Lake-area mountain hike that becomes markedly steeper on the upper climb. It belongs with the strenuous options despite its popularity.",
+   "review": "One of the highest-rated hikes in the Saranac Lake area for a reason: a gentle first half through old forest, then a relentless, rocky, stair-and-scramble climb to a bald summit with a full circle of lakes and High Peaks. Reviewers call the top third hard but fair, and suggest an early start, plenty of water and a dog that is genuinely fit. A Saranac Lake 6er.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "Plan for 5.4 miles round trip and approximately 1,780 feet of climbing. The upper rock can be slippery when wet. Not one of the 46 High Peaks.",
+   "knowBefore": "Trailhead on Route 3 west of Saranac Lake, opposite Middle Saranac Lake; roadside lot fills on weekends. Boulder scrambles near the top.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.8,
+    "alltrailsReviews": "4,700+",
+    "asOf": "2026-09-10"
+   },
    "season": "Snow-free, reasonably dry conditions assumed; check DEC notices",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -3671,13 +3987,27 @@
    },
    "status": "active",
    "miles": 5.4,
-   "climbFt": 1780,
-   "duration": "4–6 hours",
+   "climbFt": 1811,
+   "duration": "3.5–5 hours",
    "fitness": "Good mountain-hiking fitness and confidence descending steep rock.",
    "children": "Experienced hiking children or teenagers only; keep the group back from summit drops.",
    "payoff": "A broad open summit with lakes and mountains in nearly every direction.",
    "tier": "More ambitious alternatives",
-   "commentary": ""
+   "commentary": "",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "steep top third",
+     "bald summit",
+     "early start",
+     "dogs if fit"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/ampersand-mountain-trail",
+     "https://www.saranaclake.com/hiking/ampersand-mountain"
+    ]
+   }
   },
   {
    "id": "wilmington-town-beach-lake-everest",
@@ -12208,12 +12538,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "A restored fire tower above the Champlain Valley with a view from Whiteface to Vermont's Greens; the Observers' Trail is the gentler route. Superb in foliage season.",
+   "review": "A restored fire tower above the Champlain Valley with views to Vermont's Green Mountains and back to Whiteface, on a peak famous with climbers for its cliffs. The Observers Path is the longer, gentler way up, past a beaver pond and the old observer's cabin before joining the steeper Ranger Trail for the last quarter mile. Reviewers like the easy parking and maintained trail and mention wet spots, bugs and a few faint stretches, so download the map.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead on Route 9 (Northway exit 33), about 40 minutes. Parking fee at the former campground. Ranger Trail is the short, steep alternative (about 2.4 miles).",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.6,
+    "alltrailsReviews": "1,300+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Parking fee (verify)",
@@ -12242,22 +12576,36 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 2.4,
+   "miles": 5.1,
    "climbFt": 1280,
-   "duration": "2.5–3.5 hours",
+   "duration": "3–3.5 hours",
    "tier": "Medium",
    "fitness": "Steady climb on a good trail.",
    "children": "Fine for school-age hikers; tower stairs need supervision.",
-   "payoff": "Fire-tower panorama over Lake Champlain."
+   "payoff": "Fire-tower panorama over Lake Champlain.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "fire tower",
+     "Champlain views",
+     "gentler route",
+     "map"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/poke-o-moonshine-observers-path",
+     "https://www.alltrails.com/trail/us/new-york/poke-o-moonshine-trail"
+    ]
+   }
   },
   {
    "id": "silver-lake-mountain",
@@ -12272,12 +12620,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "Under a mile up to open ledges over Silver Lake, Taylor Pond and Whiteface; one of the best view-for-effort climbs in the region and almost unknown.",
+   "review": "A gem that almost nobody outside the area knows: under a mile of steady climbing to open ledges over Silver Lake, Taylor Pond and Catamount with Whiteface behind, rated almost as highly as Cobble Lookout by the eleven hundred people who have logged it. Reviewers note the consistent grade, the lack of trail markers near the top and the summer bugs. Twenty-five minutes north and rarely busy.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead on Silver Lake Road (County Route 27) north of Au Sable Forks. Sparse markers on the upper ledges: download the map. Ledges need supervision with small children.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "1,150+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12306,22 +12658,36 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 1.8,
-   "climbFt": 900,
+   "miles": 1.7,
+   "climbFt": 892,
    "duration": "1.5–2 hours",
    "tier": "Small children",
    "fitness": "Short but steep in places.",
    "children": "Good for confident young walkers; ledges need supervision.",
-   "payoff": "Ledges over lakes with Whiteface behind."
+   "payoff": "Ledges over lakes with Whiteface behind.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "hidden gem",
+     "view for effort",
+     "few markers",
+     "quiet"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/silver-lake-mountain-trail",
+     "https://www.protectadks.org/hike-silver-lake-mountain/"
+    ]
+   }
   },
   {
    "id": "bear-den-mountain-wilmington",
@@ -12336,12 +12702,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "A moderate climb from the Whiteface ski area's Bear Den lot to a rocky summit with a straight-on look at Whiteface and the Notch. Quiet, local and close.",
+   "review": "Short and steep, straight out of the Whiteface ski area's Bear Den lot to a rocky summit that reviewers call a great lunch spot with a straight-on view of Whiteface and the Notch. Expect hard work for its length, a few faint sections where people miss the turn, and ordinary Adirondack roots and mud. Loops over Flume Knob and back down the Flume trails are popular for a longer day.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Park at the Bear Den lot at Whiteface (NY-86). Download the map; the upper trail is lightly marked. Good boots.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.5,
+    "alltrailsReviews": "1,600+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12366,22 +12736,35 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 4.6,
-   "climbFt": 1200,
-   "duration": "3–4 hours",
+   "miles": 3.2,
+   "climbFt": 1332,
+   "duration": "2–3 hours",
    "tier": "Medium",
    "fitness": "Sustained climb; some steep pitches.",
    "children": "Best for older children.",
-   "payoff": "Whiteface and the Wilmington valley from a quiet summit."
+   "payoff": "Whiteface and the Wilmington valley from a quiet summit.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "short and steep",
+     "lunch spot",
+     "lightly marked"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/bear-den",
+     "https://www.alltrails.com/trail/us/new-york/bear-den-via-flume-loop"
+    ]
+   }
   },
   {
    "id": "catamount-mountain",
@@ -12396,12 +12779,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "Short mileage, big character: open rock, a chimney scramble and a bald summit with 360° views over Taylor Pond and Whiteface. Not for small children or wet days.",
+   "review": "Short mileage, big character: the last 0.8 miles are mostly bare rock with sustained scrambling, including a narrow rock chimney at 1.4 miles that Adirondack Explorer calls high-peak scrambling on a low peak. The reward is one of the best views of Whiteface and Esther in the whole region from an isolated bald summit. Reviewers find the chimney and the boulder pitches above it intimidating in places, and the route sparsely marked, so this is for confident adults and older kids on a dry day, not for small children or nervous dogs.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead on Forestdale Road, Black Brook. Avoid in rain or ice. Download the map. Some dogs cannot manage the chimney.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "1,800+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12427,11 +12814,11 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
@@ -12442,7 +12829,21 @@
    "tier": "Difficult",
    "fitness": "Steep with rock scrambling and a tight chimney.",
    "children": "Older, confident kids only; no dogs unless very agile.",
-   "payoff": "One of the best small-summit views in the Adirondacks."
+   "payoff": "One of the best small-summit views in the Adirondacks.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "chimney scramble",
+     "bare rock",
+     "dry days only",
+     "Whiteface view"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/catamount-mountain-trail",
+     "https://www.adirondackexplorer.org/outdoor-recreation/catamount-mountain-hike/"
+    ]
+   }
   },
   {
    "id": "flume-knob",
@@ -12457,12 +12858,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "From the Flume trailhead on NY-86, a steady climb to a knob with a fine view of Whiteface and the Notch; the hike locals do after work.",
+   "review": "From the Flume trailhead on NY-86, a steady uphill that gets steep and scrambly right below the knob, then a ledge with Whiteface across the valley that locals treat as their after-work hike. Reviewers praise the view and the fun rock finish, and warn that signage at the junctions with the mountain-bike trails is confusing; keep the map open. Best April to October.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Flume trailhead lot on NY-86 south of the village (shared with mountain bikers). Watch the junction signs. Short rock scramble at the top.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.6,
+    "alltrailsReviews": "600+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12487,22 +12892,35 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 3.4,
-   "climbFt": 1000,
-   "duration": "2.5–3 hours",
+   "miles": 3.1,
+   "climbFt": 1210,
+   "duration": "2–2.5 hours",
    "tier": "Medium",
    "fitness": "Moderate, steady climbing.",
    "children": "School-age and up.",
-   "payoff": "Whiteface across the valley from a quiet ledge."
+   "payoff": "Whiteface across the valley from a quiet ledge.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "after-work hike",
+     "rock scramble",
+     "confusing junctions"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/flume-knob",
+     "https://www.alltrails.com/trail/us/new-york/flume-knob-and-bear-den-via-flume-trail"
+    ]
+   }
   },
   {
    "id": "baxter-mountain",
@@ -12517,12 +12935,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "The easy classic of the Keene area: a gentle climb to open ledges with the Great Range laid out to the south. Then the tavern at the bottom.",
+   "review": "The easy classic of the Keene area, and the trail regional guides recommend first for families and new hikers: gentle switchbacks for the first half, then granite slabs to open ledges with the Great Range laid out to the south. Reviewers report five-year-olds making the top happily, wild blueberries in August and a busy trailhead on fine weekends. Leashed dogs welcome. Baxter Mountain Tavern sits at the bottom.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead on Route 9N at Spruce Hill between Keene and Elizabethtown; the lot is small and overflows onto the shoulder. Slabs are slippery when wet.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "2,600+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12551,22 +12973,36 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 2.4,
+   "miles": 2.7,
    "climbFt": 770,
    "duration": "1.5–2.5 hours",
    "tier": "Small children",
    "fitness": "Gentle to moderate.",
    "children": "Very good family hike; open ledges to watch.",
-   "payoff": "Great Range panorama for little effort."
+   "payoff": "Great Range panorama for little effort.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "family first hike",
+     "blueberries",
+     "Great Range view",
+     "busy"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/baxter-mountain",
+     "https://pureadirondacks.com/blogs/adirondack-hiking/baxter-mountain"
+    ]
+   }
   },
   {
    "id": "roaring-brook-falls",
@@ -12581,12 +13017,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "A ten-minute walk from Route 73 to the base of a 300-foot cascade, or a longer climb to the top of the falls; the easiest big-payoff stop in the valley.",
+   "review": "Ten minutes on a flat path from Route 73 brings you to the base of a 300-foot cascade; a steeper spur climbs to the top of the falls and a lookout over the Keene valley. Reviewers call it the quickest big payoff in the High Peaks and a fine leg-stretcher with children on the way to or from Keene Valley. The upper viewpoint is an unguarded cliff edge: keep everyone well back.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead lot on Route 73 at the Giant Mountain Roaring Brook trailhead. Lower path is easy; the upper spur is steep and slippery. Cliff edge at the top.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.6,
+    "alltrailsReviews": "840+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12612,22 +13052,36 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 0.6,
-   "climbFt": 150,
-   "duration": "30–60 minutes",
+   "miles": 1.6,
+   "climbFt": 439,
+   "duration": "45–90 minutes",
    "tier": "Leisurely / easy",
    "fitness": "Short walk; the upper route is steeper.",
    "children": "Easy to the base; keep children away from the top of the falls.",
-   "payoff": "A tall waterfall close to the road."
+   "payoff": "A tall waterfall close to the road.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "waterfall",
+     "quick payoff",
+     "cliff edge",
+     "kids"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/roaring-brook-falls-upper-and-lower-lookout",
+     "https://www.tripadvisor.com/Attraction_Review-g47987-d2198329-Reviews-Roaring_Brook_Falls-Keene_Valley_New_York.html"
+    ]
+   }
   },
   {
    "id": "rooster-comb",
@@ -12642,12 +13096,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "From the village of Keene Valley to a rocky summit over the Ausable valley with Giant and the Great Range around you; a proper half-day.",
+   "review": "From the village of Keene Valley, a steady, well-marked climb past a beaver pond to a rocky summit and a ledge looking straight down the Ausable valley with Giant and the Great Range around you. Reviewers rate it highly for the view and the maintained trail, note a false summit and a rocky, muddy final stretch, and recommend an early start and good traction. Snow Mountain can be added for a longer loop.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead lot on Route 73 at the south end of Keene Valley. Rocky top; steady but real climbing. Muddy after rain.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "1,600+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12672,22 +13130,36 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 4.8,
-   "climbFt": 1750,
+   "miles": 4.5,
+   "climbFt": 1729,
    "duration": "3.5–4.5 hours",
    "tier": "Medium",
    "fitness": "Sustained climb with steeper upper sections.",
    "children": "Older children with hiking experience.",
-   "payoff": "A summit right above the village."
+   "payoff": "A summit right above the village.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "village trailhead",
+     "false summit",
+     "valley view",
+     "rocky top"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/rooster-comb-trail--2",
+     "https://www.alltrails.com/trail/us/new-york/rooster-comb-and-snow-mountain-loop-trail"
+    ]
+   }
   },
   {
    "id": "pitchoff-balanced-rocks",
@@ -12702,12 +13174,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "Across the road from Cascade's trailhead, a steep climb to the Balanced Rocks ledge looking down on the Cascade Lakes and across to Cascade and Porter; far quieter than its famous neighbour.",
+   "review": "Across the road from Cascade's trailhead, a steep set of stairs leads into a worn but lightly marked trail up to the Balanced Rocks: giant boulders on a cliff-top ledge looking down on the Cascade Lakes and across to Cascade and Porter. Reviewers call it one of the most underrated views in the High Peaks and an excellent effort-to-view ratio, with the usual warnings about steep pitches, few markers and busy weekends. Leashed dogs allowed.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Park in the Cascade Pass lots on Route 73; the trail starts on the opposite side of the road. Download the map. Big drop-offs at the ledge.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.7,
+    "alltrailsReviews": "1,100+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12735,11 +13211,11 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
@@ -12750,7 +13226,21 @@
    "tier": "Medium",
    "fitness": "Steep, rooty climbing.",
    "children": "Older children.",
-   "payoff": "Cliff-top view over the Cascade Lakes."
+   "payoff": "Cliff-top view over the Cascade Lakes.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "underrated view",
+     "steep start",
+     "few markers",
+     "cliff ledge"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/pitchoff-mountain-and-balancing-rocks-via-pitchoff-and-cascade-trailhead",
+     "https://www.allierambles.com/balanced-rocks-and-pitchoff-mountain-trail/"
+    ]
+   }
   },
   {
    "id": "indian-head-rainbow-falls-amr",
@@ -12765,12 +13255,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "Perhaps the most photographed view in the Adirondacks: the Lower Ausable Lake from Indian Head's cliff, plus Rainbow Falls on the way. Access is through the private AMR, which requires a free advance parking reservation in season.",
+   "review": "Possibly the most photographed view in the Adirondacks: Lower Ausable Lake from the cliff of Indian Head, with Rainbow Falls on the way and Fish Hawk Cliffs next door. Reviewers love that it is long but mostly gentle, with little scrambling, and warn that the loop with the falls runs closer to 14 miles than the 10 or 11 often quoted. Two rules are absolute: a free advance parking reservation with the Adirondack Mountain Reserve from May through October, and no dogs.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Reserve at hikeamr.org; park at the AMR lot in St. Huberts and walk the private Lake Road. No dogs, no exceptions. Long day: start by 8 am.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.8,
+    "alltrailsReviews": "5,500+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free; reservation required",
@@ -12803,22 +13297,37 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
-   "miles": 10.5,
+   "miles": 11,
    "climbFt": 1500,
    "duration": "6–8 hours",
    "tier": "Difficult",
    "fitness": "Long day on a mostly gentle road, then a steep climb.",
    "children": "Fit older children only.",
-   "payoff": "The iconic Lower Ausable Lake view."
+   "payoff": "The iconic Lower Ausable Lake view.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "iconic view",
+     "reservation required",
+     "no dogs",
+     "long but gentle"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/indian-head-and-rainbow-falls",
+     "https://hikeamr.org/",
+     "https://theadventuresatlas.com/indian-head-hike-adirondacks/"
+    ]
+   }
   },
   {
    "id": "haystack-mountain-saranac",
@@ -12833,12 +13342,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "A pleasant climb from Route 86 to open ledges with McKenzie and the High Peaks in view; one of the Saranac Lake 6ers and much quieter than Cascade.",
+   "review": "A Saranac Lake 6er from Route 86 near Ray Brook: a long, gentle approach through changing forest, a stream crossing, then a short, wet, rocky scramble to a partly wooded summit with views over the Saranac lakes and toward McKenzie. Guides describe the upper footing as usually wet and slippery, and the rewards as solitude and a summit you will likely have to yourself.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Trailhead on NY-86 between Lake Placid and Saranac Lake (shared with McKenzie). Wet, slick rock near the top; poles help.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.4,
+    "alltrailsReviews": "small sample",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Free",
@@ -12863,22 +13376,35 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
    "miles": 6.6,
-   "climbFt": 1240,
+   "climbFt": 1466,
    "duration": "3.5–4.5 hours",
    "tier": "Medium",
    "fitness": "Long, mostly gentle approach then a steep finish.",
    "children": "Older children.",
-   "payoff": "Ledges over the Saranac lakes."
+   "payoff": "Ledges over the Saranac lakes.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "quiet",
+     "wet footing",
+     "6er"
+    ],
+    "sources": [
+     "https://www.hikingproject.com/trail/7039878/haystack-mountain-trail-blue",
+     "https://www.alltrails.com/trail/us/new-york/haystack-mountain-trail-saranac-lake"
+    ]
+   }
   },
   {
    "id": "saranac-lake-6er",
@@ -12989,12 +13515,16 @@
    "rank": null,
    "areaRank": null,
    "rankScope": null,
-   "review": "New York's highest point, a 14.8-mile round trip from Heart Lake. Start before dawn, carry more than you think, and check the forecast; above the trees it is a different climate. For fit adults with a full day and good weather only.",
+   "review": "New York's highest point by its shortest and busiest route: 7.4 miles each way from Heart Lake past Marcy Dam and Indian Falls to an alpine summit where the wind and cold surprise people every summer. Reviewers say the day is varied enough that it never drags, and are unanimous on the essentials: start at dawn, expect mud, rock scrambles and steep steps, carry layers and a filter, and download the map because the upper trail is not obvious in cloud. Fit adults only.",
    "bestFor": [],
    "order": "",
-   "knowBefore": "",
+   "knowBefore": "Adirondak Loj, Heart Lake (paid parking, fills before 7 am). Alpine zone: stay on rock, off the vegetation. Turn back in thunderstorms.",
    "occasionPick": null,
-   "signals": {},
+   "signals": {
+    "alltrailsRating": 4.8,
+    "alltrailsReviews": "5,400+",
+    "asOf": "2026-09-10"
+   },
    "season": "Year-round (verify seasonal hours)",
    "hours": "Verify same-day",
    "cost": "Parking fee (verify)",
@@ -13020,22 +13550,36 @@
     "url": ""
    },
    "verification": {
-    "lastVerified": null,
-    "verifiedBy": "",
-    "method": "",
-    "nextReview": "2026-10-08",
-    "status": "unverified"
+    "lastVerified": "2026-09-10",
+    "verifiedBy": "Claude (web research)",
+    "method": "AllTrails + regional guides",
+    "nextReview": "2026-10-10",
+    "status": "verified"
    },
    "status": "active",
    "commentary": "",
    "rainOk": false,
    "miles": 14.8,
    "climbFt": 3200,
-   "duration": "8–11 hours",
+   "duration": "9–11 hours",
    "tier": "Difficult",
    "fitness": "A very long, hard day.",
    "children": "Not for children.",
-   "payoff": "The roof of New York."
+   "payoff": "The roof of New York.",
+   "research": {
+    "date": "2026-09-10",
+    "method": "web-search read of AllTrails trail pages, regional guides, Tripadvisor and ADK forums (no scraping)",
+    "themes": [
+     "highest point",
+     "dawn start",
+     "alpine weather",
+     "long day"
+    ],
+    "sources": [
+     "https://www.alltrails.com/trail/us/new-york/mount-marcy-via-van-hoevenberg-trail--5",
+     "https://en.wikipedia.org/wiki/Van_Hoevenberg_Trail"
+    ]
+   }
   },
   {
    "id": "wilmington-bike-park",
