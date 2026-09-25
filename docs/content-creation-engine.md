@@ -118,8 +118,10 @@ Every post, every channel:
    *established*, *promising*, or *speculative*.
 4. **The catch.** One limitation, stated fairly. Nothing builds clinical credibility faster.
 5. **The open question.** One specific, answerable-from-experience question (see §4).
-6. **Source.** Citation in the post; link in the post or the first comment (see channel notes).
-7. **Hashtags.** 3–5, specific (`#EpilepsySurgery` beats `#Healthcare`).
+6. **Source.** Full citation (journal, year, DOI) in the post, so readers can find it even
+   without a link. Link placement per channel notes (§7).
+7. **Hashtags.** 0–2, specific (`#EpilepsySurgery` beats `#Healthcare`). LinkedIn no longer
+   lets members follow hashtag feeds, so tags help discovery only marginally.
 8. **Disclosure** where required (see §6).
 
 Length: Personal LinkedIn 120–250 words. Collab LinkedIn 80–180 words. X/Bluesky: a 1–3 post
@@ -210,16 +212,24 @@ A post that fails any guardrail is not "fixed later". It is rewritten or dropped
 
 **Personal LinkedIn**
 - First person, reflective: "What struck me…", "The number I can't stop thinking about…"
-- 2–3 posts per week, Tuesday–Thursday mornings in the audience's time zone.
-- Link placement: put the source link in the first comment and say "Source in the first
-  comment", unless the post is a document/carousel.
+- 2–3 posts per week, Tuesday–Thursday, 10 am–12 pm in the audience's time zone.
+- Link placement: third-party analyses (2025–2026) report that body links cut reach and that
+  the first-comment workaround may no longer help; LinkedIn publishes no official figure.
+  Default: citation + DOI in the post, link in the first comment, and **track reach both ways**
+  in the ledger's `engagement` notes until the data says otherwise.
+- Formats: document/carousel (PDF) posts had the highest engagement in large 2024–2025
+  analyses; use them for Numbers That Matter and Conference Dispatch. Substantive comment
+  threads and dwell time matter more than likes.
 
 **Epilepsy Collab & Brain Tumor Collab**
 - "We", practical, regional: "What would it take for our region to…?"
 - 2 clinical posts per week each, plus community posts (meetings, recaps, spotlights).
 - Every clinical post ends with a question **and** a light path to the community: "We'll put
   this on the agenda for the next regional meeting — reply if you want to present."
-- Mirror to X/Bluesky as a short thread; LinkedIn is the primary channel.
+- Mirror to X and Bluesky as a short thread (much of the medical/science community moved to
+  Bluesky in late 2024); LinkedIn is the primary channel.
+- Sign-ups go through the Collab website and the page's Featured section. An owned email list
+  is the hedge against shrinking organic reach.
 
 ---
 

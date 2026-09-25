@@ -66,7 +66,7 @@ For each post, follow the post anatomy (spec §3) and channel voice (spec §7). 
 - **Hook A / Hook B** variants
 - The full post body (LinkedIn), and a 1–3 post X/Bluesky thread for Collab posts
 - Suggested first comment (source link + one extra data point or counter-study)
-- 3–5 hashtags, a disclosure line where spec §6 requires it
+- 0–2 hashtags, a disclosure line where spec §6 requires it
 - A visual suggestion (carousel outline, simple chart, or "text only")
 - A target post date that respects cadence (spec §7) and calendar anchors
 
