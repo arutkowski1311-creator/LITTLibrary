@@ -17,7 +17,7 @@ Two front-ends read the same `database.json`:
 - A **Physician View / Full View** toggle is in each dashboard's Quick Links.
 
 `index.html` is the live dashboard and reads `database.json` directly, so updating the data
-updates every view. `database.json` is the system of record: **144 findings** spanning
+updates every view. `database.json` is the system of record: **176 findings** spanning
 2012-2026, each dated, mapped to indications, and scored on two axes.
 
 ### The two scoring axes
@@ -34,3 +34,12 @@ updates every view. `database.json` is the system of record: **144 findings** sp
 `docs/clinical-intelligence-engine.md` is the spec; `.claude/commands/clinical-scan.md` is the
 `/clinical-scan` command (baseline since 2020 + recurring trailing-2-month surveillance that
 only adds new content, dedup by DOI/URL/title). Reports land in `reports/`.
+`python3 scripts/merge_findings.py` merges research output into `database.json` (dedup +
+run log); `python3 scripts/build_standalone.py` rebuilds both offline files afterwards.
+
+## Content
+`docs/content-creation-engine.md` is the spec and `.claude/commands/content-engine.md` the
+`/content-engine` command: it turns verified library findings into review-ready posts for a
+personal LinkedIn profile, the **Epilepsy Collab**, and the **Brain Tumor Collab** (physician-safe
+fields only; vendor-neutral; every post ends in an open question). Drafts, the posting ledger,
+the event calendar, and the Collab growth playbook live in `content/`.

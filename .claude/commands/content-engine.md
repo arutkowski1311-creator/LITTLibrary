@@ -44,7 +44,7 @@ From `database.json → items`, keep items that:
 - are `verified` (or `partial`, if only verified figures will be quoted and the post frames
   them as preliminary) — never `unverified`;
 - are not already in `content/ledger.json` for the target channel with status `drafted`,
-  `approved`, or `posted` (the same item may return on a channel only with a material
+  `hold`, `approved`, or `posted` (the same item may return on a channel only with a material
   `changeNote`, and the post must lead with what changed);
 - prefer items first seen in the latest scan, then older items with a fresh angle (a
   calendar anchor, a new related study, a common misconception).

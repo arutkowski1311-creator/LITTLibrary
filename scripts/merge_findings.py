@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_FIELDS = ("contentAngle", "discussionQuestion")
 REQUIRED = ("id", "dedupKey", "domain", "title", "citation", "url", "date", "clinicalImpactScore",
-            "littBusinessImpact", "littBusinessDirection", "indications", "verified")
+            "littBusinessImpact", "littBusinessDirection", "verified")  # indications may be [] (e.g. platform news)
 
 
 def norm_key(k):
@@ -66,6 +66,7 @@ def main():
                 raise SystemExit(f"{scan}: {f.get('id')} missing {missing}")
             if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", f["date"]):
                 raise SystemExit(f"{f['id']}: date must be YYYY-MM-DD, got {f['date']!r}")
+            f.setdefault("indications", [])
             bad = [x for x in f["indications"] if x not in tax["indications"]]
             bad += [x for x in f.get("strategies", []) if x not in tax["strategies"]]
             if bad:

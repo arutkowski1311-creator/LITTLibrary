@@ -1,0 +1,286 @@
+{
+  "updated": "2026-09-25",
+  "note": "Upcoming society meetings and awareness days for post planning. verified = confirmed on the organizer page or multiple sources; partial = secondary listings only, confirm before announcing.",
+  "events": [
+    {
+      "name": "EANO 2026 — 21st Meeting of the European Association of Neuro-Oncology",
+      "start": "2026-09-24",
+      "end": "2026-09-27",
+      "location": "Rome, Italy",
+      "url": "https://www.eano.eu/eano2026/",
+      "type": "conference",
+      "channels": [
+        "personal",
+        "tumor"
+      ],
+      "verified": "verified",
+      "note": "Ongoing at scan date; just before the Oct 2026 window."
+    },
+    {
+      "name": "ASTRO 2026 — 68th Annual Meeting",
+      "start": "2026-09-26",
+      "end": "2026-09-30",
+      "location": "Boston, MA (Thomas M. Menino Convention & Exhibition Center)",
+      "url": "https://www.astro.org/meetings-and-education/micro-sites/2026/annual-meeting",
+      "type": "conference",
+      "channels": [
+        "personal",
+        "tumor"
+      ],
+      "verified": "verified",
+      "note": "Starts just before the Oct window; brain-met late-breakers are embargoed until 28 Sep, so re-scan after."
+    },
+    {
+      "name": "ESMO Congress 2026",
+      "start": "2026-10-23",
+      "end": "2026-10-27",
+      "location": "Madrid, Spain (IFEMA Madrid)",
+      "url": "https://www.esmo.org/meeting-calendar/esmo-congress-2026",
+      "type": "conference",
+      "channels": [
+        "personal",
+        "tumor"
+      ],
+      "verified": "verified"
+    },
+    {
+      "name": "CNS 2026 Annual Meeting",
+      "start": "2026-10-31",
+      "end": "2026-11-04",
+      "location": "Walter E. Washington Convention Center, Washington, DC",
+      "url": "https://www.cns.org/annualmeeting",
+      "type": "conference",
+      "channels": [
+        "epilepsy",
+        "personal",
+        "tumor"
+      ],
+      "verified": "verified"
+    },
+    {
+      "name": "Epilepsy Awareness Month (US)",
+      "start": "2026-11-01",
+      "end": "2026-11-30",
+      "location": "United States (national observance)",
+      "url": "https://www.epilepsy.com/",
+      "type": "awareness",
+      "channels": [
+        "epilepsy"
+      ],
+      "verified": "verified",
+      "note": "Annual November observance; not re-checked for 2026-specific campaigns because the search budget ran out."
+    },
+    {
+      "name": "SNO 2026 — 31st Annual Meeting & Education Day, Society for Neuro-Oncology",
+      "start": "2026-11-12",
+      "end": "2026-11-15",
+      "location": "Philadelphia, PA (Pennsylvania Convention Center)",
+      "url": "https://www.soc-neuro-onc.org/meetings-education/sno-annual-meetings",
+      "type": "awareness",
+      "channels": [
+        "tumor"
+      ],
+      "verified": "verified"
+    },
+    {
+      "name": "AANS/CNS Joint Section on Pediatric Neurological Surgery 2026 Annual Meeting",
+      "start": "2026-12-03",
+      "end": "2026-12-06",
+      "location": "Hilton Union Square, San Francisco, CA",
+      "url": "https://pedsneurosurgery.org/meetings/2026-annual-meeting-san-francisco-ca-dec-3rd-to-6th-2026/",
+      "type": "conference",
+      "channels": [
+        "epilepsy",
+        "personal"
+      ],
+      "verified": "verified"
+    },
+    {
+      "name": "American Epilepsy Society (AES) 2026 Annual Meeting",
+      "start": "2026-12-04",
+      "end": "2026-12-08",
+      "location": "Denver, CO (Colorado Convention Center)",
+      "url": "https://aesnet.org/AES-annual-meeting",
+      "type": "conference",
+      "channels": [
+        "epilepsy",
+        "personal"
+      ],
+      "verified": "verified",
+      "note": "Dates/city from AES future-meetings listing and the Denver convention-center event page. AES 2027 is listed for Baltimore (dates not verified; outside window)."
+    },
+    {
+      "name": "International Epilepsy Day 2027",
+      "start": "2027-02-08",
+      "end": "2027-02-08",
+      "location": "Global (second Monday of February)",
+      "url": "https://internationalepilepsyday.org/",
+      "type": "awareness",
+      "channels": [
+        "epilepsy"
+      ],
+      "verified": "verified"
+    },
+    {
+      "name": "Brain Tumour Awareness Month (UK)",
+      "start": "2027-03-01",
+      "end": "2027-03-31",
+      "location": "United Kingdom",
+      "url": "",
+      "type": "awareness",
+      "channels": [
+        "tumor"
+      ],
+      "verified": "unverified",
+      "note": "Commonly observed in March in the UK; not verified this scan."
+    },
+    {
+      "name": "American Clinical Neurophysiology Society (ACNS) 2027 Annual Meeting & Courses",
+      "start": "2027-03-04",
+      "end": "2027-03-07",
+      "location": "Seattle, WA",
+      "url": "https://www.acns.org/meetings/annual-meeting-and-courses",
+      "type": "conference",
+      "channels": [
+        "epilepsy",
+        "personal"
+      ],
+      "verified": "partial",
+      "note": "Dates/location from search-result summary of ACNS pages; page not opened directly (egress blocked)."
+    },
+    {
+      "name": "Purple Day (Epilepsy Awareness Day) 2027",
+      "start": "2027-03-26",
+      "end": "2027-03-26",
+      "location": "Global",
+      "url": "https://www.purpleday.org/",
+      "type": "awareness",
+      "channels": [
+        "epilepsy"
+      ],
+      "verified": "verified",
+      "note": "Fixed annual date (March 26)."
+    },
+    {
+      "name": "AANS 2027 Annual Scientific Meeting",
+      "start": "2027-04-09",
+      "end": "2027-04-12",
+      "location": "San Diego Convention Center, San Diego, CA",
+      "url": "https://annualmeeting.aans.org/",
+      "type": "conference",
+      "channels": [
+        "epilepsy",
+        "personal",
+        "tumor"
+      ],
+      "verified": "verified",
+      "note": "Theme: 'Navigating the Impossible'."
+    },
+    {
+      "name": "AAN 2027 Annual Meeting (American Academy of Neurology)",
+      "start": "2027-05-01",
+      "end": "2027-05-05",
+      "location": "Washington, DC and online",
+      "url": "https://www.aan.com/events/annual-meeting",
+      "type": "conference",
+      "channels": [
+        "epilepsy",
+        "personal"
+      ],
+      "verified": "partial",
+      "note": "Dates from search-result summary of AAN upcoming-events page; not opened directly."
+    },
+    {
+      "name": "Brain Tumor Awareness Month (US)",
+      "start": "2027-05-01",
+      "end": "2027-05-31",
+      "location": "US (National Brain Tumor Society and partners)",
+      "url": "https://braintumor.org/",
+      "type": "awareness",
+      "channels": [
+        "tumor"
+      ],
+      "verified": "partial",
+      "note": "Recurring every May; not re-verified this scan (web-search budget exhausted)."
+    },
+    {
+      "name": "ESTRO 2027 Congress",
+      "start": "2027-05-21",
+      "end": "2027-05-25",
+      "location": "Milan, Italy (Allianz MiCo)",
+      "url": "https://www.estro.org/congresses",
+      "type": "conference",
+      "channels": [
+        "personal",
+        "tumor"
+      ],
+      "verified": "partial",
+      "note": "Dates from secondary event listings; confirm on estro.org."
+    },
+    {
+      "name": "ASCO Annual Meeting 2027",
+      "start": "2027-06-04",
+      "end": "2027-06-08",
+      "location": "Chicago, IL (McCormick Place)",
+      "url": "https://www.asco.org/annual-meeting",
+      "type": "conference",
+      "channels": [
+        "personal",
+        "tumor"
+      ],
+      "verified": "partial",
+      "note": "Dates from secondary listings; confirm on asco.org."
+    },
+    {
+      "name": "World Brain Tumour Day",
+      "start": "2027-06-08",
+      "end": "2027-06-08",
+      "location": "International (started by Deutsche Hirntumorhilfe, 2000)",
+      "url": "https://nationaltoday.com/world-brain-tumor-day/",
+      "type": "awareness",
+      "channels": [
+        "tumor"
+      ],
+      "verified": "verified"
+    },
+    {
+      "name": "EANO-SNO Joint Meeting on Pediatric Neuro-Oncology",
+      "start": "2027-06-24",
+      "end": "2027-06-26",
+      "location": "Miami, FL (JW Marriott Miami Turnberry Resort)",
+      "url": "https://siope-btg.eu/event/eano-sno-joint-meeting-2027/",
+      "type": "conference",
+      "channels": [
+        "personal",
+        "tumor"
+      ],
+      "verified": "verified"
+    },
+    {
+      "name": "Glioblastoma Awareness Day",
+      "start": "2027-07-21",
+      "end": "2027-07-21",
+      "location": "US (Senate resolution, annual since 2019)",
+      "url": "https://braintumor.org/news/national-brain-tumor-society-nbts-statement-on-the-2026-congressional-resolution-recognizing-glioblastoma-awareness-day/",
+      "type": "awareness",
+      "channels": [
+        "tumor"
+      ],
+      "verified": "partial",
+      "note": "2027 date computed from the third-Wednesday convention; falls just after the Jun 2027 window; resolution not yet passed."
+    },
+    {
+      "name": "37th International Epilepsy Congress (ILAE/IBE)",
+      "start": "2027-08-28",
+      "end": "2027-09-01",
+      "location": "Amsterdam, Netherlands",
+      "url": "https://www.ilae.org/congresses/37th-international-epilepsy-congress",
+      "type": "conference",
+      "channels": [
+        "epilepsy",
+        "personal"
+      ],
+      "verified": "verified"
+    }
+  ]
+}

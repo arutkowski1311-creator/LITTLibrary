@@ -3,11 +3,22 @@
   "specVersion": "1.0",
   "baselineDate": "2026-06-29",
   "baselineStartDate": "2015-01-01",
-  "lastRunDate": "2026-06-29",
+  "lastRunDate": "2026-09-25",
   "lastMode": "surveillance",
   "baselineWindowMonths": null,
   "surveillanceWindowMonths": 2,
   "history": [
+    {
+      "date": "2026-09-25",
+      "mode": "surveillance",
+      "window": "2026-06-29 to 2026-09-25",
+      "found": 37,
+      "added": 32,
+      "updated": 2,
+      "skipped": 3,
+      "reportPath": null,
+      "note": "Library refresh run by /content-engine (window = watermark to today, covering the gap since 2026-06-29). Three domain agents: neuro-oncology, epilepsy surgery, regulatory/ecosystem. Output is the content batch content/2026-09-25-batch.md rather than a 28-section surveillance report. Updated in place: ROAM/EORTC-1308 (protocol -> primary results, partial pending Lancet full text) and Pixclara (NDA accepted -> FDA approved). Database 144 -> 176."
+    },
     {
       "date": "2026-06-29",
       "mode": "surveillance",

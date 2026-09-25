@@ -249,7 +249,7 @@ and updates `content/ledger.json`:
 ```json
 { "id": "2026-09-25-li-01", "channel": "personal-linkedin", "format": "breakdown",
   "sourceIds": ["<database item id>"], "draftedRun": "2026-09-25",
-  "status": "drafted | approved | posted | dropped", "postedDate": null, "postUrl": null,
+  "status": "drafted | hold | approved | posted | dropped", "postedDate": null, "postUrl": null,
   "engagement": null }
 ```
 
