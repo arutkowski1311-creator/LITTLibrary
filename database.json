@@ -3,7 +3,7 @@
   "specVersion": "1.0",
   "schemaVersion": 2,
   "generatedBy": "/clinical-scan",
-  "lastUpdated": "2026-06-29",
+  "lastUpdated": "2026-09-25",
   "taxonomy": {
     "indications": {
       "newly_gbm": "Newly diagnosed glioblastoma",
@@ -50,7 +50,7 @@
   "scoring": {
     "clinicalImpactScore": "Axis 1 — integer 1-5 stars: impact to the clinical discipline",
     "littBusinessImpact": "Axis 2 — integer 0-10: magnitude of effect on the LITT business",
-    "littBusinessDirection": "tailwind (strengthens LITT) | headwind (weakens/displaces) | neutral",
+    "littBusinessDirection": "tailwind (strengthens LITT) | headwind (weakens/displaces) | neutral (direction-agnostic) | na (does not apply — purely clinical/educational, no business bearing)",
     "verified": "verified | partial | unverified — provenance of the key figures"
   },
   "runs": [
@@ -111,6 +111,37 @@
       "updated": 0,
       "skipped": 12,
       "note": "Trailing-2-month deltas. Clinical/peer-reviewed sweep found little genuinely new in-window (most 2026 LITT items - pembrolizumab RCT, BBB mechanism, LAANTERN MTLE - date Feb-Apr 2026, just before window, and are already in the corpus). Value was in ecosystem/regulatory deltas (GT Medical, NeuroOne, Medtronic leadership, uniQure/ClearPoint) and selection-imaging (Pixclara NDA, RAD101, zongertinib CNS data, INDIGO extended follow-up)."
+    },
+    {
+      "date": "2026-08-03",
+      "mode": "surveillance",
+      "window": "2026-06-03 to 2026-08-03",
+      "found": 16,
+      "added": 16,
+      "updated": 0,
+      "skipped": 0,
+      "reportPath": "reports/2026-08-03-surveillance.md",
+      "note": "Trailing-2-month deltas (all-category web sweep; NCBI/PubMed/publisher full-text proxy-blocked, so most clinical figures rest on cross-checked search metadata and are flagged partial). Adds: LITT brain-met pooled review + HGG/AI review + pediatric extratemporal LITT; competitive/ecosystem (2nd-gen Optune approval, NeuroOne OneRF/StereoCED, GammaTile CoE, NeuroPace RNS-IGE FDA setback, Zeta TMS & Cercare AI clearances, Datar TriNetra-Glio breakthrough); reimbursement (CMS CY2027 PFS proposed rule); and pediatric ependymoma immunotherapy (first item using the new 'na' business direction). First surveillance to exercise the na direction."
+    },
+    {
+      "date": "2026-08-03",
+      "mode": "gap-fill",
+      "window": "manual",
+      "found": 1,
+      "added": 1,
+      "updated": 0,
+      "skipped": 0,
+      "note": "Manual add of PMID 42340498 (pediatric LGG LITT series, Childs Nerv Syst, 2026-06-24) flagged by a user as missed by the web-search-only surveillance scan. Illustrates the recall gap from blocked scholarly databases (PubMed/OpenAlex/Crossref); a full-recall fix requires PubMed E-utilities access."
+    },
+    {
+      "date": "2026-09-25",
+      "mode": "surveillance",
+      "window": "2026-06-29 to 2026-09-25",
+      "found": 37,
+      "added": 32,
+      "updated": 2,
+      "skipped": 3,
+      "note": "Watermark-to-today surveillance run for the Content Creation Engine (window spans the gap since the 2026-06-29 run). Three web-enabled agents (neuro-oncology, epilepsy surgery, regulatory/ecosystem). Clinical yield was high: ROAM/EORTC-1308 primary results (Lancet/EANO, partial pending full text), INTRAGO-II negative IORT, 6x6 Gy hypofractionation phase 3, EANO radiation-necrosis consensus, mature EORTC 22033, FET-PET RT-volume trial, Pixclara FDA approval (status update), LAANTERN 787-patient JCO analysis; epilepsy access/variability data (PERC, EHR presurgical gap, ADI timing, early surgery while drug-sensitive), HH ablation nomograms, FCD/TSC ablation meta-analysis, SLAH memory, callosotomy-for-LGS meta-analysis, LIFU sham crossover, MINE RCT protocol; CMS CY2027 proposed rules, NeuroPace IGE PMA-S not approvable, Xenon azetukalner NDA. Cross-scan duplicates (LAANTERN, Pixclara, NeuroPace) merged by dedupKey. WebFetch was proxy-blocked; journal items verified via PubMed metadata, company/regulatory items via multiple consistent secondary reports and flagged partial where only secondary."
     }
   ],
   "items": [
@@ -170,7 +201,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Nat Commun 2026, NCT02311582; median OS 11.8 vs 5.2 mo (HR 0.17, P=0.0002) corroborated.",
       "doi": "10.1038/s41467-026-69522-w"
     },
@@ -282,7 +313,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Venue/date confirmed (Neurosurg Focus 59(2):E10, Aug 2025); pooled figures not independently corroborated."
     },
     {
@@ -497,7 +528,7 @@
       "verified": "unverified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Could not corroborate a discrete 2025 'LITT vs craniotomy for deep-seated lesions' publication; nearest match is a 2024 Neurosurg Focus RN cost study. Treat as unverified pending a citable source."
     },
     {
@@ -547,7 +578,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Acta Neurochir 2026 (Rigshospitalet n=16 + Karolinska n=14), 30 IDH-wt rGBM.",
       "doi": "10.1007/s00701-026-06771-0"
     },
@@ -600,7 +631,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Confirmed as Operative Neurosurgery 2026 (epub ~Jun 2025; PMID 40552902) - a 2-patient illustrative case report, not a series; venue differs from prior label."
     },
     {
@@ -653,7 +684,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified ISRS systematic review/recommendations on symptomatic RN after SRS; corrected to print 2024 (epub 2023), not 2025.",
       "doi": "10.1016/j.ijrobp.2023.07.015"
     },
@@ -1027,7 +1058,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: FDA approval 2024-08-06; INDIGO trial NEJM 2023 (mPFS 27.7 vs 11.1 mo).",
       "doi": "10.1056/NEJMoa2304194"
     },
@@ -1291,7 +1322,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Nat Med 2025;31:2778-2787; ICV bivalent EGFR+IL-13Ra2 CAR-T phase 1, rGBM.",
       "doi": "10.1038/s41591-025-03745-0"
     },
@@ -1343,7 +1374,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: 2-THE-TOP (NCT03405792), Med (Cell Press) Jun 2025; PFS 12 vs 5.8 mo.",
       "doi": "10.1016/j.medj.2025.100708"
     },
@@ -1511,7 +1542,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: $28M Series E + $35M Trinity credit facility, announced 2026-03-12."
     },
     {
@@ -1623,7 +1654,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-26",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Velocity Alpha MR drill first clinical use 2026-04-22 plus robotic neuro-navigation prototype + ClearPoint 3.0."
     },
     {
@@ -1958,7 +1989,7 @@
     {
       "firstSeenRun": "2026-06-27",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified ASCO 2026 (n=204): 24-mo OS 61.7% vs 35.7% (HR 0.59); 1-yr surgical-bed recurrence 1.0% vs 11.9%.",
       "id": "roads-cs131-tiles-vs-srt-brainmets-asco2026",
       "dedupKey": "asco2026-lba2000-roads-gammatile",
@@ -2062,7 +2093,7 @@
     {
       "firstSeenRun": "2026-06-27",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: NCCN CNS v2.2026 expands CSF tumor-DNA testing to biopsy-infeasible HGG/GBM.",
       "id": "nccn-csf-liquid-biopsy-biopsy-infeasible-hgg-2026",
       "dedupKey": "nccn-cns-v2.2026-csf-genomic-profiling",
@@ -2117,7 +2148,7 @@
     {
       "firstSeenRun": "2026-06-27",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: ASCO 2026 Abstract 2001 (Kumabe et al.); carmustine wafers add no OS/PFS benefit.",
       "id": "jcog1703-macs-carmustine-wafer-negative-asco2026",
       "dedupKey": "asco2026-2001-jcog1703-macs",
@@ -2320,7 +2351,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-27",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Sapience ST101 + chemoRT, Phase 2 window-of-opportunity, ASCO 2026 poster; projected mPFS 28.4 mo."
     },
     {
@@ -3691,7 +3722,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Mohammadi et al., Neurosurgery 2019;85(6):762-772 (PMID 30476325). Median OS figures exist in full text (proxy-blocked) but design/cohort confirmed."
     },
     {
@@ -3862,7 +3893,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Willie et al., Neurosurgery 2014;74(6):569-585 (PMID 24618797). ~54% Engel I in MTS subset."
     },
     {
@@ -4480,7 +4511,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Tao et al., Epilepsia 2020;61(6):1190-1200; N=10, 8/10 with >80% drop-attack reduction."
     },
     {
@@ -4538,7 +4569,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Gonzalez-Martinez et al., Oper Neurosurg 2014;10 Suppl 2:167-172 (PMID 24448180)."
     },
     {
@@ -4760,7 +4791,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "K151359 (ROSA Brain, MEDTECH S.A.) confirmed; exact FDA decision day not corroborable (FDA primary records proxy-blocked)."
     },
     {
@@ -4815,7 +4846,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: neuromate frameless Gen II (K132755) clearance announced 2015-10-16."
     },
     {
@@ -4979,7 +5010,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Brainlab Elements Cranial/Spine SRS (K170816) announced 2017-09-21."
     },
     {
@@ -5144,7 +5175,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: ROSA ONE Brain (K182417) FDA decision 2019-02-07."
     },
     {
@@ -6043,53 +6074,54 @@
     {
       "id": "the-roam-eortc-1308-trial-radiation-versus-observation-following-surgi",
       "dedupKey": "10.1186/s13063-015-1040-3",
-      "title": "The ROAM/EORTC-1308 trial: Radiation versus Observation following surgical resection of Atypical Meningioma: study protocol for a randomised controlled trial",
-      "citation": "Jenkinson MD, Javadpour M, Haylock BJ, et al. Trials. 2015;16:519.",
-      "url": "https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-015-1040-3",
+      "title": "ROAM/EORTC-1308 phase 3 — adjuvant radiotherapy roughly halves recurrence after complete resection of atypical (WHO grade 2) meningioma",
+      "citation": "Jenkinson MD, et al. Radiotherapy versus observation following surgical resection of WHO grade 2 atypical meningioma (ROAM/EORTC-1308). The Lancet, 2026 (published with EANO 2026 presentation, 25 Sep 2026). Protocol: Trials 2015;16:519 (doi:10.1186/s13063-015-1040-3).",
+      "url": "https://news.liverpool.ac.uk/2026/09/25/radiotherapy-halves-the-risk-of-brain-tumour-returning-after-surgery/",
       "doi": "10.1186/s13063-015-1040-3",
-      "date": "2015-11-17",
-      "venue": "Trials",
+      "date": "2026-09-25",
+      "venue": "The Lancet / EANO 2026 Annual Meeting (Rome)",
       "domain": "neuro-oncology",
-      "studyDesign": "International multicentre phase III randomized controlled trial (1:1) - study protocol (primary results pending, expected 2025-2026)",
-      "population": "Adults after gross total resection of intracranial atypical (WHO grade II) meningioma",
-      "sampleSize": "Target 190 (86/arm)",
-      "endpoints": "Time to MRI evidence of recurrence (PFS) (primary); toxicity, QoL, neurocognition, time to second-line, OS, cost/QALY (secondary)",
-      "results": "Not yet published; trial accrued/closed with primary PFS readout expected 2025-2026. Assumes 40% (observation) vs 20% (RT) recurrence; intervention 60 Gy/30 fx vs active MRI surveillance.",
-      "significance": "First and definitive randomized trial of adjuvant RT vs observation after GTR of atypical meningioma; with NRG-BN003 (NCT03180268) will provide Level I evidence for this common clinical dilemma.",
-      "limitations": "Efficacy results pending; only protocol and RT-QA substudy data available to date.",
-      "clinicalBottomLine": "Practice-defining meningioma RCT in progress; until it reports, adjuvant RT after GTR of atypical meningioma remains individualized. Flag for re-check in 2026.",
+      "studyDesign": "International multicentre phase 3 randomised controlled trial, 1:1, radiotherapy (60 Gy/30 fx) vs active MRI observation",
+      "population": "Adults after complete (gross total) surgical resection of atypical (WHO grade 2) meningioma; UK, Ireland and mainland European centres",
+      "sampleSize": "157 randomised 2016-2021 (per University of Liverpool release; original target 190)",
+      "endpoints": "Primary: time to MRI evidence of recurrence (PFS). Secondary: toxicity, HRQoL, neurocognition, time to second-line treatment, OS, cost per QALY",
+      "results": "At a median ~5-year follow-up, 35 participants recurred: 14% in the radiotherapy arm vs 30% in the observation arm; ~80% vs ~60% recurrence-free at 5 years. Benefit seen irrespective of tumour molecular profile. No differences in HRQoL or neurocognitive function; minimal serious radiation toxicity.",
+      "significance": "First Level I evidence for the most common post-operative dilemma in meningioma care. Expected to shift guidelines (EANO/NCCN) toward offering adjuvant RT after GTR of grade 2 meningioma rather than surveillance; NRG-BN003 (US) remains the confirmatory companion.",
+      "limitations": "Lancet full text, hazard ratio and CIs not accessed in this scan (publisher and university pages proxy-blocked); numbers are from the investigator/university press release and may be rounded. OS immature; accrual below original 190 target; per-molecular-subgroup effects are exploratory.",
+      "clinicalBottomLine": "After GTR of an atypical meningioma, offering 60 Gy adjuvant RT is now evidence-based: it roughly halves 5-year recurrence without measurable QoL or cognitive cost.",
       "indications": [
         "meningioma"
       ],
-      "strategies": [],
-      "clinicalImpactScore": 2,
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 5,
       "littBusinessImpact": 1,
       "littBusinessDirection": "neutral",
       "businessLevers": [
-        "referral",
         "messaging"
       ],
-      "timeHorizon": "<=12mo",
-      "evidenceStrength": "International multicentre phase III randomized controlled trial (1:1) - study protocol (primary results pending, expected 2025-2026)",
+      "timeHorizon": "now",
+      "evidenceStrength": "Phase 3 RCT (Level I), peer-reviewed in The Lancet",
       "specialtyRelevance": {
-        "neurosurgery": "Moderate",
+        "neurosurgery": "High",
         "neuroOncology": "High",
         "epileptology": "Low",
         "radiationOncology": "High",
         "neuroradiology": "Moderate",
-        "medicalOncology": "High"
+        "medicalOncology": "Low"
       },
-      "competitiveImpact": "",
+      "competitiveImpact": "No direct LITT effect; strengthens radiation's role in the meningioma pathway.",
       "whoShouldKnow": [
         "Medical Affairs",
         "Marketing"
       ],
-      "whyMatters": "Practice-defining meningioma RCT in progress; until it reports, adjuvant RT after GTR of atypical meningioma remains individualized. Flag for re-check in 2026.",
-      "verified": "verified",
+      "whyMatters": "Resolves a long-standing surgeon/rad-onc equipoise that previously defaulted to institutional preference.",
+      "verified": "partial",
       "firstSeenRun": "2026-06-29",
-      "lastUpdatedRun": "2026-06-29",
+      "lastUpdatedRun": "2026-09-25",
       "status": "updated",
-      "changeNote": "Protocol verified (Trials 2015;16:519). Primary PFS results NOT yet published as of 2026-06; endpoint slated to report 2026 - re-check."
+      "changeNote": "Primary results now reported: presented 2026-09-25 at EANO 2026 (Rome; EANO Best Oral Presentation for Clinical Research) and published in The Lancet. Replaces the 'results pending' protocol entry. Lancet DOI not captured in this scan (publisher/press pages proxy-blocked); figures taken from the University of Liverpool release as indexed by search."
     },
     {
       "id": "clearpoint-neuro-announces-investment-of-up-to-105m-by-oberland-capita",
@@ -6251,7 +6283,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: BT008NA, Lancet Oncology 2025; median PFS 13.5 mo, median OS 31.3 mo confirmed."
     },
     {
@@ -6404,7 +6436,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Insightec spin-out of Lotus Neuro announced 2025-12-17."
     },
     {
@@ -6458,7 +6490,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Citation corrected to Hollon et al., Nat Med 2020;26:52-58. '<150 sec' supported; CORRECTED sample to 278 patients (3 centers) - the prior '500+ patients' figure was unsupported."
     },
     {
@@ -6626,7 +6658,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified citation (Olson et al., Neurosurgery 2019;84(3):550-552, exec summary) but it does NOT explicitly address LITT - LITT-linkage downgraded; business impact softened to neutral."
     },
     {
@@ -7503,7 +7535,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "updated",
+      "status": "carried",
       "changeNote": "Verified: Brown/Mohan et al., Neuro-Oncology 2021;23(8):1337-1347 (PMID 33647972); no significant difference vs IMRT."
     },
     {
@@ -7558,7 +7590,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7615,7 +7647,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7668,7 +7700,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7721,7 +7753,7 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7774,63 +7806,67 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
       "id": "pixclara-tlx101-fet-pet-glioma-nda-accepted-2026",
       "dedupKey": "https://www.globenewswire.com/news-release/2026/04/09/3271481",
-      "title": "FDA accepts NDA for Pixclara (TLX101-Px, 18F-FET) amino-acid PET for recurrent/progressive glioma",
-      "citation": "Telix Pharmaceuticals press release / SEC 6-K; OncLive, CancerNetwork. 2026-04-09.",
-      "url": "https://www.globenewswire.com/news-release/2026/04/09/3271481/0/en/FDA-Accepts-NDA-for-TLX101-Px-Pixclara.html",
+      "title": "FDA approves Pixclara (floretyrosine F 18; 18F-FET PET) — first US amino-acid PET agent to separate recurrent glioma from treatment-related change",
+      "citation": "Telix Pharmaceuticals. FDA Approves Telix's Brain Cancer Imaging Drug Pixclara. Press release (GlobeNewswire), 14 Sep 2026; PIXCLARA USPI (Sep 2026); National Brain Tumor Society and UCSF announcements, 14 Sep 2026.",
+      "url": "https://www.globenewswire.com/news-release/2026/09/14/3360898/0/en/fda-approves-telix-s-brain-cancer-imaging-drug-pixclara.html",
       "doi": "",
-      "date": "2026-04-09",
+      "date": "2026-09-14",
       "venue": "FDA regulatory action / Telix disclosure",
       "domain": "regulatory",
-      "studyDesign": "Regulatory milestone (NDA acceptance; PDUFA Sep 11 2026)",
-      "population": "Adult/pediatric recurrent/progressive glioma",
-      "sampleSize": "",
-      "endpoints": "",
-      "results": "FDA accepted the NDA for 18F-FET PET imaging agent (Orphan Drug + Fast Track); PDUFA goal date 2026-09-11; intended to distinguish tumor progression from treatment-related change.",
-      "significance": "Moves a guideline-endorsed amino-acid PET tracer toward US approval - directly targets the recurrence-vs-treatment-effect question that gates LITT referral.",
-      "limitations": "Acceptance != approval; prior CRL; PDUFA pending.",
-      "clinicalBottomLine": "US amino-acid PET for glioma is a regulatory step closer (decision Sep 2026), sharpening selection for ablation/LITT.",
+      "studyDesign": "Regulatory approval (NDA). Evidence package drew on imaging data from routine clinical use (UCSF), analysed under NCT07238322; resubmitted 13 Mar 2026 after a Complete Response Letter requesting additional confirmatory diagnostic-performance data.",
+      "population": "Adults and pediatric patients >=1 month with suspected recurrent or progressive glioma",
+      "sampleSize": "Safety dataset reported in labeling summaries as 371 adults + 11 pediatric patients",
+      "endpoints": "Diagnostic performance for recurrence/progression vs treatment-related change (specific accuracy figures not captured this scan)",
+      "results": "Approved indication: to differentiate recurrent or progressive glioma from treatment-related change, in conjunction with other diagnostic evaluations, in adults and children >=1 month. Mechanism: LAT1/LAT2 amino-acid transporter uptake. Adverse reactions uncommon (headache most frequent).",
+      "significance": "Brings a guideline-endorsed (NCCN, RANO/EANO PET) amino-acid PET tracer into routine US reach, addressing the pseudoprogression / radiation-necrosis vs recurrence question that drives re-resection, re-irradiation, LITT, bevacizumab and trial-eligibility decisions.",
+      "limitations": "Sensitivity/specificity and reader-study figures not verified in this scan (label and press pages proxy-blocked). Evidence base leaned on retrospective/real-world institutional data; coverage/reimbursement and tracer distribution (18F cyclotron network) will determine real access.",
+      "clinicalBottomLine": "FET-PET is now an FDA-approved option in the US for the 'is it tumor or treatment effect?' question — expect it to become a standard input at tumor board before salvage decisions.",
       "indications": [
         "recurrent_gbm",
+        "recurrent_lgg",
         "radiation_necrosis"
       ],
       "strategies": [
-        "imaging_selection"
+        "imaging_selection",
+        "radiation_necrosis_salvage",
+        "reimbursement_access"
       ],
-      "clinicalImpactScore": 2,
-      "littBusinessImpact": 5,
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 6,
       "littBusinessDirection": "tailwind",
       "businessLevers": [
         "referral",
         "utilization"
       ],
       "timeHorizon": "<=12mo",
-      "evidenceStrength": "Regulatory milestone; multi-source confirmed",
+      "evidenceStrength": "FDA approval; multi-source confirmed (Telix, NBTS, UCSF, trade press)",
       "specialtyRelevance": {
-        "neurosurgery": "Moderate",
+        "neurosurgery": "High",
         "neuroOncology": "High",
         "epileptology": "Low",
-        "radiationOncology": "Moderate",
+        "radiationOncology": "High",
         "neuroradiology": "High",
         "medicalOncology": "Moderate"
       },
-      "competitiveImpact": "Better recurrence-vs-necrosis discrimination improves LITT patient selection.",
+      "competitiveImpact": "Sharper recurrence-vs-necrosis discrimination can route more confidently to the right local therapy (LITT/surgery for necrosis or focal recurrence) or away from intervention.",
       "whoShouldKnow": [
         "Medical Affairs",
         "Marketing",
-        "Product"
+        "Product",
+        "Exec"
       ],
-      "whyMatters": "Improves the selection imaging upstream of LITT referral.",
+      "whyMatters": "Selection imaging directly upstream of every salvage local-therapy decision (surgery, LITT, re-RT) and of bevacizumab use for necrosis.",
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
-      "lastUpdatedRun": "2026-06-29",
-      "status": "new",
-      "changeNote": ""
+      "lastUpdatedRun": "2026-09-25",
+      "status": "updated",
+      "changeNote": "Status change: NDA accepted (Apr 2026) -> FDA APPROVED, announced 2026-09-14 (PDUFA goal 2026-09-11). First FDA-approved FET-PET agent in the US."
     },
     {
       "id": "rad101-fasn-pet-brainmet-phase2b-enrollment-2026",
@@ -7882,7 +7918,7 @@
       "verified": "partial",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
     },
     {
@@ -7936,8 +7972,2589 @@
       "verified": "verified",
       "firstSeenRun": "2026-06-29",
       "lastUpdatedRun": "2026-06-29",
-      "status": "new",
+      "status": "carried",
       "changeNote": ""
+    },
+    {
+      "id": "intrago-ii-iort-newly-gbm-lancetoncol-2026",
+      "dedupKey": "10.1016/s1470-2045(26)00235-4",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "INTRAGO-II phase 3 — 30 Gy intraoperative radiotherapy boost adds no benefit in resectable newly diagnosed glioblastoma (negative)",
+      "citation": "Giordano FA, et al. Dose escalation with intraoperative radiotherapy in newly diagnosed glioblastoma (INTRAGO-II): an open-label, multicentre, randomised, controlled, phase 3 trial. Lancet Oncol. 2026;27(7):864-878. doi:10.1016/S1470-2045(26)00235-4. PMID 42372746.",
+      "url": "https://doi.org/10.1016/S1470-2045(26)00235-4",
+      "doi": "10.1016/S1470-2045(26)00235-4",
+      "date": "2026-07-01",
+      "venue": "The Lancet Oncology (also presented at ESTRO 2026)",
+      "studyDesign": "Open-label multicentre randomised phase 3 (1:1, intraoperative randomisation), 18 centres in Brazil, Canada, China, Germany, Spain, South Korea, USA; NCT02685605",
+      "population": "Adults 18-80 with supratentorial glioblastoma amenable to resection of the enhancing tumour, KPS >=60",
+      "sampleSize": "314 randomised; 298 full-analysis set (161 IORT, 137 standard)",
+      "endpoints": "Primary: median PFS (masked central review). Secondary: OS, patterns of failure, safety",
+      "results": "Median PFS 11.0 mo (IORT, 30 Gy kV) vs 11.4 mo (standard of care), HR 1.1 (95% CI 0.85-1.44), p=0.47; local recurrence predominant in both arms (72% vs 71%). Grade 3-4 seizures 13% vs 7%; radiation necrosis 7% vs 2% (p=0.06); serious adverse events in 65% vs 53% of patients. Authors conclude no improvement in outcomes.",
+      "significance": "Robust negative trial of instant, spatially precise local dose escalation at the time of resection; together with prior dose-escalation failures it argues the limit in GBM is biology, not local dose. Accompanied by Neuro-Oncology commentary 'Beyond Dose Escalation in Glioblastoma: Lessons Learned from INTRAGO-II and the Case for Targeting Tumor Biology' (doi:10.1093/neuonc/noag166).",
+      "limitations": "Open-label; imbalance in arm sizes in the full-analysis set; median follow-up 17.2 months; device-specific (kilovoltage IORT; co-funded by Carl Zeiss Meditec). Date set to issue month (July 2026, first of month used); exact e-publication date not captured.",
+      "evidenceStrength": "Phase 3 RCT (Level I), negative",
+      "clinicalBottomLine": "Adding a 30 Gy IORT boost at resection does not delay progression in newly diagnosed GBM and adds seizures and necrosis — it should not be used outside trials.",
+      "whyMatters": "A cautionary signal for any intraoperative/local radiation adjunct in newly diagnosed GBM (including cavity brachytherapy programs now entering GBM trials).",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Dampens the local-dose-intensification thesis for cavity radiation adjuncts in GBM (e.g., brachytherapy programs), with more radiation necrosis on the IORT arm.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "ultrahypofx-6x6gy-vs-30x2gy-gbm-radiotheroncol-2026",
+      "dedupKey": "10.1016/j.radonc.2026.111726",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "Phase 3 RCT: ultra-hypofractionated 6x6 Gy chemoradiation is inferior to 30x2 Gy in newly diagnosed glioblastoma, with triple the necrosis/pseudoprogression",
+      "citation": "de Jong, van der Boog, Wester, et al. Ultra-hypofractionated versus conventional chemoradiation for newly diagnosed glioblastoma: survival and toxicity results of a multicenter randomized trial. Radiother Oncol. 2026;223:111726. doi:10.1016/j.radonc.2026.111726. PMID 42570798.",
+      "url": "https://doi.org/10.1016/j.radonc.2026.111726",
+      "doi": "10.1016/j.radonc.2026.111726",
+      "date": "2026-08-08",
+      "venue": "Radiotherapy and Oncology",
+      "studyDesign": "Multicentre randomised phase 3 non-inferiority trial (Netherlands Trial Registry NL72953.041.20); 1:1",
+      "population": "Adults with newly diagnosed glioblastoma, KPS >=70",
+      "sampleSize": "135 randomised (67 experimental, 68 standard) of 474 planned; stopped early for slow accrual",
+      "endpoints": "Primary: 2-year OS (non-inferiority margin HR 1.2). Secondary: PFS, toxicity",
+      "results": "Median OS 13.0 mo (95% CI 10.3-15.7) with 6x6 Gy vs 21.0 mo (CI not estimable) with 30x2 Gy. Survival similar for the first 6 months (HR 0.99) but mortality higher thereafter (HR 2.54, 95% CI 1.57-4.09, p<0.001). Radiation necrosis or pseudoprogression 47.8% vs 16.2% (HR 5.20, 95% CI 2.56-10.58), with more dexamethasone use at 6-12 months. No grade 4-5 toxicity.",
+      "significance": "Closes the door on 6x6 Gy ultra-hypofractionation as a convenience/cost alternative for fit GBM patients; the necrosis signal is a warning for any aggressive hypofractionation with TMZ outside trials.",
+      "limitations": "Under-accrued (28% of target), so estimates are imprecise and the control arm's 21-month median OS may be optimistic; open-label; necrosis vs pseudoprogression not uniformly tissue-confirmed.",
+      "evidenceStrength": "Phase 3 RCT (stopped early; under-powered)",
+      "clinicalBottomLine": "For fit patients with newly diagnosed GBM, keep 60 Gy/30 fx with TMZ; 6x6 Gy was associated with worse survival and ~3x more necrosis/pseudoprogression.",
+      "whyMatters": "Protects the standard regimen and flags a treatment-induced necrosis burden that downstream teams would have to manage.",
+      "indications": [
+        "newly_gbm",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "High",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "None direct; reinforces that treatment-effect imaging problems scale with dose intensity.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "laantern-litt-brain-tumors-jco-2026",
+      "dedupKey": "10.1200/jco-25-02604",
+      "status": "new",
+      "changeNote": "",
+      "domain": "litt",
+      "title": "LAANTERN (JCO 2026) — largest prospective LITT cohort: 787 primary/metastatic brain-tumor patients across 25 US centers",
+      "citation": "Leuthardt EC, Chiang V, Hadjipanayis CG, Landazuri P, et al.; Prabhu SS (senior). Laser Interstitial Thermal Therapy for Brain Tumors: A Prospective Multicenter Analysis of Patients From the LAANTERN Study. J Clin Oncol. 2026;44(27):2634-2644. doi:10.1200/JCO-25-02604. PMID 42607280.",
+      "url": "https://doi.org/10.1200/JCO-25-02604",
+      "doi": "10.1200/JCO-25-02604",
+      "date": "2026-08-17",
+      "venue": "Journal of Clinical Oncology",
+      "studyDesign": "Prospective multicenter registry analysis (NCT02392078), 2015-2023; univariable and multivariable analyses",
+      "population": "Primary (n=445) and metastatic (n=342) brain tumors treated with MR-guided LITT (NeuroBlate); includes 18 pediatric patients",
+      "sampleSize": "787",
+      "endpoints": "Length of stay, ICU use, adverse events, mortality, steroid/AED discontinuation, QoL over time, survival by extent of ablation (EOA) and lesion size",
+      "results": "Median length of stay 32.4 h; 62.6% avoided ICU. Adverse-event rate 12.8% (65.5% transient); mortality 0.25%. Anticonvulsants stopped in 30-40% and steroids stopped in 80% after LITT. QoL stable up to 3 years. Greater EOA and smaller lesion size associated with better survival in high-grade glioma and recurrent metastases.",
+      "significance": "Moves LITT outcome data from single-center series into a high-impact oncology journal, with a prospective multicenter denominator and QoL follow-up. Frames LITT as a cytoreductive tool and names extent of ablation (GBM) and lesion volume (metastases) as selection factors.",
+      "limitations": "Single-arm registry with no randomized comparator; heterogeneous indications; selection bias toward ablation-suitable lesions; single-device (Monteris NeuroBlate) registry, so industry involvement should be considered; survival associations are observational.",
+      "evidenceStrength": "Prospective multicenter registry (Level III), large n",
+      "clinicalBottomLine": "In selected primary and metastatic tumors, LITT delivered short stays, ~13% mostly transient AEs, <1% mortality and stable QoL; outcomes track with how completely the lesion is ablated and how small it is.",
+      "whyMatters": "The largest prospective safety/QoL dataset for LITT in tumors, in a journal read by medical oncologists who control many referrals.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "other_tumor"
+      ],
+      "strategies": [
+        "deep_eloquent_access",
+        "srs_recurrence_salvage",
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 8,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "messaging",
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "Category-level evidence win for LITT; the dataset is platform-specific (NeuroBlate), which competitors will note.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "eano-radiation-necrosis-consensus-neurooncol-2026",
+      "dedupKey": "10.1093/neuonc/noag153",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "EANO consensus statement on radiation necrosis — perfusion MRI + amino-acid PET for diagnosis; bevacizumab for steroid-refractory cases; surgery or LITT as options",
+      "citation": "Duerinck J, van den Bent M, Brandal P, Minniti G, et al.; Razis E (senior). The European Association for Neuro-oncology (EANO) Consensus Statement on Radiation Necrosis. Neuro Oncol. 2026 (published online 9 Jul 2026). doi:10.1093/neuonc/noag153. PMID 42423280.",
+      "url": "https://doi.org/10.1093/neuonc/noag153",
+      "doi": "10.1093/neuonc/noag153",
+      "date": "2026-07-09",
+      "venue": "Neuro-Oncology",
+      "studyDesign": "Three-round Delphi expert consensus (EANO panel); consensus = >=80% agreement on 5-point Likert scale",
+      "population": "Patients with suspected/confirmed radiation necrosis after RT for primary (glial) or metastatic brain tumors",
+      "sampleSize": "20 experts; 57 statements",
+      "endpoints": "Consensus on epidemiology, diagnosis, pathology and management statements",
+      "results": "Consensus reached on 53/57 statements. RN occurs in 4-30% of patients, typically 6-24 months after RT. Perfusion MRI and amino-acid PET judged most suitable for distinguishing RN from recurrence; histopathology remains gold standard but is hard to interpret in irradiated gliomas. Corticosteroids may be tried; bevacizumab recommended for corticosteroid-refractory RN (efficacy reported even at low doses). Surgery effective for rapid symptom relief and diagnosis in accessible lesions; LITT can be considered as an additional option for symptomatic RN.",
+      "significance": "First European society-level framework for RN, formalizing a steroid -> bevacizumab -> local therapy (surgery/LITT) ladder and an imaging-first diagnostic approach; complements the ISRS recommendations and the new US availability of FET-PET.",
+      "limitations": "Expert opinion (no Level 1 evidence); European panel of 20; placement of LITT is permissive ('can be considered') rather than recommended; calls for RCTs in symptomatic RN.",
+      "evidenceStrength": "Society consensus statement (Delphi; expert opinion)",
+      "clinicalBottomLine": "For suspected RN, get perfusion MRI and/or amino-acid PET; start steroids, move to bevacizumab if steroid-refractory, and reserve surgery or LITT for accessible or symptomatic lesions needing rapid relief or diagnosis.",
+      "whyMatters": "Gives multidisciplinary teams a shared, citable algorithm, and names LITT explicitly as a management option in a European society document.",
+      "indications": [
+        "radiation_necrosis",
+        "brain_met",
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "radiation_necrosis_salvage",
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "High",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "LITT is listed as a management option, but bevacizumab is positioned first after steroids, so it is a mixed signal for ablation-first messaging.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "eortc-22033-mature-lgg-tmz-vs-rt-jco-2026",
+      "dedupKey": "10.1200/jco-25-02735",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "EORTC 22033 mature results (JCO 2026): TMZ vs RT monotherapy equivalent in high-risk grade 2 glioma; with PROGRES pooled data, age >=40 loses value as a risk factor in the molecular era",
+      "citation": "Baumert BG, Hegi ME, van den Bent MJ, von Deimling A, et al.; Stupp R (senior). Temozolomide Versus Radiotherapy as First-Line Therapy for Low-Grade Glioma: Mature Results of a Randomized Phase III Trial (EORTC 22033-26033/NCIC-CTG/TROG/MRC-CTU). J Clin Oncol. 2026 (online 2 Jul 2026). doi:10.1200/JCO-25-02735. PMID 42391581. Companion: Kinslow CJ, Minniti G, Brown PD, Vogelbaum MA, et al. Prognostic and Predictive Effect of Age in Molecularly Defined Lower-Grade Gliomas. J Clin Oncol. 2026 (online 12 Aug 2026). doi:10.1200/JCO-25-01846. PMID 42585601.",
+      "url": "https://doi.org/10.1200/JCO-25-02735",
+      "doi": "10.1200/JCO-25-02735",
+      "date": "2026-07-02",
+      "venue": "Journal of Clinical Oncology",
+      "studyDesign": "Mature analysis of randomized phase 3 trial with post hoc WHO 2021 molecular reclassification; companion IPD analysis of 11 prospective trials/registries (PROGRES) with external validation (REGRES)",
+      "population": "Clinically high-risk WHO grade 2 glioma (EORTC 22033); lower-grade (2-3) astrocytoma/oligodendroglioma (PROGRES)",
+      "sampleSize": "EORTC 22033: 478 randomised (351 molecularly reclassified). PROGRES 1,619 + REGRES 1,292",
+      "endpoints": "PFS, OS by arm and molecular subtype; age as prognostic/predictive factor",
+      "results": "EORTC 22033: no PFS or OS difference between RT (28x1.8 Gy) and dose-dense TMZ. IDH-mutant non-codeleted astrocytoma (n=178): median OS 6.6-6.7 years in either arm. Oligodendroglioma (n=109): OS 12.9 years (RT) vs 14.9 years (TMZ), HR 0.88 (0.52-1.49). IDH-wildtype tumors (n=64): survival favored TMZ (reported OS 2.5 vs 4.7 years; HR 0.47, 0.27-0.82). Patients >=40 fared better than <40. PROGRES: age associated with PFS in IDH-wildtype (HR 1.74) but not IDH-mutant glioma (HR 0.89, 0.76-1.05), and age did not predict chemoRT benefit in IDH-mutant tumors across 4 pooled trials.",
+      "significance": "Two JCO papers in six weeks undercut the 'age >=40 = high risk = treat now' rule embedded in guidelines; molecular subtype, residual tumor and biology should drive timing of adjuvant therapy, which matters for vorasidenib-era decisions about watch-and-wait vs vorasidenib vs chemoRT. Supersedes the 2016 primary report (Lancet Oncol) already in the library.",
+      "limitations": "Single-modality arms tested; combined RT+chemo (now standard for many IDH-mutant tumors) not assessed; molecular reclassification post hoc on 73% of tissue; PROGRES pools heterogeneous historical cohorts.",
+      "evidenceStrength": "Phase 3 RCT mature follow-up + large IPD pooled analysis",
+      "clinicalBottomLine": "In IDH-mutant lower-grade glioma, do not use age >=40 alone to decide on immediate adjuvant therapy; single-modality TMZ and RT gave similar long-term survival, and neither replaces combined therapy where indicated.",
+      "whyMatters": "Reframes the risk stratification that decides whether a post-operative LGG patient goes to observation, vorasidenib, or chemoradiation.",
+      "indications": [
+        "newly_lgg"
+      ],
+      "strategies": [
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 1,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Moderate",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "None direct.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "fig-trog-1806-fet-pet-rt-volumes-gbm-2026",
+      "dedupKey": "10.1093/neuonc/noag229",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "FIG (TROG 18.06) prospective multicenter study: adding FET-PET meaningfully changes GBM radiotherapy target volumes in 76% of patients",
+      "citation": "Koh ES, Francis RJ, Ninatti G, Ruisi I, et al.; Scott AM (senior). Impact of [18F]FET-PET on MRI-Based Radiotherapy Target Volumes in Newly Diagnosed Glioblastoma: Results from the FET-PET in Glioblastoma (FIG) Study TROG 18.06. Neuro Oncol. 2026 (online 24 Sep 2026). doi:10.1093/neuonc/noag229. PMID 42784545. Related: Blobner J, et al. Identification of prognostically relevant residual tumor in glioblastoma after surgery: MR-based RANO resect classes vs [18F]FET PET. Neuro Oncol. 2026 (online 4 Sep 2026). doi:10.1093/neuonc/noag212.",
+      "url": "https://doi.org/10.1093/neuonc/noag229",
+      "doi": "10.1093/neuonc/noag229",
+      "date": "2026-09-24",
+      "venue": "Neuro-Oncology",
+      "studyDesign": "Prospective multicenter phase 2 imaging study (TROG 18.06); RT delivered per standard MRI-based planning",
+      "population": "Newly diagnosed IDH-wildtype glioblastoma with post-operative MRI and FET-PET before adjuvant RT",
+      "sampleSize": "172 recruited; 140 evaluable (Blobner companion: 140, retrospective bicentric)",
+      "endpoints": "FET-PET biological tumor volume (BTV) outside MRI GTV; Hybrid-GTV vs MR-GTV non-overlap, dosimetry (D98, V95), spatial similarity; clinically meaningful (>20%) GTV change",
+      "results": "Median BTV 23.1 cm3, MR-GTV 32.1 cm3, Hybrid-GTV 46.0 cm3; Hybrid-GTV larger in 83%. BTV vs MR-GTV non-overlap median 10.1 cm3 (53.5%); lower D98/V95 coverage of the Hybrid-GTV under MRI-only plans. 76% had a clinically meaningful GTV change with FET-PET. Companion (Blobner): post-operative PET residual volume independently predicted OS (HR 1.021 per cm3, p=0.002) beyond RANO resect MRI classes.",
+      "significance": "Prospective evidence that MRI-only post-op contours miss metabolically active tumor in most GBM patients, and that this PET-defined residual carries prognostic weight. Arrives the same month FET-PET became FDA-approved in the US.",
+      "limitations": "Imaging-endpoint study; did not test whether PET-guided RT improves local control or survival (patterns-of-failure analyses pending); PET-positive volume may include non-tumor uptake; FIG used standard MRI plans, so dosimetric shortfall is hypothetical.",
+      "evidenceStrength": "Prospective multicenter phase 2 (imaging endpoints) + supportive retrospective cohort",
+      "clinicalBottomLine": "FET-PET changes what counts as residual GBM for both the surgeon and the radiation planner; outcome benefit of PET-guided targeting is still unproven.",
+      "whyMatters": "Links surgical residual assessment and RT target definition to the same new imaging input.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "High",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Supports a PET-informed definition of residual disease that could also inform extent-of-resection/ablation planning.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "rano-resect-idhmut-grade4-astrocytoma-neurooncol-2026",
+      "dedupKey": "10.1093/neuonc/noag199",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "RANO resect: less residual enhancing tumor, and supramaximal resection, linked to longer survival in IDH-mutant grade 4 astrocytoma",
+      "citation": "Karschnia P, Youssef G, Young JS, Teske N, et al. The role for surgery in IDH-mutant grade 4 astrocytomas: interactive effects of resection, patient characteristics, and outcome — report of the RANO resect group. Neuro Oncol. 2026 (advance article, 31 Aug 2026). doi:10.1093/neuonc/noag199. PMID 42671346.",
+      "url": "https://doi.org/10.1093/neuonc/noag199",
+      "doi": "10.1093/neuonc/noag199",
+      "date": "2026-08-31",
+      "venue": "Neuro-Oncology",
+      "studyDesign": "International multicenter retrospective cohort (RANO resect group)",
+      "population": "Adults with IDH-mutant WHO grade 4 astrocytoma",
+      "sampleSize": "266 (per secondary summary)",
+      "endpoints": "Overall survival by residual contrast-enhancing (CE) and non-CE tumor volume (RANO resect classes); interaction with molecular and clinical factors",
+      "results": "Smaller residual CE tumor associated with longer survival; supramaximal resection (beyond the enhancing margin) had the most favorable outcomes. CDKN2A/B homozygous loss associated with worse survival regardless of extent of resection.",
+      "significance": "Extends the RANO resect framework (already validated in IDH-wildtype GBM and IDH-mutant grade 2 glioma) to the IDH-mutant grade 4 subgroup, supporting maximal safe, and where feasible supramaximal, resection plus CDKN2A/B-based stratification in trials.",
+      "limitations": "PubMed abstract not available at scan time; details are from a secondary summary and should be confirmed against the full text. Retrospective with selection bias (resectability, eloquence); treatment heterogeneity.",
+      "evidenceStrength": "Large multicenter retrospective cohort (Level III)",
+      "clinicalBottomLine": "For IDH-mutant grade 4 astrocytoma, aim for complete CE resection and consider supramaximal resection when safe; CDKN2A/B loss remains adverse whatever the surgery.",
+      "whyMatters": "Gives surgeons a volumetric target for a molecularly defined group increasingly managed with IDH-targeted agents.",
+      "indications": [
+        "newly_lgg",
+        "newly_gbm"
+      ],
+      "strategies": [
+        "molecular_selection",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Reinforces resection-volume thinking; cytoreductive alternatives (e.g., ablation) will be judged against the same residual-volume yardstick.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "b7h3-cart-tx103-intracranial-rgbm-natmed-2026",
+      "dedupKey": "10.1038/s41591-026-04557-6",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "Intracranial B7-H3 CAR-T (TX103) in recurrent GBM — phase 1: no DLTs across 72 infusions, median OS 19.1 months from first infusion",
+      "citation": "Zhang Y, Chi X, Feng R, et al.; Chen L, Ji N, Huang G (senior). Intracranial delivery of B7-H3-targeting CAR-T cells for recurrent glioblastoma: a phase 1 trial. Nat Med. 2026;32(9):3268-3275. doi:10.1038/s41591-026-04557-6. PMID 42562965. Related pediatric: Ronsley R, et al. Intracerebroventricular B7-H3-targeting CAR T cells for non-pontine DMG and recurrent/refractory pediatric CNS tumors: a phase 1 trial (BrainChild-03 Arm B). Neuro Oncol. 2026. doi:10.1093/neuonc/noag171.",
+      "url": "https://doi.org/10.1038/s41591-026-04557-6",
+      "doi": "10.1038/s41591-026-04557-6",
+      "date": "2026-08-06",
+      "venue": "Nature Medicine",
+      "studyDesign": "Open-label 3+3 dose-escalation phase 1 (NCT05241392), Beijing Tiantan Hospital with Yale; repeated intracranial infusions at 3 dose levels",
+      "population": "Adults 18-75 with B7-H3-positive (>=30%) recurrent glioblastoma",
+      "sampleSize": "15 treated (72 intracranial infusions; 13 received repeat dosing). Pediatric companion: 26 treated, 181 ICV doses",
+      "endpoints": "Primary: safety, MTD, RP2D. Secondary: survival, pharmacokinetics, immune response",
+      "results": "No DLTs; MTD not reached; RP2D 6x10^7 cells/infusion. TRAEs: low-grade CRS 86.7%, sinus tachycardia 53.3%, vomiting 53.3%, hypertension 53.3%, elevated intracranial pressure 46.7%; three grade 3 SAEs (raised ICP, epilepsy, depressed consciousness), two at the top dose. 12-month OS 66.7%; median OS 19.1 months (95% CI 8.93-NR) from first infusion; disease control 8/14 evaluable, including one sustained CR. CSF showed CAR expansion with minimal peripheral activity. Pediatric BrainChild-03 Arm B: no DLTs, median survival 11.5 months from first infusion, 2 partial responses.",
+      "significance": "Adds B7-H3 to IL13Ra2 and EGFR/EGFRvIII as a locoregionally delivered CAR-T target with repeat-dosing feasibility; confirms intracranial/ventricular delivery as the operative model for CNS cell therapy.",
+      "limitations": "Phase 1, n=15, single-center-led; antigen-selected population; survival measured from first infusion in a selected cohort (not comparable to historical controls); raised ICP is a real class toxicity needing neurosurgical monitoring.",
+      "evidenceStrength": "Phase 1 (early-phase, small n)",
+      "clinicalBottomLine": "Repeated intracranial B7-H3 CAR-T is feasible with manageable, mostly low-grade toxicity and early efficacy signals; still investigational, with phase 2 planned.",
+      "whyMatters": "Cell therapy for brain tumors depends on neurosurgical device placement and ICP management, which puts surgeons inside the immunotherapy workflow.",
+      "indications": [
+        "recurrent_gbm",
+        "other_tumor"
+      ],
+      "strategies": [
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "Locoregional cell therapy is a growing parallel track for recurrent GBM; creates a delivery-device and access need rather than an ablation substitute.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "danish-meningioma-incidence-surveillance-jamaoncol-2026",
+      "dedupKey": "10.1001/jamaoncol.2026.2943",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "Nationwide Danish study: meningioma incidence doubled 2010-2023 while treatment rates stayed flat; 83.5% of surveillance MRIs led to no intervention",
+      "citation": "Korshoj AR, Engberg H, Haldrup M, Ragner AK, et al. Trends in Meningioma Incidence, Treatment, and Imaging Surveillance. JAMA Oncol. 2026 (online 20 Aug 2026). doi:10.1001/jamaoncol.2026.2943. PMID 42623066.",
+      "url": "https://doi.org/10.1001/jamaoncol.2026.2943",
+      "doi": "10.1001/jamaoncol.2026.2943",
+      "date": "2026-08-20",
+      "venue": "JAMA Oncology",
+      "studyDesign": "Nationwide registry-based quality-improvement cohort (Danish National Patient Registry + Danish Pathology Registry)",
+      "population": "All adults diagnosed with meningioma (radiologic or histopathologic) in Denmark 2010-2023, follow-up to end-2024",
+      "sampleSize": "8,134 patients; 28,736 surveillance MRIs",
+      "endpoints": "Incidence trends; conversion to surgery or RT; surveillance imaging volume; timing of intervention",
+      "results": "Age/sex-standardized incidence rose from 6.4 to 12.6 per 100,000 person-years, while yearly treatment rates were stable. 65.2% received no treatment, 32.8% surgery, 5.4% RT; 89.3% of operated tumors were WHO grade 1. 87.8% had >=1 follow-up MRI; 83.5% of MRIs were not followed by treatment. Only 78 of 5,547 patients (1.4%) underwent surgery after year 5.",
+      "significance": "Quantifies the incidentaloma-driven surveillance burden and supports risk-adapted, de-escalated imaging schedules, particularly beyond 5 years for stable lesions.",
+      "limitations": "Single-country registry; radiologically diagnosed cases lack grade; cannot capture symptom-driven imaging reasons or patient anxiety; 'redundant' imaging inferred from absence of subsequent treatment.",
+      "evidenceStrength": "Nationwide population-based cohort (Level III), large n",
+      "clinicalBottomLine": "Most imaging-detected meningiomas are never treated; for stable lesions, especially after 5 years, surveillance intervals can likely be lengthened or stopped within a risk-adapted plan.",
+      "whyMatters": "Imaging stewardship and clinic capacity for the most common primary intracranial tumor.",
+      "indications": [
+        "meningioma"
+      ],
+      "strategies": [
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 1,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "High",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "None direct.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "zidesamtinib-fda-ros1-nsclc-intracranial-2026",
+      "dedupKey": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zidesamtinib-ros1-positive-non-small-cell-lung-cancer",
+      "status": "new",
+      "changeNote": "",
+      "domain": "regulatory",
+      "title": "FDA approves zidesamtinib (Jideytro) for TKI-pretreated ROS1+ NSCLC — intracranial ORR 48% in measurable CNS disease",
+      "citation": "US FDA. FDA approves zidesamtinib for ROS1-positive non-small cell lung cancer. 22 Jul 2026. Basis: ARROS-1 (NCT05118789). Also ASCO Post, CancerNetwork, AJMC coverage (Jul 2026).",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zidesamtinib-ros1-positive-non-small-cell-lung-cancer",
+      "doi": "",
+      "date": "2026-07-22",
+      "venue": "FDA approval (Nuvalent)",
+      "studyDesign": "Regulatory approval based on ARROS-1, a multicenter single-arm open-label multi-cohort trial",
+      "population": "Adults with locally advanced/metastatic ROS1-positive NSCLC previously treated with >=1 ROS1 TKI",
+      "sampleSize": "117 (59 after one prior ROS1 TKI; 58 after >=2, including lorlatinib, repotrectinib and/or taletrectinib)",
+      "endpoints": "ORR, duration of response, intracranial ORR",
+      "results": "ORR 44%; intracranial ORR 48% (95% CI 35-62%) in patients with measurable CNS lesions, intracranial CR 20%.",
+      "significance": "Adds a brain-penetrant option after prior ROS1 TKIs, including after lorlatinib/repotrectinib, a setting where CNS progression often triggered local therapy.",
+      "limitations": "Single-arm, no comparator; intracranial cohort small; durability of CNS response not detailed here; approval-summary figures taken from secondary coverage (FDA page proxy-blocked).",
+      "evidenceStrength": "FDA approval on single-arm trial data",
+      "clinicalBottomLine": "For TKI-pretreated ROS1+ NSCLC with brain metastases, zidesamtinib provides ~50% intracranial response, which may let some patients defer SRS or surgery for asymptomatic lesions.",
+      "whyMatters": "Another example of a molecular subgroup where systemic CNS control shifts the timing of local therapy.",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "CNS-active systemic therapy can defer local intervention (SRS/surgery/LITT) in a small molecular subset.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "glioma-molecular-subtype-racial-ethnic-disparities-neurooncol-2026",
+      "dedupKey": "10.1093/neuonc/noag157",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "National CBTRUS/NCDB analysis: racial and ethnic disparities in adult-type diffuse glioma vary by molecular subtype",
+      "citation": "Gomez D, Shah I, Cote DJ. Differences in Primary Molecular Subtype Distribution Contribute to Racial and Ethnic Disparities in Adult-Type Diffuse Gliomas. Neuro Oncol. 2026 (online 14 Jul 2026). doi:10.1093/neuonc/noag157. PMID 42446117. Related correspondence: Shen F, Sheng H. Molecular Testing and Reporting Completeness in Racial and Ethnic Glioma Disparities. Neuro Oncol. 2026. doi:10.1093/neuonc/noag206.",
+      "url": "https://doi.org/10.1093/neuonc/noag157",
+      "doi": "10.1093/neuonc/noag157",
+      "date": "2026-07-14",
+      "venue": "Neuro-Oncology",
+      "studyDesign": "Population-based registry analysis (CBTRUS incidence 2018-2022; NCDB survival 2018-2021)",
+      "population": "US patients with newly diagnosed, molecularly defined adult-type diffuse glioma",
+      "sampleSize": "68,172 glioma cases (51,548 IDH-wildtype GBM) in CBTRUS",
+      "endpoints": "Age-adjusted incidence by subtype and race/ethnicity; 4-year OS, median OS, adjusted HRs",
+      "results": "Non-Hispanic White individuals had the highest incidence of all gliomas. Non-Hispanic Black individuals had the lowest incidence of IDH-mutant astrocytoma and oligodendroglioma and lower odds of IDH-wildtype (vs IDH-mutant) astrocytoma/GBM. Adjusted survival differed by race/ethnicity across most subtypes; 4-year OS was lowest for IDH-wildtype GBM in all groups.",
+      "significance": "Moves disparities research from histology to molecular subtype, a prerequisite for interpreting outcome gaps and trial representativeness; the companion letter highlights that incomplete molecular testing and reporting may itself bias these comparisons.",
+      "limitations": "Registry data with missing or incompletely reported molecular fields (differential testing completeness may confound results); NCDB is hospital-based; no treatment-quality detail.",
+      "evidenceStrength": "Large population-based registry analysis (Level III)",
+      "clinicalBottomLine": "Glioma incidence and survival differ by race and ethnicity within molecular subtypes; ensuring complete molecular testing for every patient is the first step to meaningful equity comparisons.",
+      "whyMatters": "Equity and access framing for tumor boards and trial enrollment.",
+      "indications": [
+        "newly_gbm",
+        "newly_lgg"
+      ],
+      "strategies": [
+        "molecular_selection",
+        "reimbursement_access"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 1,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "None direct.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "gbm-end-of-life-inappropriate-care-neurooncol-2026",
+      "dedupKey": "10.1093/neuonc/noag198",
+      "status": "new",
+      "changeNote": "",
+      "domain": "neuro-oncology",
+      "title": "One in five glioblastoma patients receives potentially inappropriate care in the last 3 months of life, mostly chemotherapy",
+      "citation": "Pieterman RM, van der Poort EKJ, Baas-Thijssen MCM, et al. Potentially inappropriate care at the end of life in patients with glioblastoma: a single-center observational cohort study. Neuro Oncol. 2026 (online 23 Sep 2026). doi:10.1093/neuonc/noag198. PMID 42776059.",
+      "url": "https://doi.org/10.1093/neuonc/noag198",
+      "doi": "10.1093/neuonc/noag198",
+      "date": "2026-09-23",
+      "venue": "Neuro-Oncology",
+      "studyDesign": "Single-center retrospective observational cohort (tertiary hospital, 2015-2026)",
+      "population": "Deceased patients with glioblastoma who survived >=3 months after diagnosis",
+      "sampleSize": "310",
+      "endpoints": "Proportion with any potentially inappropriate care indicator in the final 3 months (>=2 ED visits, >=2 admissions, >14 consecutive inpatient days, ICU, chemotherapy, in-hospital death); determinants",
+      "results": "22% (67/310) received potentially inappropriate care; chemotherapy was the main driver (87% of those), then >=2 admissions (15%) and in-hospital death (13%). Older patients (OR 0.97 per year) and MGMT-unmethylated patients (OR 0.42) were less likely to receive it; younger and MGMT-methylated patients were most affected.",
+      "significance": "Identifies a predictable at-risk group (younger, MGMT-methylated, i.e. those with the 'best' prognosis) for late chemotherapy and suggests triggers for earlier palliative-care integration.",
+      "limitations": "Single Dutch center; retrospective; indicators are proxies, and some late chemotherapy may be goal-concordant; no patient-reported outcomes.",
+      "evidenceStrength": "Single-center retrospective cohort (Level III)",
+      "clinicalBottomLine": "Watch for late chemotherapy in younger and MGMT-methylated GBM patients; build palliative-care triggers into the pathway before the last 3 months.",
+      "whyMatters": "Palliative and rehab handoffs are part of the brain-tumor pathway and are often under-coordinated.",
+      "indications": [
+        "recurrent_gbm",
+        "newly_gbm"
+      ],
+      "strategies": [],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 0,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "None.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "xenon-azetukalner-nda-submission-2026",
+      "dedupKey": "https://www.globenewswire.com/news-release/2026/09/17/3364364/33485/en/xenon-announces-azetukalner-nda-submission-to-fda-for-focal-seizures-and-provides-update-on-psychiatry-clinical-program.html",
+      "domain": "regulatory",
+      "title": "Xenon submits azetukalner (Kv7 opener) NDA to FDA for focal seizures; pauses psychiatry Phase 3 enrollment over neuropsychiatric AEs",
+      "citation": "Xenon Pharmaceuticals. 'Xenon Announces Azetukalner NDA Submission to FDA for Focal Seizures and Provides Update on Psychiatry Clinical Program.' GlobeNewswire, Sept 17, 2026. Supporting efficacy: Phase 2b X-TOLE and Phase 3 X-TOLE2 (topline Mar 9, 2026; presented AAN 2026 and EEC 2026).",
+      "url": "https://www.globenewswire.com/news-release/2026/09/17/3364364/33485/en/xenon-announces-azetukalner-nda-submission-to-fda-for-focal-seizures-and-provides-update-on-psychiatry-clinical-program.html",
+      "doi": "",
+      "date": "2026-09-17",
+      "venue": "Company press release (GlobeNewswire); FDA NDA submission",
+      "studyDesign": "Regulatory filing supported by two randomized, double-blind, placebo-controlled trials (Phase 2b X-TOLE; Phase 3 X-TOLE2) plus open-label extension",
+      "population": "Adults with focal onset seizures on background ASMs; X-TOLE2 enrolled a highly treatment-resistant group (median 5 prior ASMs; baseline median 12.75 seizures/month)",
+      "sampleSize": "X-TOLE2: 380 randomized (374 safety/mITT)",
+      "endpoints": "Median percent change (MPC) from baseline in monthly focal-seizure frequency over a 12-week double-blind period; TEAEs; long-term OLE seizure freedom",
+      "results": "X-TOLE2 MPC -53.2% (25 mg) and -34.5% (15 mg) vs -10.4% placebo; placebo-adjusted -42.7% at 25 mg (vs -34.6% in Phase 2b X-TOLE). Most common TEAEs (azetukalner vs placebo): dizziness 20.5% vs 3.2%, headache 8.8% vs 6.4%, somnolence 8.8% vs 7.2%, fatigue 7.6% vs 6.4%. Company-reported 48-month OLE: ~40% achieved >=12 months seizure freedom and ~1 in 4 >=24 months. Same release disclosed a voluntary pause of new enrollment in Phase 3 psychiatry studies X-NOVA2 (MDD) and X-CEED (bipolar depression) after neuropsychiatric adverse events including psychosis in a small number of patients.",
+      "significance": "Puts a new-mechanism (Kv7.2/7.3 potassium-channel opener) focal-seizure drug under FDA review, the first of this class since ezogabine was discontinued; will enter the treatment sequence for exactly the patients who are candidates for surgical evaluation.",
+      "limitations": "Company-reported; primary release pages (GlobeNewswire, Xenon IR) were blocked by this session's egress proxy, so figures were cross-checked across multiple secondary reports (NeurologyLive, BioSpace, Clinical Trials Arena, touchNEUROLOGY summaries). 12-week double-blind period; OLE data are uncontrolled and subject to attrition bias. FDA filing-acceptance and PDUFA dates not yet disclosed in sources reviewed. The psychosis signal arose in the psychiatry program and its relevance to epilepsy dosing is not yet characterized.",
+      "evidenceStrength": "Phase 3 RCT + Phase 2b RCT (company-reported/congress); regulatory filing",
+      "clinicalBottomLine": "A new focal-seizure ASM with a novel mechanism is now under FDA review. Median seizure reduction in highly refractory patients is meaningful, but most patients will not become seizure-free, so a pending new drug should not delay surgical evaluation in patients who already meet the ILAE definition of drug resistance.",
+      "whyMatters": "New ASM launches tend to add 'one more trial' before referral. Surgical teams should expect this and restate that drug resistance is defined by failure of two appropriate ASMs, not by the arrival of a new one.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "referral",
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Mild headwind: a heavily marketed new ASM can lengthen medical trials before surgical referral. It does not change candidacy for lesional DRE (hippocampal sclerosis, FCD, HH), where surgery or ablation offers higher odds of seizure freedom.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Sales"
+      ],
+      "verified": "partial",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "neuropace-rns-ige-pmas-not-approvable-2026",
+      "dedupKey": "https://www.businesswire.com/news/home/20260728874321/en/NeuroPace-Receives-FDA-Guidance-on-PMA-Supplement-for-Indication-Expansion-into-Idiopathic-Generalized-Epilepsy",
+      "domain": "regulatory",
+      "title": "FDA finds NeuroPace RNS PMA supplement for idiopathic generalized epilepsy 'not approvable in its current form' (NAUTILUS)",
+      "citation": "NeuroPace, Inc. 'NeuroPace Receives FDA Guidance on PMA Supplement for Indication Expansion into Idiopathic Generalized Epilepsy.' Business Wire / Form 8-K, July 28, 2026; NeuroPace Q2 2026 results, Aug 11, 2026. NAUTILUS 18-month results: Uysal et al., Epilepsia 2026, doi:10.1002/epi.70321.",
+      "url": "https://www.businesswire.com/news/home/20260728874321/en/NeuroPace-Receives-FDA-Guidance-on-PMA-Supplement-for-Indication-Expansion-into-Idiopathic-Generalized-Epilepsy",
+      "doi": "",
+      "date": "2026-07-28",
+      "venue": "Company press release / SEC Form 8-K",
+      "studyDesign": "FDA action on a PMA supplement supported by NAUTILUS, a multicenter, randomized, single-blind, sham-controlled trial of responsive thalamic stimulation (the first RCT of neuromodulation in drug-resistant IGE)",
+      "population": "Drug-resistant idiopathic generalized epilepsy with generalized tonic-clonic (GTC) seizures",
+      "sampleSize": "About 100 enrolled across 23 US centers (company/secondary reporting; exact randomized N not independently verified here)",
+      "endpoints": "Primary effectiveness: time to second GTC seizure (active vs sham); primary safety; long-term GTC seizure reduction",
+      "results": "Primary effectiveness endpoint not met in the overall population; primary safety endpoint met. Post hoc 12-month analysis: 23% greater GTC reduction with active vs sham stimulation (p=.030). Open-label follow-up: 77% median GTC reduction and 40% GTC-free at 18 months; 100% median GTC reduction among evaluable patients at 24 months. FDA stated the PMA-S is not approvable in its current form and requested additional clinical evidence. It did not issue a denial, and NeuroPace will file a Submission Issue Request (SIR). 2026 revenue guidance ($99.5-101.5M, raised Aug 11) excludes any IGE contribution.",
+      "significance": "Delays the first potential FDA-labeled closed-loop device indication for generalized epilepsy; thalamic RNS for IGE remains off-label in the US.",
+      "limitations": "Missed prespecified primary endpoint; supportive analyses are post hoc or open-label (regression to the mean, selection of evaluable patients). Company-reported; primary IR/Business Wire pages blocked by egress proxy, so details were cross-checked across Investing.com, MarketScreener, StockTitan 8-K and MedPath summaries.",
+      "evidenceStrength": "RCT with primary effectiveness endpoint not met + open-label extension; regulatory communication",
+      "clinicalBottomLine": "Responsive thalamic stimulation for drug-resistant IGE stays off-label in the US for now. The long-term open-label GTC reductions are encouraging, but FDA is asking for more than a missed primary endpoint plus post hoc analyses.",
+      "whyMatters": "Shows FDA's evidentiary bar for extending neuromodulation into generalized epilepsy, and that post hoc rescue of a missed endpoint is not enough for approval.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Neutral for LITT: IGE is not an ablation indication. The ruling slows a neuromodulation competitor's label expansion but does not change focal RNS-versus-ablation decisions.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product",
+        "Exec"
+      ],
+      "verified": "partial",
+      "status": "updated",
+      "changeNote": "Merged duplicate record 'neuropace-rns-ige-fda-not-approvable-2026' (first seen 2026-08-03) when the Aug 3 and Sep 25 library versions were combined.",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "perc-variability-surgery-recommendation-2026",
+      "dedupKey": "10.1002/epi.70440",
+      "domain": "epilepsy",
+      "title": "US pediatric Level IV centers vary about twofold in recommending epilepsy surgery for similar children (PERC, n=2,480, 29 centers)",
+      "citation": "Caraway AR, McNamara NA, Knox AT, et al. Variability in recommending epilepsy surgery across Level IV epilepsy centers in the United States. Epilepsia. Published online Aug 20, 2026. doi:10.1002/epi.70440. PMID 42621761.",
+      "url": "https://doi.org/10.1002/epi.70440",
+      "doi": "10.1002/epi.70440",
+      "date": "2026-08-20",
+      "venue": "Epilepsia",
+      "studyDesign": "Analysis of a prospective multicenter cohort (Pediatric Epilepsy Research Consortium Surgery database); logistic regression and mixed-effects models",
+      "population": "Children 0-18 y undergoing initial epilepsy-surgery evaluation at US Level IV centers with a documented surgical decision",
+      "sampleSize": "2,480 patients; 29 centers",
+      "endpoints": "Rate of 'surgery not recommended'; associated patient characteristics; between-center variability (median odds ratio, ICC)",
+      "results": "532 (21%) were not recommended for surgery (median center rate 17%, IQR 10-28%). After adjusting for patient characteristics, median odds ratio 2.25 and ICC .18, meaning otherwise similar children had about twice the odds of a 'no' depending on the center. Factors linked to non-recommendation: monthly-or-less seizures (OR 2.17, 95% CI 1.75-2.69), non-structural etiology (OR 2.02, 1.56-2.61), <=2 ASMs (OR 1.67, 1.34-2.08); these factors showed minimal center clustering (ICC <.05).",
+      "significance": "Institutional decision-making, not only patient factors, determines who is deemed a surgical candidate.",
+      "limitations": "Captures only children already referred to Level IV centers, so never-referred patients are missed. The abstract does not detail specific reasons for non-recommendation or downstream outcomes. US pediatric centers only.",
+      "evidenceStrength": "Large prospective multicenter registry cohort",
+      "clinicalBottomLine": "Where a child is evaluated matters. Similar children have about twice the odds of being told 'not a candidate' depending on the center, which argues for second opinions and shared candidacy criteria.",
+      "whyMatters": "Candidacy variability is a modifiable barrier to surgery. It supports multicenter case conferences and second-opinion pathways, and lower-morbidity options may shift thresholds at conservative centers.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "reimbursement_access"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Tailwind for all epilepsy-surgery modalities: reducing unwarranted 'no' decisions expands the treated pool, and lower-morbidity ablation may lower the threshold at conservative centers.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "ehr-algorithm-dre-presurgical-gap-2026",
+      "dedupKey": "10.1016/j.yebeh.2026.111274",
+      "domain": "epilepsy",
+      "title": "EHR algorithm finds 57% of confirmed drug-resistant epilepsy patients never started presurgical evaluation; surgical-coordinator tracking had the strongest association with starting one",
+      "citation": "Simmons GB, Ekanayake CD, Peet BM, et al. Status of presurgical evaluation among patients with drug-resistant epilepsy identified with a computable electronic health record algorithm. Epilepsy Behav. 2026;185:111274. Published online Sept 4, 2026. doi:10.1016/j.yebeh.2026.111274. PMID 42697047.",
+      "url": "https://doi.org/10.1016/j.yebeh.2026.111274",
+      "doi": "10.1016/j.yebeh.2026.111274",
+      "date": "2026-09-04",
+      "venue": "Epilepsy & Behavior",
+      "studyDesign": "Retrospective cohort using a computable EHR phenotype plus random-sample dual-reviewer chart abstraction (single academic health system, Columbia University)",
+      "population": "People with probable DRE and an encounter between Apr 2020 and Jun 2022",
+      "sampleSize": "3,027 flagged by algorithm; 200 randomly abstracted; 84 confirmed DRE",
+      "endpoints": "Stage in the presurgical-evaluation pathway; factors associated with starting evaluation",
+      "results": "Of the 200 sampled patients: 87.5% had epilepsy, 42% DRE, 11.5% undefined drug responsiveness. Among confirmed DRE, 57.1% (48/84) had not started presurgical evaluation. Starting evaluation was associated with surgical-coordinator tracking (OR 46.0, 95% CI 9.5-222.5), comorbid mood disorder (OR 3.88, 1.5-10.3) and more recent epilepsy visits. Unknown MRI classification (OR 0.04) and generalized seizures (OR 0.04) were associated with lower odds.",
+      "significance": "Quantifies the within-system referral gap and points to an operational fix (EHR flag plus navigator).",
+      "limitations": "Single center; small abstracted sample with very wide CIs; associations are observational (coordinator tracking may mark engaged patients rather than cause evaluation).",
+      "evidenceStrength": "Retrospective cohort with EHR phenotyping and chart validation",
+      "clinicalBottomLine": "A simple computable phenotype can surface DRE patients who have stalled before presurgical evaluation. Coordinator tracking was associated with much higher odds that evaluation started.",
+      "whyMatters": "Gives health systems a practical blueprint for closing the referral gap: automated DRE identification plus a dedicated surgical navigator.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "reimbursement_access"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Tailwind for all surgical modalities: surfaces a large untreated DRE pool within existing systems.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "ses-adi-epilepsy-surgery-timing-outcomes-2026",
+      "dedupKey": "10.1002/epi.70367",
+      "domain": "epilepsy",
+      "title": "Neighborhood disadvantage delays epilepsy surgery but does not blunt outcomes (Cleveland Clinic, n=1,027)",
+      "citation": "Yardi R, Gordillo A, Sancheti H, et al. Socioeconomic status and epilepsy surgery in the United States: Timing and outcomes. Epilepsia. Published online Jul 13, 2026. doi:10.1002/epi.70367. PMID 42440376.",
+      "url": "https://doi.org/10.1002/epi.70367",
+      "doi": "10.1002/epi.70367",
+      "date": "2026-07-13",
+      "venue": "Epilepsia",
+      "studyDesign": "Retrospective longitudinal cohort, single high-volume center (1997-2023); socioeconomic status by Area Deprivation Index (ADI) quintile",
+      "population": "Patients who underwent epilepsy surgery at Cleveland Clinic",
+      "sampleSize": "1,027",
+      "endpoints": "Time to surgery; baseline physical/mental health; Engel class I seizure freedom; postoperative QoL and mental-health change",
+      "results": "Patients from lower-resource ADI quintiles had significantly longer delays to surgery and worse baseline mental and physical health. Engel I seizure freedom and postoperative gains in QoL and mental health were comparable across all socioeconomic strata (effect sizes not reported in abstract).",
+      "significance": "Locates the SES disparity upstream of surgery (referral and timing), not in surgical outcomes.",
+      "limitations": "Single center; only patients who reached surgery (never-referred patients not captured); area-level SES measure; abstract lacks effect sizes.",
+      "evidenceStrength": "Large retrospective cohort",
+      "clinicalBottomLine": "Socioeconomic disadvantage predicts later surgery, not worse surgery. SES should never be a reason to delay or deter referral.",
+      "whyMatters": "Supports equity-focused outreach and referral pathways, and counters implicit assumptions that disadvantaged patients are poorer surgical candidates.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "reimbursement_access"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Modality-agnostic tailwind for surgical referral in underserved populations.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Market Access"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "early-surgery-drug-sensitive-focal-epilepsy-niguarda-2026",
+      "dedupKey": "10.1002/epi.70500",
+      "domain": "epilepsy",
+      "title": "Early surgery in drug-sensitive focal structural epilepsy: 86% seizure-free vs 69% in drug-resistant patients (Niguarda, n=214)",
+      "citation": "Pelliccia V, Peretto C, Landolina L, et al. VENI, VIDI, VICI: The advantage of early epilepsy surgery in drug-sensitive patients. Epilepsia. Published online Sept 15, 2026. doi:10.1002/epi.70500. PMID 42742280.",
+      "url": "https://doi.org/10.1002/epi.70500",
+      "doi": "10.1002/epi.70500",
+      "date": "2026-09-15",
+      "venue": "Epilepsia",
+      "studyDesign": "Prospective-retrospective comparative cohort, single center ('Claudio Munari' Epilepsy Surgery Centre, Milan)",
+      "population": "Patients >6 y with focal structural epilepsy (FCD type II, hippocampal sclerosis, low-grade epilepsy-associated tumors)",
+      "sampleSize": "214 (72 drug-sensitive operated; 112 drug-resistant operated; 30 drug-resistant on medical therapy)",
+      "endpoints": "Complete seizure freedom; neuropsychological function; QoL (QOLIE, SF-36) at baseline and 1 year",
+      "results": "Complete seizure freedom 86% in drug-sensitive vs 69% in drug-resistant operated patients (p=.009). Drug-sensitive patients had fewer baseline cognitive deficits. No significant neuropsychological change at 1 year in any group, with mild verbal/visuospatial memory decline in the medically treated drug-resistant group. In an adult QoL subset (n=59), drug-resistant patients had worse baseline QoL, and QoL improved after surgery.",
+      "significance": "Adds outcome data to the case for surgical referral before drug resistance in clearly lesional focal epilepsy.",
+      "limitations": "Non-randomized with likely selection bias (lesion type, surgeon and patient choice); 1-year follow-up; single center; small medical comparator group.",
+      "evidenceStrength": "Comparative cohort (non-randomized)",
+      "clinicalBottomLine": "For clearly lesional focal epilepsy (FCD II, hippocampal sclerosis, LEAT), surgery before drug resistance was associated with higher seizure freedom and preserved cognition. That supports early referral discussions even in patients whose seizures are controlled.",
+      "whyMatters": "Aligns with the direction summarized in Englot's Aug 2026 Epilepsia review (doi:10.1002/epi.70419), which notes that contemporary ILAE recommendations extend referral to selected seizure-free patients with surgically accessible lesions.",
+      "indications": [
+        "focal_epilepsy",
+        "mtle"
+      ],
+      "strategies": [],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Tailwind for early surgical and ablative intervention; less invasive options may make pre-drug-resistance intervention more acceptable to patients.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "hh-mrglitt-169-nomograms-tiantan-2026",
+      "dedupKey": "10.1016/j.jare.2026.07.016",
+      "domain": "litt",
+      "title": "MRgLITT for hypothalamic hamartoma: 169-patient cohort with 76-82% seizure freedom and externally validated recurrence nomograms",
+      "citation": "Wang X, Hu W, Zhang C, et al. MRgLITT for hypothalamic hamartomas: surgical outcomes & divergent pathways for seizure prognosis. J Adv Res. Published online Jul 13, 2026. doi:10.1016/j.jare.2026.07.016. PMID 42442538.",
+      "url": "https://doi.org/10.1016/j.jare.2026.07.016",
+      "doi": "10.1016/j.jare.2026.07.016",
+      "date": "2026-07-13",
+      "venue": "Journal of Advanced Research",
+      "studyDesign": "Retrospective cohort with training and independent external-validation cohorts; multivariable Cox models and nomograms (Beijing Tiantan Hospital)",
+      "population": "Hypothalamic hamartoma-related drug-resistant epilepsy (gelastic [GS] and non-gelastic [nGS] seizures)",
+      "sampleSize": "169 (training 121; validation 48)",
+      "endpoints": "GS and nGS seizure freedom/recurrence; complications; nomogram discrimination (C-index)",
+      "results": "Seizure freedom 76.4% (GS) and 81.8% (nGS). GS recurrence was associated with larger HH volume (HR 4.32), incomplete ablation and cognitive impairment (HR 2.51). nGS recurrence was associated with bilateral PET hypometabolism (HR 60.53), nGS duration (HR 1.14), automatisms (HR 7.90) and secondary GTCS (HR 3.84). External validation C-index 0.731 (GS) and 0.844 (nGS). Complications: transient hyperphagia 26.7%, persistent obesity 12%, permanent hypothyroidism 1.8%.",
+      "significance": "One of the largest HH ablation cohorts. It separates lesion-driven (GS) from network-driven (nGS) failure pathways and offers externally validated prediction tools.",
+      "limitations": "Retrospective; follow-up duration not stated in abstract; very large HRs imply few events and imprecise estimates; cognitive outcomes exploratory (caregiver-reported); single health-system experience.",
+      "evidenceStrength": "Large retrospective cohort with external validation",
+      "clinicalBottomLine": "LITT gives high seizure freedom in HH. Gelastic recurrence tracks with lesion size and incomplete ablation (technical factors), while non-gelastic recurrence tracks with network markers such as bilateral PET hypometabolism. Persistent obesity (12%) belongs in the consent discussion.",
+      "whyMatters": "Supports LITT as first-line therapy for HH and gives teams a way to set expectations and predict failure before treatment.",
+      "indications": [
+        "hypothalamic_hamartoma"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 4,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Strengthens LITT as the default for HH over open/endoscopic disconnection and radiosurgery; no head-to-head comparator.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "litt-vs-resection-fcd2-tsc-meta-analysis-2026",
+      "dedupKey": "10.1016/j.seizure.2026.08.021",
+      "domain": "litt",
+      "title": "LITT vs resection for MRI-positive FCD type II and TSC: meta-analysis finds similar pooled seizure freedom (72% vs 71%)",
+      "citation": "Wang Y, Tai Y, Liu T, Liang S. Efficacy and safety of MR guided-laser interstitial thermal therapy versus resective surgery for MRI-positive focal cortical dysplasia type II and tuberous sclerosis complex: A systematic review and meta-analysis. Seizure. 2026;142:121-130. Published online Aug 25, 2026. doi:10.1016/j.seizure.2026.08.021. PMID 42679657.",
+      "url": "https://doi.org/10.1016/j.seizure.2026.08.021",
+      "doi": "10.1016/j.seizure.2026.08.021",
+      "date": "2026-08-25",
+      "venue": "Seizure",
+      "studyDesign": "Systematic review and meta-analysis (RCTs and observational studies; ROBINS-I V2 quality assessment)",
+      "population": "Drug-resistant epilepsy due to MRI-positive FCD type II and/or tuberous sclerosis complex",
+      "sampleSize": "36 studies: resection 1,220 patients (25 studies); MRgLITT 87 patients (13 studies)",
+      "endpoints": "Postoperative seizure freedom (primary); complication rate (secondary)",
+      "results": "Pooled seizure freedom LITT vs resection: combined FCD II/TSC 0.72 vs 0.71 (P=.838); FCD II only 0.74 vs 0.85 (P=.065); TSC only 0.50 vs 0.59 (P=.510). No difference in age subgroups (<18 vs >=18 y). Complication rates did not differ significantly (P=.469).",
+      "significance": "First pooled comparative estimate for LITT vs resection specifically in FCD II/TSC.",
+      "limitations": "LITT arm is very small (n=87) and entirely observational, so confounding by indication is likely. The FCD II-only comparison trends toward resection (85% vs 74%, P=.065) and is underpowered. Follow-up and outcome definitions vary across studies.",
+      "evidenceStrength": "Meta-analysis of observational studies (low certainty for LITT arm)",
+      "clinicalBottomLine": "Early pooled data suggest LITT is a reasonable option for well-defined MRI-visible FCD II/TSC foci. However, the FCD II-only comparison trends toward resection, and the LITT evidence base is under 100 patients.",
+      "whyMatters": "Supports ablation as a legitimate option for deep or bottom-of-sulcus dysplasia and tubers, and shows where comparative data are thinnest.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Supportive of LITT versus open resection for FCD II/TSC; SEEG-guided RF-TC is a competing minimally invasive option not addressed here.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "slah-memory-outcomes-uchicago-2026",
+      "dedupKey": "10.1016/j.yebeh.2026.111249",
+      "domain": "litt",
+      "title": "Memory after stereotactic laser amygdalohippocampectomy: verbal-memory decline in 58% after left-sided ablation (n=30)",
+      "citation": "Lacy MA, Mahmoud FMH, Turmanovych-Hienkel N, Fisher M, Wu S, Warnke P. Memory outcome in patients with medically intractable epilepsy following stereotactic laser amygdalohippocampectomy. Epilepsy Behav. 2026;185:111249. Published online Sept 4, 2026. doi:10.1016/j.yebeh.2026.111249. PMID 42697045.",
+      "url": "https://doi.org/10.1016/j.yebeh.2026.111249",
+      "doi": "10.1016/j.yebeh.2026.111249",
+      "date": "2026-09-04",
+      "venue": "Epilepsy & Behavior",
+      "studyDesign": "Retrospective single-center cohort; reliable change index (RCI) analysis of pre/post memory testing (University of Chicago)",
+      "population": "Medically intractable temporal lobe epilepsy treated with SLAH (16 right, 14 left)",
+      "sampleSize": "30",
+      "endpoints": "Reliable change in verbal and visual memory",
+      "results": "Left-sided SLAH: verbal memory declined in 58.3%, stable in 41.7%, none improved; visual memory declined in 77.8%, stable 11.1%, improved 11.1%. Right-sided SLAH: visual memory improved 33.3%, stable 44.4%, declined 22.2%; verbal memory stable 77.8%, declined 22.2%.",
+      "significance": "Contradicts the assumption that SLAH is memory-neutral in dominant-hemisphere cases.",
+      "limitations": "Small retrospective series; not all patients had complete testing; no open-surgery comparator; seizure outcomes and ablation volumes not reported in abstract; results depend on the test battery and RCI method used.",
+      "evidenceStrength": "Small retrospective cohort",
+      "clinicalBottomLine": "SLAH is not memory-neutral in dominant-hemisphere cases. Counsel left-TLE patients that verbal-memory decline is possible, as with open surgery.",
+      "whyMatters": "Tempers 'memory-sparing' messaging and contrasts with earlier reports of better naming and object recognition after SLAH (e.g., Drane 2015, already in library).",
+      "indications": [
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Headwind for claims that ablation is memory-sparing; may favor RNS for dominant-hemisphere MTLE with intact memory.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Training"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "corpus-callosotomy-lgs-meta-analysis-2026",
+      "dedupKey": "10.1016/j.eplepsyres.2026.107902",
+      "domain": "epilepsy",
+      "title": "Corpus callosotomy in Lennox-Gastaut syndrome: about 70% are >=50% responders, with no difference between open, laser and endoscopic approaches (meta-analysis, 822 patients)",
+      "citation": "Samanta D, Ramani PK, Abel TJ, Albert GW. Corpus callosotomy in Lennox-Gastaut syndrome: Effectiveness, safety, and predictors of outcome: A systematic review and meta-analysis. Epilepsy Res. 2026;227:107902. Published online Aug 26, 2026. doi:10.1016/j.eplepsyres.2026.107902. PMID 42664727.",
+      "url": "https://doi.org/10.1016/j.eplepsyres.2026.107902",
+      "doi": "10.1016/j.eplepsyres.2026.107902",
+      "date": "2026-08-26",
+      "venue": "Epilepsy Research",
+      "studyDesign": "Systematic review and meta-analysis (PRISMA 2020; PROSPERO CRD420261381787) with meta-regression and GRADE certainty",
+      "population": "Lennox-Gastaut syndrome treated with corpus callosotomy (any extent, open/laser/endoscopic)",
+      "sampleSize": "48 studies; 822 patients (46 retrospective, 2 prospective, no RCTs); 19 countries",
+      "endpoints": ">=50% seizure reduction (primary); >=75% reduction; seizure freedom; complications",
+      "results": "Pooled >=50% responder rate 69.6% (95% CI 63.1-75.5%); >=75% responders 38.2% (29.8-47.4%); seizure freedom 20.4% (16.0-25.7%). No significant differences by extent of disconnection or approach (open vs laser vs endoscopic). Older age at surgery was the only independent predictor of >=50% response (beta 0.045, p=.020). Pooled complications 15.8% (10.4-23.2%). All outcomes very low certainty.",
+      "significance": "Updated LGS-specific synthesis as minimally invasive callosotomy techniques renew interest in the procedure.",
+      "limitations": "Observational studies only; very low certainty; laser and endoscopic subgroups are likely small; non-seizure outcomes sparse.",
+      "evidenceStrength": "Meta-analysis of observational studies (very low certainty)",
+      "clinicalBottomLine": "Callosotomy remains a high-yield palliative option for LGS, and laser and endoscopic approaches appear to perform comparably to open surgery, though certainty is very low.",
+      "whyMatters": "Supports keeping callosotomy, including laser callosotomy, in the LGS treatment sequence alongside VNS and DBS.",
+      "indications": [
+        "corpus_callosotomy"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Laser callosotomy looks comparable to open. Callosotomy competes with neuromodulation (VNS/DBS/RNS) for drop attacks, with no head-to-head data.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Marketing"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "lifu-drug-resistant-epilepsy-sham-crossover-2026",
+      "dedupKey": "10.1002/epi.70404",
+      "domain": "adjacent",
+      "title": "Low-intensity focused ultrasound to the seizure-onset zone: randomized sham-controlled crossover misses primary endpoint (n=12)",
+      "citation": "Chou CC, Shih YC, Chen YH, et al. Low-intensity focused ultrasound neuromodulation for drug-resistant epilepsy: A randomized, sham-controlled crossover trial. Epilepsia. Published online Aug 1, 2026. doi:10.1002/epi.70404. PMID 42541377. NCT04999046.",
+      "url": "https://doi.org/10.1002/epi.70404",
+      "doi": "10.1002/epi.70404",
+      "date": "2026-08-01",
+      "venue": "Epilepsia",
+      "studyDesign": "Pilot single-blind randomized sham-controlled crossover trial with open-label extension (Taipei Veterans General Hospital; NaviFUS neuronavigation-guided device per Focused Ultrasound Foundation)",
+      "population": "Adults with drug-resistant epilepsy; LIFU targeted to individually localized seizure-onset zone",
+      "sampleSize": "12",
+      "endpoints": "Proportional change in seizure frequency vs baseline (LIFU vs sham, 4-week observation periods); safety (MRI, neuro exam, neuropsych, QoL)",
+      "results": "Crossover phase: no significant reduction with LIFU vs sham (estimate .49, 95% CI -.04 to 1.01, p=.068), no period or sequence effects. Open-label extension: longitudinal seizure-frequency reduction of -14.0 percentage points/month (95% CI -22.2 to -5.8, p=.001). No structural MRI lesions; no change in anxiety, depression or QoL; only transient mild-to-moderate adverse events.",
+      "significance": "The first randomized sham-controlled data for transcranial LIFU neuromodulation in epilepsy: a negative primary result with a safety signal that supports further study.",
+      "limitations": "Very small pilot; single-blind; short 4-week observation windows and possible carryover; the positive open-label signal is uncontrolled (regression to the mean, placebo).",
+      "evidenceStrength": "Pilot randomized sham-controlled crossover (negative primary)",
+      "clinicalBottomLine": "Noninvasive transcranial LIFU appears safe but has not shown a controlled antiseizure effect. It is not yet an alternative to resection, ablation or implanted neuromodulation.",
+      "whyMatters": "Helps clinicians answer patients asking about 'incisionless' epilepsy treatment with evidence rather than hype.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "No near-term competitive threat to ablation; noninvasive focused-ultrasound neuromodulation for epilepsy remains early-stage.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "phis-pediatric-epilepsy-surgery-resource-use-2026",
+      "dedupKey": "10.1016/j.eplepsyres.2026.107901",
+      "domain": "epilepsy",
+      "title": "Pediatric epilepsy surgery cuts annual healthcare resource use by about 45%, but less so when the first procedure is ablation or radiosurgery (PHIS, n=1,288)",
+      "citation": "Aguirre AS, Pijs DA, Sanchez Fernandez I. Impact of pediatric epilepsy surgery on healthcare resource use. Epilepsy Res. 2026;227:107901. Published online Aug 19, 2026. doi:10.1016/j.eplepsyres.2026.107901. PMID 42632347.",
+      "url": "https://doi.org/10.1016/j.eplepsyres.2026.107901",
+      "doi": "10.1016/j.eplepsyres.2026.107901",
+      "date": "2026-08-19",
+      "venue": "Epilepsy Research",
+      "studyDesign": "Retrospective descriptive before-after study, Pediatric Health Information System (PHIS) database, 2004-2024",
+      "population": "Children with drug-resistant epilepsy undergoing epilepsy surgery at PHIS children's hospitals",
+      "sampleSize": "1,288 patients; 1,538 surgeries",
+      "endpoints": "Healthcare resource use (admissions, hospital days, total cost per person-year) before vs after surgery, by surgery type, insurance, race and ethnicity",
+      "results": "Median cost of surgery $88,512 (percentile range $51,283-$145,159). After vs before surgery: admissions 0.6 vs 1.4 per person-year; hospital days 1.5 vs 4.4 per person-year; total resource use $15,571 vs $28,100 per person-year (all p<.0001). Decreases were larger when only one surgery was needed. Decreases were similar across surgery types, except when the first surgery was LITT/ablation or radiosurgery, mainly because many of those patients required subsequent surgeries. Results were similar across insurance types, races and ethnicities.",
+      "significance": "Real-world economic evidence that pediatric epilepsy surgery reduces downstream hospital use, with a specific caveat for ablation-first pathways.",
+      "limitations": "Descriptive before-after design without a non-surgical control; PHIS captures only participating-hospital encounters; ablation grouped with radiosurgery; no seizure-outcome linkage.",
+      "evidenceStrength": "Large retrospective administrative-database study",
+      "clinicalBottomLine": "Epilepsy surgery reduces hospital use for children with DRE. When ablation is the first step, plan and counsel for a meaningful chance of staged or repeat procedures.",
+      "whyMatters": "Useful for payer and value discussions. It also frames re-operation rate as the key economic variable for ablation-first strategies.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "reimbursement_access",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "reimbursement",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Mixed: strengthens the economic case for pediatric epilepsy surgery overall, but ablation-first pathways show smaller savings because of re-operation. That is a value-messaging headwind for LITT unless durable single-procedure outcomes are shown.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Market Access",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "mine-rct-litt-vs-open-mtle-protocol-2026",
+      "dedupKey": "10.1136/bmjopen-2026-117930",
+      "domain": "litt",
+      "title": "MINE: randomized non-inferiority trial of MRgLITT vs open surgery for mesial temporal lobe epilepsy (protocol, Beijing Tiantan)",
+      "citation": "Mo J, Cai D, Zhou Q, et al. Magnetic resonance-guided laser interstitial thermal therapy for mesial temporal lobe epilepsy (MINE): a single-centre, prospective, randomised, open-label, blinded-endpoint controlled trial protocol in China. BMJ Open. 2026;16(7):e117930. Published Jul 9, 2026. doi:10.1136/bmjopen-2026-117930. PMID 42425569. NCT06720922.",
+      "url": "https://doi.org/10.1136/bmjopen-2026-117930",
+      "doi": "10.1136/bmjopen-2026-117930",
+      "date": "2026-07-09",
+      "venue": "BMJ Open",
+      "studyDesign": "RCT protocol: prospective, randomized (1:1 block), open-label, blinded-endpoint (PROBE) non-inferiority trial",
+      "population": "Adults with drug-resistant (mesial) temporal lobe epilepsy deemed surgical candidates after comprehensive presurgical evaluation",
+      "sampleSize": "Not stated in abstract (not verified)",
+      "endpoints": "Primary: ILAE class 1 seizure freedom at 12 months. Secondary: ILAE class distribution, seizure frequency/severity at 6/12 months; cognition and memory; safety; length of stay; reoperation; ASM reduction; QoL; health economics",
+      "results": "No outcome data yet (protocol). Design assumptions: 12-month seizure freedom 76.9% (LITT) vs 76.0% (open); non-inferiority margin -23 percentage points, based on patient-preference research on minimum acceptable benefit.",
+      "significance": "Among the first randomized head-to-head trials of LITT vs open resection for MTLE, the key missing piece of comparative evidence.",
+      "limitations": "Protocol only. The very wide non-inferiority margin could declare LITT non-inferior despite a clinically important deficit. The title says single-centre while the methods mention participating centres. Open-label, with a 12-month primary horizon that is short for durability.",
+      "evidenceStrength": "Trial protocol (no outcome data)",
+      "clinicalBottomLine": "Randomized LITT-vs-open data for MTLE are coming, but a 23-point non-inferiority margin means a 'positive' result could still allow a substantially lower seizure-freedom rate with LITT. Read the eventual results with that in mind.",
+      "whyMatters": "Sets expectations for the first RCT-level comparative evidence and raises a margin-setting debate that clinicians should weigh in on now.",
+      "indications": [
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "messaging",
+        "utilization"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Future results could be a strong tailwind (non-inferiority plus cognitive and LOS benefits) or a headwind (a clear seizure-freedom deficit). The wide margin may limit persuasiveness to skeptics.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "cms-cy2027-pfs-proposed-rule-2026",
+      "dedupKey": "https://www.cms.gov/newsroom/fact-sheets/calendar-year-cy-2027-medicare-physician-fee-schedule-proposed-rule",
+      "domain": "regulatory",
+      "title": "CMS CY2027 Medicare Physician Fee Schedule proposed rule (CMS-1848-P): lower conversion factor, neurosurgery projected at about -2%, radiosurgery delivery codes up",
+      "citation": "Centers for Medicare & Medicaid Services. CY 2027 Payment Policies Under the Physician Fee Schedule... Proposed Rule (CMS-1848-P). Displayed 2026-07-14; Federal Register 2026-07-16 (FR Doc. 2026-14327). Comment period closed 2026-09-14.",
+      "url": "https://www.cms.gov/newsroom/fact-sheets/calendar-year-cy-2027-medicare-physician-fee-schedule-proposed-rule",
+      "doi": "",
+      "date": "2026-07-14",
+      "venue": "CMS proposed rule / Federal Register",
+      "studyDesign": "CMS proposed rule",
+      "population": "Medicare Part B physician services (all specialties, including neurosurgery and radiation oncology)",
+      "sampleSize": "n/a",
+      "endpoints": "Conversion factor; specialty impact estimates; practice-expense (PE) methodology; modifier 25 policy",
+      "results": "Proposed conversion factor $33.17 for qualifying APM participants (-1.19% vs CY2026) and $32.84 for everyone else (-1.68%). Neurosurgery is among the specialties with projected cuts (reported at about -2%), along with dermatology, ENT, orthopedics and hand surgery. The cuts come mainly from PE methodology: CMS would apply half of the Indirect Practice Cost Index (IPCI) in CY2027 and drop it in CY2028. A separate proposal would pay 50% for an office/outpatient E/M billed with modifier 25 on the same day as a 0/10/90-day global procedure. The CY2026 efficiency adjustment (-2.5% to work RVUs and intra-service time for non-time-based codes) still applies. ASTRO projects radiation oncology at +3% overall (+5% for freestanding centers), with about +14% for key treatment-delivery codes, partly offset by 3-6% cuts to planning, management and physics. Code-level values for LITT 61736/61737 were not confirmed in the sources available. AANS/CNS and ACS (2026-09-14) filed comments opposing the PE and modifier-25 policies.",
+      "significance": "Medicare physician payment for cranial surgery, LITT included, goes down again, while payment for radiosurgery delivery goes up. That changes the relative economics of surgical versus radiation treatment for brain metastases and recurrent tumors.",
+      "limitations": "This is a proposed rule, and the final rule (expected around November 2026) may change it. The CMS and Federal Register pages were blocked in this environment, so the figures come from secondary summaries (AHA, Holland & Knight, McDermott+, ACS comment letter, ASTRO). Code-level RVUs for 61736/61737 were not verified.",
+      "evidenceStrength": "Regulatory proposal; multi-source secondary corroboration",
+      "clinicalBottomLine": "Proposed 2027 Medicare physician payment keeps squeezing neurosurgery (about -2%) and pays more for radiosurgery delivery. It does not change clinical indications, but it shifts program economics.",
+      "whyMatters": "Payment for the surgeon's work on LITT and other cranial procedures keeps falling, while a competing modality (SRS) gets a delivery-code increase. That affects program economics and could affect referral patterns in borderline cases.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "reimbursement_access",
+        "competitive_platform",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 5,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "reimbursement",
+        "utilization",
+        "competitive"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "Moderate",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Relative payment tilt toward radiosurgery delivery and away from surgeon work RVUs; slight headwind for surgical ablation compared with SRS for the same lesions.",
+      "whoShouldKnow": [
+        "Market Access",
+        "Exec",
+        "Medical Affairs"
+      ],
+      "verified": "verified",
+      "status": "updated",
+      "changeNote": "Merged duplicate record 'cms-cy2027-pfs-proposed-rule' (first seen 2026-08-03) when the Aug 3 and Sep 25 library versions were combined.",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "cms-cy2027-opps-asc-proposed-rule-2026",
+      "dedupKey": "https://www.cms.gov/newsroom/fact-sheets/calendar-year-2027-hospital-outpatient-prospective-payment-system-opps-ambulatory-surgical-center",
+      "domain": "regulatory",
+      "title": "CMS CY2027 OPPS/ASC proposed rule (CMS-1850-P): +2.4% update; cranial and burr-hole procedures stay on the Inpatient-Only list until the final CY2028 phase; site-neutral payment extended to imaging",
+      "citation": "Centers for Medicare & Medicaid Services. CY 2027 Hospital OPPS and ASC Payment System Proposed Rule (CMS-1850-P). Released 2026-07-02; Federal Register 2026-07-07; comments closed 2026-08-31.",
+      "url": "https://www.cms.gov/newsroom/fact-sheets/calendar-year-2027-hospital-outpatient-prospective-payment-system-opps-ambulatory-surgical-center",
+      "doi": "",
+      "date": "2026-07-02",
+      "venue": "CMS proposed rule / Federal Register",
+      "studyDesign": "CMS proposed rule",
+      "population": "Medicare hospital outpatient departments and ambulatory surgical centers",
+      "sampleSize": "n/a",
+      "endpoints": "OPPS/ASC rate update; Inpatient-Only (IPO) list phase-out; ASC Covered Procedures List; site-neutral policy; 340B",
+      "results": "Proposed OPPS/ASC update of +2.4% (3.2% market basket minus 0.8-point productivity adjustment). Year 2 of the 3-year IPO phase-out removes 637 procedures. CMS is deferring the more complex neurological procedures, including those involving craniotomy, craniectomy and/or burr holes, to the final phase in CY2028 (801 procedures remaining). 618 codes would be added to the ASC Covered Procedures List. Site-neutral payment would extend to certain non-contrast imaging at excepted off-campus departments (paid at 40% of the OPPS rate). 340B-acquired drugs would be paid at ASP minus 33.4%, and the 340B remedy offset rises from 0.5% to 3%. AANS/CNS comments addressed the IPO phase-out and prior authorization for cervical fusion and implanted spinal neurostimulators. This scan did not confirm whether LITT codes 61736/61737 are in the deferred cranial group.",
+      "significance": "The IPO list is set to end in 2028, which would let Medicare pay for burr-hole and cranial procedures on an outpatient basis. That opens a possible policy route to short-stay or same-day minimally invasive cranial procedures, including ablation and SEEG.",
+      "limitations": "Proposed, not final. The CMS page was blocked here, so details come from law-firm and trade summaries (K&L Gates, Holland & Knight, HFMA, Advisory Board, AANS). Code-level status for 61736/61737 and SEEG codes was not verified.",
+      "evidenceStrength": "Regulatory proposal; multi-source secondary corroboration",
+      "clinicalBottomLine": "No immediate change for cranial procedures in 2027. Ending the IPO list in 2028 is the signal to plan for, since it could support short-stay LITT and SEEG pathways where clinically appropriate.",
+      "whyMatters": "LITT already has short stays (median about 32 hours in LAANTERN). Outpatient eligibility after 2028 could change site-of-service economics and hospital capacity arguments for minimally invasive cranial procedures.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "reimbursement_access"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "reimbursement",
+        "utilization"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "Moderate",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Neutral in 2027. Longer term, IPO elimination could favor the least invasive cranial options (ablation) over open surgery on site-of-service economics.",
+      "whoShouldKnow": [
+        "Market Access",
+        "Exec",
+        "Product"
+      ],
+      "verified": "partial",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "epilepsy-surgery-underutilization-25yr-epilepsia-2026",
+      "dedupKey": "10.1002/epi.70419",
+      "domain": "epilepsy",
+      "title": "Perils and progress in epilepsy surgery utilization: twenty-five years later (Epilepsia critical review)",
+      "citation": "Englot DJ. Perils and progress in epilepsy surgery utilization: Twenty-five years later. Epilepsia. 2026 (online 2026-08-18). doi:10.1002/epi.70419. PMID 42611555.",
+      "url": "https://doi.org/10.1002/epi.70419",
+      "doi": "10.1002/epi.70419",
+      "date": "2026-08-18",
+      "venue": "Epilepsia",
+      "studyDesign": "Critical review (US-focused, with global assessment)",
+      "population": "People with drug-resistant epilepsy (adult and pediatric)",
+      "sampleSize": "n/a (review)",
+      "endpoints": "Referral and utilization rates, time to referral, disparities, drivers of underuse, recommendations",
+      "results": "Fewer than 1% of potentially eligible patients are referred for surgical evaluation, and those referred reach a center on average about two decades after seizure onset. Underuse persists despite Class I evidence and long-standing guidelines, with disparities by race, insurance and geography. SEEG, LITT and neuromodulation, including thalamic stimulation for selected generalized or multifocal epilepsies, have widened candidacy. Current ILAE recommendations extend referral to selected seizure-free patients with a surgically accessible lesion. The author cautions that minimally invasive options should not displace resective or disconnective surgery, which remain the only potentially curative options validated by RCTs. The review ends with recommendations for closing the gap.",
+      "significance": "A widely cited voice restates, with current data, that the main problem in epilepsy surgery is referral, not technology. Wider minimally invasive options have not fixed it.",
+      "limitations": "Narrative critical review by a single author; mostly US data; recommendations are expert opinion.",
+      "evidenceStrength": "Expert critical review; metadata verified via PubMed",
+      "clinicalBottomLine": "Most people with drug-resistant epilepsy are still never referred for surgical evaluation. Earlier, systematic referral to comprehensive centers is the most effective fix, and minimally invasive options should add to resection, not replace it.",
+      "whyMatters": "The size of the referral gap is the main growth lever for all epilepsy surgery, including ablation, and fits closely with neurologist-surgeon collaboration and network models.",
+      "indications": [
+        "mtle",
+        "focal_epilepsy",
+        "hypothalamic_hamartoma",
+        "corpus_callosotomy"
+      ],
+      "strategies": [
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "messaging",
+        "utilization"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Neutral between modalities. The caution against letting minimally invasive options eclipse resection is a messaging consideration for ablation advocates.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "clearpoint-q2-2026-results-guidance-cut",
+      "dedupKey": "https://ir.clearpointneuro.com/news-events/press-releases/detail/1156/clearpoint-neuro-reports-second-quarter-2026-results",
+      "domain": "regulatory",
+      "title": "ClearPoint Neuro Q2 2026: revenue $10.9M (+18%), neurosurgery navigation +62%, FY2026 guidance cut to $48-52M",
+      "citation": "ClearPoint Neuro, Inc. 'ClearPoint Neuro Reports Second Quarter 2026 Results.' Press release / Form 8-K Ex. 99.1, 2026-08-03; investor presentation dated 2026-08-03.",
+      "url": "https://ir.clearpointneuro.com/news-events/press-releases/detail/1156/clearpoint-neuro-reports-second-quarter-2026-results",
+      "doi": "",
+      "date": "2026-08-03",
+      "venue": "ClearPoint Neuro (press release / SEC 8-K)",
+      "studyDesign": "Quarterly earnings",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "Revenue by segment; guidance",
+      "results": "Revenue $10.9M (+18%), below consensus of about $12.7M. Neurosurgery Navigation & Therapy, which includes ClearPoint system, Prism laser and IRRAflow disposables, grew 62% to $5.6M, driven by IRRAflow and OR navigation software 3.0. Biologics & Drug Delivery fell to $4.0M from $4.7M. Capital Equipment & Software grew 24% to $1.3M, with more placements of navigation systems, Prism laser units and IRRAflow control units. Net loss $11.3M. FY2026 revenue guidance was lowered to $48-52M from $52-56M. The Velocity Alpha MR-conditional drill was cleared and used clinically for the first time. Investor slides include a long-range $500M revenue target.",
+      "significance": "A competing MRI-guided and OR-navigation platform with its own laser (Prism) is growing capital placements but cut guidance.",
+      "limitations": "Primary IR page blocked here; corroborated via Nasdaq, Yahoo Finance, StockTitan, SEC 8-K listing and call-transcript summaries. No Prism-specific case counts disclosed.",
+      "evidenceStrength": "Corroborated press release / SEC filing",
+      "clinicalBottomLine": "n/a (corporate financial). OR-based navigation adoption is growing.",
+      "whyMatters": "Competitive watch: Prism laser placements are rising within a broader navigation and drug-delivery platform, while near-term guidance weakened.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "radiation_necrosis",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "robotics_workflow"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Low",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Mixed: competitor laser and navigation placements rising, but revenue miss and lower guidance suggest slower near-term momentum.",
+      "whoShouldKnow": [
+        "Exec",
+        "Product",
+        "Sales"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "neuroone-q3-fy2026-onerf-brain-registry-2026",
+      "dedupKey": "https://www.sec.gov/Archives/edgar/data/0001500198/000121390026088719/ea030178701ex99-1.htm",
+      "domain": "adjacent",
+      "title": "NeuroOne fiscal Q3 2026: product revenue $2.0M (+16%) led by OneRF brain ablation; ISO 13485; brain-ablation post-market registry about to enroll",
+      "citation": "NeuroOne Medical Technologies. 'NeuroOne Reports Fiscal Q3 2026 Financial Results, Revenues Increase 16% YoY to $2.0 Million; Gross Margins Expand to 59.9%.' Form 8-K Ex. 99.1, 2026-08-13. Also: OneRF Trigeminal Southern California distribution agreement, GlobeNewswire 2026-09-17.",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001500198/000121390026088719/ea030178701ex99-1.htm",
+      "doi": "",
+      "date": "2026-08-13",
+      "venue": "SEC Form 8-K / company release",
+      "studyDesign": "Quarterly earnings / commercial update",
+      "population": "n/a (SEEG-guided RF ablation for epilepsy; trigeminal RF)",
+      "sampleSize": "n/a",
+      "endpoints": "Product revenue, gross margin, orders/backlog, registry status",
+      "results": "Product revenue $2.0M (+16% vs $1.7M), driven mainly by OneRF. Product gross margin a record 59.9%. New orders $2.7M; backlog $1.7M. ISO 13485 certification received in August 2026, enabling international expansion. The company expects to enroll the first patient in its OneRF brain-ablation post-market registry by end of September 2026, with 5 centers participating. On 2026-09-17 it announced a Southern California distribution deal for the OneRF Trigeminal system.",
+      "significance": "An SEEG-integrated RF ablation competitor to LITT in focal epilepsy is growing slowly and starting prospective registry data collection.",
+      "limitations": "Small company with modest revenue. Registry not yet enrolling as of the report. Primary SEC page blocked here; corroborated via Yahoo Finance, Nasdaq and transcripts.",
+      "evidenceStrength": "Company financial release; corroborated",
+      "clinicalBottomLine": "n/a (corporate). RF ablation through SEEG electrodes is building a registry evidence base, but there are no comparative data against LITT yet.",
+      "whyMatters": "Competitive watch: a registry could, within 1-2 years, produce outcome data that supports 'monitor-and-ablate' in one admission as an alternative to staged LITT.",
+      "indications": [
+        "focal_epilepsy",
+        "mtle"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "epilepsy_ablation"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Adjacent RF-ablation competitor in epilepsy; growth modest, registry pending.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "medtronic-q1-fy2027-neurosurgery-stealth-axis-2026",
+      "dedupKey": "https://news.medtronic.com/2026-09-01-Medtronic-reports-first-quarter-fiscal-2027-results-delivers-broad-based-portfolio-performance-and-raises-fiscal-2027-guidance",
+      "domain": "regulatory",
+      "title": "Medtronic Q1 FY2027: Neurosurgery +15%, helped by first full quarter of Stealth AXiS (integrated planning, navigation and robotics)",
+      "citation": "Medtronic plc. 'Medtronic reports first quarter fiscal 2027 results; delivers broad-based portfolio performance and raises fiscal 2027 guidance.' Newsroom / Form 8-K Ex. 99.1, 2026-09-01 (quarter ended 2026-07-31).",
+      "url": "https://news.medtronic.com/2026-09-01-Medtronic-reports-first-quarter-fiscal-2027-results-delivers-broad-based-portfolio-performance-and-raises-fiscal-2027-guidance",
+      "doi": "",
+      "date": "2026-09-01",
+      "venue": "Medtronic (press release / SEC 8-K)",
+      "studyDesign": "Quarterly earnings",
+      "population": "n/a",
+      "sampleSize": "n/a",
+      "endpoints": "Segment revenue growth",
+      "results": "Revenue $9.8B (+13.7% reported and organic; the 53-week fiscal year's extra week added about $570M). Neuroscience $2.678B (+10.3% reported, +9.3% organic). Cranial & Spinal Technologies +13%, with Core Spine +14% and Neurosurgery +15%, including strong contribution from Stealth AXiS in its first full commercial quarter. FY2027 guidance raised. Visualase not separately disclosed.",
+      "significance": "The largest LITT vendor's neurosurgery capital business (navigation, robotics, Visualase in the portfolio) is accelerating, backed by a new integrated planning, navigation and robotics platform cleared for cranial use in March 2026.",
+      "limitations": "Growth is inflated by the 53rd week. Neurosurgery line not broken out by product, so the laser-ablation contribution is unknown. Primary pages blocked here; corroborated via SEC 8-K listing, BioSpace, Yahoo Finance and Nasdaq.",
+      "evidenceStrength": "Corroborated press release / SEC filing",
+      "clinicalBottomLine": "n/a (corporate). Integrated robot-navigation platforms are spreading into cranial workflows.",
+      "whyMatters": "Competitive and ecosystem signal: a bundled navigation, robotics and ablation ecosystem is gaining installed base, which affects platform lock-in for stereotactic ablation and SEEG.",
+      "indications": [
+        "recurrent_gbm",
+        "brain_met",
+        "mtle",
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "robotics_workflow",
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Low",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Strengthens the Medtronic cranial ecosystem (Stealth AXiS plus Visualase), increasing capital-platform lock-in pressure on standalone ablation vendors.",
+      "whoShouldKnow": [
+        "Exec",
+        "Product",
+        "Sales"
+      ],
+      "verified": "verified",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "safusidenib-fda-fast-track-idh1-glioma-2026",
+      "dedupKey": "https://investors.nuvationbio.com/news/news-details/2026/Nuvation-Bio-Granted-FDA-Fast-Track-Designation-for-Safusidenib-for-Treatment-of-IDH1-Mutant-Glioma/default.aspx",
+      "domain": "neuro-oncology",
+      "title": "FDA grants Fast Track to safusidenib (brain-penetrant mutant-IDH1 inhibitor) for IDH1-mutant glioma; pivotal SIGMA phase 3 maintenance trial planned",
+      "citation": "Nuvation Bio. 'Nuvation Bio Granted FDA Fast Track Designation for Safusidenib for Treatment of IDH1-Mutant Glioma.' Press release, August 2026 (about 2026-08-20); NeurologyLive FDA Action Update, week of 2026-08-23.",
+      "url": "https://investors.nuvationbio.com/news/news-details/2026/Nuvation-Bio-Granted-FDA-Fast-Track-Designation-for-Safusidenib-for-Treatment-of-IDH1-Mutant-Glioma/default.aspx",
+      "doi": "",
+      "date": "2026-08-20",
+      "venue": "Company press release / FDA designation",
+      "studyDesign": "FDA Fast Track designation",
+      "population": "IDH1-mutant glioma; pivotal SIGMA (G203) trial in high-risk IDH1-mutant astrocytoma after standard of care",
+      "sampleSize": "About 300 planned (pivotal portion of SIGMA)",
+      "endpoints": "Designation; planned phase 3 vs placebo as maintenance",
+      "results": "Fast Track was based on phase 2 J201 data (per company): at median follow-up of 38.8 months, confirmed ORR 51.9%, 36-month PFS 79.1%, median PFS not reached. SIGMA (G203) is a pivotal phase 3 comparing safusidenib with placebo as maintenance after standard of care in IDH1-mutant astrocytoma with high-risk features. A separate exploratory cohort covers grade 3 IDH1-mutant oligodendroglioma not yet treated with chemotherapy or radiation.",
+      "significance": "A second brain-penetrant IDH inhibitor is moving into higher-risk IDH-mutant glioma, beyond vorasidenib's grade 2 post-surgery label.",
+      "limitations": "Designation only, not approval. Phase 2 data are company-reported and single-arm. Exact announcement date inferred from secondary summaries (about Aug 20); primary release not opened.",
+      "evidenceStrength": "Regulatory designation; phase 2 single-arm data (company-reported)",
+      "clinicalBottomLine": "No practice change yet. IDH-targeted maintenance may extend to higher-risk IDH1-mutant astrocytoma within a few years.",
+      "whyMatters": "Wider use of systemic IDH-targeted therapy continues to shift IDH-mutant glioma management toward molecularly guided sequencing, with limited direct effect on ablation volumes.",
+      "indications": [
+        "newly_lgg",
+        "recurrent_lgg"
+      ],
+      "strategies": [
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "pipeline",
+        "messaging"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "Minimal direct effect on LITT; a mild headwind for local-therapy niches in IDH-mutant glioma over time.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "status": "new",
+      "changeNote": "",
+      "firstSeenRun": "2026-09-25",
+      "lastUpdatedRun": "2026-09-25"
+    },
+    {
+      "id": "litt-brainmets-systematic-review-jno-2026",
+      "dedupKey": "10.1007/s11060-026-05645-w",
+      "doi": "10.1007/s11060-026-05645-w",
+      "domain": "litt",
+      "title": "LITT for brain metastases: systematic review and pooled analysis of efficacy/safety and the role of combination treatments",
+      "citation": "J Neuro-Oncol. 2026;178:56. doi:10.1007/s11060-026-05645-w",
+      "url": "https://link.springer.com/article/10.1007/s11060-026-05645-w",
+      "date": "2026-06-09",
+      "venue": "Journal of Neuro-Oncology",
+      "studyDesign": "Systematic review and pooled (meta-analytic) analysis",
+      "population": "Adults with brain metastases treated with LITT (mono- and combination therapy, incl. post-SRS and radiation necrosis)",
+      "sampleSize": "Multiple pooled cohorts (exact study/patient count not confirmed from full text)",
+      "endpoints": "6- and 12-month local tumor control; safety; predictors; role of combination therapy",
+      "results": "Pooled local control ~74.4% at 6 mo and ~67.9% at 12 mo for LITT monotherapy; review reframes the field toward combination strategies (with SRS and systemic therapy) for durable control (figures per abstract, not full-text verified).",
+      "significance": "Descriptive synthesis of largely retrospective data; no head-to-head RCT",
+      "limitations": "Heterogeneous, mostly retrospective source studies; thin combination-therapy evidence",
+      "evidenceStrength": "Moderate (systematic review of retrospective data)",
+      "clinicalBottomLine": "LITT gives roughly 68-74% local control at 6-12 months as monotherapy for brain metastases, with combination approaches emerging as the durability frontier.",
+      "whyMatters": "Brain metastasis is a core LITT growth indication; a fresh pooled benchmark plus a combination-therapy frame supports referral conversations and medical-affairs messaging.",
+      "indications": [
+        "brain_met",
+        "radiation_necrosis"
+      ],
+      "strategies": [
+        "srs_recurrence_salvage",
+        "radiation_necrosis_salvage",
+        "comparative_effectiveness",
+        "litt_immuno_combo"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 6,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "referral",
+        "messaging",
+        "utilization"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Reinforces LITT as standard salvage for post-SRS brain metastases; platform-agnostic tailwind.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Sales"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "litt-hgg-ai-review-jcm-2026",
+      "dedupKey": "https://www.mdpi.com/2077-0383/15/15/5928",
+      "doi": "",
+      "domain": "litt",
+      "title": "LITT for high-grade gliomas: current evidence, clinical applications, and the emerging role of artificial intelligence",
+      "citation": "J Clin Med. 2026;15(15):5928.",
+      "url": "https://www.mdpi.com/2077-0383/15/15/5928",
+      "date": "2026-07-29",
+      "venue": "Journal of Clinical Medicine",
+      "studyDesign": "Narrative/scoping review (no new primary data)",
+      "population": "High-grade glioma (newly diagnosed and recurrent GBM/HGG)",
+      "sampleSize": "N/A (review)",
+      "endpoints": "Synthesis of ablation rates, OS/PFS, safety; role of AI/ML in selection, trajectory/thermometry planning, outcome prediction",
+      "results": "Reports ablation rates ~85-98%; primary GBM median OS ~11-16 mo, PFS ~4-9.5 mo; recurrent GBM median OS ~8.5-14.1 mo; positions AI/ML as an emerging selection/planning tool (per abstract, not full-text verified).",
+      "significance": "No new comparative data; consolidation of existing literature",
+      "limitations": "Narrative review; underlying LITT-in-HGG evidence remains largely single-arm/retrospective",
+      "evidenceStrength": "Low-Moderate (narrative review)",
+      "clinicalBottomLine": "LITT is an established minimally invasive cytoreductive option for deep-seated/recurrent HGG; AI-guided selection and planning are emerging workflow differentiators.",
+      "whyMatters": "Provides an up-to-date, citable HGG evidence frame and an AI-workflow narrative for positioning and medical-affairs messaging.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "other_tumor"
+      ],
+      "strategies": [
+        "deep_eloquent_access",
+        "imaging_selection",
+        "robotics_workflow",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "messaging",
+        "competitive"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "AI-workflow framing aligns with robotics/planning positioning; platform-agnostic tailwind for LITT in HGG.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Product"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "litt-pediatric-etle-jnspediatr-2026",
+      "dedupKey": "10.3171/2025.12.peds2553",
+      "doi": "10.3171/2025.12.PEDS2553",
+      "domain": "litt",
+      "title": "Seizure outcomes after LITT for pediatric extratemporal lobe epilepsy",
+      "citation": "J Neurosurg Pediatr. 2026 Jun 12 (online ahead of print). doi:10.3171/2025.12.PEDS2553 (Cincinnati Children's).",
+      "url": "https://thejns.org/pediatrics/view/journals/j-neurosurg-pediatr/aop/article-10.3171-2025.12.PEDS2553/article-10.3171-2025.12.PEDS2553.xml",
+      "date": "2026-06-12",
+      "venue": "Journal of Neurosurgery: Pediatrics",
+      "studyDesign": "Retrospective single-center cohort (2015-2023)",
+      "population": "Children with drug-resistant extratemporal lobe epilepsy treated with MRI-guided LITT",
+      "sampleSize": "29 patients",
+      "endpoints": "Seizure freedom by ILAE class at 12 months; reoperation; predictors of favorable outcome",
+      "results": "At 12 months, 48% (14/29) ILAE class 1-3 and 41% (12/29) seizure-free (ILAE 1); ~21% (6/29) needed additional surgery within 12 mo. Imaging concordance (especially PET) with the ablation target predicted favorable outcomes.",
+      "significance": "Descriptive; small single-center, no comparator",
+      "limitations": "Small, retrospective, single-center, 12-mo follow-up, heterogeneous ETLE etiologies; ~1 in 5 needed further surgery",
+      "evidenceStrength": "Low-Moderate (small retrospective series)",
+      "clinicalBottomLine": "LITT is a reasonable minimally invasive option for selected pediatric extratemporal DRE (~40% seizure-free at 1 year); PET-concordant targets predict better outcomes, but reoperation is not uncommon.",
+      "whyMatters": "Pediatric extratemporal is a growth frontier for laser ablation beyond MTLE; imaging selection (PET concordance) is the lever for acceptable outcomes.",
+      "indications": [
+        "focal_epilepsy"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "imaging_selection",
+        "diagnose_and_ablate"
+      ],
+      "clinicalImpactScore": 3,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Reinforces pediatric extratemporal LITT and PET-based selection; modest efficacy/reoperation temper messaging vs open resection.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Marketing",
+        "Sales"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "novocure-optune-gen2-fda-approval-2026",
+      "dedupKey": "novocure-optune-gen2-fda-approval-2026",
+      "doi": "",
+      "domain": "adjacent",
+      "title": "FDA approves second-generation Optune Gio (lighter TTFields device) for glioblastoma",
+      "citation": "Novocure press release, 'Novocure Receives FDA Approval for Second Generation Optune System' (Jul 13, 2026).",
+      "url": "https://www.novocure.com/novocure-receives-fda-approval-second-generation-optune-system",
+      "date": "2026-07-13",
+      "venue": "FDA approval / Novocure press release",
+      "studyDesign": "Regulatory device approval (next-gen TTFields delivery; label unchanged)",
+      "population": "Newly diagnosed (with maintenance TMZ) and recurrent glioblastoma",
+      "sampleSize": "N/A (device approval)",
+      "endpoints": "Usability/portability: generator ~2.7 lb (vs ~6 lb), uninterrupted battery swap, auto-dim, battery indicator",
+      "results": "FDA approval Jul 13, 2026; Novocure reported >500 U.S. patients converted within four weeks.",
+      "significance": "No new efficacy data (usability upgrade only)",
+      "limitations": "No new survival data; efficacy rests on prior EF-14; follows the TTFields TRIDENT/EF-32 phase 3 miss (Jun 18)",
+      "evidenceStrength": "N/A (regulatory)",
+      "clinicalBottomLine": "A lighter, more wearable TTFields device may improve adherence to an established GBM adjunct without changing efficacy or indication.",
+      "whyMatters": "A usability upgrade that lifts real-world TTFields adherence entrenches it in the newly-diagnosed GBM pathway — a marginal indirect headwind to modalities competing for the GBM treatment narrative.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "messaging"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Reinforces TTFields as an entrenched GBM SOC adjunct; not a direct LITT competitor but strengthens a rival narrative in newly-diagnosed GBM.",
+      "whoShouldKnow": [
+        "Marketing",
+        "Sales",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "in8bio-deltex-dri-inb200-gbm-jco-2026",
+      "dedupKey": "in8bio-deltex-dri-inb200-gbm-jco-2026",
+      "doi": "",
+      "domain": "neuro-oncology",
+      "title": "Intracranial gene-modified gamma-delta T cells (DeltEx DRI / INB-200) with maintenance temozolomide in newly diagnosed GBM: phase 1",
+      "citation": "IN8bio; phase 1 INB-200 results published in Journal of Clinical Oncology (2026).",
+      "url": "https://www.biospace.com/press-releases/in8bio-announces-publication-in-the-journal-of-clinical-oncology-demonstrating-deltex-dri-doubles-progression-free-survival-in-newly-diagnosed-glioblastoma",
+      "date": "2026-07-09",
+      "venue": "Journal of Clinical Oncology",
+      "studyDesign": "Phase 1 open-label dose-escalation; efficacy vs historical benchmarks (no randomized comparator)",
+      "population": "Newly diagnosed GBM receiving maintenance TMZ; MGMT-expressing gamma-delta T cells delivered into the resection cavity",
+      "sampleSize": "13 treated (repeat-dose subgroup smaller)",
+      "endpoints": "Primary safety/DLT; secondary PFS, OS",
+      "results": "All-patient median PFS 9.9 mo; repeat-dose subgroup median PFS 16.1 mo (vs ~6.9-mo SOC benchmark), median OS 19.5 mo; no dose-limiting toxicities.",
+      "significance": "Single-arm vs historical benchmark; no formal statistical comparator",
+      "limitations": "Very small (n=13), single-arm phase 1; benchmark comparison; requires a resection cavity; IN8bio previously paused its INB-400 program",
+      "evidenceStrength": "Low (small single-arm phase 1)",
+      "clinicalBottomLine": "Encouraging but preliminary PFS signal for cavity-delivered gamma-delta T cells in newly diagnosed GBM; needs randomized confirmation.",
+      "whyMatters": "Cavity-delivered cell therapy presupposes resection, favoring open workflows; conceptually LITT-induced immunomodulation could be positioned as a combinable priming step. Long-horizon pipeline signal.",
+      "indications": [
+        "newly_gbm"
+      ],
+      "strategies": [
+        "litt_immuno_combo",
+        "molecular_selection",
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "pipeline",
+        "competitive"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Cavity-delivered cellular therapy favors resection over ablation but is early-stage; potential future LITT-priming combination narrative.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "penn-nk-cart-recurrent-gbm-cell-2026",
+      "dedupKey": "10.1016/j.cell.2026.05.026",
+      "doi": "10.1016/j.cell.2026.05.026",
+      "domain": "neuro-oncology",
+      "title": "NK-cell activation predicts response to intrathecal dual-target (EGFR/IL13Ralpha2) CAR-T in recurrent glioblastoma",
+      "citation": "Bagley et al. Cell. 2026. doi:10.1016/j.cell.2026.05.026 (reported via Penn Medicine).",
+      "url": "https://medicalxpress.com/news/2026-06-immune-success-dual-car-therapy.html",
+      "date": "2026-06-15",
+      "venue": "Cell",
+      "studyDesign": "Correlative/biomarker analysis of a phase 1 trial of CSF-delivered bivalent CARv3 (EGFR + IL13Ralpha2) CAR-T",
+      "population": "Recurrent glioblastoma",
+      "sampleSize": "Small phase 1 cohort (exact n not confirmed)",
+      "endpoints": "Immune correlates of response; NK-cell activation vs overall survival",
+      "results": "CSF NK-cell activation associated with longer OS; non-responders had higher activated Tregs and immunosuppressive myeloid cells at baseline.",
+      "significance": "Correlative/mechanistic; hypothesis-generating",
+      "limitations": "Small early-phase cohort; biomarker association, not controlled efficacy; relapse remains common",
+      "evidenceStrength": "Low-Moderate (mechanistic correlative study)",
+      "clinicalBottomLine": "Explains why some recurrent-GBM patients respond to intrathecal dual-target CAR-T and points to NK-cell biomarkers for selection.",
+      "whyMatters": "Recurrent GBM is a key LITT battleground; a maturing CSF-delivered CAR-T with selection biomarkers is a longer-term competitor, though intrathecal delivery limits near-term overlap with focal ablation.",
+      "indications": [
+        "recurrent_gbm"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "pipeline",
+        "competitive"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Advances a recurrent-GBM cell-therapy competitor with emerging selection biomarkers; delivery mode limits direct overlap with focal LITT.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "silevertinib-bdtx1535-nsclc-brainmets-asco-2026",
+      "dedupKey": "silevertinib-bdtx1535-nsclc-brainmets-asco-2026",
+      "doi": "",
+      "domain": "adjacent",
+      "title": "Silevertinib (BDTX-1535) shows high intracranial activity (CNS ORR 86%) in first-line NSCLC with non-classical EGFR mutations",
+      "citation": "Phase 2 (NCT05256290, Cohort 3); JCO. 2026;44(16_suppl):8519 (ASCO 2026).",
+      "url": "https://www.onclive.com/view/silevertinib-drives-cns-responses-in-first-line-nsclc-with-non-classical-egfr-mutations",
+      "date": "2026-06-10",
+      "venue": "ASCO 2026 / Journal of Clinical Oncology (abstract 8519)",
+      "studyDesign": "Phase 2 single-arm cohort (treatment-naive)",
+      "population": "Treatment-naive advanced NSCLC with non-classical EGFR mutations; 37% with CNS metastases",
+      "sampleSize": "43",
+      "endpoints": "ORR (RECIST 1.1); DCR; CNS ORR (RANO-BM); 6-month PFS",
+      "results": "ORR 60% (26/43), DCR 91%; intracranial ORR 86% (RANO-BM); 6-mo PFS 86% overall and 80% with CNS mets (cutoff Dec 27, 2025).",
+      "significance": "Single-arm phase 2; no randomized comparator",
+      "limitations": "Small, single-arm, niche molecular population; immature survival; abstract-level data",
+      "evidenceStrength": "Low-Moderate (single-arm phase 2)",
+      "clinicalBottomLine": "A CNS-penetrant next-gen EGFR TKI achieves high intracranial response in a niche NSCLC population, supporting systemic control of brain metastases.",
+      "whyMatters": "CNS-penetrant targeted agents let oncologists control brain mets systemically and defer local therapy (SRS, and LITT for select/radionecrosis cases) in molecularly defined subsets. Incremental headwind confined to a small EGFR population.",
+      "indications": [
+        "brain_met"
+      ],
+      "strategies": [
+        "molecular_selection",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "referral",
+        "competitive"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "Low",
+        "medicalOncology": "High"
+      },
+      "competitiveImpact": "CNS-active targeted therapy may defer local therapy for brain mets in a molecularly selected subset; narrow population limits magnitude.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "pediatric-ependymoma-intrathecal-trastuzumab-gmcsf-neuroonc-2026",
+      "dedupKey": "10.1093/neuonc/ependymoma-gmcsf-trastuzumab-2026",
+      "doi": "",
+      "domain": "neuro-oncology",
+      "title": "GM-CSF plus intrathecal trastuzumab in children with recurrent posterior fossa ependymoma: phase 1",
+      "citation": "Griesinger AM, et al. Neuro-Oncology. 2026;28(7):1783.",
+      "url": "https://academic.oup.com/neuro-oncology/article-abstract/28/7/1783/8571361",
+      "date": "2026-07-01",
+      "venue": "Neuro-Oncology",
+      "studyDesign": "Phase 1 immunotherapy study",
+      "population": "Children with recurrent posterior fossa ependymoma",
+      "sampleSize": "Not confirmed from primary source",
+      "endpoints": "Safety/feasibility; biologic/immune effects",
+      "results": "Detailed efficacy/safety not verified from primary source; framed around immune-factor associations supporting an immunotherapy rationale.",
+      "significance": "Phase 1, descriptive",
+      "limitations": "Small early-phase pediatric study; no efficacy endpoint; results not independently verified",
+      "evidenceStrength": "Low",
+      "clinicalBottomLine": "Early-phase intrathecal HER2-directed antibody + GM-CSF signal in a pediatric tumor with few options; novel but not yet practice-relevant.",
+      "whyMatters": "Fills a genuinely thin evidence area (pediatric ependymoma / other_tumor) with a novel intrathecal immunotherapy approach; no LITT business bearing.",
+      "indications": [
+        "other_tumor"
+      ],
+      "strategies": [
+        "molecular_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 0,
+      "littBusinessDirection": "na",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "No direct LITT bearing; pure pediatric neuro-oncology pipeline signal.",
+      "whoShouldKnow": [
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "neuroone-onerf-paradigm-shift-pr-2026",
+      "dedupKey": "neuroone-onerf-paradigm-shift-pr-2026",
+      "doi": "",
+      "domain": "adjacent",
+      "title": "NeuroOne touts OneRF brain ablation 'paradigm shift' based on physician case reports",
+      "citation": "NeuroOne Medical Technologies press release (EQS-News), Jul 28, 2026.",
+      "url": "https://www.eqs-news.com/news/corporate/neurooner-highlights-potential-paradigm-shift-for-patients-treated-with-the-onerfr-brain-ablation-system-based-on-reports-by-physicians/9206dfb3-6f73-4d2e-92d5-388121944fc2_en",
+      "date": "2026-07-28",
+      "venue": "Company press release (EQS-News)",
+      "studyDesign": "Company PR summarizing uncontrolled physician anecdotes",
+      "population": "Drug-resistant focal epilepsy undergoing sEEG-guided ablation",
+      "sampleSize": "Not specified (anecdotal)",
+      "endpoints": "None formal; qualitative physician-reported workflow benefit",
+      "results": "CEO reports physicians describing OneRF (records then ablates via the same implanted sEEG electrode with an RF generator) as potentially reducing procedures, stays, and cost. No quantitative outcomes.",
+      "significance": "N/A (marketing/qualitative)",
+      "limitations": "Promotional; no denominator, controls, or verified outcomes; RF ablation is not MRI-thermometry-guided",
+      "evidenceStrength": "Low (anecdotal marketing signal)",
+      "clinicalBottomLine": "NeuroOne is pushing OneRF RF ablation as a lower-cost, single-electrode diagnose-and-ablate alternative for epilepsy, on anecdote rather than data.",
+      "whyMatters": "OneRF (Zimmer Biomet distribution) is the most direct emerging LITT competitor in drug-resistant focal-epilepsy ablation, with a cost/fewer-procedures message that can pressure LITT referral and utilization. Escalating promotional cadence signals a commercial push.",
+      "indications": [
+        "focal_epilepsy",
+        "mtle"
+      ],
+      "strategies": [
+        "epilepsy_ablation",
+        "diagnose_and_ablate",
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "utilization",
+        "referral",
+        "messaging"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Low",
+        "epileptology": "High",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Direct competitive pressure on LITT in focal-epilepsy ablation from OneRF (Zimmer Biomet), on a cost/fewer-procedures message.",
+      "whoShouldKnow": [
+        "Sales",
+        "Marketing",
+        "Medical Affairs",
+        "Exec"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "neuroone-stereoced-drug-delivery-2026",
+      "dedupKey": "neuroone-stereoced-drug-delivery-2026",
+      "doi": "",
+      "domain": "adjacent",
+      "title": "NeuroOne expands StereoCED CNS drug-delivery program via pediatric brain-cancer trial collaboration",
+      "citation": "NeuroOne Medical Technologies press release (EQS-News), Jul 16, 2026; CNS drug-delivery white paper Jul 30, 2026.",
+      "url": "https://www.eqs-news.com/news/corporate/neurooner-expands-drug-delivery-program-through-collaboration-on-pediatric-brain-cancer-clinical-trial/389b9878-3e0d-4107-ba75-36241b7e8524_en",
+      "date": "2026-07-16",
+      "venue": "Company press release (EQS-News)",
+      "studyDesign": "Collaboration announcement tied to a pediatric brain-tumor CED trial",
+      "population": "Pediatric brain-cancer patients (DIPG/diffuse midline glioma context)",
+      "sampleSize": "Not specified",
+      "endpoints": "Platform deployment / trial enablement (no clinical endpoints in-window)",
+      "results": "NeuroOne applies its StereoCED robotic convection-enhanced drug-delivery platform (targeted commercial readiness end of fiscal Q3 2026) in a pediatric trial; no financial terms confirmed.",
+      "significance": "N/A",
+      "limitations": "Early collaboration/pipeline signal; no efficacy data; timing is company guidance",
+      "evidenceStrength": "Low-Moderate (pipeline/partnership signal)",
+      "clinicalBottomLine": "NeuroOne is broadening from epilepsy ablation into stereotactic CNS drug delivery, positioning a single robotic workflow spanning ablation and biologics delivery.",
+      "whyMatters": "Direct intracranial drug delivery (CED) overlaps LITT's stereotactic-access franchise and mirrors ClearPoint's biologics-delivery strategy; a robotic diagnose/ablate/deliver platform expands the competitive surface around LITT over the medium term.",
+      "indications": [
+        "other_tumor"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "robotics_workflow"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Moderate"
+      },
+      "competitiveImpact": "Emerging adjacent modality (stereotactic CNS drug delivery) expanding a competitor's overlap with LITT's stereotactic-access franchise.",
+      "whoShouldKnow": [
+        "Product",
+        "Medical Affairs",
+        "Exec"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "gt-medical-gammatile-coe-saint-lukes-2026",
+      "dedupKey": "gt-medical-gammatile-coe-saint-lukes-2026",
+      "doi": "",
+      "domain": "adjacent",
+      "title": "GT Medical adds GammaTile Center of Excellence (Saint Luke's, Kansas City), expanding brachytherapy footprint",
+      "citation": "GT Medical Technologies press release (PRNewswire), Jul 16, 2026.",
+      "url": "https://www.prnewswire.com/news-releases/gt-medical-technologies-welcomes-new-gammatile-center-of-excellence-program-designation-302827043.html",
+      "date": "2026-07-16",
+      "venue": "Company press release (PRNewswire)",
+      "studyDesign": "Commercial program / site-designation announcement",
+      "population": "Patients with operable brain tumors (metastases, recurrent gliomas, meningiomas)",
+      "sampleSize": "N/A (>100 centers cumulatively)",
+      "endpoints": "Center designation based on case-volume minimums and training criteria",
+      "results": "Saint Luke's Hospital of Kansas City named a GammaTile Center of Excellence; follows GT Medical's $100M Series E (Jun 22, already in library).",
+      "significance": "N/A",
+      "limitations": "Commercial-footprint signal, not clinical data; single-site designation",
+      "evidenceStrength": "Low (commercial signal)",
+      "clinicalBottomLine": "GammaTile intraoperative brachytherapy continues building a credentialed center network for resected/operable brain tumors.",
+      "whyMatters": "GammaTile competes with LITT and SRS for recurrent/operable brain tumors; a CoE expansion after a $100M raise deepens referral entrenchment in tumor boards — a slow structural headwind to LITT share in the resected-cavity and recurrence-salvage settings.",
+      "indications": [
+        "brain_met",
+        "recurrent_gbm",
+        "meningioma"
+      ],
+      "strategies": [
+        "competitive_platform",
+        "srs_recurrence_salvage",
+        "radiation_necrosis_salvage"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 3,
+      "littBusinessDirection": "headwind",
+      "businessLevers": [
+        "competitive",
+        "referral"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "High",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "GammaTile brachytherapy network expansion entrenches an alternative to LITT/SRS in operable and recurrent brain-tumor referral pathways.",
+      "whoShouldKnow": [
+        "Sales",
+        "Marketing",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "datar-trinetra-glio-breakthrough-device-2026",
+      "dedupKey": "datar-trinetra-glio-breakthrough-device-2026",
+      "doi": "",
+      "domain": "regulatory",
+      "title": "FDA grants Breakthrough Device Designation to Datar's TriNetra-Glio blood test for inaccessible brain tumors",
+      "citation": "BioWorld (Jul 30, 2026); Targeted Oncology; MassDevice.",
+      "url": "https://www.bioworld.com/articles/693124-datar-gets-fda-breakthrough-device-designation-for-brain-tumor-blood-test",
+      "date": "2026-07-30",
+      "venue": "FDA Breakthrough Devices Program (company announcement / trade press)",
+      "studyDesign": "Regulatory designation; supporting prospective blinded study (Imperial College London) cited",
+      "population": "Adults with intracranial lesions where tissue biopsy is unviable (inaccessible, comorbidity, refusal, non-diagnostic biopsy)",
+      "sampleSize": "Not disclosed",
+      "endpoints": "Diagnostic accuracy for malignant brain-tumor detection via circulating tumor cells from a 15 mL blood draw",
+      "results": "Reported 'very high accuracy' in a prospective blinded study; sensitivity/specificity not disclosed. Described as Datar's third FDA breakthrough-designated test.",
+      "significance": "Not reported",
+      "limitations": "Designation is not clearance/approval; accuracy figures unverified; ambiguity whether a new grant vs renewed coverage",
+      "evidenceStrength": "Low-Moderate (designation only)",
+      "clinicalBottomLine": "A non-invasive diagnostic aimed at the inaccessible/deep lesions that drive stereotactic biopsy and diagnose-and-ablate LITT; remains investigational.",
+      "whyMatters": "If validated and cleared, a blood-based diagnostic for inaccessible tumors could reshape the diagnostic pathway upstream of LITT, touching the biopsy component of diagnose-and-ablate workflows.",
+      "indications": [
+        "other_tumor"
+      ],
+      "strategies": [
+        "diagnose_and_ablate",
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive",
+        "referral"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Emerging non-invasive alternative to tissue biopsy for inaccessible tumors; deep inaccessible tumors remain prime LITT ablation targets.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Product",
+        "Exec"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "zeta-tms-robotic-510k-k261471-2026",
+      "dedupKey": "fda-k261471-zeta-tms-robotic",
+      "doi": "",
+      "domain": "regulatory",
+      "title": "Zeta Surgical receives FDA 510(k) clearance for Zeta TMS Robotic System (K261471)",
+      "citation": "Business Wire (Jul 10, 2026); FDA 510(k) K261471.",
+      "url": "https://www.morningstar.com/news/business-wire/20260710861432/zeta-tms-robotic-system-receives-fda-510k-clearance",
+      "date": "2026-07-10",
+      "venue": "FDA 510(k) clearance",
+      "studyDesign": "510(k) clearance supported by bench accuracy and usability testing",
+      "population": "Patients undergoing transcranial magnetic stimulation (treatment-resistant depression, OCD, PTSD, addiction)",
+      "sampleSize": "N/A",
+      "endpoints": "Robotic TMS coil positioning accuracy (<1 mm, <1 degree) with real-time motion compensation",
+      "results": "Cleared for robotic, pinless, anesthesia-free TMS coil navigation; Zeta's second cranial clearance of 2026 (after its May biopsy/catheter navigation clearance).",
+      "significance": "N/A",
+      "limitations": "Indication is non-invasive TMS (psychiatry), not intracranial ablation; not a direct LITT competitor; single-vendor bench data",
+      "evidenceStrength": "Moderate (official clearance) but low direct LITT relevance",
+      "clinicalBottomLine": "Not a LITT competitor per se, but continued build-out of an AI-navigation/robotics platform whose biopsy/catheter line does overlap the LITT stereotactic workflow.",
+      "whyMatters": "Signals momentum of a rising low-cost, pinless AI-navigation entrant expanding across cranial applications adjacent to the stereotactic LITT workflow.",
+      "indications": [],
+      "strategies": [
+        "robotics_workflow",
+        "competitive_platform"
+      ],
+      "clinicalImpactScore": 1,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "competitive",
+        "pipeline"
+      ],
+      "timeHorizon": "2-5yr",
+      "specialtyRelevance": {
+        "neurosurgery": "Moderate",
+        "neuroOncology": "Low",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Low",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Zeta extends its cranial AI-navigation/robotics platform after its May 2026 biopsy/catheter clearance; a low-cost pinless navigation player to watch adjacent to LITT.",
+      "whoShouldKnow": [
+        "Product",
+        "Exec"
+      ],
+      "verified": "verified",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "cercare-oncology-ai-segmentation-510k-2026",
+      "dedupKey": "fda-k260316-cercare-oncology-ai-segmentation",
+      "doi": "",
+      "domain": "regulatory",
+      "title": "FDA 510(k) clearance for Cercare Medical 'Oncology Virtual Expert' AI brain-tumor segmentation",
+      "citation": "Cercare Medical press release (K260316); coverage via AuntMinnie (Jun 25, 2026).",
+      "url": "https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15828636/cercare-medical-cercare-medical-gets-fda-clearance-for-brain-tumor-segmentation-ai",
+      "date": "2026-06-25",
+      "venue": "FDA 510(k) clearance",
+      "studyDesign": "Regulatory clearance of AI/ML software (SaMD) for semi-automated brain-tumor segmentation",
+      "population": "Brain-tumor MRI (segmentation/volumetric analysis)",
+      "sampleSize": "N/A",
+      "endpoints": "Fast, consistent semi-automated tumor segmentation running on-premise",
+      "results": "510(k) cleared (K260316).",
+      "significance": "N/A (regulatory)",
+      "limitations": "No published prospective outcome data; segmentation aid, not diagnostic determinant",
+      "evidenceStrength": "N/A (regulatory clearance)",
+      "clinicalBottomLine": "Another FDA-cleared AI segmentation tool that standardizes tumor volumetrics for response assessment and planning, with on-premise deployment suited to health-system data governance.",
+      "whyMatters": "AI volumetric segmentation feeds response assessment (RANO 2.0), radiation/target planning, and could support LITT ablation planning and post-ablation follow-up — neutral-to-mildly-enabling for LITT.",
+      "indications": [
+        "newly_gbm",
+        "recurrent_gbm",
+        "brain_met"
+      ],
+      "strategies": [
+        "imaging_selection"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 2,
+      "littBusinessDirection": "neutral",
+      "businessLevers": [
+        "pipeline"
+      ],
+      "timeHorizon": "<=12mo",
+      "specialtyRelevance": {
+        "neurosurgery": "Low",
+        "neuroOncology": "Moderate",
+        "epileptology": "Low",
+        "radiationOncology": "Moderate",
+        "neuroradiology": "High",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Expands the AI neuro-imaging toolset; a potential enabler for LITT planning/response assessment rather than a competitor.",
+      "whoShouldKnow": [
+        "Product",
+        "Medical Affairs"
+      ],
+      "verified": "partial",
+      "status": "carried",
+      "changeNote": "",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03"
+    },
+    {
+      "id": "litt-pediatric-lgg-ablation-childsnervsyst-2026",
+      "dedupKey": "10.1007/s00381-026-07354-1",
+      "doi": "10.1007/s00381-026-07354-1",
+      "domain": "litt",
+      "title": "LITT for ablation of pediatric low-grade glioma: single-institution series of 13 patients",
+      "citation": "Mishra A, Golub D, Kashanian A, Unadkat P, Pruitt RM, Schneider SJ, Mittler MA, Rodgers SD. Childs Nerv Syst. 2026 Jun 24;42(1):262. doi:10.1007/s00381-026-07354-1. PMID 42340498.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42340498/",
+      "date": "2026-06-24",
+      "venue": "Child's Nervous System",
+      "studyDesign": "Retrospective single-institution case series",
+      "population": "Pediatric patients with low-grade glioma treated with MRI-guided LITT",
+      "sampleSize": "13 patients",
+      "endpoints": "Ablation feasibility/extent, tumor control, complications (specific outcome figures not extracted — abstract full text not retrievable in this environment)",
+      "results": "Outcome figures not verified (publisher/PubMed full text proxy-blocked); citation, cohort size (n=13), indication and date confirmed from the PubMed record.",
+      "significance": "Small single-center series",
+      "limitations": "Small (n=13), retrospective, single-institution; outcome details unverified here",
+      "evidenceStrength": "Low (small retrospective pediatric series)",
+      "clinicalBottomLine": "Adds early single-center evidence for LITT as a minimally invasive option in pediatric low-grade glioma — a thinly covered indication.",
+      "whyMatters": "Extends LITT into pediatric low-grade glioma and fills one of the corpus's thin indications (newly/recurrent LGG). Flagged by a user as missed by the automated scan — added manually.",
+      "indications": [
+        "newly_lgg",
+        "recurrent_lgg"
+      ],
+      "strategies": [
+        "deep_eloquent_access",
+        "comparative_effectiveness"
+      ],
+      "clinicalImpactScore": 2,
+      "littBusinessImpact": 4,
+      "littBusinessDirection": "tailwind",
+      "businessLevers": [
+        "utilization",
+        "referral"
+      ],
+      "timeHorizon": "now",
+      "specialtyRelevance": {
+        "neurosurgery": "High",
+        "neuroOncology": "High",
+        "epileptology": "Low",
+        "radiationOncology": "Low",
+        "neuroradiology": "Moderate",
+        "medicalOncology": "Low"
+      },
+      "competitiveImpact": "Supports LITT expansion into pediatric low-grade glioma; platform-agnostic tailwind.",
+      "whoShouldKnow": [
+        "Medical Affairs",
+        "Sales"
+      ],
+      "verified": "partial",
+      "firstSeenRun": "2026-08-03",
+      "lastUpdatedRun": "2026-08-03",
+      "status": "carried",
+      "changeNote": "Manually added after user flagged it as missed by the automated (web-search-only) scan."
     }
   ]
 }

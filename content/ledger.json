@@ -1,0 +1,183 @@
+{
+  "note": "One entry per drafted post. status: drafted | hold | approved | posted | dropped. Reruns skip items already drafted/approved/posted on the same channel.",
+  "posts": [
+    {
+      "id": "2026-09-25-li-01",
+      "channel": "personal-linkedin",
+      "format": "two-studies",
+      "sourceIds": [
+        "intrago-ii-iort-newly-gbm-lancetoncol-2026",
+        "ultrahypofx-6x6gy-vs-30x2gy-gbm-radiotheroncol-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": "2026-10-01",
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null
+    },
+    {
+      "id": "2026-09-25-li-02",
+      "channel": "personal-linkedin",
+      "format": "breakdown",
+      "sourceIds": [
+        "epilepsy-surgery-underutilization-25yr-epilepsia-2026",
+        "ses-adi-epilepsy-surgery-timing-outcomes-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": "2026-10-06",
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null
+    },
+    {
+      "id": "2026-09-25-li-03",
+      "channel": "personal-linkedin",
+      "format": "myth-vs-data",
+      "sourceIds": [
+        "eortc-22033-mature-lgg-tmz-vs-rt-jco-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": "2026-10-08",
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null
+    },
+    {
+      "id": "2026-09-25-li-hold",
+      "channel": "personal-linkedin",
+      "format": "breakdown",
+      "sourceIds": [
+        "the-roam-eortc-1308-trial-radiation-versus-observation-following-surgi"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": "2026-09-29",
+      "status": "hold",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Source is partial: fill [VERIFY] slots from the Lancet full text before posting."
+    },
+    {
+      "id": "2026-09-25-ep-01",
+      "channel": "epilepsy-collab",
+      "format": "referral-gap",
+      "sourceIds": [
+        "ehr-algorithm-dre-presurgical-gap-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Soft-launch post 1"
+    },
+    {
+      "id": "2026-09-25-ep-02",
+      "channel": "epilepsy-collab",
+      "format": "hypothetical-case-poll",
+      "sourceIds": [
+        "early-surgery-drug-sensitive-focal-epilepsy-niguarda-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Soft-launch post 2; recap poll results one week later"
+    },
+    {
+      "id": "2026-09-25-ep-03",
+      "channel": "epilepsy-collab",
+      "format": "breakdown",
+      "sourceIds": [
+        "perc-variability-surgery-recommendation-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Soft-launch post 3"
+    },
+    {
+      "id": "2026-09-25-ep-04",
+      "channel": "epilepsy-collab",
+      "format": "community-launch",
+      "sourceIds": [
+        "epilepsy-surgery-underutilization-25yr-epilepsia-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Post at public launch; fill [Region], [date], [collab website]"
+    },
+    {
+      "id": "2026-09-25-bt-01",
+      "channel": "brain-tumor-collab",
+      "format": "handoff",
+      "sourceIds": [
+        "pixclara-tlx101-fet-pet-glioma-nda-accepted-2026",
+        "fig-trog-1806-fet-pet-rt-volumes-gbm-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Soft-launch post 1"
+    },
+    {
+      "id": "2026-09-25-bt-02",
+      "channel": "brain-tumor-collab",
+      "format": "handoff",
+      "sourceIds": [
+        "eano-radiation-necrosis-consensus-neurooncol-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Soft-launch post 2"
+    },
+    {
+      "id": "2026-09-25-bt-03",
+      "channel": "brain-tumor-collab",
+      "format": "numbers-carousel",
+      "sourceIds": [
+        "danish-meningioma-incidence-surveillance-jamaoncol-2026"
+      ],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Soft-launch post 3"
+    },
+    {
+      "id": "2026-09-25-bt-04",
+      "channel": "brain-tumor-collab",
+      "format": "community-launch",
+      "sourceIds": [],
+      "draftedRun": "2026-09-25",
+      "targetDate": null,
+      "status": "drafted",
+      "postedDate": null,
+      "postUrl": null,
+      "engagement": null,
+      "note": "Post at public launch; stats from playbook §3a; fill [Region], [date], [collab website]"
+    }
+  ]
+}

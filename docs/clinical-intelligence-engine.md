@@ -165,6 +165,27 @@ Search across:
 - Practice guidelines
 - Position statements
 
+### Retrieval — query the scholarly indexes directly (do not rely on web search alone)
+
+Web search is a *discovery* aid, not an index; it silently misses newer or niche
+papers (e.g. a single-institution series in a specialty journal). Whenever the run
+environment can reach them, query the databases directly and treat their results as
+the **spine** of the pull, with web/news search layered on top:
+
+- **PubMed E-utilities** (`eutils.ncbi.nlm.nih.gov`) — primary LITT query:
+  `("laser interstitial thermal therapy"[tiab] OR LITT[tiab] OR MRgLITT[tiab] OR NeuroBlate[tiab] OR Visualase[tiab] OR "stereotactic laser ablation"[tiab]) AND <start>:<end>[pdat]`
+  plus per-domain queries (glioma, brain metastases, radiation necrosis, meningioma,
+  epilepsy surgery, SLAH, hypothalamic hamartoma, corpus callosotomy). Use `esearch`
+  for PMIDs, then `efetch`/`esummary` for abstract + metadata. **Reconcile every hit
+  against `database.json`; any hit not already present is a miss to add.**
+- **ClinicalTrials.gov**, **openFDA / FDA**, **CMS**, **OpenAlex / Crossref** where reachable.
+
+GitHub Actions runners have open internet, so the scheduled/manual scan in
+`.github/workflows/clinical-scan.yml` is the right place to run this at full recall.
+The Claude Code web sandbox often has these hosts blocked (403); when so, fall back to
+web search, **flag coverage as best-effort**, and never fabricate a record for a hit you
+could not fetch — carry the `verified` provenance flag through.
+
 ### Reputable General, Business & Lay News
 
 The application of LITT is highly dependent on what is happening across the *whole*
@@ -186,6 +207,11 @@ Guardrails for lay/news sources:
   context, flagged `partial` until the primary source is confirmed.
 - **Never** let a news headline launder an unverified clinical figure into a
   confident claim. Carry `verified` / `partial` / `unverified` provenance through.
+- **Run this news domain on every scan** (baseline and surveillance), not only when
+  tumor/epilepsy headlines are expected. Explicitly sweep the named outlets above —
+  NYT, WSJ, Washington Post, Reuters, AP, Bloomberg, CNN, BBC, NPR, The Economist,
+  STAT, Endpoints, Fierce, MedTech Dive, Becker's — for funding/M&A, FDA/CMS policy,
+  major institutional moves, and shifts in perception that bear on LITT.
 
 ### Mandatory: every finding is dated
 
@@ -270,8 +296,11 @@ must not be collapsed into one number:
 ### Axis 2 — LITT Business Impact Score (0–10) + Direction
 
 A single 0–10 magnitude for how strongly this moves the LITT business, paired with a
-**direction**: `tailwind` (strengthens LITT), `headwind` (weakens/displaces LITT), or
-`neutral` (matters but is direction-agnostic, e.g., shared category infrastructure).
+**direction**: `tailwind` (strengthens LITT), `headwind` (weakens/displaces LITT),
+`neutral` (matters but is direction-agnostic, e.g., shared category infrastructure), or
+`na` (business direction does not apply — a purely clinical, methodological, or educational
+item with no bearing on the LITT business; pair with a low 0–2 magnitude). Display label for
+`na` is "N/A".
 
 | Score | Meaning |
 | --- | --- |
