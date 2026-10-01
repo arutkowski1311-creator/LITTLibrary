@@ -1,6 +1,6 @@
 # Concierge library — colour commentary worksheet
 
-Generated 2026-09-10 · 267 entries · 0 already have commentary.
+Generated 2026-10-01 · 266 entries · 0 already have commentary.
 
 How to use: write your note on the line(s) after **Commentary:** in any block. One to three sentences in your own voice is perfect
 (what you order, when to go, who it suits, what to skip). Leave a block blank to skip it. Type `REMOVE` to drop an entry,
@@ -1212,8 +1212,8 @@ Commentary:
 
 ### Wilmington
 
-**Whiteface Mountain**  `whiteface-mountain` ⚠ unverified
-_In town, on NY-86 · $$$_
+**Whiteface Mountain**  `whiteface-mountain`
+_In town, on NY-86 · Adult day ticket up to $134 at peak (seniors $104, juniors 7–12 $89, ages 0–6 $15); Frequent Skier Card $59 brings midweek tickets to $67 and weekends to $101. Buy online ahead for the lowest price._
 The Olympic mountain, with the greatest vertical drop in the East. The reason most winter guests come to Wilmington.
 
 Commentary:
@@ -1414,7 +1414,7 @@ Commentary:
 
 ---
 
-**West Branch of the Ausable River**  `west-branch-of-the-ausable-river` ⚠ unverified
+**West Branch of the Ausable River**  `west-branch-of-the-ausable-river`
 _Through town · Licence required_
 One of the most famous trout rivers in the Northeast runs through the village. Guides are worth it if you are new to it.
 
@@ -1529,7 +1529,7 @@ Commentary:
 
 ### Black Brook / Silver Lake
 
-**Silver Lake Road & Union Falls Pond**  `silver-lake-road-drive` ⚠ unverified
+**Silver Lake Road & Union Falls Pond**  `silver-lake-road-drive`
 _Leaf-peeping drive · 20–25 min north · Free_
 North from Au Sable Forks through Black Brook past Silver Lake and Taylor Pond to Union Falls: ponds, maples and almost no traffic. Add the short Silver Lake Mountain climb for the view over it all.
 
@@ -1679,17 +1679,6 @@ Commentary:
 **Olympic Jumping Complex Skyride**  `olympic-jumping-complex-skyride`
 _15 min down the road · 13 mi via NY-86 · Paid attraction_
 A gondola and elevator visit to the ski-jump observation area, with a close look at the scale of Olympic ski jumping. A compact attraction with a strong visual payoff, especially for guests interested in the Olympic stor
-
-Commentary:
-
-
----
-
-### North Pole, Wilmington
-
-**Santa's Workshop**  `santa-s-workshop` ⚠ unverified
-_On the Memorial Highway road · $$_
-A small, old-fashioned theme park that has been here since 1949.
 
 Commentary:
 
@@ -2473,7 +2462,7 @@ Commentary:
 
 ### Wilmington
 
-**Fly-fishing guides**  `fly-fishing-guides` ⚠ unverified
+**Fly-fishing guides**  `fly-fishing-guides`
 _$$$_
 Licensed local guides for the West Branch. Names are listed only after verification; this may link to RŌM or other approved providers.
 

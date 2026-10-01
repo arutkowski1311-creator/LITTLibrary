@@ -191,11 +191,6 @@
     "source": "https://dec.ny.gov/things-to-do/hiking/adirondack-backcountry/backcountry-information-for-adirondack-park"
    },
    {
-    "id": "santa-s-workshop",
-    "note": "Operator homepage says the park is closed for the summer and fall seasons; winter start dates inconsistent. Confirm directly before publishing a holiday visit.",
-    "source": "https://www.northpoleny.com/"
-   },
-   {
     "id": "captain-marney-s-boat-rental",
     "note": "Lake Placid Marina explicitly says it is not operating boat tours or rentals. Captain Marney's is the Lake Placid rental recommendation.",
     "source": "https://www.lakeplacidmarina.com/"
@@ -4409,9 +4404,9 @@
     "verifiedBy": "Claude (monthly routine)",
     "method": "WebSearch: northpoleny.com tickets/hours pages, whitefaceregion.com listing",
     "nextReview": "2026-10-31",
-    "status": "verified"
+    "status": "removed"
    },
-   "status": "active",
+   "status": "removed",
    "commentary": "",
    "google": {
     "placeId": "ChIJBQR6ldz-ykwRnCFFRW5pX40",
@@ -4467,7 +4462,8 @@
      }
     ],
     "refreshed": "2026-10-01"
-   }
+   },
+   "removedReason": "Owner 2026-10-01: do not recommend"
   },
   {
    "id": "adirondack-wildlife-refuge",
@@ -5283,7 +5279,7 @@
     "businessStatus": "OPERATIONAL",
     "editorialSummary": null,
     "reviewSummary": null,
-    "generativeSummary": "Hiking area with a viewpoint offering vistas of Whiteface Mountain and Santa's Village.",
+    "generativeSummary": null,
     "reviewSummaryFlagUri": null,
     "generativeSummaryFlagUri": "https://www.google.com/local/content/rap/report?postId=CiUweDRjY2FmZmNhZDU1NDUzMWI6MHg0MWY0NDc5NmJhNmFhYTg3MAI&d=17924085&t=12",
     "summaryDisclosure": "Summarized with Gemini",
